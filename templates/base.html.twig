@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
         <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Home One || Kitecx || HTML Template For Architecture</title>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>{% block title %}Home One || Kitecx || HTML Template For Architecture{% endblock %}</title>
             <!-- favicons Icons -->
-            <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
-            <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
-            <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
-            <meta name="description" content="Crsine HTML Template For Car Services" />
-            <!-- fonts -->
-            <link rel="preconnect" href={{ asset('assets/images/favicons/site.webmanifest') }}>
+            <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/favicons/apple-touch-icon.png') }}"/>
+            <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicons/favicon-32x32.png') }}"/>
+            <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicons/favicon-16x16.png') }}"/>
+            <link rel="manifest" href="{{ asset('assets/images/favicons/site.webmanifest') }}"/>
+            <meta name="description" content="{% block description %}Crsine HTML Template For Car Services{% endblock %}"/>
+
+
+
 
             {% block stylesheets %}
 
@@ -46,19 +47,19 @@
         <div class="page-wrapper">
             {% block header %}
                 { include '_header.html.twig' }
-                {{# render(path('app_header') #}}
+                {{ render(path('app_header')) }}
             {% endblock %}
 
-                {% block content %}
-                {% endblock %}
+            {% block content %}
+            {% endblock %}
 
-                {% block footer %}
+            {% block footer %}
                 {{ render(path('app_footer')) }}
             {% endblock %}
         </div>
 
         {% include "_partial/_menu-mobile.html.twig" %}
-        {% include "_partial/_search-popup.html.twig" %}
+        {% include "_partial/_search-popup-mobile.html.twig" %}
         {% include "_partial/_side-menu.html.twig" %}
         {% include "_partial/_up.html.twig" %}
 
@@ -86,7 +87,7 @@
         <script src="http://maps.google.com/maps/api/js?key=AIzaSyATY4Rxc8jNvDpsK8ZetC7JyN4PFVYGCGM"></script>
 
         <!-- template js -->
-        <script src="{{ assets/js/kitecx.js}}"></script>
+            <script src="{{ asset('assets/js/kitecx.js') }}"></script>
         {% endblock %}
 
         </body>
