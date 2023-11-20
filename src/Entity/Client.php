@@ -47,6 +47,11 @@ class Client
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $status = null;
 
+    #[ORM\OneToOne(inversedBy: 'client', cascade: ['persist', 'remove'])]
+    private ?User $user_id = null;
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -183,4 +188,17 @@ class Client
 
         return $this;
     }
+
+    public function getUserId(): ?User
+    {
+        return $this->user_id;
+    }
+
+    public function setUserId(?User $user_id): static
+    {
+        $this->user_id = $user_id;
+
+        return $this;
+    }
+
 }
