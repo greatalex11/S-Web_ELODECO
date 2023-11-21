@@ -76,4 +76,16 @@ class LoginController extends AbstractController
         ]);
     }
 
+    #[Route(path: '/services_details', name: 'app_services_details')]
+    public function servicesD(): Response
+    {
+        return $this->render('pages/services_details.html.twig', [
+        ]);
+    }
+    #[Route(path: '/contact', name: 'app_contact')]
+    public function contact(): Response
+    {
+        return $this->render('pages/contact.html.twig', [
+        ]);
+    }
 }
