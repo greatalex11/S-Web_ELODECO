@@ -62,10 +62,35 @@ class LoginController extends AbstractController
         ]);
     }
 
+
+    #[Route(path: '/services', name: 'app_services')]
+    public function services(): Response
+    {
+        return $this->render('pages/services.html.twig', [
+        ]);
+    }
+    #[Route(path: '/services_details', name: 'app_services_details')]
+    public function servicesD(): Response
+    {
+        return $this->render('pages/services_details.html.twig', [
+        ]);
+    }
     #[Route(path: '/about', name: 'app_about')]
     public function about(): Response
     {
         return $this->render('pages/about.html.twig', [
+        ]);
+    }
+    #[Route(path: '/our_mission', name: 'app_our_mission')]
+    public function mission(): Response
+    {
+        return $this->render('pages/our_mission.html.twig', [
+        ]);
+    }
+    #[Route(path: '/team', name: 'app_team')]
+    public function team(): Response
+    {
+        return $this->render('pages/team.html.twig', [
         ]);
     }
 
@@ -76,10 +101,22 @@ class LoginController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/services_details', name: 'app_services_details')]
-    public function servicesD(): Response
+    #[Route(path: '/portfolio_details', name: 'app_portfolio_details')]
+    public function portefolioD(): Response
     {
-        return $this->render('pages/services_details.html.twig', [
+        return $this->render('pages/portfolio_details.html.twig', [
+        ]);
+    }
+    #[Route(path: '/news', name: 'app_news')]
+    public function news(): Response
+    {
+        return $this->render('pages/news.html.twig.html.twig', [
+        ]);
+    }
+    #[Route(path: '/news_details', name: 'app_news_details')]
+    public function newsD(): Response
+    {
+        return $this->render('pages/news_details.html.twig', [
         ]);
     }
     #[Route(path: '/contact', name: 'app_contact')]

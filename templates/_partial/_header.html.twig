@@ -7,7 +7,7 @@
         <div class="main-menu-wrapper">
             <div class="main-header__logo">
                 <a href="index.html">
-                    <img src="assets/images/LOGO_ELODECO_1.png" width="80" alt="Logo de l'entreprise ELODECO, conseil en décoration intérieure, représentant une maison sur fond blanc avec des éléments végétaux">
+                    <img src="assets/images/LOGO_ELODECO_1.png" width="90" alt="Logo de l'entreprise ELODECO, conseil en décoration intérieure, représentant une maison sur fond blanc avec des éléments végétaux">
                 </a>
             </div>
             <div class="main-menu-wrapper__top">
@@ -50,7 +50,7 @@
                         <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                         <ul class="main-menu__list">
 
-                                <li class="current" >
+                                <li class="dropdown">
                                     <a href="{{ path('app_home')}}">Home</a>
                                 </li>
 
@@ -74,37 +74,37 @@
                             <li class="dropdown">
                                 <a href="#">Services</a>
                                 <ul>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="services-details.html">Service Details</a></li>
+                                    <li><a href="{{ path('app_services')}}">Services</a></li>
+                                    <li><a href="{{ path('app_services_details')}}">Service Details</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#">Pages</a>
                                 <ul>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="our-mission.html">Our Mission</a></li>
-                                    <li><a href="team.html">Team</a></li>
+                                    <li><a href="{{ path('app_about')}}">About</a></li>
+                                    <li><a href="{{ path('app_our_mission')}}">Our Mission</a></li>
+                                    <li><a href="{{ path('app_team')}}">Team</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#">Portfolio</a>
                                 <ul>
-                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                    <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                                    <li><a href={{ path('app_portfolio')}}>Portfolio</a></li>
+                                    <li><a href="{{ path('app_portfolio_details')}}">Portfolio Details</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#">News</a>
                                 <ul>
-                                    <li><a href="news.html">News</a></li>
-                                    <li><a href="news-details.html">News Details</a></li>
+                                    <li><a href={{ path('app_news')}}>News</a></li>
+                                    <li><a href="{{ path('app_news_details')}}">News Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href={{ path('app_contact')}}>Contact</a></li>
                         </ul>
                         <div class="main-menu__right">
                             <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a>
-                            <a href="{{ path('app_home')}}" class="main-menu__read-more-btn thm-btn">Read More </a>
+                            <a href="{{ path('app_home')}}" class="main-menu__read-more-btn thm-btn">En savoir plus </a>
                         </div>
                     </div>
                 </nav>
