@@ -3,15 +3,13 @@
         <head>
             <meta charset="UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <title>{% block title %}Home One || Kitecx || HTML Template For Architecture{% endblock %}</title>
+            <title>{% block title %}ELODECO | Déco et agencement{% endblock %}</title>
             <!-- favicons Icons -->
             <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/favicons/apple-touch-icon.png') }}"/>
             <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicons/favicon-32x32.png') }}"/>
             <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicons/favicon-16x16.png') }}"/>
             <link rel="manifest" href="{{ asset('assets/images/favicons/site.webmanifest') }}"/>
-            <meta name="description" content="{% block description %}Crsine HTML Template For Car Services{% endblock %}"/>
-
-
+            <meta name="description" content="{% block description%}ELODECO, entreprise de conseil en aménagement d'interieur, agrandissement, suivi de vos projets{% endblock %}"/>
 
 
             {% block stylesheets %}
@@ -46,7 +44,6 @@
 
         <div class="page-wrapper">
             {% block header %}
-                { include '_header.html.twig' }
                 {{ render(path('app_header')) }}
             {% endblock %}
 

@@ -1,0 +1,850 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="page-wrapper">
+
+        <section class="main-slider main-slider-two">
+            <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
+    "effect": "fade",
+     "pagination": {
+        "el": "#main-slider-pagination",
+        "type": "bullets",
+        "clickable": true
+      },
+    "navigation": {
+        "nextEl": "#main-slider__swiper-button-next",
+        "prevEl": "#main-slider__swiper-button-prev"
+    },
+    "autoplay": {
+        "delay": 5000
+    }}'>
+                <!--                        HOME - SLIDER PRINCIPAL SUPERIEUR - Background - 3 PHOTOS 1894X822  &  3 slogans                  -->
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="image-layer"
+                             style="background-image: url(assets/images/backgrounds/main-slider-11.jpg);">
+                        </div>
+                        <div class="main-slider_border"></div>
+                        <div class="main-slider_border main-slider_border-two"></div>
+                        <div class="main-slider_border main-slider_border-three"></div>
+                        <div class="main-slider_border main-slider_border-four"></div>
+                        <div class="main-slider_border main-slider_border-five"></div>
+                        <div class="main-slider_border main-slider_border-six"></div>
+
+                        <div class="image-layer-overlay"></div>
+                        <!-- /.image-layer -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <div class="main-slider__content">
+                                        <h2>Elodeco <br> Un savoir faire</h2>
+                                        <a href="{{ path('app_about')}}" class="cta-one__btn thm-btn">A propos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-layer"
+                             style="background-image: url(assets/images/backgrounds/main-slider-11.jpg);">
+                        </div>
+                        <div class="main-slider_border"></div>
+                        <div class="main-slider_border main-slider_border-two"></div>
+                        <div class="main-slider_border main-slider_border-three"></div>
+                        <div class="main-slider_border main-slider_border-four"></div>
+                        <div class="main-slider_border main-slider_border-five"></div>
+                        <div class="main-slider_border main-slider_border-six"></div>
+
+                        <div class="image-layer-overlay"></div>
+                        <!-- /.image-layer -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <div class="main-slider__content">
+                                        <h2>ELODECO <br> Honnêteté</h2>
+                                        <a href="{{ path('app_about')}}" class="cta-one__btn thm-btn">A propos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-layer"
+                             style="background-image: url(assets/images/backgrounds/main-slider-11.jpg);">
+                        </div>
+                        <div class="main-slider_border"></div>
+                        <div class="main-slider_border main-slider_border-two"></div>
+                        <div class="main-slider_border main-slider_border-three"></div>
+                        <div class="main-slider_border main-slider_border-four"></div>
+                        <div class="main-slider_border main-slider_border-five"></div>
+                        <div class="main-slider_border main-slider_border-six"></div>
+
+                        <div class="image-layer-overlay"></div>
+                        <!-- /.image-layer -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <div class="main-slider__content">
+                                        <h2>ELODECO <br> Créativité à votre écoute</h2>
+                                        <a href="{{ path('app_about')}}" class="cta-one__btn thm-btn">A propos de moi</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                 <!--navigation buttons -->
+                <div class="swiper-pagination" id="main-slider-pagination"></div>
+                <div class="main-slider__nav-two">
+                    <div class="swiper-button-prev" id="main-slider__swiper-button-next"><i
+                                class="icon-right-arrow icon-left-arrow"></i>
+                    </div>
+                    <div class="swiper-button-next" id="main-slider__swiper-button-prev"><i
+                                class="icon-right-arrow"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--                                 HOME - SLIDER NUMERO 2 - 3 ACTIVTES DE L'ENTREPRISE                              -->
+
+        <section class="steps">
+            <div class="container">
+                <div class="steps__inner">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4">
+                            <!--Steps Single-->
+                            <div class="steps__single">
+                                <div class="steps__icon">
+                                    <span class="icon-architect"></span>
+                                    <div class="steps__count">
+                                    </div>
+                                </div>
+                                <div class="steps__text">
+                                    <h4>Décoration <br> Ambiance & agrément</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4">
+                            <!--Steps Single-->
+                            <div class="steps__single">
+                                <div class="steps__icon">
+                                    <span class="icon-architect-1"></span>
+                                    <div class="steps__count">
+                                    </div>
+                                </div>
+                                <div class="steps__text">
+                                    <h4>Plan 3D <br> Espaces intérieurs</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4">
+                            <!--Steps Single-->
+                            <div class="steps__single">
+                                <div class="steps__icon">
+                                    <span class="icon-architect-2"></span>
+                                    <div class="steps__count">
+                                    </div>
+                                </div>
+                                <div class="steps__text">
+                                    <h4>Gestion <br> de projet</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Steps End-->
+
+        <!--Cta One Start-->
+        <section class="cta-one">
+            <div class="cta-one-pattern" style="background-image: url(assets/images/pattern/cta-one-pattern.jpg)"></div>
+            <div class="container">
+                <div class="cta-one__inner">
+                    <div class="cta-one__content">
+                        <h2 class="cta-one__text">Décoration, agencements, création de gites, immobilier ...</h2>
+                    </div>
+                    <div class="cta-one__btn-box">
+                        <a href="{{ path('app_portfolio')}}" class="cta-one__btn thm-btn">Nos projets</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!--                                          HOME - SLIDER NUMERO 3 - PLANS 3D  - image ressources/ img1: 513x513                            -->
+
+
+        <section class="welcome-two">
+            <div class="welcome-two-bg" style="background-image: url(assets/images/backgrounds/welcome-two-bg.png)">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="welcome-two__left">
+                            <div class="welcome-two__img">
+                                <img src="assets/images/resources/assets/projet_logement_style_industriel.png" alt="">
+                                <div class="welcome-two__img-shape-1"></div>
+                                <div class="welcome-two__img-shape-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="welcome-two__right">
+                            <div class="section-title text-left">
+                                <span class="section-title__tagline">About Company</span>
+                                <h2 class="section-title__title">We Provide the best architects</h2>
+                            </div>
+                            <p class="welcome-two__text">There are many variations of passages of Lorem Ipsum available,
+                                but the majority have suffered alteration in some form, simply free text by injected
+                                humour, or randomised.</p>
+                            <div class="welcome-two__icon-box">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="welcome-two__icon-box-img">
+                                            <img src="assets/images/resources/welcome-two-img-2.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="welcome-two__icon-list-box">
+                                            <ul class="welcome-two__icon-list list-unstyled">
+                                                <li>
+                                                    <div class="icon">
+                                                        <span class="icon-measure"></span>
+                                                    </div>
+                                                    <div class="text-box">
+                                                        <p>There are many variations of passages of available, but the
+                                                            majority.</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="icon">
+                                                        <span class="icon-blueprint"></span>
+                                                    </div>
+                                                    <div class="text-box">
+                                                        <p>There are many variations of passages of available, but the
+                                                            majority.</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Welcome Two End-->
+
+        <!--Services Two Start-->
+        <section class="services-two">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7">
+                        <div class="section-title text-left">
+                            <span class="section-title__tagline">what we’re offering</span>
+                            <h2 class="section-title__title">Professional services</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-5">
+                        <div class="services-two__top-text-box">
+                            <p class="services-two__top-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                sed diam nonummy nibh euismod tincidunt.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-duration="1500ms">
+                        <!--Services Two Single-->
+                        <div class="services-two__single">
+                            <div class="services-two__single-bg"
+                                 style="background-image: url(assets/images/services/services-two__single-bg.png)"></div>
+                            <div class="services-two__icon">
+                                <span class="icon-house-design"></span>
+                            </div>
+                            <h2 class="services-two__title"><a href="services-details.html">Design & Planning</a></h2>
+                            <p class="services-two__text-2">Lorem ipsum dolor sit amet, consectetur notted adipisicing
+                                lipsim elit sed do.</p>
+                            <a href="services-details.html" class="services-one__btn services-two__btn">Read More</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="100ms">
+                        <!--Services Two Single-->
+                        <div class="services-two__single">
+                            <div class="services-two__single-bg"
+                                 style="background-image: url(assets/images/services/services-two__single-bg.png)"></div>
+                            <div class="services-two__icon">
+                                <span class="icon-kitchen"></span>
+                            </div>
+                            <h2 class="services-two__title"><a href="services-details.html">Furniture & Decor</a></h2>
+                            <p class="services-two__text-2">Lorem ipsum dolor sit amet, consectetur notted adipisicing
+                                lipsim elit sed do.</p>
+                            <a href="services-details.html" class="services-one__btn services-two__btn">Read More</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="200ms">
+                        <!--Services Two Single-->
+                        <div class="services-two__single">
+                            <div class="services-two__single-bg"
+                                 style="background-image: url(assets/images/services/services-two__single-bg.png)"></div>
+                            <div class="services-two__icon">
+                                <span class="icon-architect-3"></span>
+                            </div>
+                            <h2 class="services-two__title"><a href="services-details.html">Exterior Design</a></h2>
+                            <p class="services-two__text-2">Lorem ipsum dolor sit amet, consectetur notted adipisicing
+                                lipsim elit sed do.</p>
+                            <a href="services-details.html" class="services-one__btn services-two__btn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Services Two End-->
+
+        <!--Project Two Start-->
+        <section class="project-two">
+            <div class="project-two__container">
+                <div class="section-title text-center">
+                    <span class="section-title__tagline">what we did</span>
+                    <h2 class="section-title__title">recent projects</h2>
+                </div>
+                <div class="row masonary-layout">
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="project-two__single">
+                            <div class="project-two__img">
+                                <img src="assets/images/project/project-two-img-1.jpg" alt="">
+                                <div class="project-two__architect">
+                                    <p>architect</p>
+                                    <h3><a href="portfolio-details.html">Modern Villa</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="project-two__single">
+                            <div class="project-two__img">
+                                <img src="assets/images/project/project-two-img-2.jpg" alt="">
+                                <div class="project-two__architect">
+                                    <p>architect</p>
+                                    <h3><a href="portfolio-details.html">Modern Villa</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="project-two__single">
+                            <div class="project-two__img">
+                                <img src="assets/images/project/project-two-img-3.jpg" alt="">
+                                <div class="project-two__architect">
+                                    <p>architect</p>
+                                    <h3><a href="portfolio-details.html">Modern Villa</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="project-two__single">
+                            <div class="project-two__img">
+                                <img src="assets/images/project/project-two-img-4.jpg" alt="">
+                                <div class="project-two__architect">
+                                    <p>architect</p>
+                                    <h3><a href="portfolio-details.html">Modern Villa</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="project-two__single">
+                            <div class="project-two__img">
+                                <img src="assets/images/project/project-two-img-5.jpg" alt="">
+                                <div class="project-two__architect">
+                                    <p>architect</p>
+                                    <h3><a href="portfolio-details.html">Modern Villa</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="project-two__single">
+                            <div class="project-two__img">
+                                <img src="assets/images/project/project-two-img-6.jpg" alt="">
+                                <div class="project-two__architect">
+                                    <p>architect</p>
+                                    <h3><a href="portfolio-details.html">Modern Villa</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--Project Two End-->
+
+        <!--Counters One Start-->
+        <section class="counters-one counters-one-martopminus">
+            <div class="counters-one-pattern"
+                 style="background-image: url(assets/images/pattern/counter-one-pattern.jpg)"></div>
+            <div class="container">
+                <ul class="counters-one__box list-unstyled">
+                    <li class="counter-one__single">
+                        <div class="counter-one__icon">
+                            <span class="icon-architect-4"></span>
+                        </div>
+                        <h3 class="odometer" data-count="6805">00</h3>
+                        <p class="counter-one__text">Project Completed</p>
+                    </li>
+                    <li class="counter-one__single">
+                        <div class="counter-one__icon">
+                            <span class="icon-architect-5"></span>
+                        </div>
+                        <h3 class="odometer" data-count="906">00</h3>
+                        <p class="counter-one__text">Team Members</p>
+                    </li>
+                    <li class="counter-one__single">
+                        <div class="counter-one__icon">
+                            <span class="icon-buildings"></span>
+                        </div>
+                        <h3 class="odometer" data-count="200">00</h3>
+                        <p class="counter-one__text">Service Providing</p>
+                    </li>
+                    <li class="counter-one__single">
+                        <div class="counter-one__icon">
+                            <span class="icon-satisfaction"></span>
+                        </div>
+                        <h3 class="odometer" data-count="9760">00</h3>
+                        <p class="counter-one__text">Happy Customers</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!--Counters One Start-->
+
+        <!--Pricing One Start-->
+        <section class="pricing-one">
+            <div class="container">
+                <div class="pricing-tabs">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="section-title text-left">
+                                <span class="section-title__tagline">Checkout pricing</span>
+                                <h2 class="section-title__title">Choose Your Optimal Pricing Plan</h2>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="pricing-one__content">
+                                <p class="pricing-one__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+                                    volutpat.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="pricing-one__left">
+                                <ul class="pricing-one__points list-unstyled">
+                                    <li><span>/</span> Get Right Solutions</li>
+                                    <li><span>/</span> Expert Architecture</li>
+                                </ul>
+                                <ul class="pricing-one__checks-list list-unstyled">
+                                    <li>
+                                        <div class="pricing-one__checks-icon">
+                                            <i class="icon-tick"></i>
+                                        </div>
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 class="pricing-one__checks-title">INTERIOR SKETCH</h3>
+                                            <p class="pricing-one__checks-text">There are many variations of passages of
+                                                Lorem Ipsum available, but the majority have suffered.</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="pricing-one__checks-icon">
+                                            <i class="icon-tick"></i>
+                                        </div>
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 class="pricing-one__checks-title">3D MODELING</h3>
+                                            <p class="pricing-one__checks-text">There are many variations of passages of
+                                                Lorem Ipsum available, but the majority have suffered.</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="pricing-one__checks-icon">
+                                            <i class="icon-tick"></i>
+                                        </div>
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 class="pricing-one__checks-title">ROOM MEASUREMENT</h3>
+                                            <p class="pricing-one__checks-text">There are many variations of passages of
+                                                Lorem Ipsum available, but the majority have suffered.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6">
+                            <div class="pricing-one__table-box">
+                                <div class="pricing-one__right">
+
+                                    <div class="pr-content">
+
+                                        <div class="pr-tab active-tab" id="tab-2">
+                                            <div class="pricing-one__table-box-single">
+                                                <div class="pricing-one__table">
+                                                    <div class="pricing-one__rate-box">
+                                                        <h2><span class="pricing-one__dolar">$</span>49<span>/
+                                                                Monthly</span></h2>
+                                                    </div>
+                                                    <div class="pricing-one__details-box">
+                                                        <h3 class="pricing-one__details-title">Small Business</h3>
+                                                        <ul class="list-unstyled">
+                                                            <li>3D Visualization</li>
+                                                            <li>Planning Solution</li>
+                                                            <li>Selection of Materials</li>
+                                                            <li>10 Construction Drawings</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="pricing-one__btn-box">
+                                                        <a href="#" class="pricing-one__btn thm-btn">Choose plan</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pr-tab " id="tab-1">
+                                            <div class="pricing-one__table-box-single">
+                                                <div class="pricing-one__table">
+                                                    <div class="pricing-one__rate-box">
+                                                        <h2><span class="pricing-one__dolar">$</span>89<span>/
+                                                                Monthly</span></h2>
+                                                    </div>
+                                                    <div class="pricing-one__details-box">
+                                                        <h3 class="pricing-one__details-title">Small Business</h3>
+                                                        <ul class="list-unstyled">
+                                                            <li>3D Visualization</li>
+                                                            <li>Planning Solution</li>
+                                                            <li>Selection of Materials</li>
+                                                            <li>10 Construction Drawings</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="pricing-one__btn-box">
+                                                        <a href="#" class="pricing-one__btn thm-btn">Choose plan</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Pricing One End-->
+
+
+
+
+
+
+
+
+
+
+        <!--Trust Experts Start-->
+        <section class="trust-experts">
+            <div class="trust-experts-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
+                 style="background-image: url(assets/images/backgrounds/trust-experts-bg.jpg)"></div>
+            <div class="container">
+                <div class="trust-experts__inner">
+                    <h2 class="trust-experts__text">Trust the Experts for All <br> Your building Needs</h2>
+                    <a href="#" class="trust-experts__btn thm-btn">Learn more</a>
+                </div>
+            </div>
+        </section>
+        <!--Trust Experts End-->
+
+        <!--News One Start-->
+        <section class="news-one">
+            <div class="container">
+                <div class="section-title text-center">
+                    <span class="section-title__tagline">news & articles</span>
+                    <h2 class="section-title__title">Recent blog posts</h2>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                        <!--News One Single-->
+                        <div class="news-one__single">
+                            <div class="news-one__img-box">
+                                <div class="news-one-img">
+                                    <img src="assets/images/blog/news-one-img-1.jpg" alt="">
+                                    <a href="news-details.html">
+                                        <span class="news-one__plus"></span>
+                                    </a>
+                                </div>
+                                <div class="news-one__date-box">
+                                    <p>20 april</p>
+                                </div>
+                            </div>
+                            <div class="news-one__content">
+                                <ul class="list-unstyled news-one__meta">
+                                    <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>
+                                    <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a>
+                                    </li>
+                                </ul>
+                                <h3 class="news-one__title">
+                                    <a href="news-details.html">16 easy ideas to use Everyday Stuff in Kitchen</a>
+                                </h3>
+                                <p class="news-one__text">Lorem ipsum is simply free text used by new pesnhl note this
+                                    copytyping refreshing.</p>
+                                <a href="news-details.html" class="news-one__btn">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
+                        <!--News One Single-->
+                        <div class="news-one__single">
+                            <div class="news-one__img-box">
+                                <div class="news-one-img">
+                                    <img src="assets/images/blog/news-one-img-2.jpg" alt="">
+                                    <a href="news-details.html">
+                                        <span class="news-one__plus"></span>
+                                    </a>
+                                </div>
+                                <div class="news-one__date-box">
+                                    <p>20 april</p>
+                                </div>
+                            </div>
+                            <div class="news-one__content">
+                                <ul class="list-unstyled news-one__meta">
+                                    <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>
+                                    <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a>
+                                    </li>
+                                </ul>
+                                <h3 class="news-one__title">
+                                    <a href="news-details.html">Bring to the table win-win survival strategies to</a>
+                                </h3>
+                                <p class="news-one__text">Lorem ipsum is simply free text used by new pesnhl note this
+                                    copytyping refreshing.</p>
+                                <a href="news-details.html" class="news-one__btn">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
+                        <!--News One Single-->
+                        <div class="news-one__single">
+                            <div class="news-one__img-box">
+                                <div class="news-one-img">
+                                    <img src="assets/images/blog/news-one-img-3.jpg" alt="">
+                                    <a href="news-details.html">
+                                        <span class="news-one__plus"></span>
+                                    </a>
+                                </div>
+                                <div class="news-one__date-box">
+                                    <p>20 april</p>
+                                </div>
+                            </div>
+                            <div class="news-one__content">
+                                <ul class="list-unstyled news-one__meta">
+                                    <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>
+                                    <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a>
+                                    </li>
+                                </ul>
+                                <h3 class="news-one__title">
+                                    <a href="news-details.html">Organically grow the holistic world view of
+                                        disruptive</a>
+                                </h3>
+                                <p class="news-one__text">Lorem ipsum is simply free text used by new pesnhl note this
+                                    copytyping refreshing.</p>
+                                <a href="news-details.html" class="news-one__btn">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--News One End-->
+
+        <!--They Trusted Start-->
+        <section class="they-trusted">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="they-trusted__left">
+                            <div class="section-title text-left">
+                                <span class="section-title__tagline">They Trusted us</span>
+                                <h2 class="section-title__title">Our Happy Clients</h2>
+                            </div>
+                            <p class="they-trusted__text">There are many text variations of passages of Lorem Ipsum
+                                available, but the majority have suffered.</p>
+                            <ul class="list-unstyled they-trusted__list">
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-tick"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Nsectetur cing elit.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-tick"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Suspe ndisse suscipit sagittis leo.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-tick"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Entum estibulum dignissim posuere epeat.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="they-trusted__projects-complete">
+                                <div class="they-trusted__projects-complete-img">
+                                    <img src="assets/images/resources/they-trusted__projects-complete-img.jpg" alt="">
+                                </div>
+                                <div class="they-trusted__projects-complete-count-box">
+                                    <h3 class="odometer" data-count="345600">00</h3>
+                                    <p class="they-trusted__projects-complete-text">Projects we’ve completed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="they-trusted__brand">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="they-trusted__brand-single">
+                                        <div class="they-trusted__brand-main-img">
+                                            <a href="#"><img src="assets/images/resources/brand-2-1.png" alt=""></a>
+                                        </div>
+                                        <div class="they-trusted__brand-overly">
+                                            <a href="#"><img src="assets/images/resources/brand-2-1-overlay.png"
+                                                             alt=""></a>
+                                        </div>
+                                        <div class="they-trusted__brand-prattern"
+                                             style="background-image: url(assets/images/pattern/they-trusted-brand-pattern.png)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="they-trusted__brand-single">
+                                        <div class="they-trusted__brand-main-img">
+                                            <a href="#"><img src="assets/images/resources/brand-2-2.png" alt=""></a>
+                                        </div>
+                                        <div class="they-trusted__brand-overly">
+                                            <a href="#"><img src="assets/images/resources/brand-2-2-overlay.png"
+                                                             alt=""></a>
+                                        </div>
+                                        <div class="they-trusted__brand-prattern"
+                                             style="background-image: url(assets/images/pattern/they-trusted-brand-pattern.png)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="they-trusted__brand-single they-trusted__brand-single-mb-0">
+                                        <div class="they-trusted__brand-main-img">
+                                            <a href="#"><img src="assets/images/resources/brand-2-3.png" alt=""></a>
+                                        </div>
+                                        <div class="they-trusted__brand-overly">
+                                            <a href="#"><img src="assets/images/resources/brand-2-3-overlay.png"
+                                                             alt=""></a>
+                                        </div>
+                                        <div class="they-trusted__brand-prattern"
+                                             style="background-image: url(assets/images/pattern/they-trusted-brand-pattern.png)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="they-trusted__brand-single they-trusted__brand-single-mb-0">
+                                        <div class="they-trusted__brand-main-img">
+                                            <a href="#"><img src="assets/images/resources/brand-2-4.png" alt=""></a>
+                                        </div>
+                                        <div class="they-trusted__brand-overly">
+                                            <a href="#"><img src="assets/images/resources/brand-2-4-overlay.png"
+                                                             alt=""></a>
+                                        </div>
+                                        <div class="they-trusted__brand-prattern"
+                                             style="background-image: url(assets/images/pattern/they-trusted-brand-pattern.png)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--They Trusted End-->
+
+    </div><!-- /.page-wrapper -->
+
+
+
+    <div class="side-menu__block">
+        <div class="side-menu__block-overlay custom-cursor__overlay side-menu__toggler">
+            <div class="cursor"></div>
+            <div class="cursor-follower"></div>
+        </div><!-- /.side-menu__block-overlay -->
+        <div class="side-menu__block-inner ">
+            <span class="side-menu__close side-menu__toggler"></span>
+            <a href="index.html">
+                <img src="assets/images/resources/logo-1.png" alt="">
+            </a>
+            <div class="side-menu__block-about">
+                <h3 class="side-menu__block__title">About Us</h3><!-- /.side-menu__block__title -->
+                <p class="side-menu__block-about__text">We must explain to you how all seds this mistakens idea off
+                    denouncing pleasures and praising pain was born and I will give you a completed accounts off the
+                    system
+                    and </p><!-- /.side-menu__block-about__text -->
+                <a href="#" class="thm-btn side-menu__block-about__btn">Get Consulation</a>
+            </div><!-- /.side-menu__block-about -->
+            <hr class="side-menu__block-line" />
+            <div class="side-menu__block-contact">
+                <h3 class="side-menu__block__title">Contact Us</h3><!-- /.side-menu__block__title -->
+                <ul class="side-menu__block-contact__list">
+                    <li class="side-menu__block-contact__list-item">
+                        <i class="fa fa-map-marker"></i>
+                        Rock St 12, Newyork City, USA
+                    </li><!-- /.side-menu__block-contact__list-item -->
+                    <li class="side-menu__block-contact__list-item">
+                        <i class="fa fa-phone"></i>
+                        (000) 111-222-4444
+                    </li><!-- /.side-menu__block-contact__list-item -->
+                    <li class="side-menu__block-contact__list-item">
+                        <i class="fa fa-envelope"></i>
+                        kitecx@mail.com
+                    </li><!-- /.side-menu__block-contact__list-item -->
+                    <li class="side-menu__block-contact__list-item">
+                        <i class="fa fa-clock"></i>
+                        09.00 to 18.00 Sunday: Closed
+                    </li><!-- /.side-menu__block-contact__list-item -->
+                </ul><!-- /.side-menu__block-contact__list -->
+            </div><!-- /.side-menu__block-contact -->
+            <p class="side-menu__block__text site-footer__copy-text"><a href="#">Kitecx</a> <i
+                        class="fa fa-copyright"></i>
+                2021 All Right Reserved</p>
+        </div><!-- /.side-menu__block-inner -->
+    </div><!-- /.side-menu__block -->
+
+
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+{% endblock %}
