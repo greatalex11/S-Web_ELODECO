@@ -2,9 +2,7 @@
 
 {% block content %}
 
-    <!--                                                 -Bandeau supérieur   / image de font 1894x359 px                                           -->
-
-    <section class="page-header" style="background-image: url(assets/images/backgrounds/main-slider-11.jpg);">
+    <section class="page-header" style="background-image: url({{ asset('assets/images/backgrounds/main-slider-11.jpg') }});">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -23,18 +21,13 @@
         </div>
     </section>
 
-    <!--                                                                        SECTION 1 : SERVICES PRO  / image 672x713                                                      -->
-
-
-
-
     <section class="insuring insuring-page">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6">
                     <div class="insuring__left">
                         <div class="insuring__img">
-                            <img src="assets/images/resources/sejour_moyen.jpg" alt="photo d'un sejour ancien avec parquet avec vue sur le jardin, peinture blanche et moulures">
+                            <img src="{{ asset('assets/images/resources/sejour_moyen.jpg') }}" alt="photo d'un sejour ancien avec parquet avec vue sur le jardin, peinture blanche et moulures">
                         </div>
                     </div>
                 </div>
@@ -65,12 +58,7 @@
             </div>
         </div>
     </section>
-    <!--                                                                        fin section 1 : nous travaillons sur...                                                       -->
 
-
-    <!--                                                                           SECTION 2 : SERVICES PRO DETAILS                                                        -->
-
-    <!--Service / ACCROCHE -->
     <section class="services-one">
         <div class="services-one-container">
             <div class="section-title text-center">
@@ -80,9 +68,8 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-4">
 
-                    <!--SERVICE 1-->
                     <div class="services-one__single">
-                        <h2 class="services-one__title"><a href="services-details.html">Designer professiel</a></h2>
+                        <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">Designer professiel</a></h2>
                         <p class="services-one__text">Je vous propose des plans 3D, des conseils sur le choix des motifs, des matériaux, des couleurs.</p>
                         <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         <div class="services-one__icon">
@@ -94,7 +81,7 @@
 
                     <!--SERVICE 2 -->
                     <div class="services-one__single">
-                        <h2 class="services-one__title"><a href="services-details.html">Architectures</a></h2>
+                        <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">Architectures</a></h2>
                         <p class="services-one__text">Création d'espaces sur mesure, optimisation des agencements, augmentation de l'agrément de vie.</p>
                         <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         <div class="services-one__icon">
@@ -105,7 +92,7 @@
                 <div class="col-xl-4 col-lg-4">
                     <!--SERVICE 3-->
                     <div class="services-one__single">
-                        <h2 class="services-one__title"><a href="services-details.html">Accompagnement pilotage</a></h2>
+                        <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">Accompagnement pilotage</a></h2>
                         <p class="services-one__text">Choix des artisans, sélection des offres, gestion du planning, plans, modularités...</p>
                         <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         <div class="services-one__icon">
@@ -116,13 +103,10 @@
             </div>
         </div>
     </section>
-    <!--                                                                                   fin section 2                                                                      -->
 
-    <!--                                                        SECTION 3 : NOUS SOMMES PROFESSIONNELS / BANDEAU AVEC PHOTO 1920X1200                                                       -->
-    <!--bandeau-->
     <section class="trust-experts">
         <div class="trust-experts-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-             style="background-image: url(assets/images/backgrounds/deco_bandeau.jpg)"></div>
+             style="background-image: url({{ asset('assets/images/backgrounds/deco_bandeau.jpg') }})"></div>
         <div class="container">
             <div class="trust-experts__inner">
                 <h2 class="trust-experts__text">L'oeil de l'expert<br> dans toutes vos réalisations</h2>
@@ -130,10 +114,7 @@
             </div>
         </div>
     </section>
-    <!--                                                                                   fin section 2                                                            -->
 
-
-    <!--                                                                        SECTION 3   / 3 images en 370x133 px                                                -->
     <section class="three-boxes-two three-boxes-two-page">
         <div class="container">
             <div class="row">
@@ -141,16 +122,16 @@
                     <!--image et contenu 1-->
                     <div class="three-boxes-two__single">
                         <div class="three-boxes-two__img">
-                            <img src="assets/images/resources/color-formatTimbre.png" alt="nuancier de couleur pour décorateur">
+                            <img src="{{ asset('assets/images/resources/color-formatTimbre.png') }}" alt="nuancier de couleur pour décorateur">
                         </div>
                         <div class="three-boxes-two__content">
-                            <h3 class="three-boxes-two__title"><a href="services-details.html">Design & décoration <br>
+                            <h3 class="three-boxes-two__title"><a href="{{ path('app_services_details') }}">Design & décoration <br>
                                     </a></h3>
                             <p class="three-boxes-two__text">Une ambiance, une tendance, une valeur</p>
                             <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         </div>
                         <div class="three-boxes-two__single-pattern"
-                             style="background-image: url(assets/images/pattern/three-boxes-two__single-pattern.png)">
+                             style="background-image: url({{ asset('assets/images/pattern/three-boxes-two__single-pattern.png') }})">
                         </div>
                     </div>
                 </div>
@@ -159,16 +140,16 @@
                     <!--image et contenu 2-->
                     <div class="three-boxes-two__single">
                         <div class="three-boxes-two__img">
-                            <img src="assets/images/resources/industriel_formatTimbre.png" alt="affichage réduit du plan 3d cuisine séjour style industriel">
+                            <img src="{{ asset('assets/images/resources/industriel_formatTimbre.png') }}" alt="affichage réduit du plan 3d cuisine séjour style industriel">
                         </div>
                         <div class="three-boxes-two__content">
-                            <h3 class="three-boxes-two__title"><a href="services-details.html">Des rêves sur mesure<br>
+                            <h3 class="three-boxes-two__title"><a href="{{ path('app_services_details') }}">Des rêves sur mesure<br>
                                     </a></h3>
                             <p class="three-boxes-two__text">Accompagnement jusqu'à la réalisation</p>
                             <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         </div>
                         <div class="three-boxes-two__single-pattern"
-                             style="background-image: url(assets/images/pattern/three-boxes-two__single-pattern.png)">
+                             style="background-image: url({{ asset('assets/images/pattern/three-boxes-two__single-pattern.png') }})">
                         </div>
                     </div>
                 </div>
@@ -176,23 +157,21 @@
                     <!--image et contenu 3-->
                     <div class="three-boxes-two__single">
                         <div class="three-boxes-two__img">
-                            <img src="assets/images/resources/chambre_formatTimbre.png" alt="chambre ado style contemporain, gris et blanc">
+                            <img src="{{ asset('assets/images/resources/chambre_formatTimbre.png') }}" alt="chambre ado style contemporain, gris et blanc">
                         </div>
                         <div class="three-boxes-two__content">
-                            <h3 class="three-boxes-two__title"><a href="services-details.html">Lignes épurées<br>
+                            <h3 class="three-boxes-two__title"><a href="{{ path('app_services_details') }}">Lignes épurées<br>
                                     architects</a></h3>
                             <p class="three-boxes-two__text">Les formes simples tendent à la perfection</p>
                             <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         </div>
                         <div class="three-boxes-two__single-pattern"
-                             style="background-image: url(assets/images/pattern/three-boxes-two__single-pattern.png)">
+                             style="background-image: url({{ asset('assets/images/pattern/three-boxes-two__single-pattern.png') }})">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--Three Boxes Two End-->
-
 
 {% endblock %}
