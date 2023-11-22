@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <!--Page Header Start-->
-    <section class="page-header" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
+
+    <!--                                                 -Bandeau supérieur   / image de font 1894x359 px                                           -->
+
+    <section class="page-header" style="background-image: url(assets/images/backgrounds/main-slider-11.jpg);">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -13,32 +15,33 @@
             <div class="page-header__inner">
                 <h2>Portfolio</h2>
                 <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
                     <li>Portfolio</li>
                 </ul>
             </div>
         </div>
     </section>
-    <!--Page Header End-->
+    <!--                                                                -Bandeau supérieur fin                                                            -->
 
-    <!--Project One Start-->
+
+    <!--                                                PROJETS DE 1 A    / image de font 1894x359 px                                                  -->
+
     <section class="project-one portfolio-page">
         <div class="container">
             <div class="row">
                 <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!--Project One Single-->
+    <!--                                                                        PROJET 1                                                              -->
                     <div class="project-one__single">
                         <div class="project-one__img-box">
                             <div class="project-one__img">
-                                <img src="assets/images/project/portfolio-page-img-1.jpg" alt="">
+                                <img src="assets/images/project/projet_indus_moyen.png" alt="plan 3d logement après réféction avec cuisine et sejour en sous pente">
                                 <div class="project-one__hover">
-                                    <a href="assets/images/project/portfolio-page-img-1.jpg" class="img-popup"><i
+                                    <a href="assets/images/project/projet_indus_moyen.png" class="img-popup"><i
                                                 class="fa fa-search-plus"></i></a>
                                     <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">architect</p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Modern
-                                                Villa</a>
+                                        <p class="project-one__hover-title">RIOZ - Réalisation logement </p>
+                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Architecture type industriel</a>
                                         </h2>
                                     </div>
                                 </div>
@@ -47,18 +50,23 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!--Project One Single-->
+
+                    <!--                                                 fin  projet 1                                                              -->
+
+
+
+     <!--                                                                    PROJET 2                                                              -->
+
                     <div class="project-one__single">
                         <div class="project-one__img-box">
                             <div class="project-one__img">
-                                <img src="assets/images/project/portfolio-page-img-2.jpg" alt="">
+                                <img src="assets/images/project/demande-deco.png" alt="petit espace où la décoration est soignée, rose et gris, petit mobilier classieux">
                                 <div class="project-one__hover">
-                                    <a href="assets/images/project/portfolio-page-img-2.jpg" class="img-popup"><i
+                                    <a href="assets/images/project/demande-deco.png" class="img-popup"><i
                                                 class="fa fa-search-plus"></i></a>
                                     <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">architect</p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Modern
-                                                Villa</a>
+                                        <p class="project-one__hover-title">Devecey- Décoration</p>
+                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Coin détente classieux</a>
                                         </h2>
                                     </div>
                                 </div>
@@ -67,18 +75,22 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!--Project One Single-->
+                    <!--                                                 fin  projet 2                                                              -->            <!--Project One Single-->
+
+
+                    <!--                                                     PROJET 3                                                            -->
+
+
                     <div class="project-one__single">
                         <div class="project-one__img-box">
                             <div class="project-one__img">
-                                <img src="assets/images/project/portfolio-page-img-3.jpg" alt="">
+                                <img src="assets/images/project/refection-appart.png" alt="image d'un appartement en chantir avec bâches au sol et escabeau, peinture blanche">
                                 <div class="project-one__hover">
-                                    <a href="assets/images/project/portfolio-page-img-3.jpg" class="img-popup"><i
+                                    <a href="assets/images/project/refection-appart.png" class="img-popup"><i
                                                 class="fa fa-search-plus"></i></a>
                                     <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">architect</p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Modern
-                                                Villa</a>
+                                        <p class="project-one__hover-title">Vesoul- Rénovation appartement</p>
+                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Primo accédant</a>
                                         </h2>
                                     </div>
                                 </div>
@@ -87,18 +99,22 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!--Project One Single-->
+
+                    <!--                                                        fin  projet 3                                                              -->
+
+
+
+                    <!--                                                           PROJET 4                                                            -->
                     <div class="project-one__single">
                         <div class="project-one__img-box">
                             <div class="project-one__img">
-                                <img src="assets/images/project/portfolio-page-img-4.jpg" alt="">
+                                <img src="assets/images/project/projet_sdb_moyen.png" alt="image salle de bain contemporaine avec douche et baignoire, ambiance claire, blanc">
                                 <div class="project-one__hover">
-                                    <a href="assets/images/project/portfolio-page-img-4.jpg" class="img-popup"><i
+                                    <a href="assets/images/project/projet_sdb_moyen.png" class="img-popup"><i
                                                 class="fa fa-search-plus"></i></a>
                                     <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">architect</p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Modern
-                                                Villa</a>
+                                        <p class="project-one__hover-title">Salle de bain</p>
+                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Salle de bain élégante</a>
                                         </h2>
                                     </div>
                                 </div>
@@ -107,18 +123,21 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!--Project One Single-->
+
+                    <!--                                                 fin  projet 4                                                              -->
+
+
+                    <!--                                                     PROJET 5                                                            -->
                     <div class="project-one__single">
                         <div class="project-one__img-box">
                             <div class="project-one__img">
-                                <img src="assets/images/project/portfolio-page-img-5.jpg" alt="">
+                                <img src="assets/images/project/projet_extension_bois2_moyen.png" alt="extension bois avec poele, intérieur chic mais simple en matériaux nobles">
                                 <div class="project-one__hover">
-                                    <a href="assets/images/project/portfolio-page-img-5.jpg" class="img-popup"><i
+                                    <a href="assets/images/project/projet_extension_bois2_moyen.png" class="img-popup"><i
                                                 class="fa fa-search-plus"></i></a>
                                     <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">architect</p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Modern
-                                                Villa</a>
+                                        <p class="project-one__hover-title">Extension bois avec poële</p>
+                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Extension bois</a>
                                         </h2>
                                     </div>
                                 </div>
@@ -127,15 +146,24 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!--Project One Single-->
+
+                    <!--                                                 fin  projet 5                                                              -->
+
+
+
+                    <!--                                                     PROJET 6                                                            -->
+
+
                     <div class="project-one__single">
                         <div class="project-one__img-box">
                             <div class="project-one__img">
-                                <img src="assets/images/project/portfolio-page-img-6.jpg" alt="">
+                                <img src="assets/images/project/plan2d_moyen.png" alt="plan 2D d'un sous-sol avec nouveaux aménagements, table de cuisson, table et chaises">
                                 <div class="project-one__hover">
+                                    <a href="assets/images/project/plan2d_moyen.png" class="img-popup"><i
+                                                class="fa fa-search-plus"></i></a>
                                     <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">architect</p>
-                                        <h2 class="project-one__hover-name">Modern Villa</h2>
+                                        <p class="project-one__hover-title">Plan d'un aménagement de sous-sol</p>
+                                        <h2 class="project-one__hover-name">Maison années 1960 à rénover</h2>
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +173,7 @@
             </div>
         </div>
     </section>
-    <!--Project One End-->
+    <!--                                                                    fin  projet 6                                                              -->
 
 
 {% endblock %}
