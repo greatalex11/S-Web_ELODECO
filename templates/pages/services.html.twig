@@ -2,8 +2,9 @@
 
 {% block content %}
 
-    <!--Page Header Start-->
-    <section class="page-header" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
+    <!--                                                 -Bandeau supérieur   / image de font 1894x359 px                                           -->
+
+    <section class="page-header" style="background-image: url(assets/images/backgrounds/main-slider-11.jpg);">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -14,14 +15,15 @@
             <div class="page-header__inner">
                 <h2>Services</h2>
                 <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
                     <li>Services</li>
                 </ul>
             </div>
         </div>
     </section>
-    <!--Page Header End-->
+
+    <!--                                                                        SECTION 1 : SERVICES PRO  / image 672x713                                                      -->
 
 
 
@@ -32,7 +34,7 @@
                 <div class="col-xl-6">
                     <div class="insuring__left">
                         <div class="insuring__img">
-                            <img src="assets/images/resources/insuring-img-1.jpg" alt="">
+                            <img src="assets/images/resources/sejour_moyen.jpg" alt="photo d'un sejour ancien avec parquet avec vue sur le jardin, peinture blanche et moulures">
                         </div>
                     </div>
                 </div>
@@ -40,21 +42,20 @@
                     <div class="insuring__right">
                         <div class="insuring__your-future-box">
                             <div class="section-title text-left">
-                                <span class="section-title__tagline">we work for</span>
-                                <h2 class="section-title__title">Insuring your future</h2>
+                                <span class="section-title__tagline">Nous travaillons sur</span>
+                                <h2 class="section-title__title">Des projets personnalisés</h2>
                             </div>
-                            <p class="insuring__text">There are many variations of pass of lorem sum available but
-                                the majority have suffered alteration in some form. Injected humour randomised words
-                                which.</p>
+                            <p class="insuring__text">Les projets immobiliers sont nombreux. En tant que professionnel, je vous accompagne dans vos idées de changement,
+                                de création d'espace, ou pour mettre en valeur votre bien: vente, location, création d'un gîte, chambre d'hôtes, etc...</p>
                             <div class="insuring__counter-list-box">
                                 <ul class="list-unstyled insuring__counter-list">
                                     <li>
-                                        <h2 class="odometer" data-count="9760">00</h2>
-                                        <p class="insuring__counter-list-text">Project Completed</p>
+                                        <h2 class="odometer" data-count="50">00</h2>
+                                        <p class="insuring__counter-list-text">Partenaires et artisans</p>
                                     </li>
                                     <li>
-                                        <h2 class="odometer" data-count="6805">00</h2>
-                                        <p class="insuring__counter-list-text">Happy Customers</p>
+                                        <h2 class="odometer" data-count="100">00</h2><span class="text-black-50">%</span>
+                                        <p class="insuring__counter-list-text">Clients satisfaits</p>
                                     </li>
                                 </ul>
                             </div>
@@ -64,47 +65,49 @@
             </div>
         </div>
     </section>
-    <!--Insuring End-->
+    <!--                                                                        fin section 1 : nous travaillons sur...                                                       -->
 
-    <!--Services One Start-->
+
+    <!--                                                                           SECTION 2 : SERVICES PRO DETAILS                                                        -->
+
+    <!--Service / ACCROCHE -->
     <section class="services-one">
         <div class="services-one-container">
             <div class="section-title text-center">
-                <span class="section-title__tagline">what we’re offering</span>
-                <h2 class="section-title__title">Professional services</h2>
+                <span class="section-title__tagline">Nous vous offrons</span>
+                <h2 class="section-title__title">Des services de qualité</h2>
             </div>
             <div class="row">
                 <div class="col-xl-4 col-lg-4">
-                    <!--Services One Single-->
+
+                    <!--SERVICE 1-->
                     <div class="services-one__single">
-                        <h2 class="services-one__title"><a href="services-details.html">Interior Design</a></h2>
-                        <p class="services-one__text">Lorem ipsum dolor sit amet, consectetur notted adipisicing
-                            elit sed do.</p>
-                        <a href="services-details.html" class="services-one__btn">Read More</a>
+                        <h2 class="services-one__title"><a href="services-details.html">Designer professiel</a></h2>
+                        <p class="services-one__text">Je vous propose des plans 3D, des conseils sur le choix des motifs, des matériaux, des couleurs.</p>
+                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         <div class="services-one__icon">
                             <span class="icon-furnitures"></span>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4">
-                    <!--Services One Single-->
+
+                    <!--SERVICE 2 -->
                     <div class="services-one__single">
                         <h2 class="services-one__title"><a href="services-details.html">Architectures</a></h2>
-                        <p class="services-one__text">Lorem ipsum dolor sit amet, consectetur notted adipisicing
-                            elit sed do.</p>
-                        <a href="services-details.html" class="services-one__btn">Read More</a>
+                        <p class="services-one__text">Création d'espaces sur mesure, optimisation des agencements, augmentation de l'agrément de vie.</p>
+                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         <div class="services-one__icon">
                             <span class="icon-buildings"></span>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4">
-                    <!--Services One Single-->
+                    <!--SERVICE 3-->
                     <div class="services-one__single">
-                        <h2 class="services-one__title"><a href="services-details.html">renovations</a></h2>
-                        <p class="services-one__text">Lorem ipsum dolor sit amet, consectetur notted adipisicing
-                            elit sed do.</p>
-                        <a href="services-details.html" class="services-one__btn">Read More</a>
+                        <h2 class="services-one__title"><a href="services-details.html">Accompagnement pilotage</a></h2>
+                        <p class="services-one__text">Choix des artisans, sélection des offres, gestion du planning, plans, modularités...</p>
+                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         <div class="services-one__icon">
                             <span class="icon-house-design"></span>
                         </div>
