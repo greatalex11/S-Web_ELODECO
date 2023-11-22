@@ -1,17 +1,19 @@
-
 <header class="main-header clearfix">
     <div class="main-header__three-line-icon">
-        <a href="#" class="side-menu__toggler"><img src="assets/images/resources/main-header-three-line-icon.png" alt=""></a>
+        <a href="#" class="side-menu__toggler">
+            <img src="{{ asset('assets/images/resources/main-header-three-line-icon.png') }}" alt="">
+        </a>
     </div>
     <div class="container">
         <div class="main-menu-wrapper">
             <div class="main-header__logo">
-                <a href="index.html">
-                    <img src="assets/images/LOGO_ELODECO_1.png" width="90" alt="Logo de l'entreprise ELODECO, conseil en décoration intérieure, représentant une maison sur fond blanc avec des éléments végétaux">
+                <a href="{{ path('app_home') }}">
+                    <img src="{{ asset('assets/images/LOGO_ELODECO_1.png') }}" height="110"
+                         alt="Logo de l'entreprise ELODECO, conseil en décoration intérieure, représentant une maison sur fond blanc avec des éléments végétaux">
                 </a>
             </div>
             <div class="main-menu-wrapper__top">
-                <div class="main-menu-wrapper__top-inner mb-3">
+                <div class="main-menu-wrapper__top-inner">
                     <div class="main-menu-wrapper__left">
                         <div class="main-menu-wrapper__left-content">
                             <ul class="main-menu-wrapper__left-contact-box list-unstyled">
@@ -20,7 +22,7 @@
                                         <i class="fas fa-phone-square-alt"></i>
                                     </div>
                                     <div class="text">
-                                        <p><a href="tel:92-666-888-0000">03 84 00 00 00</a></p>
+                                        <p><a href="tel:0384000000">03 84 00 00 00</a></p>
                                     </div>
                                 </li>
                                 <li>
@@ -38,7 +40,6 @@
                         <div class="main-menu-wrapper__right-social">
                             <a href="#"><i class="fab fa-twitter"></i></a>
                             <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
                             <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
@@ -49,62 +50,44 @@
                     <div class="main-menu__inner">
                         <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                         <ul class="main-menu__list">
-
-                                <li class="dropdown">
-                                    <a href="{{ path('app_home')}}">Home</a>
-                                </li>
-
-
-{#                                <ul>#}
-{#                                    <li class="current">#}
-{#                                        <a href="index.html">Home One</a>#}
-{#                                    </li>#}
-{#                                    <li><a href="index2.html">Home Two</a></li>#}
-{#                                    <li><a href="index3.html">Home Three</a></li>#}
-{#                                    <li class="dropdown">#}
-{#                                        <a href="#">Header Styles</a>#}
-{#                                        <ul>#}
-{#                                            <li class="current"><a href="index.html">Header One</a></li>#}
-{#                                            <li class="current"><a href="index.html">Header Two</a></li>#}
-{#                                            <li class="current"><a href="index.html">Header Three</a></li>#}
-{#                                        </ul>#}
-{#                                    </li>#}
-{#                                </ul>#}
-
+                            <li class="current">
+                                <a href="{{ path('app_home') }}">Home</a>
+                            </li>
                             <li class="dropdown">
                                 <a href="#">Services</a>
                                 <ul>
-                                    <li><a href="{{ path('app_services')}}">Services</a></li>
-                                    <li><a href="{{ path('app_services_details')}}">Service Details</a></li>
+                                    <li><a href="{{ path('app_services') }}">Services</a></li>
+                                    <li><a href="{{ path('app_services_details') }}">Service Details</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#">Pages</a>
                                 <ul>
-                                    <li><a href="{{ path('app_about')}}">About</a></li>
-                                    <li><a href="{{ path('app_our_mission')}}">Our Mission</a></li>
-                                    <li><a href="{{ path('app_team')}}">Team</a></li>
+                                    <li><a href="{{ path('app_about') }}">About</a></li>
+                                    <li><a href="{{ path('app_our_mission') }}">Our Mission</a></li>
+                                    <li><a href="{{ path('app_team') }}">Team</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#">Portfolio</a>
                                 <ul>
-                                    <li><a href={{ path('app_portfolio')}}>Portfolio</a></li>
-                                    <li><a href="{{ path('app_portfolio_details')}}">Portfolio Details</a></li>
+                                    <li><a href={{ path('app_portfolio') }}>Portfolio</a></li>
+                                    <li><a href="{{ path('app_portfolio_details') }}">Portfolio Details</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#">News</a>
                                 <ul>
-                                    <li><a href={{ path('app_news')}}>News</a></li>
-                                    <li><a href="{{ path('app_news_details')}}">News Details</a></li>
+                                    <li><a href={{ path('app_news') }}>News</a></li>
+                                    <li><a href="{{ path('app_news_details') }}">News Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href={{ path('app_contact')}}>Contact</a></li>
+                            <li><a href={{ path('app_contact') }}>Contact</a></li>
                         </ul>
                         <div class="main-menu__right">
                             <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a>
-                            <a href="{{ path('app_home')}}" class="main-menu__read-more-btn thm-btn">En savoir plus </a>
+                            <a href="{{ path('app_home') }}" class="main-menu__read-more-btn thm-btn">En savoir
+                                plus </a>
                         </div>
                     </div>
                 </nav>
@@ -114,8 +97,6 @@
     </div>
 </header>
 
-<div class="page-wrapper">
-    <div class="stricky-header stricked-menu main-menu main-menu__two">
-        <div class="sticky-header__content"></div> <!-- /.sticky-header__content -->
-    </div> <!-- /.stricky-header -->
-</div>
+<div class="stricky-header stricked-menu main-menu">
+    <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+</div><!-- /.stricky-header -->

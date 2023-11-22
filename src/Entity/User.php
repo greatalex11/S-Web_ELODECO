@@ -29,10 +29,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\OneToOne(mappedBy: 'user_id', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Client $client = null;
 
-    #[ORM\OneToOne(mappedBy: 'user_id', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Artisan $artisan = null;
 
     #[ORM\Column(type: 'boolean')]
@@ -117,12 +117,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // unset the owning side of the relation if necessary
         if ($client === null && $this->client !== null) {
-            $this->client->setUserId(null);
+            $this->client->setUser(null);
         }
 
         // set the owning side of the relation if necessary
-        if ($client !== null && $client->getUserId() !== $this) {
-            $client->setUserId($this);
+        if ($client !== null && $client->getUser() !== $this) {
+            $client->setUser($this);
         }
 
         $this->client = $client;
@@ -139,12 +139,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // unset the owning side of the relation if necessary
         if ($artisan === null && $this->artisan !== null) {
-            $this->artisan->setUserId(null);
+            $this->artisan->setUser(null);
         }
 
         // set the owning side of the relation if necessary
-        if ($artisan !== null && $artisan->getUserId() !== $this) {
-            $artisan->setUserId($this);
+        if ($artisan !== null && $artisan->getUser() !== $this) {
+            $artisan->setUser($this);
         }
 
         $this->artisan = $artisan;
