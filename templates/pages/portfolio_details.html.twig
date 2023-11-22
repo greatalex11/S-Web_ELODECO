@@ -2,8 +2,10 @@
 
 {% block content %}
 
-    <!--Page Header Start-->
-    <section class="page-header" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
+
+    <!--                                                 -Bandeau supérieur   / image de font 1894x359 px                                           -->
+
+    <section class="page-header" style="background-image: url(assets/images/backgrounds/main-slider-11.jpg);">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -14,28 +16,28 @@
             <div class="page-header__inner">
                 <h2>Portfolio Details</h2>
                 <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
                     <li>Portfolio Details</li>
                 </ul>
             </div>
         </div>
     </section>
-    <!--Page Header End-->
+    <!--                                                                fin bandeau supérieur                                                                   -->
 
-    <!--Portfolio Details Start-->
+    <!--                                                        SECTION PROJET DETAILLE  / IMGAGE 1170 X 505                                                    -->
     <section class="portfolio-details">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="portfolio-details__img">
-                        <img src="assets/images/project/portfolio-details-img.jpg" alt="">
+                        <img src="assets/images/project/projet_logement_indus.png" alt="plan 3d logement après réféction avec cuisine et sejour en sous pente">
                         <div class="portfolio-details__info">
                             <ul class="portfolio-details__info-list list-unstyled">
-                                <li>20 Sep, 2020</li>
-                                <li>www.kitecx.com</li>
-                                <li>$2260</li>
-                                <li>Christine eve</li>
+                                <li>14 octobre, 2023</li>
+                                <li>RIOZ</li>
+                                <li>€ 80'000</li>
+                                <li>Réalisation en cours</li>
                                 <li>
                                     <div class="portfolio-details__social">
                                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -48,7 +50,7 @@
                         </div>
                     </div>
                     <div class="portfolio-details__content">
-                        <h2 class="portfolio-details__title">Modern Villa</h2>
+                        <h2 class="portfolio-details__title">APPARTEMENT TYPE INDUSTRIEL</h2>
                         <p class="portfolio-details__text-1">Lorem ipsum is simply free text used by copytyping
                             refreshing. Neque porro est qui dolorem ipsum quia quaed inventore veritatis et quasi
                             architecto beatae vitae dicta sunt explicabo. Aelltes port lacus quis enim var sed
@@ -120,10 +122,16 @@
                             printer took a galley of type and scrambled it to make a type specimen book. It has
                             survived not only five centuries, but also the leap into electronic typesetting,
                             remaining essentially unchanged.</p>
+
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+
+
     </section>
     <!--Portfolio Details End-->
 
@@ -131,23 +139,22 @@
     <section class="project-one portfolio-details-page-project">
         <div class="container">
             <div class="section-title text-center">
-                <span class="section-title__tagline">what we did</span>
-                <h2 class="section-title__title">related projects</h2>
+                <span class="section-title__tagline">Projet confié</span>
+                <h2 class="section-title__title">Avant réalisation</h2>
             </div>
             <div class="row">
                 <div class="col-xl-4 col-lg-4">
-                    <!--Project One Single-->
+
+                    <!--                                          MINIATURE PROJET 1 :  AVANT TRAVAUX - image 370x483 px                                  -->
                     <div class="project-one__single">
                         <div class="project-one__img-box">
                             <div class="project-one__img">
-                                <img src="assets/images/project/portfolio-details-page-project-img-1.jpg" alt="">
+                                <img src="assets/images/project/pre-indus.png" alt="photo des combles avant réalisation des travaux, logement futur type industriel">
                                 <div class="project-one__hover">
-                                    <a href="assets/images/project/portfolio-details-page-project-img-1.jpg"
-                                       class="img-popup"><i class="fa fa-search-plus"></i></a>
+                                    <a href="assets/images/project/pre-indus.png"></a>
                                     <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">architect</p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Modern
-                                                Villa</a></h2>
+                                        <p class="project-one__hover-title">RIOZ - Réalisation logement </p>
+                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Architecture type industriel</a></h2>
                                     </div>
                                 </div>
                             </div>
@@ -155,18 +162,20 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4">
-                    <!--Project One Single-->
+                    <!--                                                         fin Miniature Projet 1                                                                            -->
+
+
+                    <!--                                                           MINIATURE PROJET 2                                                          -->
                     <div class="project-one__single">
                         <div class="project-one__img-box">
                             <div class="project-one__img">
-                                <img src="assets/images/project/portfolio-details-page-project-img-2.jpg" alt="">
+                                <img src="assets/images/project/demande-deco.png" alt="petit espace où la décoration est soignée, rose et gris, petit mobilier classieux">
                                 <div class="project-one__hover">
-                                    <a href="assets/images/project/portfolio-details-page-project-img-2.jpg"
+                                    <a href="assets/images/project/demande-deco.png"
                                        class="img-popup"><i class="fa fa-search-plus"></i></a>
                                     <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">architect</p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Modern
-                                                Villa</a></h2>
+                                        <p class="project-one__hover-title">Devecey- Décoration</p>
+                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Coin détente classieux</a></h2>
                                     </div>
                                 </div>
                             </div>
@@ -174,18 +183,25 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4">
-                    <!--Project One Single-->
+                    <!--                                                               fin Miniature Projet 2                                                          -->
+
+
+
+
+                    <!--                                                                 MINIATURE PROJET 3                                                         -->
+
+
                     <div class="project-one__single">
                         <div class="project-one__img-box">
                             <div class="project-one__img">
-                                <img src="assets/images/project/portfolio-details-page-project-img-3.jpg" alt="">
+                                <img src="assets/images/project/refection-appart.png" alt="">
                                 <div class="project-one__hover">
-                                    <a href="assets/images/project/portfolio-details-page-project-img-3.jpg"
+                                    <a href="assets/images/project/refection-appart.png"
                                        class="img-popup"><i class="fa fa-search-plus"></i></a>
                                     <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">architect</p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Modern
-                                                Villa</a></h2>
+                                        <p class="project-one__hover-title">Vesoul- Rénovation appartement</p>
+                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Primo accédant
+                                               </a></h2>
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +211,7 @@
             </div>
         </div>
     </section>
-    <!--Project One End-->
+    <!--                                                                            fin Miniature Projet 3                                                          -->
 
 
 {% endblock %}
