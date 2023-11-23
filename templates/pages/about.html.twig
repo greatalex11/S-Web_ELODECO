@@ -2,8 +2,8 @@
 
 {% block content %}
 
-    <!--Page Header Start-->
-    <section class="page-header" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
+    <!--                                                 -Bandeau supérieur   / image de font 1894x359 px                                           -->
+    <section class="page-header" style="background-image: url((assets/images/backgrounds/main-slider-11.png);">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -14,41 +14,43 @@
             <div class="page-header__inner">
                 <h2>About</h2>
                 <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
-                    <li>About</li>
+                    <li>A propos</li>
                 </ul>
             </div>
         </div>
     </section>
-    <!--Page Header End-->
+    <!--                                                                                  fin bandeau                                                                    -->
 
 
-    <!--About Company Start-->
+    <!--                                                                   SECTION 1 : SERVICES details  / image 672x713                                                   -->
+
+
     <section class="about-company">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6">
                     <div class="about-company__img">
-                        <img src="assets/images/resources/about-company-img-1.jpg" alt="">
+                        <img src="assets/images/resources/drawcard.png" alt="plan 3D d'une petite maison posée sur le sol d'une entrée d'immeuble, style classieux et moderne">
                         <div class="about-company__trusted-by">
-                            <p>Trusted by</p>
-                            <span>4890</span>
+                            <p>Engagement</p>
+                            <span>100%</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="about-company__right">
                         <div class="section-title text-left">
-                            <span class="section-title__tagline">what we did</span>
-                            <h2 class="section-title__title">Kitecx Studio with a Concept & Ideas</h2>
+                            <span class="section-title__tagline">Ma vision</span>
+                            <h2 class="section-title__title">Concept & Elégance</h2>
                         </div>
                         <ul class="about-company__points list-unstyled">
-                            <li><span>/</span> Get Right Solutions</li>
-                            <li><span>/</span> Expert Architecture</li>
+                            <li><span>/</span> Trouver la meilleure solution</li>
+                            <li><span>/</span> Jouer sur les volumes et les matériaux</li>
                         </ul>
                         <div class="about-company__progress">
-                            <h4 class="about-company__progress-title">Architects</h4>
+                            <h4 class="about-company__progress-title">Designer</h4>
                             <div class="bar">
                                 <div class="bar-inner count-bar" data-percent="77%">
                                     <div class="count-text">77%</div>
@@ -60,22 +62,25 @@
                                 <span class="icon-blueprint"></span>
                             </div>
                             <div class="about-company__text-box">
-                                <p class="about-company__text">Dolor in reprehenderit in voluptate velit esse cillum
-                                    dolore fugiat nulla pariatur sed eiusmod tempor incidi dunt.</p>
+                                <p class="about-company__text">Passionnée</p>
                             </div>
                         </div>
-                        <p class="about-company__text-2">There are many variations of passages of available but the
-                            majority have suffered alteration in some form, by humou or randomised words which don't
-                            look believable.</p>
-                        <a href="#" class="about-company__btn thm-btn">Read More </a>
+                        <p class="about-company__text-2">Intuitivement, j'ai toujours apporté conseil et trouvé des astuces déco pour mon entourage, par plaisir.
+                        Pour un couloir, un bureau, une pièce à vivre ... un objet remis au bout du jour, la patte de l'expert! Maintenant experte certifiée,
+                            j'exerce auprès des professionnels et des particuliers.
+                        </p>
+                        <a href="{{ path('app_portfolio')}}" class="about-company__btn thm-btn">Portfolio</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--About Company End-->
+    <!--                                                                                  fin about me                                                                    -->
 
-    <!--Counters One Start-->
+
+    <!--                                                                        ABOUT MES PARTENAIRES ET CLIENTS                                                           -->
+
+
     <section class="counters-one">
         <div class="counters-one-pattern"
              style="background-image: url(assets/images/pattern/counter-one-pattern.jpg)"></div>
@@ -85,109 +90,123 @@
                     <div class="counter-one__icon">
                         <span class="icon-architect-4"></span>
                     </div>
-                    <h3 class="odometer" data-count="6805">00</h3>
-                    <p class="counter-one__text">Project Completed</p>
+                    <h3 class="odometer" data-count="100">00</h3> <span class="text-white">%</span>
+                    <p class="counter-one__text">Projets finalisés</p>
                 </li>
                 <li class="counter-one__single">
                     <div class="counter-one__icon">
                         <span class="icon-architect-5"></span>
                     </div>
-                    <h3 class="odometer" data-count="906">00</h3>
-                    <p class="counter-one__text">Team Members</p>
+                    <h3 class="odometer" data-count="50">00</h3>
+                    <p class="counter-one__text">Partenaires</p>
                 </li>
                 <li class="counter-one__single">
                     <div class="counter-one__icon">
                         <span class="icon-buildings"></span>
                     </div>
-                    <h3 class="odometer" data-count="200">00</h3>
-                    <p class="counter-one__text">Service Providing</p>
+                    <h3 class="odometer" data-count="3">00</h3>
+                    <p class="counter-one__text">Services proposés</p>
                 </li>
                 <li class="counter-one__single">
                     <div class="counter-one__icon">
                         <span class="icon-satisfaction"></span>
                     </div>
-                    <h3 class="odometer" data-count="9760">00</h3>
-                    <p class="counter-one__text">Happy Customers</p>
+                    <h3 class="odometer" data-count="100">00</h3> <span class="text-white">%</span>
+                    <p class="counter-one__text">Clients satisfaits</p>
                 </li>
             </ul>
         </div>
     </section>
-    <!--Counters One Start-->
+    <!--                                                                  fin about partenaires  et client                                                        -->
 
-    <!--About Team Page Start-->
+    <!--                                                                              LES EXPERTS                                                                    -->
     <section class="team-one about-page-team">
         <div class="container">
             <div class="section-title text-center">
-                <span class="section-title__tagline">Our team mebers</span>
-                <h2 class="section-title__title">Met Expert Team</h2>
+                <span class="section-title__tagline">Les entreprises partenaires</span>
+                <h2 class="section-title__title">EXPERTS DANS NOTRE REGION</h2>
             </div>
             <div class="row">
                 <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
-                    <!--Team One Single-->
+
+                    <!--                                                           IMAGE MOYENNE 1      330X448            -->
                     <div class="team-one__single">
                         <div class="team-one__img-box">
                             <div class="team-one__img">
-                                <img src="assets/images/team/team-one-img-1.jpg" alt="">
-                                <div class="team-one__social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>
-                                    <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
-                                    <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
-                                </div>
+                                <img src="assets/images/team/cuisine2.jpg" alt="cuisine élégante, chaises haute, mur blanc et mobilier aluminium">
+{#                                <div class="team-one__social">#}
+{#                                    <a href="#"><i class="fab fa-twitter"></i></a>#}
+{#                                    <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>#}
+{#                                    <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>#}
+{#                                    <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>#}
+{#                                </div>#}
                             </div>
                         </div>
                         <div class="team-one__content">
-                            <h3 class="team-one__name">Rose Michale</h3>
+                            <h3 class="team-one__name">Cuisiniste</h3>
                             <p class="team-one__title">Designer</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
-                    <!--Team One Single-->
+                    <!--                                                                    fin image moyenne 1                                             -->
+
+
+                    <!--                                                           IMAGE MOYENNE 2      330X448            -->
+
+
+
                     <div class="team-one__single">
                         <div class="team-one__img-box">
                             <div class="team-one__img">
-                                <img src="assets/images/team/team-one-img-2.jpg" alt="">
-                                <div class="team-one__social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>
-                                    <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
-                                    <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
-                                </div>
+                                <img src="assets/images/team/luminaires.jpg" alt="plafond type entrepos couleur blanc, cable et tuyaux avec de belle lumières simples en suspension">
+{#                                <div class="team-one__social">#}
+{#                                    <a href="#"><i class="fab fa-twitter"></i></a>#}
+{#                                    <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>#}
+{#                                    <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>#}
+{#                                    <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>#}
+{#                                </div>#}
                             </div>
                         </div>
                         <div class="team-one__content">
-                            <h3 class="team-one__name">David Martin</h3>
-                            <p class="team-one__title">founder</p>
+                            <h3 class="team-one__name">Eclairage</h3>
+                            <p class="team-one__title">Sur mesure</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
-                    <!--Team One Single-->
+                    <!--                                                                 fin image moyenne 2                                                        -->
+
+                    <!--                                                           IMAGE MOYENNE 3     330X448                                                      -->
                     <div class="team-one__single">
                         <div class="team-one__img-box">
                             <div class="team-one__img">
-                                <img src="assets/images/team/team-one-img-3.jpg" alt="">
-                                <div class="team-one__social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>
-                                    <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
-                                    <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
-                                </div>
+                                <img src="assets/images/team/menuisier.jpg" alt="menuisier tenant son mètre sur une planche de bois">
+{#                                <div class="team-one__social">#}
+{#                                    <a href="#"><i class="fab fa-twitter"></i></a>#}
+{#                                    <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>#}
+{#                                    <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>#}
+{#                                    <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>#}
+{#                                </div>#}
                             </div>
                         </div>
                         <div class="team-one__content">
-                            <h3 class="team-one__name">jessica brown</h3>
-                            <p class="team-one__title">architect</p>
+                            <h3 class="team-one__name">Menuisiers</h3>
+                            <p class="team-one__title">De vrais pro !</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--About Team Page End-->
+     <!--                                                                        fin image moyenne 3                                                                   -->
 
-    <!--Two Boxes About Start-->
+
+
+
+    <!--                                                                     IMAGE petite 1      285x281                                                                -->
+
+
     <section class="two-boxes two-boxes-about">
         <div class="container">
             <div class="row">
@@ -196,28 +215,30 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-6">
                                 <div class="two-boxes__content">
-                                    <h2>Why Should You Choose Kitecs?</h2>
+                                    <h2>Besoin d'un petit coup de neuf? de clareté?</h2>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6">
                                 <div class="two-boxes__img">
-                                    <img src="assets/images/resources/two-boxes-img-1.jpg" alt="">
+                                    <img src="assets/images/team/peinture.jpg" alt="pinceau couvert de peinture blanche peingnant un mur">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!--                                                                     IMAGE petite 2      285x281                                                                -->
                 <div class="col-xl-6 col-lg-6">
                     <div class="two-boxes__single">
                         <div class="row">
                             <div class="col-xl-6 col-lg-6">
                                 <div class="two-boxes__content">
-                                    <h2>We’re Award Winnings Studio</h2>
+                                    <h2>Electricité: économies, confort, sécurité</h2>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6">
                                 <div class="two-boxes__img">
-                                    <img src="assets/images/resources/two-boxes-img-2.jpg" alt="">
+                                    <img src="assets/images/team/electricien2.jpg" alt="electricien raccordant une prise éléctrique">
                                 </div>
                             </div>
                         </div>
