@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <!--Page Header Start-->
-    <section class="page-header" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
+    <!--B                                                                   ANDEAU SUPERIEUR    image 1894x359                                                            -->
+
+    <section class="page-header" style="background-image: url(assets/images/backgrounds/fond2.png);">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -13,50 +14,393 @@
             <div class="page-header__inner">
                 <h2>News</h2>
                 <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
                     <li>News</li>
                 </ul>
             </div>
         </div>
     </section>
-    <!--Page Header End-->
+    <!--                                                              fin bandeau supérieur                                                                        -->
 
-    <!--News Page Start-->
+
+    <!--                                                             NEWS     imaege 370x290                                                                 -->
     <section class="news-one news-one__page">
         <div class="container">
             <div class="row">
                 <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!--News One Single-->
+    <!--                                                                      news 1                                                                       -->
+
                     <div class="news-one__single">
                         <div class="news-one__img-box">
                             <div class="news-one-img">
-                                <img src="assets/images/blog/news-page-img-1.jpg" alt="">
-                                <a href="news-details.html">
-                                    <span class="news-one__plus"></span>
-                                </a>
+                                <img src="assets/images/blog/travauxReno.png"
+                                     alt="bache au sol, escabeau et mur en attente de peinture">
+                                <a href="{{ path('app_news_details') }}"></a>
+                                <span class="news-one__plus"></span>
+
                             </div>
+
                             <div class="news-one__date-box">
-                                <p>20 april</p>
+                                <p>Septembre 2023</p>
                             </div>
                         </div>
                         <div class="news-one__content">
-                            <ul class="list-unstyled news-one__meta">
-                                <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>
-                                <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a>
-                                </li>
-                            </ul>
+{#                            <ul class="list-unstyled news-one__meta">#}
+{#                                <li><a href="{{ path('app_news_details') }}"><i class="far fa-user-circle"></i> Admin</a></li>#}
+{#                                <li>href="{{ path('app_news_details') }}"<i class="far fa-comments"></i> 2 Comments</a>#}
+{#                                </li>#}
+{#                            </ul>#}
+
                             <h3 class="news-one__title">
-                                <a href="news-details.html">16 easy ideas to use Everyday Stuff in Kitchen</a>
+                                <a href="{{ path('app_news_details') }}">10 étapes pour se lancer dans la rénovation</a>
                             </h3>
-                            <p class="news-one__text">Lorem ipsum is simply free text used by new pesnhl note this
-                                copytyping refreshing.</p>
-                            <a href="news-details.html" class="news-one__btn">Read More</a>
+
+                            <p class="news-one__text">Se lancer dans un projet de rénovation de maison peut être passionnant,
+                                <a href={{ path('app_news_details') }} class="news-one__btn">En savoir plus</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6">
+
+               <!--                                                                fin new1                                                                        -->
+
+
+                    <!--                                                            news 2                                                                       -->
+
+                    <div class="news-one__single">
+                        <div class="news-one__img-box">
+                            <div class="news-one-img">
+                                <img src="assets/images/blog/travauxReno.png"
+                                     alt="bache au sol, escabeau et mur en attente de peinture">
+                                <a href="{{ path('app_news_details') }}"></a>
+                                <span class="news-one__plus"></span>
+                            </div>
+
+                            <div class="news-one__date-box">
+                                <p>Octobre 2023</p>
+                            </div>
+                        </div>
+                        <div class="news-one__content">
+                            {#                            <ul class="list-unstyled news-one__meta">#}
+                            {#                                <li><a href="{{ path('app_news_details') }}"><i class="far fa-user-circle"></i> Admin</a></li>#}
+                            {#                                <li>href="{{ path('app_news_details') }}"<i class="far fa-comments"></i> 2 Comments</a>#}
+                            {#                                </li>#}
+                            {#                            </ul>#}
+
+                            <h3 class="news-one__title">
+                                <a href="{{ path('app_news_details') }}">Peinture bio</a>
+                            </h3>
+
+                            <p class="news-one__text">Se lancer dans un projet de rénovation de maison peut être passionnant,
+                                <a href={{ path('app_news_details') }} class="news-one__btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+
+                    <!--                                                                fin new2                                                                      -->
+
+                    <!--                                                                 news 3                                                                       -->
+
+                    <div class="news-one__single">
+                        <div class="news-one__img-box">
+                            <div class="news-one-img">
+                                <img src="assets/images/blog/travauxReno.png"
+                                     alt="bache au sol, escabeau et mur en attente de peinture">
+                                <a href="{{ path('app_news_details') }}"></a>
+                                <span class="news-one__plus"></span>
+                            </div>
+
+                            <div class="news-one__date-box">
+                                <p>Septembre 2023</p>
+                            </div>
+                        </div>
+                        <div class="news-one__content">
+                            {#                            <ul class="list-unstyled news-one__meta">#}
+                            {#                                <li><a href="{{ path('app_news_details') }}"><i class="far fa-user-circle"></i> Admin</a></li>#}
+                            {#                                <li>href="{{ path('app_news_details') }}"<i class="far fa-comments"></i> 2 Comments</a>#}
+                            {#                                </li>#}
+                            {#                            </ul>#}
+
+                            <h3 class="news-one__title">
+                                <a href="{{ path('app_news_details') }}">10 choses à savoir pour se lancer dans la réno</a>
+                            </h3>
+
+                            <p class="news-one__text">Se lancer dans un projet de rénovation de maison peut être passionnant,
+                                <a href={{ path('app_news_details') }} class="news-one__btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+
+                    <!--                                                                fin new3                                                                       -->
+
+
+                    <!--                                                                 news 4                                                                       -->
+
+                    <div class="news-one__single">
+                        <div class="news-one__img-box">
+                            <div class="news-one-img">
+                                <img src="assets/images/blog/travauxReno.png"
+                                     alt="bache au sol, escabeau et mur en attente de peinture">
+                                <a href="{{ path('app_news_details') }}"></a>
+                                <span class="news-one__plus"></span>
+                            </div>
+
+                            <div class="news-one__date-box">
+                                <p>Septembre 2023</p>
+                            </div>
+                        </div>
+                        <div class="news-one__content">
+                            {#                            <ul class="list-unstyled news-one__meta">#}
+                            {#                                <li><a href="{{ path('app_news_details') }}"><i class="far fa-user-circle"></i> Admin</a></li>#}
+                            {#                                <li>href="{{ path('app_news_details') }}"<i class="far fa-comments"></i> 2 Comments</a>#}
+                            {#                                </li>#}
+                            {#                            </ul>#}
+
+                            <h3 class="news-one__title">
+                                <a href="{{ path('app_news_details') }}">10 choses à savoir pour se lancer dans la réno</a>
+                            </h3>
+
+                            <p class="news-one__text">Se lancer dans un projet de rénovation de maison peut être passionnant,
+                                <a href={{ path('app_news_details') }} class="news-one__btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+
+                    <!--                                                                fin new4                                                                       -->
+
+                    <!--                                                                 news 5                                                                       -->
+
+                    <div class="news-one__single">
+                        <div class="news-one__img-box">
+                            <div class="news-one-img">
+                                <img src="assets/images/blog/travauxReno.png"
+                                     alt="bache au sol, escabeau et mur en attente de peinture">
+                                <a href="{{ path('app_news_details') }}"></a>
+                                <span class="news-one__plus"></span>
+                            </div>
+
+                            <div class="news-one__date-box">
+                                <p>Septembre 2023</p>
+                            </div>
+                        </div>
+                        <div class="news-one__content">
+                            {#                            <ul class="list-unstyled news-one__meta">#}
+                            {#                                <li><a href="{{ path('app_news_details') }}"><i class="far fa-user-circle"></i> Admin</a></li>#}
+                            {#                                <li>href="{{ path('app_news_details') }}"<i class="far fa-comments"></i> 2 Comments</a>#}
+                            {#                                </li>#}
+                            {#                            </ul>#}
+
+                            <h3 class="news-one__title">
+                                <a href="{{ path('app_news_details') }}">10 choses à savoir pour se lancer dans la réno</a>
+                            </h3>
+
+                            <p class="news-one__text">Se lancer dans un projet de rénovation de maison peut être passionnant,
+                                <a href={{ path('app_news_details') }} class="news-one__btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+
+                    <!--                                                                fin new5                                                                       -->
+
+                    <!--                                                                 news 6                                                                       -->
+
+                    <div class="news-one__single">
+                        <div class="news-one__img-box">
+                            <div class="news-one-img">
+                                <img src="assets/images/blog/travauxReno.png"
+                                     alt="bache au sol, escabeau et mur en attente de peinture">
+                                <a href="{{ path('app_news_details') }}"></a>
+                                <span class="news-one__plus"></span>
+                            </div>
+
+                            <div class="news-one__date-box">
+                                <p>Septembre 2023</p>
+                            </div>
+                        </div>
+                        <div class="news-one__content">
+                            {#                            <ul class="list-unstyled news-one__meta">#}
+                            {#                                <li><a href="{{ path('app_news_details') }}"><i class="far fa-user-circle"></i> Admin</a></li>#}
+                            {#                                <li>href="{{ path('app_news_details') }}"<i class="far fa-comments"></i> 2 Comments</a>#}
+                            {#                                </li>#}
+                            {#                            </ul>#}
+
+                            <h3 class="news-one__title">
+                                <a href="{{ path('app_news_details') }}">10 choses à savoir pour se lancer dans la réno</a>
+                            </h3>
+
+                            <p class="news-one__text">Se lancer dans un projet de rénovation de maison peut être passionnant,
+                                <a href={{ path('app_news_details') }} class="news-one__btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+
+                    <!--                                                                fin new6                                                                       -->
+
+
+
+
+
+                    <!--                                                                 news 7                                                                       -->
+
+                    <div class="news-one__single">
+                        <div class="news-one__img-box">
+                            <div class="news-one-img">
+                                <img src="assets/images/blog/travauxReno.png"
+                                     alt="bache au sol, escabeau et mur en attente de peinture">
+                                <a href="{{ path('app_news_details') }}"></a>
+                                <span class="news-one__plus"></span>
+                                <i class="fa fa-plus"></i>
+                            </div>
+
+                            <div class="news-one__date-box">
+                                <p>Septembre 2023</p>
+                            </div>
+                        </div>
+                        <div class="news-one__content">
+                            {#                            <ul class="list-unstyled news-one__meta">#}
+                            {#                                <li><a href="{{ path('app_news_details') }}"><i class="far fa-user-circle"></i> Admin</a></li>#}
+                            {#                                <li>href="{{ path('app_news_details') }}"<i class="far fa-comments"></i> 2 Comments</a>#}
+                            {#                                </li>#}
+                            {#                            </ul>#}
+
+                            <h3 class="news-one__title">
+                                <a href="{{ path('app_news_details') }}">10 choses à savoir pour se lancer dans la réno</a>
+                            </h3>
+
+                            <p class="news-one__text">Se lancer dans un projet de rénovation de maison peut être passionnant,
+                                <a href={{ path('app_news_details') }} class="news-one__btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+
+                    <!--                                                                fin new4                                                                       -->
+
+                    <!--                                                                 news 5                                                                       -->
+
+                    <div class="news-one__single">
+                        <div class="news-one__img-box">
+                            <div class="news-one-img">
+                                <img src="assets/images/blog/travauxReno.png"
+                                     alt="bache au sol, escabeau et mur en attente de peinture">
+                                <a href="{{ path('app_news_details') }}"></a>
+                                <span class="news-one__plus"></span>
+                            </div>
+
+                            <div class="news-one__date-box">
+                                <p>Septembre 2023</p>
+                            </div>
+                        </div>
+                        <div class="news-one__content">
+                            {#                            <ul class="list-unstyled news-one__meta">#}
+                            {#                                <li><a href="{{ path('app_news_details') }}"><i class="far fa-user-circle"></i> Admin</a></li>#}
+                            {#                                <li>href="{{ path('app_news_details') }}"<i class="far fa-comments"></i> 2 Comments</a>#}
+                            {#                                </li>#}
+                            {#                            </ul>#}
+
+                            <h3 class="news-one__title">
+                                <a href="{{ path('app_news_details') }}">10 choses à savoir pour se lancer dans la réno</a>
+                            </h3>
+
+                            <p class="news-one__text">Se lancer dans un projet de rénovation de maison peut être passionnant,
+                                <a href={{ path('app_news_details') }} class="news-one__btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+
+                    <!--                                                                fin new5                                                                       -->
+
+                    <!--                                                                 news 6                                                                       -->
+
+                    <div class="news-one__single">
+                        <div class="news-one__img-box">
+                            <div class="news-one-img">
+                                <img src="assets/images/blog/travauxReno.png"
+                                     alt="bache au sol, escabeau et mur en attente de peinture">
+                                <a href="{{ path('app_news_details') }}"></a>
+                                <span class="news-one__plus"></span>
+                            </div>
+
+                            <div class="news-one__date-box">
+                                <p>Septembre 2023</p>
+                            </div>
+                        </div>
+                        <div class="news-one__content">
+                            {#                            <ul class="list-unstyled news-one__meta">#}
+                            {#                                <li><a href="{{ path('app_news_details') }}"><i class="far fa-user-circle"></i> Admin</a></li>#}
+                            {#                                <li>href="{{ path('app_news_details') }}"<i class="far fa-comments"></i> 2 Comments</a>#}
+                            {#                                </li>#}
+                            {#                            </ul>#}
+
+                            <h3 class="news-one__title">
+                                <a href="{{ path('app_news_details') }}">10 choses à savoir pour se lancer dans la réno</a>
+                            </h3>
+
+                            <p class="news-one__text">Se lancer dans un projet de rénovation de maison peut être passionnant,
+                                <a href={{ path('app_news_details') }} class="news-one__btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+
+                    <!--                                                                fin new6                                                                       -->
+
+
+
+
+
+
+
+
+                    <div class="news-one__single">
+                        <div class="news-one__img-box">
+                            <div class="news-one-img">
+                                <img src="assets/images/blog/travauxReno.png"
+                                     alt="bache au sol, escabeau et mur en attente de peinture">
+
+                                <a href="{{ path('app_news_details') }}">10 choses à savoir pour se lancer dans la réno</a>
+
+
+                                <a href="{{ path('app_news_details') }}">
+                                    <span class="news-one__plus"></span>
+                                </a>
+                            </div>
+                            <div class="news-one__date-box">
+                                <p>Septembre 2023</p>
+                            </div>
+                        </div>
+                        <div class="news-one__content">
+{#                            <ul class="list-unstyled news-one__meta">#}
+{#                                <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>#}
+{#                                <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a>#}
+{#                                </li>#}
+{#                            </ul>#}
+
+
+
+                            <h3 class="news-one__title">
+
+                                <a href="{{ path('app_news_details') }}" class="news-one__btn">10 choses à savoir pour se lancer dans la réno</a>
+                            </h3>
+
+                            <p class="news-one__text">Se lancer dans un projet de rénovation de maison peut être passionnant,
+                                mais cela nécessite une planification minutieuse...</p>
+                            <a href={{ path('app_news_details') }} class="news-one__btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+
+
                     <!--News One Single-->
+
                     <div class="news-one__single">
                         <div class="news-one__img-box">
                             <div class="news-one-img">
@@ -71,8 +415,8 @@
                         </div>
                         <div class="news-one__content">
                             <ul class="list-unstyled news-one__meta">
-                                <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>
-                                <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a>
+                                <li><a href="{{ path('app_news_details') }}"><i class="far fa-user-circle"></i> Admin</a></li>
+                                <li>href="{{ path('app_news_details') }}"<i class="far fa-comments"></i> 2 Comments</a>
                                 </li>
                             </ul>
                             <h3 class="news-one__title">
@@ -179,7 +523,7 @@
                             <div class="news-one-img">
                                 <img src="assets/images/blog/news-page-img-6.jpg" alt="">
                                 <a href="news-details.html">
-                                    <i class="fa fa-plus"></i>
+
                                 </a>
                             </div>
                             <div class="news-one__date-box">
@@ -187,11 +531,7 @@
                             </div>
                         </div>
                         <div class="news-one__content">
-                            <ul class="list-unstyled news-one__meta">
-                                <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>
-                                <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a>
-                                </li>
-                            </ul>
+
                             <h3 class="news-one__title">
                                 <a href="news-details.html">Compell ingly expedite distri buted e-services</a>
                             </h3>
