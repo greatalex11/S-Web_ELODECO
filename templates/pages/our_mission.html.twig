@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <!--Page Header Start-->
-    <section class="page-header" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
+    <!--                                                 -Bandeau supérieur   / image de font 1894x359 px                                           -->
+
+
+    <section class="page-header" style="background-image: url(assets/images/backgrounds/fond2.png);">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -13,56 +15,56 @@
             <div class="page-header__inner">
                 <h2>Our mission</h2>
                 <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
                     <li>Our mission</li>
                 </ul>
             </div>
         </div>
     </section>
-    <!--Page Header End-->
+    <!--                                                                -Bandeau supérieur fin                                                             -->
 
-    <!--Productive Start-->
+
+     <!--                                                               MA MISSION  image 530x463                                                                                        -->
     <section class="productive">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6">
                     <div class="productive__left">
                         <div class="productive__img">
-                            <img src="assets/images/resources/productive-img-1.jpg" alt="">
+                            <img src="assets/images/resources/cuisine3d.png" alt="image cuisine 3d avec meubles, frigidere et ustensiles">
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="productive__right">
                         <div class="section-title text-left">
-                            <span class="section-title__tagline">Our benefits</span>
-                            <h2 class="section-title__title">Productive Your Business</h2>
+                            <span class="section-title__tagline">Mes avantages</span>
+                            <h2 class="section-title__title">Des solutions sur mesure</h2>
                         </div>
                         <ul class="productive__points list-unstyled">
-                            <li><span>/</span> Get Right Solutions</li>
-                            <li><span>/</span> Expert Architecture</li>
+                            <li><span>/</span> Le bon choix</li>
+                            <li><span>/</span> L'expertise</li>
                         </ul>
-                        <p class="productive__text">There are many variations of passages of Lorem Ipsum available,
-                            but the majority have suffered alteration in some form, by injected humour, or
-                            randomised words which don't look even you are going to use a passage of need to be sure
-                            there isn't anything embarrassing.</p>
+                        <p class="productive__text"> Je peut maximiser l'utilisation de l'espace, optimisant ainsi la fonctionnalité d'une pièce tout en conservant une sensation de confort.
+                            En outre, mon expertise permet de
+                            créer des espaces harmonieux en jouant avec les couleurs, les textures et les formes, ce qui contribue à une atmosphère agréable et stimulant.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--Productive End-->
+    <!--                                                                    fin texte1                                                          -->
 
-    <!--Benefits Start-->
+    <!--                                                                       texte 2                                                      -->
     <section class="benefits">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6">
                     <div class="benefits__left">
                         <div class="section-title text-left">
-                            <span class="section-title__tagline">Our benefits</span>
-                            <h2 class="section-title__title">checkout kitecx goals</h2>
+                            <span class="section-title__tagline">Vos bénéfices</span>
+                            <h2 class="section-title__title">Plans 3D de qualité</h2>
                         </div>
                         <div class="benefits__checks-box">
                             <ul class="benefits__checks-list list-unstyled">
@@ -71,9 +73,9 @@
                                         <span class="icon-tick"></span>
                                     </div>
                                     <div class="content">
-                                        <h3>INTERIOR SKETCH</h3>
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the
-                                            majority have suffered.</p>
+                                        <h3>Agencement optimal</h3>
+                                        <p> Je peux également vous proposer des solutions innovantes pour résoudre
+                                            des défis spécifiques liés à la disposition des meubles, à l'éclairage ou à la circulation dans l'espace.</p>
                                     </div>
                                 </li>
                                 <li>
@@ -81,9 +83,8 @@
                                         <span class="icon-tick"></span>
                                     </div>
                                     <div class="content">
-                                        <h3>3D MODELING</h3>
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the
-                                            majority have suffered.</p>
+                                        <h3>Visite virtuelle</h3>
+                                        <p>Immersion dans votre future réalité.</p>
                                     </div>
                                 </li>
                             </ul>
@@ -93,16 +94,16 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="benefits__right">
                         <div class="benefits__img">
-                            <img src="assets/images/resources/benefits-img-1.jpg" alt="">
+                            <img src="assets/images/resources/projet_logement530.png" alt="plan 3d appartement en sous pente type modern avec cuisine ouverte sur séjour">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--Benefits End-->
+    <!--                                                                                fin texte 2                                                             -->
 
-    <!--Our Mission Page Testimonails Start-->
+    <!--                                                        temoin 1                                                -->
     <section class="testimonials-two our-mission-page-testimonial">
         <div class="testimonials-two-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
              style="background-image: url(assets/images/backgrounds/testimonials-two-bg.jpg)"></div>
@@ -111,12 +112,12 @@
                 <div class="col-xl-12">
                     <div class="testimonials-two__carousel owl-theme owl-carousel">
 
-                        <!--Testimonails Two Single-->
+                        <!--image 1-->
                         <div class="testimonials-two__inner-single">
                             <div class="testimonials-two__client-info-box">
                                 <div class="testimonials-two__client-info">
                                     <div class="testimonials-two__client-img">
-                                        <img src="assets/images/testimonial/testimonials-two-img.png" alt="">
+                                        <img src="assets/images/testimonial/Ellipse80.png" alt="miniature ciculaire d'une maison 3d">
                                         <div class="testimonials-two__quote-icon">
                                             <img src="assets/images/testimonial/testimonials-two-quote-icon.png"
                                                  alt="">
@@ -124,24 +125,22 @@
                                     </div>
                                 </div>
                                 <div class="testimonials-two__client-name-box">
-                                    <h5 class="testimonials-two__client-name">Shirley Smith </h5>
-                                    <p class="testimonials-two__client-title">Director</p>
+                                    <h5 class="testimonials-two__client-name">Nate Berkus </h5>
+                                    <p class="testimonials-two__client-title"> designer d'intérieur renommé</p>
                                 </div>
                             </div>
                             <div class="testimonials-two__text-box">
-                                <p class="testimonials-two__text">This is due to their excellent service competitive
-                                    pricing and customer support. It’s throughly refresing to get such a personal
-                                    touch. There are many variations of passages of available, but the majority have
-                                    suffered alteration in some form by injected humour.</p>
+                                <p class="testimonials-two__text">"Le design d'intérieur, c'est plus qu'une simple décoration.
+                                    C'est l'art de transformer un espace pour créer une expérience unique, harmonieuse et fonctionnelle."</p>
                             </div>
                         </div>
 
-                        <!--Testimonails Two Single-->
+                        <!--                                                        temoin 2                                                -->
                         <div class="testimonials-two__inner-single">
                             <div class="testimonials-two__client-info-box">
                                 <div class="testimonials-two__client-info">
                                     <div class="testimonials-two__client-img">
-                                        <img src="assets/images/testimonial/testimonials-two-img.png" alt="">
+                                        <img src="assets/images/testimonial/Ellipse80.png" alt="miniature ciculaire d'une maison 3d">
                                         <div class="testimonials-two__quote-icon">
                                             <img src="assets/images/testimonial/testimonials-two-quote-icon.png"
                                                  alt="">
@@ -149,24 +148,22 @@
                                     </div>
                                 </div>
                                 <div class="testimonials-two__client-name-box">
-                                    <h5 class="testimonials-two__client-name">Shirley Smith </h5>
-                                    <p class="testimonials-two__client-title">Director</p>
+                                    <h5 class="testimonials-two__client-name">Kelly Hoppen </h5>
+                                    <p class="testimonials-two__client-title">Designer d'intérieur de renommée mondiale</p>
                                 </div>
                             </div>
                             <div class="testimonials-two__text-box">
-                                <p class="testimonials-two__text">This is due to their excellent service competitive
-                                    pricing and customer support. It’s throughly refresing to get such a personal
-                                    touch. There are many variations of passages of available, but the majority have
-                                    suffered alteration in some form by injected humour.</p>
+                                <p class="testimonials-two__text">"Un bon design d'intérieur ne doit pas seulement être beau.
+                                    Il doit également raconter une histoire, refléter la personnalité de ceux qui l'habitent et créer un sentiment d'équilibre et de bien-être." </p>
                             </div>
                         </div>
 
-                        <!--Testimonails Two Single-->
+                        <!--                                                        temoin 3                                                -->
                         <div class="testimonials-two__inner-single">
                             <div class="testimonials-two__client-info-box">
                                 <div class="testimonials-two__client-info">
                                     <div class="testimonials-two__client-img">
-                                        <img src="assets/images/testimonial/testimonials-two-img.png" alt="">
+                                        <img src="assets/images/testimonial/Ellipse80.png" alt="miniature ciculaire d'une maison 3d">
                                         <div class="testimonials-two__quote-icon">
                                             <img src="assets/images/testimonial/testimonials-two-quote-icon.png"
                                                  alt="">
@@ -174,15 +171,13 @@
                                     </div>
                                 </div>
                                 <div class="testimonials-two__client-name-box">
-                                    <h5 class="testimonials-two__client-name">Shirley Smith </h5>
-                                    <p class="testimonials-two__client-title">Director</p>
+                                    <h5 class="testimonials-two__client-name">Philippe Starck</h5>
+                                    <p class="testimonials-two__client-title">Designer et architecte français de renom</p>
                                 </div>
                             </div>
                             <div class="testimonials-two__text-box">
-                                <p class="testimonials-two__text">This is due to their excellent service competitive
-                                    pricing and customer support. It’s throughly refresing to get such a personal
-                                    touch. There are many variations of passages of available, but the majority have
-                                    suffered alteration in some form by injected humour.</p>
+                                <p class="testimonials-two__text">"Le design d'intérieur consiste à créer des espaces qui améliorent
+                                    la qualité de vie et la culture des occupants. C'est bien plus que l'agencement des meubles; c'est une fusion d'art, de science et de passion."</p>
                             </div>
                         </div>
 
@@ -191,19 +186,19 @@
             </div>
         </div>
     </section>
-    <!--Our Mission Page Testimonails End-->
+    <!--                                                                   fin temoignage                                                       -->
 
-    <!--How We Works Start-->
+    <!--                                                                BANDEAU INFERIEUR                                                       -->
     <section class="how-we-works">
         <div class="container">
             <div class="section-title text-center">
-                <span class="section-title__tagline">3 easy steps</span>
-                <h2 class="section-title__title">How we works</h2>
+                <span class="section-title__tagline">3 étapes</span>
+                <h2 class="section-title__title">Comment je travaille</h2>
             </div>
             <div class="row">
                 <div class="col-xl-12">
                     <ul class="list-unstyled how-we-works__single-list">
-                        <!--How We Works Single-->
+                        <!--                                                étape  1                                                                -->
                         <li class="how-we-works__single">
                             <div class="how-we-works__icon-box">
                                 <div class="how-we-works__icon">
@@ -213,11 +208,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <h3 class="how-we-works__title">Consult with Team</h3>
-                            <p class="how-we-works__text">Lorem ipsum dolor sit amet, consectetur notted adipisicing
-                                elit do eiusmod.</p>
+                            <h3 class="how-we-works__title">Première rencontre</h3>
+                            <p class="how-we-works__text">Apprendre à se connaître, définir votre projet, vos envies, le budget</p>
                         </li>
-                        <!--How We Works Single-->
+                        <!--                                                étape 2                                                                     -->
                         <li class="how-we-works__single">
                             <div class="how-we-works__icon-box">
                                 <div class="how-we-works__icon">
@@ -227,9 +221,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <h3 class="how-we-works__title">Make a plan</h3>
-                            <p class="how-we-works__text">Lorem ipsum dolor sit amet, consectetur notted adipisicing
-                                elit do eiusmod.</p>
+                            <h3 class="how-we-works__title">Réalisation des plans 3D</h3>
+                            <p class="how-we-works__text">Présentation des résultats, ajustement si nécessaire, et validation</p>
                         </li>
                         <li class="how-we-works__single">
                             <div class="how-we-works__icon-box">
@@ -240,18 +233,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <h3 class="how-we-works__title">devlop & enjoy</h3>
-                            <p class="how-we-works__text">Lorem ipsum dolor sit amet, consectetur notted adipisicing
-                                elit do eiusmod.</p>
+
+                            <!--                                                étape 3                                                                    -->
+                            <h3 class="how-we-works__title">Satisfaction & réalisation</h3>
+                            <p class="how-we-works__text">Suivant la formule, plans en mains et poursuite du projet avec mes artisans</p>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    <!--How We Works End-->
+    <!--                                                                    fin des 3 étapes                                                                    -->
 
-    <!--Brand Three-->
+    <!--                                                                   BLOCJ IMAGES 123x24                                                                       -->
     <section class="brand-three">
         <div class="container">
             <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
@@ -282,40 +276,40 @@
                 }}'>
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/brand-3-1.png" alt="">
-                    </div><!-- /.swiper-slide -->
+                        <img src="assets/images/resources/rectangle1.png" alt="rectange rouge">
+                    </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/brand-3-2.png" alt="">
-                    </div><!-- /.swiper-slide -->
+                        <img src="assets/images/resources/rectangle2.png" alt="rectange rose">
+                    </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/brand-3-3.png" alt="">
-                    </div><!-- /.swiper-slide -->
+                        <img src="assets/images/resources/rectangle3.png" alt="rectangle violet">
+                    </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/brand-3-4.png" alt="">
-                    </div><!-- /.swiper-slide -->
+                        <img src="assets/images/resources/rectangle4.png" alt="rectangle bleu">
+                    </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/brand-3-5.png" alt="">
-                    </div><!-- /.swiper-slide -->
+                        <img src="assets/images/resources/rectangle5.png" alt="rectangle turquoise">
+                    </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/brand-3-1.png" alt="">
-                    </div><!-- /.swiper-slide -->
+                        <img src="assets/images/resources/rectangle6.png" alt="rectangle vert">
+                    </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/brand-3-2.png" alt="">
-                    </div><!-- /.swiper-slide -->
+                        <img src="assets/images/resources/rectangle7.png" alt="rectangle gris marron">
+                    </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/brand-3-3.png" alt="">
-                    </div><!-- /.swiper-slide -->
+                        <img src="assets/images/resources/rectangle8.png" alt="rectangle vert fluo">
+                    </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/brand-3-4.png" alt="">
-                    </div><!-- /.swiper-slide -->
+                        <img src="assets/images/resources/rectangle9.png" alt="rectangle orange">
+                    </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/brand-3-5.png" alt="">
-                    </div><!-- /.swiper-slide -->
+                        <img src="assets/images/resources/rectangle10.png" alt="rectange saumon">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--Brand Three End-->
+    <!--                                                        fin block image 123x24                                  -->
 
 
 
