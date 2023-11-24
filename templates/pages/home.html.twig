@@ -7,11 +7,13 @@
     <section class="main-slider main-slider-two">
         <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
     "effect": "fade",
+
      "pagination": {
         "el": "#main-slider-pagination",
         "type": "bullets",
         "clickable": true
       },
+
     "navigation": {
         "nextEl": "#main-slider__swiper-button-next",
         "prevEl": "#main-slider__swiper-button-prev"
@@ -606,7 +608,7 @@
             </div>
             <div class="row">
                 <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
-                    <!--PREMIERE-->
+                    <!--                                                PREMIERE       NEWS 1                                           -->
                     <div class="news-one__single">
                         <div class="news-one__img-box">
                             <div class="news-one-img">
@@ -629,24 +631,26 @@
                             <h3 class="news-one__title">
                                 <a href="news-details.html">10 étapes pour se lancer dans la rénovation</a>
                             </h3>
-                            <p class="news-one__text">Se lancer dans un projet de rénovation de maison peut être passionnant,
-                                mais cela nécessite une planification minutieuse...</p>
+                            <p class="news-one__text">Se lancer dans un projet de rénovation peut être passionnant,
+                                mais cela nécessite une planification minutieuse, de bons conseils et des plans 3D!</p>
                             <a href="{{ path('app_news_details') }}news-details.html" class="news-one__btn">Plus d'articles</a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
-                    <!--News One Single-->
+                    <!--                                                        NEWS 2                                            -->
                     <div class="news-one__single">
                         <div class="news-one__img-box">
                             <div class="news-one-img">
-                                <img src="assets/images/blog/news-one-img-2.jpg" alt="">
+                                <img src="assets/images/blog/noel.png"
+                                     alt="image de décorations de noel sur fond blanc">
                                 <a href="news-details.html">
                                     <span class="news-one__plus"></span>
                                 </a>
                             </div>
                             <div class="news-one__date-box">
-                                <p>A VENIR</p>
+                                <p>Décembre 2023</p>
                             </div>
                         </div>
                         <div class="news-one__content">
@@ -656,28 +660,29 @@
                             {#                                    </li> #}
                             {#                                </ul> #}
                             <h3 class="news-one__title">
-                                <a href="news-details.html">Article à venir... </a>
+                                <a href="news-details.html">Décorations de noël</a>
                             </h3>
-                            <p class="news-one__text"> “Le meilleur moyen d'avoir une bonne idée
-                                est d'en avoir beaucoup" <br>
-                                “Les bonnes idées n'ont pas d'âge, elles ont seulement de l'avenir.”
+                            <p class="news-one__text"> Choisissez un thème pour votre décoration afin de créer une atmosphère harmonieuse. <br>
+                                Une décoration plus élaborée dans le salon et plus personnelle dans les chambres
                             </p>
-                            <a href="news-details.html" class="news-one__btn">Plus d'articles</a>
+                            <a href="{{ path('app_news_details') }}news-details.html" class="news-one__btn">Plus d'articles</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
-                    <!--News One Single-->
+                    <!--                                                                 NEWS 3                                                          -->
+
                     <div class="news-one__single">
                         <div class="news-one__img-box">
                             <div class="news-one-img">
-                                <img src="assets/images/blog/news-one-img-3.jpg" alt="">
-                                <a href="news-details.html">
+                                <img src="assets/images/blog/peinture.png"
+                                     alt="pot de peinture qui se verse dans un bac de peintre">
+                                <a href="{{ path('app_news_details') }}">
                                     <span class="news-one__plus"></span>
                                 </a>
                             </div>
                             <div class="news-one__date-box">
-                                <p>A venirl</p>
+                                <p>Octobre 2023</p>
                             </div>
                         </div>
                         <div class="news-one__content">
@@ -687,13 +692,12 @@
                             {#                                    </li> #}
                             {#                                </ul> #}
                             <h3 class="news-one__title">
-                                <a href="news-details.html">Article à venir... </a>
+                                <a href="{{ path('app_news_details') }}">Astuces peinture</a>
                             </h3>
-                            <p class="news-one__text"> “Le meilleur moyen d'avoir une bonne idée
-                                est d'en avoir beaucoup" <br>
-                                “Les bonnes idées n'ont pas d'âge, elles ont seulement de l'avenir.”
+                            <p class="news-one__text"> Choisir la bonne peinture peut considérablement influencer l'ambiance et l'apparence de votre espace.
+                                Voici quelques astuces pour vous aider à choisir la peinture idéale. Avant de choisir une couleur...
                             </p>
-                            <a href="news-details.html" class="news-one__btn">Plus d'articles</a>
+                            <a href="{{ path('app_news_details') }}" class="news-one__btn">Plus d'articles</a>
                         </div>
                     </div>
                 </div>
