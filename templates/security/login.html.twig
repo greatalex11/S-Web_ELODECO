@@ -6,6 +6,10 @@
      <link rel="stylesheet" href="{{ asset('assets/css/kitecx-responsive.css') }}"/>
 
 <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap/css/bootstrap.min.css') }}"/>
+
+
+
+
 {% block title %}{% endblock %}
 
  {% endblock %}
@@ -37,4 +41,11 @@
        Se connecter
     </button>
 </form>
+<div class="w-25 flex-column justify-content-center mt-xl-5 m-auto">
+    <h4 class="  font-weight-normal ">Créer un compte</h4>
+    <a href="{{ path('app_register') }}" class="btn btn-lg btn-primary mt-4">Nouveau membre</a>
+
+</div>
+
+
 {% endblock %}
