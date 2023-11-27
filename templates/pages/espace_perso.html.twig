@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <!--                                                                   BANDEAU SUPERIEUR    image 1894x359                                                            -->
+    <div class="stricky-header stricked-menu main-menu">
+        <div class="sticky-header__content"></div>
+    </div>
+
+
+<h2>ESPACE PERSO</h2>
+    <section class="page-header" style="background-image: url(assets/images/backgrounds/fond2.png);">
+        <div class="page-header-border"></div>
+        <div class="page-header-border page-header-border-two"></div>
+        <div class="page-header-border page-header-border-three"></div>
+        <div class="page-header-border page-header-border-four"></div>
+        <div class="page-header-border page-header-border-five"></div>
+        <div class="page-header-border page-header-border-six"></div>
+        <div class="container">
+            <div class="page-header__inner">
+                <h2>Contact</h2>
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="{{ path('app_home') }}">Home</a></li>
+                    <li><span>/</span></li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--                                                                   Bandeau fin                                                                                 -->
+    <!--                                                 Formulaire contact avec rappel de coordonnées à droite                                                        -->
+
+    <section class="contact-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7 col-lg-6">
+                    <div class="contact-page__title">
+                        <div class="section-title text-left">
+                            <span class="section-title__tagline">Prenez contact avec moi</span>
+                            <h2 class="section-title__title">Envoyez-moi un message</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-6">
+                    <div class="contact-page__top-text-box">
+{#                        <p class="contact-page__top-text">Je vous réponderai dans les meilleurs délais</p>#}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="contact-page__left">
+                        <form action="assets/inc/sendemail.php" class="contact-page__form contact-form-validated">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="contact-page__input-box">
+                                        <input type="text" placeholder="Votre nom" name="name">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="contact-page__input-box">
+                                        <input type="email" placeholder="Votre prémom" name="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="contact-page__input-box">
+                                        <input type="text" placeholder="Votre numéro de téléphone" name="phone">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="contact-page__input-box">
+                                        <input type="email" placeholder="Sujet" name="Subject">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="contact-page__input-box">
+                                        <textarea name="message" placeholder="Ecrivez-votre message"></textarea>
+                                    </div>
+                                    <button type="submit" class="thm-btn contact-page__btn">Envoyer le message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="contact-page__details">
+                        <div class="contact-page__details-shape"
+                             style="background-image: url(assets/images/shapes/contact-page__details-shape.png)">
+                        </div>
+                        <p class="contact-page__details-text">Vous pouvez me joindre également par mail ou par téléphone.</p>
+                        <div class="contact-page__details-contact-info">
+                            <ul class="list-unstyled contact-page__details-contact-list">
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-phone-square-alt"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p><a href="tel:92-666-888-0000">06 21 85 33 48</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p><a href="mailto:needhelp@company.com">elodiekolly.deco@gmail.com</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>70190 TRESILLEY, FRANCE.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="contact-page__details-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
+                            <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--                                                                Fin formulaire contact                                                          -->
+
+
+    <!--                                                                        GOOGLE MAP                                                                                  -->
+    <section class="contact-page-google-map">
+
+        <!--                                                                   ifram elo deco                                                                      -->
+
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25673.90316580553!2d6.038971473616049!3d47.43852811122367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47929a78f73fbb87%3A0x214ef58707775bbf!2sSur%20la%20Vigne%2C%2070190%20Tr%C3%A9silley!5e0!3m2!1sfr!2sfr!4v1700909448497!5m2!1sfr!2sfr"
+                width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                class="contact-page-google-map__one" allowfullscreen>
+
+        </iframe>
+
+
+
+    </section>
+    <!--                                                                        fin Google Map                                                                 -->
+
+{% endblock %}
