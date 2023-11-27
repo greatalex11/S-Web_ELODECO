@@ -126,10 +126,19 @@ class LoginController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/perso', name: 'app_perso')]
-    public function perso(): Response
+    #[Route(path: '/client', name: 'app_client')]
+    public function clientView(): Response
     {
-        return $this->render('pages/espace_perso.html.twig', [
+        return $this->render('pages/espace_client.html.twig', [
         ]);
     }
+    #[Route(path: '/artisan', name: 'app_artisan')]
+    public function artisanView(): Response
+    {
+        return $this->render('pages/espace_artisan.html.twig', [
+        ]);
+    }
+
+
+
 }

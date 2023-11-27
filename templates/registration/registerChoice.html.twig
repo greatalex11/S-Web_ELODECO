@@ -1,0 +1,44 @@
+{#{% extends 'base.html.twig' %}#}
+
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('assets/css/kitecx.css') }}"/>
+<link rel="stylesheet" href="{{ asset('assets/css/kitecx-responsive.css') }}"/>
+
+<link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap/css/bootstrap.min.css') }}"/>
+{% endblock %}
+
+
+
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+
+{#    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>#}
+
+ <div class="w-25 flex-column justify-content-center mt-5  m-auto p-4 ">
+
+     <h1>S'enregistrer</h1>
+{#     {'attr': {'class': 'ml-4'}}#}
+
+     <div class="container">
+         <h2>Vous êtes ?</h2>
+         <div class="row mt-5">
+             <div class="col-6 text-center"><a href="{{ path('app_register', {'choice':'Client'}) }}"
+                                               class="btn btn-lg btn-outline-primary">Client</a></div>
+             <div class="col-6 text-center"><a href="{{ path('app_register', {'choice':'Artisan'}) }}"
+                                               class="btn btn-lg btn-outline-secondary">Artisan</a></div>
+         </div>
+
+  </div>
+
+
+
+
+
+ </div>
+
+{% endblock %}

@@ -25,8 +25,17 @@ class RegistrationController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
-    #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    //formulaire choix : Artisan ou Client
+    #[Route('/register/choice', name: 'app_register_choice')]
+    public function registerChoice(Request $request): Response
+    {
+        return $this->render('registration/registerChoice.html.twig', [
+            ]);
+    }
+
+    #[Route('/register/{choice}', name: 'app_register')]
+
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, string $choice): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -55,12 +64,20 @@ class RegistrationController extends AbstractController
             // do anything else you need here, like send an email
 
                 // si registerFORM VALIDE on part dans perso au lieu de /_profile
-            return $this->redirectToRoute('app_perso');
-        }
+
+           if($choice==="artisan"){
+           return $this->redirectToRoute('app_client');}
+
+            if($choice==="Client"){
+               return $this->redirectToRoute('app_artisan');
+           }
+
+    }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]
