@@ -24,6 +24,10 @@ class DashboardController extends AbstractDashboardController
                 return $this->redirect($url);
 
 
+//       ESSAIS IMPORT DATE DU JOUR :  $date = date('r');
+//        $urlWithDate = sprintf("%s?date=%s", $url, $date);
+//        return $this->redirect($urlWithDate);
+
 //           return parent::index();
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
@@ -45,8 +49,10 @@ class DashboardController extends AbstractDashboardController
 
     public function configureDashboard(): Dashboard
     {
+        $date = date('r');
         return Dashboard::new()
             ->setTitle('ELO DECO ADMINISTRATION');
+//        'user'->$this->getUser();
     }
 
     public function configureMenuItems(): iterable

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ContenusRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -108,9 +109,11 @@ class LoginController extends AbstractController
         ]);
     }
     #[Route(path: '/news', name: 'app_news')]
-    public function news(): Response
+    public function news(ContenusRepository $contenusRepository): Response
     {
-        return $this->render('pages/news.html.twig', [
+        $news=$contenusRepository->findByPagesName('News');
+        dd($news);
+           return $this->render('pages/news.html.twig', [
         ]);
     }
     #[Route(path: '/news_details', name: 'app_news_details')]

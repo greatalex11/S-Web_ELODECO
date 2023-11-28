@@ -21,20 +21,22 @@ class ContenusRepository extends ServiceEntityRepository
         parent::__construct($registry, Contenus::class);
     }
 
-//    /**
-//     * @return Contenus[] Returns an array of Contenus objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Contenus[] Returns an array of Contenus objects
+     */
+    public function findByPagesName(string $pageName): array
+    {
+        return $this->createQueryBuilder('c')
+            ->join("c.page", "p")
+            ->andWhere('p.Nom = :nom')
+            //->andWhere('p.published = :nom')
+            ->setParameter('nom', $pageName)
+            ->orderBy('c.date_creation', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Contenus
 //    {

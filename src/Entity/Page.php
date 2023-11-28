@@ -30,6 +30,11 @@ class Page
         $this->contenus = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->Nom;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
