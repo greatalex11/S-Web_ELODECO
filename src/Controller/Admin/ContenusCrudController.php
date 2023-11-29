@@ -7,13 +7,16 @@ namespace App\Controller\Admin;
 use App\Entity\Contenus;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use phpDocumentor\Reflection\Types\Boolean;
 use phpDocumentor\Reflection\Types\Integer;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class ContenusCrudController extends AbstractCrudController
 {
@@ -35,6 +38,7 @@ class ContenusCrudController extends AbstractCrudController
             yield TextField::new('texte2'),
             yield TextField::new('texte3'),
             yield DateTimeField::new('date_creation'),
+            yield BooleanField::new('publier'),
             //AssociationField :new('images'),
             //yield TextField::new('page'),
 //            yield IntegerField::new('largeur'),

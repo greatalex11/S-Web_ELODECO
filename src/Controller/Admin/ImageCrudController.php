@@ -28,7 +28,7 @@ class ImageCrudController extends AbstractCrudController
             yield IntegerField::new('largeur'),
             yield TextField::new('dimensions'),
             yield ImageField::new('image')
-//                ->setBasePath('assets/images/')
+                ->setBasePath('assets/images/')
                 ->setUploadDir("/public/assets/images/"),
         ];
     }

@@ -3,6 +3,23 @@
 
 
 
+
+
+//                                      CAROUSSEL OFFRE DE SERVICE HOME
+
+
+
+  // // const carousel = new bootstrap.Carousel('#myCarousel')
+  //
+  // const myCarousel = document.getElementById('myCarousel')
+  //
+  // myCarousel.addEventListener('slide.bs.myCarousel', event => {
+  //   event.target.next()
+  // })
+
+
+
+
   //Pricing Tabs
   if ($('.pricing-tabs').length) {
     $('.pricing-tabs .tab-btns .tab-btn').on('click', function (e) {

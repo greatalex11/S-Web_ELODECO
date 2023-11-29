@@ -119,7 +119,7 @@ class LoginController extends AbstractController
     #[Route(path: '/news_details', name: 'app_news_details')]
     public function newsD(): Response
     {
-        return $this->render('pages/news_details.html.twig', [
+        return $this->render('pages/_blog_details.html.twig', [
         ]);
     }
     #[Route(path: '/contact', name: 'app_contact')]

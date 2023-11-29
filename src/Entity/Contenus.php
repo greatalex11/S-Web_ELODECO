@@ -40,17 +40,21 @@ class Contenus
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_creation = null;
 
-    #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'contenu')]
+    #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'contenu', cascade: ['persist'])]
     private Collection $images;
 
     #[ORM\ManyToMany(targetEntity: Page::class, inversedBy: 'contenus')]
     private Collection $page;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $publier = null;
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->page = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -200,6 +204,18 @@ class Contenus
     public function removePage(Page $page): static
     {
         $this->page->removeElement($page);
+
+        return $this;
+    }
+
+    public function isPublier(): ?bool
+    {
+        return $this->publier;
+    }
+
+    public function setPublier(?bool $publier): static
+    {
+        $this->publier = $publier;
 
         return $this;
     }
