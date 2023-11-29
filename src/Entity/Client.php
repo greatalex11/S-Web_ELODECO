@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -39,7 +40,7 @@ class Client
     private ?string $tel_portable = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $date_naissance = null;
+    private ?DateTimeInterface $date_naissance = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $commentaire = null;
@@ -49,8 +50,6 @@ class Client
 
     #[ORM\OneToOne(inversedBy: 'client', cascade: ['persist', 'remove'])]
     private ?User $user = null;
-
-
 
     public function getId(): ?int
     {
@@ -153,12 +152,12 @@ class Client
         return $this;
     }
 
-    public function getDateNaissance(): ?\DateTimeInterface
+    public function getDateNaissance(): ?DateTimeInterface
     {
         return $this->date_naissance;
     }
 
-    public function setDateNaissance(?\DateTimeInterface $date_naissance): static
+    public function setDateNaissance(?DateTimeInterface $date_naissance): static
     {
         $this->date_naissance = $date_naissance;
 

@@ -17,12 +17,12 @@ class Page
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Nom = null;
+    private ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $commentaires = null;
 
-    #[ORM\ManyToMany(targetEntity: Contenus::class, mappedBy: 'page')]
+    #[ORM\ManyToMany(targetEntity: Contenus::class, mappedBy: 'pages')]
     private Collection $contenus;
 
     public function __construct()
@@ -32,7 +32,7 @@ class Page
 
     public function __toString(): string
     {
-        return $this->Nom;
+        return $this->nom;
     }
 
     public function getId(): ?int
@@ -42,12 +42,12 @@ class Page
 
     public function getNom(): ?string
     {
-        return $this->Nom;
+        return $this->nom;
     }
 
-    public function setNom(?string $Nom): static
+    public function setNom(?string $nom): static
     {
-        $this->Nom = $Nom;
+        $this->nom = $nom;
 
         return $this;
     }

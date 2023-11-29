@@ -2,15 +2,29 @@
 
 namespace App\Entity;
 
+use App\Entity\Trait\DateTrait;
 use App\Repository\ContenusRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContenusRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Contenus
 {
+    public const TYPE_NEWS = 'news';
+    public const TYPE_BLOG = 'blog';
+    public const TYPE_MENU = 'menu';
+    public const TYPES = [
+        'Menu' => self::TYPE_MENU,
+        'News' => self::TYPE_NEWS,
+        'Blog' => self::TYPE_BLOG
+    ];
+
+    use DateTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -37,14 +51,12 @@ class Contenus
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $texte3 = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $date_creation = null;
-
-    #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'contenu', cascade: ['persist'])]
+    #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'contenus', cascade: ['persist'])]
+    #[Assert\Valid()]
     private Collection $images;
 
     #[ORM\ManyToMany(targetEntity: Page::class, inversedBy: 'contenus')]
-    private Collection $page;
+    private Collection $pages;
 
     #[ORM\Column(nullable: true)]
     private ?bool $publier = null;
@@ -52,9 +64,8 @@ class Contenus
     public function __construct()
     {
         $this->images = new ArrayCollection();
-        $this->page = new ArrayCollection();
+        $this->pages = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -145,18 +156,6 @@ class Contenus
         return $this;
     }
 
-    public function getDateCreation(): ?\DateTimeInterface
-    {
-        return $this->date_creation;
-    }
-
-    public function setDateCreation(?\DateTimeInterface $date_creation): static
-    {
-        $this->date_creation = $date_creation;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Image>
      */
@@ -187,15 +186,15 @@ class Contenus
     /**
      * @return Collection<int, Page>
      */
-    public function getPage(): Collection
+    public function getPages(): Collection
     {
-        return $this->page;
+        return $this->pages;
     }
 
     public function addPage(Page $page): static
     {
-        if (!$this->page->contains($page)) {
-            $this->page->add($page);
+        if (!$this->pages->contains($page)) {
+            $this->pages->add($page);
         }
 
         return $this;
@@ -203,7 +202,7 @@ class Contenus
 
     public function removePage(Page $page): static
     {
-        $this->page->removeElement($page);
+        $this->pages->removeElement($page);
 
         return $this;
     }

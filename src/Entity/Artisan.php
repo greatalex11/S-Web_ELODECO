@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ArtisanRepository;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -30,7 +31,7 @@ class Artisan
     private ?string $prenom_gerant = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $date_naissance = null;
+    private ?DateTimeInterface $date_naissance = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $numero_rue = null;
@@ -127,12 +128,12 @@ class Artisan
         return $this;
     }
 
-    public function getDateNaissance(): ?\DateTimeInterface
+    public function getDateNaissance(): ?DateTimeInterface
     {
         return $this->date_naissance;
     }
 
-    public function setDateNaissance(?\DateTimeInterface $date_naissance): static
+    public function setDateNaissance(?DateTimeInterface $date_naissance): static
     {
         $this->date_naissance = $date_naissance;
 
