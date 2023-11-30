@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Contenus;
 use App\Repository\ContenusRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -101,7 +102,33 @@ class LoginController extends AbstractController
         return $this->render('pages/portfolio.html.twig', [
         ]);
     }
+    #[Route(path: '/styles', name: 'app_styles')]
+    public function styles(): Response
+    {
+        return $this->render('pages/styles_deco/styles.html.twig', [
+        ]);
+    }
 
+//                                                      STYLES DETAILS
+
+    #[Route(path: '/styles_scandinav', name: 'app_styles_scandinav')]
+    public function stylesScandinav(): Response
+    {
+        return $this->render('pages/styles_deco/styles_details_scandinav.html.twig', [
+        ]);
+    }
+
+
+    #[Route(path: '/styles_contemporain', name: 'app_styles_contemporain')]
+    public function stylesContemporain(): Response
+    {
+        return $this->render('pages/styles_deco/styles_details_contemporain.html.twig', [
+        ]);
+    }
+
+
+
+//                                                    FIN STYLES DETAILS
     #[Route(path: '/portfolio_details', name: 'app_portfolio_details')]
     public function portefolioD(): Response
     {
@@ -111,15 +138,15 @@ class LoginController extends AbstractController
     #[Route(path: '/news', name: 'app_news')]
     public function news(ContenusRepository $contenusRepository): Response
     {
-        $news=$contenusRepository->findByPagesName('News');
-        dd($news);
+        $news=$contenusRepository->findByPagesName('News', [Contenus::TYPE_NEWS]);
+//        dd($news);
            return $this->render('pages/news.html.twig', [
         ]);
     }
     #[Route(path: '/news_details', name: 'app_news_details')]
     public function newsD(): Response
     {
-        return $this->render('pages/_blog_details.html.twig', [
+        return $this->render('pages/news_details.html.twig', [
         ]);
     }
     #[Route(path: '/contact', name: 'app_contact')]

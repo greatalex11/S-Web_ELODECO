@@ -1,9 +1,22 @@
 {# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
 {# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
 {# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+{% if ea.crud.currentPage == "detail" %}
 
-{% for value in field.value %}
-    <span class="badge badge-info">{{ value }}</span>
+    {% for page in field.value %}
+    {# @var page \App\Entity\Page #}
+    <div style="display: flex; flex-direction: column">
+
+        <div>Nom : {{ page.nom }}</div>
+        <div>Commentaires : {{ page.commentaires }}</div>
+        <div>Nb contenus : {{ page.contenus|length }}</div>
+    </div>
+        <hr>
+    {% endfor %}
 {% else %}
-    <span class="badge badge-secondary">None</span>
-{% endfor %}
+    {% for value in field.value %}
+        <span class="badge badge-info">{{ value }}</span>
+    {% else %}
+        <span class="badge badge-secondary">None</span>
+    {% endfor %}
+{% endif %}

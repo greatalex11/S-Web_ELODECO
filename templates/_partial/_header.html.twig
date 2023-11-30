@@ -78,18 +78,23 @@
                             <li class="dropdown">
                                 <a href="#">Portfolio</a>
                                 <ul>
-                                    <li><a href={{ path('app_portfolio') }}>Portfolio</a></li>
+                                    <li><a href="{{ path('app_portfolio') }}">Portfolio</a></li>
                                     <li><a href="{{ path('app_portfolio_details') }}">Portfolio Details</a></li>
                                 </ul>
                             </li>
+
+                            <li class="dropdown">
+                                <a href="{{ path('app_styles') }}">Styles déco</a>
+                            </li>
+
                             <li class="dropdown">
                                 <a href="#">News</a>
                                 <ul>
-                                    <li><a href={{ path('app_news') }}>News</a></li>
+                                    <li><a href="{{ path('app_news') }}">News</a></li>
                                     <li><a href="{{ path('app_news_details') }}">News Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href={{ path('app_contact') }}>Contact</a></li>
+                            <li><a href="{{ path('app_contact') }}">Contact</a></li>
                         </ul>
                         <div class="main-menu__right">
                             <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a>

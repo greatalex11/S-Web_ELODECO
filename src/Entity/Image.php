@@ -45,6 +45,7 @@ class Image
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    #[Assert\Image()]
     #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'image', size: 'size', mimeType: 'type', dimensions: 'dimensions')]
     private ?File $imageFile = null;
 
@@ -139,7 +140,7 @@ class Image
     {
         if (is_array($dimensions)) {
             $this->dimensions = implode("x", $dimensions);
-            [$this->hauteur, $this->largeur] = $dimensions;
+            [$this->largeur, $this->hauteur] = $dimensions;
         } else {
             $this->dimensions = $dimensions;
         }
@@ -198,8 +199,11 @@ class Image
     {
         if ($this->size === null)
             return $this->size;
-
-        return round($this->size / 1024, 2) . ' Kb';
+        $kb = $this->size / 1024;
+        if($kb < 1000) {
+            return  round($kb,2). ' Kb';
+        }
+        return  round($kb/1024,2). ' Mb';
     }
 
     public function getType(): ?string

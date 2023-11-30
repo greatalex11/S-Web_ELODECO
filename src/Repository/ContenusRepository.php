@@ -24,14 +24,16 @@ class ContenusRepository extends ServiceEntityRepository
     /**
      * @return Contenus[] Returns an array of Contenus objects
      */
-    public function findByPagesName(string $pageName): array
+    public function findByPagesName(string $pageName, array $types = [Contenus::TYPE_NEWS]): array
     {
         return $this->createQueryBuilder('c')
-            ->join("c.page", "p")
-            ->andWhere('p.Nom = :nom')
-            //->andWhere('p.published = :nom')
+            ->join("c.pages", "p")
+            ->andWhere('p.nom = :nom')
+            ->andWhere('c.publier = 1')
+            ->andWhere('c.type in (:types)')
             ->setParameter('nom', $pageName)
-            ->orderBy('c.date_creation', 'DESC')
+            ->setParameter('types', $types)
+            ->orderBy('c.createdAt', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()

@@ -1,0 +1,15 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+
+{% if ea.crud.currentPage == "detail" %}
+    {% for image in field.value %}
+        {# @var image \App\Entity\Image #}
+        <div style="display: flex; flex-direction: column">
+            <img style='width: 50%' src="{{ vich_uploader_asset(image) }}" >
+        </div>
+        <hr>
+    {% endfor %}
+{% else %}
+    <span class="badge badge-secondary">{{ field.value|length }}</span>
+{% endif %}
