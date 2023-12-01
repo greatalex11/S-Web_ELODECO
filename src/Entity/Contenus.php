@@ -56,7 +56,7 @@ class Contenus
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $texte3 = null;
 
-    #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'contenus', cascade: ['persist'])]
+    #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'contenus', cascade: ['persist'], fetch: 'EAGER')]
     #[Assert\Valid()]
     private Collection $images;
 
@@ -71,6 +71,18 @@ class Contenus
         $this->images = new ArrayCollection();
         $this->pages = new ArrayCollection();
     }
+
+//    private array $array=[];
+//    public function getArray(): array
+//    {
+//        return $this->array;
+//    }
+//
+//    public function setArray(array $array): static
+//    {
+//        $this -> array=$array;
+//        return $this;
+//    }
 
     public function getId(): ?int
     {

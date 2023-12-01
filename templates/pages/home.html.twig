@@ -606,10 +606,51 @@
                 <span class="section-title__tagline">Nouvelles & tendances</span>
                 <h2 class="section-title__title">Ma sélection</h2>
             </div>
+
+    <!--                                                         ***  boucle : ma selection  ***                                                   -->
             <div class="row">
+                {% for blockMs in homeMS %}
                 <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
-                    <!--                                                PREMIERE       NEWS 1                                           -->
-                    {% include "contenus/_blog.html.twig" %}
+                     <div class="news-one__single">
+                        <div class="news-one__img-box">
+                            <div class="news-one-img">
+                                {% for image in blockMs.Images %}
+                                    <img src="{{vich_uploader_asset(image)}}"
+                                    alt="{{ image.Titre }}">
+                                {% endfor %}
+
+
+
+                                <a href="{{ path('app_news_details')}}">
+                                    <span class="news-one__plus"></span>
+                                </a>
+                            </div>
+                            <div class="news-one__date-box">
+                                <p> {{ blockMs.Titre2}}</p>
+                            </div>
+                        </div>
+                        <div class="news-one__content">
+
+                            <h3 class="news-one__title">
+                                <a href="news-details.html">{{ blockMs.Titre1}}</a>
+                            </h3>
+                            <p class="news-one__text">{{ blockMs.Texte1|raw}}</p>
+                            <a href="{{ path('app_news_details') }}news-details.html" class="news-one__btn">Plus d'articles</a>
+                        </div>
+                    </div>
+                </div>
+
+                 {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+{#                <!--                                                PREMIERE       NEWS 1                                           -->#}
+{#                    {% include "contenus/_blog.html.twig" %}#}
 
 {#                    <div class="news-one__single">#}
 {#                        <div class="news-one__img-box">#}
@@ -625,11 +666,11 @@
 {#                            </div>#}
 {#                        </div>#}
 {#                        <div class="news-one__content">#}
-{#                            #}{#                                <ul class="list-unstyled news-one__meta"> #}
-{#                            #}{#                                    <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li> #}
-{#                            #}{#                                    <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a> #}
-{#                            #}{#                                    </li> #}
-{#                            #}{#                                </ul> #}
+{#                                                            <ul class="list-unstyled news-one__meta">#}
+{#                                                                <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>#}
+{#                                                                <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a>#}
+{#                                                                </li>#}
+{#                                                            </ul>#}
 {#                            <h3 class="news-one__title">#}
 {#                                <a href="news-details.html">10 étapes pour se lancer dans la rénovation</a>#}
 {#                            </h3>#}
@@ -641,74 +682,72 @@
 {#                </div>#}
 
 {#                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">#}
-                    <!--                                                        NEWS 2                                            -->
-                    <div class="news-one__single">
-                        <div class="news-one__img-box">
-                            <div class="news-one-img">
-                                <img src="assets/images/blog/noel.png"
-                                     alt="image de décorations de noel sur fond blanc">
-                                <a href="news-details.html">
-                                    <span class="news-one__plus"></span>
-                                </a>
-                            </div>
-                            <div class="news-one__date-box">
-                                <p>Décembre 2023</p>
-                            </div>
-                        </div>
-                        <div class="news-one__content">
-                            {#                                <ul class="list-unstyled news-one__meta"> #}
-                            {#                                    <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li> #}
-                            {#                                    <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a> #}
-                            {#                                    </li> #}
-                            {#                                </ul> #}
-                            <h3 class="news-one__title">
-                                <a href="news-details.html">Décorations de noël</a>
-                            </h3>
-                            <p class="news-one__text"> Choisissez un thème pour votre décoration afin de créer une atmosphère harmonieuse. <br>
-                                Une décoration plus élaborée dans le salon et plus personnelle dans les chambres
-                            </p>
-                            <a href="{{ path('app_news_details') }}news-details.html" class="news-one__btn">Plus d'articles</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
-                    <!--                                                                 NEWS 3                                                          -->
+{#                    <!--                                                        NEWS 2                                            -->#}
+{#                    <div class="news-one__single">#}
+{#                        <div class="news-one__img-box">#}
+{#                            <div class="news-one-img">#}
+{#                                <img src="assets/images/blog/noel.png"#}
+{#                                     alt="image de décorations de noel sur fond blanc">#}
+{#                                <a href="news-details.html">#}
+{#                                    <span class="news-one__plus"></span>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                            <div class="news-one__date-box">#}
+{#                                <p>Décembre 2023</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="news-one__content">#}
+{#                                                            <ul class="list-unstyled news-one__meta">#}
+{#                                                                <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>#}
+{#                                                                <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a>#}
+{#                                                                </li>#}
+{#                                                            </ul>#}
+{#                            <h3 class="news-one__title">#}
+{#                                <a href="news-details.html">Décorations de noël</a>#}
+{#                            </h3>#}
+{#                            <p class="news-one__text"> Choisissez un thème pour votre décoration afin de créer une atmosphère harmonieuse. <br>#}
+{#                                Une décoration plus élaborée dans le salon et plus personnelle dans les chambres#}
+{#                            </p>#}
+{#                            <a href="{{ path('app_news_details') }}news-details.html" class="news-one__btn">Plus d'articles</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">#}
+{#                    <!--                                                                 NEWS 3                                                          -->#}
 
-                    <div class="news-one__single">
-                        <div class="news-one__img-box">
-                            <div class="news-one-img">
-                                <img src="assets/images/blog/peinture.png"
-                                     alt="pot de peinture qui se verse dans un bac de peintre">
-                                <a href="{{ path('app_news_details') }}">
-                                    <span class="news-one__plus"></span>
-                                </a>
-                            </div>
-                            <div class="news-one__date-box">
-                                <p>Octobre 2023</p>
-                            </div>
-                        </div>
-                        <div class="news-one__content">
-                            {#                                <ul class="list-unstyled news-one__meta"> #}
-                            {#                                    <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li> #}
-                            {#                                    <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a> #}
-                            {#                                    </li> #}
-                            {#                                </ul> #}
-                            <h3 class="news-one__title">
-                                <a href="{{ path('app_news_details') }}">Astuces peinture</a>
-                            </h3>
-                            <p class="news-one__text"> Choisir la bonne peinture peut considérablement influencer l'ambiance et l'apparence de votre espace.
-                                Voici quelques astuces pour vous aider à choisir la peinture idéale. Avant de choisir une couleur...
-                            </p>
-                            <a href="{{ path('app_news_details') }}" class="news-one__btn">Plus d'articles</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--                                                        fin section 9                                                    -->
+{#                    <div class="news-one__single">#}
+{#                        <div class="news-one__img-box">#}
+{#                            <div class="news-one-img">#}
+{#                                <img src="assets/images/blog/peinture.png"#}
+{#                                     alt="pot de peinture qui se verse dans un bac de peintre">#}
+{#                                <a href="{{ path('app_news_details') }}">#}
+{#                                    <span class="news-one__plus"></span>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                            <div class="news-one__date-box">#}
+{#                                <p>Octobre 2023</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="news-one__content">#}
+{#                                                            <ul class="list-unstyled news-one__meta">#}
+{#                                                                <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>#}
+{#                                                                <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a>#}
+{#                                                                </li>#}
+{#                                                            </ul>#}
+{#                            <h3 class="news-one__title">#}
+{#                                <a href="{{ path('app_news_details') }}">Astuces peinture</a>#}
+{#                            </h3>#}
+{#                            <p class="news-one__text"> Choisir la bonne peinture peut considérablement influencer l'ambiance et l'apparence de votre espace.#}
+{#                                Voici quelques astuces pour vous aider à choisir la peinture idéale. Avant de choisir une couleur...#}
+{#                            </p>#}
+{#                            <a href="{{ path('app_news_details') }}" class="news-one__btn">Plus d'articles</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
 
-    <!--                                                     SECTION 10 : Client contents   6 /  4 IMGAGES 270X300 + 1MGAGE 156X98                                                         -->
+    <!--                                                           fin section 9: ma selection                                                           -->
+
+    <!--                                           SECTION 10 : Client contents   6 /  4 IMGAGES 270X300 + 1MGAGE 156X98                                                         -->
 
     <section class="they-trusted">
         <div class="container">
