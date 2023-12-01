@@ -37,7 +37,7 @@ class PageCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')->hideOnForm();
-        yield TextField::new('nom')->setDisabled();
+        yield TextField::new('nom');//->setDisabled();
         yield TextareaField::new('commentaires');
         yield AssociationField::new('contenus')->hideOnForm();
     }

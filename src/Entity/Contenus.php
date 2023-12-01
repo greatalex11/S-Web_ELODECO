@@ -8,19 +8,23 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Self_;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContenusRepository::class)]
 #[ORM\HasLifecycleCallbacks]
 class Contenus
 {
+
+
     public const TYPE_NEWS = 'news';
     public const TYPE_BLOG = 'blog';
     public const TYPE_MENU = 'menu';
     public const TYPES = [
         'Menu' => self::TYPE_MENU,
         'News' => self::TYPE_NEWS,
-        'Blog' => self::TYPE_BLOG
+        'Blog' => self::TYPE_BLOG,
+
     ];
 
     use DateTrait;
