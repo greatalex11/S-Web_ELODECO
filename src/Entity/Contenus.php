@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Contenus
 {
 
-
+    public const TYPE_COMPTEURS = 'compteurs';
     public const TYPE_NEWS = 'news';
     public const TYPE_BLOG = 'blog';
     public const TYPE_MENU = 'menu';
@@ -24,6 +24,7 @@ class Contenus
         'Menu' => self::TYPE_MENU,
         'News' => self::TYPE_NEWS,
         'Blog' => self::TYPE_BLOG,
+        'compteurs' => self::TYPE_COMPTEURS,
 
     ];
 

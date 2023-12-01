@@ -27,12 +27,12 @@ class PageCrudController extends AbstractCrudController
             ->setAutofocusSearch();
     }
 
-    public function configureActions(Actions $actions): Actions
-    {
-        return parent::configureActions($actions)
-            ->setPermission(Action::NEW, 'ROLE_SUPER_ADMIN')
-            ->setPermission(Action::DELETE, 'ROLE_SUPER_ADMIN');
-    }
+//    public function configureActions(Actions $actions): Actions
+//    {
+//        return parent::configureActions($actions)
+//            ->setPermission(Action::NEW, 'ROLE_SUPER_ADMIN')
+//            ->setPermission(Action::DELETE, 'ROLE_SUPER_ADMIN');
+//    }
 
     public function configureFields(string $pageName): iterable
     {

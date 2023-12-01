@@ -40,13 +40,18 @@ class LoginController extends AbstractController
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
+//  ----------------------------------------------------------------------------------------------------------   HOME
 
     #[Route(path: '/', name: 'app_home')]
-    public function home(): Response
+    public function home(ContenusRepository $contenusRepoHms): Response
     {
+        $homeMS=$contenusRepoHms->findBlogMaSelection('homeMaSelection', [Contenus::TYPE_BLOG]);
+        $homeCompteurs=$contenusRepoHms->findCompteurs('homeCompteurs', [Contenus::TYPE_COMPTEURS]);
 
-        return $this->render('/pages/home.html.twig', [
+        dd($homeMS, $homeCompteurs);
+        return $this->render('/pages/home.html.twig',[
         ]);
+
     }
 
     #[Route(path: '/header', name: 'app_header')]
@@ -109,7 +114,7 @@ class LoginController extends AbstractController
         ]);
     }
 
-//                                                      STYLES DETAILS
+//                                                                                               STYLES DETAILS
 
     #[Route(path: '/styles_scandinav', name: 'app_styles_scandinav')]
     public function stylesScandinav(): Response
@@ -128,7 +133,7 @@ class LoginController extends AbstractController
 
 
 
-//                                                    FIN STYLES DETAILS
+//                                                                                               FIN STYLES DETAILS
     #[Route(path: '/portfolio_details', name: 'app_portfolio_details')]
     public function portefolioD(): Response
     {

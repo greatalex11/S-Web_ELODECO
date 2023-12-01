@@ -24,6 +24,9 @@ class ContenusRepository extends ServiceEntityRepository
     /**
      * @return Contenus[] Returns an array of Contenus objects
      */
+
+
+// -------------------------------------------------------------------------------------------------  Home Ma Selection
     public function findByPagesName(string $pageName, array $types = [Contenus::TYPE_NEWS]): array
     {
         return $this->createQueryBuilder('c')
@@ -39,6 +42,42 @@ class ContenusRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+// -------------------------------------------------------------------------------------------------------  ESSAIS NEWS
+    public function findBlogMaSelection(string $pageName, array $types = [Contenus::TYPE_BLOG]): array
+    {
+        return $this->createQueryBuilder('c')
+            ->join("c.pages", "p")
+            ->andWhere('p.nom = :nom')
+            ->andWhere('c.publier = 1')
+            ->andWhere('c.type in (:types)')
+            ->setParameter('nom', $pageName)
+            ->setParameter('types', $types)
+            ->orderBy('c.createdAt', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+// --------------------------------------------------------------------------------------------------------  COMPTEURS
+
+    public function findCompteurs(string $pageName, array $types = [Contenus::TYPE_COMPTEURS]): array
+    {
+        return $this->createQueryBuilder('c')
+            ->join("c.pages", "p")
+            ->andWhere('p.nom = :nom')
+            ->andWhere('c.publier = 1')
+            ->andWhere('c.type in (:types)')
+            ->setParameter('nom', $pageName)
+            ->setParameter('types', $types)
+            ->orderBy('c.createdAt', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 
 //    public function findOneBySomeField($value): ?Contenus
 //    {
