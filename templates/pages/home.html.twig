@@ -608,40 +608,40 @@
             </div>
 
     <!--                                                         ***  boucle : ma selection  ***                                                   -->
+
             <div class="row">
-                {% for blockMs in homeMS %}
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
-                     <div class="news-one__single">
-                        <div class="news-one__img-box">
-                            <div class="news-one-img">
-                                {% for image in blockMs.Images %}
-                                    <img src="{{vich_uploader_asset(image)}}"
-                                    alt="{{ image.Titre }}">
-                                {% endfor %}
+                {% for blocks in home %}
+                    {% if blocks.type =="blogNews" %}
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="news-one__single">
+                                <div class="news-one__img-box">
+                                    <div class="news-one-img">
+                                        {% for image in blocks.Images %}
+                                            <img src="{{ vich_uploader_asset(image) }}"
+                                                 alt="{{ image.Titre }}">
+                                        {% endfor %}
 
+                                        <a href="{{ path('app_news_details') }}">
+                                            <span class="news-one__plus"></span>
+                                        </a>
+                                    </div>
+                                    <div class="news-one__date-box">
+                                        <p> {{ blocks.Titre2 }}</p>
+                                    </div>
+                                </div>
+                                <div class="news-one__content">
 
-
-                                <a href="{{ path('app_news_details')}}">
-                                    <span class="news-one__plus"></span>
-                                </a>
-                            </div>
-                            <div class="news-one__date-box">
-                                <p> {{ blockMs.Titre2}}</p>
+                                    <h3 class="news-one__title">
+                                        <a href="news-details.html">{{ blocks.Titre1 }}</a>
+                                    </h3>
+                                    <p class="news-one__text">{{ blocks.Texte1|raw }}</p>
+                                    <a href="{{ path('app_news_details') }}news-details.html"
+                                       class="news-one__btn">Plus d'articles</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="news-one__content">
-
-                            <h3 class="news-one__title">
-                                <a href="news-details.html">{{ blockMs.Titre1}}</a>
-                            </h3>
-                            <p class="news-one__text">{{ blockMs.Texte1|raw}}</p>
-                            <a href="{{ path('app_news_details') }}news-details.html" class="news-one__btn">Plus d'articles</a>
-                        </div>
-                    </div>
-                </div>
-
+                    {% endif %}
                  {% endfor %}
-
             </div>
         </div>
     </section>

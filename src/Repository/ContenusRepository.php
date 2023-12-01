@@ -26,14 +26,14 @@ class ContenusRepository extends ServiceEntityRepository
      */
 
 
-// -------------------------------------------------------------------------------------------------  Home Ma Selection
+// -------------------------------------------------------------------------------------------------  Home - All blocks
     public function findByPagesName(string $pageName): array
     {
         return $this->createQueryBuilder('c')
             ->join("c.pages", "p")
             ->andWhere('p.nom = :nom')
             ->andWhere('c.publier = 1')
-            ->andWhere('c.type in (:types)')
+//            ->andWhere('c.type in (:types)')
             ->setParameter('nom', $pageName)
 //            ->setParameter('types', $types)
             ->orderBy('c.createdAt', 'DESC')
