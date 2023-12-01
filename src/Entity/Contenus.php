@@ -18,14 +18,19 @@ class Contenus
 
     public const TYPE_COMPTEURS = 'compteurs';
     public const TYPE_NEWS = 'news';
-    public const TYPE_BLOG = 'blog';
+    public const TYPE_BLOGN= 'blogNews';
+    public const TYPE_BLOGF = 'blogFolio';
+    public const TYPE_BLOGS = 'blogService';
+
+
     public const TYPE_MENU = 'menu';
     public const TYPES = [
-        'Menu' => self::TYPE_MENU,
-        'News' => self::TYPE_NEWS,
-        'Blog' => self::TYPE_BLOG,
+        'menu' => self::TYPE_MENU,
+        'news' => self::TYPE_NEWS,
+        'blogNews' => self::TYPE_BLOGN,
+        'blogFolio' => self::TYPE_BLOGF,
+        'blogService' => self::TYPE_BLOGS,
         'compteurs' => self::TYPE_COMPTEURS,
-
     ];
 
     use DateTrait;
@@ -66,23 +71,14 @@ class Contenus
     #[ORM\Column(nullable: true)]
     private ?bool $publier = null;
 
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private ?array $liste = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->pages = new ArrayCollection();
     }
-
-//    private array $array=[];
-//    public function getArray(): array
-//    {
-//        return $this->array;
-//    }
-//
-//    public function setArray(array $array): static
-//    {
-//        $this -> array=$array;
-//        return $this;
-//    }
 
     public function getId(): ?int
     {
@@ -232,6 +228,18 @@ class Contenus
     public function setPublier(?bool $publier): static
     {
         $this->publier = $publier;
+
+        return $this;
+    }
+
+    public function getListe(): ?array
+    {
+        return $this->liste;
+    }
+
+    public function setListe(?array $liste): static
+    {
+        $this->Liste = $liste;
 
         return $this;
     }

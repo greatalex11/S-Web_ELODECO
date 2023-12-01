@@ -62,7 +62,7 @@ class ContenusCrudController extends AbstractCrudController
             ->setColumns(12)
             ->setTemplatePath('fields/images.html.twig');
         yield DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Dernière modification');
-//        yield CollectionField::new("array");
+        yield CollectionField::new('liste');
 
     }
 

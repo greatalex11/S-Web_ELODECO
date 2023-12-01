@@ -27,7 +27,7 @@ class ContenusRepository extends ServiceEntityRepository
 
 
 // -------------------------------------------------------------------------------------------------  Home Ma Selection
-    public function findByPagesName(string $pageName, array $types = [Contenus::TYPE_NEWS]): array
+    public function findByPagesName(string $pageName): array
     {
         return $this->createQueryBuilder('c')
             ->join("c.pages", "p")
@@ -35,7 +35,7 @@ class ContenusRepository extends ServiceEntityRepository
             ->andWhere('c.publier = 1')
             ->andWhere('c.type in (:types)')
             ->setParameter('nom', $pageName)
-            ->setParameter('types', $types)
+//            ->setParameter('types', $types)
             ->orderBy('c.createdAt', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
