@@ -46,8 +46,7 @@ class LoginController extends AbstractController
     public function home(ContenusRepository $contenusRepoHms): Response
     {
         $home=$contenusRepoHms->findByPagesName('home');
-//        $homeCompteurs=$contenusRepoHms->findCompteurs('homeCompteurs', [Contenus::TYPE_COMPTEURS]);
-
+//       $homeCompteurs=$contenusRepoHms->findCompteurs('homeCompteurs', [Contenus::TYPE_COMPTEURS]);
 //       dd($home);
         return $this->render('/pages/home.html.twig',[
             "home" => $home,

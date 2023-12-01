@@ -417,8 +417,14 @@
 
     <section class="counters-one counters-one-martopminus">
         <div class="counters-one-pattern"
-             style="background-image: url(assets/images/pattern/counter-one-pattern.jpg)"></div>
+             style="background-image: url(assets/images/pattern/counter-one-pattern.jpg)">
+        </div>
         <div class="container">
+            {% for blocks in home %}
+            {% if blocks.type =="compteurs" %}
+
+
+
             <ul class="counters-one__box list-unstyled">
                 <li class="counter-one__single">
                     <div class="counter-one__icon">
@@ -431,24 +437,26 @@
                     <div class="counter-one__icon">
                         <span class="icon-architect-5"></span>
                     </div>
-                    <h3 class="odometer" data-count="50">00</h3>
-                    <p class="counter-one__text">Des partenaires</p>
+                    <h3 class="odometer" data-count="{{ blocks.texte1|striptags }}">00</h3>
+                    <p class="counter-one__text">{{ blocks.titre1 }}</p>
                 </li>
                 <li class="counter-one__single">
                     <div class="counter-one__icon">
                         <span class="icon-buildings"></span>
                     </div>
-                    <h3 class="odometer" data-count="3">00</h3>
-                    <p class="counter-one__text">3 niveaux de service</p>
+                    <h3 class="odometer" data-count="{{ blocks.texte2 }}">00</h3>
+                    <p class="counter-one__text">{{ blocks.titre2 }}</p>
                 </li>
                 <li class="counter-one__single">
                     <div class="counter-one__icon">
                         <span class="icon-satisfaction"></span>
                     </div>
-                    <h3 class="odometer" data-count="100">00 ></h3><span class="text-white">%</span>
-                    <p class="counter-one__text">Clients satisfaits</p>
+                    <h3 class="odometer" data-count=" {{ blocks.texte3 }}">00 ></h3><span class="text-white">%</span>
+                    <p class="counter-one__text">{{ blocks.titre3 }}</p>
                 </li>
             </ul>
+            {% endif %}
+            {% endfor %}
         </div>
     </section>
     <!--                                            fin section 6                                              -->
