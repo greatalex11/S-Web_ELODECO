@@ -61,45 +61,51 @@
 
     <section class="services-one">
         <div class="services-one-container">
+
             <div class="section-title text-center">
                 <span class="section-title__tagline">Nous vous offrons</span>
                 <h2 class="section-title__title">Des services de qualité</h2>
             </div>
             <div class="row">
-                <div class="col-xl-4 col-lg-4">
+                {% for Contenus in services %}
+                {% if Contenus.type == "3ServicesQUALITE" %}
 
-                    <div class="services-one__single">
-                        <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">Designer professiel</a></h2>
-                        <p class="services-one__text">Je vous propose des plans 3D, des conseils sur le choix des motifs, des matériaux, des couleurs.</p>
+                <div class="col-xl-4 col-lg-4 " >
+
+                    <div class="services-one__single" style="min-height:450px">
+                        <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">{{ Contenus.titre1 }}</a></h2>
+                        <p class="services-one__text">{{ Contenus.texte1|striptags|u.truncate(150,'...',false) }}</p>
                         <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         <div class="services-one__icon">
                             <span class="icon-furnitures"></span>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4">
+                <div class="col-xl-4 col-lg-4 ">
 
                     <!--SERVICE 2 -->
-                    <div class="services-one__single">
-                        <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">Architectures</a></h2>
-                        <p class="services-one__text">Création d'espaces sur mesure, optimisation des agencements, augmentation de l'agrément de vie.</p>
+                    <div class="services-one__single" style="min-height:450px">
+                        <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">{{ Contenus.titre2 }}</a></h2>
+                        <p class="services-one__text">{{ Contenus.texte2|striptags|u.truncate(150,'...',false) }}</p>
                         <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         <div class="services-one__icon">
                             <span class="icon-buildings"></span>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4">
+                <div class="col-xl-4 col-lg-4 ">
                     <!--SERVICE 3-->
-                    <div class="services-one__single">
-                        <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">Accompagnement pilotage</a></h2>
-                        <p class="services-one__text">Choix des artisans, sélection des offres, gestion du planning, plans, modularités...</p>
+                    <div class="services-one__single" style="min-height:450px">
+                        <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">{{ Contenus.titre3 }}</a></h2>
+                        <p class="services-one__text">{{ Contenus.texte3|striptags|u.truncate(150,'...',false)}}</p>
                         <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         <div class="services-one__icon">
                             <span class="icon-house-design"></span>
                         </div>
                     </div>
                 </div>
+                {%endif %}
+                {%endfor %}
             </div>
         </div>
     </section>

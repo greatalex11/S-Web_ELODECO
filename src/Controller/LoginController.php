@@ -45,11 +45,10 @@ class LoginController extends AbstractController
     #[Route(path: '/', name: 'app_home')]
     public function home(ContenusRepository $contenusRepo): Response
     {
-        $home=$contenusRepo->findByPagesName('home');
-
+        $home = $contenusRepo->findByPagesName('home');
 //       $homeCompteurs=$contenusRepo->findCompteurs('homeCompteurs', [Contenus::TYPE_COMPTEURS]);
 //       dd($home);
-        return $this->render('/pages/home.html.twig',[
+        return $this->render('/pages/home.html.twig', [
             "home" => $home,
         ]);
     }
@@ -68,32 +67,39 @@ class LoginController extends AbstractController
         return $this->render('_partial/_footer.html.twig', [
         ]);
     }
-
+// ---------------------------------------------------------------------------------------------------------   SERVICES
 
     #[Route(path: '/services', name: 'app_services')]
-    public function services(): Response
+    public function services(ContenusRepository $contenusRepo): Response
     {
+        $services = $contenusRepo->findByPagesName('services');
         return $this->render('pages/services.html.twig', [
+            "services" => $services,
         ]);
+
     }
+
     #[Route(path: '/services_details', name: 'app_services_details')]
     public function servicesD(): Response
     {
         return $this->render('pages/services_details.html.twig', [
         ]);
     }
+
     #[Route(path: '/about', name: 'app_about')]
     public function about(): Response
     {
         return $this->render('pages/about.html.twig', [
         ]);
     }
+
     #[Route(path: '/our_mission', name: 'app_our_mission')]
     public function mission(): Response
     {
         return $this->render('pages/our_mission.html.twig', [
         ]);
     }
+
     #[Route(path: '/team', name: 'app_team')]
     public function team(): Response
     {
@@ -107,6 +113,7 @@ class LoginController extends AbstractController
         return $this->render('pages/portfolio.html.twig', [
         ]);
     }
+
     #[Route(path: '/styles', name: 'app_styles')]
     public function styles(): Response
     {
@@ -132,7 +139,6 @@ class LoginController extends AbstractController
     }
 
 
-
 //                                                                                               FIN STYLES DETAILS
     #[Route(path: '/portfolio_details', name: 'app_portfolio_details')]
     public function portefolioD(): Response
@@ -140,20 +146,24 @@ class LoginController extends AbstractController
         return $this->render('pages/portfolio_details.html.twig', [
         ]);
     }
+
     #[Route(path: '/news', name: 'app_news')]
     public function news(ContenusRepository $contenusRepository): Response
     {
-        $news=$contenusRepository->findByPagesName('News', [Contenus::TYPE_NEWS]);
+        $news = $contenusRepository->findByPagesName('News', [Contenus::TYPE_NEWS]);
 //        dd($news);
-           return $this->render('pages/news.html.twig', [
+        return $this->render('pages/news.html.twig', [
         ]);
     }
-    #[Route(path: '/news_details', name: 'app_news_details')]
+
+    #[Route(path: '/news/{id}', name: 'app_news_details')]
     public function newsD(): Response
     {
+        // recup la news
         return $this->render('pages/news_details.html.twig', [
         ]);
     }
+
     #[Route(path: '/contact', name: 'app_contact')]
     public function contact(): Response
     {
@@ -167,13 +177,13 @@ class LoginController extends AbstractController
         return $this->render('pages/espace_client.html.twig', [
         ]);
     }
+
     #[Route(path: '/artisan', name: 'app_artisan')]
     public function artisanView(): Response
     {
         return $this->render('pages/espace_artisan.html.twig', [
         ]);
     }
-
 
 
 }

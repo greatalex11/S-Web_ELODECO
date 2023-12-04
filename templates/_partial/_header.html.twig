@@ -1,9 +1,10 @@
 <header class="main-header clearfix">
 
     <div class="main-header__three-line-icon top-50 mb-xl-2">
-        {#        flex-column align-middle justify-content-center#}
+        {#        flex-column align-middle justify-content-center #}
         <a href="#" class="side-menu__toggler  ">
-            <img src="{{ asset('assets/images/resources/main-header-three-line-icon.png') }}" alt="icone 3 barres horizontale d'accès à l'espace personnel">
+            <img src="{{ asset('assets/images/resources/main-header-three-line-icon.png') }}"
+                 alt="icone 3 barres horizontale d'accès à l'espace personnel">
             <i class="font-italic fs-6 m-lg-2">Espace personnel</i>
         </a>
     </div>
@@ -72,7 +73,7 @@
                                 <ul>
                                     <li><a href="{{ path('app_about') }}">A propos</a></li>
                                     <li><a href="{{ path('app_our_mission') }}">Ma mission</a></li>
-{#                                    <li><a href="{{ path('app_team') }}">Team</a></li>#}
+                                    {#                                    <li><a href="{{ path('app_team') }}">Team</a></li> #}
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -87,12 +88,8 @@
                                 <a href="{{ path('app_styles') }}">Styles déco</a>
                             </li>
 
-                            <li class="dropdown">
-                                <a href="#">News</a>
-                                <ul>
-                                    <li><a href="{{ path('app_news') }}">News</a></li>
-                                    <li><a href="{{ path('app_news_details') }}">News Details</a></li>
-                                </ul>
+                            <li class="">
+                                <a href="{{ path('app_news') }}">News</a>
                             </li>
                             <li><a href="{{ path('app_contact') }}">Contact</a></li>
                         </ul>
@@ -101,7 +98,7 @@
                             <a href="{{ path('app_home') }}" class="main-menu__read-more-btn thm-btn">En savoir
                                 plus </a>
                         </div>
-                     </div>
+                    </div>
                 </nav>
             </div>
         </div>

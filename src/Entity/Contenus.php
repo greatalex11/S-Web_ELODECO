@@ -22,17 +22,19 @@ class Contenus
     public const TYPE_BLOGS = 'blogService';
     public const TYPE_3SERVICES = '3Services';
     public const TYPE_3SERVICESPRO = '3ServicesPRO';
+    public const TYPE_3SERVICESQUALITE = '3ServicesQUALITE';
 
     public const TYPE_MENU = 'menu';
     public const TYPES = [
-        'menu' => self::TYPE_MENU,
-        'news' => self::TYPE_NEWS,
-        'blogNews' => self::TYPE_BLOGN,
-        'blogFolio' => self::TYPE_BLOGF,
-        'blogService' => self::TYPE_BLOGS,
-        'compteurs' => self::TYPE_COMPTEURS,
-        '3Services' => self::TYPE_3SERVICES,
-        '3ServicesPRO'=>self::TYPE_3SERVICESPRO,
+        //  'menu' => self::TYPE_MENU,
+        //   'news' => self::TYPE_NEWS,
+        'News' => self::TYPE_BLOGN,
+        'Folio' => self::TYPE_BLOGF,
+        'Service' => self::TYPE_BLOGS,
+        'Compteurs' => self::TYPE_COMPTEURS,
+        '3 Services' => self::TYPE_3SERVICES,
+        '3 Services PRO' => self::TYPE_3SERVICESPRO,
+        '3 Services QUALITE' => self::TYPE_3SERVICESQUALITE,
     ];
 
     use DateTrait;
@@ -246,7 +248,7 @@ class Contenus
 
     public function setListe(?array $liste): static
     {
-        $this->Liste = $liste;
+        $this->liste = array_values($liste);
 
         return $this;
     }
