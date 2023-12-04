@@ -6,10 +6,16 @@
     {% for image in field.value %}
         {# @var image \App\Entity\Image #}
         <div style="display: flex; flex-direction: column">
-            <img style='width: 50%' src="{{ vich_uploader_asset(image) }}" >
+            <img style='width: 50%' src="{{ vich_uploader_asset(image) }}" alt="{{ image.titre }}">
         </div>
         <hr>
     {% endfor %}
 {% else %}
-    <span class="badge badge-secondary">{{ field.value|length }}</span>
+    <a href="{{ ea_url()
+        .setController('App\\Controller\\Admin\\ImageCrudController')
+        .set('filters[contenus][value][]',entity.instance.id)
+        .set('filters[contenus][comparison]', '=') }}">
+        <span class="badge badge-secondary">{{ field.value|length }}</span>
+    </a>
+
 {% endif %}

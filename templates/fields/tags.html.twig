@@ -4,16 +4,15 @@
 {% if ea.crud.currentPage == "detail" %}
 
     {% for page in field.value %}
-    {# @var page \App\Entity\Page #}
-    <div style="display: flex; flex-direction: column">
-
-        <div>Nom : {{ page.nom }}</div>
-        <div>Commentaires : {{ page.commentaires }}</div>
-        <div>Nb contenus : {{ page.contenus|length }}</div>
-    </div>
+        {# @var page \App\Entity\Page #}
+        <div style="display: flex; flex-direction: column">
+            <div>Nom : {{ page.nom }}</div>
+            <div>Commentaires : {{ page.commentaires }}</div>
+        </div>
         <hr>
     {% endfor %}
 {% else %}
+
     {% for value in field.value %}
         <span class="badge badge-info">{{ value }}</span>
     {% else %}

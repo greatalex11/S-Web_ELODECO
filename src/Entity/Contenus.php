@@ -8,7 +8,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Self_;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContenusRepository::class)]
@@ -18,7 +17,7 @@ class Contenus
 
     public const TYPE_COMPTEURS = 'compteurs';
     public const TYPE_NEWS = 'news';
-    public const TYPE_BLOGN= 'blogNews';
+    public const TYPE_BLOGN = 'blogNews';
     public const TYPE_BLOGF = 'blogFolio';
     public const TYPE_BLOGS = 'blogService';
 
@@ -69,7 +68,7 @@ class Contenus
     private Collection $pages;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $publier = null;
+    private ?bool $publier = false;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private ?array $liste = null;
@@ -78,6 +77,11 @@ class Contenus
     {
         $this->images = new ArrayCollection();
         $this->pages = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return "Contenu #" . $this->getId();
     }
 
     public function getId(): ?int

@@ -3,14 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Page;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 
 class PageCrudController extends AbstractCrudController
 {
@@ -37,7 +36,13 @@ class PageCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')->hideOnForm();
-        yield TextField::new('nom');//->setDisabled();
+        yield TextField::new('nom')->formatValue(function (string $value, Page $page) {
+            return "<a href='" . $this->container->get(AdminUrlGenerator::class)
+                    ->setController(ContenusCrudController::class)
+                    ->set('filters[pages][value][]', $page->getId())
+                    ->set('filters[pages][comparison]', '=')
+                    ->generateUrl() . "'>{$value}</a>";
+        });//->setDisabled();
         yield TextareaField::new('commentaires');
         yield AssociationField::new('contenus')->hideOnForm();
     }

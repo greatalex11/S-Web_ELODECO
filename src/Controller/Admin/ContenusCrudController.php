@@ -5,11 +5,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\Contenus;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Option\TextAlign;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
@@ -23,6 +24,12 @@ class ContenusCrudController extends AbstractCrudController
     {
         return Contenus::class;
 
+    }
+
+    public function configureFilters(Filters $filters): Filters
+    {
+        return $filters
+            ->add('pages');
     }
 
     public function configureCrud(Crud $crud): Crud
@@ -44,15 +51,14 @@ class ContenusCrudController extends AbstractCrudController
         yield ChoiceField::new('type')
             ->setChoices(Contenus::TYPES);
         yield FormField::addTab("Contenu");
-        yield FormField::addPanel("Titres")->collapsible()->renderCollapsed();
         yield TextField::new('titre1');
         yield TextField::new('titre2')->hideOnIndex()->setColumns(6);
         yield TextField::new('titre3')->hideOnIndex();
-        yield FormField::addPanel("Détails");
         yield TextEditorField::new('texte1')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
         yield TextareaField::new('texte2')->hideOnIndex();
         yield TextareaField::new('texte3')->hideOnIndex();
-        yield BooleanField::new('publier');
+        yield BooleanField::new('publier')->renderAsSwitch();
+        yield CollectionField::new('liste')->hideOnIndex();
         yield CollectionField::new('images')
             ->useEntryCrudForm(ImageCrudController::class)
             ->setEntryIsComplex(true)
@@ -62,7 +68,7 @@ class ContenusCrudController extends AbstractCrudController
             ->setColumns(12)
             ->setTemplatePath('fields/images.html.twig');
         yield DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Dernière modification');
-        yield CollectionField::new('liste');
+
 
     }
 
