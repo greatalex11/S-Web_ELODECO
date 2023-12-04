@@ -72,7 +72,7 @@ class Contenus
     #[ORM\Column(nullable: true)]
     private ?bool $publier = false;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[ORM\Column(type: Types::JSON, nullable: true)]
     private ?array $liste = null;
 
     public function __construct()
