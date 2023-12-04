@@ -43,10 +43,11 @@ class LoginController extends AbstractController
 //  ----------------------------------------------------------------------------------------------------------   HOME
 
     #[Route(path: '/', name: 'app_home')]
-    public function home(ContenusRepository $contenusRepoHms): Response
+    public function home(ContenusRepository $contenusRepo): Response
     {
-        $home=$contenusRepoHms->findByPagesName('home');
-//       $homeCompteurs=$contenusRepoHms->findCompteurs('homeCompteurs', [Contenus::TYPE_COMPTEURS]);
+        $home=$contenusRepo->findByPagesName('home');
+
+//       $homeCompteurs=$contenusRepo->findCompteurs('homeCompteurs', [Contenus::TYPE_COMPTEURS]);
 //       dd($home);
         return $this->render('/pages/home.html.twig',[
             "home" => $home,

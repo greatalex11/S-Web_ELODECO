@@ -117,8 +117,13 @@
         <div class="container">
             <div class="steps__inner">
                 <div class="row">
+                    {% for troisServices in home %}
+
+                    {% if troisServices.type =="3Services" %}
+
+
                     <div class="col-xl-4 col-lg-4">
-                        <!--Steps Single-->
+                        <!-- module 1 -->
                         <div class="steps__single">
                             <div class="steps__icon">
                                 <span class="icon-architect"></span>
@@ -126,12 +131,12 @@
                                 </div>
                             </div>
                             <div class="steps__text">
-                                <h4>Décoration <br> Ambiance & agrément</h4>
+                                <h4>{{ troisServices.titre1}} <br> {{ troisServices.texte1|striptags|raw  }}</h4>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4">
-                        <!--Steps Single-->
+                        <!--module  2-->
                         <div class="steps__single">
                             <div class="steps__icon">
                                 <span class="icon-architect-1"></span>
@@ -139,12 +144,12 @@
                                 </div>
                             </div>
                             <div class="steps__text">
-                                <h4>Plan 3D <br> Espaces intérieurs</h4>
+                                <h4>{{ troisServices.titre2 }}<br> {{ troisServices.texte2 }}</h4>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4">
-                        <!--Steps Single-->
+                        <!--module 3-->
                         <div class="steps__single">
                             <div class="steps__icon">
                                 <span class="icon-architect-2"></span>
@@ -152,10 +157,12 @@
                                 </div>
                             </div>
                             <div class="steps__text">
-                                <h4>Gestion <br> de projet</h4>
+                                <h4>{{ troisServices.titre3 }}<br> {{ troisServices.texte3 }}</h4>
                             </div>
                         </div>
                     </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -422,8 +429,6 @@
         <div class="container">
             {% for blocks in home %}
             {% if blocks.type =="compteurs" %}
-
-
 
             <ul class="counters-one__box list-unstyled">
                 <li class="counter-one__single">
