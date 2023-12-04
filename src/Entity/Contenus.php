@@ -21,8 +21,8 @@ class Contenus
     public const TYPE_BLOGN= 'blogNews';
     public const TYPE_BLOGF = 'blogFolio';
     public const TYPE_BLOGS = 'blogService';
-
     public const TYPE_3SERVICES = '3Services';
+    public const TYPE_3SERVICESPRO = '3ServicesPRO';
 
     public const TYPE_MENU = 'menu';
     public const TYPES = [
@@ -33,6 +33,7 @@ class Contenus
         'blogService' => self::TYPE_BLOGS,
         'compteurs' => self::TYPE_COMPTEURS,
         '3Services' => self::TYPE_3SERVICES,
+        '3ServicesPRO'=>self::TYPE_3SERVICESPRO,
     ];
 
     use DateTrait;

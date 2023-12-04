@@ -253,7 +253,7 @@
     </section>
     <!--                                                                       fin section 3                                           -->
 
-    <!--                                       HOME - SECTION 4 - PLANS 3D  - image Ressources/ img1: 513x513  img2: 290x303           -->
+    <!--                                                  SECTION 4 - SERVICES PRO - img1: 513x513  img2: 290x303                          -->
 
     <section class="services-two">
         <div class="container">
@@ -272,6 +272,10 @@
                 </div>
             </div>
             <div class="row">
+
+                {% for servicesPRO in home %}
+                {% if servicesPRO.type == '3ServicesPRO' %}
+
                 <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-duration="1500ms">
                     <!--1er service-->
                     <div class="services-two__single">
@@ -280,9 +284,8 @@
                         <div class="services-two__icon">
                             <span class="icon-house-design"></span>
                         </div>
-                        <h2 class="services-two__title"><a href="services-details.html">Design & Planning</a></h2>
-                        <p class="services-two__text-2">Sur la base des nos plans, nos artisans s'entendent pour tenir
-                            les délais et les coûts.</p>
+                        <h2 class="services-two__title"><a href="{{path('app_services_details')}}">{{servicesPRO.titre1}}</a></h2>
+                        <p class="services-two__text-2">{{servicesPRO.texte1|striptags}}</p>
                         <a href="{{ path('app_services_details') }}" class="services-one__btn services-two__btn">En
                             savoir plus</a>
                     </div>
@@ -296,9 +299,9 @@
                         <div class="services-two__icon">
                             <span class="icon-kitchen"></span>
                         </div>
-                        <h2 class="services-two__title"><a href="services-details.html">Home staging & Décoration</a>
+                        <h2 class="services-two__title"><a href="services-details.html">{{servicesPRO.titre2}}</a>
                         </h2>
-                        <p class="services-two__text-2">Des volumes, un éclairage, des couleurs et des matières.</p>
+                        <p class="services-two__text-2">{{servicesPRO.texte2}}</p>
                         <a href="{{ path('app_services_details') }}" class="services-one__btn services-two__btn">En
                             savoir plus</a>
                     </div>
@@ -312,12 +315,13 @@
                         <div class="services-two__icon">
                             <span class="icon-architect-3"></span>
                         </div>
-                        <h2 class="services-two__title"><a href="services-details.html">Exterior Design</a></h2>
-                        <p class="services-two__text-2">Lorem ipsum dolor sit amet, consectetur notted adipisicing
-                            lipsim elit sed do.</p>
+                        <h2 class="services-two__title"><a href="services-details.html">{{servicesPRO.titre3}}</a></h2>
+                        <p class="services-two__text-2">{{servicesPRO.texte3}}</p>
                         <a href="services-details.html" class="services-one__btn services-two__btn">Read More</a>
                     </div>
                 </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </section>
