@@ -83,6 +83,17 @@ class ContenusCrudController extends AbstractCrudController
             yield TextField::new('titre3')->setLabel(' 3ème service pro')->hideOnIndex();
             yield TextEditorField::new('texte3')->setLabel('argument 3')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
 
+        } elseif ($contenu && $contenu->getType() === Contenus::TYPE_1SERVICEPRO) {
+            yield TextField::new('titre1')->setLabel('Ce que tu fais... ?');
+            yield TextField::new('titre2')->setLabel('... de meilleur ?')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+            yield TextEditorField::new('texte2')->setLabel('en quelques mots')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+            yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
+                ->setLabel('image 672x713 - titre important pour référencement')
+                ->setEntryIsComplex(true)
+                ->setFormTypeOptions([
+                    'by_reference' => false,  ])
+                ->setColumns(12)
+                ->setTemplatePath('fields/images.html.twig');
 
 
         } elseif ($contenu && $contenu->getType() === Contenus::TYPE_3SERVICESQUALITE) {

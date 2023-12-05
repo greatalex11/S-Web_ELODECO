@@ -22,6 +22,7 @@ class Contenus
     public const TYPE_BLOGS = 'blogService';
     public const TYPE_3SERVICES = '3Services';
     public const TYPE_3SERVICESPRO = '3ServicesPRO';
+    public const TYPE_1SERVICEPRO = '1ServicesPRO';
     public const TYPE_3SERVICESQUALITE = '3ServicesQUALITE';
 
     public const TYPE_MENU = 'menu';
@@ -34,6 +35,7 @@ class Contenus
         'Compteurs' => self::TYPE_COMPTEURS,
         '3 Services' => self::TYPE_3SERVICES,
         '3 Services PRO' => self::TYPE_3SERVICESPRO,
+        '1 Service PRO' => self::TYPE_1SERVICEPRO,
         '3 Services QUALITE' => self::TYPE_3SERVICESQUALITE,
     ];
 

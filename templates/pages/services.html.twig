@@ -27,30 +27,57 @@
                 <div class="col-xl-6">
                     <div class="insuring__left">
                         <div class="insuring__img">
-                            <img src="{{ asset('assets/images/resources/sejour_moyen.jpg') }}" alt="photo d'un sejour ancien avec parquet avec vue sur le jardin, peinture blanche et moulures">
+                            {% for contenu in services %}
+                                {% if contenu.type =="1ServicesPRO" %}
+                                {% if contenu.images[0] is defined %}
+                                    {% set image1 = contenu.Images[0] %}
+{#                                {{ dump(image1.image) }}#}
+                                    <img src="{{ vich_uploader_asset(image1) }}"
+                                         alt="{{ image.Titre|default('image') }}">
+
+{#                            {{ dump(image1[0]) }}#}
+
+
+                                {% endif %}
+                                {% endif %}
+                            {% endfor %}
+
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="insuring__right">
+
                         <div class="insuring__your-future-box">
+                            {% for servicepro in services %}
+                            {% if servicepro.type == "1ServicesPRO" %}
+
+
                             <div class="section-title text-left">
-                                <span class="section-title__tagline">Nous travaillons sur</span>
-                                <h2 class="section-title__title">Des projets personnalisés</h2>
+                                <span class="section-title__tagline">{{ servicepro.titre1|striptags }}</span>
+                                <h2 class="section-title__title">{{ servicepro.titre2|striptags }}</h2>
                             </div>
-                            <p class="insuring__text">Les projets immobiliers sont nombreux. En tant que professionnel, je vous accompagne dans vos idées de changement,
-                                de création d'espace, ou pour mettre en valeur votre bien: vente, location, création d'un gîte, chambre d'hôtes, etc...</p>
+                            <p class="insuring__text">{{ servicepro.texte2|striptags }}</p>
+
+                            {% endif %}
+                            {% endfor %}
+
                             <div class="insuring__counter-list-box">
+                                {% for compteurs in services %}
+                                {% if compteurs.type == "compteurs" %}
+
                                 <ul class="list-unstyled insuring__counter-list">
                                     <li>
-                                        <h2 class="odometer" data-count="50">00</h2>
-                                        <p class="insuring__counter-list-text">Partenaires et artisans</p>
+                                        <h2 class="odometer" data-count="{{ compteurs.texte1|striptags }}">00</h2>
+                                        <p class="insuring__counter-list-text"> {{ compteurs.titre1 }}</p>
                                     </li>
                                     <li>
-                                        <h2 class="odometer" data-count="100">00</h2><span class="text-black-50">%</span>
-                                        <p class="insuring__counter-list-text">Clients satisfaits</p>
+                                        <h2 class="odometer" data-count="{{ compteurs.texte2|striptags }}">00</h2>
+                                        <p class="insuring__counter-list-text">{{ compteurs.titre2 }}</p>
                                     </li>
                                 </ul>
+                                {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                     </div>

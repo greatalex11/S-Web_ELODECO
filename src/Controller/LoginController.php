@@ -73,6 +73,7 @@ class LoginController extends AbstractController
     public function services(ContenusRepository $contenusRepo): Response
     {
         $services = $contenusRepo->findByPagesName('services');
+//        dd($services);
         return $this->render('pages/services.html.twig', [
             "services" => $services,
         ]);
