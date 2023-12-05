@@ -30,29 +30,43 @@
     <section class="about-company">
         <div class="container">
             <div class="row">
+                {% for contenu in about %}
+                {% if contenu.type =="blogAboutConcept" %}
+
                 <div class="col-xl-6">
+
+                    {% if contenu.liste is defined %}
+                        {% set clef = contenu.liste %}
+
+
                     <div class="about-company__img">
-                        <img src="assets/images/resources/drawcard.png" alt="plan 3D d'une petite maison posée sur le sol d'une entrée d'immeuble, style classieux et moderne">
-                        <div class="about-company__trusted-by">
-                            <p>Engagement</p>
-                            <span>100%</span>
+
+                        {% if contenu.Images[0] is defined %}
+                            {% set image = contenu.Images[0] %}
+                            <img src="{{ vich_uploader_asset(image) }}"
+                                 alt="{{ image.Titre|default('image') }}">
+                        {% endif %}
+                     <div class="about-company__trusted-by">
+                            <p>{{clef[0]|striptags}}</p>
+                            <span>{{clef[1]|striptags}}</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="about-company__right">
                         <div class="section-title text-left">
-                            <span class="section-title__tagline">Ma vision</span>
-                            <h2 class="section-title__title">Concept & Elégance</h2>
+                            <span class="section-title__tagline">{{contenu.titre1|striptags }}</span>
+                            <h2 class="section-title__title">{{contenu.titre2|striptags }}</h2>
                         </div>
                         <ul class="about-company__points list-unstyled">
-                            <li><span>/</span> Trouver la meilleure solution</li>
-                            <li><span>/</span> Jouer sur les volumes et les matériaux</li>
+                            <li><span>/</span> {{contenu.texte1 |striptags}}}}</li>
+                            <li><span>/</span> {{contenu.texte2 |striptags}}</li>
                         </ul>
+
                         <div class="about-company__progress">
-                            <h4 class="about-company__progress-title">Designer</h4>
+                            <h4 class="about-company__progress-title">{{clef[2]|striptags}}</h4>
                             <div class="bar">
-                                <div class="bar-inner count-bar" data-percent="77%">
+                                <div class="bar-inner count-bar" data-percent="{{clef[3]|striptags}}">
                                     <div class="count-text">77%</div>
                                 </div>
                             </div>
@@ -62,16 +76,18 @@
                                 <span class="icon-blueprint"></span>
                             </div>
                             <div class="about-company__text-box">
-                                <p class="about-company__text">Passionnée</p>
+                                <p class="about-company__text">{{clef[4]|striptags}}</p>
                             </div>
+
+
                         </div>
-                        <p class="about-company__text-2">Intuitivement, j'ai toujours apporté conseil et trouvé des astuces déco pour mon entourage, par plaisir.
-                        Pour un couloir, un bureau, une pièce à vivre ... un objet remis au bout du jour, la patte de l'expert! Maintenant experte certifiée,
-                            j'exerce auprès des professionnels et des particuliers.
-                        </p>
+                        <p class="about-company__text-2">{{contenu.texte2 |striptags}} </p>
                         <a href="{{ path('app_portfolio')}}" class="about-company__btn thm-btn">Portfolio</a>
                     </div>
                 </div>
+                        {% endif %}
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </section>

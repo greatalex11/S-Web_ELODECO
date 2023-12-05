@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Option\TextAlign;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
@@ -101,6 +102,22 @@ class ContenusCrudController extends AbstractCrudController
             yield TextField::new('titre2')->setLabel('En bref, argument choc')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
             yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
                 ->setLabel('image 370x133 - titre important pour référencement')
+                ->setEntryIsComplex(true)
+                ->setFormTypeOptions([
+                    'by_reference' => false,  ])
+                ->setColumns(12)
+                ->setTemplatePath('fields/images.html.twig');
+
+        } elseif ($contenu && $contenu->getType() === Contenus::TYPE_BLOGAC) {
+            yield TextField::new('titre1')->setLabel('Mon leitmotiv... ?');
+            yield TextField::new('titre2')->setLabel('... la différence ?')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+            yield TextEditorField::new('texte1')->setLabel('atout 1')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+            yield TextEditorField::new('texte2')->setLabel('atout 2')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+//            yield TextField::new('titre3')->setLabel('... ')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+            yield TextEditorField::new('texte3')->setLabel('Ma note perso en quelques mots')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+            yield ArrayField::new('liste')->setLabel('les 5 clefs')->hideOnIndex();
+            yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
+                ->setLabel('image 570x698 - titre important pour référencement')
                 ->setEntryIsComplex(true)
                 ->setFormTypeOptions([
                     'by_reference' => false,  ])

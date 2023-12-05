@@ -86,11 +86,13 @@ class LoginController extends AbstractController
         return $this->render('pages/services_details.html.twig', [
         ]);
     }
-
+// ---------------------------------------------------------------------------------------------------------    ABOUT
     #[Route(path: '/about', name: 'app_about')]
-    public function about(): Response
+    public function about(ContenusRepository $contenusRepo): Response
     {
+        $services = $contenusRepo->findByPagesName('About');
         return $this->render('pages/about.html.twig', [
+            'about'=>$services,
         ]);
     }
 
