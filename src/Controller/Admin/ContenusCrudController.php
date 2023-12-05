@@ -17,6 +17,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 
 class ContenusCrudController extends AbstractCrudController
 {
@@ -179,6 +180,24 @@ class ContenusCrudController extends AbstractCrudController
         }
         yield BooleanField::new('publier')->renderAsSwitch();
         yield DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Dernière modification');
+
+
     }
+    public function createBlogDetail(Contenus $contenus) {
+
+        $form = $this->createForm(Contenus::class, $contenus);
+
+        $form->add('button', ButtonType::class, [
+            'label' => 'Ajouter des détails au blog',
+        ]);
+//        if ($form->isSubmitted()) {
+            return $this->render('pages/news_details.html.twig', [
+                'form' => $form->createView(),
+            ]);
+
+        }
+
+
+
 
 }
