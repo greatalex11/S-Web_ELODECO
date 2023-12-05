@@ -20,7 +20,7 @@
             </div>
         </div>
     </section>
-
+    <!--                                                                              LE SERVICE PRO                                                                    -->
     <section class="insuring insuring-page">
         <div class="container">
             <div class="row">
@@ -31,41 +31,29 @@
                                 {% if contenu.type =="1ServicesPRO" %}
                                 {% if contenu.images[0] is defined %}
                                     {% set image1 = contenu.Images[0] %}
-{#                                {{ dump(image1.image) }}#}
                                     <img src="{{ vich_uploader_asset(image1) }}"
-                                         alt="{{ image.Titre|default('image') }}">
-
-{#                            {{ dump(image1[0]) }}#}
-
-
+                                         alt="{{ image1.Titre|default('image') }}">
                                 {% endif %}
                                 {% endif %}
                             {% endfor %}
-
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="insuring__right">
-
                         <div class="insuring__your-future-box">
                             {% for servicepro in services %}
                             {% if servicepro.type == "1ServicesPRO" %}
-
-
                             <div class="section-title text-left">
                                 <span class="section-title__tagline">{{ servicepro.titre1|striptags }}</span>
                                 <h2 class="section-title__title">{{ servicepro.titre2|striptags }}</h2>
                             </div>
                             <p class="insuring__text">{{ servicepro.texte2|striptags }}</p>
-
                             {% endif %}
                             {% endfor %}
-
                             <div class="insuring__counter-list-box">
                                 {% for compteurs in services %}
                                 {% if compteurs.type == "compteurs" %}
-
                                 <ul class="list-unstyled insuring__counter-list">
                                     <li>
                                         <h2 class="odometer" data-count="{{ compteurs.texte1|striptags }}">00</h2>
@@ -85,7 +73,7 @@
             </div>
         </div>
     </section>
-
+    <!--                                                                               SERVICES DE QUALITE                                                                    -->
     <section class="services-one">
         <div class="services-one-container">
 
@@ -148,62 +136,37 @@
         </div>
     </section>
 
+    <!--                                                                                L'OEIL DE L'EXPERT  6                                                                      -->
+
     <section class="three-boxes-two three-boxes-two-page">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
-                    <!--image et contenu 1-->
-                    <div class="three-boxes-two__single">
-                        <div class="three-boxes-two__img">
-                            <img src="{{ asset('assets/images/resources/color-formatTimbre.png') }}" alt="nuancier de couleur pour décorateur">
-                        </div>
-                        <div class="three-boxes-two__content">
-                            <h3 class="three-boxes-two__title"><a href="{{ path('app_services_details') }}">Design & décoration <br>
-                                    </a></h3>
-                            <p class="three-boxes-two__text">Une ambiance, une tendance, une valeur</p>
-                            <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
-                        </div>
-                        <div class="three-boxes-two__single-pattern"
-                             style="background-image: url({{ asset('assets/images/pattern/three-boxes-two__single-pattern.png') }})">
-                        </div>
-                    </div>
-                </div>
+            <div class="row" >
+                {% for contenus in services %}
+                {% if contenus.type == "blogService" %}
+                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms" style="min-height: 454px">
+                    <div class="three-boxes-two__single" >
 
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
-                    <!--image et contenu 2-->
-                    <div class="three-boxes-two__single">
                         <div class="three-boxes-two__img">
-                            <img src="{{ asset('assets/images/resources/industriel_formatTimbre.png') }}" alt="affichage réduit du plan 3d cuisine séjour style industriel">
+                            {% if contenus.images[0] is defined %}
+                            {% set image1 = contenus.Images[0] %}
+                            <img src="{{ vich_uploader_asset(image1)}}" alt="{{ image1.Titre|default('image') }}">
                         </div>
                         <div class="three-boxes-two__content">
-                            <h3 class="three-boxes-two__title"><a href="{{ path('app_services_details') }}">Des rêves sur mesure<br>
+                            <h3 class="three-boxes-two__title"><a href="{{ path('app_services_details') }}">{{ contenus.titre1 }}<br>
                                     </a></h3>
-                            <p class="three-boxes-two__text">Accompagnement jusqu'à la réalisation</p>
+                            <p class="three-boxes-two__text">{{ contenus.titre2 }}</p>
                             <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         </div>
                         <div class="three-boxes-two__single-pattern"
                              style="background-image: url({{ asset('assets/images/pattern/three-boxes-two__single-pattern.png') }})">
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
-                    <!--image et contenu 3-->
-                    <div class="three-boxes-two__single">
-                        <div class="three-boxes-two__img">
-                            <img src="{{ asset('assets/images/resources/chambre_formatTimbre.png') }}" alt="chambre ado style contemporain, gris et blanc">
-                        </div>
-                        <div class="three-boxes-two__content">
-                            <h3 class="three-boxes-two__title"><a href="{{ path('app_services_details') }}">Lignes épurées<br>
-                                    architects</a></h3>
-                            <p class="three-boxes-two__text">Les formes simples tendent à la perfection</p>
-                            <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
-                        </div>
-                        <div class="three-boxes-two__single-pattern"
-                             style="background-image: url({{ asset('assets/images/pattern/three-boxes-two__single-pattern.png') }})">
-                        </div>
-                    </div>
-                </div>
+              </div>
+                            {%endif %}
+                {%endif %}
+                {%endfor %}
             </div>
+
         </div>
     </section>
 

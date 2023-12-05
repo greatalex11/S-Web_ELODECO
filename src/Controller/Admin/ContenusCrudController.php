@@ -75,6 +75,7 @@ class ContenusCrudController extends AbstractCrudController
             yield TextField::new('titre3')->setLabel('Service 3')->hideOnIndex();
             yield TextEditorField::new('texte3')->setLabel('Contenu')->hideOnIndex();
 
+
         } elseif ($contenu && $contenu->getType() === Contenus::TYPE_3SERVICESPRO) {
             yield TextField::new('titre1')->setLabel('Premier service');
             yield TextEditorField::new('texte1')->setLabel('argument 1')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
@@ -89,6 +90,17 @@ class ContenusCrudController extends AbstractCrudController
             yield TextEditorField::new('texte2')->setLabel('en quelques mots')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
             yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
                 ->setLabel('image 672x713 - titre important pour référencement')
+                ->setEntryIsComplex(true)
+                ->setFormTypeOptions([
+                    'by_reference' => false,  ])
+                ->setColumns(12)
+                ->setTemplatePath('fields/images.html.twig');
+
+        } elseif ($contenu && $contenu->getType() === Contenus::TYPE_BLOGS) {
+            yield TextField::new('titre1')->setLabel('Offre alléchante');
+            yield TextField::new('titre2')->setLabel('En bref, argument choc')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+            yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
+                ->setLabel('image 370x133 - titre important pour référencement')
                 ->setEntryIsComplex(true)
                 ->setFormTypeOptions([
                     'by_reference' => false,  ])
