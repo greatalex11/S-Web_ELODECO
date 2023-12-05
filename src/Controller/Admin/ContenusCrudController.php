@@ -124,6 +124,33 @@ class ContenusCrudController extends AbstractCrudController
                 ->setColumns(12)
                 ->setTemplatePath('fields/images.html.twig');
 
+        } elseif ($contenu && $contenu->getType() === Contenus::TYPE_BLOGAE) {
+            yield TextField::new('titre1')->setLabel('Métier phare');
+            yield TextField::new('titre2')->setLabel('slogan')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+            yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
+                ->setLabel('image 330X448  - titre important pour référencement')
+                ->setEntryIsComplex(true)
+                ->setFormTypeOptions([
+                    'by_reference' => false,  ])
+                ->setColumns(12)
+                ->setTemplatePath('fields/images.html.twig');
+
+        } elseif ($contenu && $contenu->getType() === Contenus::TYPE_BLOGAL) {
+            yield TextField::new('titre1')->setLabel('Métier du moment');
+            yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
+                ->setLabel('image 330X448  - titre important pour référencement')
+                ->setEntryIsComplex(true)
+                ->setFormTypeOptions([
+                    'by_reference' => false,  ])
+                ->setColumns(12)
+                ->setTemplatePath('fields/images.html.twig');
+
+        } elseif ($contenu && $contenu->getType() === Contenus::TYPE_BLOGAT) {
+
+            yield TextEditorField::new('texte1')->setLabel('témoignage')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+            yield TextField::new('titre1')->setLabel('Nom, Prénom, n°département')->setTemplatePath('fields/raw.html.twig');
+            yield TextField::new('titre2')->setLabel('Client/artisan... satisfait')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+
 
         } elseif ($contenu && $contenu->getType() === Contenus::TYPE_3SERVICESQUALITE) {
 

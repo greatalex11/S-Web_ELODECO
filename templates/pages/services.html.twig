@@ -32,7 +32,7 @@
                                 {% if contenu.images[0] is defined %}
                                     {% set image1 = contenu.Images[0] %}
                                     <img src="{{ vich_uploader_asset(image1) }}"
-                                         alt="{{ image1.Titre|default('image') }}">
+                                         alt="{{ image1.titre|default('image') }}">
                                 {% endif %}
                                 {% endif %}
                             {% endfor %}
@@ -149,7 +149,7 @@
                         <div class="three-boxes-two__img">
                             {% if contenus.images[0] is defined %}
                             {% set image1 = contenus.Images[0] %}
-                            <img src="{{ vich_uploader_asset(image1)}}" alt="{{ image1.Titre|default('image') }}">
+                            <img src="{{ vich_uploader_asset(image1)}}" alt="{{ image1.titre|default('image') }}">
                         </div>
                         <div class="three-boxes-two__content">
                             <h3 class="three-boxes-two__title"><a href="{{ path('app_services_details') }}">{{ contenus.titre1 }}<br>

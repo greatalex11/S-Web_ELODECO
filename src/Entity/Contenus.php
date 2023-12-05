@@ -19,6 +19,9 @@ class Contenus
     public const TYPE_NEWS = 'news';
     public const TYPE_BLOGN = 'blogNews';
     public const TYPE_BLOGAC = 'blogAboutConcept';
+    public const TYPE_BLOGAE = 'blogAboutExpert';
+    public const TYPE_BLOGAL = 'blogenL';
+    public const TYPE_BLOGAT = 'blogTemoins';
     public const TYPE_BLOGF = 'blogFolio';
     public const TYPE_BLOGS = 'blogService';
     public const TYPE_3SERVICES = '3Services';
@@ -39,6 +42,9 @@ class Contenus
         '1 Service PRO' => self::TYPE_1SERVICEPRO,
         '3 Services QUALITE' => self::TYPE_3SERVICESQUALITE,
         'About concept' => self::TYPE_BLOGAC,
+        'About expert' => self::TYPE_BLOGAE,
+        'About pub en L' => self::TYPE_BLOGAL,
+        'About Temoins'=> self::TYPE_BLOGAT,
     ];
 
     use DateTrait;

@@ -24,69 +24,67 @@
     <!--                                                                                  fin bandeau                                                                    -->
 
 
-    <!--                                                                   SECTION 1 : SERVICES details  / image 672x713                                                   -->
-
+    <!--                                                                  SECTION 1 : SERVICES details  / image 672x713                                                   -->
 
     <section class="about-company">
         <div class="container">
             <div class="row">
                 {% for contenu in about %}
-                {% if contenu.type =="blogAboutConcept" %}
+                    {% if contenu.type =="blogAboutConcept" %}
 
-                <div class="col-xl-6">
+                        <div class="col-xl-6">
 
-                    {% if contenu.liste is defined %}
-                        {% set clef = contenu.liste %}
+                        {% if contenu.liste is defined %}
+                            {% set clef = contenu.liste %}
 
+                            <div class="about-company__img">
 
-                    <div class="about-company__img">
-
-                        {% if contenu.Images[0] is defined %}
-                            {% set image = contenu.Images[0] %}
-                            <img src="{{ vich_uploader_asset(image) }}"
-                                 alt="{{ image.Titre|default('image') }}">
-                        {% endif %}
-                     <div class="about-company__trusted-by">
-                            <p>{{clef[0]|striptags}}</p>
-                            <span>{{clef[1]|striptags}}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="about-company__right">
-                        <div class="section-title text-left">
-                            <span class="section-title__tagline">{{contenu.titre1|striptags }}</span>
-                            <h2 class="section-title__title">{{contenu.titre2|striptags }}</h2>
-                        </div>
-                        <ul class="about-company__points list-unstyled">
-                            <li><span>/</span> {{contenu.texte1 |striptags}}}}</li>
-                            <li><span>/</span> {{contenu.texte2 |striptags}}</li>
-                        </ul>
-
-                        <div class="about-company__progress">
-                            <h4 class="about-company__progress-title">{{clef[2]|striptags}}</h4>
-                            <div class="bar">
-                                <div class="bar-inner count-bar counted" data-percent="{{clef[3]|striptags}}">
-                                    <div class="count-text">{{clef[3]|striptags}}</div>
+                                {% if contenu.Images[0] is defined %}
+                                    {% set image = contenu.Images[0] %}
+                                    <img src="{{ vich_uploader_asset(image) }}"
+                                         alt="{{ image.titre|default('image') }}">
+                                {% endif %}
+                                <div class="about-company__trusted-by">
+                                    <p>{{ clef[0]|striptags }}</p>
+                                    <span>{{ clef[1]|striptags }}</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="about-company__icon-and-text">
-                            <div class="about-company__icon">
-                                <span class="icon-blueprint"></span>
                             </div>
-                            <div class="about-company__text-box">
-                                <p class="about-company__text">{{clef[4]|striptags}}</p>
+                            <div class="col-xl-6">
+                                <div class="about-company__right">
+                                    <div class="section-title text-left">
+                                        <span class="section-title__tagline">{{ contenu.titre1|striptags }}</span>
+                                        <h2 class="section-title__title">{{ contenu.titre2|striptags }}</h2>
+                                    </div>
+                                    <ul class="about-company__points list-unstyled">
+                                        <li><span>/</span> {{ contenu.texte1 |striptags }}}}</li>
+                                        <li><span>/</span> {{ contenu.texte2 |striptags }}</li>
+                                    </ul>
+
+                                    <div class="about-company__progress">
+                                        <h4 class="about-company__progress-title">{{ clef[2]|striptags }}</h4>
+                                        <div class="bar">
+                                            <div class="bar-inner count-bar counted"
+                                                 data-percent="{{ clef[3]|striptags }}">
+                                                <div class="count-text">{{ clef[3]|striptags }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="about-company__icon-and-text">
+                                        <div class="about-company__icon">
+                                            <span class="icon-blueprint"></span>
+                                        </div>
+                                        <div class="about-company__text-box">
+                                            <p class="about-company__text">{{ clef[4]|striptags }}</p>
+                                        </div>
+                                    </div>
+                                    <p class="about-company__text-2">{{ contenu.texte2 |striptags }} </p>
+                                    <a href="{{ path('app_portfolio') }}"
+                                       class="about-company__btn thm-btn">Portfolio</a>
+                                </div>
                             </div>
-
-
-                        </div>
-                        <p class="about-company__text-2">{{contenu.texte2 |striptags}} </p>
-                        <a href="{{ path('app_portfolio')}}" class="about-company__btn thm-btn">Portfolio</a>
-                    </div>
-                </div>
                         {% endif %}
-                {% endif %}
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
@@ -96,41 +94,47 @@
 
     <!--                                                                        ABOUT MES PARTENAIRES ET CLIENTS                                                           -->
 
-
+    <!--                                                                     SECTION  - compteur de chiffre                                                       -->
     <section class="counters-one">
         <div class="counters-one-pattern"
              style="background-image: url(assets/images/pattern/counter-one-pattern.jpg)"></div>
         <div class="container">
-            <ul class="counters-one__box list-unstyled">
-                <li class="counter-one__single">
-                    <div class="counter-one__icon">
-                        <span class="icon-architect-4"></span>
-                    </div>
-                    <h3 class="odometer" data-count="100">00</h3> <span class="text-white">%</span>
-                    <p class="counter-one__text">Projets finalisés</p>
-                </li>
-                <li class="counter-one__single">
-                    <div class="counter-one__icon">
-                        <span class="icon-architect-5"></span>
-                    </div>
-                    <h3 class="odometer" data-count="50">00</h3>
-                    <p class="counter-one__text">Partenaires</p>
-                </li>
-                <li class="counter-one__single">
-                    <div class="counter-one__icon">
-                        <span class="icon-buildings"></span>
-                    </div>
-                    <h3 class="odometer" data-count="3">00</h3>
-                    <p class="counter-one__text">Services proposés</p>
-                </li>
-                <li class="counter-one__single">
-                    <div class="counter-one__icon">
-                        <span class="icon-satisfaction"></span>
-                    </div>
-                    <h3 class="odometer" data-count="100">00</h3> <span class="text-white">%</span>
-                    <p class="counter-one__text">Clients satisfaits</p>
-                </li>
-            </ul>
+            {% for blocks in about %}
+                {% if blocks.type =="compteurs" %}
+
+                    <ul class="counters-one__box list-unstyled">
+                        <li class="counter-one__single">
+                            <div class="counter-one__icon">
+                                <span class="icon-architect-4"></span>
+                            </div>
+                            <h3 class="odometer" data-count="2023">00</h3>
+                            <p class="counter-one__text">Le défis</p>
+                        </li>
+                        <li class="counter-one__single">
+                            <div class="counter-one__icon">
+                                <span class="icon-architect-5"></span>
+                            </div>
+                            <h3 class="odometer" data-count="{{ blocks.texte1|striptags }}">00</h3>
+                            <p class="counter-one__text">{{ blocks.titre1 }}</p>
+                        </li>
+                        <li class="counter-one__single">
+                            <div class="counter-one__icon">
+                                <span class="icon-buildings"></span>
+                            </div>
+                            <h3 class="odometer" data-count="{{ blocks.texte2 |striptags }}">00</h3>
+                            <p class="counter-one__text">{{ blocks.titre2 }}</p>
+                        </li>
+                        <li class="counter-one__single">
+                            <div class="counter-one__icon">
+                                <span class="icon-satisfaction"></span>
+                            </div>
+                            <h3 class="odometer" data-count=" {{ blocks.texte3 |striptags }}">00 ></h3><span
+                                    class="text-white">%</span>
+                            <p class="counter-one__text">{{ blocks.titre3 }}</p>
+                        </li>
+                    </ul>
+                {% endif %}
+            {% endfor %}
         </div>
     </section>
     <!--                                                                  fin about partenaires  et client                                                        -->
@@ -142,130 +146,80 @@
                 <span class="section-title__tagline">Les entreprises partenaires</span>
                 <h2 class="section-title__title">EXPERTS DANS NOTRE REGION</h2>
             </div>
+
             <div class="row">
                 <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
-
-                    <!--                                                           IMAGE MOYENNE 1      330X448            -->
+                    {% for contenus in about %}
+                    {% if contenus.type =="blogAboutExpert" %}
                     <div class="team-one__single">
+
                         <div class="team-one__img-box">
                             <div class="team-one__img">
-                                <img src="assets/images/team/cuisine2.jpg" alt="cuisine élégante, chaises haute, mur blanc et mobilier aluminium">
-{#                                <div class="team-one__social">#}
-{#                                    <a href="#"><i class="fab fa-twitter"></i></a>#}
-{#                                    <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>#}
-{#                                    <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>#}
-{#                                    <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>#}
-{#                                </div>#}
+                                {% if contenus.Images[0] is defined %}
+                                    {% set image = contenus.Images[0] %}
+                                    <img src="{{ vich_uploader_asset(image) }}"
+                                         alt="{{ image.titre|default('image') }}">
+                                {% endif %}
+
+                                <div class="team-one__social">
+                                    <a href="https://www.linkedin.com/in/elodie-kolly-a652041b2/?trk=public_profile_samename-profile&originalSubdomain=fr"
+                                       class="clr-dri"><i class="fab fa-linkedin"></i></a>
+                                </div>
                             </div>
                         </div>
                         <div class="team-one__content">
-                            <h3 class="team-one__name">Cuisiniste</h3>
-                            <p class="team-one__title">Designer</p>
+                            <h3 class="team-one__name">{{ contenus.titre1 |striptags }}</h3>
+                            <p class="team-one__title">{{ contenus.titre2 |striptags }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
-                    <!--                                                                    fin image moyenne 1                                             -->
-
-
-                    <!--                                                           IMAGE MOYENNE 2      330X448            -->
-
-
-
-                    <div class="team-one__single">
-                        <div class="team-one__img-box">
-                            <div class="team-one__img">
-                                <img src="assets/images/team/luminaires.jpg" alt="plafond type entrepos couleur blanc, cable et tuyaux avec de belle lumières simples en suspension">
-{#                                <div class="team-one__social">#}
-{#                                    <a href="#"><i class="fab fa-twitter"></i></a>#}
-{#                                    <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>#}
-{#                                    <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>#}
-{#                                    <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>#}
-{#                                </div>#}
-                            </div>
-                        </div>
-                        <div class="team-one__content">
-                            <h3 class="team-one__name">Eclairage</h3>
-                            <p class="team-one__title">Sur mesure</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
-                    <!--                                                                 fin image moyenne 2                                                        -->
-
-                    <!--                                                           IMAGE MOYENNE 3     330X448                                                      -->
-                    <div class="team-one__single">
-                        <div class="team-one__img-box">
-                            <div class="team-one__img">
-                                <img src="assets/images/team/menuisier.jpg" alt="menuisier tenant son mètre sur une planche de bois">
-{#                                <div class="team-one__social">#}
-{#                                    <a href="#"><i class="fab fa-twitter"></i></a>#}
-{#                                    <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>#}
-{#                                    <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>#}
-{#                                    <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>#}
-{#                                </div>#}
-                            </div>
-                        </div>
-                        <div class="team-one__content">
-                            <h3 class="team-one__name">Menuisiers</h3>
-                            <p class="team-one__title">De vrais pro !</p>
-                        </div>
-                    </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </section>
-     <!--                                                                        fin image moyenne 3                                                                   -->
 
+    <!--                                                                        fin image moyenne 3                                                                   -->
 
-
-
-    <!--                                                                     IMAGE petite 1      285x281                                                                -->
-
+    <!--                                                                    PUB EN L :   IMAGE  285x281                                                                -->
 
     <section class="two-boxes two-boxes-about">
         <div class="container">
             <div class="row">
-                <div class="col-xl-6 col-lg-6">
-                    <div class="two-boxes__single">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6">
-                                <div class="two-boxes__content">
-                                    <h2>Besoin d'un petit coup de neuf? de clareté?</h2>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6">
-                                <div class="two-boxes__img">
-                                    <img src="assets/images/team/peinture.jpg" alt="pinceau couvert de peinture blanche peingnant un mur">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--                                                                     IMAGE petite 2      285x281                                                                -->
-                <div class="col-xl-6 col-lg-6">
-                    <div class="two-boxes__single">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6">
-                                <div class="two-boxes__content">
-                                    <h2>Electricité: économies, confort, sécurité</h2>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6">
-                                <div class="two-boxes__img">
-                                    <img src="assets/images/team/electricien2.jpg" alt="electricien raccordant une prise éléctrique">
+                {% for contenus in about %}
+                    {% if contenus.type =="blogenL" %}
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="two-boxes__single">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6">
+                                        <div class="two-boxes__content">
+                                            <h2>{{ contenus.titre1 |striptags }}</h2>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6">
+                                        <div class="two-boxes__img">
+                                            {% if contenus.Images[0] is defined %}
+                                                {% set image = contenus.Images[0] %}
+                                                <img src="{{ vich_uploader_asset(image) }}"
+                                                     alt="{{ image.titre|default('image') }}">
+                                            {% endif %}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </section>
-    <!--Two Boxes About End-->
+    <!--                                                                        fin pub en L                                                          -->
 
-    <!--Testimonials One Start-->
+ <!--                                                                             TEMOINS                                                              -->
+
+   <!--Testimonials One Start-->
     <section class="testimonials-one about-page-testimonial">
         <div class="container">
             <div class="section-title text-center">
@@ -273,187 +227,29 @@
                 <h2 class="section-title__title">Ce qu'ils en disent</h2>
             </div>
             <div class="row">
-                <div class="col-xl-12">
-                    <div class="testimonials-one__carousel owl-theme owl-carousel">
-                        <!--                                                        Temoignage 1                                    -->
-                        <div class="testimonials-one__box">
-                            <div class="testimonials-one__single">
-                                <div class="testimonials-one__content">
-                                    <p class="testimonials-one__text">L'écoute et les réponses que nous avons eut nous donnes entières satisfaction. Notre logement est devenu
-                                        chic, fonctionnel et accueuillant.</p>
-                                    <div class="testimonials-one__client-info">
-                                        <div class="testimonials-one__client-img">
-                                            <img src="assets/images/testimonial/testimonials-one__client-img-1.png"
-                                                 alt="">
-                                        </div>
-                                        <div class="testimonials-one__client-details">
-                                            <h5 class="testimonials-one__client-name">Mme Martin - Raymondville (70)</h5>
-                                            <p class="testimonials-one__client-title">Cliente satisfaite</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--                                                    TEMOIN 2                                     -->
-                        <div class="testimonials-one__box">
-                            <div class="testimonials-one__single">
-                                <div class="testimonials-one__content">
-                                    <p class="testimonials-one__text">Très satisfait de la cuisine ouverte sur le séjour ; merci pour vos conseils et votre accompagnement.
-                                        Votre créativité et votre professionnalisme ont largement dépassé nos attentes..</p>
-                                    <div class="testimonials-one__client-info">
-                                        <div class="testimonials-one__client-img">
-                                            <img src="assets/images/testimonial/testimonials-one__client-img-2.png"
-                                                 alt="">
-                                        </div>
-                                        <div class="testimonials-one__client-details">
-                                            <h5 class="testimonials-one__client-name">M et Mme CLAIRON - Rioz (70)</h5>
-                                            <p class="testimonials-one__client-title">Clients satisfaits</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--                                                TEMOIN 3                                                                                 -->
-                        <div class="testimonials-one__box">
-                            <div class="testimonials-one__single">
-                                <div class="testimonials-one__content">
-                                    <p class="testimonials-one__text">Notre projet d'extension a vraiment débuté lorsque nous nous sommes tournés vers l'entreprise Elo Deco.
-                                        Les artisans ont travaillé en conformité avec ce que l'on attendait. Sincères remerciements. </p>
-                                    <div class="testimonials-one__client-info">
-                                        <div class="testimonials-one__client-img">
-                                            <img src="assets/images/testimonial/testimonials-one__client-img-3.png"
-                                                 alt="">
-                                        </div>
-                                        <div class="testimonials-one__client-details">
-                                            <h5 class="testimonials-one__client-name">M. FAIVRE - Rioz</h5>
-                                            <p class="testimonials-one__client-title">Client satisfait</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--temoin 3 -->
-                        <div class="testimonials-one__box">
-                            <div class="testimonials-one__single">
-                                <div class="testimonials-one__content">
-                                    <p class="testimonials-one__text">Nous tenons à exprimer notre sincère gratitude à votre entreprise de décoration pour avoir transformé notre espace en un lieu véritablement exceptionnel.
-                                       </p>
-                                    <div class="testimonials-one__client-info">
-                                        <div class="testimonials-one__client-img">
-                                            <img src="assets/images/testimonial/testimonials-one__client-img-1.png"
-                                                 alt="">
-                                        </div>
-                                        <div class="testimonials-one__client-details">
-                                            <h5 class="testimonials-one__client-name">Marcel Broul - Cogne (70)</h5>
-                                            <p class="testimonials-one__client-title">Client Satisfait</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Testimonials One Single-->
-                        <div class="testimonials-one__box">
-                            <div class="testimonials-one__single">
-                                <div class="testimonials-one__content">
-                                    <p class="testimonials-one__text">I was very impresed by the kitecx service
-                                        lorem ipsum is simply free text used by copy typing refreshing. Neque porro
-                                        est qui dolorem ipsum.</p>
-                                    <div class="testimonials-one__client-info">
-                                        <div class="testimonials-one__client-img">
-                                            <img src="assets/images/testimonial/testimonials-one__client-img-2.png"
-                                                 alt="">
-                                        </div>
-                                        <div class="testimonials-one__client-details">
-                                            <h5 class="testimonials-one__client-name">mike hardson</h5>
-                                            <p class="testimonials-one__client-title">Customer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Testimonials One Single-->
-                        <div class="testimonials-one__box">
-                            <div class="testimonials-one__single">
-                                <div class="testimonials-one__content">
-                                    <p class="testimonials-one__text">I was very impresed by the kitecx service
-                                        lorem ipsum is simply free text used by copy typing refreshing. Neque porro
-                                        est qui dolorem ipsum.</p>
-                                    <div class="testimonials-one__client-info">
-                                        <div class="testimonials-one__client-img">
-                                            <img src="assets/images/testimonial/testimonials-one__client-img-3.png"
-                                                 alt="">
-                                        </div>
-                                        <div class="testimonials-one__client-details">
-                                            <h5 class="testimonials-one__client-name">rose smith</h5>
-                                            <p class="testimonials-one__client-title">Customer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Testimonials One Single-->
-                        <div class="testimonials-one__box">
-                            <div class="testimonials-one__single">
-                                <div class="testimonials-one__content">
-                                    <p class="testimonials-one__text">I was very impresed by the kitecx service
-                                        lorem ipsum is simply free text used by copy typing refreshing. Neque porro
-                                        est qui dolorem ipsum.</p>
-                                    <div class="testimonials-one__client-info">
-                                        <div class="testimonials-one__client-img">
-                                            <img src="assets/images/testimonial/testimonials-one__client-img-1.png"
-                                                 alt="">
-                                        </div>
-                                        <div class="testimonials-one__client-details">
-                                            <h5 class="testimonials-one__client-name">Jessica Brown</h5>
-                                            <p class="testimonials-one__client-title">Customer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Testimonials One Single-->
-                        <div class="testimonials-one__box">
-                            <div class="testimonials-one__single">
-                                <div class="testimonials-one__content">
-                                    <p class="testimonials-one__text">I was very impresed by the kitecx service
-                                        lorem ipsum is simply free text used by copy typing refreshing. Neque porro
-                                        est qui dolorem ipsum.</p>
-                                    <div class="testimonials-one__client-info">
-                                        <div class="testimonials-one__client-img">
-                                            <img src="assets/images/testimonial/testimonials-one__client-img-2.png"
-                                                 alt="">
-                                        </div>
-                                        <div class="testimonials-one__client-details">
-                                            <h5 class="testimonials-one__client-name">mike hardson</h5>
-                                            <p class="testimonials-one__client-title">Customer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Testimonials One Single-->
-                        <div class="testimonials-one__box">
-                            <div class="testimonials-one__single">
-                                <div class="testimonials-one__content">
-                                    <p class="testimonials-one__text">I was very impresed by the kitecx service
-                                        lorem ipsum is simply free text used by copy typing refreshing. Neque porro
-                                        est qui dolorem ipsum.</p>
-                                    <div class="testimonials-one__client-info">
-                                        <div class="testimonials-one__client-img">
-                                            <img src="assets/images/testimonial/testimonials-one__client-img-3.png"
-                                                 alt="">
-                                        </div>
-                                        <div class="testimonials-one__client-details">
-                                            <h5 class="testimonials-one__client-name">rose smith</h5>
-                                            <p class="testimonials-one__client-title">Customer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                <div class="col-xl-12" >
+                    <div class="testimonials-one__carousel owl-theme owl-carousel ">
+                                {% for contenus in about %}
+                                    {% if contenus.type =="blogTemoins"  %}
+                                            <div class="testimonials-one__box" style="min-height: 490px;">
+                                                <div class="testimonials-one__single"style="min-height: 490px;">
+                                                    <div class="testimonials-one__content">
+                                                        <p class="testimonials-one__text">{{ contenus.texte1|striptags|u.truncate(150,'...',false)}}</p>
+                                                        <div class="testimonials-one__client-info">
+                                                            <div class="testimonials-one__client-img">
+                                                                <img src="assets/images/testimonial/testimonials-one__client-img-1.png"
+                                                                     alt="">
+                                                            </div>
+                                                            <div class="testimonials-one__client-details">
+                                                                <h5 class="testimonials-one__client-name">{{ contenus.titre1|striptags}}</h5>
+                                                                <p class="testimonials-one__client-title">{{ contenus.titre2|striptags}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    {% endif %}
+                                {% endfor %}
                     </div>
                 </div>
             </div>

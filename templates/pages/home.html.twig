@@ -651,7 +651,7 @@
                                             {% if contenu.Images[0] is defined %}
                                                 {% set image = contenu.Images[0] %}
                                                 <img src="{{ vich_uploader_asset(image) }}"
-                                                     alt="{{ image.Titre|default('image') }}">
+                                                     alt="{{ image.titre|default('image') }}">
                                             {% endif %}
 
                                             <a href="{{ path('app_news_details',{id: contenu.id}) }}">
