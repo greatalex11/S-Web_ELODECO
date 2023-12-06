@@ -2,14 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\ContactForm;
 use App\Entity\Contenus;
 use App\Form\ContactType;
 use App\Repository\ContenusRepository;
-use http\Env\Request;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\Request;
+//use Symfony\Component\HttpFoundation\Request;
 
 class LoginController extends AbstractController
 {
@@ -170,18 +173,18 @@ class LoginController extends AbstractController
     }
 // ---------------------------------------------------------------------------------------------------------   CONTACT
     #[Route(path: '/contact', name: 'app_contact')]
-    public function contact(): Response
+    public function contact(Request $request, EntityManagerInterface $entityManager): Response
     {
-//        Request $request
         $form = $this->createForm( ContactType::class);
-//        $form->handleRequest($request);
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            dd($data);
+//            dd($data);
 //            $entityManager = $this->getDoctrine()->getManager();
-//            $entityManager->persist($entity);
-//            $entityManager->flush();
+            $entityManager->persist($data);
+            $entityManager->flush();
         }
+//        return $this->redirectToRoute('app_contact', [], Response::HTTP_SEE_OTHER);
         return $this->render('pages/contact.html.twig', [
             'form'=>$form ->createView(),
         ]);
@@ -200,6 +203,8 @@ class LoginController extends AbstractController
         return $this->render('pages/espace_artisan.html.twig', [
         ]);
     }
+
+
 
 
 }
