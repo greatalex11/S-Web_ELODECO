@@ -21,6 +21,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 
 class ContenusCrudController extends AbstractCrudController
@@ -207,10 +208,15 @@ class ContenusCrudController extends AbstractCrudController
 
     }
 
+
     public function creatDetails(AdminContext $context): Response
     {
-        $details = $context->getEntity()->getInstance();
-        //         dd($details);
+        $cul=[1,2,33];
+        dd($cul);
+//        $details = $context->getEntity()->getInstance();
+//        $entityManager = $this->container->get('doctrine')->getManagerForClass($className);
+
+
         //getId()
 
         return $this->render('pages/news_details.html.twig', [

@@ -5,6 +5,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.1",
+        "ext-http": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/doctrine-bundle": "^2.11",
@@ -43,7 +44,8 @@
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/string-extra": "*",
         "twig/twig": "^2.12|^3.0",
-        "vich/uploader-bundle": "^2.2"
+        "vich/uploader-bundle": "^2.2",
+      "ext-http": "*"
     },
     "config": {
         "allow-plugins": {

@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Contenus;
+use App\Form\ContactType;
 use App\Repository\ContenusRepository;
+use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -166,11 +168,22 @@ class LoginController extends AbstractController
         return $this->render('pages/news_details.html.twig', [
         ]);
     }
-
+// ---------------------------------------------------------------------------------------------------------   CONTACT
     #[Route(path: '/contact', name: 'app_contact')]
     public function contact(): Response
     {
+//        Request $request
+        $form = $this->createForm( ContactType::class);
+//        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            dd($data);
+//            $entityManager = $this->getDoctrine()->getManager();
+//            $entityManager->persist($entity);
+//            $entityManager->flush();
+        }
         return $this->render('pages/contact.html.twig', [
+            'form'=>$form ->createView(),
         ]);
     }
 
