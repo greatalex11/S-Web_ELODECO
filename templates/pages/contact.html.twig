@@ -30,11 +30,7 @@
     <!--                                                                   Bandeau fin                                                                                 -->
     <!--                                                 Formulaire contact avec rappel de coordonnées à droite                                                        -->
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{dump(form)}}
-{#    <button type="submit">Envoyer</button>#}
-    {{ form_end(form) }}
+
 
     <section class="contact-page">
         <div class="container">
@@ -57,6 +53,12 @@
                 <div class="col-xl-8 col-lg-7">
                     <div class="contact-page__left">
                         <form action="assets/inc/sendemail.php" class="contact-page__form contact-form-validated">
+
+                            {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            {{ form_end(form) }}
+
+
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="contact-page__input-box">

@@ -183,6 +183,8 @@ class LoginController extends AbstractController
 //            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($data);
             $entityManager->flush();
+            // **** form a CLEANER        *******/
+
         }
 //        return $this->redirectToRoute('app_contact', [], Response::HTTP_SEE_OTHER);
         return $this->render('pages/contact.html.twig', [
