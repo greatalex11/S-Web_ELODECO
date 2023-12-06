@@ -20,6 +20,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class ContenusCrudController extends AbstractCrudController
@@ -206,11 +207,12 @@ class ContenusCrudController extends AbstractCrudController
 
     }
 
-    public function creatDetails(AdminContext $context)
+    public function creatDetails(AdminContext $context): Response
     {
         $details = $context->getEntity()->getInstance();
+        //         dd($details);
+        //getId()
 
-        // add your logic here...
         return $this->render('pages/news_details.html.twig', [
                 'newDetails' => $details->createView(),
             ]);
