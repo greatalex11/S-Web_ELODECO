@@ -4,9 +4,11 @@ namespace App\Controller\Admin;
 
 
 use App\Entity\Contenus;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Option\TextAlign;
+use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -17,7 +19,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+
 
 class ContenusCrudController extends AbstractCrudController
 {
@@ -42,7 +45,26 @@ class ContenusCrudController extends AbstractCrudController
             ->setDefaultSort(['updatedAt' => 'DESC']);
     }
 
-    public function configureFields(string $pageName): iterable
+
+    public function configureActions(Actions $actions): Actions
+    {
+        $addDetails = Action::new('addDetails', 'créer du détails', 'fa-brands fa-theme-isle');
+        $addDetails ->linkToCrudAction('creatDetails')
+//        return parent::configureActions($actions)
+//        ->add(Crud::PAGE_INDEX, $addDetails)
+        ->addCssClass('btn btn-success')
+        ->setIcon('fa fa-check-circle')
+        ->displayAsButton();
+
+        $actions->add(Crud::PAGE_INDEX, $addDetails);
+
+        return $actions;
+    }
+
+
+
+
+     public function configureFields(string $pageName): iterable
     {
         /** @var Contenus $contenu */
         $contenu = $this->getContext()?->getEntity()->getInstance();
@@ -94,7 +116,7 @@ class ContenusCrudController extends AbstractCrudController
                 ->setLabel('image 672x713 - titre important pour référencement')
                 ->setEntryIsComplex(true)
                 ->setFormTypeOptions([
-                    'by_reference' => false,  ])
+                    'by_reference' => false,])
                 ->setColumns(12)
                 ->setTemplatePath('fields/images.html.twig');
 
@@ -105,7 +127,7 @@ class ContenusCrudController extends AbstractCrudController
                 ->setLabel('image 370x133 - titre important pour référencement')
                 ->setEntryIsComplex(true)
                 ->setFormTypeOptions([
-                    'by_reference' => false,  ])
+                    'by_reference' => false,])
                 ->setColumns(12)
                 ->setTemplatePath('fields/images.html.twig');
 
@@ -121,7 +143,7 @@ class ContenusCrudController extends AbstractCrudController
                 ->setLabel('image 570x698 - titre important pour référencement')
                 ->setEntryIsComplex(true)
                 ->setFormTypeOptions([
-                    'by_reference' => false,  ])
+                    'by_reference' => false,])
                 ->setColumns(12)
                 ->setTemplatePath('fields/images.html.twig');
 
@@ -132,7 +154,7 @@ class ContenusCrudController extends AbstractCrudController
                 ->setLabel('image 330X448  - titre important pour référencement')
                 ->setEntryIsComplex(true)
                 ->setFormTypeOptions([
-                    'by_reference' => false,  ])
+                    'by_reference' => false,])
                 ->setColumns(12)
                 ->setTemplatePath('fields/images.html.twig');
 
@@ -142,7 +164,7 @@ class ContenusCrudController extends AbstractCrudController
                 ->setLabel('image 330X448  - titre important pour référencement')
                 ->setEntryIsComplex(true)
                 ->setFormTypeOptions([
-                    'by_reference' => false,  ])
+                    'by_reference' => false,])
                 ->setColumns(12)
                 ->setTemplatePath('fields/images.html.twig');
 
@@ -183,21 +205,32 @@ class ContenusCrudController extends AbstractCrudController
 
 
     }
-    public function createBlogDetail(Contenus $contenus) {
 
-        $form = $this->createForm(Contenus::class, $contenus);
+    public function creatDetails(AdminContext $context)
+    {
+        $details = $context->getEntity()->getInstance();
 
-        $form->add('button', ButtonType::class, [
-            'label' => 'Ajouter des détails au blog',
-        ]);
-//        if ($form->isSubmitted()) {
-            return $this->render('pages/news_details.html.twig', [
-                'form' => $form->createView(),
+        // add your logic here...
+        return $this->render('pages/news_details.html.twig', [
+                'newDetails' => $details->createView(),
             ]);
-
-        }
-
+    }
 
 
 
 }
+
+
+//  //Essais ajout bouton push
+//    public function createBlogDetail(Contenus $contenus) {
+//
+//        $form = $this->createForm(Contenus::class, $contenus);
+//
+//        $form->add('button', ButtonType::class, [
+//            'label' => 'Ajouter des détails au blog',
+//        ]);
+////        if ($form->isSubmitted()) {
+//            return $this->render('pages/news_details.html.twig', [
+//                'form' => $form->createView(),
+//            ]);
+//        }

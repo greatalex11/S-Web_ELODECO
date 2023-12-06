@@ -80,9 +80,11 @@ class DashboardController extends AbstractDashboardController
 
     public function configureActions(): Actions
     {
+
         return parent::configureActions()->add(Crud::PAGE_INDEX, Action::DETAIL)
             ->remove(Crud::PAGE_NEW, Action::SAVE_AND_ADD_ANOTHER)
             ->remove(Crud::PAGE_INDEX, Action::BATCH_DELETE);
+
     }
 
     public function configureUserMenu(UserInterface $user): UserMenu
@@ -94,4 +96,6 @@ class DashboardController extends AbstractDashboardController
     {
         return parent::configureAssets();
     }
+
+
 }
