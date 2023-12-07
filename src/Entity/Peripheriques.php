@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PeripheriquesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,9 +14,6 @@ class Peripheriques
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image_logo = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $nom_entreprise = null;
@@ -98,22 +96,26 @@ class Peripheriques
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_modification = null;
 
+    #[ORM\ManyToOne]
+    private ?Image $logo = null;
+
+    #[ORM\ManyToOne]
+    private ?Image $image1_carouselHome = null;
+
+    #[ORM\ManyToOne]
+    private ?Image $image2_carouselHome = null;
+
+    #[ORM\ManyToOne]
+    private ?Image $image3_carouselHome = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $titre3_menu_lat = null;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getImageLogo(): ?string
-    {
-        return $this->image_logo;
-    }
-
-    public function setImageLogo(?string $image_logo): static
-    {
-        $this->image_logo = $image_logo;
-
-        return $this;
-    }
 
     public function getNomEntreprise(): ?string
     {
@@ -439,4 +441,65 @@ class Peripheriques
 
         return $this;
     }
+
+    public function getLogo(): ?Image
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?Image $logo): static
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    public function getImage1CarouselHome(): ?Image
+    {
+        return $this->image1_carouselHome;
+    }
+
+    public function setImage1CarouselHome(?Image $image1_carouselHome): static
+    {
+        $this->image1_carouselHome = $image1_carouselHome;
+
+        return $this;
+    }
+
+    public function getImage2CarouselHome(): ?Image
+    {
+        return $this->image2_carouselHome;
+    }
+
+    public function setImage2CarouselHome(?Image $image2_carouselHome): static
+    {
+        $this->image2_carouselHome = $image2_carouselHome;
+
+        return $this;
+    }
+
+    public function getImage3CarouselHome(): ?Image
+    {
+        return $this->image3_carouselHome;
+    }
+
+    public function setImage3CarouselHome(?Image $image3_carouselHome): static
+    {
+        $this->image3_carouselHome = $image3_carouselHome;
+
+        return $this;
+    }
+
+    public function getTitre3MenuLat(): ?string
+    {
+        return $this->titre3_menu_lat;
+    }
+
+    public function setTitre3MenuLat(?string $titre3_menu_lat): static
+    {
+        $this->titre3_menu_lat = $titre3_menu_lat;
+
+        return $this;
+    }
+
 }

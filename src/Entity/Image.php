@@ -58,6 +58,7 @@ class Image
     public function __construct()
     {
         $this->contenus = new ArrayCollection();
+        $this->logo_id= new ArrayCollection();
     }
 
     public function __toString(): string
