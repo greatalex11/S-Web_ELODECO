@@ -136,6 +136,7 @@ ul {
     padding: 18.5px 60px;
     transition: 500ms;
     letter-spacing: 0.1em;
+    text-align: center;
 }
 
 .thm-btn:before {

@@ -87,17 +87,20 @@ class PeripheriquesCrudController extends AbstractCrudController
                 ->setTemplatePath('fields/images.html.twig')->hideOnIndex(),
 
 
-            //                                                     HEADER
+            //                                                     FOOTER
 
             yield FormField::addTab("Pied de page "),
-            yield AssociationField::new('logo')
-                ->setLabel('Logo de l\'entreprise au format 72x84')
-                ->setColumns(4)
-                ->setTemplatePath('fields/images.html.twig')->hideOnIndex(),
-            yield TextField::new('titre_header')->setLabel('titre principal pied de page')->setColumns(6)->hideOnIndex(),
-            yield TextField::new('titre_header')->setLabel('Titre principal pied de page')->hideOnIndex(),
-            yield CollectionField::new('themes_pied_page')->setLabel('Liste des 5 services ')->hideOnIndex(),
-            yield TextField::new('titre_pied_page')->setLabel('Accroche')->hideOnIndex(),
+            yield TextField::new('titre_footer')->setLabel('titre principal pied de page')->setColumns(6)->hideOnIndex(),
+            yield TextField::new('footer_about')->setLabel('slogan d\'expertise')->setColumns(6)->hideOnIndex(),
+            yield TextField::new('titre_pied_page')->setLabel('Accroche')->setColumns(6)->hideOnIndex(),
+            yield CollectionField::new('themes_pied_page')->setLabel('Liste des 5 services ')->setColumns(6)->hideOnIndex(),
+
+
+
+
+
+
+            //                                                    COULEUR FOND
             yield FormField::addTab("Couleur de fond "),
             yield TextField::new('couleur_initale_bg')->setLabel('couleur initale des blocks noirs')->hideOnIndex()->setDisabled(),
             yield ColorField::new('couleur_actuelle_bg')->setLabel('couleur désirée'),

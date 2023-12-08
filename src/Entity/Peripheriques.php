@@ -117,6 +117,9 @@ class Peripheriques
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $titre_header = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $footer_about = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -528,6 +531,18 @@ class Peripheriques
     public function setTitreHeader(?string $titre_header): static
     {
         $this->titre_header = $titre_header;
+
+        return $this;
+    }
+
+    public function getFooterAbout(): ?string
+    {
+        return $this->footer_about;
+    }
+
+    public function setFooterAbout(?string $footer_about): static
+    {
+        $this->footer_about = $footer_about;
 
         return $this;
     }

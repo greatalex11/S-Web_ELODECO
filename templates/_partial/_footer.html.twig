@@ -1,7 +1,7 @@
 
 <footer class="site-footer">
-
     {% for Apps in theme %}
+
     <div class="site-footer__top">
         <div class="container">
             <div class="site-footer__top-inner">
@@ -12,9 +12,7 @@
                              alt="{{ attribut.titre|default('image') }}"></a>
                     </div>
                     <div class="site-footer__top-text">
-
-                        <!--                                            A DYNAMISER !!!!!                    ²²                               -->
-                        <p>Contactez-moi pour tout projet immobilier avec plan 3D, conseils de décoration, amélioration du confort et des espaces.</p>
+                        <p>{{Apps.titreFooter}}</p>
                     </div>
                 </div>
                 <div class="site-footer_top-btn-box">
@@ -31,15 +29,15 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                     <div class="footer-widget__column footer-widget__about">
                         <h3 class="footer-widget__title">About</h3>
-                        <p class="footer-widget__text">Experte certifiée et expérimentée,
-                           retrouvez-moi dans l'espace "about"</p>
+                        <p class="footer-widget__text">{{ Apps.footerAbout }}</p>
                         <ul class="list-unstyled footer-widget__contact-list">
                             <li>
                                 <div class="icon">
                                     <i class="fas fa-phone-square-alt"></i>
                                 </div>
                                 <div class="text">
-                                    <p><a href="tel:92-666-888-0000">{{ Apps.telephone |default('06 21 85 33 48') }}</a></p>
+                                    <p><a href="tel:92-666-888-0000">{{ Apps.telephone  }}</a></p>
+                                   <!-- |default('06 21 85 33 48') |default('elodiekolly.deco@gmail.com') -->
                                 </div>
                             </li>
                             <li>
@@ -47,7 +45,7 @@
                                     <i class="fas fa-envelope"></i>
                                 </div>
                                 <div class="text">
-                                    <p><a href="mailto:needhelp@company.com">{{ Apps.mail |default('elodiekolly.deco@gmail.com') }}</a></p>
+                                    <p><a href="mailto:needhelp@company.com">{{ Apps.mail }}</a></p>
                                 </div>
                             </li>
                             <li>
@@ -55,7 +53,7 @@
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
                                 <div class="text">
-                                    <p>70190 TRESILLEY, FRANCE.</p>
+                                    <p>{{ Apps.codePostal }} {{ Apps.localite }}</p>
                                 </div>
                             </li>
                         </ul>
@@ -67,7 +65,6 @@
                         <ul class="footer-widget__links-list list-unstyled">
                             <li><a href="{{ path('app_about') }}">About</a></li>
                             <li><a href="{{ path('app_our_mission') }}">Ma mission</a></li>
-{#                            <li><a href="team.html">Meet the Team</a></li>#}
                             <li><a href="{{ path('app_portfolio') }}">Portfolio</a></li>
                             <li><a href="{{ path('app_contact') }}">Contact</a></li>
                         </ul>
@@ -77,34 +74,28 @@
                     <div class="footer-widget__column footer-widget__explore">
                         <h3 class="footer-widget__title">Thèmes</h3>
                         <ul class="footer-widget__explore-list list-unstyled">
-                            <li>Plan 3D</li>
-                            <li>Visites virtuelles</li>
-                            <li>Conseils déco</li>
-                            <li>Réseau d'artisans </li>
-                            <li>Aide au suivi </li>
-{#                            <li><a href="#">Types of Designs</a></li>#}
-{#                            <li><a href="#">Our Story</a></li>#}
-{#                            <li><a href="#">Latest News</a></li>#}
-{#                            <li><a href="#">Help Center</a></li>#}
+
+                            {% if Apps.themesPiedPage is defined %}
+                                {% set li = Apps.themesPiedPage %}
+                                <li>{{ li[1]}}</li>
+                                <li>{{ li[2]}}</li>
+                                <li>{{ li[3]}}</li>
+                                <li>{{ li[4]}}</li>
+                                <li>{{ li[5]}}</li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
                     <div class="footer-widget__column footer-widget__newsletter">
                         <h3 class="footer-widget__title">Se retrouver sur les réseaux sociaux</h3>
-                        <p class="footer-widget__newsletter-text">La joie de partager.</p>
-{#                        <form class="footer-widget__newsletter-form">#}
-{#                            <div class="footer-widget__newsletter-input-box">#}
-{#                                <input type="email" placeholder="Email address" name="email">#}
-{#                                <button type="submit" class="footer-widget__newsletter-btn"><i#}
-{#                                            class="icon-right-arrow"></i></button>#}
-{#                            </div>#}
-{#                        </form>#}
+                        <p class="footer-widget__newsletter-text"></p>
                         <div class="site-footer__social">
                             <a href="#"><i class="fab fa-twitter"></i></a>
                             <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>
                             <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
                             <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ Apps.linkedIn}}" target="_blank" class="clr-fb"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
