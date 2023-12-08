@@ -20,13 +20,20 @@ class PeripheriquesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Peripheriques::class);
     }
+}
 
-    /**
-     * @return Peripheriques[] Returns an array of Peripheriques objects
-     */
-    public function findTheme(): array
-    {
-        return $this->getEntityManager()->getRepository('App:Peripheriques')->findAll();
+//    /**
+//     * @return Peripheriques[] Returns an array of Peripheriques objects
+//     */
+//    public function findTheme(PeripheriquesRepository $repo): array
+//    {
+//        $periph = $repo->getEntityManager()->getRepository(Peripheriques::class)->findAll();
+//        return $periph;//    }
+
+
+//            ->getQuery()
+//            ->getResult()
+//           return $periph;
 //        createQueryBuilder('p')
 //            ->andWhere('p.exampleField = :val')
 //            ->setParameter('val', $value)
@@ -34,8 +41,9 @@ class PeripheriquesRepository extends ServiceEntityRepository
 //            ->setMaxResults(10)
 //            ->getQuery()
 //            ->getResult()
-        ;
-    }
+
+
+
 
 //    public function findOneBySomeField($value): ?Peripheriques
 //    {
@@ -46,4 +54,5 @@ class PeripheriquesRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-}
+
+

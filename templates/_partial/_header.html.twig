@@ -1,21 +1,14 @@
 <header class="main-header clearfix">
 
-    <div class="main-header__three-line-icon top-50 mb-xl-2">
-        {#        flex-column align-middle justify-content-center #}
-        <a href="#" class="side-menu__toggler  ">
-            <img src="{{ asset('assets/images/resources/main-header-three-line-icon.png') }}"
-                 alt="icone 3 barres horizontale d'accès à l'espace personnel">
-            <i class="font-italic fs-6 m-lg-2">Espace personnel</i>
-        </a>
-    </div>
+    {% for Apps in theme %}
+
+
 
     <div class="container">
-
         <div class="main-menu-wrapper">
-
             <div class="main-header__logo">
                 <a href="{{ path('app_home') }}">
-                    <img src="{{ asset('assets/images/LOGO_ELODECO_1.png') }}" height="110"
+                    <img src="{{ asset('assets/images/LOGO_ELODECO_1.png') }}" height="140"
                          alt="Logo de l'entreprise ELODECO, conseil en décoration intérieure, représentant une maison sur fond blanc avec des éléments végétaux">
                 </a>
             </div>
@@ -29,7 +22,7 @@
                                         <i class="fas fa-phone-square-alt"></i>
                                     </div>
                                     <div class="text">
-                                        <p><a href="tel:0384000000">06 21 85 33 48</a></p>
+                                        <p><a href="tel:0384000000">{{ Apps.telephone }}</a></p>
                                     </div>
                                 </li>
                                 <li>
@@ -37,18 +30,25 @@
                                         <i class="fas fa-envelope"></i>
                                     </div>
                                     <div class="text">
-                                        <p><a href="mailto:needhelp@company.com">elodiekolly.deco@gmail.com</a></p>
+                                        <p><a href="mailto:needhelp@company.com">{{ Apps.mail }}</a></p>
                                     </div>
+{#                                    |default('elodiekolly.deco@gmail.com'#}
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="main-menu-wrapper__right">
                         <div class="main-menu-wrapper__right-social">
+                            <a href="{{ Apps.linkedIn}}" target="_blank" class="clr-fb"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>
                             <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
                             <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
+{#                            <a href="{{ Apps.linkedIn|default('[No name]')}}" target="_blank" class="clr-fb"><i class="fab fa-facebook"></i></a>#}
+{#                            {% try %}#}
+{#                                <a href="{{ Apps.linkedIn}}" target="_blank" class="clr-fb"><i class="fab fa-facebook"></i></a>#}
+{#                            {% catch %}#}
+{#                                <p>Page inaccessible pour le moment</p>#}
+{#                            {% endtry %}#}
                         </div>
                     </div>
                 </div>
@@ -93,20 +93,39 @@
                             </li>
                             <li><a href="{{ path('app_contact') }}">Contact</a></li>
                         </ul>
+
+{#                        <div class="main-header__three-line-icon top-50 mb-xl-2">#}
+{#                            #}{#        flex-column align-middle justify-content-center #}
+{#                            <a href="#" class="side-menu__toggler  ">#}
+{#                                <img src="{{ asset('assets/images/resources/main-header-three-line-icon.png') }}"#}
+{#                                     alt="icone 3 barres horizontale d'accès à l'espace personnel">#}
+{#                                <i class="font-italic fs-6 m-lg-2">Espace personnel</i>#}
+{#                            </a>#}
+{#                        </div>#}
+
+<!--                    LOUPE COMMENTEE AINSI QUE LE BOUTON EN SAVOIR PLUS / A LA PLACE ACCES ESPACE MEMERE                                  -->>
                         <div class="main-menu__right">
-                            <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a>
-                            <a href="{{ path('app_home') }}" class="main-menu__read-more-btn thm-btn">En savoir
-                                plus </a>
+                            <a href="#" class="side-menu__toggler  ">
+                                <img src="{{ asset('assets/images/resources/main-header-three-line-icon.png') }}"
+                                     alt="icone 3 barres horizontale d'accès à l'espace personnel">
+                                <i class="font-italic fs-6 m-lg-2">Espace personnel</i>
+                            </a>
+
+{#                            <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a>#}
+{#                            <a href="{{ path('app_home') }}" class="main-menu__read-more-btn thm-btn">En savoir#}
+{#                                plus </a>#}
                         </div>
+
                     </div>
                 </nav>
             </div>
         </div>
-
-
     </div>
+    {% endfor %}
 </header>
 
 <div class="stricky-header stricked-menu main-menu">
-    <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-</div><!-- /.stricky-header -->
+    <div class="sticky-header__content"></div>
+    <!-- /.sticky-header__content -->
+</div>
+<!-- /.stricky-header -->

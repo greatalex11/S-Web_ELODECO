@@ -1,14 +1,19 @@
-{{ dump(App) }}
 
 <footer class="site-footer">
+
+    {% for Apps in theme %}
     <div class="site-footer__top">
         <div class="container">
             <div class="site-footer__top-inner">
                 <div class="site-footer__top-left">
                     <div class="site-footer__top-logo-box">
-                        <a href="{{ path('app_about') }}"><img src="assets/images/LOGO_ELODECO_2.png" alt="logo de l'entreprise ELO DECO"></a>
+                        {% set attribut = Apps.logo %}
+                        <a href="{{ path('app_about') }}"><img src="{{vich_uploader_asset(attribut)}}"
+                             alt="{{ attribut.titre|default('image') }}"></a>
                     </div>
                     <div class="site-footer__top-text">
+
+                        <!--                                            A DYNAMISER !!!!!                    ²²                               -->
                         <p>Contactez-moi pour tout projet immobilier avec plan 3D, conseils de décoration, amélioration du confort et des espaces.</p>
                     </div>
                 </div>
@@ -34,7 +39,7 @@
                                     <i class="fas fa-phone-square-alt"></i>
                                 </div>
                                 <div class="text">
-                                    <p><a href="tel:92-666-888-0000">06 21 85 33 48</a></p>
+                                    <p><a href="tel:92-666-888-0000">{{ Apps.telephone |default('06 21 85 33 48') }}</a></p>
                                 </div>
                             </li>
                             <li>
@@ -42,7 +47,7 @@
                                     <i class="fas fa-envelope"></i>
                                 </div>
                                 <div class="text">
-                                    <p><a href="mailto:needhelp@company.com">elodiekolly.deco@gmail.com</a></p>
+                                    <p><a href="mailto:needhelp@company.com">{{ Apps.mail |default('elodiekolly.deco@gmail.com') }}</a></p>
                                 </div>
                             </li>
                             <li>
@@ -123,4 +128,5 @@
             </div>
         </div>
     </div>
+    {% endfor %}
 </footer>

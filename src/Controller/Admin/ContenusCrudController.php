@@ -50,17 +50,12 @@ class ContenusCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions
     {
-        $addDetails = Action::new('addDetails', 'créer du détails', 'fa-brands fa-theme-isle');
-        $addDetails ->linkToCrudAction('creatDetails')
-//        return parent::configureActions($actions)
-//        ->add(Crud::PAGE_INDEX, $addDetails)
+        $addDetails = Action::new('addDetails', 'créer du détails', 'fa-brands fa-theme-isle')
+            ->linkToCrudAction('creatDetails')
         ->addCssClass('btn btn-success')
-        ->setIcon('fa fa-check-circle')
-        ->displayAsButton();
+        ->setIcon('fa fa-check-circle');
 
-        $actions->add(Crud::PAGE_INDEX, $addDetails);
-
-        return $actions;
+        return parent::configureActions($actions)->add(Crud::PAGE_INDEX, $addDetails);
     }
 
 

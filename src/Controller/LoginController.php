@@ -6,6 +6,7 @@ use App\Entity\ContactForm;
 use App\Entity\Contenus;
 use App\Form\ContactType;
 use App\Repository\ContenusRepository;
+use App\Repository\PeripheriquesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -57,19 +58,20 @@ class LoginController extends AbstractController
             "home" => $home,
         ]);
     }
-
+// ---------------------------------------------------------------------------------------------------   Header Footer
     #[Route(path: '/header', name: 'app_header')]
-    public function header(): Response
-    {
+    public function header(PeripheriquesRepository $repository): Response    {
+        $theme= $repository->findAll();
         return $this->render('_partial/_header.html.twig', [
-            'header_phone' => '06ELOPHONE'
+            'theme' =>$theme,
         ]);
     }
 
     #[Route(path: '/footer', name: 'app_footer')]
-    public function footer(): Response
-    {
+    public function footer(PeripheriquesRepository $repository): Response
+    {   $theme= $repository->findAll();
         return $this->render('_partial/_footer.html.twig', [
+            'theme'=>$theme
         ]);
     }
 // ---------------------------------------------------------------------------------------------------------   SERVICES

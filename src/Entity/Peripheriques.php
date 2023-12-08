@@ -81,9 +81,6 @@ class Peripheriques
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $titre3_home = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private ?array $themes_pied_page = null;
-
     #[ORM\Column(length: 255,nullable: true)]
     private ?string $titre_pied_page = null;
 
@@ -96,7 +93,7 @@ class Peripheriques
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_modification = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: Image::class, fetch: 'EAGER')]
     private ?Image $logo = null;
 
     #[ORM\ManyToOne]
@@ -110,6 +107,15 @@ class Peripheriques
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $titre3_menu_lat = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $titre_footer = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?array $themes_pied_page = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $titre_header = null;
 
     public function getId(): ?int
     {
@@ -381,18 +387,6 @@ class Peripheriques
         return $this;
     }
 
-    public function getThemesPiedPage(): ?array
-    {
-        return $this->themes_pied_page;
-    }
-
-    public function setThemesPiedPage(?array $themes_pied_page): static
-    {
-        $this->themes_pied_page = $themes_pied_page;
-
-        return $this;
-    }
-
     public function getTitrePiedPage(): ?string
     {
         return $this->titre_pied_page;
@@ -498,6 +492,42 @@ class Peripheriques
     public function setTitre3MenuLat(?string $titre3_menu_lat): static
     {
         $this->titre3_menu_lat = $titre3_menu_lat;
+
+        return $this;
+    }
+
+    public function getTitreFooter(): ?string
+    {
+        return $this->titre_footer;
+    }
+
+    public function setTitreFooter(?string $titre_footer): static
+    {
+        $this->titre_footer = $titre_footer;
+
+        return $this;
+    }
+
+    public function getThemesPiedPage(): ?array
+    {
+        return $this->themes_pied_page;
+    }
+
+    public function setThemesPiedPage(?array $themes_pied_page): static
+    {
+        $this->themes_pied_page = $themes_pied_page;
+
+        return $this;
+    }
+
+    public function getTitreHeader(): ?string
+    {
+        return $this->titre_header;
+    }
+
+    public function setTitreHeader(?string $titre_header): static
+    {
+        $this->titre_header = $titre_header;
 
         return $this;
     }
