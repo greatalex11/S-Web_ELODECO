@@ -2,18 +2,16 @@
 
     {% for Apps in theme %}
 
-
-
-    <div class="container">
-        <div class="main-menu-wrapper">
+    <div class="container" >
+        <div class="main-menu-wrapper" >
             <div class="main-header__logo">
                 <a href="{{ path('app_home') }}">
                     <img src="{{ asset('assets/images/LOGO_ELODECO_1.png') }}" height="140"
                          alt="Logo de l'entreprise ELODECO, conseil en décoration intérieure, représentant une maison sur fond blanc avec des éléments végétaux">
                 </a>
             </div>
-            <div class="main-menu-wrapper__top">
-                <div class="main-menu-wrapper__top-inner">
+            <div class="main-menu-wrapper__top" >
+                <div class="main-menu-wrapper__top-inner" style="background-color: {{ Apps.couleurActuelleBg }}">
                     <div class="main-menu-wrapper__left">
                         <div class="main-menu-wrapper__left-content">
                             <ul class="main-menu-wrapper__left-contact-box list-unstyled">

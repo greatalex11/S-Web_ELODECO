@@ -56,6 +56,12 @@ class DashboardController extends AbstractDashboardController
         // return $this->render('some/path/my-dashboard.html.twig');
     }
 
+
+
+
+
+
+
     public function configureDashboard(): Dashboard
     {
         $date = date('r');

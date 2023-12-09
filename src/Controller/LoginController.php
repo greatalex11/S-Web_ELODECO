@@ -8,6 +8,7 @@ use App\Form\ContactType;
 use App\Repository\ContenusRepository;
 use App\Repository\PeripheriquesRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,6 +25,7 @@ class LoginController extends AbstractController
 //            'controller_name' => 'LoginController',
 //        ]);
 //    }
+
 
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
@@ -49,13 +51,15 @@ class LoginController extends AbstractController
 //  ----------------------------------------------------------------------------------------------------------   HOME
 
     #[Route(path: '/', name: 'app_home')]
-    public function home(ContenusRepository $contenusRepo): Response
+    public function home(ContenusRepository $contenusRepo, PeripheriquesRepository $periphRepository): Response
     {
         $home = $contenusRepo->findByPagesName('home');
-//       $homeCompteurs=$contenusRepo->findCompteurs('homeCompteurs', [Contenus::TYPE_COMPTEURS]);
-//       dd($home);
+        $couleur=$periphRepository->findAll();
+//      $homeCompteurs=$contenusRepo->findCompteurs('homeCompteurs', [Contenus::TYPE_COMPTEURS]);
+//       dd($couleur);
         return $this->render('/pages/home.html.twig', [
             "home" => $home,
+            "bgcolor" => $couleur,
         ]);
     }
 // ---------------------------------------------------------------------------------------------------   Header Footer
@@ -70,10 +74,22 @@ class LoginController extends AbstractController
     #[Route(path: '/footer', name: 'app_footer')]
     public function footer(PeripheriquesRepository $repository): Response
     {   $theme= $repository->findAll();
-        return $this->render('_partial/_footer.html.twig', [
+        return $this->render('_partial/_side-menu.html.twig', [
             'theme'=>$theme
         ]);
     }
+
+//    #[Route(path: '/side-menu', name: 'app_side-menu')]
+//    public function sideMenu(PeripheriquesRepository $repository): Response    {
+//        $theme= $repository->findAll();
+//        return $this->render('_partial/_side-menu.html.twig', [
+//            'theme' =>$theme,
+//        ]);
+//    }
+
+
+
+
 // ---------------------------------------------------------------------------------------------------------   SERVICES
 
     #[Route(path: '/services', name: 'app_services')]
@@ -207,7 +223,6 @@ class LoginController extends AbstractController
         return $this->render('pages/espace_artisan.html.twig', [
         ]);
     }
-
 
 
 

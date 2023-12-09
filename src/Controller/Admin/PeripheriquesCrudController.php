@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Peripheriques;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -20,7 +21,6 @@ class PeripheriquesCrudController extends AbstractCrudController
     {
         return Peripheriques::class;
     }
-
 
     public function configureCrud(Crud $crud): Crud
     {

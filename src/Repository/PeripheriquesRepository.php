@@ -14,6 +14,8 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Peripheriques[]    findAll()
  * @method Peripheriques[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
+
+
 class PeripheriquesRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -22,13 +24,9 @@ class PeripheriquesRepository extends ServiceEntityRepository
     }
 }
 
-//    /**
-//     * @return Peripheriques[] Returns an array of Peripheriques objects
-//     */
-//    public function findTheme(PeripheriquesRepository $repo): array
-//    {
-//        $periph = $repo->getEntityManager()->getRepository(Peripheriques::class)->findAll();
-//        return $periph;//    }
+    /**
+     * @return Peripheriques[] Returns an array of Peripheriques objects
+     */
 
 
 //            ->getQuery()
