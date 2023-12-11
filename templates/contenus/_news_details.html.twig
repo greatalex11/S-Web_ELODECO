@@ -24,9 +24,7 @@
 
             {# ici tu pourrais faire un slider avec les images qui reste #}
             <div class="owl-carousel owl-theme">
-
                 {% for imageNews in news.images[1:] %}
-                    {% if loop == 1 %} {% endif %}
                     <div>
                         <img style="object-fit: contain; height: 350px"
                              src="{{ vich_uploader_asset(imageNews) }}"
