@@ -8,13 +8,11 @@ use App\Form\ContactType;
 use App\Repository\ContenusRepository;
 use App\Repository\PeripheriquesRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\Request;
-//use Symfony\Component\HttpFoundation\Request;
 
 class LoginController extends AbstractController
 {
@@ -25,7 +23,6 @@ class LoginController extends AbstractController
 //            'controller_name' => 'LoginController',
 //        ]);
 //    }
-
 
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
@@ -87,9 +84,6 @@ class LoginController extends AbstractController
 //        ]);
 //    }
 
-
-
-
 // ---------------------------------------------------------------------------------------------------------   SERVICES
 
     #[Route(path: '/services', name: 'app_services')]
@@ -109,13 +103,14 @@ class LoginController extends AbstractController
         return $this->render('pages/services_details.html.twig', [
         ]);
     }
+
 // ---------------------------------------------------------------------------------------------------------    ABOUT
     #[Route(path: '/about', name: 'app_about')]
     public function about(ContenusRepository $contenusRepo): Response
     {
         $services = $contenusRepo->findByPagesName('About');
         return $this->render('pages/about.html.twig', [
-            'about'=>$services,
+            'about' => $services,
         ]);
     }
 
@@ -176,17 +171,26 @@ class LoginController extends AbstractController
     #[Route(path: '/news', name: 'app_news')]
     public function news(ContenusRepository $contenusRepository): Response
     {
-        $news = $contenusRepository->findByPagesName('News', [Contenus::TYPE_NEWS]);
-//        dd($news);
+        $news = $contenusRepository->findByType([Contenus::TYPE_BLOGN]);
         return $this->render('pages/news.html.twig', [
+            'news' => $news
         ]);
     }
 
-    #[Route(path: '/news/{id}', name: 'app_news_details')]
-    public function newsD(): Response
+    #[Route(path: '/news/{slug}', name: 'app_news_details')]
+    public function newsD(Contenus $contenu, ContenusRepository $contenusRepository): Response
     {
-        // recup la news
+        // Je vais chercher toutes les news publié par date décroissante
+        $news = $contenusRepository->findByType([Contenus::TYPE_BLOGN]);
+        // Je remove des mes news la news sur laquelle je suis
+        foreach ($news as $k => $new) {
+            if ($new->getId() === $contenu->getId()) {
+                unset($news[$k]);
+            }
+        }
         return $this->render('pages/news_details.html.twig', [
+            "news" => $contenu,
+            'lastNews' => $news,
         ]);
     }
 // ---------------------------------------------------------------------------------------------------------   CONTACT
@@ -223,6 +227,7 @@ class LoginController extends AbstractController
         return $this->render('pages/espace_artisan.html.twig', [
         ]);
     }
+
 
 
 

@@ -7,7 +7,6 @@ use App\Entity\Client;
 use App\Entity\Contenus;
 use App\Entity\Image;
 use App\Entity\Page;
-use App\Entity\Peripheriques;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
@@ -73,12 +72,19 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        $routeBuilder = $this->container->get(AdminUrlGenerator::class);
+
         yield MenuItem::linkToUrl('EloDeco Site Web', 'fas fa-home', $this->generateUrl('app_home'));
         yield MenuItem::section('Thème');
         yield MenuItem::linkToCrud('Pages', 'fas fa-file-alt', Page::class);
         yield MenuItem::linkToCrud('Contenus', 'fas fa-text-height', Contenus::class);
         yield MenuItem::linkToCrud('Images', 'fas fa-image', Image::class);
-        yield MenuItem::linkToCrud('Theme', 'fas fa-suse', Peripheriques::class);
+
+        // Pour le thème je charge ma seule entité en base de données en mode édition
+        yield MenuItem::linkToUrl('Theme', 'fas fa-suse', $routeBuilder
+            ->setController(PeripheriquesCrudController::class)
+            ->setEntityId(1)
+            ->setAction(Action::EDIT));
 
         yield MenuItem::section('Admin');
         yield MenuItem::linkToCrud('Artisans', 'fas fa-hammer', Artisan::class);

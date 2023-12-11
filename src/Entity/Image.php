@@ -55,6 +55,9 @@ class Image
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $type = null;
 
+    #[ORM\Column]
+    private bool $isPeripherique = false;
+
     public function __construct()
     {
         $this->contenus = new ArrayCollection();
@@ -65,19 +68,6 @@ class Image
         return "Image : " . $this->titre;
     }
 
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    public function setImageFile(?File $imageFile = null): void
-    {
-        $this->imageFile = $imageFile;
-        if (null !== $imageFile) {
-            $this->updatedAt = new \DateTimeImmutable();
-        }
-    }
-    
     public function getId(): ?int
     {
         return $this->id;
@@ -147,14 +137,6 @@ class Image
         return $this;
     }
 
-    /**
-     * @return Collection<int, Contenus>
-     */
-    public function getContenus(): Collection
-    {
-        return $this->contenus;
-    }
-
     public function addContenu(Contenus $contenu): static
     {
         if (!$this->contenus->contains($contenu)) {
@@ -200,10 +182,60 @@ class Image
         if ($this->size === null)
             return $this->size;
         $kb = $this->size / 1024;
-        if($kb < 1000) {
-            return  round($kb,2). ' Kb';
+        if ($kb < 1000) {
+            return round($kb, 2) . ' Kb';
         }
-        return  round($kb/1024,2). ' Mb';
+        return round($kb / 1024, 2) . ' Mb';
+    }
+
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function setTitreDefault($event): static
+    {
+        if ($this->titre === null) {
+            $this->titre = $this->getImageFile()?->getClientOriginalName();
+        }
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+        if (null !== $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    // Fonction qui permet de savoir sur quel type de contenu est accroché l'image
+    public function getUsedBy(): string
+    {
+        if ($this->isPeripherique) {
+            return "Thème";
+        }
+        $contenus = $this->getContenus();
+        $types = [];
+        foreach ($contenus as $contenu) {
+            $types[] = $contenu->getType();
+        }
+        $types = array_unique($types);
+        $typesLabel = array_flip(Contenus::TYPES);
+        foreach ($types as $k => $type) {
+            $types[$k] = $typesLabel[$type];
+        }
+        return implode(', ', $types);
+    }
+
+    /**
+     * @return Collection<int, Contenus>
+     */
+    public function getContenus(): Collection
+    {
+        return $this->contenus;
     }
 
     public function getType(): ?string
@@ -214,6 +246,37 @@ class Image
     public function setType(?string $type): static
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    // Fonction qui permet de savoir sur quelles pages est utilisé l'image
+    public function onPage(): string
+    {
+        $contenus = $this->getContenus();
+        $pages = [];
+        $pagesNames = [];
+        foreach ($contenus as $contenu) {
+            $pages[] = $contenu->getPages();
+        }
+
+        foreach ($pages as $listPages) {
+            foreach ($listPages as $page) {
+                $pagesNames[] = $page->getNom();
+            }
+        }
+        $pagesNames = array_unique($pagesNames);
+        return implode(', ', $pagesNames);
+    }
+
+    public function isIsPeripherique(): bool
+    {
+        return $this->isPeripherique;
+    }
+
+    public function setIsPeripherique(bool $isPeripherique): static
+    {
+        $this->isPeripherique = $isPeripherique;
 
         return $this;
     }

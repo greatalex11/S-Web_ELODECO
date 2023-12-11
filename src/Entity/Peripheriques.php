@@ -93,16 +93,20 @@ class Peripheriques
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_modification = null;
 
-    #[ORM\ManyToOne(targetEntity: Image::class, fetch: 'EAGER')]
+    #[ORM\ManyToOne(targetEntity: Image::class, cascade: ['persist'], fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Image $logo = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Image $image1_carouselHome = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Image $image2_carouselHome = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Image $image3_carouselHome = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -546,5 +550,4 @@ class Peripheriques
 
         return $this;
     }
-
 }

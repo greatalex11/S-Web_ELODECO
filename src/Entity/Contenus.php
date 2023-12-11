@@ -16,7 +16,6 @@ class Contenus
 {
 
     public const TYPE_COMPTEURS = 'compteurs';
-    public const TYPE_NEWS = 'news';
     public const TYPE_BLOGN = 'blogNews';
     public const TYPE_BLOGAC = 'blogAboutConcept';
     public const TYPE_BLOGAE = 'blogAboutExpert';
@@ -29,10 +28,7 @@ class Contenus
     public const TYPE_1SERVICEPRO = '1ServicesPRO';
     public const TYPE_3SERVICESQUALITE = '3ServicesQUALITE';
 
-    public const TYPE_MENU = 'menu';
     public const TYPES = [
-        //  'menu' => self::TYPE_MENU,
-        //   'news' => self::TYPE_NEWS,
         'News' => self::TYPE_BLOGN,
         'Folio' => self::TYPE_BLOGF,
         'Service' => self::TYPE_BLOGS,
@@ -44,7 +40,7 @@ class Contenus
         'About concept' => self::TYPE_BLOGAC,
         'About expert' => self::TYPE_BLOGAE,
         'About pub en L' => self::TYPE_BLOGAL,
-        'About Temoins'=> self::TYPE_BLOGAT,
+        'About Temoins' => self::TYPE_BLOGAT,
     ];
 
     use DateTrait;
@@ -57,7 +53,7 @@ class Contenus
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $type = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $titre1 = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -87,6 +83,9 @@ class Contenus
 
     #[ORM\Column(type: Types::JSON, nullable: true)]
     private ?array $liste = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = null;
 
     public function __construct()
     {
@@ -121,7 +120,7 @@ class Contenus
         return $this->titre1;
     }
 
-    public function setTitre1(string $titre1): static
+    public function setTitre1(?string $titre1): static
     {
         $this->titre1 = $titre1;
 
@@ -259,6 +258,18 @@ class Contenus
     public function setListe(?array $liste): static
     {
         $this->liste = array_values($liste);
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }

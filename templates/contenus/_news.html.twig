@@ -1,0 +1,33 @@
+{% if new.images.first %}
+    {% set image = vich_uploader_asset(new.images.first) %}
+    {% set imageTitle = new.images.first.titre %}
+{% else %}
+    {% set image = asset('assets/images/backgrounds/fond2.png') %}
+    {% set imageTitle = 'news image' %}
+{% endif %}
+<div class="col-xl-4 col-lg-4 wow fadeInUp"
+     data-wow-delay="100ms">
+    <div class="news-one__single">
+        <div class="news-one__img-box">
+            <div class="news-one-img">
+                <img src="{{ image }}" style="height: 300px;width: 100%;object-fit: contain"
+                     alt="{{ imageTitle }}">
+                <a href="{{ path('app_news_details',{slug: new.slug}) }}">
+                    <span class="news-one__plus"></span>
+                </a>
+            </div>
+            <div class="news-one__date-box">
+                <p> {{ new.Titre2 }}</p>
+            </div>
+        </div>
+        <div class="news-one__content text-break">
+
+            <h3 class="news-one__title ">
+                <a href="{{ path('app_news_details',{slug: new.slug}) }}">{{ new.Titre1 }}</a>
+            </h3>
+            <p class="news-one__text">{{ new.Texte1|striptags|u.truncate(150,'...',false)|raw }}</p>
+            <a href="{{ path('app_news_details',{slug: new.slug}) }}"
+               class="news-one__btn">Plus d'articles</a>
+        </div>
+    </div>
+</div>

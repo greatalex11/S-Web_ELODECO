@@ -3,15 +3,14 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Peripheriques;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -20,6 +19,19 @@ class PeripheriquesCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Peripheriques::class;
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+
+        return parent::configureActions($actions)
+            ->remove(Crud::PAGE_INDEX, Action::NEW)
+            ->remove(Crud::PAGE_EDIT, Action::SAVE_AND_RETURN)
+            ->update(Crud::PAGE_EDIT, Action::SAVE_AND_CONTINUE, function (Action $action) {
+                return $action->setIcon('fa fa-edit')->setLabel('Sauvegarder les modifications');
+            });
+
+
     }
 
     public function configureCrud(Crud $crud): Crud
@@ -36,6 +48,7 @@ class PeripheriquesCrudController extends AbstractCrudController
         return [
             yield FormField::addTab("Entreprise"),
             yield AssociationField::new('logo')
+                ->renderAsEmbeddedForm()
                 ->setLabel('Logo de l\'entreprise au format 93x110')
                 ->setColumns(4)
                 ->setTemplatePath('fields/images.html.twig'),
@@ -63,31 +76,27 @@ class PeripheriquesCrudController extends AbstractCrudController
             yield TextEditorField::new('texte_menu_lat')->setLabel('passionnée de ...')->hideOnIndex(),
             yield TextField::new('titre3_menu_lat')->setLabel('Invatation à te joindre')->hideOnIndex(),
 
-            //                                                     CAROUSSEL
             yield FormField::addTab("Home caroussel "),
-
             yield TextField::new('titre1_home')->setLabel('Atout 1')->setColumns(6)-> hideOnIndex(),
             yield AssociationField::new('image1_carouselHome')
+                ->renderAsEmbeddedForm()
                 ->setLabel('image n°1 au format 1894x359')
                 ->setColumns(4)
-                ->setTemplatePath('fields/images.html.twig')->hideOnIndex(),
+                ->setTemplatePath('fields/images.html.twig'),
 
             yield TextField::new('titre2_home')->setLabel('Atout 2')->setColumns(6)->hideOnIndex(),
             yield AssociationField::new('image2_carouselHome')
+                ->renderAsEmbeddedForm()
                 ->setLabel('image n°2 au format 1894x359')
                 ->setColumns(4)
-                ->setTemplatePath('fields/images.html.twig')->hideOnIndex(),
-
-
+                ->setTemplatePath('fields/images.html.twig'),
 
             yield TextField::new('titre3_home')->setLabel('Atout 3')->setColumns(6)->hideOnIndex(),
             yield AssociationField::new('image3_carouselHome')
+                ->renderAsEmbeddedForm()
                 ->setLabel('image n°3 au format 1894x359')
                 ->setColumns(4)
-                ->setTemplatePath('fields/images.html.twig')->hideOnIndex(),
-
-
-            //                                                     FOOTER
+                ->setTemplatePath('fields/images.html.twig'),
 
             yield FormField::addTab("Pied de page "),
             yield TextField::new('titre_footer')->setLabel('titre principal pied de page')->setColumns(6)->hideOnIndex(),
@@ -95,16 +104,9 @@ class PeripheriquesCrudController extends AbstractCrudController
             yield TextField::new('titre_pied_page')->setLabel('Accroche')->setColumns(6)->hideOnIndex(),
             yield CollectionField::new('themes_pied_page')->setLabel('Liste des 5 services ')->setColumns(6)->hideOnIndex(),
 
-
-
-
-
-
-            //                                                    COULEUR FOND
             yield FormField::addTab("Couleur de fond "),
-            yield TextField::new('couleur_initale_bg')->setLabel('couleur initale des blocks noirs')->hideOnIndex()->setDisabled(),
+            yield ColorField::new('couleur_initale_bg')->setLabel('couleur initale des blocks noirs')->hideOnIndex(),
             yield ColorField::new('couleur_actuelle_bg')->setLabel('couleur désirée'),
-
         ];
     }
 }

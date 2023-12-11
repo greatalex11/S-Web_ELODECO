@@ -42,7 +42,7 @@ class PageCrudController extends AbstractCrudController
                     ->set('filters[pages][value][]', $page->getId())
                     ->set('filters[pages][comparison]', '=')
                     ->generateUrl() . "'>{$value}</a>";
-        });//->setDisabled();
+        })->setDisabled(!$this->isGranted('ROLE_SUPER_ADMIN'));
         yield TextareaField::new('commentaires');
         yield AssociationField::new('contenus')->hideOnForm();
     }

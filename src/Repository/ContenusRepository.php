@@ -27,55 +27,46 @@ class ContenusRepository extends ServiceEntityRepository
 
 
 // -------------------------------------------------------------------------------------------------  Home - All blocks
-    public function findByPagesName(string $pageName): array
+    public function findByPagesName(string $pageName, int $maxResults = 10): array
     {
         return $this->createQueryBuilder('c')
             ->join("c.pages", "p")
-            ->andWhere('p.nom = :nom')
+            ->andWhere('LOWER(p.nom) = :nom')
             ->andWhere('c.publier = 1')
-//            ->andWhere('c.type in (:types)')
-            ->setParameter('nom', $pageName)
-//            ->setParameter('types', $types)
+            ->setParameter('nom', strtolower($pageName))
             ->orderBy('c.createdAt', 'DESC')
-            ->setMaxResults(10)
+            ->setMaxResults($maxResults)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
-// -------------------------------------------------------------------------------------------------------  ESSAIS NEWS
-    public function findBlogMaSelection(string $pageName, array $types = [Contenus::TYPE_BLOG]): array
+    public function findByType(array $types = [], int $maxResults = 10): array
     {
         return $this->createQueryBuilder('c')
-            ->join("c.pages", "p")
-            ->andWhere('p.nom = :nom')
             ->andWhere('c.publier = 1')
             ->andWhere('c.type in (:types)')
-            ->setParameter('nom', $pageName)
             ->setParameter('types', $types)
             ->orderBy('c.createdAt', 'DESC')
-            ->setMaxResults(10)
+            ->setMaxResults($maxResults)
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
 // --------------------------------------------------------------------------------------------------------  COMPTEURS
 
-    public function findCompteurs(string $pageName, array $types = [Contenus::TYPE_COMPTEURS]): array
+    public function findByPageNameAndTypes(string $pageName, array $types = [], int $maxResults = 10): array
     {
         return $this->createQueryBuilder('c')
             ->join("c.pages", "p")
-            ->andWhere('p.nom = :nom')
+            ->andWhere('LOWER(p.nom) = :nom')
             ->andWhere('c.publier = 1')
             ->andWhere('c.type in (:types)')
-            ->setParameter('nom', $pageName)
+            ->setParameter('nom', strtolower($pageName))
             ->setParameter('types', $types)
             ->orderBy('c.createdAt', 'DESC')
-            ->setMaxResults(10)
+            ->setMaxResults($maxResults)
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
 

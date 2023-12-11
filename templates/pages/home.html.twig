@@ -1,35 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-
-    {%for contenu in bgcolor %}
-{#    {{ dump(contenu.getCouleurActuelleBg) }}#}
-        {% set colorbg = contenu.getCouleurActuelleBg %}
-
-
-
-
-    <!--                                                                                  BANDEAU SUPERIEUR    image 1894x359                                                            -->
+    {{ dump() }}
     <div class="page-wrapper">
-
+        <!--  HOME - SECTION 1 -  SLIDER PRINCIPAL - Background - 3 PHOTOS 1894X822  &  3 slogans     -->
         <section class="main-slider main-slider-two">
             <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
-    "effect": "fade",
+            "effect": "fade",
 
-     "pagination": {
-        "el": "#main-slider-pagination",
-        "type": "bullets",
-        "clickable": true
-      },
+             "pagination": {
+                "el": "#main-slider-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
 
-    "navigation": {
-        "nextEl": "#main-slider__swiper-button-next",
-        "prevEl": "#main-slider__swiper-button-prev"
-    },
-    "autoplay": {
-        "delay": 5000
-    }}'>
-                <!--                        HOME - SECTION 1 -  SLIDER PRINCIPAL - Background - 3 PHOTOS 1894X822  &  3 slogans                  -->
+            "navigation": {
+                "nextEl": "#main-slider__swiper-button-next",
+                "prevEl": "#main-slider__swiper-button-prev"
+            },
+            "autoplay": {
+                "delay": 5000
+            }}'>
 
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -58,7 +49,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="image-layer"
-                             style="background-image: url({{ asset('assets/images/backgrounds/fond2.png') }});">
+                             style="background-image: url({{ asset('assets/images/backgrounds/deco_bandeau_min.jpg') }});">
                         </div>
                         <div class="main-slider_border"></div>
                         <div class="main-slider_border main-slider_border-two"></div>
@@ -82,7 +73,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="image-layer"
-                             style="background-image: url({{ asset('assets/images/backgrounds/fond2.png') }});">
+                             style="background-image: url({{ asset('assets/images/backgrounds/sdb_bandeau.jpg') }});">
                         </div>
                         <div class="main-slider_border"></div>
                         <div class="main-slider_border main-slider_border-two"></div>
@@ -97,9 +88,8 @@
                             <div class="row">
                                 <div class="col-lg-12 text-center">
                                     <div class="main-slider__content">
-                                        <h2>ELO DECO <br> Créativité à votre écoute</h2>
-                                        <a href="{{ path('app_about') }}" class="cta-one__btn thm-btn">A propos de
-                                            moi</a>
+                                        <h2>Créativité à votre écoute</h2>
+                                        <a href="{{ path('app_about') }}" class="cta-one__btn thm-btn">A propos</a>
                                     </div>
                                 </div>
                             </div>
@@ -120,8 +110,7 @@
         </section>
         <!-- fin section 1 -->
 
-        <!--                                 HOME - SECTION 2 - ACTIVTES DE L'ENTREPRISE AU NOMBRE DE 3                              -->
-
+        <!-- HOME - SECTION 2 - ACTIVTES DE L'ENTREPRISE AU NOMBRE DE 3 -->
         <section class="steps">
             <div class="container">
                 <div class="steps__inner">
@@ -175,9 +164,7 @@
                 </div>
             </div>
         </section>
-        <!--Steps End-->
 
-        <!--Cta One Start-->
         <section class="cta-one">
             <div class="cta-one-pattern"
                  style="background-image: url({{ asset('assets/images/pattern/cta-one-pattern.jpg') }})"></div>
@@ -187,15 +174,13 @@
                         <h2 class="cta-one__text">Décoration, agencements, création de gites, immobilier ...</h2>
                     </div>
                     <div class="cta-one__btn-box">
-                        <a href="{{ path('app_portfolio') }}" class="cta-one__btn thm-btn" style="background-color: {{ colorbg }}">Nos projets</a>
+                        <a href="{{ path('app_portfolio') }}" class="cta-one__btn thm-btn">Nos projets</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!--                                                                  fin section 2                                                 -->
-        <!--                                       HOME - SECTION  3 - PLANS 3D  - image ressources/ img1: 513x513  img2: 290x303           -->
-
+        <!--  HOME - SECTION  3 - PLANS 3D  - image ressources/ img1: 513x513  img2: 290x303   -->
         <section class="welcome-two">
             <div class="welcome-two-bg"
                  style="background-image: url({{ asset('assets/images/backgrounds/welcome-two-bg.png') }})">
@@ -205,7 +190,7 @@
                     <div class="col-xl-6">
                         <div class="welcome-two__left">
                             <div class="welcome-two__img">
-                                <img src="assets/images/resources/projet_indus.png" width="513"
+                                <img src="{{ asset("assets/images/resources/projet_indus.png") }}" width="513"
                                      alt="plan 3D représentant un comble aménagé en espace de vie avec cuisine et table">
                                 <div class="welcome-two__img-shape-1"></div>
                                 <div class="welcome-two__img-shape-2"></div>
@@ -225,7 +210,8 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-6 col-md-6">
                                         <div class="welcome-two__icon-box-img">
-                                            <img src="assets/images/resources/archi-slider-3.png" width="350"
+                                            <img src="{{ asset("assets/images/resources/archi-slider-3.png") }}"
+                                                 width="350"
                                                  alt="photo rectangulaire taille moyenne d'une cheminée avec un buche en feu et un décor forestier en arrière plan">
                                         </div>
                                     </div>
@@ -262,10 +248,8 @@
                 </div>
             </div>
         </section>
-        <!--                                                                       fin section 3                                           -->
 
-        <!--                                                  SECTION 4 - SERVICES PRO - img1: 513x513  img2: 290x303                          -->
-
+        <!--  SECTION 4 - SERVICES PRO - img1: 513x513  img2: 290x303 -->
         <section class="services-two">
             <div class="container">
                 <div class="row">
@@ -287,7 +271,8 @@
 
                     {% for servicesPRO in home %}
                         {% if servicesPRO.type == '3ServicesPRO' %}
-                            <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-duration="1500ms" style="min-height: 454px">
+                            <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-duration="1500ms"
+                                 style="min-height: 454px">
                                 <!--1er service-->
                                 <div class="services-two__single">
                                     <div class="services-two__single-bg"
@@ -336,7 +321,7 @@
                                     <h2 class="services-two__title">
                                         <a href="{{ path('app_services_details') }}">{{ servicesPRO.titre3 }}</a>
                                     </h2>
-                                    <p class="services-two__text-2">{{ servicesPRO.texte3|striptags  }}</p>
+                                    <p class="services-two__text-2">{{ servicesPRO.texte3|striptags }}</p>
                                     <a href="{{ path('app_services_details') }}"
                                        class="services-one__btn services-two__btn">En savoir plus</a>
                                 </div>
@@ -346,10 +331,8 @@
                 </div>
             </div>
         </section>
-        <!--fin section 4-->
 
-        <!--                     SECTION 5 LES PROJETS - PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px-->
-
+        <!--  SECTION 5 LES PROJETS - PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px  -->
         <section class="project-two">
             <div class="project-two__container">
                 <div class="section-title text-center">
@@ -361,7 +344,8 @@
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <div class="project-two__single">
                             <div class="project-two__img">
-                                <img src="assets/images/project/nuancierMini.jpg" alt="nuancier de couleurs">
+                                <img src="{{ asset("assets/images/project/nuancierMini.jpg") }}"
+                                     alt="nuancier de couleurs">
                                 <div class="project-two__architect">
                                     <p>Rafraichissement et remise à neuf</p>
                                     <h3><a href="portfolio-details.html">Nuances de vie</a></h3>
@@ -373,7 +357,7 @@
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <div class="project-two__single">
                             <div class="project-two__img">
-                                <img src="assets/images/project/plan2D.png"
+                                <img src="{{ asset("assets/images/project/plan2D.png") }}"
                                      alt="plan 2D d'un sous-sol avec nouveaux aménagements, table de cuisson, table et chaises">
                                 <div class="project-two__architect">
                                     <p>Plan d'un aménagement de sous-sol</p>
@@ -386,7 +370,7 @@
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="project-two__single">
                             <div class="project-two__img">
-                                <img src="assets/images/project/salledebainPetit.jpg"
+                                <img src="{{ asset('assets/images/project/salledebainPetit.jpg') }}"
                                      alt="image salle de bain contemporaine avec douche et baignoire, ambiance claire, blanc">
                                 <div class="project-two__architect">
                                     <p>Salle de bain</p>
@@ -400,7 +384,7 @@
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="project-two__single">
                             <div class="project-two__img">
-                                <img src="assets/images/project/extensoinboisPetit.jpg"
+                                <img src="{{ asset('assets/images/project/extensoinboisPetit.jpg') }}"
                                      alt="extension bois avec poele, intérieur chic mais simple en matériaux nobles">
                                 <div class="project-two__architect">
                                     <p>Extension bois avec poële </p>
@@ -414,7 +398,7 @@
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <div class="project-two__single">
                             <div class="project-two__img">
-                                <img src="assets/images/project/sejourMini.jpg"
+                                <img src="{{ asset('assets/images/project/sejourMini.jpg') }}"
                                      alt="photo sejour ancien rénové, murs blancs et sol bois avec corniche au plafond">
                                 <div class="project-two__architect">
                                     <p>Séjour avec une nuance de modernité</p>
@@ -427,7 +411,7 @@
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <div class="project-two__single">
                             <div class="project-two__img">
-                                <img src="assets/images/project/decorationMini.jpg"
+                                <img src="{{ asset('assets/images/project/decorationMini.jpg') }}"
                                      alt="photo d'objet de décoration de couleur rose devant un mur gris clair">
                                 <div class="project-two__architect">
                                     <p>Décoration</p>
@@ -441,15 +425,12 @@
                 </div>
             </div>
         </section>
-        <!--                                                Fin section projets                                                         -->
 
 
-        <!--                                            SECTION 6 - compteur de chiffre                                                       -->
-
-
+        <!--  SECTION 6 - compteur de chiffre  -->
         <section class="counters-one counters-one-martopminus">
             <div class="counters-one-pattern"
-                 style="background-image: url({{ asset('assets/images/pattern/counter-one-pattern.jpg') }})">
+                 style="background-image: url({{ asset('assets/images/pattern/counter-one-pattern.min.jpg') }})">
             </div>
             <div class="container">
                 {% for blocks in home %}
@@ -490,11 +471,8 @@
                 {% endfor %}
             </div>
         </section>
-        <!--                                            fin section 6                                              -->
 
-
-        <!--                                   SECTION 7  : offre sur mesure                                      -->
-
+        <!--   SECTION 7  : offre sur mesure  -->
         <section class="pricing-one">
             <div class="container">
                 <div class="pricing-tabs">
@@ -618,11 +596,8 @@
                 </div>
             </div>
         </section>
-        <!--                                                             fin section 7                               -->
 
-
-        <!--                                                SECTION 8 : confiance                                     -->
-
+        <!--    SECTION 8 : confiance  -->
         <section class="trust-experts">
             <div class="trust-experts-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
                  style="background-image: url({{ asset('assets/images/project/plan2D.png') }})"></div>
@@ -633,12 +608,8 @@
                 </div>
             </div>
         </section>
-        <!--                                                    fin section 8                                            -->
 
-
-        <!--                                                     SECTION 9  : MA SECLECTION  photos 370x290                                               -->
-
-
+        <!--   SECTION 9  : MA SECLECTION  photos 370x290   -->
         <section class="news-one">
             <div class="container">
                 <div class="section-title text-center">
@@ -651,36 +622,7 @@
                 <div class="row">
                     {% for contenu in home %}
                         {% if contenu.type =="blogNews" and contenu.publier %}
-                            <div class="col-xl-4 col-lg-4 wow fadeInUp"
-                                 data-wow-delay="100ms">
-                                <div class="news-one__single">
-                                    <div class="news-one__img-box">
-                                        <div class="news-one-img">
-                                            {% if contenu.Images[0] is defined %}
-                                                {% set image = contenu.Images[0] %}
-                                                <img src="{{ vich_uploader_asset(image) }}"
-                                                     alt="{{ image.titre|default('image') }}">
-                                            {% endif %}
-
-                                            <a href="{{ path('app_news_details',{id: contenu.id}) }}">
-                                                <span class="news-one__plus"></span>
-                                            </a>
-                                        </div>
-                                        <div class="news-one__date-box">
-                                            <p> {{ contenu.Titre2 }}</p>
-                                        </div>
-                                    </div>
-                                    <div style="min-height: 454px" class="news-one__content">
-
-                                        <h3 class="news-one__title">
-                                            <a href="{{ path('app_news_details', {id: contenu.id}) }}">{{ contenu.Titre1 }}</a>
-                                        </h3>
-                                        <p class="news-one__text">{{ contenu.Texte1|striptags|u.truncate(150,'...',false)|raw }}</p>
-                                        <a href="{{ path('app_news_details', {id: contenu.id}) }}"
-                                           class="news-one__btn">Plus d'articles</a>
-                                    </div>
-                                </div>
-                            </div>
+                            {% include "contenus/_news.html.twig" with {new: contenu} %}
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -784,10 +726,7 @@
         {#                    </div> #}
         {#                </div> #}
 
-        <!--                                                           fin section 9: ma selection                                                           -->
-
-        <!--                                           SECTION 10 : Client contents   6 /  4 IMGAGES 270X300 + 1MGAGE 156X98                                                         -->
-
+        <!-- SECTION 10 : Client contents   6 /  4 IMGAGES 270X300 + 1MGAGE 156X98  -->
         <section class="they-trusted">
             <div class="container">
                 <div class="row">
@@ -826,7 +765,7 @@
                             </ul>
                             <div class="they-trusted__projects-complete">
                                 <div class="they-trusted__projects-complete-img">
-                                    <img src="assets/images/resources/iconeSdb.png"
+                                    <img src="{{ asset('assets/images/resources/iconeSdb.png') }}"
                                          alt="icone de petite taille de salle de bain rénovée">
                                 </div>
                                 <div class="they-trusted__projects-complete-count-box">
@@ -842,60 +781,60 @@
                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                     <div class="they-trusted__brand-single">
                                         <div class="they-trusted__brand-main-img">
-                                            <a href="#"> <img src="assets/images/resources/sdb2Petit.png"
+                                            <a href="#"> <img src="{{ asset("assets/images/resources/sdb2Petit.png") }}"
                                                               alt="petite salle de bain refaite à neuf avec quelques couleurs sur fond blanc"></a>
                                         </div>
                                         <div class="they-trusted__brand-overly">
-                                            <a href="#"><img src="assets/images/resources/sdb2Petit.png"
+                                            <a href="#"><img src="{{ asset("assets/images/resources/sdb2Petit.png") }}"
                                                              alt="overlay petite salle de bain refaite à neuf avec quelques couleurs sur fond blanc"></a>
                                         </div>
                                         <div class="they-trusted__brand-prattern"
-                                             style="background-image: url(assets/images/pattern/they-trusted-brand-pattern.png)">
+                                             style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                     <div class="they-trusted__brand-single">
                                         <div class="they-trusted__brand-main-img">
-                                            <a href="#"><img src="assets/images/resources/fenetres.png"
+                                            <a href="#"><img src="{{ asset("assets/images/resources/fenetres.png") }}"
                                                              alt="fenetre en pvc posées contre un mur en attendant d'être fixées"></a>
                                         </div>
                                         <div class="they-trusted__brand-overly">
-                                            <a href="#"><img src="assets/images/resources/fenetres.png"
+                                            <a href="#"><img src="{{ asset("assets/images/resources/fenetres.png") }}"
                                                              alt="overlay fenetre en pvc posées"></a>
                                         </div>
                                         <div class="they-trusted__brand-prattern"
-                                             style="background-image: url(assets/images/pattern/they-trusted-brand-pattern.png)">
+                                             style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                     <div class="they-trusted__brand-single they-trusted__brand-single-mb-0">
                                         <div class="they-trusted__brand-main-img">
-                                            <a href="#"> <img src="assets/images/resources/cloison.png"
+                                            <a href="#"> <img src="{{ asset("assets/images/resources/cloison.png") }}"
                                                               alt="fin de pièce débouchant sur couloir en rénovation avec plaque de platre verte"></a>
                                         </div>
                                         <div class="they-trusted__brand-overly">
-                                            <a href="#"><img src="assets/images/resources/cloison.png"
+                                            <a href="#"><img src="{{ asset("assets/images/resources/cloison.png") }}"
                                                              alt="overlay fin de pièce débouchant "></a>
                                         </div>
                                         <div class="they-trusted__brand-prattern"
-                                             style="background-image: url(assets/images/pattern/they-trusted-brand-pattern.png)">
+                                             style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                     <div class="they-trusted__brand-single they-trusted__brand-single-mb-0">
                                         <div class="they-trusted__brand-main-img">
-                                            <a href="#"><img src="assets/images/resources/carrelage.png"
+                                            <a href="#"><img src="{{ asset("assets/images/resources/carrelage.png") }}"
                                                              alt="motif de carrelage multicolor de petite dimension"></a>
                                         </div>
                                         <div class="they-trusted__brand-overly">
-                                            <a href="#"><img src="assets/images/resources/carrelage.png"
+                                            <a href="#"><img src="{{ asset("assets/images/resources/carrelage.png") }}"
                                                              alt="motif de carrelage multicolor de petite dimension"></a>
                                         </div>
                                         <div class="they-trusted__brand-prattern"
-                                             style="background-image: url(assets/images/pattern/they-trusted-brand-pattern.png)">
+                                             style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
                                         </div>
                                     </div>
                                 </div>
@@ -906,20 +845,11 @@
             </div>
         </section>
 
-
-        <!--                                   fin section 10 clients satisfaits                                                        -->
-
-
         <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
-
-
-        <!--                                                             fin section 7  AVEC CAROUSEL                                                    -->
 
         <section class="pricing-one">
             <div class="container">
-
                 <div class="pricing-tabs">
-
                     <div class="row">
                         <div class="col-xl-6">
                             <div class="section-title text-left">
@@ -1106,12 +1036,7 @@
                 </div>
             </div>
         </section>
-        <!--                                                             fin section 7  AVEC CAROUSEL                                         -->
-
 
     </div>
-
-    {% endfor %}
-
 
 {% endblock %}
