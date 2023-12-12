@@ -1,9 +1,4 @@
-
-
 <div class="side-menu__block">
-{{ dump(app) }}
-
-
     <div class="side-menu__block-overlay custom-cursor__overlay side-menu__toggler">
         <div class="cursor"></div>
         <div class="cursor-follower"></div>
@@ -18,11 +13,17 @@
         <!--                                                               SE CONNECTER / DECONNECTER                                                     -->
         <div class="side-menu__block-about">
             <h3 class="side-menu__block__title">Espace personnel</h3>
-            <a href="{{ path('app_login') }}" class="font-italic">Se connecter</a> <span>/</span>  <br>
-            <a href="{{ path('app_logout') }}" class="mb-10 font-italic">Déconnecter</a>  <br>
+            {% if not is_granted('ROLE_USER') %}
+                <a href="{{ path('app_login') }}" class="font-italic">Se connecter</a>
+                <br>
+            {% else %}
+                <a href="{{ path('app_logout') }}" class="mb-10 font-italic">Déconnecter</a>
+                <br>
+            {% endif %}
 
-            <h3 class="side-menu__block__title mt-4" >A propos de moi</h3><!-- /.side-menu__block__title -->
-            <p class="side-menu__block-about__text mb-4">Passionnée de décoration, diplômée et expérimentée, je propose une gamme de services
+            <h3 class="side-menu__block__title mt-4">A propos de moi</h3><!-- /.side-menu__block__title -->
+            <p class="side-menu__block-about__text mb-4">Passionnée de décoration, diplômée et expérimentée, je propose
+                une gamme de services
                 à destination des professionnels et des particuliers.</p><!-- /.side-menu__block-about__text -->
             <a href="{{ path('app_contact') }}" class="thm-btn side-menu__block-about__btn">Demande en ligne</a>
         </div><!-- Me joindre -->

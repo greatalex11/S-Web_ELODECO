@@ -775,6 +775,8 @@
     ;
 
 
+    // ----------------------------- Mon javascript -----------------------------------------
+    // Création du caroussel pour les images de news
     $(document).ready(function () {
         $(".owl-carousel").owlCarousel({
                 margin: 10,
@@ -790,6 +792,49 @@
             }
         );
     });
+
+    // Redimentionnement des news pour les ecran > 992px
+    $(window).on("resize", function () {
+        console.log("resize")
+        calculateHeightNews();
+        logoHeight();
+    });
+
+    function calculateHeightNews() {
+        //  Si tu as des news
+        if ($("#news")) {
+            let higher = 0;
+            // je selectionne toutes les news
+            let $news = $("#news .news-one__content")
+
+            // je passe sur chacun d'entre elle et si la hauteur et plus grande que mon higher je garde cette hauteur
+            $news.each((i, el) => {
+                $(el).height("auto");
+                let height = $(el).height();
+                if (height > higher) {
+                    higher = height;
+                }
+            });
+
+            if (window.innerWidth >= 992) {
+                $news.height(higher);
+            }
+
+        }
+    }
+
+    function logoHeight() {
+        let logoHeight = $(".main-menu-wrapper__bottom").outerHeight();
+        $('#logo').height(logoHeight - 10);
+    }
+
+    $('#pricing-tab  .pr-tab').on('click', function (e) {
+        $('#pricing-tab .pr-tab').removeClass('active-tab')
+        $(this).addClass('active-tab');
+    })
+
+    calculateHeightNews();
+    logoHeight();
 
 
 })(jQuery);
