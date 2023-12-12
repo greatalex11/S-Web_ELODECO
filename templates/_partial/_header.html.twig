@@ -1,128 +1,124 @@
+
+{%  set Apps = theme.theme %}
+
 <header class="main-header clearfix">
+    <div class="container" >
+        <div class="main-menu-wrapper" >
+            <div class="main-header__logo">
+                <a href="{{ path('app_home') }}">
 
-    {% for Apps in theme %}
+                    {% set image1 = Apps.logo %}
+                    <img src="{{ vich_uploader_asset(image1) }}"
+                         alt="{{ image1.titre|default('image') }}" width="110">
 
-        <div class="container">
-            <div class="main-menu-wrapper">
-                <div class="main-header__logo">
-                    <a href="{{ path('app_home') }}">
-                        <img id="logo" src="{{ asset('assets/images/LOGO_ELODECO_1.png') }}" height="100"
-                             alt="Logo de l'entreprise ELODECO, conseil en décoration intérieure, représentant une maison sur fond blanc avec des éléments végétaux">
-                    </a>
-                </div>
-                <div class="main-menu-wrapper__top">
-                    <div class="main-menu-wrapper__top-inner" style="background-color: {{ Apps.couleurActuelleBg }}">
-                        <div class="main-menu-wrapper__left">
-                            <div class="main-menu-wrapper__left-content">
-                                <ul class="main-menu-wrapper__left-contact-box list-unstyled">
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-phone-square-alt"></i>
-                                        </div>
-                                        <div class="text">
-                                            <p><a href="tel:0384000000">{{ Apps.telephone }}</a></p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-envelope"></i>
-                                        </div>
-                                        <div class="text">
-                                            <p><a href="mailto:needhelp@company.com">{{ Apps.mail }}</a></p>
-                                        </div>
-                                        {#                                    |default('elodiekolly.deco@gmail.com' #}
-                                    </li>
-                                </ul>
-                            </div>
+                </a>
+            </div>
+            <div class="main-menu-wrapper__top" >
+                <div class="main-menu-wrapper__top-inner" style="background-color: {{ Apps.couleurActuelleBg }}">
+                    <div class="main-menu-wrapper__left">
+                        <div class="main-menu-wrapper__left-content">
+                            <ul class="main-menu-wrapper__left-contact-box list-unstyled">
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-phone-square-alt"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p><a href="tel:0384000000">{{ Apps.telephone }}</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p><a href="mailto:needhelp@company.com">{{ Apps.mail }}</a></p>
+                                    </div>
+{#                                    |default('elodiekolly.deco@gmail.com'#}
+                                </li>
+                            </ul>
                         </div>
-                        <div class="main-menu-wrapper__right">
-                            <div class="main-menu-wrapper__right-social">
-                                <a href="{{ Apps.linkedIn }}" target="_blank" class="clr-fb"><i
-                                            class="fab fa-linkedin"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
-                                <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
-                                {#                            <a href="{{ Apps.linkedIn|default('[No name]')}}" target="_blank" class="clr-fb"><i class="fab fa-facebook"></i></a> #}
-                                {#                            {% try %} #}
-                                {#                                <a href="{{ Apps.linkedIn}}" target="_blank" class="clr-fb"><i class="fab fa-facebook"></i></a> #}
-                                {#                            {% catch %} #}
-                                {#                                <p>Page inaccessible pour le moment</p> #}
-                                {#                            {% endtry %} #}
-                            </div>
+                    </div>
+                    <div class="main-menu-wrapper__right">
+                        <div class="main-menu-wrapper__right-social">
+                            <a href="{{ Apps.linkedIn}}" target="_blank" class="clr-fb"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
+                            <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ Apps.linkedIn|default('[No name]')}}" target="_blank" class="clr-fb"><i class="fab fa-facebook"></i></a>
+{#                            {% try %}#}
+{#                                <a href="{{ Apps.linkedIn}}" target="_blank" class="clr-fb"><i class="fab fa-facebook"></i></a>#}
+{#                            {% catch %}#}
+{#                                <p>Page inaccessible pour le moment</p>#}
+{#                            {% endtry %}#}
                         </div>
                     </div>
                 </div>
-                <div class="main-menu-wrapper__bottom">
-                    <nav class="main-menu">
-                        <div class="main-menu__inner">
-                            <a href="#" class="mobile-nav__toggler">
-                                <i class="fa fa-bars"></i>
+            </div>
+            <div class="main-menu-wrapper__bottom">
+                <nav class="main-menu">
+                    <div class="main-menu__inner">
+                        <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                        <ul class="main-menu__list">
+                            <li class="current m-lg-1">
+                                <a href="{{ path('app_home') }}">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Services</a>
+                                <ul>
+                                    <li><a href="{{ path('app_services') }}">Services</a></li>
+                                    <li><a href="{{ path('app_services_details') }}">Service Details</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">About</a>
+                                <ul>
+                                    <li><a href="{{ path('app_about') }}">A propos</a></li>
+                                    <li><a href="{{ path('app_our_mission') }}">Ma mission</a></li>
+{#                                    <li><a href="{{ path('app_team') }}">Team</a></li>#}
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Portfolio</a>
+                                <ul>
+                                    <li><a href="{{ path('app_portfolio') }}">Portfolio</a></li>
+                                    <li><a href="{{ path('app_portfolio_details') }}">Portfolio Details</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="{{ path('app_styles') }}">Styles déco</a>
+                            </li>
+                            <li class="">
+                                <a href="{{ path('app_news') }}">News</a>
+                            </li>
+                            <li><a href="{{ path('app_contact') }}">Contact</a></li>
+                        </ul>
+
+{#                        <div class="main-header__three-line-icon top-50 mb-xl-2">#}
+{#                                    flex-column align-middle justify-content-center#}
+{#                            <a href="#" class="side-menu__toggler  ">#}
+{#                                <img src="{{ asset('assets/images/resources/main-header-three-line-icon.png') }}"#}
+{#                                     alt="icone 3 barres horizontale d'accès à l'espace personnel">#}
+{#                                <i class="font-italic fs-6 m-lg-2">Espace personnel</i>#}
+{#                            </a>#}
+{#                        </div>#}
+
+<!--                    LOUPE COMMENTEE AINSI QUE LE BOUTON EN SAVOIR PLUS / A LA PLACE ACCES ESPACE MEMBRE                                  -->
+                        <div class="main-menu__right">
+                            <a href="#" class="side-menu__toggler  ">
+{#                                <img src="{{ asset('assets/images/resources/main-header-three-line-icon.png') }}"#}
+{#                                     alt="icone 3 barres horizontale d'accès à l'espace personnel">#}
+                                <i class="font-italic fs-6 m-lg-2">Connexion</i>
                             </a>
-                            <ul class="main-menu__list">
-                                <li class="current">
-                                    <a href="{{ path('app_home') }}">Home</a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#">Services</a>
-                                    <ul>
-                                        <li><a href="{{ path('app_services') }}">Services</a></li>
-                                        <li><a href="{{ path('app_services_details') }}">Service Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#">About</a>
-                                    <ul>
-                                        <li><a href="{{ path('app_about') }}">A propos</a></li>
-                                        <li><a href="{{ path('app_our_mission') }}">Ma mission</a></li>
-                                        {#                                    <li><a href="{{ path('app_team') }}">Team</a></li> #}
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#">Portfolio</a>
-                                    <ul>
-                                        <li><a href="{{ path('app_portfolio') }}">Portfolio</a></li>
-                                        <li><a href="{{ path('app_portfolio_details') }}">Portfolio Details</a></li>
-                                    </ul>
-                                </li>
 
-                                <li class="dropdown">
-                                    <a href="{{ path('app_styles') }}">Styles déco</a>
-                                </li>
-
-                                <li class="">
-                                    <a href="{{ path('app_news') }}">News</a>
-                                </li>
-                                <li><a href="{{ path('app_contact') }}">Contact</a></li>
-                            </ul>
-
-                            {#                        <div class="main-header__three-line-icon top-50 mb-xl-2"> #}
-                            {#                            #}{#        flex-column align-middle justify-content-center #}
-                            {#                            <a href="#" class="side-menu__toggler  "> #}
-                            {#                                <img src="{{ asset('assets/images/resources/main-header-three-line-icon.png') }}" #}
-                            {#                                     alt="icone 3 barres horizontale d'accès à l'espace personnel"> #}
-                            {#                                <i class="font-italic fs-6 m-lg-2">Espace personnel</i> #}
-                            {#                            </a> #}
-                            {#                        </div> #}
-
-                            <!--                    LOUPE COMMENTEE AINSI QUE LE BOUTON EN SAVOIR PLUS / A LA PLACE ACCES ESPACE MEMERE                                  -->
-                            <div class="main-menu__right">
-                                <a href="#" class="side-menu__toggler  ">
-                                    <img src="{{ asset('assets/images/resources/main-header-three-line-icon.png') }}"
-                                         alt="icone 3 barres horizontale d'accès à l'espace personnel">
-                                    <i class="font-italic fs-6 m-lg-2"></i>
-                                </a>
-
-                                {#                            <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a> #}
-                                {#                            <a href="{{ path('app_home') }}" class="main-menu__read-more-btn thm-btn">En savoir #}
-                                {#                                plus </a> #}
-                            </div>
-
+{#                            <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a>#}
+{#                            <a href="{{ path('app_home') }}" class="main-menu__read-more-btn thm-btn">En savoir#}
+{#                                plus </a>#}
                         </div>
-                    </nav>
-                </div>
+                    </div>
+                </nav>
             </div>
         </div>
-    {% endfor %}
+    </div>
 </header>
 
 <div class="stricky-header stricked-menu main-menu">

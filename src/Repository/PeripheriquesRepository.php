@@ -4,7 +4,10 @@ namespace App\Repository;
 
 use App\Entity\Peripheriques;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * @extends ServiceEntityRepository<Peripheriques>
@@ -18,15 +21,95 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class PeripheriquesRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private mixed $session;
+
+    public function __construct(ManagerRegistry $registry, ParameterBagInterface $params, )
     {
         parent::__construct($registry, Peripheriques::class);
+        $this->params = $params;
+
     }
-}
+
 
     /**
      * @return Peripheriques[] Returns an array of Peripheriques objects
      */
+
+//    public function trouveBidule()
+//    {
+//        $queryBuilder = $this->createQueryBuilder('periph')
+//            ->select('periph.couleur_actuelle_bg');
+//
+//        $query = $queryBuilder->getQuery();
+//        $myResultat = $query->getResult();
+//
+////     getSingleScalarResult();       $this->params->set('app.colors.my_color', $myResultat);
+////        $this->session->set('my_color', $myResultat);
+//
+//        return $myResultat;
+//    }
+
+
+    public function periphColor():string
+    {
+//        $colorBg = null;
+        $result= $this->createQueryBuilder('periph')
+            ->select('periph.couleur_actuelle_bg')
+            ->where('periph.id=1')
+//            ->where('periph.couleur_actuelle_bg = :coulorBg')
+//            ->setParameter('coulorBg', $colorBg)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+
+        $this ->params->set('app.colors', $result['couleur_actuelle_bg']);
+
+//        if ($colorBg === null) {
+//            return $this->periphColor($params);
+
+//        dd($result);
+        return $result;
+    }
+
+
+
+
+
+
+
+
+
+
+
+}
+
+//public function periphColor(string $couleur, string $colorBg, ParameterBagInterface $params): string
+//{
+//    $this->createQueryBuilder('periph')
+//        ->Where('periph.couleur_actuelle_bg = :couleurBg')
+//        ->setParameter('couleurBg', $colorBg)
+//        ->getQuery()
+//        ->getResult();
+//
+//    $params->set('app.colors.colorBg', $colorBg);
+//
+//    return $colorBg;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //            ->getQuery()

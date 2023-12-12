@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ArtisanRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -62,6 +64,14 @@ class Artisan
 
     #[ORM\OneToOne(inversedBy: 'artisan', cascade: ['persist', 'remove'])]
     private ?User $user = null;
+
+    #[ORM\OneToMany(mappedBy: 'artisan', targetEntity: Tache::class)]
+    private Collection $tache;
+
+    public function __construct()
+    {
+       $this->tache = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -257,6 +267,38 @@ class Artisan
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+
+
+    /**
+     * @return Collection<int, Tache>
+     */
+    public function getTache(): Collection
+    {
+        return $this->tache;
+    }
+
+    public function addTache(Tache $tache): static
+    {
+        if (!$this->tache->contains($tache)) {
+            $this->tache->add($tache);
+            $tache->setArtisan($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTache(Tache $tache): static
+    {
+        if ($this->tache->removeElement($tache)) {
+            // set the owning side to null (unless already changed)
+            if ($tache->getArtisan() === $this) {
+                $tache->setArtisan(null);
+            }
+        }
 
         return $this;
     }

@@ -97,15 +97,15 @@ class Peripheriques
     #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Image $logo = null;
 
-    #[ORM\ManyToOne(cascade: ['persist'])]
-    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    #[ORM\ManyToOne(cascade: ['persist'],fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL',)]
     private ?Image $image1_carouselHome = null;
 
-    #[ORM\ManyToOne(cascade: ['persist'])]
+    #[ORM\ManyToOne(cascade: ['persist'],fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Image $image2_carouselHome = null;
 
-    #[ORM\ManyToOne(cascade: ['persist'])]
+    #[ORM\ManyToOne(cascade: ['persist'],fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Image $image3_carouselHome = null;
 

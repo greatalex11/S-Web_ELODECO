@@ -38,10 +38,11 @@ class ContenusCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions
     {
-        $addDetails = Action::new('addDetails', 'créer du détails', 'fa-brands fa-theme-isle')
-            ->linkToCrudAction('creatDetails')
-            ->addCssClass('btn btn-success')
-            ->setIcon('fa fa-check-circle');
+//        Essais: ajout bouton 'créer details avec fonction 'creatDetails' de recherche DB en vue de news-details
+//        $addDetails = Action::new('addDetails', 'créer du détails', 'fa-brands fa-theme-isle')
+//            ->linkToCrudAction('creatDetails')
+//            ->addCssClass('btn btn-success')
+//            ->setIcon('fa fa-check-circle');
 
         // Je décide de modifier mes acitons de base sur le controller Contenus
         return parent::configureActions($actions)
@@ -101,6 +102,8 @@ class ContenusCrudController extends AbstractCrudController
                 yield TextEditorField::new('texte2')->setLabel('argument 2')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
                 yield TextField::new('titre3')->setLabel(' 3ème service pro')->hideOnIndex();
                 yield TextEditorField::new('texte3')->setLabel('argument 3')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+                yield ArrayField::new('liste')->setLabel('les 3 titres supérieurs')->hideOnIndex();
+
 
             } elseif ($contenu && $contenu->getType() === Contenus::TYPE_1SERVICEPRO) {
                 yield TextField::new('titre1')->setLabel('Ce que tu fais... ?');
@@ -178,7 +181,26 @@ class ContenusCrudController extends AbstractCrudController
                 yield TextField::new('titre3')->setLabel('3ème Qualité')->hideOnIndex();
                 yield TextEditorField::new('texte3')->setLabel('Arguments dernière qualité')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
 
-            } else {
+            } elseif ($contenu && $contenu->getType() === Contenus::TYPE_PHOTOGP) {
+
+                yield TextField::new('titre1')->setLabel('Titre 1');
+                yield TextField::new('titre2')->setLabel('Titre 2');
+                yield TextField::new('titre3')->setLabel('Titre 3');
+                yield TextField::new('texte1')->setLabel('Titre 4');
+                yield TextField::new('texte2')->setLabel('Titre 5');
+                yield TextField::new('texte3')->setLabel('Titre 6');
+                yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
+                    ->setLabel('image')
+                    ->setEntryIsComplex(true)
+                    ->setFormTypeOptions([
+                        'by_reference' => false,
+                    ])
+                    ->setColumns(12)
+                    ->setTemplatePath('fields/images.html.twig');
+
+                yield ArrayField::new('liste')->setLabel('Petits titres grisés')->hideOnIndex();
+
+            }else {
                 // Ici les listes
                 yield TextField::new('titre1')->setLabel('Titre');
                 yield TextEditorField::new('texte1')->setLabel('Contenu')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
@@ -208,8 +230,8 @@ class ContenusCrudController extends AbstractCrudController
 
     public function creatDetails(AdminContext $context): Response
     {
-        $cul = [1, 2, 33];
-        dd($cul);
+        $essais = [1, 2, 33];
+        dd($essais);
 //        $details = $context->getEntity()->getInstance();
 //        $entityManager = $this->container->get('doctrine')->getManagerForClass($className);
 

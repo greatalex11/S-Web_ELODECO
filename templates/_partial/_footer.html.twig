@@ -1,6 +1,7 @@
 
+{%  set Apps = theme.theme %}
 <footer class="site-footer">
-    {% for Apps in theme %}
+
 
     <div class="site-footer__top">
         <div class="container">
@@ -9,7 +10,7 @@
                     <div class="site-footer__top-logo-box">
                         {% set attribut = Apps.logo %}
                         <a href="{{ path('app_about') }}"><img src="{{vich_uploader_asset(attribut)}}"
-                             alt="{{ attribut.titre|default('image') }}"></a>
+                             alt="{{ attribut.titre|default('image') }}" width="80"></a>
                     </div>
                     <div class="site-footer__top-text">
                         <p>{{Apps.titreFooter}}</p>
@@ -65,7 +66,7 @@
                         <ul class="footer-widget__links-list list-unstyled">
                             <li><a href="{{ path('app_about') }}">About</a></li>
                             <li><a href="{{ path('app_our_mission') }}">Ma mission</a></li>
-{#                            <li><a href="team.html">Meet the Team</a></li>#}
+                            <li><a href="team.html">Meet the Team</a></li>
                             <li><a href="{{ path('app_portfolio') }}">Portfolio</a></li>
                             <li><a href="{{ path('app_contact') }}">Contact</a></li>
                         </ul>
@@ -120,5 +121,5 @@
             </div>
         </div>
     </div>
-    {% endfor %}
+
 </footer>

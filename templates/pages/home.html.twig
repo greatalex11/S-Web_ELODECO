@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
-
 {% block content %}
+    {% set Apps=theme.theme %}
     <div class="page-wrapper">
         <!--  HOME - SECTION 1 -  SLIDER PRINCIPAL - Background - 3 PHOTOS 1894X822  &  3 slogans     -->
         <section class="main-slider main-slider-two">
@@ -23,8 +23,9 @@
 
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <div class="image-layer"
-                             style="background-image: url({{ asset('assets/images/backgrounds/fond2.png') }});">
+                        {% set image1 = Apps.image1CarouselHome %}
+                        <div class="image-layer" style="background-image: url({{ vich_uploader_asset(image1) }})">
+
                         </div>
                         <div class="main-slider_border"></div>
                         <div class="main-slider_border main-slider_border-two"></div>
@@ -39,7 +40,7 @@
                             <div class="row">
                                 <div class="col-lg-12 text-center">
                                     <div class="main-slider__content">
-                                        <h2>Elo deco <br> Un savoir faire</h2>
+                                        <h2>{{ Apps.nomentreprise }}<br>{{ Apps.titre1home }}</h2>
                                         <a href="{{ path('app_about') }}" class="cta-one__btn thm-btn">A propos</a>
                                     </div>
                                 </div>
@@ -47,9 +48,14 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="image-layer"
-                             style="background-image: url({{ asset('assets/images/backgrounds/deco_bandeau_min.jpg') }});">
+                        {% set image2 = Apps.image2CarouselHome %}
+                        <div class="image-layer" style="background-image: url({{ vich_uploader_asset(image2) }})">
                         </div>
+                        {#                        <div class="image-layer" #}
+                        {#                             #}
+                        {#                        {% set image1 = Apps.image2CarouselHome %} #}
+                        {#                        <img src="{{ vich_uploader_asset(image1) }}" #}
+                        {#                             alt="{{ image1.titre|default('image') }}" width="100%"> #}
                         <div class="main-slider_border"></div>
                         <div class="main-slider_border main-slider_border-two"></div>
                         <div class="main-slider_border main-slider_border-three"></div>
@@ -63,7 +69,7 @@
                             <div class="row">
                                 <div class="col-lg-12 text-center">
                                     <div class="main-slider__content">
-                                        <h2>ELO DECO <br> Honnêteté</h2>
+                                        <h2>{{ Apps.nomentreprise }}<br>{{ Apps.titre2home }}</h2>
                                         <a href="{{ path('app_about') }}" class="cta-one__btn thm-btn">A propos</a>
                                     </div>
                                 </div>
@@ -71,8 +77,8 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="image-layer"
-                             style="background-image: url({{ asset('assets/images/backgrounds/sdb_bandeau.jpg') }});">
+                        {% set image3 = Apps.image3CarouselHome %}
+                        <div class="image-layer" style="background-image: url({{ vich_uploader_asset(image3) }})">
                         </div>
                         <div class="main-slider_border"></div>
                         <div class="main-slider_border main-slider_border-two"></div>
@@ -87,7 +93,8 @@
                             <div class="row">
                                 <div class="col-lg-12 text-center">
                                     <div class="main-slider__content">
-                                        <h2>Créativité à votre écoute</h2>
+                                        <h2>{{ Apps.nomentreprise }}<br>{{ Apps.titre3home }}</h2>
+                                        {#                                        <h2>Créativité à votre écoute</h2> #}
                                         <a href="{{ path('app_about') }}" class="cta-one__btn thm-btn">A propos</a>
                                     </div>
                                 </div>
@@ -109,13 +116,12 @@
         </section>
         <!-- fin section 1 -->
 
-        <!-- HOME - SECTION 2 - ACTIVTES DE L'ENTREPRISE AU NOMBRE DE 3 -->
+        <!-- HOME - SECTION 2 -          3 SERVICES           ACTIVTES DE L'ENTREPRISE              DECO + PLANS 3D + G PROJET                                     -->
         <section class="steps">
             <div class="container">
                 <div class="steps__inner">
                     <div class="row">
                         {% for troisServices in home %}
-
                             {% if troisServices.type =="3Services" %}
                                 <div class="col-xl-4 col-lg-4">
                                     <!-- module 1 -->
@@ -164,165 +170,276 @@
             </div>
         </section>
 
+        <!-- HOME - SECTION 3 -                                   ASTUCES : RAPPEL THEME PIED DE PAGE                                        -->
         <section class="cta-one">
             <div class="cta-one-pattern"
                  style="background-image: url({{ asset('assets/images/pattern/cta-one-pattern.jpg') }})"></div>
             <div class="container">
                 <div class="cta-one__inner">
                     <div class="cta-one__content">
-                        <h2 class="cta-one__text">Décoration, agencements, création de gites, immobilier ...</h2>
+                        {#                        {{ dump(Apps.themespiedpage[2]) }} #}
+                        {#                        {% for points in Apps %} #}
+                        {#                            {{ dump(points) }} #}
+                        {#                        {% endfor %} #}
+                        <h2 class="cta-one__text"> {{ Apps.themespiedpage[1] }}, {{ Apps.themespiedpage[2] }}
+                            , {{ Apps.themespiedpage[3] }}...</h2>
                     </div>
                     <div class="cta-one__btn-box">
-                        <a href="{{ path('app_portfolio') }}" class="cta-one__btn thm-btn">Nos projets</a>
+                        <a href="{{ path('app_portfolio') }}" class="cta-one__btn thm-btn"
+                           style="background-color: {{ Apps.couleuractuellebg }}">Mes projets</a>
                     </div>
                 </div>
             </div>
         </section>
+        <!-- fin section 3                                                                                                                                           -->
 
-        <!--  HOME - SECTION  3 - PLANS 3D  - image ressources/ img1: 513x513  img2: 290x303   -->
+
+        <!--  HOME - SECTION  4                             IMAGE  BULLE EN MOUVEMENT               513x513  img2: 290x303                                     -->
         <section class="welcome-two">
-            <div class="welcome-two-bg"
-                 style="background-image: url({{ asset('assets/images/backgrounds/welcome-two-bg.png') }})">
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div class="welcome-two__left">
-                            <div class="welcome-two__img">
-                                <img src="{{ asset("assets/images/resources/projet_indus.png") }}" width="513"
-                                     alt="plan 3D représentant un comble aménagé en espace de vie avec cuisine et table">
-                                <div class="welcome-two__img-shape-1"></div>
-                                <div class="welcome-two__img-shape-2"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="welcome-two__right">
-                            <div class="section-title text-left">
-                                <span class="section-title__tagline">A propos d'ELODECO</span>
-                                <h2 class="section-title__title">Nous apportons notre savoir faire en création
-                                    d'espace</h2>
-                            </div>
-                            <p class="welcome-two__text">Il y a une multitude de moyens pour valoriser votre
-                                intérieur</p>
-                            <div class="welcome-two__icon-box">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-6 col-md-6">
-                                        <div class="welcome-two__icon-box-img">
-                                            <img src="{{ asset("assets/images/resources/archi-slider-3.png") }}"
-                                                 width="350"
-                                                 alt="photo rectangulaire taille moyenne d'une cheminée avec un buche en feu et un décor forestier en arrière plan">
-                                        </div>
+            {% for bulles in home %}
+                {% if bulles.type =="blogAboutConcept" %}
+                    <div class="container">
+                        <div class="row">
+                            {% set image5 = bulles.images %}
+                            <div class="col-xl-6">
+                                <div class="welcome-two__left">
+                                    <div class="welcome-two__img">
+                                        <img src="{{ vich_uploader_asset(image5[0]) }}"
+                                             alt="{{ images.titre|default('image') }}">
+                                        <div class="welcome-two__img-shape-1"></div>
+                                        <div class="welcome-two__img-shape-2"></div>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6">
-                                        <div class="welcome-two__icon-list-box">
-                                            <ul class="welcome-two__icon-list list-unstyled">
-                                                <li>
-                                                    <div class="icon">
-                                                        <span class="icon-measure"></span>
-                                                    </div>
-                                                    <div class="text-box">
-                                                        <p>Une multitude de possibilités dans les volumes et les
-                                                            matériaux.</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-
-                                                    <div class="icon">
-                                                        <span class="icon-blueprint"></span>
-                                                    </div>
-                                                    <div class="text-box">
-                                                        <p>L'éclairage et la disposition des agencements créés un volume
-                                                            nouveau .</p>
-                                                    </div>
-
-                                                </li>
-                                            </ul>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="welcome-two__right">
+                                    <div class="section-title text-left">
+                                        <span class="section-title__tagline">{{ bulles.titre1 }}</span>
+                                        <h2 class="section-title__title">{{ bulles.titre2 }}</h2>
+                                    </div>
+                                    <p class="welcome-two__text">{{ bulles.titre3 }}</p>
+                                    <div class="welcome-two__icon-box">
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                                <div class="welcome-two__icon-box-img">
+                                                    <img src="{{ vich_uploader_asset(image5[1]) }}"
+                                                         alt="{{ images.titre|default('image') }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                                <div class="welcome-two__icon-list-box">
+                                                    <ul class="welcome-two__icon-list list-unstyled">
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-measure"></span>
+                                                            </div>
+                                                            <div class="text-box">
+                                                                <p>{{ bulles.texte1|striptags }}</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-blueprint"></span>
+                                                            </div>
+                                                            <div class="text-box">
+                                                                <p>{{ bulles.texte2|striptags }}</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                {% endif %}
+            {% endfor %}
         </section>
+        <!-- fin section 4                                                                                                                                  -->
 
-        <!--  SECTION 4 - SERVICES PRO - img1: 513x513  img2: 290x303 -->
+
+        <!--  SECTION 5-                                            SERVICES PRO - img1: 513x513  img2: 290x303 -->
+
         <section class="services-two">
             <div class="container">
-                <div class="row">
-                    <div class="col-xl-7">
-                        <div class="section-title text-left">
-                            <span class="section-title__tagline">Nous vous offrons</span>
-                            <h2 class="section-title__title">Des services profesionnels</h2>
-                        </div>
-                    </div>
-                    <div class="col-xl-5">
-                        <div class="services-two__top-text-box">
-                            <p class="services-two__top-text">Pour chaque projet, nous partons d'un cahier des charges,
-                                de
-                                plans, de métrés, de devis.</p>
-                        </div>
-                    </div>
+                {% for servicesPRO in home %}
+                    {% if servicesPRO.type == '3ServicesPRO' %}
+
+                            <div class="row">
+                                <div class="col-xl-7">
+                                    <div class="section-title text-left">
+                                        <span class="section-title__tagline">{{ servicesPRO.liste[0]}}</span>
+                                        <h2 class="section-title__title">{{ servicesPRO.liste[1]}}</h2>
+                                    </div>
+                                </div>
+                                <div class="col-xl-5">
+                                    <div class="services-two__top-text-box">
+                                        <p class="services-two__top-text">{{ servicesPRO.liste[2] }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-duration="1500ms"
+                                     style="min-height: 454px">
+                                    <!--1er service-->
+                                    <div class="services-two__single">
+                                        <div class="services-two__single-bg"
+                                             style="background-image: url({{ asset('assets/images/services/services-two__single-bg.png') }}) ">
+                                        </div>
+                                        <div class="services-two__icon">
+                                            <span class="icon-house-design"></span>
+                                        </div>
+                                        <h2 class="services-two__title"><a
+                                                    href="{{ path('app_services_details') }}">{{ servicesPRO.titre1 }}</a>
+                                        </h2>
+                                        <p class="services-two__text-2">{{ servicesPRO.texte1|striptags|u.truncate(150,'...',false) }}</p>
+                                        <a href="{{ path('app_services_details') }}"
+                                           class="services-one__btn services-two__btn">En
+                                            savoir plus</a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-duration="1500ms"
+                                     data-wow-delay="100ms" style="min-height: 454px">
+
+                                    <!--second service-->
+                                    <div class="services-two__single">
+                                        <div class="services-two__single-bg"
+                                             style="background-image: url({{ asset('assets/images/services/services-two__single-bg.png') }})"></div>
+                                        <div class="services-two__icon">
+                                            <span class="icon-kitchen"></span>
+                                        </div>
+                                        <h2 class="services-two__title">
+                                            <a href="{{ path('app_services_details') }}">{{ servicesPRO.titre2 }}</a>
+                                        </h2>
+                                        <p class="services-two__text-2">{{ servicesPRO.texte2|striptags|u.truncate(150,'...',false) }}</p>
+                                        <a href="{{ path('app_services_details') }}"
+                                           class="services-one__btn services-two__btn">En
+                                            savoir plus</a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 wow fadeInRight" data-wow-duration="1500ms"
+                                     data-wow-delay="200ms" style="min-height: 454px">
+
+                                    <!-3ème service-->
+                                    <div class="services-two__single">
+                                        <div class="services-two__single-bg"
+                                             style="background-image: url({{ asset('assets/images/services/services-two__single-bg.png') }})"></div>
+                                        <div class="services-two__icon">
+                                            <span class="icon-architect-3"></span>
+                                        </div>
+                                        <h2 class="services-two__title">
+                                            <a href="{{ path('app_services_details') }}">{{ servicesPRO.titre3 }}</a>
+                                        </h2>
+                                        <p class="services-two__text-2">{{ servicesPRO.texte3|striptags }}</p>
+                                        <a href="{{ path('app_services_details') }}"
+                                           class="services-one__btn services-two__btn">En savoir plus</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        <!--  SECTION  GROUPE BLOCK PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px  -->
+
+                            <!--                                          statique                                                         -->
+        <section class="project-two">
+            <div class="project-two__container">
+                <div class="section-title text-center">
+                    <span class="section-title__tagline">Ce que j'ai fais</span>
+                    <h2 class="section-title__title">Mes derniers projets</h2>
                 </div>
-                <div class="row">
+                <div class="row masonary-layout">
+                    <!--                                          dynamique                                                         -->
 
-                    {% for servicesPRO in home %}
-                        {% if servicesPRO.type == '3ServicesPRO' %}
-                            <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-duration="1500ms"
-                                 style="min-height: 454px">
-                                <!--1er service-->
-                                <div class="services-two__single">
-                                    <div class="services-two__single-bg"
-                                         style="background-image: url({{ asset('assets/images/services/services-two__single-bg.png') }})"></div>
-                                    <div class="services-two__icon">
-                                        <span class="icon-house-design"></span>
+                    {% for blocksPhotos in home %}
+                        {% if blocksPhotos.type == 'BlockPhotos' %}
+                            {% set image6 = blocksPhotos.images %}
+
+                            <div class="col-xl-3 col-lg-6 col-md-6">
+                                <div class="project-two__single">
+                                    <div class="project-two__img">
+                                        <img src="{{ vich_uploader_asset(image6[0]) }}"
+                                             alt="{{ image6[0].titre|default('image') }}">
+
+                                        <div class="project-two__architect">
+                                            <p>{{ blocksPhotos.liste[0] }}</p>
+                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.titre1 }}</a></h3>
+                                        </div>
                                     </div>
-                                    <h2 class="services-two__title"><a
-                                                href="{{ path('app_services_details') }}">{{ servicesPRO.titre1 }}</a>
-                                    </h2>
-                                    <p class="services-two__text-2">{{ servicesPRO.texte1|striptags|u.truncate(150,'...',false) }}</p>
-                                    <a href="{{ path('app_services_details') }}"
-                                       class="services-one__btn services-two__btn">En
-                                        savoir plus</a>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-duration="1500ms"
-                                 data-wow-delay="100ms" style="min-height: 454px">
 
-                                <!--second service-->
-                                <div class="services-two__single">
-                                    <div class="services-two__single-bg"
-                                         style="background-image: url({{ asset('assets/images/services/services-two__single-bg.png') }})"></div>
-                                    <div class="services-two__icon">
-                                        <span class="icon-kitchen"></span>
+                            <div class="col-xl-3 col-lg-6 col-md-6">
+                                <div class="project-two__single">
+                                    <div class="project-two__img">
+                                        <img src="{{ vich_uploader_asset(image6[1]) }}"
+                                             alt="{{ image6[1].titre|default('image') }}">
+                                        <div class="project-two__architect">
+                                            <p>{{ blocksPhotos.liste[1] }}</p>
+                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.titre2 }}</a></h3>
+                                        </div>
                                     </div>
-                                    <h2 class="services-two__title">
-                                        <a href="{{ path('app_services_details') }}">{{ servicesPRO.titre2 }}</a>
-                                    </h2>
-                                    <p class="services-two__text-2">{{ servicesPRO.texte2|striptags|u.truncate(150,'...',false) }}</p>
-                                    <a href="{{ path('app_services_details') }}"
-                                       class="services-one__btn services-two__btn">En
-                                        savoir plus</a>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-4 wow fadeInRight" data-wow-duration="1500ms"
-                                 data-wow-delay="200ms" style="min-height: 454px">
 
-                                <!-3ème service-->
-                                <div class="services-two__single">
-                                    <div class="services-two__single-bg"
-                                         style="background-image: url({{ asset('assets/images/services/services-two__single-bg.png') }})"></div>
-                                    <div class="services-two__icon">
-                                        <span class="icon-architect-3"></span>
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <div class="project-two__single">
+                                    <div class="project-two__img">
+                                        <img src="{{ vich_uploader_asset(image6[2]) }}"
+                                             alt="{{ image6[2].titre|default('image') }}">
+                                        <div class="project-two__architect">
+                                            <p>{{ blocksPhotos.liste[2] }}</p>
+                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.titre3 }}</a></h3>
+                                        </div>
                                     </div>
-                                    <h2 class="services-two__title">
-                                        <a href="{{ path('app_services_details') }}">{{ servicesPRO.titre3 }}</a>
-                                    </h2>
-                                    <p class="services-two__text-2">{{ servicesPRO.texte3|striptags }}</p>
-                                    <a href="{{ path('app_services_details') }}"
-                                       class="services-one__btn services-two__btn">En savoir plus</a>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <div class="project-two__single">
+                                    <div class="project-two__img">
+                                        <img src="{{ vich_uploader_asset(image6[3]) }}"
+                                             alt="{{ image6[3].titre|default('image') }}">
+                                        <div class="project-two__architect">
+                                            <p>{{ blocksPhotos.liste[3] }}</p>
+                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.texte1 }}</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-3 col-lg-6 col-md-6">
+                                <div class="project-two__single">
+                                    <div class="project-two__img">
+                                        <img src="{{ vich_uploader_asset(image6[4]) }}"
+                                             alt="{{ image6[4].titre|default('image') }}">
+                                        <div class="project-two__architect">
+                                            <p>{{ blocksPhotos.liste[4] }}</p>
+                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.texte2 }}</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-lg-6 col-md-6">
+                                <div class="project-two__single">
+                                    <div class="project-two__img">
+                                        <img src="{{ vich_uploader_asset(image6[5]) }}"
+                                             alt="{{ image6[5].titre|default('image') }}">
+
+                                        <div class="project-two__architect">
+                                            <p>{{ blocksPhotos.liste[5] }}</p>
+                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.texte3 }}</a></h3>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         {% endif %}
@@ -331,105 +448,116 @@
             </div>
         </section>
 
-        <!--  SECTION 5 LES PROJETS - PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px  -->
+
+
+
+        <!--  SECTION  GROUPE BLOCK PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px  -->
+
+        <!--                                          statique                                                         -->
         <section class="project-two">
             <div class="project-two__container">
                 <div class="section-title text-center">
-                    <span class="section-title__tagline">Ce que nous avons fait</span>
-                    <h2 class="section-title__title">Nos derniers projets</h2>
+                    <span class="section-title__tagline">Ce que j'ai fais</span>
+                    <h2 class="section-title__title">Mes derniers projets</h2>
                 </div>
                 <div class="row masonary-layout">
+                    <!--                                          dynamique                                                         -->
 
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <div class="project-two__single">
-                            <div class="project-two__img">
-                                <img src="{{ asset("assets/images/project/nuancierMini.jpg") }}"
-                                     alt="nuancier de couleurs">
-                                <div class="project-two__architect">
-                                    <p>Rafraichissement et remise à neuf</p>
-                                    <h3><a href="portfolio-details.html">Nuances de vie</a></h3>
+                    {% for blocksPhotos in home %}
+                        {% if blocksPhotos.type == 'BlockPhotos' %}
+                            {% set image6 = blocksPhotos.images %}
+
+                            <div class="col-xl-3 col-lg-6 col-md-6">
+                                <div class="project-two__single">
+                                    <div class="project-two__img">
+                                        <img src="{{ vich_uploader_asset(image6[0]) }}"
+                                             alt="{{ image6[0].titre|default('image') }}">
+
+                                        <div class="project-two__architect">
+                                            <p>{{blocksPhotos.liste[0]}}</p>
+                                            <h3><a href="portfolio-details.html">{{blocksPhotos.titre1}}</a></h3>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <div class="project-two__single">
-                            <div class="project-two__img">
-                                <img src="{{ asset("assets/images/project/plan2D.png") }}"
-                                     alt="plan 2D d'un sous-sol avec nouveaux aménagements, table de cuisson, table et chaises">
-                                <div class="project-two__architect">
-                                    <p>Plan d'un aménagement de sous-sol</p>
-                                    <h3><a href="portfolio-details.html">Maison années 1960 à rénover</a></h3>
+                            <div class="col-xl-3 col-lg-6 col-md-6">
+                                <div class="project-two__single">
+                                    <div class="project-two__img">
+                                        <img src="{{ vich_uploader_asset(image6[1]) }}"
+                                             alt="{{ image6[1].titre|default('image')  }}">
+                                        <div class="project-two__architect">
+                                            <p>{{blocksPhotos.liste[1]}}</p>
+                                            <h3><a href="portfolio-details.html">{{blocksPhotos.titre2}}</a></h3>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="project-two__single">
-                            <div class="project-two__img">
-                                <img src="{{ asset('assets/images/project/salledebainPetit.jpg') }}"
-                                     alt="image salle de bain contemporaine avec douche et baignoire, ambiance claire, blanc">
-                                <div class="project-two__architect">
-                                    <p>Salle de bain</p>
-                                    <h3><a href="portfolio-details.html">Salle de bain élégante</a></h3>
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <div class="project-two__single">
+                                    <div class="project-two__img">
+                                        <img src="{{ vich_uploader_asset(image6[2]) }}"
+                                             alt="{{ image6[2].titre|default('image')  }}">
+                                        <div class="project-two__architect">
+                                            <p>{{blocksPhotos.liste[2]}}</p>
+                                            <h3><a href="portfolio-details.html">{{blocksPhotos.titre3}}</a></h3>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
 
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="project-two__single">
-                            <div class="project-two__img">
-                                <img src="{{ asset('assets/images/project/extensoinboisPetit.jpg') }}"
-                                     alt="extension bois avec poele, intérieur chic mais simple en matériaux nobles">
-                                <div class="project-two__architect">
-                                    <p>Extension bois avec poële </p>
-                                    <h3><a href="portfolio-details.html">Extension bois</a></h3>
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <div class="project-two__single">
+                                    <div class="project-two__img">
+                                        <img src="{{ vich_uploader_asset(image6[3]) }}"
+                                             alt="{{ image6[3].titre|default('image')  }}">
+                                        <div class="project-two__architect">
+                                            <p>{{blocksPhotos.liste[3]}}</p>
+                                            <h3><a href="portfolio-details.html">{{blocksPhotos.texte1}}</a></h3>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
 
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <div class="project-two__single">
-                            <div class="project-two__img">
-                                <img src="{{ asset('assets/images/project/sejourMini.jpg') }}"
-                                     alt="photo sejour ancien rénové, murs blancs et sol bois avec corniche au plafond">
-                                <div class="project-two__architect">
-                                    <p>Séjour avec une nuance de modernité</p>
-                                    <h3><a href="portfolio-details.html">Rafraichissement salon ancien</a></h3>
+                            <div class="col-xl-3 col-lg-6 col-md-6">
+                                <div class="project-two__single">
+                                    <div class="project-two__img">
+                                        <img src="{{ vich_uploader_asset(image6[4]) }}"
+                                             alt="{{ image6[4].titre|default('image')  }}">
+                                        <div class="project-two__architect">
+                                            <p>{{blocksPhotos.liste[4]}}</p>
+                                            <h3><a href="portfolio-details.html">{{blocksPhotos.texte2}}</a></h3>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <div class="project-two__single">
-                            <div class="project-two__img">
-                                <img src="{{ asset('assets/images/project/decorationMini.jpg') }}"
-                                     alt="photo d'objet de décoration de couleur rose devant un mur gris clair">
-                                <div class="project-two__architect">
-                                    <p>Décoration</p>
-                                    <h3><a href="portfolio-details.html">Simplement beau</a></h3>
+                            <div class="col-xl-3 col-lg-6 col-md-6">
+                                <div class="project-two__single">
+                                    <div class="project-two__img">
+                                        <img src="{{ vich_uploader_asset(image6[5]) }}"
+                                             alt="{{ image6[5].titre|default('image') }}">
+
+                                        <div class="project-two__architect">
+                                            <p>{{blocksPhotos.liste[5]}}</p>
+                                            <h3><a href="portfolio-details.html">{{blocksPhotos.texte3}}</a></h3>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </section>
 
-
         <!--  SECTION 6 - compteur de chiffre  -->
-        <section class="counters-one counters-one-martopminus">
-            <div class="counters-one-pattern"
-                 style="background-image: url({{ asset('assets/images/pattern/counter-one-pattern.min.jpg') }})">
+        <section class="counters-one counters-one-martopminus" style="background-color: {{ Apps.couleuractuellebg }}">
+            <div class="counters-one-pattern">
+{#                 style="background-image: url({{ asset('assets/images/pattern/counter-one-pattern.min.jpg') }})">#}
             </div>
             <div class="container">
                 {% for blocks in home %}
@@ -1035,7 +1163,7 @@
                 </div>
             </div>
         </section>
-
     </div>
-
 {% endblock %}
+
+

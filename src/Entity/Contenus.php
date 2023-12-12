@@ -27,6 +27,7 @@ class Contenus
     public const TYPE_3SERVICESPRO = '3ServicesPRO';
     public const TYPE_1SERVICEPRO = '1ServicesPRO';
     public const TYPE_3SERVICESQUALITE = '3ServicesQUALITE';
+    public const TYPE_PHOTOGP = 'BlockPhotos';
 
     public const TYPES = [
         'News' => self::TYPE_BLOGN,
@@ -41,6 +42,7 @@ class Contenus
         'About expert' => self::TYPE_BLOGAE,
         'About pub en L' => self::TYPE_BLOGAL,
         'About Temoins' => self::TYPE_BLOGAT,
+        'Block photos' => self::TYPE_PHOTOGP,
     ];
 
     use DateTrait;

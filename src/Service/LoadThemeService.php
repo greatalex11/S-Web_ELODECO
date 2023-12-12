@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Entity\Peripheriques;
 use App\Repository\PeripheriquesRepository;
+use phpDocumentor\Reflection\Types\This;
 
 class LoadThemeService
 {
@@ -17,8 +18,9 @@ class LoadThemeService
         $this->theme = $this->peripheriquesRepository->find(1);
     }
 
-    public function theme()
+    public function theme(): Peripheriques
     {
-        $this->theme;
+        return $this->theme;
     }
+
 }
