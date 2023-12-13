@@ -401,7 +401,6 @@
                                 </div>
                             </div>
 
-
                             <div class="col-xl-6 col-lg-6 col-md-6">
                                 <div class="project-two__single">
                                     <div class="project-two__img">
@@ -521,7 +520,6 @@
                                 </div>
                             </div>
 
-
                             <div class="col-xl-3 col-lg-6 col-md-6">
                                 <div class="project-two__single">
                                     <div class="project-two__img">
@@ -598,23 +596,23 @@
                 {% endfor %}
             </div>
         </section>
-
+ <!--          Fin des compteurs                                                                                                 -->
         <!--   SECTION 7  : offre sur mesure  -->
-        <section id="pricing-tab" class="pricing-one">
+        <section id="pricing-tab" class="pricing-one ">
             <div class="container">
+                {% for pricing in home %}
+                {% if pricing.type == 'blogAboutConceptPrix'%}
                 <div class="pricing-tabs">
                     <div class="row">
                         <div class="col-xl-6">
                             <div class="section-title text-left">
-                                <span class="section-title__tagline">Etablissement du budget</span>
-                                <h2 class="section-title__title">Choisissez votre offre et vos options</h2>
+                                <span class="section-title__tagline">{{ pricing.titre1| default ('Etablissement du budget') |striptags }}></span>
+                                <h2 class="section-title__title">{{ pricing.titre1| default ('Choisissez votre offre et vos options') |striptags }}</h2>
                             </div>
                         </div>
                         <div class="col-xl-6">
                             <div class="pricing-one__content">
-                                <p class="pricing-one__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                    volutpat.</p>
+                                <p class="pricing-one__text">{{ pricing.texte3| default ('atout 1') |striptags }}</p>
                             </div>
                         </div>
                     </div>
@@ -622,18 +620,18 @@
                         <div class="col-xl-6">
                             <div class="pricing-one__left">
                                 <ul class="pricing-one__points list-unstyled">
-                                    <li><span>/</span> La meilleure solution</li>
-                                    <li><span>/</span> Une expertise à vos côtés</li>
+                                    <li><span>/</span> {{ pricing.texte1| default ('atout 1') |striptags }}</li>
+                                    <li><span>/</span> {{ pricing.texte2| default ('atout 2') |striptags }}</li>
                                 </ul>
                                 <ul class="pricing-one__checks-list list-unstyled">
+                                    {% set li=pricing.liste %}
                                     <li>
                                         <div class="pricing-one__checks-icon">
                                             <i class="icon-tick"></i>
                                         </div>
                                         <div class="pricing-one__checks-text-box">
-                                            <h3 class="pricing-one__checks-title">Epures</h3>
-                                            <p class="pricing-one__checks-text">De l'idée principale aux objectifs à
-                                                atteindre.</p>
+                                            <h3 class="pricing-one__checks-title">{{ li[0]| default ('Epures') |striptags }}</h3>
+                                            <p class="pricing-one__checks-text"> {{ li[1]| default ('Plan 3d') |striptags }} </p>
                                         </div>
                                     </li>
                                     <li>
@@ -641,11 +639,8 @@
                                             <i class="icon-tick"></i>
                                         </div>
                                         <div class="pricing-one__checks-text-box">
-                                            <h3 class="pricing-one__checks-title">Plan 3D</h3>
-                                            <p class="pricing-one__checks-text">L'idée devient progressivement une
-                                                réalité.
-                                                L'expérience 3D permet déjà
-                                                de se projeter dans votre future habitation</p>
+                                            <h3 class="pricing-one__checks-title">{{ li[2]| default ('Assistance') |striptags }}</h3>
+                                            <p class="pricing-one__checks-text">{{ li[3]| default ('Des idées') |striptags }}</p>
                                         </div>
                                     </li>
                                     <li>
@@ -653,85 +648,92 @@
                                             <i class="icon-tick"></i>
                                         </div>
                                         <div class="pricing-one__checks-text-box">
-                                            <h3 class="pricing-one__checks-title">Assistance</h3>
-                                            <p class="pricing-one__checks-text">Des artisans séléctionnés pour leurs
-                                                compétences et leur savoir-être réponderont à votre demande.</p>
+                                            <h3 class="pricing-one__checks-title">{{ li[4]| default ('conseil') |striptags }}</h3>
+                                            <p class="pricing-one__checks-text">{{ li[5]| default ('professionnel') |striptags }}</p>
                                         </div>
                                     </li>
+
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="col-xl-6">
+                        <div class="col-xl-6 ">
                             <div class="pricing-one__table-box">
                                 <div class="pricing-one__right">
-
+                                    {% for prix in home %}
+                                    {% if prix.type =="tarifs" %}
                                     <div class="pr-content">
-                                        <div class="pr-tab active-tab" id="tab-2">
+                                        <div class="pr-tab active-tab" id="tab-2" style="max-height: 80%">
                                             <div class="pricing-one__table-box-single">
                                                 <div class="pricing-one__table">
                                                     <div class="pricing-one__rate-box">
-                                                        <h2><span class="pricing-one__dolar">€</span>Tarif <span>/
-                                                                sur demande</span></h2>
+                                                        <h2><span class="pricing-one__dollar"></span>{{ prix.titre1| default ('Tarif') |striptags }} <span>/
+                                                                {{ prix.titre2| default ('sur demande') |striptags }} </span></h2>
                                                     </div>
+
                                                     <div class="pricing-one__details-box">
-                                                        <h3 class="pricing-one__details-title"> Offre complète</h3>
+                                                        <h3 class="pricing-one__details-title"> {{ prix.titre3| default ('Offre complète') |striptags }} </h3>
                                                         <ul class="list-unstyled">
-                                                            <li>Etude de votre demande</li>
-                                                            <li>Plan 3D</li>
-                                                            <li>Proposition & solutions</li>
-                                                            <li>Selection des offres</li>
-                                                            <li>Engagement</li>
+                                                            {% set li=prix.liste %}
+                                                            <li>{{ li[1]| default ('professionnel') |striptags | default ('Etude de votre demande') }}</li>
+                                                            <li>{{ li[2]| default ('professionnel') |striptags | default ('Plan 3D') }}</li>
+                                                            <li>{{ li[3]| default ('professionnel') |striptags | default ('Proposition et solution') }}</li>
+                                                            <li>{{ li[4]| default ('professionnel') |striptags | default ('sélection des offres') }}</li>
+                                                            <li>{{ li[5]| default ('professionnel') |striptags | default ('engagement') }}</li>
                                                         </ul>
                                                     </div>
                                                     <div class="pricing-one__btn-box">
                                                         <a href="{{ path('app_contact') }}"
-                                                           class="pricing-one__btn thm-btn">Contactez moi</a>
+                                                           class="pricing-one__btn thm-btn"  style="background-color: {{ Apps.couleuractuellebg }}">Contactez moi</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="pr-tab " id="tab-1">
-                                            <div class="pricing-one__table-box-single">
-                                                <div class="pricing-one__table">
-                                                    <div class="pricing-one__rate-box">
-                                                        <h2><span class="pricing-one__dolar">€</span>450<span>/
-                                                                forfait</span></h2>
-                                                    </div>
-                                                    <div class="pricing-one__details-box">
-                                                        <h3 class="pricing-one__details-title">Forfait de base</h3>
-                                                        <ul class="list-unstyled">
-                                                            <li>Visualisation 3D</li>
-                                                            <li>Modification</li>
-                                                            <li>Choix de matériaux</li>
-                                                            <li>Couleur et éclairage</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="pricing-one__btn-box">
-                                                        <a href="{{ path('app_contact') }}"
-                                                           class="pricing-one__btn thm-btn">Contactez moi</a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                {#                                        <div class="pr-tab .d-none" id="tab-1">#}
+                {#                                            <div class="pricing-one__table-box-single .d-none">#}
+                {#                                                <div class="pricing-one__table .d-none ">#}
+                {#                                                    <div class="pricing-one__rate-box .d-none">#}
+                {#                                                        <h2><span class="pricing-one__dolar">€</span>450<span>/#}
+                {#                                                                forfait</span></h2>#}
+                {#                                                    </div>#}
+                {#                                                    <div class="pricing-one__details-box">#}
+                {#                                                        <h3 class="pricing-one__details-title">Forfait de base</h3>#}
+                {#                                                        <ul class="list-unstyled">#}
+                {#                                                            <li>Visualisation 3D</li>#}
+                {#                                                            <li>Modification</li>#}
+                {#                                                            <li>Choix de matériaux</li>#}
+                {#                                                            <li>Couleur et éclairage</li>#}
+                {#                                                        </ul>#}
+                {#                                                    </div>#}
+                {#                                                    <div class="pricing-one__btn-box">#}
+                {#                                                        <a href="{{ path('app_contact') }}"#}
+                {#                                                           class="pricing-one__btn thm-btn">Contactez moi</a>#}
+                {#                                                    </div>#}
+                {#                                                </div>#}
+                {#                                            </div>#}
                                         </div>
                                     </div>
+
+                                    {% endif %}
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                {% endif %}
+                {% endfor %}
+         </div>
+  </section>
 
         <!--    SECTION 8 : confiance  -->
         <section class="trust-experts">
             <div class="trust-experts-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-                 style="background-image: url({{ asset('assets/images/project/plan2D.png') }})"></div>
+                 style="background-image: url({{ vich_uploader_asset(image1)}})"></div>
             <div class="container">
                 <div class="trust-experts__inner">
-                    <h2 class="trust-experts__text">Le choix de l'expert <br> une valeur sûre</h2>
-                    <a href="{{ path("app_about") }}" class="trust-experts__btn thm-btn">A propos</a>
+                    <h2 class="trust-experts__text">{{theme.theme.titre1Home|default('Le choix de l\'expert') }}</h2>
+                    <a href="{{ path("app_about") }}" class="trust-experts__btn thm-btn" style="background-color: {{ Apps.couleuractuellebg }}">A propos</a>
                 </div>
             </div>
         </section>
@@ -743,8 +745,7 @@
                     <span class="section-title__tagline">Nouvelles & tendances</span>
                     <h2 class="section-title__title">Ma sélection</h2>
                 </div>
-
-                <!--                                                         ***  boucle : ma selection  ***                                                   -->
+                <!--  ***  boucle : ma selection  ***                            -->
 
                 <div class="row">
                     {% for contenu in home %}
@@ -756,106 +757,11 @@
             </div>
         </section>
 
-
-        {#                <!--                                                PREMIERE       NEWS 1                                           --> #}
-        {#                    {% include "contenus/_blog.html.twig" %} #}
-
-        {#                    <div class="news-one__single"> #}
-        {#                        <div class="news-one__img-box"> #}
-        {#                            <div class="news-one-img"> #}
-        {#                                <img src="assets/images/blog/travauxReno.png" #}
-        {#                                     alt="bache au sol, escabeau et mur en attente de peinture"> #}
-        {#                                <a href="{{ path('app_news_details')}}"> #}
-        {#                                    <span class="news-one__plus"></span> #}
-        {#                                </a> #}
-        {#                            </div> #}
-        {#                            <div class="news-one__date-box"> #}
-        {#                                <p>Début septembre</p> #}
-        {#                            </div> #}
-        {#                        </div> #}
-        {#                        <div class="news-one__content"> #}
-        {#                                                            <ul class="list-unstyled news-one__meta"> #}
-        {#                                                                <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li> #}
-        {#                                                                <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a> #}
-        {#                                                                </li> #}
-        {#                                                            </ul> #}
-        {#                            <h3 class="news-one__title"> #}
-        {#                                <a href="news-details.html">10 étapes pour se lancer dans la rénovation</a> #}
-        {#                            </h3> #}
-        {#                            <p class="news-one__text">Se lancer dans un projet de rénovation peut être passionnant, #}
-        {#                                mais cela nécessite une planification minutieuse, de bons conseils et des plans 3D!</p> #}
-        {#                            <a href="{{ path('app_news_details') }}news-details.html" class="news-one__btn">Plus d'articles</a> #}
-        {#                        </div> #}
-        {#                    </div> #}
-        {#                </div> #}
-
-        {#                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms"> #}
-        {#                    <!--                                                        NEWS 2                                            --> #}
-        {#                    <div class="news-one__single"> #}
-        {#                        <div class="news-one__img-box"> #}
-        {#                            <div class="news-one-img"> #}
-        {#                                <img src="assets/images/blog/noel.png" #}
-        {#                                     alt="image de décorations de noel sur fond blanc"> #}
-        {#                                <a href="news-details.html"> #}
-        {#                                    <span class="news-one__plus"></span> #}
-        {#                                </a> #}
-        {#                            </div> #}
-        {#                            <div class="news-one__date-box"> #}
-        {#                                <p>Décembre 2023</p> #}
-        {#                            </div> #}
-        {#                        </div> #}
-        {#                        <div class="news-one__content"> #}
-        {#                                                            <ul class="list-unstyled news-one__meta"> #}
-        {#                                                                <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li> #}
-        {#                                                                <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a> #}
-        {#                                                                </li> #}
-        {#                                                            </ul> #}
-        {#                            <h3 class="news-one__title"> #}
-        {#                                <a href="news-details.html">Décorations de noël</a> #}
-        {#                            </h3> #}
-        {#                            <p class="news-one__text"> Choisissez un thème pour votre décoration afin de créer une atmosphère harmonieuse. <br> #}
-        {#                                Une décoration plus élaborée dans le salon et plus personnelle dans les chambres #}
-        {#                            </p> #}
-        {#                            <a href="{{ path('app_news_details') }}news-details.html" class="news-one__btn">Plus d'articles</a> #}
-        {#                        </div> #}
-        {#                    </div> #}
-        {#                </div> #}
-        {#                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms"> #}
-        {#                    <!--                                                                 NEWS 3                                                          --> #}
-
-        {#                    <div class="news-one__single"> #}
-        {#                        <div class="news-one__img-box"> #}
-        {#                            <div class="news-one-img"> #}
-        {#                                <img src="assets/images/blog/peinture.png" #}
-        {#                                     alt="pot de peinture qui se verse dans un bac de peintre"> #}
-        {#                                <a href="{{ path('app_news_details') }}"> #}
-        {#                                    <span class="news-one__plus"></span> #}
-        {#                                </a> #}
-        {#                            </div> #}
-        {#                            <div class="news-one__date-box"> #}
-        {#                                <p>Octobre 2023</p> #}
-        {#                            </div> #}
-        {#                        </div> #}
-        {#                        <div class="news-one__content"> #}
-        {#                                                            <ul class="list-unstyled news-one__meta"> #}
-        {#                                                                <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li> #}
-        {#                                                                <li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a> #}
-        {#                                                                </li> #}
-        {#                                                            </ul> #}
-        {#                            <h3 class="news-one__title"> #}
-        {#                                <a href="{{ path('app_news_details') }}">Astuces peinture</a> #}
-        {#                            </h3> #}
-        {#                            <p class="news-one__text"> Choisir la bonne peinture peut considérablement influencer l'ambiance et l'apparence de votre espace. #}
-        {#                                Voici quelques astuces pour vous aider à choisir la peinture idéale. Avant de choisir une couleur... #}
-        {#                            </p> #}
-        {#                            <a href="{{ path('app_news_details') }}" class="news-one__btn">Plus d'articles</a> #}
-        {#                        </div> #}
-        {#                    </div> #}
-        {#                </div> #}
-
-        <!-- SECTION 10 : Client contents   6 /  4 IMGAGES 270X300 + 1MGAGE 156X98  -->
+        <!-- SECTION 10 : Client contents                     4 IMGAGES 270X300 + 1MGAGE 156X98                              -->
         <section class="they-trusted">
             <div class="container">
+                {% for contenu in home %}
+                    {% if contenu.type =="blogTemoins" %}
                 <div class="row">
                     <div class="col-xl-6 col-lg-6">
                         <div class="they-trusted__left">
@@ -866,40 +772,37 @@
                             <p class="they-trusted__text">En quelques mots voici quelques uns de nos clients </p>
                             <ul class="list-unstyled they-trusted__list">
                                 <li>
-                                    <div class="icon">
-                                        <span class="icon-tick"></span>
-                                    </div>
                                     <div class="text">
-                                        <p>Qualité de la relation.</p>
+                                        <p class="section-title__tagline"> {{ contenu.titre1|striptags| default('Un témoin qualité') }}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="text mt-1">
+                                        <p class="icon-tick text"> {{ contenu.titre2|striptags| default('Client satisfait') }}</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="icon">
-                                        <span class="icon-tick"></span>
+                                        <span></span>
                                     </div>
                                     <div class="text">
-                                        <p>Offre du mesure.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-tick"></span>
-                                    </div>
-                                    <div class="text">
-                                        <p>Créativité & travail bien fait</p>
+                                        <a href="{{ path("app_about") }}">
+                                            <p class="fw-bolder mt-3">{{ contenu.texte1|striptags| u.truncate(150,'...',false)| default('La confiance') }}</p></a>
                                     </div>
                                 </li>
                             </ul>
+                            {% set image8 = contenu.images %}
                             <div class="they-trusted__projects-complete">
                                 <div class="they-trusted__projects-complete-img">
-                                    <img src="{{ asset('assets/images/resources/iconeSdb.png') }}"
-                                         alt="icone de petite taille de salle de bain rénovée">
+                                    <img src="{{ vich_uploader_asset(image8[0]) }}"
+                                         alt="{{ image8[0].titre|default('image') }}">
                                 </div>
                                 <div class="they-trusted__projects-complete-count-box">
                                     <h3>Multitude</h3>
                                     <p class="they-trusted__projects-complete-text">De projets</p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6">
@@ -908,12 +811,12 @@
                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                     <div class="they-trusted__brand-single">
                                         <div class="they-trusted__brand-main-img">
-                                            <a href="#"> <img src="{{ asset("assets/images/resources/sdb2Petit.png") }}"
-                                                              alt="petite salle de bain refaite à neuf avec quelques couleurs sur fond blanc"></a>
+                                            <a href="#"> <img src="{{ vich_uploader_asset(image8[1]) }}"
+                                                              alt="{{ image8[1].titre|default('image') }}"></a>
                                         </div>
                                         <div class="they-trusted__brand-overly">
-                                            <a href="#"><img src="{{ asset("assets/images/resources/sdb2Petit.png") }}"
-                                                             alt="overlay petite salle de bain refaite à neuf avec quelques couleurs sur fond blanc"></a>
+                                            <a href="#"><img src="{{ vich_uploader_asset(image8[1]) }}"
+                                                             alt="{{ image8[1].titre|default('image') }}"></a>
                                         </div>
                                         <div class="they-trusted__brand-prattern"
                                              style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
@@ -923,12 +826,12 @@
                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                     <div class="they-trusted__brand-single">
                                         <div class="they-trusted__brand-main-img">
-                                            <a href="#"><img src="{{ asset("assets/images/resources/fenetres.png") }}"
-                                                             alt="fenetre en pvc posées contre un mur en attendant d'être fixées"></a>
+                                            <a href="#"><img src="{{ vich_uploader_asset(image8[2]) }}"
+                                                             alt="{{ image8[2].titre|default('image') }}"></a>
                                         </div>
                                         <div class="they-trusted__brand-overly">
-                                            <a href="#"><img src="{{ asset("assets/images/resources/fenetres.png") }}"
-                                                             alt="overlay fenetre en pvc posées"></a>
+                                            <a href="#"><img src="{{ vich_uploader_asset(image8[2])}}" alt="{{ image8[2].titre|default('image') }}">
+                                            </a>
                                         </div>
                                         <div class="they-trusted__brand-prattern"
                                              style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
@@ -938,12 +841,10 @@
                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                     <div class="they-trusted__brand-single they-trusted__brand-single-mb-0">
                                         <div class="they-trusted__brand-main-img">
-                                            <a href="#"> <img src="{{ asset("assets/images/resources/cloison.png") }}"
-                                                              alt="fin de pièce débouchant sur couloir en rénovation avec plaque de platre verte"></a>
+                                            <a href="#"> <img src="{{ vich_uploader_asset(image8[3])}}" alt="{{ image8[3].titre|default('image') }}"></a>
                                         </div>
                                         <div class="they-trusted__brand-overly">
-                                            <a href="#"><img src="{{ asset("assets/images/resources/cloison.png") }}"
-                                                             alt="overlay fin de pièce débouchant "></a>
+                                            <a href="#"><img src="{{ vich_uploader_asset(image8[3])}}" alt="{{ image8[3].titre|default('image') }}"></a>
                                         </div>
                                         <div class="they-trusted__brand-prattern"
                                              style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
@@ -953,12 +854,10 @@
                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                     <div class="they-trusted__brand-single they-trusted__brand-single-mb-0">
                                         <div class="they-trusted__brand-main-img">
-                                            <a href="#"><img src="{{ asset("assets/images/resources/carrelage.png") }}"
-                                                             alt="motif de carrelage multicolor de petite dimension"></a>
+                                            <a href="#"><img src="{{ vich_uploader_asset(image8[4])}}" alt="{{ image8[4].titre|default('image') }}"></a>
                                         </div>
                                         <div class="they-trusted__brand-overly">
-                                            <a href="#"><img src="{{ asset("assets/images/resources/carrelage.png") }}"
-                                                             alt="motif de carrelage multicolor de petite dimension"></a>
+                                            <a href="#"><img src="{{ vich_uploader_asset(image8[4])}}" alt="{{ image8[4].titre|default('image') }}"></a>
                                         </div>
                                         <div class="they-trusted__brand-prattern"
                                              style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
@@ -969,6 +868,8 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </section>
 
@@ -996,52 +897,52 @@
                     <!--                                                            2 MODULES D'OFFRE                                                  -->
 
                     <!--                                                            OFFRE DE GAUCHE                                                  -->
-                    <div class="row ">
-                        <div class="col-xl-6 mr-5 ">
-                            <div class="pricing-one__left ">
-                                <ul class="pricing-one__points list-unstyled">
-                                    <li><span>/</span> La meilleure solution</li>
-                                    <li><span>/</span> Une expertise à vos côtés</li>
-                                </ul>
-                                <ul class="pricing-one__checks-list list-unstyled">
-                                    <li>
-                                        <div class="pricing-one__checks-icon">
-                                            <i class="icon-tick"></i>
-                                        </div>
-                                        <div class="pricing-one__checks-text-box">
-                                            <h3 class="pricing-one__checks-title">Epures</h3>
-                                            <p class="pricing-one__checks-text">De l'idée principale aux objectifs à
-                                                atteindre.</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="pricing-one__checks-icon">
-                                            <i class="icon-tick"></i>
-                                        </div>
-                                        <div class="pricing-one__checks-text-box">
-                                            <h3 class="pricing-one__checks-title">Plan 3D</h3>
-                                            <p class="pricing-one__checks-text">L'idée devient progressivement une
-                                                réalité.
-                                                L'expérience 3D permet déjà
-                                                de se projeter dans votre future habitation</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="pricing-one__checks-icon">
-                                            <i class="icon-tick"></i>
-                                        </div>
-                                        <div class="pricing-one__checks-text-box">
-                                            <h3 class="pricing-one__checks-title">Assistance</h3>
-                                            <p class="pricing-one__checks-text">Des artisans séléctionnés pour leurs
-                                                compétences et leur savoir-être réponderont à votre demande.</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+{#                    <div class="row .d-none">#}
+{#                        <div class="col-xl-6 mr-5 ">#}
+{#                            <div class="pricing-one__left ">#}
+{#                                <ul class="pricing-one__points list-unstyled">#}
+{#                                    <li><span>/</span> La meilleure solution</li>#}
+{#                                    <li><span>/</span> Une expertise à vos côtés</li>#}
+{#                                </ul>#}
+{#                                <ul class="pricing-one__checks-list list-unstyled">#}
+{#                                    <li>#}
+{#                                        <div class="pricing-one__checks-icon">#}
+{#                                            <i class="icon-tick"></i>#}
+{#                                        </div>#}
+{#                                        <div class="pricing-one__checks-text-box">#}
+{#                                            <h3 class="pricing-one__checks-title">Epures</h3>#}
+{#                                            <p class="pricing-one__checks-text">De l'idée principale aux objectifs à#}
+{#                                                atteindre.</p>#}
+{#                                        </div>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <div class="pricing-one__checks-icon">#}
+{#                                            <i class="icon-tick"></i>#}
+{#                                        </div>#}
+{#                                        <div class="pricing-one__checks-text-box">#}
+{#                                            <h3 class="pricing-one__checks-title">Plan 3D</h3>#}
+{#                                            <p class="pricing-one__checks-text">L'idée devient progressivement une#}
+{#                                                réalité.#}
+{#                                                L'expérience 3D permet déjà#}
+{#                                                de se projeter dans votre future habitation</p>#}
+{#                                        </div>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <div class="pricing-one__checks-icon">#}
+{#                                            <i class="icon-tick"></i>#}
+{#                                        </div>#}
+{#                                        <div class="pricing-one__checks-text-box">#}
+{#                                            <h3 class="pricing-one__checks-title">Assistance</h3>#}
+{#                                            <p class="pricing-one__checks-text">Des artisans séléctionnés pour leurs#}
+{#                                                compétences et leur savoir-être réponderont à votre demande.</p>#}
+{#                                        </div>#}
+{#                                    </li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
 
 
-                        <!--                                               COLONNE DE DROITE AVEC CAROUSSEL                                                  -->
+{#                        <!--                                               COLONNE DE DROITE AVEC CAROUSSEL                                                  -->#}
 
                         <div class="col-xl-6 ml-5">
                             <div class="pricing-one__table-box ">
@@ -1163,7 +1064,7 @@
                 </div>
             </div>
         </section>
-    </div>
+
 {% endblock %}
 
 

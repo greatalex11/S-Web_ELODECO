@@ -16,8 +16,10 @@ class Contenus
 {
 
     public const TYPE_COMPTEURS = 'compteurs';
+    public const TYPE_TARIFS = 'tarifs';
     public const TYPE_BLOGN = 'blogNews';
     public const TYPE_BLOGAC = 'blogAboutConcept';
+    public const TYPE_BLOGACP = 'blogAboutConceptPrix';
     public const TYPE_BLOGAE = 'blogAboutExpert';
     public const TYPE_BLOGAL = 'blogenL';
     public const TYPE_BLOGAT = 'blogTemoins';
@@ -39,10 +41,12 @@ class Contenus
         '1 Service PRO' => self::TYPE_1SERVICEPRO,
         '3 Services QUALITE' => self::TYPE_3SERVICESQUALITE,
         'About concept' => self::TYPE_BLOGAC,
+        'About concept Prix' => self::TYPE_BLOGACP,
         'About expert' => self::TYPE_BLOGAE,
         'About pub en L' => self::TYPE_BLOGAL,
         'About Temoins' => self::TYPE_BLOGAT,
         'Block photos' => self::TYPE_PHOTOGP,
+        'tarif à la carte'=> self::TYPE_TARIFS,
     ];
 
     use DateTrait;
@@ -77,7 +81,7 @@ class Contenus
     #[Assert\Valid()]
     private Collection $images;
 
-    #[ORM\ManyToMany(targetEntity: Page::class, inversedBy: 'contenus')]
+    #[ORM\ManyToMany(targetEntity: Page::class, inversedBy: 'contenus',fetch: 'EAGER')]
     private Collection $pages;
 
     #[ORM\Column(nullable: true)]

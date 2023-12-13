@@ -144,7 +144,24 @@ class ContenusCrudController extends AbstractCrudController
                     ->setColumns(12)
                     ->setTemplatePath('fields/images.html.twig');
 
-            } elseif ($contenu && $contenu->getType() === Contenus::TYPE_BLOGAE) {
+
+            } elseif ($contenu && $contenu->getType() === Contenus::TYPE_BLOGAC) {
+                yield TextField::new('titre1')->setLabel('Mon leitmotiv... ?');
+                yield TextField::new('titre2')->setLabel('... la différence ?')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+                yield TextEditorField::new('texte1')->setLabel('atout 1')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+                yield TextEditorField::new('texte2')->setLabel('atout 2')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+//            yield TextField::new('titre3')->setLabel('... ')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+                yield TextEditorField::new('texte3')->setLabel('Ma note perso en quelques mots')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+                yield ArrayField::new('liste')->setLabel('les 5 clefs')->hideOnIndex();
+                yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
+                    ->setLabel('image 570x698 - titre important pour référencement')
+                    ->setEntryIsComplex(true)
+                    ->setFormTypeOptions([
+                        'by_reference' => false,])
+                    ->setColumns(12)
+                    ->setTemplatePath('fields/images.html.twig');
+
+            } elseif  ($contenu && $contenu->getType() === Contenus::TYPE_BLOGAE) {
                 yield TextField::new('titre1')->setLabel('Métier phare');
                 yield TextField::new('titre2')->setLabel('slogan')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
                 yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
@@ -170,6 +187,20 @@ class ContenusCrudController extends AbstractCrudController
                 yield TextEditorField::new('texte1')->setLabel('Témoignage')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
                 yield TextField::new('titre1')->setLabel('Nom, Prénom, n°département')->setTemplatePath('fields/raw.html.twig');
                 yield TextField::new('titre2')->setLabel('Client/artisan... satisfait')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+                yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
+                    ->setLabel('image illustration Home')
+                    ->setEntryIsComplex(true)
+                    ->setFormTypeOptions([
+                        'by_reference' => false,
+                    ])
+                    ->setColumns(12)
+                    ->setTemplatePath('fields/images.html.twig');
+
+            } elseif ($contenu && $contenu->getType() === Contenus::TYPE_TARIFS) {
+                yield TextField::new('titre1')->setLabel('Prix');
+                yield TextField::new('titre2')->setLabel('Sur demande ou forfait')->hideOnIndex();
+                yield TextField::new('titre3')->setLabel('Offre complète, forfait 1, forfait2...')->hideOnIndex();
+                yield ArrayField::new('liste')->setLabel('les 5 clefs')->hideOnIndex();
 
 
             } elseif ($contenu && $contenu->getType() === Contenus::TYPE_3SERVICESQUALITE) {

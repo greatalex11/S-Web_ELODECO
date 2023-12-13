@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-
+    {% set Apps=theme.theme %}
     <!--                                                 -Bandeau supérieur   / image de font 1894x359 px                                           -->
     <section class="page-header" style="background-image: url(assets/images/backgrounds/fond2.png);">
         <div class="page-header-border"></div>
@@ -49,6 +49,9 @@
                                     <span>{{ clef[1]|striptags }}</span>
                                 </div>
                             </div>
+                            <p class="about-company__text-2 align-text-bottom mt-4 .text-justify" style="max-width:100%; max-height: 350px">
+                                {{ contenu.texte3 |striptags }}
+                            </p>
                             </div>
                             <div class="col-xl-6">
                                 <div class="about-company__right">
@@ -57,7 +60,7 @@
                                         <h2 class="section-title__title">{{ contenu.titre2|striptags }}</h2>
                                     </div>
                                     <ul class="about-company__points list-unstyled">
-                                        <li><span>/</span> {{ contenu.texte1 |striptags }}}}</li>
+                                        <li><span>/</span> {{ contenu.texte1 |striptags }}</li>
                                         <li><span>/</span> {{ contenu.texte2 |striptags }}</li>
                                     </ul>
 
@@ -74,13 +77,14 @@
                                         <div class="about-company__icon">
                                             <span class="icon-blueprint"></span>
                                         </div>
-                                        <div class="about-company__text-box">
+
+                                        <div class="about-company__text-box mb-5">
                                             <p class="about-company__text">{{ clef[4]|striptags }}</p>
                                         </div>
                                     </div>
-                                    <p class="about-company__text-2">{{ contenu.texte2 |striptags }} </p>
+                                    <p class="about-company__text-2 ">{{ contenu.texte2 |striptags }} </p>
                                     <a href="{{ path('app_portfolio') }}"
-                                       class="about-company__btn thm-btn">Portfolio</a>
+                                       class="about-company__btn thm-btn" style="background-color: {{ Apps.couleuractuellebg }}">Portfolio</a>
                                 </div>
                             </div>
                         {% endif %}

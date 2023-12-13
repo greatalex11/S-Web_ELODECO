@@ -23,7 +23,7 @@ class Page
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $commentaires = null;
 
-    #[ORM\ManyToMany(targetEntity: Contenus::class, mappedBy: 'pages')]
+    #[ORM\ManyToMany(targetEntity: Contenus::class, mappedBy: 'pages',fetch: 'EAGER')]
     private Collection $contenus;
 
     public function __construct()
