@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+    {% set Apps=theme.theme %}
 
     <section class="page-header" style="background-image: url({{ asset('assets/images/backgrounds/main-slider-11.jpg') }});">
         <div class="page-header-border"></div>
@@ -90,7 +91,7 @@
                     <div class="services-one__single" style="min-height:450px">
                         <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">{{ Contenus.titre1 }}</a></h2>
                         <p class="services-one__text">{{ Contenus.texte1|striptags|u.truncate(150,'...',false) }}</p>
-                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
+{#                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>#}
                         <div class="services-one__icon">
                             <span class="icon-furnitures"></span>
                         </div>
@@ -101,8 +102,9 @@
                     <!--SERVICE 2 -->
                     <div class="services-one__single" style="min-height:450px">
                         <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">{{ Contenus.titre2 }}</a></h2>
-                        <p class="services-one__text">{{ Contenus.texte2|striptags|u.truncate(150,'...',false) }}</p>
-                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
+                        <p class="services-one__text fs-4">{{ Contenus.texte2|striptags|u.truncate(150,'...',false) }}</p>
+
+{#                        <a href="{{path('app_services_details')}}" class="services-one__btn" >En savoir plus</a>#}
                         <div class="services-one__icon">
                             <span class="icon-buildings"></span>
                         </div>
@@ -113,7 +115,7 @@
                     <div class="services-one__single" style="min-height:450px">
                         <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">{{ Contenus.titre3 }}</a></h2>
                         <p class="services-one__text">{{ Contenus.texte3|striptags|u.truncate(150,'...',false)}}</p>
-                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
+{#                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>#}
                         <div class="services-one__icon">
                             <span class="icon-house-design"></span>
                         </div>
@@ -131,7 +133,7 @@
         <div class="container">
             <div class="trust-experts__inner">
                 <h2 class="trust-experts__text">L'oeil de l'expert<br> dans toutes vos réalisations</h2>
-                <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
+{#                <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>#}
             </div>
         </div>
     </section>
@@ -141,33 +143,16 @@
     <section class="three-boxes-two three-boxes-two-page">
         <div class="container">
             <div class="row" >
-                {% for contenus in services %}
-                {% if contenus.type == "blogService" %}
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms" style="min-height: 454px">
-                    <div class="three-boxes-two__single" >
+                {% for contenuGTI in services %}
+                    {% if contenuGTI.type =="ServicesGTI" and contenuGTI.publier %}
+                        {% include "contenus/_services.html.twig" with {service: contenuGTI} %}
+                    {% endif %}
+                {% endfor %}
 
-                        <div class="three-boxes-two__img">
-                            {% if contenus.images[0] is defined %}
-                            {% set image1 = contenus.Images[0] %}
-                            <img src="{{ vich_uploader_asset(image1)}}" alt="{{ image1.titre|default('image') }}">
-                        </div>
-                        <div class="three-boxes-two__content">
-                            <h3 class="three-boxes-two__title"><a href="{{ path('app_services_details') }}">{{ contenus.titre1 }}<br>
-                                    </a></h3>
-                            <p class="three-boxes-two__text">{{ contenus.titre2 }}</p>
-                            <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
-                        </div>
-                        <div class="three-boxes-two__single-pattern"
-                             style="background-image: url({{ asset('assets/images/pattern/three-boxes-two__single-pattern.png') }})">
-                        </div>
-                    </div>
               </div>
-                            {%endif %}
-                {%endif %}
-                {%endfor %}
+
             </div>
 
-        </div>
     </section>
 
 {% endblock %}

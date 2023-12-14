@@ -1,0 +1,47 @@
+{% if service.images.first %}
+    {% set image = vich_uploader_asset(service.images.first) %}
+    {% set imageTitle = service.images.first.titre %}
+{% else %}
+    {% set image = asset('assets/images/backgrounds/fond2.png') %}
+    {% set imageTitle = 'news image' %}
+{% endif %}
+
+{#{% for contenus in services %}#}
+{#{% if contenus.type == "ServicesGTI" %}#}
+{#       {{ dump(contenus) }}#}
+<div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms" style="min-height: 454px">
+    <div class="three-boxes-two__single" >
+
+
+        <div class="three-boxes-two__content">
+            <div class="three-boxes-two__img mb-4">
+                {% if service.images[0] is defined %}
+                    {% set image1 = service.Images[0] %}
+                    <img src="{{ image }}" style="height: 300px;width: 100%;object-fit: contain"
+                         alt="{{ imageTitle }}}}">
+                {% endif %}
+            </div>
+
+            <div class="news-one__date-box mt-1 mb-4">
+                <p class="three-boxes-two__text">{{ service.titre2 }}</p>
+            </div>
+
+            <h2 class="three-boxes-two__title mb-1"><a
+                        href="{{ path('app_services_details',{slug: service.slug}) }}">{{ service.Titre1 }}</a>
+            </h2>
+            <p class="news-one__text mt-3">{{ service.Texte1|striptags|u.truncate(150,'...',false)|raw }}</p>
+
+            <a href="{{ path('app_services_details',{slug: service.slug}) }}" class="services-one__btn mt-3">En savoir
+                plus</a>
+            <p class=" services-one mt-2 mb-4 p-0">
+                {{ service.liste[0] }}<br>{{ service.liste[1] }}
+            </p>
+        </div>
+        <div class="three-boxes-two__single-pattern"
+             style="background-image: url({{ asset('assets/images/pattern/three-boxes-two__single-pattern.png') }})">
+        </div>
+    </div>
+</div>
+
+{#{% endif %}#}
+{#{% endfor %}#}

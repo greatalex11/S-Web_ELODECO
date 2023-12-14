@@ -83,22 +83,35 @@ class LoginController extends AbstractController
 
 // ---------------------------------------------------------------------------------------------------------   SERVICES
 
+//    #[Route(path: '/services', name: 'app_services')]
+//    public function services(ContenusRepository $contenusRepo): Response
+//    {
+//        $services = $contenusRepo->findByPagesName('Services');
+//        return $this->render('pages/services.html.twig', [
+//            "services" => $services,
+//        ]);
+//
+//    }
     #[Route(path: '/services', name: 'app_services')]
-    public function services(ContenusRepository $contenusRepo): Response
-    {
-        $services = $contenusRepo->findByPagesName('services');
+    public function servicesGTI(ContenusRepository $contenusRepo): Response    {
+        $services = $contenusRepo->findByPagesName('Services');
         return $this->render('pages/services.html.twig', [
             "services" => $services,
         ]);
 
     }
-
     #[Route(path: '/services_details', name: 'app_services_details')]
     public function servicesD(): Response
     {
         return $this->render('pages/services_details.html.twig', [
         ]);
     }
+//    #[Route(path: '/services_details/{slug}', name: 'app_services_details2')]
+//    public function services(): Response
+//    {
+//        return $this->render('pages/services_details.html.twig', [
+//        ]);
+//    }
 
 // ---------------------------------------------------------------------------------------------------------    ABOUT
     #[Route(path: '/about', name: 'app_about')]

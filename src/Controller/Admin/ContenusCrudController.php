@@ -51,7 +51,6 @@ class ContenusCrudController extends AbstractCrudController
             // J'ajoute le bouton pour remplacer l'autre save and continue qui permet d'aller dans l'édition du contenu
             ->add(Crud::PAGE_NEW, Action::SAVE_AND_CONTINUE)//   ->add(Crud::PAGE_INDEX, $addDetails)
             ;
-
     }
 
     public function configureCrud(Crud $crud): Crud
@@ -62,7 +61,6 @@ class ContenusCrudController extends AbstractCrudController
             ->setAutofocusSearch()
             ->setDefaultSort(['updatedAt' => 'DESC']);
     }
-
     public function configureFields(string $pageName): iterable
     {
         /** @var Contenus $contenu */
@@ -86,7 +84,52 @@ class ContenusCrudController extends AbstractCrudController
                     ->setColumns(12)
                     ->setTemplatePath('fields/images.html.twig');
 
-            } elseif ($contenu && $contenu->getType() === Contenus::TYPE_3SERVICES) {
+
+//          Base pour les news
+            } elseif ($contenu && $contenu->getType() === Contenus::TYPE_NewsGTI) {
+            yield FormField::addTab("Page commune");
+
+            yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
+                ->setLabel('image 370x290 ou 672x713 - titre important pour référencement')
+                ->setEntryIsComplex(true)
+                ->setFormTypeOptions([
+                    'by_reference' => false,])
+                ->setColumns(12)
+                ->setTemplatePath('fields/images.html.twig');
+            yield SlugField::new('slug')->setTargetFieldName('titre1');
+                yield TextField::new('titre1')->setLabel('Titre principal');
+            yield TextField::new('titre2')->setLabel('Date')->hideOnIndex();
+            yield TextEditorField::new('texte1')->setLabel('Texte principal')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+
+            yield FormField::addTab("Détail environnant");
+            yield TextField::new('titre3')->setLabel('Auteur')->hideOnIndex();
+            yield TextEditorField::new('texte2')->setLabel('Fonction')->hideOnIndex();
+            yield TextEditorField::new('texte3')->setLabel('Contenu')->hideOnIndex();
+            yield ArrayField::new('liste')->setLabel(' Liste d\'éléments supplémentaires')->hideOnIndex();
+
+
+            } elseif ($contenu && $contenu->getType() === Contenus::TYPE_ServicesGTI) {
+                yield FormField::addTab("Page commune");
+
+                yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
+                    ->setLabel('image 370x290 ou 672x713 - titre important pour référencement')
+                    ->setEntryIsComplex(true)
+                    ->setFormTypeOptions([
+                        'by_reference' => false,])
+                    ->setColumns(12)
+                    ->setTemplatePath('fields/images.html.twig');
+                yield SlugField::new('slug')->setTargetFieldName('titre1');
+                yield TextField::new('titre1')->setLabel('Titre principal');
+                yield TextField::new('titre2')->setLabel('Date')->hideOnIndex();
+                yield TextEditorField::new('texte1')->setLabel('Texte principal')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+
+                yield FormField::addTab("Détail environnant");
+                yield TextField::new('titre3')->setLabel('Auteur')->hideOnIndex();
+                yield TextEditorField::new('texte2')->setLabel('Fonction')->hideOnIndex();
+                yield TextEditorField::new('texte3')->setLabel('Contenu')->hideOnIndex();
+                yield ArrayField::new('liste')->setLabel(' Liste d\'éléments supplémentaires')->hideOnIndex();
+
+            }elseif ($contenu && $contenu->getType() === Contenus::TYPE_3SERVICES) {
                 yield TextField::new('titre1')->setLabel('Service 1');
                 yield TextEditorField::new('texte1')->setLabel('Contenu')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
                 yield TextField::new('titre2')->setLabel('Service 2')->hideOnIndex();

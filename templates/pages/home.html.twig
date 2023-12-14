@@ -748,8 +748,13 @@
                 <!--  ***  boucle : ma selection  ***                            -->
 
                 <div class="row">
+{#                    {% for contenu in home %}#}
+{#                        {% if contenu.type =="blogNews" and contenu.publier %}#}
+{#                            {% include "contenus/_news.html.twig" with {new: contenu} %}#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
                     {% for contenu in home %}
-                        {% if contenu.type =="blogNews" and contenu.publier %}
+                        {% if contenu.type =="NewsGTI" and contenu.publier %}
                             {% include "contenus/_news.html.twig" with {new: contenu} %}
                         {% endif %}
                     {% endfor %}
@@ -878,21 +883,21 @@
         <section class="pricing-one">
             <div class="container">
                 <div class="pricing-tabs">
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="section-title text-left">
-                                <span class="section-title__tagline">Etablissement du budget</span>
-                                <h2 class="section-title__title">Choisissez votre offre et vos options</h2>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="pricing-one__content ">
-                                <p class="pricing-one__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                    volutpat.</p>
-                            </div>
-                        </div>
-                    </div>
+{#                    <div class="row">#}
+{#                        <div class="col-xl-6">#}
+{#                            <div class="section-title text-left">#}
+{#                                <span class="section-title__tagline">Etablissement du budget</span>#}
+{#                                <h2 class="section-title__title">Choisissez votre offre et vos options</h2>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="col-xl-6">#}
+{#                            <div class="pricing-one__content ">#}
+{#                                <p class="pricing-one__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit#}
+{#                                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat#}
+{#                                    volutpat.</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
 
                     <!--                                                            2 MODULES D'OFFRE                                                  -->
 
@@ -949,17 +954,16 @@
                                 <div class="pricing-one__right">
                                     <div class="pr-content">
                                         <!--                                                       Debut caroussel                                                    -->
-                                        <div id="myCarousel" class="carousel slide " data-bs-touch="false">
+                                        <div id="myCarousel" class="carousel slide " style="width: 580px" data-bs-touch="false">
                                             <div class="carousel-inner ">
                                                 <!--                                                        Offre 1                                                     -->
-                                                <div class="carousel-item active  ">
-                                                    <div class="pr-tab active-tab" id="tab-2">
-                                                        <div class="pricing-one__table-box-single">
+                                                <div class="carousel-item active d-flex justify-content-center" >
+                                                    <div class="pr-tab active-tab" id="tab-2" >
+                                                        <div class="pricing-one__table-box-single"  style="width: 300px">
                                                             <div class="pricing-one__table">
                                                                 <div class="pricing-one__rate-box">
-                                                                    <h2><span class="pricing-one__dolar">500€</span>Tarif
-                                                                        1<span>/
-                                                                                    sur demande</span></h2>
+                                                                    <h2><span class="pricing-one__dolar">555€</span>Tarif
+                                                                        1<span>/ sur demande</span></h2>
                                                                 </div>
                                                                 <div class="pricing-one__details-box">
                                                                     <h3 class="pricing-one__details-title"> Offre
@@ -983,12 +987,12 @@
                                                 </div>
 
                                                 <!--                                                             Offre 2                                                   -->
-                                                <div class="carousel-item ">
+                                                <div class="carousel-item d-flex justify-content-center">
                                                     <div class="pr-tab active-tab" id="tab-2">
                                                         <div class="pricing-one__table-box-single">
                                                             <div class="pricing-one__table">
                                                                 <div class="pricing-one__rate-box">
-                                                                    <h2><span class="pricing-one__dolar">1000€</span>Tarif
+                                                                    <h2><span class="pricing-one__dolar">1111€</span>Tarif
                                                                         <span>/
                                                                                     sur demande</span></h2>
                                                                 </div>
@@ -1014,12 +1018,12 @@
                                                 </div>
                                                 <!--                                                             Offre 3                                                   -->
 
-                                                <div class="carousel-item ">
+                                                <div class="carousel-item d-flex justify-content-center">
                                                     <div class="pr-tab active-tab" id="tab-2">
                                                         <div class="pricing-one__table-box-single">
                                                             <div class="pricing-one__table">
                                                                 <div class="pricing-one__rate-box">
-                                                                    <h2><span class="pricing-one__dolar">3000€</span>Tarif
+                                                                    <h2><span class="pricing-one__dolar">777€</span>Tarif
                                                                         <span>/
                                                                                     sur demande</span></h2>
                                                                 </div>
@@ -1044,6 +1048,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <button class="carousel-control-prev" type="button"
                                                     data-bs-target="#myCarousel" data-bs-slide="prev">
                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
