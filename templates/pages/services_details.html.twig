@@ -1,14 +1,21 @@
 {% extends 'base.html.twig' %}
-   {% set Apps=theme.theme %}
 
 {% block content %}
-    {{  dump(Apps.jours_fermes) }}
-    {{ dump(serviceD) }}
-    {% for service in serviceD %}
+{#    prestation choice -> tarif + service#}
+{{ dump(serviceTarif) }}
 
+
+
+    {% set Apps= theme.theme %}
+{#    //il ne supporte pas les underscore#}
+    {% for service in serviceD %}
+{{ dump(service) }}
         {% if service.images.first %}
-            {% set image = vich_uploader_asset(service.images.first) %}
+            {% set image = vich_uploader_asset(service.images[0]) %}
             {% set imageTitle = service.images.first.titre %}
+{#            {% set image2 = vich_uploader_asset(service.images.[1]) %}#}
+{#            {% set imageTitle2 = service.images[1].titre %}#}
+{#            {{ dump(image2) }}#}
 
         {% else %}
             {% set image = asset('assets/images/backgrounds/fond2.png') %}
@@ -18,7 +25,6 @@
 <div class="stricky-header stricked-menu main-menu">
     <div class="sticky-header__content"></div>
 </div><!-- /.stricky-header -->
-
 
     <!--                                                 -Bandeau supérieur   / image de font 1894x359 px                                           -->
 <section class="page-header" style="background-image: url(assets/images/backgrounds/main-slider-11.png);">
@@ -42,6 +48,7 @@
  <!--                                                                                         fin bandeau                                                                    -->
 
  <!--                                                                   SECTION 1 : SERVICES details  / image 672x713                                                   -->
+        {{ dump(service) }}
 <section class="services-details">
     <div class="container">
         <div class="row">
@@ -56,24 +63,27 @@
                             <li><a href="#">Agencement optimisé <span class="icon-right-arrow"></span></a></li>
                             <li><a href="#">Assitance à la gestion <span class="icon-right-arrow"></span></a></li>
                         </ul>
-                    </div>{
+                    </div>
+
                     <div class="services-details__help-box">
-                        <div class="services-details__help-box-bg"
-                             style="background-image: url(assets/images/resources/bureau-moyen.jpg);">
+                        <div class="services-details__help-box-bg">
+                        {#                             style="background-image: url({{ vich_uploader_asset(image3) }})">#}
                         </div>
                         <div class="services-details__help-box-bg-overly"></div>
-                        <h3 class="services-details__help-box-title">{{ Apps.titre2|default('Besoin d\'aide?') }} </h3>
-                        <p class="services-details__help-box-text">{{ Apps.titre3|default('Bienvenue')}}
+                        <h3 class="services-details__help-box-title">{{ Apps.titre3menulat|default('Besoin d\'aide?') }} </h3>
+                        <p class="services-details__help-box-text">{{ Apps.textemenulat|striptags|default('Bienvenue')}}
                             </p>
                         <a href="tel:92-666-888-0000" class="services-details__phone">{{(Apps.telephone|default('(+33) 06 21 85 33 48')) }}</a>
-                        <a href="{{ path('app_contact') }}" class="thm-btn services-details__help-box-btn"> En savoir plus</a>
+                        <a href="{{ path('app_contact') }}" class="thm-btn services-details__help-box-btn" style="background-color: {{ Apps.couleuractuellebg }}">
+                            En savoir plus</a>
                     </div>
-{#                </div>  {{ dump(Apps)}}#}
+                </div>
             </div>
+
             <div class="col-xl-8 col-lg-7">
                 <div class="services-details__right">
                     <div class="services-details__img">
-                        <img src="{{image}}" style="height: 300px;width: 100%;object-fit: contain"
+                        <img src="{{image}}" style="height: 450px ; width: 100% ;object-fit: contain"
                              alt="{{ imageTitle }}">
                     </div>
                     <div class="services-details__content">
@@ -85,8 +95,6 @@
                             <h2 class="services-details__designing-list-box-title">Les atouts</h2>
                             <ul class="services-details__designing-list list-unstyled">
                                 {% set list = service.liste %}
-
-
                                 <li>
                                     <div class="icon">
                                         <i class="fas fa-slash"></i>
