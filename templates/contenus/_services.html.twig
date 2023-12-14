@@ -6,7 +6,7 @@
     {% set imageTitle = 'news image' %}
 {% endif %}
 
-{#{% for contenus in services %}#}
+{#{% for contenus in service %}#}
 {#{% if contenus.type == "ServicesGTI" %}#}
 {#       {{ dump(contenus) }}#}
 <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms" style="min-height: 454px">
@@ -31,7 +31,7 @@
             </h2>
             <p class="news-one__text mt-3">{{ service.Texte1|striptags|u.truncate(150,'...',false)|raw }}</p>
 
-            <a href="{{ path('app_services_details',{slug: service.slug}) }}" class="services-one__btn mt-3">En savoir
+            <a href="{{ path('app_services_slug',{slug: service.slug}) }}" class="services-one__btn mt-3">En savoir
                 plus</a>
             <p class=" services-one mt-2 mb-4 p-0">
                 {{ service.liste[0] }}<br>{{ service.liste[1] }}

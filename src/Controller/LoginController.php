@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\Request;
+use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 
 class LoginController extends AbstractController
@@ -101,11 +102,26 @@ class LoginController extends AbstractController
 
     }
     #[Route(path: '/services_details', name: 'app_services_details')]
-    public function servicesD(): Response
-    {
+    public function servicesD(ContenusRepository $contenusRepo): Response
+    {   $services = $contenusRepo->findByPagesName('services_details');
         return $this->render('pages/services_details.html.twig', [
+            "serviceD" => $services,
+
         ]);
     }
+
+    #[Route(path: '/services/{slug}', name: 'app_services_slug')]
+    public function servicesSlug(Contenus $contenu, ContenusRepository $contenusRepository): Response    {
+
+        //        $service = $contenusRepository->findByType([Contenus::TYPE_ServicesGTI]);
+
+        return $this->render('contenus/_offre_option.html.twig', [
+            "service" => $contenu
+
+        ]);
+    }
+
+
 //    #[Route(path: '/services_details/{slug}', name: 'app_services_details2')]
 //    public function services(): Response
 //    {

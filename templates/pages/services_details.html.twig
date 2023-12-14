@@ -1,6 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+    {{ dump(serviceD) }}
+    {% for service in serviceD %}
+
+        {% if service.images.first %}
+            {% set image = vich_uploader_asset(service.images.first) %}
+            {% set imageTitle = service.images.first.titre %}
+
+        {% else %}
+            {% set image = asset('assets/images/backgrounds/fond2.png') %}
+            {% set imageTitle = 'service détails image' %}
+
 <div class="stricky-header stricked-menu main-menu">
     <div class="sticky-header__content"></div>
 
@@ -59,7 +70,7 @@
                         <p class="services-details__help-box-text">En complément de votre recherche, un entretien me permettrait de répondre à vos questions.
                             N'hésitez plus ! </p>
                         <a href="tel:92-666-888-0000" class="services-details__phone">03.84.00.00.00</a>
-                        <a href="{{ path('app_contact') }}" class="thm-btn services-details__help-box-btn">En savoir plus</a>
+{#                        <a href="{{ path('app_contact') }}" class="thm-btn services-details__help-box-btn">En savoir plus</a>#}
 
                     </div>
                 </div>
@@ -67,10 +78,12 @@
             <div class="col-xl-8 col-lg-7">
                 <div class="services-details__right">
                     <div class="services-details__img">
-                        <img src="assets/images/resources/bureau-moyen.jpg" alt="bureau professionnel en centre urbain, vue sur le ville, mobilier modern et tendance">
+                        <img src="{{image}}" style="height: 300px;width: 100%;object-fit: contain"
+                             alt="{{ imageTitle }}">
                     </div>
                     <div class="services-details__content">
-                        <h2 class="services-details__title">Designer</h2>
+                        <h2 class="services-details__title">{{ service.titre1|default(('Designer'))|striptags }}</h2>
+
                         <p class="services-details__text-1"> Expert dans l'optimisation de l'utilisation de l'espace, en tant que designers d'intérieur
                             je veille à ce que chaque élément contribue à la fonctionnalité tout en créant des intérieurs esthétiquement plaisants.
                             Travaillant en étroite collaboration avec mes clients pour comprendre leurs goûts, besoins et styles de vie,
@@ -168,8 +181,14 @@
         </div>
     </div>
 </section>
-<!--                                                                    fin de la section                                                           -->
+        {% endif %}
 
 
-
+    {% endfor %}
+    <!--                                                                    fin de la section                                                           -->
 {% endblock %}
+
+
+
+
+

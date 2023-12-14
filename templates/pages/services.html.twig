@@ -91,7 +91,7 @@
                     <div class="services-one__single" style="min-height:450px">
                         <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">{{ Contenus.titre1 }}</a></h2>
                         <p class="services-one__text">{{ Contenus.texte1|striptags|u.truncate(150,'...',false) }}</p>
-{#                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>#}
+                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         <div class="services-one__icon">
                             <span class="icon-furnitures"></span>
                         </div>
@@ -104,7 +104,7 @@
                         <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">{{ Contenus.titre2 }}</a></h2>
                         <p class="services-one__text fs-4">{{ Contenus.texte2|striptags|u.truncate(150,'...',false) }}</p>
 
-{#                        <a href="{{path('app_services_details')}}" class="services-one__btn" >En savoir plus</a>#}
+                        <a href="{{path('app_services_details')}}" class="services-one__btn" >En savoir plus</a>
                         <div class="services-one__icon">
                             <span class="icon-buildings"></span>
                         </div>
@@ -115,7 +115,7 @@
                     <div class="services-one__single" style="min-height:450px">
                         <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">{{ Contenus.titre3 }}</a></h2>
                         <p class="services-one__text">{{ Contenus.texte3|striptags|u.truncate(150,'...',false)}}</p>
-{#                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>#}
+                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
                         <div class="services-one__icon">
                             <span class="icon-house-design"></span>
                         </div>
@@ -140,19 +140,19 @@
 
     <!--                                                                                L'OEIL DE L'EXPERT  6                                                                      -->
 
-    <section class="three-boxes-two three-boxes-two-page">
+    <section id="news" class="three-boxes-two three-boxes-two-page">
         <div class="container">
             <div class="row" >
                 {% for contenuGTI in services %}
                     {% if contenuGTI.type =="ServicesGTI" and contenuGTI.publier %}
-                        {% include "contenus/_services.html.twig" with {service: contenuGTI} %}
+                        {% include "contenus/_services.html.twig" with {service: contenuGTI} only %}
                     {% endif %}
                 {% endfor %}
-
+                <div class="text-center news-one__more">
+                    <a href="{{path('app_services_details')}}" class="thm-btn" style="background-color: {{ Apps.couleuractuellebg }}">Voir plus</a>
+                </div>
               </div>
-
             </div>
-
     </section>
 
 {% endblock %}
