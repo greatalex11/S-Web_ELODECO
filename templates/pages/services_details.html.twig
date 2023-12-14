@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
+   {% set Apps=theme.theme %}
 
 {% block content %}
+    {{  dump(Apps.jours_fermes) }}
     {{ dump(serviceD) }}
     {% for service in serviceD %}
 
@@ -11,10 +13,10 @@
         {% else %}
             {% set image = asset('assets/images/backgrounds/fond2.png') %}
             {% set imageTitle = 'service détails image' %}
+        {% endif %}
 
 <div class="stricky-header stricked-menu main-menu">
     <div class="sticky-header__content"></div>
-
 </div><!-- /.stricky-header -->
 
 
@@ -39,13 +41,7 @@
 </section>
  <!--                                                                                         fin bandeau                                                                    -->
 
-
-
-
-
-    <!--                                                                        SECTION 1 : SERVICES details  / image 672x713                                                   -->
-
-
+ <!--                                                                   SECTION 1 : SERVICES details  / image 672x713                                                   -->
 <section class="services-details">
     <div class="container">
         <div class="row">
@@ -60,20 +56,19 @@
                             <li><a href="#">Agencement optimisé <span class="icon-right-arrow"></span></a></li>
                             <li><a href="#">Assitance à la gestion <span class="icon-right-arrow"></span></a></li>
                         </ul>
-                    </div>
+                    </div>{
                     <div class="services-details__help-box">
                         <div class="services-details__help-box-bg"
                              style="background-image: url(assets/images/resources/bureau-moyen.jpg);">
                         </div>
                         <div class="services-details__help-box-bg-overly"></div>
-                        <h3 class="services-details__help-box-title">Besoin d'aide?</h3>
-                        <p class="services-details__help-box-text">En complément de votre recherche, un entretien me permettrait de répondre à vos questions.
-                            N'hésitez plus ! </p>
-                        <a href="tel:92-666-888-0000" class="services-details__phone">03.84.00.00.00</a>
-{#                        <a href="{{ path('app_contact') }}" class="thm-btn services-details__help-box-btn">En savoir plus</a>#}
-
+                        <h3 class="services-details__help-box-title">{{ Apps.titre2|default('Besoin d\'aide?') }} </h3>
+                        <p class="services-details__help-box-text">{{ Apps.titre3|default('Bienvenue')}}
+                            </p>
+                        <a href="tel:92-666-888-0000" class="services-details__phone">{{(Apps.telephone|default('(+33) 06 21 85 33 48')) }}</a>
+                        <a href="{{ path('app_contact') }}" class="thm-btn services-details__help-box-btn"> En savoir plus</a>
                     </div>
-                </div>
+{#                </div>  {{ dump(Apps)}}#}
             </div>
             <div class="col-xl-8 col-lg-7">
                 <div class="services-details__right">
@@ -83,26 +78,21 @@
                     </div>
                     <div class="services-details__content">
                         <h2 class="services-details__title">{{ service.titre1|default(('Designer'))|striptags }}</h2>
-
-                        <p class="services-details__text-1"> Expert dans l'optimisation de l'utilisation de l'espace, en tant que designers d'intérieur
-                            je veille à ce que chaque élément contribue à la fonctionnalité tout en créant des intérieurs esthétiquement plaisants.
-                            Travaillant en étroite collaboration avec mes clients pour comprendre leurs goûts, besoins et styles de vie,
-                            nous créons des espaces qui reflètent la personnalité unique de chaque individu.
-                            En plus de concevoir des espaces, je peux également superviser l'exécution du projet,
-                            coordonner les travaux et m'assurer que tout est réalisé selon les plans convenus.
-
-                        </p>
+                        <p class="services-details__text-1"> {{ service.texte1|default(('le métier en quelques mots'))|striptags }} </p>
                     </div>
                     <div class="services-details__designing-box">
                         <div class="services-details__designing-list-box">
                             <h2 class="services-details__designing-list-box-title">Les atouts</h2>
                             <ul class="services-details__designing-list list-unstyled">
+                                {% set list = service.liste %}
+
+
                                 <li>
                                     <div class="icon">
                                         <i class="fas fa-slash"></i>
                                     </div>
                                     <div class="text">
-                                        <p>Conception de qualité</p>
+                                        <p>{{ list[0] |default(('le métier en quelques mots'))|striptags  }}</p>
                                     </div>
                                 </li>
                                 <li>
@@ -110,7 +100,7 @@
                                         <i class="fas fa-slash"></i>
                                     </div>
                                     <div class="text">
-                                        <p>100% Satisfait</p>
+                                        <p>{{ list[1] |default(('100% Satisfait'))|striptags  }}</p>
                                     </div>
                                 </li>
                                 <li>
@@ -118,7 +108,7 @@
                                         <i class="fas fa-slash"></i>
                                     </div>
                                     <div class="text">
-                                        <p>Respect des engagements</p>
+                                        <p>{{ list[2] |default(('Respect des engagements'))|striptags  }}</p>
                                     </div>
                                 </li>
                                 <li>
@@ -126,7 +116,7 @@
                                         <i class="fas fa-slash"></i>
                                     </div>
                                     <div class="text">
-                                        <p>Délais, Coût, Qualité</p>
+                                        <p>{{ list[3] |default(('Délais, Coût, Qualité'))|striptags  }}</p>
                                     </div>
                                 </li>
                                 <li>
@@ -134,7 +124,7 @@
                                         <i class="fas fa-slash"></i>
                                     </div>
                                     <div class="text">
-                                        <p>Les meilleures solutions</p>
+                                        <p>{{ list[4] |default(('Les meilleures solutions'))|striptags  }}</p>
                                     </div>
                                 </li>
                                 <li>
@@ -142,7 +132,7 @@
                                         <i class="fas fa-slash"></i>
                                     </div>
                                     <div class="text">
-                                        <p>Professionnel et Qualifié</p>
+                                        <p>{{ list[5] |default(('Professionnel et Qualifié'))|striptags  }}</p>
                                     </div>
                                 </li>
                             </ul>
@@ -155,22 +145,22 @@
                         <div class="accrodion-grp" data-grp-name="faq-one-accrodion">
                             <div class="accrodion active">
                                 <div class="accrodion-title">
-                                    <h4>plan 2D - 3D</h4>
+                                    <h4>{{ list[5] |default(('plan 2D - 3D'))|striptags  }}</h4>
                                 </div>
                                 <div class="accrodion-content">
                                     <div class="inner">
-                                        <p>Des plans aux cotations fonctionnelles, disponibles pour le particulier comme pour le professionnel.
+                                        <p>{{ list[6] |default(('Des plans aux cotations fonctionnelles, disponibles pour le particulier comme pour le professionnel.'))|striptags  }}
                                         </p>
                                     </div><!-- /.inner -->
                                 </div>
                             </div>
                             <div class="accrodion">
                                 <div class="accrodion-title">
-                                    <h4>Planche de tendance et nuancier</h4>
+                                    <h4>{{ list[7] |default(('Planche de tendance et nuancier'))|striptags  }}</h4>
                                 </div>
                                 <div class="accrodion-content">
                                     <div class="inner">
-                                        <p>Votre dossier personnalisé vous suit dans toutes vos démarches, prêt à répondre à toutes vos inspirations.                                       </p>
+                                        <p>{{ list[8] |default(('Votre dossier personnalisé vous suit dans toutes vos démarches, prêt à répondre à toutes vos inspirations.'))|striptags  }}</p>                                       </p>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +171,7 @@
         </div>
     </div>
 </section>
-        {% endif %}
+
 
 
     {% endfor %}
