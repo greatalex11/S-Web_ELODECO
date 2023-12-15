@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-{#    prestation choice -> tarif + service#}
-{{ dump(serviceTarif) }}
 
+    {#    //il ne supporte pas les underscore#}
+    {#{% for service in serviceD| filter (service.type == "ServicesGti") %}#}
+    {#    {% if service.type == "ServicesGti" %}#}
+    {#        {{ dump(service.id) }}#}
+    {#    {%endif %}#}
+    {#{% endfor %}#}
 
 
     {% set Apps= theme.theme %}
-{#    //il ne supporte pas les underscore#}
+
+{#    {% if serviceD.type =="ServicesGti" %}#}
     {% for service in serviceD %}
 {{ dump(service) }}
         {% if service.images.first %}
@@ -56,19 +61,33 @@
                 <div class="services-details__sidebar">
                     <div class="services-details__services-list-box">
                         <ul class="services-details__services-list list-unstyled">
-                            <li><a href="#">Aménagement d'intérieur<span class="icon-right-arrow"></span></a></li>
-                            <li><a href="#">Architecture <span class="icon-right-arrow"></span></a></li>
-                            <li><a href="#">Design & Planning <span class="icon-right-arrow"></span></a></li>
-                            <li><a href="#">Home staging<span class="icon-right-arrow"></span></a></li>
-                            <li><a href="#">Agencement optimisé <span class="icon-right-arrow"></span></a></li>
-                            <li><a href="#">Assitance à la gestion <span class="icon-right-arrow"></span></a></li>
+                            {% for liste in clef %}
+                                {% set liste=liste.liste %}
+
+
+
+
+                                <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+
+                                <li><a href="#" style="max-height: 80px">{{ liste[0]|default('Aménagement d\'intérieur')|striptags|u.truncate(25,'...',false) }}<span
+                                                class="icon-right-arrow"></span></a></li>
+                                <li><a href="#" style="max-height: 80px">{{ liste[2]|default('Architecture') |striptags|u.truncate(25,'...',false) }} <span
+                                                class="icon-right-arrow"></span></a></li>
+                                <li><a href="#" style="max-height: 80px">{{ liste[4]|default(' Design & Planning ') |striptags|u.truncate(25,'...',false) }}<span
+                                                class="icon-right-arrow"></span></a></li>
+                                <li><a href="#" style="max-height: 80px">{{ liste[6]|default(' Home staging') |striptags|u.truncate(25,'...',false)}}<span
+                                                class="icon-right-arrow"></span></a></li>
+                                <li><a href="#" style="max-height: 80px">{{ liste[8]|default('Agencement optimisé ') |striptags|u.truncate(25,'...',false)}}<span
+                                                class="icon-right-arrow"></span></a></li>
+                                <li><a href="#" style="max-height: 80px">{{ liste[10]|default('Assitance à la gestion ') |striptags|u.truncate(25,'...',false)}}<span
+                                                class="icon-right-arrow"></span></a></li>
+                            {% endfor %}
                         </ul>
                     </div>
-
                     <div class="services-details__help-box">
-                        <div class="services-details__help-box-bg">
-                        {#                             style="background-image: url({{ vich_uploader_asset(image3) }})">#}
-                        </div>
+{#                        <div class="services-details__help-box-bg">#}
+{#                                                  style="background-image: url({{ vich_uploader_asset(image3) }})">}#}
+{#                        </div>#}
                         <div class="services-details__help-box-bg-overly"></div>
                         <h3 class="services-details__help-box-title">{{ Apps.titre3menulat|default('Besoin d\'aide?') }} </h3>
                         <p class="services-details__help-box-text">{{ Apps.textemenulat|striptags|default('Bienvenue')}}
@@ -180,13 +199,8 @@
     </div>
 </section>
 
-
-
     {% endfor %}
+{#    {% endif %}#}
     <!--                                                                    fin de la section                                                           -->
 {% endblock %}
-
-
-
-
 

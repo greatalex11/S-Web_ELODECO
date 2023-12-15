@@ -103,13 +103,12 @@ class LoginController extends AbstractController
     }
     #[Route(path: '/services_details', name: 'app_services_details')]
     public function servicesD(ContenusRepository $contenusRepo): Response
-    {   $services = $contenusRepo->findByPagesName('services_details');
-        $tarifOne = $contenusRepo->findByType([Contenus::TYPE_ServicesGTI]);
+    {   $clefs = $contenusRepo->findByType([Contenus::TYPE_SERVICEDETAIL]);
+        $services = $contenusRepo->findByType([Contenus::TYPE_ServicesGTI]);
         return $this->render('pages/services_details.html.twig', [
             "serviceD" => $services,
-            "serviceTarif"=>$tarifOne,
-
-        ]);
+            "clef" => $clefs
+               ]);
     }
 
     #[Route(path: '/services/{slug}', name: 'app_services_slug')]

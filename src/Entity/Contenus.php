@@ -33,6 +33,9 @@ class Contenus
     public const TYPE_3SERVICESQUALITE = '3ServicesQUALITE';
     public const TYPE_PHOTOGP = 'BlockPhotos';
 
+    public const TYPE_SERVICEDETAIL= '6clefsServiceDetails';
+
+
     public const TYPES = [
         'NewsGti' => self::TYPE_NewsGTI,
         'ServicesGti' => self::TYPE_ServicesGTI,
@@ -51,6 +54,8 @@ class Contenus
         'About Temoins' => self::TYPE_BLOGAT,
         'Block photos' => self::TYPE_PHOTOGP,
         'tarif à la carte'=> self::TYPE_TARIFS,
+        '6 clefs services détails'=> self::TYPE_SERVICEDETAIL,
+
     ];
 
     use DateTrait;

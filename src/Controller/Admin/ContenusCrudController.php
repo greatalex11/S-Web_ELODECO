@@ -129,13 +129,18 @@ class ContenusCrudController extends AbstractCrudController
                 yield TextEditorField::new('texte3')->setLabel('Contenu')->hideOnIndex();
                 yield ArrayField::new('liste')->setLabel(' Liste d\'éléments supplémentaires')->hideOnIndex();
 
-            }elseif ($contenu && $contenu->getType() === Contenus::TYPE_3SERVICES) {
+            }elseif ($contenu && $contenu->getType() === Contenus::TYPE_SERVICEDETAIL) {
+                yield SlugField::new('slug')->setTargetFieldName('titre1');
+                yield TextField::new('titre1')->setLabel('Titre du block - identification');
+                yield ArrayField::new('liste')->setLabel('les 6 clefs')->hideOnIndex();
+            }
+            elseif ($contenu && $contenu->getType() === Contenus::TYPE_3SERVICES) {
                 yield TextField::new('titre1')->setLabel('Service 1');
                 yield TextEditorField::new('texte1')->setLabel('Contenu')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
                 yield TextField::new('titre2')->setLabel('Service 2')->hideOnIndex();
                 yield TextEditorField::new('texte2')->setLabel('Contenu')->hideOnIndex();
                 yield TextField::new('titre3')->setLabel('Service 3')->hideOnIndex();
-                yield TextEditorField::new('texte3')->setLabel('Contenu')->hideOnIndex();
+                yield TextEditorField::new('texte3')->setLabel('Contenu') ->setColumns(12)->hideOnIndex();
 
 
             } elseif ($contenu && $contenu->getType() === Contenus::TYPE_3SERVICESPRO) {
