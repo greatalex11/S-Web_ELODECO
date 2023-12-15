@@ -57,44 +57,45 @@
             <div class="col-xl-4 col-lg-5">
                 <div class="services-details__sidebar">
                     <div class="services-details__services-list-box">
-                        <ul class="services-details__services-list list-unstyled">
+                        <ul  id="jojo" class="truc services-details__services-list list-unstyled">
                             {% for liste in clef %}
                                 {% set liste=liste.liste %}
 
 
-                                <li id="truc" data-toggle="popover" title="En détail"
+                                <li data-toggle="popover" title="En détail"
                                     data-bs-content="{{ liste[1]|default('plan 3d')|striptags|u.truncate(300,'...',false) }}">
-                                    <a class="truc"  style="max-height: 80px">{{ liste[0]|default('sur mesure')|striptags|u.truncate(25,'...',false) }}<span
-                                                    class="icon-right-arrow"></span></a>
+                                    <a style="max-height: 80px">{{ liste[0]|default('sur mesure')|striptags|u.truncate(25,'...',false) }}
+                                        <span class="icon-right-arrow"></span></a>
                                 </li>
 
-                                <li id="truc" data-toggle="popover" title="En détail"
+                                <li class="#jojo" data-toggle="popover" title="En détail"
                                     data-bs-content="{{ liste[3]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                    <a style="max-height: 80px">{{ liste[2]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}<span
-                                                class="icon-right-arrow"></span></a>
+                                    <a style="max-height: 80px">{{ liste[2]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                        <span class="icon-right-arrow"></span></a>
                                 </li>
 
-                                <li class="truc" data-toggle="popover" title="En détail"
+                                <li data-toggle="popover" title="En détail"
                                     data-bs-content="{{ liste[5]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                    <a style="max-height: 80px">{{ liste[4]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}<span
-                                                class="icon-right-arrow"></span></a>
+                                    <a style="max-height: 80px">{{ liste[4]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                        <span class="icon-right-arrow"></span></a>
                                 </li>
 
-                                <li class="truc" data-toggle="popover" title="En détail"
+                                <li data-toggle="popover" title="En détail"
                                     data-bs-content="{{ liste[7]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                    <a style="max-height: 80px">{{ liste[6]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}<span
-                                                class="icon-right-arrow"></span></a>
+                                    <a style="max-height: 80px">{{ liste[6]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                        <span class="icon-right-arrow"></span></a>
                                 </li>
 
-                                <li class="truc" data-toggle="popover" title="En détail"
+                                <li data-toggle="popover" title="En détail"
                                     data-bs-content="{{ liste[9]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                    <a style="max-height: 80px">{{ liste[8]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}<span
-                                                class="icon-right-arrow"></span></a>
+                                    <a style="max-height: 80px">{{ liste[8]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                        <span class="icon-right-arrow"></span></a>
                                 </li>
 
-                                <li class="truc" data-toggle="popover" title="En détail"
+                                <li data-toggle="popover" title="En détail"
                                     data-bs-content="{{ liste[11]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                    <a style="max-height: 80px">{{ liste[10]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}<span
+                                    <a style="max-height: 80px">{{ liste[10]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                        <span
                                                 class="icon-right-arrow"></span></a>
                                 </li>
 

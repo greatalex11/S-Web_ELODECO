@@ -778,13 +778,21 @@
     // ----------------------------- Mon javascript -----------------------------------------
 
 
-    //fonction popover service details                 let bouton = document.querySelectorAll("truc");MARCHE PAS
-    let bouton = document.getElementById("truc");
-    bouton.addEventListener("click",function(){
-        $(this).popover({
+    //fonction popover service details
+
+    let ul = document.getElementById("jojo");
+    let li = ul.querySelectorAll("li");
+
+    li.forEach(function(li) {
+        li.addEventListener("click", function(e) {
+            $(this).popover({
             container: 'body'
         });
+        });
     });
+
+
+
 
 
     // Création du caroussel pour les images de news
