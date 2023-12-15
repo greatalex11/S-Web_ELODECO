@@ -8,13 +8,10 @@
     {#        {{ dump(service.id) }}#}
     {#    {%endif %}#}
     {#{% endfor %}#}
-
-
     {% set Apps= theme.theme %}
 
 {#    {% if serviceD.type =="ServicesGti" %}#}
     {% for service in serviceD %}
-{{ dump(service) }}
         {% if service.images.first %}
             {% set image = vich_uploader_asset(service.images[0]) %}
             {% set imageTitle = service.images.first.titre %}
@@ -53,7 +50,7 @@
  <!--                                                                                         fin bandeau                                                                    -->
 
  <!--                                                                   SECTION 1 : SERVICES details  / image 672x713                                                   -->
-        {{ dump(service) }}
+
 <section class="services-details">
     <div class="container">
         <div class="row">
@@ -65,22 +62,43 @@
                                 {% set liste=liste.liste %}
 
 
+                                <li id="truc" data-toggle="popover" title="En détail"
+                                    data-bs-content="{{ liste[1]|default('plan 3d')|striptags|u.truncate(300,'...',false) }}">
+                                    <a class="truc"  style="max-height: 80px">{{ liste[0]|default('sur mesure')|striptags|u.truncate(25,'...',false) }}<span
+                                                    class="icon-right-arrow"></span></a>
+                                </li>
+
+                                <li id="truc" data-toggle="popover" title="En détail"
+                                    data-bs-content="{{ liste[3]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
+                                    <a style="max-height: 80px">{{ liste[2]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}<span
+                                                class="icon-right-arrow"></span></a>
+                                </li>
+
+                                <li class="truc" data-toggle="popover" title="En détail"
+                                    data-bs-content="{{ liste[5]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
+                                    <a style="max-height: 80px">{{ liste[4]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}<span
+                                                class="icon-right-arrow"></span></a>
+                                </li>
+
+                                <li class="truc" data-toggle="popover" title="En détail"
+                                    data-bs-content="{{ liste[7]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
+                                    <a style="max-height: 80px">{{ liste[6]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}<span
+                                                class="icon-right-arrow"></span></a>
+                                </li>
+
+                                <li class="truc" data-toggle="popover" title="En détail"
+                                    data-bs-content="{{ liste[9]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
+                                    <a style="max-height: 80px">{{ liste[8]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}<span
+                                                class="icon-right-arrow"></span></a>
+                                </li>
+
+                                <li class="truc" data-toggle="popover" title="En détail"
+                                    data-bs-content="{{ liste[11]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
+                                    <a style="max-height: 80px">{{ liste[10]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}<span
+                                                class="icon-right-arrow"></span></a>
+                                </li>
 
 
-                                <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
-
-                                <li><a href="#" style="max-height: 80px">{{ liste[0]|default('Aménagement d\'intérieur')|striptags|u.truncate(25,'...',false) }}<span
-                                                class="icon-right-arrow"></span></a></li>
-                                <li><a href="#" style="max-height: 80px">{{ liste[2]|default('Architecture') |striptags|u.truncate(25,'...',false) }} <span
-                                                class="icon-right-arrow"></span></a></li>
-                                <li><a href="#" style="max-height: 80px">{{ liste[4]|default(' Design & Planning ') |striptags|u.truncate(25,'...',false) }}<span
-                                                class="icon-right-arrow"></span></a></li>
-                                <li><a href="#" style="max-height: 80px">{{ liste[6]|default(' Home staging') |striptags|u.truncate(25,'...',false)}}<span
-                                                class="icon-right-arrow"></span></a></li>
-                                <li><a href="#" style="max-height: 80px">{{ liste[8]|default('Agencement optimisé ') |striptags|u.truncate(25,'...',false)}}<span
-                                                class="icon-right-arrow"></span></a></li>
-                                <li><a href="#" style="max-height: 80px">{{ liste[10]|default('Assitance à la gestion ') |striptags|u.truncate(25,'...',false)}}<span
-                                                class="icon-right-arrow"></span></a></li>
                             {% endfor %}
                         </ul>
                     </div>

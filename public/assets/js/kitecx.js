@@ -776,6 +776,17 @@
 
 
     // ----------------------------- Mon javascript -----------------------------------------
+
+
+    //fonction popover service details                 let bouton = document.querySelectorAll("truc");MARCHE PAS
+    let bouton = document.getElementById("truc");
+    bouton.addEventListener("click",function(){
+        $(this).popover({
+            container: 'body'
+        });
+    });
+
+
     // Création du caroussel pour les images de news
     $(document).ready(function () {
         $(".owl-carousel").owlCarousel({
