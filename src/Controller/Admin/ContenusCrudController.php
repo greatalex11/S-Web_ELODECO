@@ -129,7 +129,25 @@ class ContenusCrudController extends AbstractCrudController
                 yield TextEditorField::new('texte3')->setLabel('Contenu')->hideOnIndex();
                 yield ArrayField::new('liste')->setLabel(' Liste d\'éléments supplémentaires')->hideOnIndex();
 
-            }elseif ($contenu && $contenu->getType() === Contenus::TYPE_SERVICEDETAIL) {
+            } elseif ($contenu && $contenu->getType() === Contenus::TYPE_PortefolioGTI) {
+                yield FormField::addTab("Page commune");
+                yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
+                    ->setLabel('image 370x290 ou 672x713 - titre important pour référencement')
+                    ->setEntryIsComplex(true)
+                    ->setFormTypeOptions([
+                        'by_reference' => false,])
+                    ->setColumns(12)
+                    ->setTemplatePath('fields/images.html.twig');
+                yield SlugField::new('slug')->setTargetFieldName('titre1');
+                yield TextField::new('titre1')->setLabel('Titre principal');
+                yield TextField::new('titre2')->setLabel('Date')->hideOnIndex();
+                yield TextEditorField::new('texte1')->setLabel('Texte principal')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
+
+                yield FormField::addTab("Détail environnant");
+                yield TextField::new('titre3')->setLabel('Auteur')->hideOnIndex();
+                yield TextEditorField::new('texte2')->setLabel('Fonction')->hideOnIndex();
+                yield TextEditorField::new('texte3')->setLabel('Contenu')->hideOnIndex();
+                yield ArrayField::new('liste')->setLabel(' Liste d\'éléments supplémentaires')->hideOnIndex();}elseif ($contenu && $contenu->getType() === Contenus::TYPE_SERVICEDETAIL) {
                 yield SlugField::new('slug')->setTargetFieldName('titre1');
                 yield TextField::new('titre1')->setLabel('Titre du block - identification');
                 yield ArrayField::new('liste')->setLabel('les 6 clefs')->hideOnIndex();

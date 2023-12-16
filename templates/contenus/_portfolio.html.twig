@@ -1,0 +1,398 @@
+
+    <!--                                                     SECTION PROJET OU STYLE DECO DETAILLE  / IMGAGE 1170 X 505                                                    -->
+
+{#    {{ dump(contenu) }}#}
+    {% if contenu.images.first %}
+        {% set image = vich_uploader_asset(contenu.images.first) %}
+        {% set imageTitle = contenu.images.first.titre %}
+    {% else %}
+        {% set image = asset('assets/images/backgrounds/fond2.png') %}
+        {% set imageTitle = 'folio image' %}
+    {% endif %}
+
+
+{#    <div class="col-xl-4 col-lg-4 wow fadeInUp new" data-wow-delay="100ms">#}
+{#        <div class="news-one__single">#}
+{#            <div class="news-one__img-box">#}
+{#                <div class="news-one-img">#}
+{#                    <img src="{{ image }}" style="height: 300px;width: 100%;object-fit: contain"#}
+{#                         alt="{{ imageTitle }}">#}
+{#                    <a href="{{ path('app_news_details',{slug: new.slug}) }}">#}
+{#                        <span class="news-one__plus"></span>#}
+{#                    </a>#}
+{#                </div>#}
+{#                <div class="news-one__date-box">#}
+{#                    <p> {{ new.Titre2 }}</p>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="news-one__content text-break">#}
+{#**************#}
+{#                <h3 class="news-one__title ">#}
+{#                    <a href="{{ path('app_news_details',{slug: new.slug}) }}">{{ new.Titre1 }}</a>#}
+{#                </h3>#}
+{#                <p class="news-one__text">{{ new.Texte1|striptags|u.truncate(150,'...',false)|raw }}</p>#}
+{#                <a href="{{ path('app_news_details',{slug: new.slug}) }}"#}
+{#                   class="news-one__btn">Plus d'articles</a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+    {#**************#}
+
+    <section class="portfolio-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="portfolio-details__img">
+
+{#                        <img src="{{ image }}" style="height: 300px;width: 100%;object-fit: contain"#}
+{#                             alt="{{ imageTitle }}">#}
+{#                        <a href="{{ path('app_news_details',{slug: contenu.slug}) }}">#}
+{#                            <span class="news-one__plus"></span>#}
+{#                        </a>#}
+
+
+{#                        <img src="assets/images/project/projet_logement_indus.png" alt="plan 3d logement après réféction avec cuisine et sejour en sous pente">#}
+
+
+{#                        <div class="portfolio-details__info">#}
+{#                            <ul class="portfolio-details__info-list list-unstyled">#}
+{#                                <li>14 octobre, 2023</li>#}
+{#                                <li>RIOZ</li>#}
+{#                                <li>€ 80'000</li>#}
+{#                                <li>Réalisation en cours</li>#}
+{#                                <li>#}
+{#                                    <div class="portfolio-details__social">#}
+{#                                        <a href="#"><i class="fab fa-twitter"></i></a>#}
+{#                                        <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>#}
+{#                                        <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>#}
+{#                                        <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>#}
+{#                                    </div>#}
+{#                                </li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="portfolio-details__content">#}
+{#                        <h2 class="portfolio-details__title">{{ contenu.Titre1 }}APPARTEMENT TYPE INDUSTRIEL</h2>#}
+{#                        <p class="portfolio-details__text-1">Lorem ipsum is simply free text used by copytyping#}
+{#                            refreshing. Neque porro est qui dolorem ipsum quia quaed inventore veritatis et quasi#}
+{#                            architecto beatae vitae dicta sunt explicabo. Aelltes port lacus quis enim var sed#}
+{#                            efficitur turpis gilla sed sit amet finibus eros. Lorem Ipsum is simply dummy text of#}
+{#                            the printing and typesetting industry. Lorem Ipsum has been the ndustry standard dummy#}
+{#                            text ever since the 1500s, when an unknown printer took a galley of type and scrambled#}
+{#                            it to make a type specimen book. It has survived not only five centuries. Lorem Ipsum is#}
+{#                            simply dummy text of the new design printng and type setting Ipsum Take a look at our#}
+{#                            round up of the best shows coming soon to your telly box has been the is industrys. When#}
+{#                            an unknown printer took a galley of type and scrambled it to make a type specimen book.#}
+{#                            It has survived not only five centuries, but also the leap into electronic typesetting,#}
+{#                            remaining essentially unchanged. It was popularised in the 1960s with the release of#}
+{#                            Letraset sheets containing.</p>#}
+{#                        <ul class="portfolio-details__list list-unstyled">#}
+{#                            <li>#}
+{#                                <div class="icon">#}
+{#                                    <span class="icon-tick"></span>#}
+{#                                </div>#}
+{#                                <div class="text-box">#}
+{#                                    <p>Sed ut perspiciatis unde omnis iste natus error</p>#}
+{#                                </div>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <div class="icon">#}
+{#                                    <span class="icon-tick"></span>#}
+{#                                </div>#}
+{#                                <div class="text-box">#}
+{#                                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur simply free text</p>#}
+{#                                </div>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <div class="icon">#}
+{#                                    <span class="icon-tick"></span>#}
+{#                                </div>#}
+{#                                <div class="text-box">#}
+{#                                    <p>Accusamus et iusto odio dignissimos not the ducimus qui blanditiis</p>#}
+{#                                </div>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <div class="icon">#}
+{#                                    <span class="icon-tick"></span>#}
+{#                                </div>#}
+{#                                <div class="text-box">#}
+{#                                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumquer</p>#}
+{#                                </div>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <div class="icon">#}
+{#                                    <span class="icon-tick"></span>#}
+{#                                </div>#}
+{#                                <div class="text-box">#}
+{#                                    <p> Accusamus et iusto odio dignissimos igntjne ducimus qui blanditiis</p>#}
+{#                                </div>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <div class="icon">#}
+{#                                    <span class="icon-tick"></span>#}
+{#                                </div>#}
+{#                                <div class="text-box">#}
+{#                                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque lipsum fre#}
+{#                                        tempore</p>#}
+{#                                </div>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                        <p class="portfolio-details__text-2"> When an unknown printer took a galley of type and#}
+{#                            scrambled it to make a type specimen book. It has survived not only five centuries, but#}
+{#                            also the leap into electronic typesetting, remaining essentially unchanged. It was#}
+{#                            popularised in the 1960s with the release of Letraset sheets containing. When an unknown#}
+{#                            printer took a galley of type and scrambled it to make a type specimen book. It has#}
+{#                            survived not only five centuries, but also the leap into electronic typesetting,#}
+{#                            remaining essentially unchanged.</p>#}
+
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+
+
+
+
+{#    </section>#}
+{#    <!--Portfolio Details End-->#}
+
+    <!--Project One Start-->
+    <section class="project-one portfolio-details-page-project">
+        <div class="container">
+            <div class="section-title text-center">
+                <span class="section-title__tagline">Projet confié</span>
+                <h2 class="section-title__title">Avant réalisation</h2>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-lg-4">
+
+                    <!--                                          MINIATURE PROJET 1 :  AVANT TRAVAUX - image 370x483 px                                  -->
+                    <div class="project-one__single">
+                        <div class="project-one__img-box">
+                            <div class="project-one__img">
+                                <img src="assets/images/project/pre-indus.png" alt="photo des combles avant réalisation des travaux, logement futur type industriel">
+                                <div class="project-one__hover">
+                                    <a href="assets/images/project/pre-indus.png"
+                                       class="img-popup"><i class="fa fa-search-plus"></i></a>
+                                    <div class="project-one__hover-content">
+                                        <p class="project-one__hover-title">RIOZ - Réalisation logement </p>
+                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Architecture type industriel</a></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4">
+                    <!--                                                         fin Miniature Projet 1                                                                            -->
+
+
+                    <!--                                                           MINIATURE PROJET 2                                                          -->
+                    <div class="project-one__single">
+                        <div class="project-one__img-box">
+                            <div class="project-one__img">
+                                <img src="assets/images/project/demande-deco.png" alt="petit espace où la décoration est soignée, rose et gris, petit mobilier classieux">
+                                <div class="project-one__hover">
+                                    <a href="assets/images/project/demande-deco.png"
+                                       class="img-popup"><i class="fa fa-search-plus"></i></a>
+                                    <div class="project-one__hover-content">
+                                        <p class="project-one__hover-title">Devecey- Décoration</p>
+                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Coin détente classieux</a></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4">
+                    <!--                                                            fin Miniature Projet 2                                                          -->
+
+
+
+
+{#                    <!--                                                              MINIATURE PROJET 3                                                         -->#}
+
+
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/project/refection-appart.png" alt="plan 3d d'une cousine avec sejour ouvert en sous-pente de style industriel">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/refection-appart.png"#}
+{#                                       class="img-popup"><i class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">Vesoul- Rénovation appartement</p>#}
+{#                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Primo accédant#}
+{#                                            </a></h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+{#    <!--                                                                            fin Miniature Projet 3                                                          -->#}
+
+{#    ******************************************#}
+
+    <!--                                                PROJETS DE 1 A    / image de font 1894x359 px                                                  -->
+
+{#    <section class="project-one portfolio-page">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+{#                    <!--                                                                        PROJET 1                                                              -->#}
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/project/projet_indus_moyen.png" alt="plan 3d logement après réféction avec cuisine et sejour en sous pente">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/projet_indus_moyen.png" class="img-popup"><i#}
+{#                                                class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">RIOZ - Réalisation logement </p>#}
+{#                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Architecture type industriel</a>#}
+{#                                        </h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+
+{#                    <!--                                                 fin  projet 1                                                              -->#}
+
+
+
+{#                    <!--                                                                    PROJET 2                                                              -->#}
+
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/project/demande-deco.png" alt="petit espace où la décoration est soignée, rose et gris, petit mobilier classieux">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/demande-deco.png" class="img-popup"><i#}
+{#                                                class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">Devecey- Décoration</p>#}
+{#                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Coin détente classieux</a>#}
+{#                                        </h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+{#                    <!--                                                 fin  projet 2                                                              -->            <!--Project One Single-->#}
+
+
+{#                    <!--                                                     PROJET 3                                                            -->#}
+
+
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/project/refection-appart.png" alt="image d'un appartement en chantir avec bâches au sol et escabeau, peinture blanche">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/refection-appart.png" class="img-popup"><i#}
+{#                                                class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">Vesoul- Rénovation appartement</p>#}
+{#                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Primo accédant</a>#}
+{#                                        </h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+
+{#                    <!--                                                        fin  projet 3                                                              -->#}
+
+
+
+{#                    <!--                                                           PROJET 4                                                            -->#}
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/project/projet_sdb_moyen.png" alt="image salle de bain contemporaine avec douche et baignoire, ambiance claire, blanc">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/projet_sdb_moyen.png" class="img-popup"><i#}
+{#                                                class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">Salle de bain</p>#}
+{#                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Salle de bain élégante</a>#}
+{#                                        </h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+
+{#                    <!--                                                 fin  projet 4                                                              -->#}
+
+
+{#                    <!--                                                     PROJET 5                                                            -->#}
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/project/projet_extension_bois2_moyen.png" alt="extension bois avec poele, intérieur chic mais simple en matériaux nobles">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/projet_extension_bois2_moyen.png" class="img-popup"><i#}
+{#                                                class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">Extension bois avec poële</p>#}
+{#                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Extension bois</a>#}
+{#                                        </h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+
+{#                    <!--                                                 fin  projet 5                                                              -->#}
+
+
+
+{#                    <!--                                                     PROJET 6                                                            -->#}
+
+
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/project/plan2d_moyen.png" alt="plan 2D d'un sous-sol avec nouveaux aménagements, table de cuisson, table et chaises">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/plan2d_moyen.png" class="img-popup"><i#}
+{#                                                class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">Plan d'un aménagement de sous-sol</p>#}
+{#                                        <h2 class="project-one__hover-name">Maison années 1960 à rénover</h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+                </div>
+            </div>
+        </div>
+    </section>
+{#    <!--                                                                    fin  projet 6                                                              -->#}
+
+
+
+
+
+
+{#    ************************************************#}
+
+

@@ -66,10 +66,10 @@ class RegistrationController extends AbstractController
                 // si registerFORM VALIDE on part dans perso au lieu de /_profile
 
            if($choice==="artisan"){
-           return $this->redirectToRoute('app_client');}
+           return $this->redirectToRoute('app_artisan');}
 
             if($choice==="Client"){
-               return $this->redirectToRoute('app_artisan');
+               return $this->redirectToRoute('app_client');
            }
 
     }
@@ -96,7 +96,7 @@ class RegistrationController extends AbstractController
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
-   // app_register : on reste dans le registerform après le chack email
+   // app_register : on reste dans le registerform après le check email
         return $this->redirectToRoute('app_register');
     }
 }

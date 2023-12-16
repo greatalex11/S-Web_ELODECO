@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Client;
 use App\Entity\Contenus;
 use App\Form\ContactType;
 use App\Repository\ContenusRepository;
@@ -47,7 +48,7 @@ class LoginController extends AbstractController
     }
 //                                                    CONCERVER LES ENTITY REPO POUR UNE DISTRI CONTENU/ PAGE
 
-//                                                    LA DISTIBUTION PERIPHERIQUE SE FAIT PAR LE SERVICE THEM
+//                                                    LA DISTIBUTION PERIPHERIQUE SE FAIT PAR LE SERVICE THEME
 
 //  ----------------------------------------------------------------------------------------------------------    HOME
 
@@ -153,13 +154,56 @@ class LoginController extends AbstractController
         return $this->render('pages/team.html.twig', [
         ]);
     }
+// ---------------------------------------------------------------------------------------------------------   Portefolio
+
 
     #[Route(path: '/portfolio', name: 'app_portfolio')]
-    public function portefolio(): Response
-    {
-        return $this->render('pages/portfolio.html.twig', [
+    public function portefolio(ContenusRepository $contenusRepository): Response
+    {   $folio = $contenusRepository->findByType([Contenus::TYPE_PortefolioGTI]);
+            return $this->render('pages/portfolio.html.twig', [
+                'thefolio' => $folio
+            ]);
+        }
+    #[Route(path: '/portfolio/{slug}', name: 'app_portfolio_details2')]
+    public function portefolioD(Contenus $contenus ,ContenusRepository $contenusRepository): Response
+    {   $folio = $contenusRepository->findByType([Contenus::TYPE_PortefolioGTI]);
+//                dd($contenus);
+//        foreach($folio as $f => $folios) {
+////        dd($folio);
+//            if ($folios->getId() === $contenus->getId()) {
+//                unset($folio[$f]);
+//            }
+        return $this->render('pages/portfolio_details.html.twig', [
+            'folios' => $folio,
+//            'lastfolios'=> $contenus,
         ]);
     }
+
+
+//    #[Route(path: '/portfolio', name: 'app_portfolio')]
+//    public function portefolioD(Contenus $contenus, ContenusRepository $contenusRepository): Response
+//    {   $folio = $contenusRepository->findByType([Contenus::TYPE_PortefolioGTI]);
+//
+//        foreach ($folio as $f => $folios) {
+//            if ($folios->getId() === $contenus->getId()) {
+//                unset($folio[$f]);
+//            }
+//            return $this->render('pages/portfolio.html.twig', [
+//                'folio' => $folio
+//            ]);
+//
+//        }
+
+
+
+//
+    #[Route(path: '/portfolio_details', name: 'app_portfolio_details')]
+    public function portefolioDP(): Response
+    {
+        return $this->render('pages/portfolio_details.html.twig', [
+        ]);
+    }
+// -------------------------------------------------------------------------------------------------------    Style déco
 
     #[Route(path: '/styles', name: 'app_styles')]
     public function styles(): Response
@@ -168,7 +212,7 @@ class LoginController extends AbstractController
         ]);
     }
 
-//                                                                                               STYLES DETAILS
+
 
     #[Route(path: '/styles_scandinav', name: 'app_styles_scandinav')]
     public function stylesScandinav(): Response
@@ -186,13 +230,8 @@ class LoginController extends AbstractController
     }
 
 
-//                                                                                               FIN STYLES DETAILS
-    #[Route(path: '/portfolio_details', name: 'app_portfolio_details')]
-    public function portefolioD(): Response
-    {
-        return $this->render('pages/portfolio_details.html.twig', [
-        ]);
-    }
+// ....................................................................................................       news
+
 
     #[Route(path: '/news', name: 'app_news')]
     public function news(ContenusRepository $contenusRepository): Response
@@ -244,8 +283,12 @@ class LoginController extends AbstractController
     #[Route(path: '/client', name: 'app_client')]
     public function clientView(): Response
     {
-        return $this->render('pages/espace_client.html.twig', [
-        ]);
+//        Client $client
+//        $user = $this->getUser();
+        return $this->redirectToRoute('app_client_show');
+//        return $this->render('pages/espace_client.html.twig', [
+////            'user'=>$user
+//        ]);
     }
 
     #[Route(path: '/artisan', name: 'app_artisan')]

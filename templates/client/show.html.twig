@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client{% endblock %}
+
+{% block body %}
+    <h1>Client</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ client.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ client.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ client.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Numero_rue</th>
+                <td>{{ client.numeroRue }}</td>
+            </tr>
+            <tr>
+                <th>Rue</th>
+                <td>{{ client.rue }}</td>
+            </tr>
+            <tr>
+                <th>Code_postal</th>
+                <td>{{ client.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Localite</th>
+                <td>{{ client.localite }}</td>
+            </tr>
+            <tr>
+                <th>Tel_fix</th>
+                <td>{{ client.telFix }}</td>
+            </tr>
+            <tr>
+                <th>Tel_portable</th>
+                <td>{{ client.telPortable }}</td>
+            </tr>
+            <tr>
+                <th>Date_naissance</th>
+                <td>{{ client.dateNaissance ? client.dateNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ client.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ client.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_client_index') }}">back to list</a>
+
+    <a href="{{ path('app_client_edit', {'id': client.id}) }}">edit</a>
+
+    {{ include('client/_delete_form.html.twig') }}
+{% endblock %}

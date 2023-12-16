@@ -17,6 +17,8 @@ class Contenus
 
     public const TYPE_NewsGTI= 'NewsGTI';
     public const TYPE_ServicesGTI= 'ServicesGTI';
+
+    public const TYPE_PortefolioGTI= 'PortefolioGTI';
     public const TYPE_COMPTEURS = 'compteurs';
     public const TYPE_TARIFS = 'tarifs';
     public const TYPE_BLOGN = 'blogNews';
@@ -32,13 +34,13 @@ class Contenus
     public const TYPE_1SERVICEPRO = '1ServicesPRO';
     public const TYPE_3SERVICESQUALITE = '3ServicesQUALITE';
     public const TYPE_PHOTOGP = 'BlockPhotos';
-
     public const TYPE_SERVICEDETAIL= '6clefsServiceDetails';
 
 
     public const TYPES = [
         'NewsGti' => self::TYPE_NewsGTI,
         'ServicesGti' => self::TYPE_ServicesGTI,
+        'PortefolioGTI' => self::TYPE_PortefolioGTI,
         'News' => self::TYPE_BLOGN,
         'Folio' => self::TYPE_BLOGF,
         'Service' => self::TYPE_BLOGS,
