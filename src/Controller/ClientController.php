@@ -39,9 +39,6 @@ class ClientController extends AbstractController
 //            'client' => $client,
         ]);
 
-//        return $this->render('client/show.html.twig', [
-//            'client' => $client,
-//        ]);
     }
 //
 //
