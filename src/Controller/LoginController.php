@@ -5,7 +5,9 @@ namespace App\Controller;
 
 use App\Entity\Client;
 use App\Entity\Contenus;
+use App\Entity\User;
 use App\Form\ContactType;
+use App\Repository\ClientRepository;
 use App\Repository\ContenusRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\Request;
+use TheSeer\Tokenizer\TokenCollection;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 
@@ -27,11 +30,20 @@ class LoginController extends AbstractController
 //    }
 
     #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils, ClientRepository $clientRepository): Response
     {
-//        if ($this->getUser()) {
-//            return $this->redirectToRoute('target_path');
-//         }
+
+        if ($this->getUser()) {
+            $id=$this->getUser()->getUserIdentifier();
+//          essai recup id
+//          $client=$clientRepository->find('user_id');
+//          $client=$clientRepository->findOneBy(['user_id' => $id]);
+//            dd($id,$client);
+
+            return $this->redirectToRoute('app_client_accueil', [
+
+            ]);
+         }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -280,19 +292,21 @@ class LoginController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/client', name: 'app_client')]
-    public function clientView(Client $client): Response
-    {
-//        Client $client
-//        $user = $this->getUser();
-//        $id = $this->getId(); ['user'=>$user]
-        return $this->redirectToRoute('app_client_show',[
-
-        ]);
-//        return $this->render('pages/espace_client.html.twig', [
-////            'user'=>$user
+//    #[Route(path: '/client', name: 'app_client')]
+//    public function clientView(User $user,Client $client): Response
+//    {
+//        $id= $user->getId();
+//        dd($id);
+////        Client $client
+////        $user = $this->getUser();
+////        $id = $this->getId(); ['user'=>$user]
+//        return $this->redirectToRoute('app_client_show',[
+//
 //        ]);
-    }
+////        return $this->render('pages/espace_client.html.twig', [
+//////            'user'=>$user
+////        ]);
+//    }
 
     #[Route(path: '/artisan', name: 'app_artisan')]
     public function artisanView(): Response

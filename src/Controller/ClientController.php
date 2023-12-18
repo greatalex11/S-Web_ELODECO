@@ -26,9 +26,17 @@ class ClientController extends AbstractController
         }
     }
 
+    #[Route('/accueil', name: 'app_client_accueil', methods: ['GET'])]
+    public function index(ClientRepository $clientRepository): Response
+    {
+        return $this->render('pages/espace_client.html.twig', [
+            'clients' => $clientRepository->find('id'),
+        ]);
+    }
+
 
 ////    #[IsGranted("ROLE_CLIENT")]
-    #[Route('/{id} ', name: 'app_client_show', methods: ['GET'])]
+    #[Route('/espaceClient/{id} ', name: 'app_client_show', methods: ['GET'])]
     public function show(): Response
     {
 //        Client $clients
@@ -64,14 +72,8 @@ class ClientController extends AbstractController
 
 
 
-//
-//    #[Route('/', name: 'app_client_index', methods: ['GET'])]
-//    public function index(ClientRepository $clientRepository): Response
-//    {
-//        return $this->render('client/index.html.twig', [
-//            'clients' => $clientRepository->findAll(),
-//        ]);
-//    }
+
+
 
 
 

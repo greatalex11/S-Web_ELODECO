@@ -2,6 +2,8 @@
 
 namespace App\Security;
 
+use http\Client;
+use http\Client\Curl\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,10 +50,30 @@ class LoginAuthentificationAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // For example:
-        return new RedirectResponse($this->urlGenerator->generate('app_home'));
-    }
+        $user = $token->getUser();
+        $role = $token->getRoleNames();
 
+        if ($user->getClient()) {
+
+            return new RedirectResponse($this->urlGenerator->generate('app_client_accueil', ["id" => $user->getClient()?->getId()]));
+        }
+
+        if ($user->getArtisan()) {
+
+            return new RedirectResponse($this->urlGenerator->generate('app_artisan', ["id" => $user->getArtisan()?->getId()]));
+        }
+
+        return new RedirectResponse($this->urlGenerator->generate('app_home'));
+
+//            if ($role = ["ADMIN"]) {
+//                return new RedirectResponse($this->urlGenerator->generate('app_admin', ["id" => $user->getClient()?->getId()]));
+//            }elseif (($role = ["client"])){
+
+
+        // For example:
+//        return new RedirectResponse($this->urlGenerator->generate('app_home'));
+//    }
+    }
     protected function getLoginUrl(Request $request): string
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
