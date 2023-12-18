@@ -67,10 +67,12 @@ class RegistrationController extends AbstractController
                 // si registerFORM VALIDE on part dans perso au lieu de /_profile
 
            if($choice==="artisan"){
-           return $this->redirectToRoute('app_artisan');}
+           return $this->redirectToRoute('app_login');}
+
+           //app_login au lieu d'app_artisan  **** prevoir le message 'profile en attente de valiation
 
             if($choice==="Client"){
-               return $this->redirectToRoute('app_client');
+               return $this->redirectToRoute('app_login');
            }
 
     }

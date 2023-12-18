@@ -27,48 +27,51 @@ class ClientController extends AbstractController
     }
 
     #[Route('/accueil', name: 'app_client_accueil', methods: ['GET'])]
-    public function index(ClientRepository $clientRepository): Response
+    public function index(ClientRepository $clientRepository, Client $client): Response
     {
+
+        $form = $this->createForm(ClientType::class);
+        $clients=$client->getId();
         return $this->render('pages/espace_client.html.twig', [
-            'clients' => $clientRepository->find('id'),
+            'form' => $form,
+            'clients' => $clients,
         ]);
     }
 
 
 ////    #[IsGranted("ROLE_CLIENT")]
     #[Route('/espaceClient/{id} ', name: 'app_client_show', methods: ['GET'])]
-    public function show(): Response
+    public function show(Client $theClient): Response
     {
-//        Client $clients
-//        $client= $clients->getId();
-//        {id}
+
+        $client= $theClient->getId();
 //        $this->checkIsTheSameClient($client);
-        return $this->render('pages/espace_client.html.twig', [
-//            'client' => $client,
+        return $this->render('_partial/_coordonnees.html.twig', [
+            'client' => $client,
         ]);
 
     }
 //
 //
-////    #[IsGranted("ROLE_CLIENT")]
-//    #[Route('/{id}/edit', name: 'app_client_edit', methods: ['GET', 'POST'])]
-//    public function edit(Request $request, Client $client, EntityManagerInterface $entityManager): Response
-//    {
-////        $this->checkIsTheSameClient($client);
-//        $form = $this->createForm(ClientType::class, $client);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $entityManager->flush();
-//
-//            return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
-//        }
-//
-//        return $this->render('client/edit.html.twig', [
-//            'client' => $client,
-//            'form' => $form,
-//        ]);
-//    }
+//    #[IsGranted("ROLE_CLIENT")]
+    #[Route('/{id}/edit', name: 'app_client_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Client $client, EntityManagerInterface $entityManager): Response
+    {
+//        $this->checkIsTheSameClient($client);
+        $form = $this->createForm(ClientType::class, $client);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('client/edit.html.twig', [
+            'client' => $client,
+            'form' => $form,
+        ]);
+    }
 
 
 

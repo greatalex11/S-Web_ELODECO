@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artisan{% endblock %}
+
+{% block body %}
+    <h1>Artisan</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ artisan.id }}</td>
+            </tr>
+            <tr>
+                <th>Raison_sociale</th>
+                <td>{{ artisan.raisonSociale }}</td>
+            </tr>
+            <tr>
+                <th>Nom_etablissement</th>
+                <td>{{ artisan.nomEtablissement }}</td>
+            </tr>
+            <tr>
+                <th>Siret</th>
+                <td>{{ artisan.siret }}</td>
+            </tr>
+            <tr>
+                <th>Nom_gerant</th>
+                <td>{{ artisan.nomGerant }}</td>
+            </tr>
+            <tr>
+                <th>Prenom_gerant</th>
+                <td>{{ artisan.prenomGerant }}</td>
+            </tr>
+            <tr>
+                <th>Date_naissance</th>
+                <td>{{ artisan.dateNaissance ? artisan.dateNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Numero_rue</th>
+                <td>{{ artisan.numeroRue }}</td>
+            </tr>
+            <tr>
+                <th>Code_postal</th>
+                <td>{{ artisan.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Localite</th>
+                <td>{{ artisan.localite }}</td>
+            </tr>
+            <tr>
+                <th>Tel_fixe</th>
+                <td>{{ artisan.telFixe }}</td>
+            </tr>
+            <tr>
+                <th>Tel_portable</th>
+                <td>{{ artisan.telPortable }}</td>
+            </tr>
+            <tr>
+                <th>Fax</th>
+                <td>{{ artisan.fax }}</td>
+            </tr>
+            <tr>
+                <th>Note_globale</th>
+                <td>{{ artisan.noteGlobale }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ artisan.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ artisan.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_artisan_index') }}">back to list</a>
+
+    <a href="{{ path('app_artisan_edit', {'id': artisan.id}) }}">edit</a>
+
+    {{ include('artisan/_delete_form.html.twig') }}
+{% endblock %}

@@ -2,35 +2,39 @@
 
 namespace App\Form;
 
-use App\Entity\Client;
+use App\Entity\Artisan;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ClientType extends AbstractType
+class ArtisanType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
+            ->add('raison_sociale')
+            ->add('nom_etablissement')
+            ->add('siret')
+            ->add('nom_gerant')
+            ->add('prenom_gerant')
+            ->add('date_naissance')
             ->add('numero_rue')
-            ->add('rue')
             ->add('code_postal')
             ->add('localite')
-            ->add('tel_fix')
+            ->add('tel_fixe')
             ->add('tel_portable')
-            ->add('date_naissance')
+            ->add('fax')
+            ->add('note_globale')
             ->add('commentaire')
-//            ->add('status')
-//            ->add('user')
+            ->add('status')
+            ->add('user')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Client::class,
+            'data_class' => Artisan::class,
         ]);
     }
 }

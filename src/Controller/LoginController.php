@@ -21,29 +21,19 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 class LoginController extends AbstractController
 {
-//    #[Route('/login', name: 'app_login')]
-//    public function index(): Response
-//    {
-//        return $this->render('login/index.html.twig', [
-//            'controller_name' => 'LoginController',
-//        ]);
-//    }
-
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils, ClientRepository $clientRepository): Response
     {
 
-        if ($this->getUser()) {
-            $id=$this->getUser()->getUserIdentifier();
-//          essai recup id
-//          $client=$clientRepository->find('user_id');
-//          $client=$clientRepository->findOneBy(['user_id' => $id]);
-//            dd($id,$client);
-
-            return $this->redirectToRoute('app_client_accueil', [
-
-            ]);
-         }
+//        if ($this->getUser()) {
+//            $id=$this->getUser()->getUserIdentifier();
+////          essai recup id
+////          $client=$clientRepository->find('user_id');
+////          $client=$clientRepository->findOneBy(['user_id' => $id]);
+////            dd($id,$client);//
+//            return $this->redirectToRoute('app_client_accueil', [//
+//            ]);
+//         }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -58,6 +48,9 @@ class LoginController extends AbstractController
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
+
+
+
 //                                                    CONCERVER LES ENTITY REPO POUR UNE DISTRI CONTENU/ PAGE
 
 //                                                    LA DISTIBUTION PERIPHERIQUE SE FAIT PAR LE SERVICE THEME
@@ -308,14 +301,12 @@ class LoginController extends AbstractController
 ////        ]);
 //    }
 
-    #[Route(path: '/artisan', name: 'app_artisan')]
-    public function artisanView(): Response
-    {
-        return $this->render('pages/espace_artisan.html.twig', [
-        ]);
-    }
-
-
+//    #[Route(path: '/artisan', name: 'app_artisan')]
+//    public function artisanView(): Response
+//    {
+//        return $this->render('pages/espace_artisan.html.twig', [
+//        ]);
+//    }
 
 
 }

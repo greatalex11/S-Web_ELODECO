@@ -7,8 +7,6 @@
         <div class="sticky-header__content"></div>
     </div>
 
-
-<h2>ESPACE ARTISAN</h2>
     <section class="page-header" style="background-image: url(assets/images/backgrounds/fond2.png);">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
@@ -22,7 +20,7 @@
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
-                    <li>Contact</li>
+                    <li>Votre espace</li>
                 </ul>
             </div>
         </div>
@@ -30,8 +28,30 @@
     <!--                                                                   Bandeau fin                                                                                 -->
     <!--                                                 Formulaire contact avec rappel de coordonnées à droite                                                        -->
 
+
+
+
+
+
+    <div class="main-menu__right col-lg-10 text-right ">
+        {#        #    {% if not is_granted('ROLE_USER') %}#}
+        <a href="{{ path('app_logout') }}" class=" font-italic"><i class="font-italic fs-6 m-lg-2">Déconnecter</i></a>
+        {#    {% endif %}#}
+    </div>
+
     <section class="contact-page">
         <div class="container">
+
+
+
+
+
+
+
+
+
+
+
             <div class="row">
                 <div class="col-xl-7 col-lg-6">
                     <div class="contact-page__title">
