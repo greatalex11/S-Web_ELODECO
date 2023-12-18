@@ -1,13 +1,137 @@
-
+{%extends '/base.html.twig' %}
 {%  set Apps = theme.theme %}
 
+{% block content %}
 
-<div>
+    <div>
+        <h3 class="text-left m-5">Vos informations personnelles</h3>
+    </div>
 
-    <h3>Vos informations personnelles</h3>
+    <section class="counters-one counters-one-martopminus m-5 p-4" style="max-height:200px">
+
+        <div class="counter-one__icon m-5 ">
+
+            <div class="d-flex text-center justify-content-center align-items-center justify-content-sm-between">
+                <span class="icon-architect-4 "></span>
+                <h1  style="color: #cccccc;margin-right: 50px">{{ clients.prenom|striptags|default('prénom') }} {{ clients.nom|striptags|default('NOM')|upper }}</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="d-flex col p-4">
+        <div class="d-flex justify-content-left row w-75 m-lg-5">
+
+                    <p class="counter-one__text">Adresse géographique</p>
+                    <div class="container text-center   d-flex align-items-center h-50 ">
+
+
+                        <ul class="counters-one__box list-unstyled">
+                            <li class="counter-one__single flex-row col-12 m-2"
+                                style="display: flex; justify-content: space-between">
+                                <div class="flex-column">
+                                    <h3 class="odometer" style="color: {{ theme.theme.couleurActuelleBg }}"
+                                        data-count="{{ clients.numeroRue|striptags|default('77') }}">00</h3>
+                                    <p class="counter-one__text">n°</p>
+                                </div>
+                                <!--                                                                    Adresse  physique                                                               -->
+
+                                <div>
+                                    <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.rue|striptags|default('grande rue') }}</h3>
+                                    <p class="counter-one__text">rue</p>
+                                </div>
+
+                                <div>
+                                    <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.codePostal|striptags|default('grande rue') }}</h3>
+                                    <p class="counter-one__text">code postal</p>
+                                </div>
+                            </li>
+                            <li class="counter-one__single flex-row col-12 mt-4"
+                                style="display: flex; justify-content: space-around">
+                                <div>
+                                    <h3 style="color: {{ theme.theme.couleurActuelleBg }} col-12">{{ clients.codePostal|striptags|default('grande rue') }}</h3>
+                                    <p class="counter-one__text">Localité</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+        <!--                                                                  Colonne de droite                                                    -->
+
+        <div class="d-flex justify-content-left align-items-lg-start row w-50">
+            <div class="col-xl-6">
+                <div class="pricing-one__right">
+                    <p class="counter-one__text">Adresse éléctronique</p>
+                    <ul class="pricing-one__checks-list list-unstyled">
+                        <li>
+                            <div class="pricing-one__checks-icon">
+                                <i class="icon-tick"></i>
+                            </div>
+
+                            <div class="pricing-one__checks-text-box">
+                                <h3 class="pricing-one__checks-title"> {{ clients.telFix|striptags|default('03.84....') }}</h3>
+                                <p class="pricing-one__checks-text">Téléphone fixe</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pricing-one__checks-icon">
+                                <i class="icon-tick"></i>
+                            </div>
+
+                            <div class="pricing-one__checks-text-box">
+                                <h3 class="pricing-one__checks-title"> {{ clients.telPortable|striptags|default('06 07....') }}</h3>
+                                <p class="pricing-one__checks-text">Téléphone portable</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="pricing-one__checks-icon">
+                                <i class="icon-tick"></i>
+                            </div>
+
+                            <div class="pricing-one__checks-text-box">
+                                <h3 class="pricing-one__checks-title"> {{ mail|striptags|default('06 07....') }}</h3>
+                                <p class="pricing-one__checks-text">email</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<div id="pricing-tab" class="pricing-one justify-content-end">
+        <div class="container">
+            <div class="pricing-tabs">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="section-title text-left">
+                            <span class="section-title__tagline">Formulaire de contact</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+
 
     {{ include('client/_form.html.twig') }}
 
-    {#        <a href="{{ path('app_client_index') }}">back to list</a>#}
+            <a href="{{ path('app_client_accueil',{ 'id': clients.id}) }}">back to list</a>
 
-</div>
+
+{#        <li class="counter-one__single">#}
+{#            <div class="counter-one__icon">#}
+{#                <span class="icon-architect-5"></span>#}
+{#            </div>#}
+{#            <h3 class="odometer" data-count="{{ blocks.texte1|striptags }}">00</h3>#}
+{#            <p class="counter-one__text">{{ blocks.titre1 }}</p>#}
+{#        </li>#}
+
+{% endblock %}

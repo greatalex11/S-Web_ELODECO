@@ -7,7 +7,7 @@
         <div class="sticky-header__content"></div>
     </div>
 
-{#{{ dump(client) }}#}
+{{ dump(clients) }}
     <section class="page-header" style="background-image: url(assets/images/backgrounds/fond2.png);">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
@@ -21,7 +21,7 @@
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
-                    <li>Votre espace</li>
+                    <li>{{ clients.prenom }}  {{ clients.nom }}</li>
                 </ul>
             </div>
         </div>
@@ -30,13 +30,13 @@
     <!--                                                 Formulaire contact avec rappel de coordonnées à droite                                                        -->
 
 
-
+{{ dump(form) }}
 
 
 
     <div class="main-menu__right col-lg-10 text-right ">
 {#        #    {% if not is_granted('ROLE_USER') %}#}
-        <a href="{{ path('app_logout') }}" class=" font-italic"><i class="font-italic fs-6 m-lg-2">Déconnecter</i></a>
+{#        <a href="{{ path('app_logout') }}" class=" font-italic"><i class="font-italic fs-6 m-lg-2">Déconnecter</i></a>#}
         {#    {% endif %}#}
     </div>
 
@@ -53,8 +53,8 @@
 
 
                 <li class="nav-item">
-                    {{ dump(clients) }}
-                    <a href="{{ path('app_client_show',{ 'id': clients.user_id}) }}"  class="nav-link text-truncate">
+
+                    <a href="{{ path('app_client_show',{ 'id': clients.id}) }}"  class="nav-link text-truncate">
                         <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">Coordonnées</span>
                     </a>
                 </li>

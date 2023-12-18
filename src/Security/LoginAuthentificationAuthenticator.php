@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use Doctrine\ORM\EntityManager;
 use http\Client;
 use http\Client\Curl\User;
 use mysql_xdevapi\Warning;
@@ -53,6 +54,13 @@ class LoginAuthentificationAuthenticator extends AbstractLoginFormAuthenticator
 
         $user = $token->getUser();
         $role = $token->getRoleNames();
+        $utilisateur=\App\Entity\User::ROLE_CLIENT;
+
+
+//        $client=$token->getClient();
+//        dd($request);
+//        /** @var \App\Entity\User $user */
+//        $user = $token->getClient();
 
 //        if ($role = ["ADMIN"]) {
 //            return new RedirectResponse($this->urlGenerator->generate('admin', []));
@@ -85,4 +93,24 @@ class LoginAuthentificationAuthenticator extends AbstractLoginFormAuthenticator
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
+
+
 }
+
+//
+////        $client=$token->getClient();
+////        dd($request);
+////        /** @var \App\Entity\User $user */
+////        $user = $token->getClient();
+//
+////        if ($role = ["ADMIN"]) {
+////            return new RedirectResponse($this->urlGenerator->generate('admin', []));
+////        }
+//
+//if ($utilisateur==="client") {
+//
+//    return new RedirectResponse($this->urlGenerator->generate('app_client_accueil', ["id" => $user ?->getUser()]));
+//}
+
+
+

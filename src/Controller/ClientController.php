@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 //#[IsGranted("ROLE_CLIENT")]
-#[Route('/espaceClient')]
+#[Route('/client_accueil')]
 class ClientController extends AbstractController
 {
     private function checkIsTheSameClient(Client $client): void
@@ -26,12 +26,13 @@ class ClientController extends AbstractController
         }
     }
 
-    #[Route('/accueil', name: 'app_client_accueil', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_client_accueil', methods: ['GET'])]
     public function index(ClientRepository $clientRepository, Client $client): Response
     {
 
         $form = $this->createForm(ClientType::class);
-        $clients=$client->getId();
+
+        $clients=$client;
         return $this->render('pages/espace_client.html.twig', [
             'form' => $form,
             'clients' => $clients,
@@ -40,14 +41,17 @@ class ClientController extends AbstractController
 
 
 ////    #[IsGranted("ROLE_CLIENT")]
-    #[Route('/espaceClient/{id} ', name: 'app_client_show', methods: ['GET'])]
-    public function show(Client $theClient): Response
+    #[Route('/show/{id} ', name: 'app_client_show', methods: ['GET'])]
+    public function show(Client $theClient, User $user,ClientRepository $clientRepository): Response
     {
-
-        $client= $theClient->getId();
+        $form = $this->createForm(ClientType::class);
+        $client= $theClient;
+        $mail=$user->getEmail();
 //        $this->checkIsTheSameClient($client);
         return $this->render('_partial/_coordonnees.html.twig', [
-            'client' => $client,
+            'clients' => $client,
+            'form' => $form,
+            'mail'=> $mail,
         ]);
 
     }
@@ -60,7 +64,7 @@ class ClientController extends AbstractController
 //        $this->checkIsTheSameClient($client);
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
-
+        $clients=$client;
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
@@ -68,7 +72,7 @@ class ClientController extends AbstractController
         }
 
         return $this->render('client/edit.html.twig', [
-            'client' => $client,
+            'client' => $clients,
             'form' => $form,
         ]);
     }
