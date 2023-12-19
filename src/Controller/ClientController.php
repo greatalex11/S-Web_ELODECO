@@ -62,15 +62,19 @@ class ClientController extends AbstractController
     public function edit(Request $request, Client $theClient,User $user, EntityManagerInterface $entityManager): Response
     {
         $this->checkIsTheSameClient($theClient);
-        $form = $this->createForm(ClientType::class);
         $client= $theClient;
         $mail=$user->getEmail();
+
+
+        $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $id=$client->getId();
+            $form->getData();
             $entityManager->persist($client);
             $entityManager->flush();
-
+            $this->addFlash('success', 'vos modification sont prises en compte');
             return $this->redirectToRoute('app_client_show', [
                 'id'=>$id,
             ], Response::HTTP_SEE_OTHER);
