@@ -4,30 +4,22 @@
 {% block content %}
 
 
-
-
-    <div>
-        <h3 class="text-left m-5"><span class="icon-architect-4 m-5" style="max-width: 120px"></span>Vos informations personnelles</h3>
+<section class="mt-xl-5 flex-row justify-content-center m-auto">
+    <div class="mb-5">
+        <h5 style="margin-left: 10%" >Vos informations personnelles</h5>
     </div>
 
-    <section class="counters-one counters-one-martopminus mt-5" style="max-height:200px">
-
-        <div class="portfolio-details__img">
-            {#            <img src="assets/images/project/projet_logement_indus.png" alt="plan 3d logement après réféction avec cuisine et sejour en sous pente">#}
-            <div class="portfolio-details__info">
-
-                <ul class="portfolio-details__info-list list-unstyled">
-                    <li>{{ clients.prenom|striptags|default('prénom') }}</li>
-                    <li>{{ clients.nom|striptags|default('NOM')|upper }}</li>
-                    <li>{{ 'now'|date}}</li>
-                </ul>
-            </div>
-        </div>
+    <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between" style="max-height:100px; padding:30px; margin: 0 10% 0 10%">
+        <ul class="portfolio-details__info-list list-unstyled">
+            <li>{{ clients.prenom|striptags|default('prénom') }}</li>
+            <li>{{ clients.nom|striptags|default('NOM')|upper }}</li>
+            <li>{{ 'now'|date}}</li>
+        </ul>
     </section>
 
-    <section class="d-flex col p-4">
+    <section class="d-flex col-10 p-4 justify-content-sm-between" style="max-height:50%; padding:30px; margin: 0 10% 0 10%">
 
-        <div class="d-flex justify-content-left row w-50 m-lg-5">
+        <div class="d-flex justify-content-left row  m-lg-5 align-middle" style="max-width: 70%; background-color:whitesmoke">
             {#            <p class="counter-one__text">Vous contacter</p>#}
             <ul class="pricing-one__checks-list list-unstyled">
 
@@ -79,43 +71,93 @@
 
         <!--                                                                  Colonne de droite                                                    -->
 
-        <div class="d-flex justify-content-left row w-50 m-lg-5">
-{#            <p class="counter-one__text">Vous contacter</p>#}
-                    <ul class="pricing-one__checks-list list-unstyled">
-                        <li>
-                            <div class="pricing-one__checks-icon">
-                                <i class="icon-tick"></i>
-                            </div>
+        <div class="d-flex justify-content-left row w-50 m-lg-5" style="max-width: 30%">
+            {#            <p class="counter-one__text">Vous contacter</p>#}
+            <ul class="pricing-one__checks-list list-unstyled">
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
 
-                            <div class="pricing-one__checks-text-box">
-                                <h3 class="pricing-one__checks-title"> {{ clients.telFix|striptags|default('03.84....') }}</h3>
-                                <p class="pricing-one__checks-text">Téléphone fixe</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="pricing-one__checks-icon">
-                                <i class="icon-tick"></i>
-                            </div>
+                    <div class="pricing-one__checks-text-box">
+                        <h3 class="pricing-one__checks-title"> {{ clients.telFix|striptags|default('03.84....') }}</h3>
+                        <p class="pricing-one__checks-text">Téléphone fixe</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
 
-                            <div class="pricing-one__checks-text-box">
-                                <h3 class="pricing-one__checks-title"> {{ clients.telPortable|striptags|default('06 07....') }}</h3>
-                                <p class="pricing-one__checks-text">Téléphone portable</p>
-                            </div>
-                        </li>
+                    <div class="pricing-one__checks-text-box">
+                        <h3 class="pricing-one__checks-title"> {{ clients.telPortable|striptags|default('06 07....') }}</h3>
+                        <p class="pricing-one__checks-text">Téléphone portable</p>
+                    </div>
+                </li>
 
-                        <li>
-                            <div class="pricing-one__checks-icon">
-                                <i class="icon-tick"></i>
-                            </div>
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
 
-                            <div class="pricing-one__checks-text-box">
-                                <h3 class="pricing-one__checks-title"> {{ mail|striptags|default('06 07....') }}</h3>
-                                <p class="pricing-one__checks-text">email</p>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="pricing-one__checks-text-box">
+                        <h3 class="pricing-one__checks-title"> {{ mail|striptags|default('06 07....') }}</h3>
+                        <p class="pricing-one__checks-text">email</p>
+                    </div>
+                </li>
+            </ul>
 
         </div>
+
+
+
+        {% for message in app.flashes('success') %}
+            {% set message = message %}
+            <div class="alert alert-success" style="max-height: 100px">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+    </section>
+
+
+    <div class="d-flex row-cols-6 justify-content-xl-between">
+        <div >
+            <a style="padding: 20px; border-radius: 20px ; margin: 40px;color:#FFFFFF;background-color: rgb(115, 115, 115)" class="text-center portfolio-details__info-list list-unstyled alert-info"
+               href="{{ path('app_client_accueil',{ 'id': clients.id}) }}"> <span class="m-2"><<</span>Retour</a>
+        </div>
+
+        <div>
+            <a style="padding: 20px; border-radius: 20px ; margin: 40px;color:#FFFFFF;background-color: rgb(115, 115, 115)"
+               class=" text-center portfolio-details__info-list list-unstyled alert-info" href="{{ path('app_client_edit',{ 'id': clients.id}) }}">Corriger<span class="m-2">>> </span> </a>
+        </div>
+
+    </div>
+    <div class="d-flex col-10 justify-content-center m-auto">
+        <div  style="margin: 5% 10% 5% 10%">
+
+            {% if form is defined %}
+
+
+                <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between" style="max-height:100px; padding:30px; margin: 10%">
+
+                        <h4 style="text-align: center; color: #FFFFFF" >Vous pouvez apporter des modifications</h4>
+
+                </section>
+                <div>
+
+                </div>
+
+                {{ form_start(form) }}
+                {{ form_end(form) }}
+            {% endif %}
+        </div>
+    </div>
+
+
+</section>
+
+
 
 
 {#        <div class="d-flex justify-content-left row w-50 m-lg-5">#}
@@ -148,24 +190,6 @@
 {#        </div>#}
 
 
-        {% for message in app.flashes('success') %}
-            {% set message = message %}
-            <div class="alert alert-success" style="max-height: 100px">
-                {{ message }}
-            </div>
-        {% endfor %}
-
-    </section>
-    <div class="d-flex row-cols-10">
-        <div style="width: 300px; padding: 50px">
-            <a class="m-lg-5 mb-xxl-1 alert-info" href="{{ path('app_client_accueil',{ 'id': clients.id}) }}"> >> Retour</a>
-        </div>
-
-        <div style="width: 300px; padding: 50px">
-            <a class="m-lg-5 mb-xxl-1 alert-info" href="{{ path('app_client_edit',{ 'id': clients.id}) }}"> >> Corriger une erreur</a>
-        </div>
-
-    </div>
 
 
 
@@ -183,13 +207,6 @@
 
 
 
-    <div class="d-flex col-6 justify-content-center row align-items-center m-lg-5">
-
-        {% if form is defined %}
-            {{ form_start(form) }}
-            {{ form_end(form) }}
-        {% endif %}
-    </div>
 
 
 
