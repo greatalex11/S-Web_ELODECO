@@ -1,0 +1,229 @@
+{%extends '/base.html.twig' %}
+{%  set Apps = theme.theme %}
+
+{% block content %}
+
+
+
+
+    <div>
+        <h3 class="text-left m-5"><span class="icon-architect-4 m-5" style="max-width: 120px"></span>Vos informations personnelles</h3>
+    </div>
+
+    <section class="counters-one counters-one-martopminus mt-5" style="max-height:200px">
+
+        <div class="portfolio-details__img">
+            {#            <img src="assets/images/project/projet_logement_indus.png" alt="plan 3d logement après réféction avec cuisine et sejour en sous pente">#}
+            <div class="portfolio-details__info">
+
+                <ul class="portfolio-details__info-list list-unstyled">
+                    <li>{{ clients.prenom|striptags|default('prénom') }}</li>
+                    <li>{{ clients.nom|striptags|default('NOM')|upper }}</li>
+                    <li>{{ 'now'|date}}</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="d-flex col p-4">
+
+        <div class="d-flex justify-content-left row w-50 m-lg-5">
+            {#            <p class="counter-one__text">Vous contacter</p>#}
+            <ul class="pricing-one__checks-list list-unstyled">
+
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
+
+                    <div class="pricing-one__checks-text-box">
+                        <h3 class="odometer" style="color: {{ theme.theme.couleurActuelleBg }}"
+                            data-count="{{ clients.numeroRue|striptags|default('77') }}">00</h3>
+                        <p class="counter-one__text">n°</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
+
+                    <div class="pricing-one__checks-text-box">
+                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.rue|striptags|default('grande rue') }}</h3>
+                        <p class="counter-one__text">rue</p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
+
+                    <div class="pricing-one__checks-text-box">
+                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.codePostal|striptags|default('grande rue') }}</h3>
+                        <p class="counter-one__text">code postal</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
+
+                    <div class="pricing-one__checks-text-box">
+                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}" class="col-12"> {{ clients.localite|striptags|default('grande rue') }}
+                        </h3>
+                        <p class="counter-one__text">Localité</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+<div> {{ clients.commentaire }} </div>
+        <!--                                                                  Colonne de droite                                                    -->
+
+        <div class="d-flex justify-content-left row w-50 m-lg-5">
+{#            <p class="counter-one__text">Vous contacter</p>#}
+                    <ul class="pricing-one__checks-list list-unstyled">
+                        <li>
+                            <div class="pricing-one__checks-icon">
+                                <i class="icon-tick"></i>
+                            </div>
+
+                            <div class="pricing-one__checks-text-box">
+                                <h3 class="pricing-one__checks-title"> {{ clients.telFix|striptags|default('03.84....') }}</h3>
+                                <p class="pricing-one__checks-text">Téléphone fixe</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pricing-one__checks-icon">
+                                <i class="icon-tick"></i>
+                            </div>
+
+                            <div class="pricing-one__checks-text-box">
+                                <h3 class="pricing-one__checks-title"> {{ clients.telPortable|striptags|default('06 07....') }}</h3>
+                                <p class="pricing-one__checks-text">Téléphone portable</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="pricing-one__checks-icon">
+                                <i class="icon-tick"></i>
+                            </div>
+
+                            <div class="pricing-one__checks-text-box">
+                                <h3 class="pricing-one__checks-title"> {{ mail|striptags|default('06 07....') }}</h3>
+                                <p class="pricing-one__checks-text">email</p>
+                            </div>
+                        </li>
+                    </ul>
+
+        </div>
+
+
+        <div class="d-flex justify-content-left row w-50 m-lg-5">
+            {#            <p class="counter-one__text">Vous contacter</p>#}
+            <ul class="pricing-one__checks-list list-unstyled">
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
+
+                    <div class="pricing-one__checks-text-box"style="background-color: #00b3ff">
+                        <h3 class="pricing-one__checks-title"> {{ clients.commentaire|striptags|default('a propos de vous')| u.truncate(250,'...',false)}}</h3>
+                        <p class="pricing-one__checks-text">A propos de vous en quelques mots</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
+
+                    <div class="pricing-one__checks-text-box" style="background-color: #00b3ff">
+{#                         {{ clients.dateNaissance|default('01/01/..') }}#}
+                        <p class="pricing-one__checks-text">Date de naissance</p>
+                    </div>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </section>
+    <div style="width: 300px; padding: 50px">
+        <a class="m-lg-5 mb-xxl-1 alert-info" href="{{ path('app_client_accueil',{ 'id': clients.id}) }}"> >> Retour</a>
+    </div>
+
+    <div style="width: 300px; padding: 50px">
+        <a class="m-lg-5 mb-xxl-1 alert-info" href="{{ path('app_client_edit',{ 'id': clients.id}) }}"> >> Corriger une erreur</a>
+    </div>
+
+{#    {% if contenu.type =="blogNews" and contenu.publier %}#}
+{#    #}{#                            {% include "contenus/_news.html.twig" with {new: contenu} %}#}
+{#    #}{#                        {% endif %}#}
+
+{#    {% if categorie == 'bd' %}#}
+{#        {% block bd %}class="active"{% endblock %}#}
+{#    {% else %}#}
+{#        {% block jeunesse %}class="active"{% endblock %}#}
+{#    {% endif %}#}
+
+{#    {{ dump(form) }}#}
+
+
+
+    <div class="d-flex justify-content-left row w-50 m-lg-5">
+
+        {%if form is defined %}
+        {{ form_start(form) }}
+        {#            <p class="counter-one__text">Vous contacter</p>#}
+{#        <ul class="pricing-one__checks-list list-unstyled">#}
+{#            <li>#}
+{#                <div class="pricing-one__checks-icon">#}
+{#                    <i class="icon-tick"></i>#}
+{#                </div>#}
+
+{#                <div class="pricing-one__checks-text-box">#}
+{#                    <h3 class="pricing-one__checks-title"> {{ clients.telFix|striptags|default('03.84....') }}</h3>#}
+{#                    <p class="pricing-one__checks-text">Téléphone fixe</p>#}
+{#                </div>#}
+{#            </li>#}
+{#            <li>#}
+{#                <div class="pricing-one__checks-icon">#}
+{#                    <i class="icon-tick"></i>#}
+{#                </div>#}
+
+{#                <div class="pricing-one__checks-text-box">#}
+{#                    <h3 class="pricing-one__checks-title"> {{ clients.telPortable|striptags|default('06 07....') }}</h3>#}
+{#                    <p class="pricing-one__checks-text">Téléphone portable</p>#}
+{#                </div>#}
+{#            </li>#}
+
+{#            <li>#}
+{#                <div class="pricing-one__checks-icon">#}
+{#                    <i class="icon-tick"></i>#}
+{#                </div>#}
+
+{#                <div class="pricing-one__checks-text-box">#}
+{#                    <h3 class="pricing-one__checks-title"> {{ mail|striptags|default('06 07....') }}</h3>#}
+{#                    <p class="pricing-one__checks-text">email</p>#}
+{#                </div>#}
+{#            </li>#}
+{#        </ul>#}
+        {{ form_end(form) }}
+        {%endif %}
+    </div>
+
+
+
+{#    {{ include('client/_form.html.twig') }}#}
+
+
+
+
+{#        <li class="counter-one__single">#}
+{#            <div class="counter-one__icon">#}
+{#                <span class="icon-architect-5"></span>#}
+{#            </div>#}
+{#            <h3 class="odometer" data-count="{{ blocks.texte1|striptags }}">00</h3>#}
+{#            <p class="counter-one__text">{{ blocks.titre1 }}</p>#}
+{#        </li>#}
+
+{% endblock %}

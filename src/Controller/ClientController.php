@@ -40,7 +40,7 @@ class ClientController extends AbstractController
     }
 
 
-////    #[IsGranted("ROLE_CLIENT")]
+//    #[IsGranted("ROLE_CLIENT")]
     #[Route('/show/{id} ', name: 'app_client_show', methods: ['GET'])]
     public function show(Client $theClient, User $user,ClientRepository $clientRepository): Response
     {
@@ -48,9 +48,9 @@ class ClientController extends AbstractController
         $client= $theClient;
         $mail=$user->getEmail();
 //        $this->checkIsTheSameClient($client);
-        return $this->render('_partial/_coordonnees.html.twig', [
+        return $this->render('contenus/coordonnees.html.twig', [
             'clients' => $client,
-            'form' => $form,
+//            'form' => $form,
             'mail'=> $mail,
         ]);
 
@@ -59,21 +59,27 @@ class ClientController extends AbstractController
 //
 //    #[IsGranted("ROLE_CLIENT")]
     #[Route('/{id}/edit', name: 'app_client_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Client $client, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Client $theClient,User $user, EntityManagerInterface $entityManager): Response
     {
-//        $this->checkIsTheSameClient($client);
-        $form = $this->createForm(ClientType::class, $client);
+        $this->checkIsTheSameClient($theClient);
+        $form = $this->createForm(ClientType::class);
+        $client= $theClient;
+        $mail=$user->getEmail();
         $form->handleRequest($request);
-        $clients=$client;
         if ($form->isSubmitted() && $form->isValid()) {
+            $id=$client->getId();
+            $entityManager->persist($client);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_client_show', [
+                'id'=>$id,
+            ], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('client/edit.html.twig', [
-            'client' => $clients,
+        return $this->render('contenus/coordonnees.html.twig', [
+            'clients' => $client,
             'form' => $form,
+            'mail'=> $mail,
         ]);
     }
 
