@@ -26,6 +26,8 @@ class ClientController extends AbstractController
         }
     }
 
+
+    //---------------------------------------------  MANQUE CONTROLE PROJET
     #[Route('/{id}', name: 'app_client_accueil', methods: ['GET'])]
     public function index(ClientRepository $clientRepository, Client $client): Response
     {

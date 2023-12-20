@@ -69,9 +69,13 @@ class Projet
     #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Tache::class)]
     private Collection $taches;
 
+    #[ORM\ManyToMany(targetEntity: Client::class, inversedBy: 'projets')]
+    private Collection $client;
+
     public function __construct()
     {
         $this->taches = new ArrayCollection();
+        $this->client = new ArrayCollection();
     }
 
 
@@ -300,6 +304,30 @@ class Projet
                 $tach->setProjet(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Client>
+     */
+    public function getClient(): Collection
+    {
+        return $this->client;
+    }
+
+    public function addClient(Client $client): static
+    {
+        if (!$this->client->contains($client)) {
+            $this->client->add($client);
+        }
+
+        return $this;
+    }
+
+    public function removeClient(Client $client): static
+    {
+        $this->client->removeElement($client);
 
         return $this;
     }

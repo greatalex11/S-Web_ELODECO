@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ClientRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -50,6 +52,18 @@ class Client
 
     #[ORM\OneToOne(inversedBy: 'client', cascade: ['persist', 'remove'],fetch: 'EAGER')]
     private ?User $user = null;
+
+    #[ORM\ManyToMany(targetEntity: Documents::class, mappedBy: 'client')]
+    private Collection $documents;
+
+    #[ORM\ManyToMany(targetEntity: Projet::class, mappedBy: 'client')]
+    private Collection $projets;
+
+    public function __construct()
+    {
+        $this->documents = new ArrayCollection();
+        $this->projets = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -196,6 +210,60 @@ class Client
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Documents>
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(Documents $document): static
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents->add($document);
+            $document->addClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(Documents $document): static
+    {
+        if ($this->documents->removeElement($document)) {
+            $document->removeClient($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Projet>
+     */
+    public function getProjets(): Collection
+    {
+        return $this->projets;
+    }
+
+    public function addProjet(Projet $projet): static
+    {
+        if (!$this->projets->contains($projet)) {
+            $this->projets->add($projet);
+            $projet->addClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProjet(Projet $projet): static
+    {
+        if ($this->projets->removeElement($projet)) {
+            $projet->removeClient($this);
+        }
 
         return $this;
     }

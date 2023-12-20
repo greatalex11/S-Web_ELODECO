@@ -11,17 +11,17 @@
 
     <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between" style="max-height:100px; padding:30px; margin: 0 10% 0 10%">
         <ul class="portfolio-details__info-list list-unstyled">
-            <li>{{ clients.prenom|striptags|default('prénom') }}</li>
-            <li>{{ clients.nom|striptags|default('NOM')|upper }}</li>
+            <li>{{ artisans.prenomgerant|striptags|default('prénom') }}</li>
+            <li>{{ artisans.nomgerant|striptags|default('NOM')|upper }}</li>
             <li>{{ 'now'|date}}</li>
         </ul>
     </section>
 
-    <section class="d-flex col-10 p-4 justify-content-sm-between" style="max-height:50%; padding:30px; margin: 0 10% 0 10%">
+    <section class="d-flex row-cols-10 align-items-center justify-content-center" style="max-height:50%; padding:30px;">
 
-        <div class="d-flex justify-content-left row  m-lg-5 align-middle" style="max-width: 70%; background-color:whitesmoke">
+        <div class="d-flex justify-content-left row  m-lg-3 " style="min-width:20%;max-width: 30%;height:50vh; background-color:whitesmoke">
             {#            <p class="counter-one__text">Vous contacter</p>#}
-            <ul class="pricing-one__checks-list list-unstyled">
+            <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">
 
                 <li>
                     <div class="pricing-one__checks-icon">
@@ -30,7 +30,7 @@
 
                     <div class="pricing-one__checks-text-box">
                         <h3 class="odometer" style="color: {{ theme.theme.couleurActuelleBg }}"
-                            data-count="{{ clients.numeroRue|striptags|default('77') }}">00</h3>
+                            data-count="{{ artisans.numeroRue|striptags|default('77') }}">00</h3>
                         <p class="counter-one__text">n°</p>
                     </div>
                 </li>
@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="pricing-one__checks-text-box">
-                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.rue|striptags|default('grande rue') }}</h3>
+                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.numeroRue|striptags|default('grande rue') }}</h3>
                         <p class="counter-one__text">rue</p>
                     </div>
                 </li>
@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="pricing-one__checks-text-box">
-                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.codePostal|striptags|default('grande rue') }}</h3>
+                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.codePostal|striptags|default('grande rue') }}</h3>
                         <p class="counter-one__text">code postal</p>
                     </div>
                 </li>
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="pricing-one__checks-text-box">
-                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}" class="col-12"> {{ clients.localite|striptags|default('grande rue') }}
+                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}" class="col-12"> {{ artisans.localite|striptags|default('grande rue') }}
                         </h3>
                         <p class="counter-one__text">Localité</p>
                     </div>
@@ -69,18 +69,61 @@
             </ul>
         </div>
 
-        <!--                                                                  Colonne de droite                                                    -->
+        <!--                                  INFORMATION PROPRE A L'ENTREPRISE                                                               -->
 
-        <div class="d-flex justify-content-left row w-50 m-lg-5" style="max-width: 30%">
+        <div class="d-flex justify-content-left row  m-lg-4 align-middle" style="min-width:20%;max-width: 30%;height:50vh; background-color:whitesmoke">
             {#            <p class="counter-one__text">Vous contacter</p>#}
-            <ul class="pricing-one__checks-list list-unstyled">
+            <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">
+
                 <li>
                     <div class="pricing-one__checks-icon">
                         <i class="icon-tick"></i>
                     </div>
 
                     <div class="pricing-one__checks-text-box">
-                        <h3 class="pricing-one__checks-title"> {{ clients.telFix|striptags|default('03.84....') }}</h3>
+                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.raisonSociale|striptags|default('grande rue') }}</h3>
+                        <p class="counter-one__text">code postal</p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
+
+                    <div class="pricing-one__checks-text-box">
+                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.nomEtablissement|striptags|default('établissement...') }}</h3>
+                        <p class="counter-one__text">rue</p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
+
+                    <div class="pricing-one__checks-text-box">
+                        <h3 class="odometer" style="color: {{ theme.theme.couleurActuelleBg }}"
+                            data-count="{{ artisans.siret|striptags|default('77') }}">00</h3>
+                        <p class="counter-one__text">SIRET</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <!--                                                                  coordonnées électroniques                                                    -->
+
+        <div class="d-flex justify-content-left row w-50 m-lg-5" style="min-width:20%;max-width:30%;height:50vh;">
+            {#            <p class="counter-one__text">Vous contacter</p>#}
+            <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
+
+                    <div class="pricing-one__checks-text-box">
+                        <h3 class="pricing-one__checks-title" style="color: {{ theme.theme.couleurActuelleBg }}" > {{ artisans.telPortable|striptags|default('03.84....') }}</h3>
                         <p class="pricing-one__checks-text">Téléphone fixe</p>
                     </div>
                 </li>
@@ -90,8 +133,8 @@
                     </div>
 
                     <div class="pricing-one__checks-text-box">
-                        <h3 class="pricing-one__checks-title"> {{ clients.telPortable|striptags|default('06 07....') }}</h3>
-                        <p class="pricing-one__checks-text">Téléphone portable</p>
+                        <h3 class="pricing-one__checks-title"> {{ artisans.telFixe|striptags|default('06 07....') }}</h3>
+                        <p class="pricing-one__checks-text">Téléphone fixe</p>
                     </div>
                 </li>
 
@@ -101,7 +144,20 @@
                     </div>
 
                     <div class="pricing-one__checks-text-box">
-                        <h3 class="pricing-one__checks-title"> {{ mail|striptags|default('06 07....') }}</h3>
+                        <h3  class="col-12"> {{ artisans.fax|striptags|default('grande rue') }}
+                        </h3>
+                        <p class="counter-one__text">Fax</p>
+                    </div>
+                </li>
+
+
+                <li>
+                    <div class="pricing-one__checks-icon">
+                        <i class="icon-tick"></i>
+                    </div>
+
+                    <div class="pricing-one__checks-text-box">
+                        <h3 class="pricing-one__checks-title"> {{artisans.user.email|striptags|default('06 07....') }}</h3>
                         <p class="pricing-one__checks-text">email</p>
                     </div>
                 </li>
@@ -124,15 +180,16 @@
     <div class="d-flex row-cols-6 justify-content-xl-between">
         <div >
             <a style="padding: 20px; border-radius: 20px ; margin: 40px;color:#FFFFFF;background-color: rgb(115, 115, 115)" class="text-center portfolio-details__info-list list-unstyled alert-info"
-               href="{{ path('app_client_accueil',{ 'id': clients.id}) }}"> <span class="m-2"><<</span>Retour</a>
+               href="{{ path('app_artisan_accueil',{ 'id': artisans.id}) }}"> <span class="m-2"><<</span>Retour</a>
         </div>
 
         <div>
             <a style="padding: 20px; border-radius: 20px ; margin: 40px;color:#FFFFFF;background-color: rgb(115, 115, 115)"
-               class=" text-center portfolio-details__info-list list-unstyled alert-info" href="{{ path('app_client_edit',{ 'id': clients.id}) }}">Corriger<span class="m-2">>> </span> </a>
+               class=" text-center portfolio-details__info-list list-unstyled alert-info" href="{{ path('app_artisan_edit',{ 'id': artisans.id}) }}">Corriger<span class="m-2">>> </span> </a>
         </div>
 
     </div>
+
     <div class="d-flex col-10 justify-content-center m-auto">
         <div  style="margin: 5% 10% 5% 10%">
 
