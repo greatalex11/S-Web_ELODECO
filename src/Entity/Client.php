@@ -53,15 +53,12 @@ class Client
     #[ORM\OneToOne(inversedBy: 'client', cascade: ['persist', 'remove'],fetch: 'EAGER')]
     private ?User $user = null;
 
-    #[ORM\ManyToMany(targetEntity: Documents::class, mappedBy: 'client')]
-    private Collection $documents;
 
     #[ORM\ManyToMany(targetEntity: Projet::class, mappedBy: 'client')]
     private Collection $projets;
 
     public function __construct()
     {
-        $this->documents = new ArrayCollection();
         $this->projets = new ArrayCollection();
     }
 
@@ -214,32 +211,6 @@ class Client
         return $this;
     }
 
-    /**
-     * @return Collection<int, Documents>
-     */
-    public function getDocuments(): Collection
-    {
-        return $this->documents;
-    }
-
-    public function addDocument(Documents $document): static
-    {
-        if (!$this->documents->contains($document)) {
-            $this->documents->add($document);
-            $document->addClient($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDocument(Documents $document): static
-    {
-        if ($this->documents->removeElement($document)) {
-            $document->removeClient($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Projet>

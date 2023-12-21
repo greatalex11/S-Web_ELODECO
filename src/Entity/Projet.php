@@ -61,8 +61,6 @@ class Projet
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $status = null;
 
-
-
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_fin = null;
 
@@ -72,10 +70,14 @@ class Projet
     #[ORM\ManyToMany(targetEntity: Client::class, inversedBy: 'projets')]
     private Collection $client;
 
+    #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Documents::class)]
+    private Collection $documents;
+
     public function __construct()
     {
         $this->taches = new ArrayCollection();
         $this->client = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
 
@@ -328,6 +330,36 @@ class Projet
     public function removeClient(Client $client): static
     {
         $this->client->removeElement($client);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Documents>
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(Documents $document): static
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents->add($document);
+            $document->setProjet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(Documents $document): static
+    {
+        if ($this->documents->removeElement($document)) {
+            // set the owning side to null (unless already changed)
+            if ($document->getProjet() === $this) {
+                $document->setProjet(null);
+            }
+        }
 
         return $this;
     }

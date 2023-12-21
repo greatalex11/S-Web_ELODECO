@@ -31,20 +31,12 @@ class Documents
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private ?array $mise_en_copie = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'documents')]
     private ?Projet $projet = null;
 
-    #[ORM\ManyToMany(targetEntity: Client::class, inversedBy: 'documents')]
-    private Collection $client;
 
-    #[ORM\ManyToMany(targetEntity: Artisan::class, inversedBy: 'documents')]
-    private Collection $artisan;
 
-    public function __construct()
-    {
-        $this->client = new ArrayCollection();
-        $this->artisan = new ArrayCollection();
-    }
+
 
     public function getId(): ?int
     {
@@ -123,51 +115,7 @@ class Documents
         return $this;
     }
 
-    /**
-     * @return Collection<int, Client>
-     */
-    public function getClient(): Collection
-    {
-        return $this->client;
-    }
 
-    public function addClient(Client $client): static
-    {
-        if (!$this->client->contains($client)) {
-            $this->client->add($client);
-        }
 
-        return $this;
-    }
 
-    public function removeClient(Client $client): static
-    {
-        $this->client->removeElement($client);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Artisan>
-     */
-    public function getArtisan(): Collection
-    {
-        return $this->artisan;
-    }
-
-    public function addArtisan(Artisan $artisan): static
-    {
-        if (!$this->artisan->contains($artisan)) {
-            $this->artisan->add($artisan);
-        }
-
-        return $this;
-    }
-
-    public function removeArtisan(Artisan $artisan): static
-    {
-        $this->artisan->removeElement($artisan);
-
-        return $this;
-    }
 }

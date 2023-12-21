@@ -59,14 +59,13 @@ class ClientController extends AbstractController
     }
 //
 //
-//    #[IsGranted("ROLE_CLIENT")]
+    #[IsGranted("ROLE_CLIENT")]
     #[Route('/{id}/edit', name: 'app_client_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Client $theClient,User $user, EntityManagerInterface $entityManager): Response
     {
         $this->checkIsTheSameClient($theClient);
         $client= $theClient;
         $mail=$user->getEmail();
-
 
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);

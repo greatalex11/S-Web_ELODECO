@@ -68,13 +68,12 @@ class Artisan
     #[ORM\OneToMany(mappedBy: 'artisan', targetEntity: Tache::class)]
     private Collection $tache;
 
-    #[ORM\ManyToMany(targetEntity: Documents::class, mappedBy: 'artisan')]
-    private Collection $documents;
+
 
     public function __construct()
     {
        $this->tache = new ArrayCollection();
-       $this->documents = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -307,30 +306,6 @@ class Artisan
         return $this;
     }
 
-    /**
-     * @return Collection<int, Documents>
-     */
-    public function getDocuments(): Collection
-    {
-        return $this->documents;
-    }
 
-    public function addDocument(Documents $document): static
-    {
-        if (!$this->documents->contains($document)) {
-            $this->documents->add($document);
-            $document->addArtisan($this);
-        }
 
-        return $this;
-    }
-
-    public function removeDocument(Documents $document): static
-    {
-        if ($this->documents->removeElement($document)) {
-            $document->removeArtisan($this);
-        }
-
-        return $this;
-    }
 }
