@@ -28,13 +28,15 @@ class Documents
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_peremption = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[ORM\Column(type: Types::JSON, nullable: true)]
     private ?array $mise_en_copie = null;
 
     #[ORM\ManyToOne(inversedBy: 'documents')]
     private ?Projet $projet = null;
 
-
+    public function __toString() {
+        return $this->mise_en_copie;
+    }
 
 
 

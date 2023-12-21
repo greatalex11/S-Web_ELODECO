@@ -47,12 +47,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Artisan $artisan = null;
 
-
-
-
-
     #[ORM\Column(type: 'boolean')]
     private bool $isVerified = false;
+
+
+    public function __toString() {
+        return $this->id;
+    }
+
+
+
 
     public function getId(): ?int
     {

@@ -5,8 +5,11 @@ namespace App\Controller\Admin;
 use App\Entity\Artisan;
 use App\Entity\Client;
 use App\Entity\Contenus;
+use App\Entity\Documents;
 use App\Entity\Image;
 use App\Entity\Page;
+use App\Entity\Projet;
+use App\Entity\Tache;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
@@ -57,10 +60,6 @@ class DashboardController extends AbstractDashboardController
 
 
 
-
-
-
-
     public function configureDashboard(): Dashboard
     {
         $date = date('r');
@@ -89,16 +88,16 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Admin');
         yield MenuItem::linkToCrud('Artisans', 'fas fa-hammer', Artisan::class);
         yield MenuItem::linkToCrud('Clients', 'fas fa-users', Client::class);
-        yield MenuItem::linkToCrud('Projets', 'fas fa-project-diagram', Image::class);
+        yield MenuItem::linkToCrud('Projets', 'fas fa-project-diagram', Projet::class);
+        yield MenuItem::linkToCrud('taches', 'fas fa-project-diagram', Tache::class);
+        yield MenuItem::linkToCrud('Documents', 'fas fa-project-diagram', Documents::class);
     }
 
     public function configureActions(): Actions
     {
-
         return parent::configureActions()->add(Crud::PAGE_INDEX, Action::DETAIL)
             ->remove(Crud::PAGE_NEW, Action::SAVE_AND_ADD_ANOTHER)
             ->remove(Crud::PAGE_INDEX, Action::BATCH_DELETE);
-
     }
 
     public function configureUserMenu(UserInterface $user): UserMenu
@@ -110,6 +109,5 @@ class DashboardController extends AbstractDashboardController
     {
         return parent::configureAssets();
     }
-
 
 }
