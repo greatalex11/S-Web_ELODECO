@@ -11,6 +11,36 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: DocumentsRepository::class)]
 class Documents
 {
+    public const CLIENT= 'clients';
+    public const ARTISAN= 'artisan';
+
+    public const FACTURE= 'facture';
+    public const PLAN= 'plan';
+    public const DEVIS= 'devis';
+    public const TITRE= 'titrePropriete';
+    public const ASSUR= 'assurance';
+    public const CONTRAT= 'contrat';
+    public const CONSEIL= 'conseil';
+
+    public const AUTRE= 'autre';
+
+    public const MISEENCOPIE =[
+        "Artisan"=> self::ARTISAN,
+        "Client"=> self::CLIENT,
+    ];
+
+    public const TYPEDEDOCUMENT =[
+        "Assurance"=> self::ASSUR,
+        "Conseil"=> self::CONSEIL,
+        "Contrat"=> self::CONTRAT,
+        "Devis"=> self::DEVIS,
+        "Facture"=> self::FACTURE,
+        "Plan"=> self::PLAN,
+        "Titre de propriété"=> self::TITRE,
+        "Autre"=> self::AUTRE,
+    ];
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -34,9 +64,9 @@ class Documents
     #[ORM\ManyToOne(inversedBy: 'documents')]
     private ?Projet $projet = null;
 
-    public function __toString() {
-        return $this->mise_en_copie;
-    }
+//    public function __toString() {
+//        return $this-> mise_en_copie;
+//    }
 
 
 
@@ -98,9 +128,11 @@ class Documents
         return $this->mise_en_copie;
     }
 
+    // traitement JSON
     public function setMiseEnCopie(?array $mise_en_copie): static
     {
-        $this->mise_en_copie = $mise_en_copie;
+        $this->mise_en_copie = array_values($mise_en_copie);
+//        $this->mise_en_copie = $mise_en_copie;
 
         return $this;
     }
