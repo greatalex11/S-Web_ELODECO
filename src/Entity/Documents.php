@@ -64,6 +64,9 @@ class Documents
     #[ORM\ManyToOne(inversedBy: 'documents')]
     private ?Projet $projet = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = null;
+
 //    public function __toString() {
 //        return $this-> mise_en_copie;
 //    }
@@ -145,6 +148,18 @@ class Documents
     public function setProjet(?Projet $projet): static
     {
         $this->projet = $projet;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }

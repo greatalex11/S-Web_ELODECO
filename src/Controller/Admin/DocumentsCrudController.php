@@ -7,10 +7,13 @@ use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\Date;
 
 class DocumentsCrudController extends AbstractCrudController
 {
@@ -24,13 +27,20 @@ class DocumentsCrudController extends AbstractCrudController
     {
         return [
 //            IdField::new('id'),
-            ChoiceField::new('type')
+
+            yield SlugField::new('slug')->setTargetFieldName('titre'),
+            yield TextField::new('titre'),
+
+            yield ChoiceField::new('type')
                 ->setChoices(Documents::TYPEDEDOCUMENT),
-            TextField::new('titre'),
-            TextEditorField::new('description'),
-            ChoiceField::new('mise_en_copie')
+
+            yield TextEditorField::new('description'),
+            yield ChoiceField::new('mise_en_copie')
                 ->allowMultipleChoices()
                 ->setChoices(Documents::MISEENCOPIE),
+            yield DateField::new('date_peremption')
+                ->renderAsChoice()
+                ->setLabel('date à laquelle le document peut être retiré du site')
         ];
     }
 

@@ -47,7 +47,7 @@ class DocumentsController extends AbstractController
 
 
 
-    #[Route('/new', name: 'app_documents_new', methods: ['GET', 'POST'])]
+    #[Route('/news/{slug}', name: 'app_documents_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $document = new Documents();
