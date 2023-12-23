@@ -64,9 +64,11 @@ class ImageCrudController extends AbstractCrudController
         yield TextField::new('type')->hideOnForm();
         yield IntegerField::new('sizeKo')->hideOnForm()->setLabel("Taille");
         yield IntegerField::new('dimensions')->hideOnForm();
+
         yield ImageField::new('image')
             ->setBasePath('assets/images/uploads')
             ->hideOnForm();
+
         yield DateTimeField::new('createdAt')->hideOnForm()->onlyOnDetail();
         yield DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Dernière modification');
     }

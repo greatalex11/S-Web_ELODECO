@@ -7,8 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: DocumentsRepository::class)]
+#[Vich\Uploadable]
 class Documents
 {
     public const CLIENT= 'clients';
@@ -72,6 +75,26 @@ class Documents
 //    }
 
 
+    #[Vich\UploadableField(mapping: 'documents', fileNameProperty: 'TitreDefault', size: 'size', mimeType:'typo')]
+    private ?File $documentsFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $size = null;
+//    public function __toString(): string
+//    {
+//        return $this->size;
+//    }
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $typo = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $document = null;
+    private \DateTimeImmutable $updatedAt;
+
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $TitreDefault = null;
 
     public function getId(): ?int
     {
@@ -164,6 +187,80 @@ class Documents
         return $this;
     }
 
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+//    public function setTitreDefault($event): static
+//    {
+////        $this->TitreDefault=$TitreDefault;
+//        if ($this->TitreDefault === null) {
+//            $this->TitreDefault = $this->getDocumentsFile()?->getPath();
+//        }
+//        return $this;
+//    }
+
+    public function setTitreDefault( ?string $TitreDefault): static
+    {
+        $this->TitreDefault=$TitreDefault;
+//        if ($this->TitreDefault === null) {
+//            $this->TitreDefault = $this->getDocumentsFile()?->getPath();
+//        }
+        return $this;
+    }
+
+
+    public function getDocumentsFile(): ?File
+    {
+        return $this->documentsFile;
+    }
+
+    public function setDocumentsFile(?File $documentsFile = null): void
+    {
+        $this->documentsFile = $documentsFile;
+        if (null !== $documentsFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getSize(): ?int
+    {
+        return $this->size;
+    }
+
+    public function setSize(?int $size): static
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    public function getTypo(): ?string
+    {
+        return $this->typo;
+    }
+
+    public function setTypo(?string $typo): static
+    {
+        $this->typo = $typo;
+
+        return $this;
+    }
+
+    public function getDocument(): ?string
+    {
+        return $this->document;
+    }
+
+    public function setDocument(?string $document): static
+    {
+        $this->document = $document;
+
+        return $this;
+    }
+
+    public function getTitreDefault(): ?string
+    {
+        return $this->TitreDefault;
+    }
 
 
 
