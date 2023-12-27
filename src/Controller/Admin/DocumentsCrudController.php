@@ -44,7 +44,7 @@ class DocumentsCrudController extends AbstractCrudController
                 ->setChoices(Documents::MISEENCOPIE),
             yield DateField::new('date_peremption')
                 ->renderAsChoice()
-                ->setLabel('date à laquelle le document peut être retiré du site'),
+                ->setLabel('date de retrait du document'),
 
 //
 //            yield TextField::new('documentsFile')

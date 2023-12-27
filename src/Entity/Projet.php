@@ -31,6 +31,12 @@ class Projet
     #[ORM\Column(nullable: true)]
     private ?int $duree = null;
 
+
+//    public function __toString(): string
+//    {
+//        return $this->duree;
+//    }
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $numero = null;
 
@@ -72,6 +78,8 @@ class Projet
 
     #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Documents::class)]
     private Collection $documents;
+
+
 
     public function __construct()
     {
@@ -333,6 +341,10 @@ class Projet
 
         return $this;
     }
+//    public function __toString()
+//    {
+//        return $this->client;
+//    }
 
     /**
      * @return Collection<int, Documents>
