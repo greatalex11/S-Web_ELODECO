@@ -15,6 +15,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use PhpParser\Node\Expr\Yield_;
 
 class ProjetCrudController extends AbstractCrudController
 {
@@ -52,9 +53,13 @@ class ProjetCrudController extends AbstractCrudController
             yield NumberField::new('duree'),
             yield TextField::new('budget'),
             yield DateField::new("date_facture")->hideOnIndex(),
-            yield TextField::new('montant_facture')->hideOnIndex(),
+            yield NumberField::new('montant_facture')->hideOnIndex(),
             yield DateField::new("date_accompte")->hideOnIndex(),
-            yield TextField::new('montant_accompte')->hideOnIndex(),
+            yield NumberField::new('montant_accompte')->hideOnIndex(),
+
+            yield FormField::addTab("Artisan"),
+
+
 
 
             yield FormField::addTab("Liste des taches"),
@@ -63,7 +68,10 @@ class ProjetCrudController extends AbstractCrudController
 
             yield FormField::addTab("Document"),
             yield AssociationField::new('documents')
-                ->autocomplete()->setLabel('liste des documents')->hideOnIndex(),
+//                                ->setFormTypeOption('choice_label', 'titre')
+                ->setLabel('liste des documents')->hideOnIndex(),
+
+
 //            yield CollectionField::new('Document')
 //                ->useEntryCrudForm(DocumentsCrudController::class)
 //                ->setEntryIsComplex(true)
