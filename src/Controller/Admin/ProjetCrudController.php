@@ -12,6 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -38,7 +39,8 @@ class ProjetCrudController extends AbstractCrudController
                 ->setFormTypeOptions([
                     'by_reference' => false,
                 ])
-                ->setLabel("nom du client"),
+                ->setLabel("nom du client")
+                ->setTemplatePath('fields/raw.html.twig'),
 //            yield AssociationField::new('client')
 //                ->setChoiceLabel('nom')
 //                ->autocomplete()
@@ -51,11 +53,12 @@ class ProjetCrudController extends AbstractCrudController
             yield FormField::addTab("Gestion"),
             yield DateField::new("date_debut"),
             yield NumberField::new('duree'),
-            yield TextField::new('budget'),
+            yield MoneyField::new('budget')->setCurrency('EUR'),
             yield DateField::new("date_facture")->hideOnIndex(),
-            yield NumberField::new('montant_facture')->hideOnIndex(),
+            yield MoneyField::new('montant_facture')->setCurrency('EUR')->hideOnIndex(),
             yield DateField::new("date_accompte")->hideOnIndex(),
-            yield NumberField::new('montant_accompte')->hideOnIndex(),
+            yield MoneyField::new('montant_accompte')->setCurrency('EUR')->hideOnIndex(),
+
 
             yield FormField::addTab("Artisan"),
 
@@ -67,18 +70,14 @@ class ProjetCrudController extends AbstractCrudController
                 ->autocomplete()->setLabel('liste des taches')->hideOnIndex(),
 
             yield FormField::addTab("Document"),
-            yield AssociationField::new('documents')
-//                                ->setFormTypeOption('choice_label', 'titre')
-                ->setLabel('liste des documents')->hideOnIndex(),
+            yield CollectionField::new('documents')
 
-
-//            yield CollectionField::new('Document')
-//                ->useEntryCrudForm(DocumentsCrudController::class)
-//                ->setEntryIsComplex(true)
-//                ->setFormTypeOptions([
-//                    'by_reference' => false,
-//                ])
-//                ->setLabel("Document"),
+               ->useEntryCrudForm(DocumentsCrudController::class)
+                ->setEntryIsComplex(true)
+                ->setFormTypeOptions([
+                    'by_reference' => false,
+                ])
+                ->setLabel("Document"),
 
 
 

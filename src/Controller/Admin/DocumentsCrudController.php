@@ -65,12 +65,12 @@ class DocumentsCrudController extends AbstractCrudController
             yield NumberField::new('size')->hideOnIndex(),
             yield TextField::new('typo')->hideOnIndex(),
 
-            yield FormField::addTab("Associé à quel projet?"),
-            yield AssociationField::new('projet')
-//                ->setFormTypeOption('choice_label', 'titre')
-                ->setFormTypeOption('by_reference', false)
-                ->autocomplete()
-                ->hideOnIndex(),
+//            yield FormField::addTab("Associé à quel projet?"),
+////            yield AssociationField::new('projet')
+//////                ->setFormTypeOption('choice_label', 'titre')
+////                ->setFormTypeOption('by_reference', false)
+////                ->autocomplete()
+////                ->hideOnIndex(),
 
             yield FormField::addTab("Partager le document avec?"),
             yield ChoiceField::new('mise_en_copie')

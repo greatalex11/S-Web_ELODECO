@@ -76,10 +76,10 @@ class Projet
     #[ORM\ManyToMany(targetEntity: Client::class, inversedBy: 'projets')]
     private Collection $client;
 
-    #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Documents::class)]
+    #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Documents::class,)]
     private Collection $documents;
 
-
+//cascade: ["persist"]
 
     public function __construct()
     {
@@ -90,7 +90,7 @@ class Projet
 
 //    public function __toString(): string
 //    {
-//        return $this->montant_facture;
+//        return $this->documents;
 //    }
 
     public function getId(): ?int
