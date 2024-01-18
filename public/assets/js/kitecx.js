@@ -778,18 +778,7 @@
     // ----------------------------- Mon javascript -----------------------------------------
 
 
-    //fonction popover service details
 
-    let ul = document.getElementById("jojo");
-    let li = ul.querySelectorAll("li");
-
-    li.forEach(function(li) {
-        li.addEventListener("click", function(e) {
-            $(this).popover({
-            container: 'body'
-        });
-        });
-    });
 
 
 
@@ -818,18 +807,18 @@
         calculateHeightNews();
         logoHeight();
     });
-
     function calculateHeightNews() {
-        //  Si tu as des news
+        //  Si il y a des news
         if ($("#news")) {
             let higher = 0;
             // je selectionne toutes les news
             let $news = $("#news .news-one__content")
-
-            // je passe sur chacun d'entre elle et si la hauteur et plus grande que mon higher je garde cette hauteur
+            // je passe sur chacune d'entres elles,
+            // si hauteur>higher, hauteur conserveée
             $news.each((i, el) => {
                 $(el).height("auto");
                 let height = $(el).height();
+                console.log(height);
                 if (height > higher) {
                     higher = height;
                 }
@@ -838,23 +827,29 @@
             if (window.innerWidth >= 992) {
                 $news.height(higher);
             }
-
-        }
-    }
-
+        }}
     function logoHeight() {
         let logoHeight = $(".main-menu-wrapper__bottom").outerHeight();
         $('#logo').height(logoHeight - 10);
     }
-
     $('#pricing-tab  .pr-tab').on('click', function (e) {
         $('#pricing-tab .pr-tab').removeClass('active-tab')
         $(this).addClass('active-tab');
     })
-
     calculateHeightNews();
     logoHeight();
-
-
 })(jQuery);
 
+
+    // fonction popover service details
+
+    let ul = document.getElementById("jojo");
+    let li = ul.querySelectorAll("li");
+
+    li.forEach(function(li) {
+    li.addEventListener("click", function(e) {
+        $(this).popover({
+            container: 'body'
+        });
+    });
+});

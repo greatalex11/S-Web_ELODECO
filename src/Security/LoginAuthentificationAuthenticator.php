@@ -2,10 +2,7 @@
 
 namespace App\Security;
 
-use Doctrine\ORM\EntityManager;
-use http\Client;
-use http\Client\Curl\User;
-use mysql_xdevapi\Warning;
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,37 +50,17 @@ class LoginAuthentificationAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         $user = $token->getUser();
-        $role = $token->getRoleNames();
-        $utilisateur=\App\Entity\User::ROLE_CLIENT;
+        $userRoles = $token->getRoleNames();
 
-
-//        $client=$token->getClient();
-//        dd($request);
-//        /** @var \App\Entity\User $user */
-//        $user = $token->getClient();
-
-//        if ($role = ["ADMIN"]) {
-//            return new RedirectResponse($this->urlGenerator->generate('admin', []));
-//        }
-
-        if ($user->getClient()) {
-
+        if (in_array(User::ROLE_ADMIN, $userRoles)) {
+            return new RedirectResponse($this->urlGenerator->generate('admin', []));
+        }
+        if (in_array(User::ROLE_CLIENT, $userRoles)) {
             return new RedirectResponse($this->urlGenerator->generate('app_client_accueil', ["id" => $user->getClient()?->getId()]));
         }
 
-        if ($user->getArtisan()) {
-
+        if (in_array(User::ROLE_ARTISAN, $userRoles)) {
             return new RedirectResponse($this->urlGenerator->generate('app_artisan_accueil', ["id" => $user->getArtisan()?->getId()]));
-
-
-
-        }
-        if(!$user) {
-            $session = $request->getSession();
-            $session->getFlashBag()->add('avertissement', 'Votre profile est en cours de validation');
-
-            return new RedirectResponse($this->urlGenerator->generate('app_home'),);
-
         }
 
         return new RedirectResponse($this->urlGenerator->generate('app_home'));
@@ -94,23 +71,9 @@ class LoginAuthentificationAuthenticator extends AbstractLoginFormAuthenticator
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
 
-
 }
 
-//
-////        $client=$token->getClient();
-////        dd($request);
-////        /** @var \App\Entity\User $user */
-////        $user = $token->getClient();
-//
-////        if ($role = ["ADMIN"]) {
-////            return new RedirectResponse($this->urlGenerator->generate('admin', []));
-////        }
-//
-//if ($utilisateur==="client") {
-//
-//    return new RedirectResponse($this->urlGenerator->generate('app_client_accueil', ["id" => $user ?->getUser()]));
-//}
+
 
 
 

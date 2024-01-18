@@ -745,16 +745,10 @@
                     <span class="section-title__tagline">Nouvelles & tendances</span>
                     <h2 class="section-title__title">Ma sélection</h2>
                 </div>
-                <!--  ***  boucle : ma selection  ***                            -->
-
+                <!--  ***  boucle : ma selection  ***   -->
                 <div class="row">
-{#                    {% for contenu in home %}#}
-{#                        {% if contenu.type =="blogNews" and contenu.publier %}#}
-{#                            {% include "contenus/_news.html.twig" with {new: contenu} %}#}
-{#                        {% endif %}#}
-{#                    {% endfor %}#}
                     {% for contenu in home %}
-                        {% if contenu.type =="NewsGTI" and contenu.publier %}
+                        {% if (contenu.type =="NewsGTI")or (contenu.type =="blogNews") and contenu.publier %}
                             {% include "contenus/_news.html.twig" with {new: contenu} %}
                         {% endif %}
                     {% endfor %}
@@ -949,121 +943,121 @@
 
 {#                        <!--                                               COLONNE DE DROITE AVEC CAROUSSEL                                                  -->#}
 
-                        <div class="col-xl-6 ml-5">
-                            <div class="pricing-one__table-box ">
-                                <div class="pricing-one__right">
-                                    <div class="pr-content">
-                                        <!--                                                       Debut caroussel                                                    -->
-                                        <div id="myCarousel" class="carousel slide " style="width: 580px" data-bs-touch="false">
-                                            <div class="carousel-inner ">
-                                                <!--                                                        Offre 1                                                     -->
-                                                <div class="carousel-item active d-flex justify-content-center" >
-                                                    <div class="pr-tab active-tab" id="tab-2" >
-                                                        <div class="pricing-one__table-box-single "  style="width: 300px ; height: 450px">
-                                                            <div class="pricing-one__table">
-                                                                <div class="pricing-one__rate-box">
-                                                                    <h2><span class="pricing-one__dolar">555€</span>Tarif
-                                                                        1<span>/ sur demande</span></h2>
-                                                                </div>
-                                                                <div class="pricing-one__details-box">
-                                                                    <h3 class="pricing-one__details-title"> Offre
-                                                                        complète</h3>
-                                                                    <ul class="list-unstyled">
-                                                                        <li>Etude de votre demande</li>
-                                                                        <li>Plan 3D</li>
-                                                                        <li>Proposition & solutions</li>
-                                                                        <li>Selection des offres</li>
-                                                                        <li>Engagement</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="pricing-one__btn-box">
-                                                                    <a href="{{ path('app_contact') }}"
-                                                                       class="pricing-one__btn thm-btn">Contactez
-                                                                        moi</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+{#                        <div class="col-xl-6 ml-5">#}
+{#                            <div class="pricing-one__table-box ">#}
+{#                                <div class="pricing-one__right">#}
+{#                                    <div class="pr-content">#}
+{#                                        <!--                                                       Debut caroussel                                                    -->#}
+{#                                        <div id="myCarousel" class="carousel slide " style="width: 580px" data-bs-touch="false">#}
+{#                                            <div class="carousel-inner ">#}
+{#                                                <!--                                                        Offre 1                                                     -->#}
+{#                                                <div class="carousel-item active d-flex justify-content-center" >#}
+{#                                                    <div class="pr-tab active-tab" id="tab-2" >#}
+{#                                                        <div class="pricing-one__table-box-single "  style="width: 300px ; height: 450px">#}
+{#                                                            <div class="pricing-one__table">#}
+{#                                                                <div class="pricing-one__rate-box">#}
+{#                                                                    <h2><span class="pricing-one__dolar">555€</span>Tarif#}
+{#                                                                        1<span>/ sur demande</span></h2>#}
+{#                                                                </div>#}
+{#                                                                <div class="pricing-one__details-box">#}
+{#                                                                    <h3 class="pricing-one__details-title"> Offre#}
+{#                                                                        complète</h3>#}
+{#                                                                    <ul class="list-unstyled">#}
+{#                                                                        <li>Etude de votre demande</li>#}
+{#                                                                        <li>Plan 3D</li>#}
+{#                                                                        <li>Proposition & solutions</li>#}
+{#                                                                        <li>Selection des offres</li>#}
+{#                                                                        <li>Engagement</li>#}
+{#                                                                    </ul>#}
+{#                                                                </div>#}
+{#                                                                <div class="pricing-one__btn-box">#}
+{#                                                                    <a href="{{ path('app_contact') }}"#}
+{#                                                                       class="pricing-one__btn thm-btn">Contactez#}
+{#                                                                        moi</a>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
-                                                <!--                                                             Offre 2                                                   -->
-                                                <div class="carousel-item d-flex justify-content-center">
-                                                    <div class="pr-tab active-tab" id="tab-2">
-                                                        <div class="pricing-one__table-box-single" style="height: 650px">
-                                                            <div class="pricing-one__table">
-                                                                <div class="pricing-one__rate-box">
-                                                                    <h2><span class="pricing-one__dolar">1111€</span>Tarif
-                                                                        <span>/
-                                                                                    sur demande</span></h2>
-                                                                </div>
-                                                                <div class="pricing-one__details-box">
-                                                                    <h3 class="pricing-one__details-title"> Offre
-                                                                        complète</h3>
-                                                                    <ul class="list-unstyled">
-                                                                        <li>Etude de votre demande</li>
-                                                                        <li>Plan 3D</li>
-                                                                        <li>Proposition & solutions</li>
-                                                                        <li>Selection des offres</li>
-                                                                        <li>Engagement</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="pricing-one__btn-box">
-                                                                    <a href="{{ path('app_contact') }}"
-                                                                       class="pricing-one__btn thm-btn">Contactez
-                                                                        moi</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--                                                             Offre 3                                                   -->
+{#                                                <!--                                                             Offre 2                                                   -->#}
+{#                                                <div class="carousel-item d-flex justify-content-center">#}
+{#                                                    <div class="pr-tab active-tab" id="tab-2">#}
+{#                                                        <div class="pricing-one__table-box-single" style="height: 650px">#}
+{#                                                            <div class="pricing-one__table">#}
+{#                                                                <div class="pricing-one__rate-box">#}
+{#                                                                    <h2><span class="pricing-one__dolar">1111€</span>Tarif#}
+{#                                                                        <span>/#}
+{#                                                                                    sur demande</span></h2>#}
+{#                                                                </div>#}
+{#                                                                <div class="pricing-one__details-box">#}
+{#                                                                    <h3 class="pricing-one__details-title"> Offre#}
+{#                                                                        complète</h3>#}
+{#                                                                    <ul class="list-unstyled">#}
+{#                                                                        <li>Etude de votre demande</li>#}
+{#                                                                        <li>Plan 3D</li>#}
+{#                                                                        <li>Proposition & solutions</li>#}
+{#                                                                        <li>Selection des offres</li>#}
+{#                                                                        <li>Engagement</li>#}
+{#                                                                    </ul>#}
+{#                                                                </div>#}
+{#                                                                <div class="pricing-one__btn-box">#}
+{#                                                                    <a href="{{ path('app_contact') }}"#}
+{#                                                                       class="pricing-one__btn thm-btn">Contactez#}
+{#                                                                        moi</a>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                                <!--                                                             Offre 3                                                   -->#}
 
-                                                <div class="carousel-item d-flex justify-content-center">
-                                                    <div class="pr-tab active-tab" id="tab-2">
-                                                        <div class="pricing-one__table-box-single" style="height: 650px">
-                                                            <div class="pricing-one__table">
-                                                                <div class="pricing-one__rate-box">
-                                                                    <h2><span class="pricing-one__dolar">777€</span>Tarif
-                                                                        <span>/
-                                                                                    sur demande</span></h2>
-                                                                </div>
-                                                                <div class="pricing-one__details-box">
-                                                                    <h3 class="pricing-one__details-title"> Offre
-                                                                        complète</h3>
-                                                                    <ul class="list-unstyled">
-                                                                        <li>Etude de votre demande</li>
-                                                                        <li>Plan 3D</li>
-                                                                        <li>Proposition & solutions</li>
-                                                                        <li>Selection des offres</li>
-                                                                        <li>Engagement</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="pricing-one__btn-box">
-                                                                    <a href="{{ path('app_contact') }}"
-                                                                       class="pricing-one__btn thm-btn">Contactez
-                                                                        moi</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+{#                                                <div class="carousel-item d-flex justify-content-center">#}
+{#                                                    <div class="pr-tab active-tab" id="tab-2">#}
+{#                                                        <div class="pricing-one__table-box-single" style="height: 650px">#}
+{#                                                            <div class="pricing-one__table">#}
+{#                                                                <div class="pricing-one__rate-box">#}
+{#                                                                    <h2><span class="pricing-one__dolar">777€</span>Tarif#}
+{#                                                                        <span>/#}
+{#                                                                                    sur demande</span></h2>#}
+{#                                                                </div>#}
+{#                                                                <div class="pricing-one__details-box">#}
+{#                                                                    <h3 class="pricing-one__details-title"> Offre#}
+{#                                                                        complète</h3>#}
+{#                                                                    <ul class="list-unstyled">#}
+{#                                                                        <li>Etude de votre demande</li>#}
+{#                                                                        <li>Plan 3D</li>#}
+{#                                                                        <li>Proposition & solutions</li>#}
+{#                                                                        <li>Selection des offres</li>#}
+{#                                                                        <li>Engagement</li>#}
+{#                                                                    </ul>#}
+{#                                                                </div>#}
+{#                                                                <div class="pricing-one__btn-box">#}
+{#                                                                    <a href="{{ path('app_contact') }}"#}
+{#                                                                       class="pricing-one__btn thm-btn">Contactez#}
+{#                                                                        moi</a>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
 
-                                            <button class="carousel-control-prev" type="button"
-                                                    data-bs-target="#myCarousel" data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </button>
-                                            <button class="carousel-control-next" type="button"
-                                                    data-bs-target="#myCarousel" data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+{#                                            <button class="carousel-control-prev" type="button"#}
+{#                                                    data-bs-target="#myCarousel" data-bs-slide="prev">#}
+{#                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
+{#                                                <span class="visually-hidden">Previous</span>#}
+{#                                            </button>#}
+{#                                            <button class="carousel-control-next" type="button"#}
+{#                                                    data-bs-target="#myCarousel" data-bs-slide="next">#}
+{#                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
+{#                                                <span class="visually-hidden">Next</span>#}
+{#                                            </button>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
                         <!--                                                             fin caroussel                                                           -->
                     </div>
                 </div>

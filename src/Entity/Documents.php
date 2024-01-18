@@ -24,14 +24,12 @@ class Documents
     public const ASSUR= 'assurance';
     public const CONTRAT= 'contrat';
     public const CONSEIL= 'conseil';
-
     public const AUTRE= 'autre';
 
     public const MISEENCOPIE =[
         "Artisan"=> self::ARTISAN,
         "Client"=> self::CLIENT,
     ];
-
     public const TYPEDEDOCUMENT =[
         "Assurance"=> self::ASSUR,
         "Conseil"=> self::CONSEIL,
@@ -43,12 +41,10 @@ class Documents
         "Autre"=> self::AUTRE,
     ];
 
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $type = null;
 

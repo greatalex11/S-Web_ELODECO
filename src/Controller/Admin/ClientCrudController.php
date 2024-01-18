@@ -15,7 +15,6 @@ class ClientCrudController extends AbstractCrudController
     {
         return Client::class;
     }
-
     public function configureCrud(Crud $crud): Crud
     {
         return parent::configureCrud($crud)
@@ -23,11 +22,8 @@ class ClientCrudController extends AbstractCrudController
             ->setEntityLabelInSingular('Client')
             ->setAutofocusSearch();
     }
-
-
     public function configureFields(string $pageName): iterable
     {
-
         yield IdField::new('id')->hideOnForm();
         yield FormField::addTab("User", 'fas fa fa-user');
         yield AssociationField::new("user")->renderAsEmbeddedForm()->setLabel(false);

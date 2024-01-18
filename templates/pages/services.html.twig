@@ -3,7 +3,8 @@
 {% block content %}
     {% set Apps=theme.theme %}
 
-    <section class="page-header" style="background-image: url({{ asset('assets/images/backgrounds/main-slider-11.jpg') }});">
+    <section class="page-header"
+             style="background-image: url({{ asset('assets/images/backgrounds/main-slider-11.jpg') }});">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -30,11 +31,11 @@
                         <div class="insuring__img">
                             {% for contenu in services %}
                                 {% if contenu.type =="1ServicesPRO" %}
-                                {% if contenu.images[0] is defined %}
-                                    {% set image1 = contenu.Images[0] %}
-                                    <img src="{{ vich_uploader_asset(image1) }}"
-                                         alt="{{ image1.titre|default('image') }}">
-                                {% endif %}
+                                    {% if contenu.images[0] is defined %}
+                                        {% set image1 = contenu.Images[0] %}
+                                        <img src="{{ vich_uploader_asset(image1) }}"
+                                             alt="{{ image1.titre|default('image') }}">
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
                         </div>
@@ -44,28 +45,30 @@
                     <div class="insuring__right">
                         <div class="insuring__your-future-box">
                             {% for servicepro in services %}
-                            {% if servicepro.type == "1ServicesPRO" %}
-                            <div class="section-title text-left">
-                                <span class="section-title__tagline">{{ servicepro.titre1|striptags }}</span>
-                                <h2 class="section-title__title">{{ servicepro.titre2|striptags }}</h2>
-                            </div>
-                            <p class="insuring__text">{{ servicepro.texte2|striptags }}</p>
-                            {% endif %}
+                                {% if servicepro.type == "1ServicesPRO" %}
+                                    <div class="section-title text-left">
+                                        <span class="section-title__tagline">{{ servicepro.titre1|striptags }}</span>
+                                        <h2 class="section-title__title">{{ servicepro.titre2|striptags }}</h2>
+                                    </div>
+                                    <p class="insuring__text">{{ servicepro.texte2|striptags }}</p>
+                                {% endif %}
                             {% endfor %}
                             <div class="insuring__counter-list-box">
                                 {% for compteurs in services %}
-                                {% if compteurs.type == "compteurs" %}
-                                <ul class="list-unstyled insuring__counter-list">
-                                    <li>
-                                        <h2 class="odometer" data-count="{{ compteurs.texte1|striptags }}">00</h2>
-                                        <p class="insuring__counter-list-text"> {{ compteurs.titre1 }}</p>
-                                    </li>
-                                    <li>
-                                        <h2 class="odometer" data-count="{{ compteurs.texte2|striptags }}">00</h2>
-                                        <p class="insuring__counter-list-text">{{ compteurs.titre2 }}</p>
-                                    </li>
-                                </ul>
-                                {% endif %}
+                                    {% if compteurs.type == "compteurs" %}
+                                        <ul class="list-unstyled insuring__counter-list">
+                                            <li>
+                                                <h2 class="odometer" data-count="{{ compteurs.texte1|striptags }}">
+                                                    00</h2>
+                                                <p class="insuring__counter-list-text"> {{ compteurs.titre1 }}</p>
+                                            </li>
+                                            <li>
+                                                <h2 class="odometer" data-count="{{ compteurs.texte2|striptags }}">
+                                                    00</h2>
+                                                <p class="insuring__counter-list-text">{{ compteurs.titre2 }}</p>
+                                            </li>
+                                        </ul>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
@@ -84,45 +87,51 @@
             </div>
             <div class="row">
                 {% for Contenus in services %}
-                {% if Contenus.type == "3ServicesQUALITE" %}
+                    {% if Contenus.type == "3ServicesQUALITE" %}
 
-                <div class="col-xl-4 col-lg-4 " >
+                        <div class="col-xl-4 col-lg-4 ">
 
-                    <div class="services-one__single" style="min-height:450px">
-                        <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">{{ Contenus.titre1 }}</a></h2>
-                        <p class="services-one__text">{{ Contenus.texte1|striptags|u.truncate(150,'...',false) }}</p>
-                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
-                        <div class="services-one__icon">
-                            <span class="icon-furnitures"></span>
+                            <div class="services-one__single" style="min-height:450px">
+                                <h2 class="services-one__title">
+                                    <a>{{ Contenus.titre1 }}</a></h2>
+                                <p class="services-one__text">{{ Contenus.texte1|striptags|u.truncate(150,'...',false) }}</p>
+                                {#                                <a href="{{ path('app_services_details') }}" class="services-one__btn">En savoir #}
+                                {#                                    plus</a> #}
+                                <div class="services-one__icon">
+                                    <span class="icon-furnitures"></span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 ">
+                        <div class="col-xl-4 col-lg-4 ">
 
-                    <!--SERVICE 2 -->
-                    <div class="services-one__single" style="min-height:450px">
-                        <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">{{ Contenus.titre2 }}</a></h2>
-                        <p class="services-one__text fs-4">{{ Contenus.texte2|striptags|u.truncate(150,'...',false) }}</p>
+                            <!--SERVICE 2 -->
+                            <div class="services-one__single" style="min-height:450px">
+                                <h2 class="services-one__title">
+                                    {#                              <a              href="{{ path('app_services_details') }}">{{ Contenus.titre2 }}</a></h2> #}</h2>
+                                <p class="services-one__text fs-4">{{ Contenus.texte2|striptags|u.truncate(150,'...',false) }}</p>
 
-                        <a href="{{path('app_services_details')}}" class="services-one__btn" >En savoir plus</a>
-                        <div class="services-one__icon">
-                            <span class="icon-buildings"></span>
+                                {#                                    <a href="{{ path('app_services_details') }}" class="services-one__btn">En savoir #}
+                                {#                                        plus</a> #}
+                                <div class="services-one__icon">
+                                    <span class="icon-buildings"></span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 ">
-                    <!--SERVICE 3-->
-                    <div class="services-one__single" style="min-height:450px">
-                        <h2 class="services-one__title"><a href="{{ path('app_services_details') }}">{{ Contenus.titre3 }}</a></h2>
-                        <p class="services-one__text">{{ Contenus.texte3|striptags|u.truncate(150,'...',false)}}</p>
-                        <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>
-                        <div class="services-one__icon">
-                            <span class="icon-house-design"></span>
-                        </div>
-                    </div>
-                </div>
-                {%endif %}
-                {%endfor %}
+                        {#                        <div class="col-xl-4 col-lg-4 "> #}
+                        {#                            <!--SERVICE 3--> #}
+                        {#                            <div class="services-one__single" style="min-height:450px"> #}
+                        {#                                <h2 class="services-one__title"><a #}
+                        {#                                            href="{{ path('app_services_details') }}">{{ Contenus.titre3 }}</a></h2> #}
+                        {#                                <p class="services-one__text">{{ Contenus.texte3|striptags|u.truncate(150,'...',false) }}</p> #}
+                        {#                                <a href="{{ path('app_services_details') }}" class="services-one__btn">En savoir #}
+                        {#                                    plus</a> #}
+                        {#                                <div class="services-one__icon"> #}
+                        {#                                    <span class="icon-house-design"></span> #}
+                        {#                                </div> #}
+                        {#                            </div> #}
+                        {#                        </div> #}
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -133,7 +142,7 @@
         <div class="container">
             <div class="trust-experts__inner">
                 <h2 class="trust-experts__text">L'oeil de l'expert<br> dans toutes vos réalisations</h2>
-{#                <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>#}
+                {#                <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a> #}
             </div>
         </div>
     </section>
@@ -142,17 +151,18 @@
 
     <section id="news" class="three-boxes-two three-boxes-two-page">
         <div class="container">
-            <div class="row" >
+            <div class="row">
                 {% for contenuGTI in services %}
                     {% if contenuGTI.type =="ServicesGTI" and contenuGTI.publier %}
                         {% include "contenus/_services.html.twig" with {service: contenuGTI} only %}
                     {% endif %}
                 {% endfor %}
-                <div class="text-center news-one__more">
-                    <a href="{{path('app_services_details')}}" class="thm-btn" style="background-color: {{ Apps.couleuractuellebg }}">Voir plus</a>
-                </div>
-              </div>
+                {#                <div class="text-center news-one__more"> #}
+                {#                    <a href="{{ path('app_services_details',{slug: services.slug}) }}" class="thm-btn" #}
+                {#                       style="background-color: {{ Apps.couleuractuellebg }}">Voir plus</a> #}
+                {#                </div> #}
             </div>
+        </div>
     </section>
 
 {% endblock %}

@@ -123,9 +123,11 @@
         margin-bottom: 30px;
     }
 
-    .counter-one__single:nth-child(1) {}
+    .counter-one__single:nth-child(1) {
+    }
 
-    .counter-one__single:nth-child(2) {}
+    .counter-one__single:nth-child(2) {
+    }
 
     .counter-one__single:nth-child(3) {
         margin-bottom: 0;
@@ -234,7 +236,7 @@
         padding: 0 0 110px;
     }
 
-    .portfolio-details__info-list li+li {
+    .portfolio-details__info-list li + li {
         margin-left: 40px;
     }
 
@@ -262,7 +264,6 @@
         display: block;
         margin-bottom: 50px;
     }
-
 
 
 }
@@ -390,9 +391,11 @@
         margin-bottom: 30px;
     }
 
-    .counter-one__single:nth-child(1) {}
+    .counter-one__single:nth-child(1) {
+    }
 
-    .counter-one__single:nth-child(2) {}
+    .counter-one__single:nth-child(2) {
+    }
 
     .counter-one__single:nth-child(3) {
         margin-bottom: 0;
@@ -539,7 +542,7 @@
         line-height: 32px;
     }
 
-    .portfolio-details__info-list li+li {
+    .portfolio-details__info-list li + li {
         margin-left: 20px;
     }
 
@@ -571,18 +574,6 @@
         display: block;
         margin-bottom: 50px;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
@@ -656,6 +647,19 @@
 
     .services-one__single {
         padding: 55px 45px 47px;
+    }
+
+    .services-one__btn:hover {
+        color: #FFFFFF;
+        text-align: left;
+        padding-left: 0;
+        font-weight: bold;
+    }
+
+    .services-one__btn {
+        color: blue;
+        text-align: left;
+        padding-left: 0;
     }
 
     .project-one__hover-name {
@@ -937,7 +941,7 @@
         padding: 100px 25px 76px;
     }
 
-    .insuring__counter-list li+li {
+    .insuring__counter-list li + li {
         margin-left: 0;
     }
 
@@ -976,7 +980,7 @@
         flex-direction: column;
     }
 
-    .about-company__points li+li {
+    .about-company__points li + li {
         margin-left: 0px;
         margin-top: 20px;
     }
@@ -1068,7 +1072,7 @@
         flex-direction: column;
     }
 
-    .productive__points li+li {
+    .productive__points li + li {
         margin-left: 0;
         margin-top: 20px;
     }
@@ -1103,7 +1107,7 @@
         right: 0;
     }
 
-    .portfolio-details__info-list li+li {
+    .portfolio-details__info-list li + li {
         margin-left: 0;
     }
 
@@ -1189,7 +1193,7 @@
         display: inline-block;
     }
 
-    .pricing-one__points li+li {
+    .pricing-one__points li + li {
         margin-left: 0px;
         margin-top: 20px
     }
@@ -1201,8 +1205,6 @@
     .pricing-one__table {
         padding: 55px 25px 65px;
     }
-
-
 
 
     .tab-btn-box1 .tab-btns:before {
@@ -1226,9 +1228,6 @@
     }
 
 
-
-
-
     .pricing-one__table-box .pr-content .pr-tab {
         opacity: 0.1;
     }
@@ -1238,18 +1237,7 @@
     }
 
 
-
-
-
-
-
-
 }
-
-
-
-
-
 
 
 @media only screen and (min-width: 1200px) and (max-width: 1349px) {
@@ -1260,7 +1248,6 @@
     .welcome-one__left:before {
         display: none;
     }
-
 
 
 }
@@ -1278,7 +1265,6 @@
 
 
 }
-
 
 
 /*--------------------------------------------------------------
@@ -1305,7 +1291,6 @@
 }
 
 
-
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .main-slider h2 {
         font-size: 80px;
@@ -1327,9 +1312,7 @@
     }
 
 
-
 }
-
 
 
 @media only screen and (max-width: 767px) {
@@ -1383,14 +1366,7 @@
     }
 
 
-
-
-
-
-
 }
-
-
 
 
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
@@ -1406,10 +1382,8 @@
 
 }
 
-@media only screen and (min-width: 1200px) and (max-width: 1216px) {}
-
-
-
+@media only screen and (min-width: 1200px) and (max-width: 1216px) {
+}
 
 
 /*--------------------------------------------------------------
@@ -1431,8 +1405,8 @@
         padding-left: 200px;
     }
 
-    .main-menu .main-menu__list>li+li,
-    .stricky-header .main-menu__list>li+li {
+    .main-menu .main-menu__list > li + li,
+    .stricky-header .main-menu__list > li + li {
         margin-left: 40px;
     }
 
@@ -1449,11 +1423,7 @@
     }
 
 
-
-
-
 }
-
 
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1521,31 +1491,6 @@
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
@@ -1577,7 +1522,7 @@
         display: none;
     }
 
-    .main-menu-wrapper__left-contact-box li+li {
+    .main-menu-wrapper__left-contact-box li + li {
         margin-left: 20px;
     }
 
@@ -1618,26 +1563,7 @@
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
 
 
 @media (max-width: 767px) {
@@ -1718,23 +1644,6 @@
     .main-menu-three__right {
         display: none;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -60,7 +60,6 @@ class DashboardController extends AbstractDashboardController
     }
 
 
-
     public function configureDashboard(): Dashboard
     {
         $date = date('r');
@@ -104,7 +103,9 @@ class DashboardController extends AbstractDashboardController
 
     public function configureUserMenu(UserInterface $user): UserMenu
     {
-        return parent::configureUserMenu($user);
+        return parent::configureUserMenu($user)
+            ->setName($user->getUserIdentifier())
+            ->displayUserAvatar(false);
     }
 
     public function configureAssets(): Assets

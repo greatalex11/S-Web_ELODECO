@@ -21,40 +21,31 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use phpDocumentor\Reflection\Type;
 
 class ContenusCrudController extends AbstractCrudController
-{
-    public static function getEntityFqcn(): string
+{    public static function getEntityFqcn(): string
     {
         return Contenus::class;
-
     }
-
+    // Fqcn() : https://symfony.com/bundles/EasyAdminBundle/current/crud.html
+    // ConfigureFilters( ): ajout d’un système de filtre pour des recherches ciblées
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add('pages');
+            ->add('pages')
+            ->add('type');
     }
-
     public function configureActions(Actions $actions): Actions
-    {
-//        Essais: ajout bouton 'créer details avec fonction 'creatDetails' de recherche DB en vue de news-details
-//        $addDetails = Action::new('addDetails', 'créer du détails', 'fa-brands fa-theme-isle')
-//            ->linkToCrudAction('creatDetails')
-//            ->addCssClass('btn btn-success')
-//            ->setIcon('fa fa-check-circle');
-
-        // Je décide de modifier mes acitons de base sur le controller Contenus
+    {        // Je décide de modifier mes acitons de base sur le controller Contenus
         return parent::configureActions($actions)
             // J'enleve le bouton sauver et retourner à la liste dans la page de création
             ->remove(Crud::PAGE_NEW, Action::SAVE_AND_RETURN)
             // J'ajoute le bouton pour remplacer l'autre save and continue qui permet d'aller dans l'édition du contenu
-            ->add(Crud::PAGE_NEW, Action::SAVE_AND_CONTINUE)//   ->add(Crud::PAGE_INDEX, $addDetails)
-            ;
+            ->add(Crud::PAGE_NEW, Action::SAVE_AND_CONTINUE);//   ->add(Crud::PAGE_INDEX, $addDetails);
     }
-
     public function configureCrud(Crud $crud): Crud
-    {
+    { //ConfigureCrud( ): configuration des résultats de recherche et d’affichage
         return parent::configureCrud($crud)
             ->setEntityLabelInPlural('Contenus')
             ->setEntityLabelInSingular('Contenu')
@@ -86,28 +77,6 @@ class ContenusCrudController extends AbstractCrudController
 
 
 //          Base pour les news
-            } elseif ($contenu && $contenu->getType() === Contenus::TYPE_NewsGTI) {
-            yield FormField::addTab("Page commune");
-
-            yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)
-                ->setLabel('image 370x290 ou 672x713 - titre important pour référencement')
-                ->setEntryIsComplex(true)
-                ->setFormTypeOptions([
-                    'by_reference' => false,])
-                ->setColumns(12)
-                ->setTemplatePath('fields/images.html.twig');
-            yield SlugField::new('slug')->setTargetFieldName('titre1');
-                yield TextField::new('titre1')->setLabel('Titre principal');
-            yield TextField::new('titre2')->setLabel('Date')->hideOnIndex();
-            yield TextEditorField::new('texte1')->setLabel('Texte principal')->hideOnIndex()->setTemplatePath('fields/raw.html.twig');
-
-            yield FormField::addTab("Détail environnant");
-            yield TextField::new('titre3')->setLabel('Auteur')->hideOnIndex();
-            yield TextEditorField::new('texte2')->setLabel('Fonction')->hideOnIndex();
-            yield TextEditorField::new('texte3')->setLabel('Contenu')->hideOnIndex();
-            yield ArrayField::new('liste')->setLabel(' Liste d\'éléments supplémentaires')->hideOnIndex();
-
-
             } elseif ($contenu && $contenu->getType() === Contenus::TYPE_ServicesGTI) {
                 yield FormField::addTab("Page commune");
 
@@ -319,7 +288,7 @@ class ContenusCrudController extends AbstractCrudController
         yield AssociationField::new('pages')->autocomplete()
             ->setTemplatePath('fields/tags.html.twig')
             ->setTextAlign(TextAlign::LEFT);
-        yield ChoiceField::new('type')->setDisabled($pageName === Action::EDIT)
+        yield ChoiceField::new('type')
             ->setChoices(Contenus::TYPES);
         yield BooleanField::new('publier')->renderAsSwitch();
         yield DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Dernière modification');

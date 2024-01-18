@@ -14,10 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\HasLifecycleCallbacks]
 class Contenus
 {
-
-    public const TYPE_NewsGTI= 'NewsGTI';
     public const TYPE_ServicesGTI= 'ServicesGTI';
-
     public const TYPE_PortefolioGTI= 'PortefolioGTI';
     public const TYPE_COMPTEURS = 'compteurs';
     public const TYPE_TARIFS = 'tarifs';
@@ -36,14 +33,12 @@ class Contenus
     public const TYPE_PHOTOGP = 'BlockPhotos';
     public const TYPE_SERVICEDETAIL= '6clefsServiceDetails';
 
-
     public const TYPES = [
-        'NewsGti' => self::TYPE_NewsGTI,
-        'ServicesGti' => self::TYPE_ServicesGTI,
-        'PortefolioGTI' => self::TYPE_PortefolioGTI,
         'News' => self::TYPE_BLOGN,
         'Folio' => self::TYPE_BLOGF,
         'Service' => self::TYPE_BLOGS,
+        'ServicesGti' => self::TYPE_ServicesGTI,
+        'PortefolioGTI' => self::TYPE_PortefolioGTI,
         'Compteurs' => self::TYPE_COMPTEURS,
         '3 Services' => self::TYPE_3SERVICES,
         '3 Services PRO' => self::TYPE_3SERVICESPRO,

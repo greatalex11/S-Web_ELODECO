@@ -16,10 +16,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use DateTrait;
     
-    public const ROLE_CLIENT = 'client';
-    public const ROLE_ARTISAN = 'artisan';
-    public const ROLE_ADMIN = 'amdin';
-    public const ROLE_SUPER_ADMIN = 'superadmin';
+    public const ROLE_CLIENT = 'ROLE_CLIENT';
+    public const ROLE_ARTISAN = 'ROLE_ARTISAN';
+    public const ROLE_ADMIN = 'ROLE_ADMIN';
+    public const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
 
     public const ROLES = [
         "Client" => self::ROLE_CLIENT,

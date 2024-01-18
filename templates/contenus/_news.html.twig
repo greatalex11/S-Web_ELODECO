@@ -19,14 +19,17 @@
                 <p> {{ new.Titre2 }}</p>
             </div>
         </div>
-        <div class="news-one__content text-break">
-
-            <h3 class="news-one__title ">
-                <a href="{{ path('app_news_details',{slug: new.slug}) }}">{{ new.Titre1 }}</a>
-            </h3>
-            <p class="news-one__text">{{ new.Texte1|striptags|u.truncate(150,'...',false)|raw }}</p>
-            <a href="{{ path('app_news_details',{slug: new.slug}) }}"
-               class="news-one__btn">Plus d'articles</a>
+        <div class="news-one__content text-break" style="display: flex; flex-direction: column ;justify-content: space-between">
+            <div>
+                <h3 class="news-one__title" style="text-align: left">
+                    <a href="{{ path('app_news_details',{slug: new.slug}) }}">{{ new.Titre1 }}</a>
+                </h3>
+                <p class="news-one__text" style="text-align: left">{{ new.Texte1|striptags|u.truncate(150,'...',false)|raw }}</p>
+            </div>
+            <div>
+                <a style="align-items: baseline" href="{{ path('app_news_details',{slug: new.slug}) }}"
+                   class="news-one__btn">Voir tout</a>
+            </div>
         </div>
     </div>
 </div>

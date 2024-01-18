@@ -27,7 +27,8 @@ class ContenusRepository extends ServiceEntityRepository
 
 
 // -------------------------------------------------------------------------------------------------  Home - All blocks
-    public function findByPagesName(string $pageName, int $maxResults = 10): array
+
+    public function findByPagesName(string $pageName, int $maxResults = 25): array
     {
         return $this->createQueryBuilder('c')
             ->join("c.pages", "p")
@@ -40,7 +41,8 @@ class ContenusRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findByType(array $types = [], int $maxResults = 10): array
+    // recherche des NEWS - where publier = 1 et par type (donné en param)
+    public function findByType(array $types = [], int $maxResults = 9): array
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.publier = 1')
