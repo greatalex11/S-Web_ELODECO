@@ -266,88 +266,89 @@
             <div class="container">
                 {% for servicesPRO in home %}
                     {% if servicesPRO.type == '3ServicesPRO' %}
-
-                            <div class="row">
-                                <div class="col-xl-7">
-                                    <div class="section-title text-left">
-                                        <span class="section-title__tagline">{{ servicesPRO.liste[0]}}</span>
-                                        <h2 class="section-title__title">{{ servicesPRO.liste[1]}}</h2>
-                                    </div>
-                                </div>
-                                <div class="col-xl-5">
-                                    <div class="services-two__top-text-box">
-                                        <p class="services-two__top-text">{{ servicesPRO.liste[2] }}</p>
-                                    </div>
+                        <div class="row">
+                            <div class="col-xl-7">
+                                <div class="section-title text-left">
+                                    <span class="section-title__tagline">{{ servicesPRO.liste[0] }}</span>
+                                    <h2 class="section-title__title">{{ servicesPRO.liste[1] }}</h2>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-duration="1500ms"
-                                     style="min-height: 454px">
-                                    <!--1er service-->
-                                    <div class="services-two__single">
-                                        <div class="services-two__single-bg"
-                                             style="background-image: url({{ asset('assets/images/services/services-two__single-bg.png') }}) ">
-                                        </div>
-                                        <div class="services-two__icon">
-                                            <span class="icon-house-design"></span>
-                                        </div>
-                                        <h2 class="services-two__title"><a
-                                                    href="{{ path('app_services_details') }}">{{ servicesPRO.titre1 }}</a>
-                                        </h2>
-                                        <p class="services-two__text-2">{{ servicesPRO.texte1|striptags|u.truncate(150,'...',false) }}</p>
-                                        <a href="{{ path('app_services_details') }}"
-                                           class="services-one__btn services-two__btn">En
-                                            savoir plus</a>
-                                    </div>
+                            <div class="col-xl-5">
+                                <div class="services-two__top-text-box">
+                                    <p class="services-two__top-text">{{ servicesPRO.liste[2] }}</p>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-duration="1500ms"
-                                     data-wow-delay="100ms" style="min-height: 454px">
-
-                                    <!--second service-->
-                                    <div class="services-two__single">
-                                        <div class="services-two__single-bg"
-                                             style="background-image: url({{ asset('assets/images/services/services-two__single-bg.png') }})"></div>
-                                        <div class="services-two__icon">
-                                            <span class="icon-kitchen"></span>
-                                        </div>
-                                        <h2 class="services-two__title">
-                                            <a href="{{ path('app_services_details') }}">{{ servicesPRO.titre2 }}</a>
-                                        </h2>
-                                        <p class="services-two__text-2">{{ servicesPRO.texte2|striptags|u.truncate(150,'...',false) }}</p>
-                                        <a href="{{ path('app_services_details') }}"
-                                           class="services-one__btn services-two__btn">En
-                                            savoir plus</a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 wow fadeInRight" data-wow-duration="1500ms"
-                                     data-wow-delay="200ms" style="min-height: 454px">
-
-                                    <!-3ème service-->
-                                    <div class="services-two__single">
-                                        <div class="services-two__single-bg"
-                                             style="background-image: url({{ asset('assets/images/services/services-two__single-bg.png') }})"></div>
-                                        <div class="services-two__icon">
-                                            <span class="icon-architect-3"></span>
-                                        </div>
-                                        <h2 class="services-two__title">
-                                            <a href="{{ path('app_services_details') }}">{{ servicesPRO.titre3 }}</a>
-                                        </h2>
-                                        <p class="services-two__text-2">{{ servicesPRO.texte3|striptags }}</p>
-                                        <a href="{{ path('app_services_details') }}"
-                                           class="services-one__btn services-two__btn">En savoir plus</a>
-                                    </div>
-                                </div>
-
                             </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-duration="1500ms"
+                                 style="min-height: 454px">
+                                <!--1er service-->
+                                <div class="services-two__single">
+                                    <div class="services-two__single-bg"
+                                         style="background-image: url({{ asset('assets/images/services/services-two__single-bg.png') }}) ">
+                                    </div>
+                                    <div class="services-two__icon">
+                                        <span class="icon-house-design"></span>
+                                    </div>
+                                    <h2 class="services-two__title">
+                                        {#                                      {{ dump(home) }} #}
+                                        {#   <a href="{{ path('app_services_details',{slug: service.slug}) }}">{{ servicesPRO.titre1 }}</a> #}
+                                        <a>{{ servicesPRO.titre1 }}</a>
+                                    </h2>
+                                    <p class="services-two__text-2">{{ servicesPRO.texte1|striptags|u.truncate(150,'...',false) }}</p>
+                                    {#  <a href="{{ path('app_services_details') }}" #}
+                                    <a class="services-one__btn services-two__btn">En
+                                        savoir plus</a>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-duration="1500ms"
+                                 data-wow-delay="100ms" style="min-height: 454px">
+
+                                <!--second service-->
+                                <div class="services-two__single">
+                                    <div class="services-two__single-bg"
+                                         style="background-image: url({{ asset('assets/images/services/services-two__single-bg.png') }})"></div>
+                                    <div class="services-two__icon">
+                                        <span class="icon-kitchen"></span>
+                                    </div>
+                                    <h2 class="services-two__title">
+                                        {#   <a href="{{ path('app_services_details') }}">{{ servicesPRO.titre2 }}</a> #}
+                                        <a>{{ servicesPRO.titre2 }}</a>
+                                    </h2>
+                                    <p class="services-two__text-2">{{ servicesPRO.texte2|striptags|u.truncate(150,'...',false) }}</p>
+                                    {#                                    <a href="{{ path('app_services_details') }}" #}
+                                    <a class="services-one__btn services-two__btn">En
+                                        savoir plus</a>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 wow fadeInRight" data-wow-duration="1500ms"
+                                 data-wow-delay="200ms" style="min-height: 454px">
+
+                                <!-3ème service-->
+                                <div class="services-two__single">
+                                    <div class="services-two__single-bg"
+                                         style="background-image: url({{ asset('assets/images/services/services-two__single-bg.png') }})"></div>
+                                    <div class="services-two__icon">
+                                        <span class="icon-architect-3"></span>
+                                    </div>
+                                    <h2 class="services-two__title">
+                                        {#  <a href="{{ path('app_services_details') }}">{{ servicesPRO.titre3 }}</a> #}
+                                        <a>{{ servicesPRO.titre3 }}</a>
+                                    </h2>
+                                    <p class="services-two__text-2">{{ servicesPRO.texte3|striptags }}</p>
+                                    {#                                    <a href="{{ path('app_services_details') }}" #}
+                                    <a class="services-one__btn services-two__btn">En savoir plus</a>
+                                </div>
+                            </div>
+                        </div>
                     {% endif %}
                 {% endfor %}
             </div>
         </section>
         <!--  SECTION  GROUPE BLOCK PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px  -->
 
-                            <!--                                          statique                                                         -->
+        <!--                                          statique                                                         -->
         <section class="project-two">
             <div class="project-two__container">
                 <div class="section-title text-center">
@@ -448,8 +449,6 @@
         </section>
 
 
-
-
         <!--  SECTION  GROUPE BLOCK PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px  -->
 
         <!--                                          statique                                                         -->
@@ -473,8 +472,8 @@
                                              alt="{{ image6[0].titre|default('image') }}">
 
                                         <div class="project-two__architect">
-                                            <p>{{blocksPhotos.liste[0]}}</p>
-                                            <h3><a href="portfolio-details.html">{{blocksPhotos.titre1}}</a></h3>
+                                            <p>{{ blocksPhotos.liste[0] }}</p>
+                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.titre1 }}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -484,10 +483,10 @@
                                 <div class="project-two__single">
                                     <div class="project-two__img">
                                         <img src="{{ vich_uploader_asset(image6[1]) }}"
-                                             alt="{{ image6[1].titre|default('image')  }}">
+                                             alt="{{ image6[1].titre|default('image') }}">
                                         <div class="project-two__architect">
-                                            <p>{{blocksPhotos.liste[1]}}</p>
-                                            <h3><a href="portfolio-details.html">{{blocksPhotos.titre2}}</a></h3>
+                                            <p>{{ blocksPhotos.liste[1] }}</p>
+                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.titre2 }}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -497,10 +496,10 @@
                                 <div class="project-two__single">
                                     <div class="project-two__img">
                                         <img src="{{ vich_uploader_asset(image6[2]) }}"
-                                             alt="{{ image6[2].titre|default('image')  }}">
+                                             alt="{{ image6[2].titre|default('image') }}">
                                         <div class="project-two__architect">
-                                            <p>{{blocksPhotos.liste[2]}}</p>
-                                            <h3><a href="portfolio-details.html">{{blocksPhotos.titre3}}</a></h3>
+                                            <p>{{ blocksPhotos.liste[2] }}</p>
+                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.titre3 }}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -511,10 +510,10 @@
                                 <div class="project-two__single">
                                     <div class="project-two__img">
                                         <img src="{{ vich_uploader_asset(image6[3]) }}"
-                                             alt="{{ image6[3].titre|default('image')  }}">
+                                             alt="{{ image6[3].titre|default('image') }}">
                                         <div class="project-two__architect">
-                                            <p>{{blocksPhotos.liste[3]}}</p>
-                                            <h3><a href="portfolio-details.html">{{blocksPhotos.texte1}}</a></h3>
+                                            <p>{{ blocksPhotos.liste[3] }}</p>
+                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.texte1 }}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -524,10 +523,10 @@
                                 <div class="project-two__single">
                                     <div class="project-two__img">
                                         <img src="{{ vich_uploader_asset(image6[4]) }}"
-                                             alt="{{ image6[4].titre|default('image')  }}">
+                                             alt="{{ image6[4].titre|default('image') }}">
                                         <div class="project-two__architect">
-                                            <p>{{blocksPhotos.liste[4]}}</p>
-                                            <h3><a href="portfolio-details.html">{{blocksPhotos.texte2}}</a></h3>
+                                            <p>{{ blocksPhotos.liste[4] }}</p>
+                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.texte2 }}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -540,8 +539,8 @@
                                              alt="{{ image6[5].titre|default('image') }}">
 
                                         <div class="project-two__architect">
-                                            <p>{{blocksPhotos.liste[5]}}</p>
-                                            <h3><a href="portfolio-details.html">{{blocksPhotos.texte3}}</a></h3>
+                                            <p>{{ blocksPhotos.liste[5] }}</p>
+                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.texte3 }}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -555,7 +554,7 @@
         <!--  SECTION 6 - compteur de chiffre  -->
         <section class="counters-one counters-one-martopminus" style="background-color: {{ Apps.couleuractuellebg }}">
             <div class="counters-one-pattern">
-{#                 style="background-image: url({{ asset('assets/images/pattern/counter-one-pattern.min.jpg') }})">#}
+                {#                 style="background-image: url({{ asset('assets/images/pattern/counter-one-pattern.min.jpg') }})"> #}
             </div>
             <div class="container">
                 {% for blocks in home %}
@@ -596,144 +595,150 @@
                 {% endfor %}
             </div>
         </section>
- <!--          Fin des compteurs                                                                                                 -->
+        <!--          Fin des compteurs                                                                                                 -->
         <!--   SECTION 7  : offre sur mesure  -->
         <section id="pricing-tab" class="pricing-one ">
             <div class="container">
                 {% for pricing in home %}
-                {% if pricing.type == 'blogAboutConceptPrix'%}
-                <div class="pricing-tabs">
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="section-title text-left">
-                                <span class="section-title__tagline">{{ pricing.titre1| default ('Etablissement du budget') |striptags }}></span>
-                                <h2 class="section-title__title">{{ pricing.titre1| default ('Choisissez votre offre et vos options') |striptags }}</h2>
+                    {% if pricing.type == 'blogAboutConceptPrix' %}
+                        <div class="pricing-tabs">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="section-title text-left">
+                                        <span class="section-title__tagline">{{ pricing.titre1| default ('Etablissement du budget') |striptags }}></span>
+                                        <h2 class="section-title__title">{{ pricing.titre1| default ('Choisissez votre offre et vos options') |striptags }}</h2>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="pricing-one__content">
+                                        <p class="pricing-one__text">{{ pricing.texte3| default ('atout 1') |striptags }}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="pricing-one__content">
-                                <p class="pricing-one__text">{{ pricing.texte3| default ('atout 1') |striptags }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="pricing-one__left">
-                                <ul class="pricing-one__points list-unstyled">
-                                    <li><span>/</span> {{ pricing.texte1| default ('atout 1') |striptags }}</li>
-                                    <li><span>/</span> {{ pricing.texte2| default ('atout 2') |striptags }}</li>
-                                </ul>
-                                <ul class="pricing-one__checks-list list-unstyled">
-                                    {% set li=pricing.liste %}
-                                    <li>
-                                        <div class="pricing-one__checks-icon">
-                                            <i class="icon-tick"></i>
-                                        </div>
-                                        <div class="pricing-one__checks-text-box">
-                                            <h3 class="pricing-one__checks-title">{{ li[0]| default ('Epures') |striptags }}</h3>
-                                            <p class="pricing-one__checks-text"> {{ li[1]| default ('Plan 3d') |striptags }} </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="pricing-one__checks-icon">
-                                            <i class="icon-tick"></i>
-                                        </div>
-                                        <div class="pricing-one__checks-text-box">
-                                            <h3 class="pricing-one__checks-title">{{ li[2]| default ('Assistance') |striptags }}</h3>
-                                            <p class="pricing-one__checks-text">{{ li[3]| default ('Des idées') |striptags }}</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="pricing-one__checks-icon">
-                                            <i class="icon-tick"></i>
-                                        </div>
-                                        <div class="pricing-one__checks-text-box">
-                                            <h3 class="pricing-one__checks-title">{{ li[4]| default ('conseil') |striptags }}</h3>
-                                            <p class="pricing-one__checks-text">{{ li[5]| default ('professionnel') |striptags }}</p>
-                                        </div>
-                                    </li>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="pricing-one__left">
+                                        <ul class="pricing-one__points list-unstyled">
+                                            <li><span>/</span> {{ pricing.texte1| default ('atout 1') |striptags }}</li>
+                                            <li><span>/</span> {{ pricing.texte2| default ('atout 2') |striptags }}</li>
+                                        </ul>
+                                        <ul class="pricing-one__checks-list list-unstyled">
+                                            {% set li=pricing.liste %}
+                                            <li>
+                                                <div class="pricing-one__checks-icon">
+                                                    <i class="icon-tick"></i>
+                                                </div>
+                                                <div class="pricing-one__checks-text-box">
+                                                    <h3 class="pricing-one__checks-title">{{ li[0]| default ('Epures') |striptags }}</h3>
+                                                    <p class="pricing-one__checks-text"> {{ li[1]| default ('Plan 3d') |striptags }} </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="pricing-one__checks-icon">
+                                                    <i class="icon-tick"></i>
+                                                </div>
+                                                <div class="pricing-one__checks-text-box">
+                                                    <h3 class="pricing-one__checks-title">{{ li[2]| default ('Assistance') |striptags }}</h3>
+                                                    <p class="pricing-one__checks-text">{{ li[3]| default ('Des idées') |striptags }}</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="pricing-one__checks-icon">
+                                                    <i class="icon-tick"></i>
+                                                </div>
+                                                <div class="pricing-one__checks-text-box">
+                                                    <h3 class="pricing-one__checks-title">{{ li[4]| default ('conseil') |striptags }}</h3>
+                                                    <p class="pricing-one__checks-text">{{ li[5]| default ('professionnel') |striptags }}</p>
+                                                </div>
+                                            </li>
 
-                                </ul>
-                            </div>
-                        </div>
+                                        </ul>
+                                    </div>
+                                </div>
 
-                        <div class="col-xl-6 ">
-                            <div class="pricing-one__table-box">
-                                <div class="pricing-one__right">
-                                    {% for prix in home %}
-                                    {% if prix.type =="tarifs" %}
-                                    <div class="pr-content">
-                                        <div class="pr-tab active-tab" id="tab-2" style="max-height: 80%">
-                                            <div class="pricing-one__table-box-single">
-                                                <div class="pricing-one__table">
-                                                    <div class="pricing-one__rate-box">
-                                                        <h2><span class="pricing-one__dollar"></span>{{ prix.titre1| default ('Tarif') |striptags }} <span>/
-                                                                {{ prix.titre2| default ('sur demande') |striptags }} </span></h2>
-                                                    </div>
+                                <div class="col-xl-6 ">
+                                    <div class="pricing-one__table-box">
+                                        <div class="pricing-one__right">
+                                            {% for prix in home %}
+                                            {% if prix.type =="tarifs" %}
+                                            <div class="pr-content">
+                                                <div class="pr-tab active-tab" id="tab-2" style="max-height: 80%">
+                                                    <div class="pricing-one__table-box-single">
+                                                        <div class="pricing-one__table">
+                                                            <div class="pricing-one__rate-box">
+                                                                <h2>
+                                                                    <span class="pricing-one__dollar"></span>{{ prix.titre1| default ('Tarif') |striptags }}
+                                                                    <span>/
+                                                                {{ prix.titre2| default ('sur demande') |striptags }} </span>
+                                                                </h2>
+                                                            </div>
 
-                                                    <div class="pricing-one__details-box">
-                                                        <h3 class="pricing-one__details-title"> {{ prix.titre3| default ('Offre complète') |striptags }} </h3>
-                                                        <ul class="list-unstyled">
-                                                            {% set li=prix.liste %}
-                                                            <li>{{ li[1]| default ('professionnel') |striptags | default ('Etude de votre demande') }}</li>
-                                                            <li>{{ li[2]| default ('professionnel') |striptags | default ('Plan 3D') }}</li>
-                                                            <li>{{ li[3]| default ('professionnel') |striptags | default ('Proposition et solution') }}</li>
-                                                            <li>{{ li[4]| default ('professionnel') |striptags | default ('sélection des offres') }}</li>
-                                                            <li>{{ li[5]| default ('professionnel') |striptags | default ('engagement') }}</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="pricing-one__btn-box">
-                                                        <a href="{{ path('app_contact') }}"
-                                                           class="pricing-one__btn thm-btn"  style="background-color: {{ Apps.couleuractuellebg }}">Contactez moi</a>
+                                                            <div class="pricing-one__details-box">
+                                                                <h3 class="pricing-one__details-title"> {{ prix.titre3| default ('Offre complète') |striptags }} </h3>
+                                                                <ul class="list-unstyled">
+                                                                    {% set li=prix.liste %}
+                                                                    <li>{{ li[1]| default ('professionnel') |striptags | default ('Etude de votre demande') }}</li>
+                                                                    <li>{{ li[2]| default ('professionnel') |striptags | default ('Plan 3D') }}</li>
+                                                                    <li>{{ li[3]| default ('professionnel') |striptags | default ('Proposition et solution') }}</li>
+                                                                    <li>{{ li[4]| default ('professionnel') |striptags | default ('sélection des offres') }}</li>
+                                                                    <li>{{ li[5]| default ('professionnel') |striptags | default ('engagement') }}</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="pricing-one__btn-box">
+                                                                <a href="{{ path('app_contact') }}"
+                                                                   class="pricing-one__btn thm-btn"
+                                                                   style="background-color: {{ Apps.couleuractuellebg }}">Contactez
+                                                                    moi</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
+
+                                                {#                                        <div class="pr-tab .d-none" id="tab-1"> #}
+                                                {#                                            <div class="pricing-one__table-box-single .d-none"> #}
+                                                {#                                                <div class="pricing-one__table .d-none "> #}
+                                                {#                                                    <div class="pricing-one__rate-box .d-none"> #}
+                                                {#                                                        <h2><span class="pricing-one__dolar">€</span>450<span>/ #}
+                                                {#                                                                forfait</span></h2> #}
+                                                {#                                                    </div> #}
+                                                {#                                                    <div class="pricing-one__details-box"> #}
+                                                {#                                                        <h3 class="pricing-one__details-title">Forfait de base</h3> #}
+                                                {#                                                        <ul class="list-unstyled"> #}
+                                                {#                                                            <li>Visualisation 3D</li> #}
+                                                {#                                                            <li>Modification</li> #}
+                                                {#                                                            <li>Choix de matériaux</li> #}
+                                                {#                                                            <li>Couleur et éclairage</li> #}
+                                                {#                                                        </ul> #}
+                                                {#                                                    </div> #}
+                                                {#                                                    <div class="pricing-one__btn-box"> #}
+                                                {#                                                        <a href="{{ path('app_contact') }}" #}
+                                                {#                                                           class="pricing-one__btn thm-btn">Contactez moi</a> #}
+                                                {#                                                    </div> #}
+                                                {#                                                </div> #}
+                                                {#                                            </div> #}
                                             </div>
                                         </div>
 
-                {#                                        <div class="pr-tab .d-none" id="tab-1">#}
-                {#                                            <div class="pricing-one__table-box-single .d-none">#}
-                {#                                                <div class="pricing-one__table .d-none ">#}
-                {#                                                    <div class="pricing-one__rate-box .d-none">#}
-                {#                                                        <h2><span class="pricing-one__dolar">€</span>450<span>/#}
-                {#                                                                forfait</span></h2>#}
-                {#                                                    </div>#}
-                {#                                                    <div class="pricing-one__details-box">#}
-                {#                                                        <h3 class="pricing-one__details-title">Forfait de base</h3>#}
-                {#                                                        <ul class="list-unstyled">#}
-                {#                                                            <li>Visualisation 3D</li>#}
-                {#                                                            <li>Modification</li>#}
-                {#                                                            <li>Choix de matériaux</li>#}
-                {#                                                            <li>Couleur et éclairage</li>#}
-                {#                                                        </ul>#}
-                {#                                                    </div>#}
-                {#                                                    <div class="pricing-one__btn-box">#}
-                {#                                                        <a href="{{ path('app_contact') }}"#}
-                {#                                                           class="pricing-one__btn thm-btn">Contactez moi</a>#}
-                {#                                                    </div>#}
-                {#                                                </div>#}
-                {#                                            </div>#}
-                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
                                     </div>
-
-                                    {% endif %}
-                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endif %}
+                    {% endif %}
                 {% endfor %}
-         </div>
-  </section>
+            </div>
+        </section>
 
         <!--    SECTION 8 : confiance  -->
         <section class="trust-experts">
             <div class="trust-experts-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-                 style="background-image: url({{ vich_uploader_asset(image1)}})"></div>
+                 style="background-image: url({{ vich_uploader_asset(image1) }})"></div>
             <div class="container">
                 <div class="trust-experts__inner">
-                    <h2 class="trust-experts__text">{{theme.theme.titre1Home|default('Le choix de l\'expert') }}</h2>
-                    <a href="{{ path("app_about") }}" class="trust-experts__btn thm-btn" style="background-color: {{ Apps.couleuractuellebg }}">A propos</a>
+                    <h2 class="trust-experts__text">{{ theme.theme.titre1Home|default('Le choix de l\'expert') }}</h2>
+                    <a href="{{ path("app_about") }}" class="trust-experts__btn thm-btn"
+                       style="background-color: {{ Apps.couleuractuellebg }}">A propos</a>
                 </div>
             </div>
         </section>
@@ -761,113 +766,120 @@
             <div class="container">
                 {% for contenu in home %}
                     {% if contenu.type =="blogTemoins" %}
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="they-trusted__left">
-                            <div class="section-title text-left">
-                                <span class="section-title__tagline">Ils m'ont fait confiance</span>
-                                <h2 class="section-title__title">Clients satisfaits</h2>
-                            </div>
-                            <p class="they-trusted__text">En quelques mots voici quelques uns de nos clients </p>
-                            <ul class="list-unstyled they-trusted__list">
-                                <li>
-                                    <div class="text">
-                                        <p class="section-title__tagline"> {{ contenu.titre1|striptags| default('Un témoin qualité') }}</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="they-trusted__left">
+                                    <div class="section-title text-left">
+                                        <span class="section-title__tagline">Ils m'ont fait confiance</span>
+                                        <h2 class="section-title__title">Clients satisfaits</h2>
                                     </div>
-                                </li>
-                                <li>
-                                    <div class="text mt-1">
-                                        <p class="icon-tick text"> {{ contenu.titre2|striptags| default('Client satisfait') }}</p>
+                                    <p class="they-trusted__text">En quelques mots voici quelques uns de nos
+                                        clients </p>
+                                    <ul class="list-unstyled they-trusted__list">
+                                        <li>
+                                            <div class="text">
+                                                <p class="section-title__tagline"> {{ contenu.titre1|striptags| default('Un témoin qualité') }}</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="text mt-1">
+                                                <p class="icon-tick text"> {{ contenu.titre2|striptags| default('Client satisfait') }}</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="icon">
+                                                <span></span>
+                                            </div>
+                                            <div class="text">
+                                                <a href="{{ path("app_about") }}">
+                                                    <p class="fw-bolder mt-3">{{ contenu.texte1|striptags| u.truncate(150,'...',false)| default('La confiance') }}</p>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    {% set image8 = contenu.images %}
+                                    <div class="they-trusted__projects-complete">
+                                        <div class="they-trusted__projects-complete-img">
+                                            <img src="{{ vich_uploader_asset(image8[0]) }}"
+                                                 alt="{{ image8[0].titre|default('image') }}">
+                                        </div>
+                                        <div class="they-trusted__projects-complete-count-box">
+                                            <h3>Multitude</h3>
+                                            <p class="they-trusted__projects-complete-text">De projets</p>
+                                        </div>
                                     </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span></span>
-                                    </div>
-                                    <div class="text">
-                                        <a href="{{ path("app_about") }}">
-                                            <p class="fw-bolder mt-3">{{ contenu.texte1|striptags| u.truncate(150,'...',false)| default('La confiance') }}</p></a>
-                                    </div>
-                                </li>
-                            </ul>
-                            {% set image8 = contenu.images %}
-                            <div class="they-trusted__projects-complete">
-                                <div class="they-trusted__projects-complete-img">
-                                    <img src="{{ vich_uploader_asset(image8[0]) }}"
-                                         alt="{{ image8[0].titre|default('image') }}">
-                                </div>
-                                <div class="they-trusted__projects-complete-count-box">
-                                    <h3>Multitude</h3>
-                                    <p class="they-trusted__projects-complete-text">De projets</p>
-                                </div>
-                            </div>
 
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="they-trusted__brand">
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="they-trusted__brand-single">
-                                        <div class="they-trusted__brand-main-img">
-                                            <a href="#"> <img src="{{ vich_uploader_asset(image8[1]) }}"
-                                                              alt="{{ image8[1].titre|default('image') }}"></a>
-                                        </div>
-                                        <div class="they-trusted__brand-overly">
-                                            <a href="#"><img src="{{ vich_uploader_asset(image8[1]) }}"
-                                                             alt="{{ image8[1].titre|default('image') }}"></a>
-                                        </div>
-                                        <div class="they-trusted__brand-prattern"
-                                             style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="they-trusted__brand-single">
-                                        <div class="they-trusted__brand-main-img">
-                                            <a href="#"><img src="{{ vich_uploader_asset(image8[2]) }}"
-                                                             alt="{{ image8[2].titre|default('image') }}"></a>
+                            </div>
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="they-trusted__brand">
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6">
+                                            <div class="they-trusted__brand-single">
+                                                <div class="they-trusted__brand-main-img">
+                                                    <a href="#"> <img src="{{ vich_uploader_asset(image8[1]) }}"
+                                                                      alt="{{ image8[1].titre|default('image') }}"></a>
+                                                </div>
+                                                <div class="they-trusted__brand-overly">
+                                                    <a href="#"><img src="{{ vich_uploader_asset(image8[1]) }}"
+                                                                     alt="{{ image8[1].titre|default('image') }}"></a>
+                                                </div>
+                                                <div class="they-trusted__brand-prattern"
+                                                     style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="they-trusted__brand-overly">
-                                            <a href="#"><img src="{{ vich_uploader_asset(image8[2])}}" alt="{{ image8[2].titre|default('image') }}">
-                                            </a>
+                                        <div class="col-xl-6 col-lg-6 col-md-6">
+                                            <div class="they-trusted__brand-single">
+                                                <div class="they-trusted__brand-main-img">
+                                                    <a href="#"><img src="{{ vich_uploader_asset(image8[2]) }}"
+                                                                     alt="{{ image8[2].titre|default('image') }}"></a>
+                                                </div>
+                                                <div class="they-trusted__brand-overly">
+                                                    <a href="#"><img src="{{ vich_uploader_asset(image8[2]) }}"
+                                                                     alt="{{ image8[2].titre|default('image') }}">
+                                                    </a>
+                                                </div>
+                                                <div class="they-trusted__brand-prattern"
+                                                     style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="they-trusted__brand-prattern"
-                                             style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
+                                        <div class="col-xl-6 col-lg-6 col-md-6">
+                                            <div class="they-trusted__brand-single they-trusted__brand-single-mb-0">
+                                                <div class="they-trusted__brand-main-img">
+                                                    <a href="#"> <img src="{{ vich_uploader_asset(image8[3]) }}"
+                                                                      alt="{{ image8[3].titre|default('image') }}"></a>
+                                                </div>
+                                                <div class="they-trusted__brand-overly">
+                                                    <a href="#"><img src="{{ vich_uploader_asset(image8[3]) }}"
+                                                                     alt="{{ image8[3].titre|default('image') }}"></a>
+                                                </div>
+                                                <div class="they-trusted__brand-prattern"
+                                                     style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="they-trusted__brand-single they-trusted__brand-single-mb-0">
-                                        <div class="they-trusted__brand-main-img">
-                                            <a href="#"> <img src="{{ vich_uploader_asset(image8[3])}}" alt="{{ image8[3].titre|default('image') }}"></a>
-                                        </div>
-                                        <div class="they-trusted__brand-overly">
-                                            <a href="#"><img src="{{ vich_uploader_asset(image8[3])}}" alt="{{ image8[3].titre|default('image') }}"></a>
-                                        </div>
-                                        <div class="they-trusted__brand-prattern"
-                                             style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="they-trusted__brand-single they-trusted__brand-single-mb-0">
-                                        <div class="they-trusted__brand-main-img">
-                                            <a href="#"><img src="{{ vich_uploader_asset(image8[4])}}" alt="{{ image8[4].titre|default('image') }}"></a>
-                                        </div>
-                                        <div class="they-trusted__brand-overly">
-                                            <a href="#"><img src="{{ vich_uploader_asset(image8[4])}}" alt="{{ image8[4].titre|default('image') }}"></a>
-                                        </div>
-                                        <div class="they-trusted__brand-prattern"
-                                             style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
+                                        <div class="col-xl-6 col-lg-6 col-md-6">
+                                            <div class="they-trusted__brand-single they-trusted__brand-single-mb-0">
+                                                <div class="they-trusted__brand-main-img">
+                                                    <a href="#"><img src="{{ vich_uploader_asset(image8[4]) }}"
+                                                                     alt="{{ image8[4].titre|default('image') }}"></a>
+                                                </div>
+                                                <div class="they-trusted__brand-overly">
+                                                    <a href="#"><img src="{{ vich_uploader_asset(image8[4]) }}"
+                                                                     alt="{{ image8[4].titre|default('image') }}"></a>
+                                                </div>
+                                                <div class="they-trusted__brand-prattern"
+                                                     style="background-image: url({{ asset("assets/images/pattern/they-trusted-brand-pattern.png") }})">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                {% endif %}
+                    {% endif %}
                 {% endfor %}
             </div>
         </section>
@@ -877,192 +889,192 @@
         <section class="pricing-one">
             <div class="container">
                 <div class="pricing-tabs">
-{#                    <div class="row">#}
-{#                        <div class="col-xl-6">#}
-{#                            <div class="section-title text-left">#}
-{#                                <span class="section-title__tagline">Etablissement du budget</span>#}
-{#                                <h2 class="section-title__title">Choisissez votre offre et vos options</h2>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="col-xl-6">#}
-{#                            <div class="pricing-one__content ">#}
-{#                                <p class="pricing-one__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit#}
-{#                                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat#}
-{#                                    volutpat.</p>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
+                    {#                    <div class="row"> #}
+                    {#                        <div class="col-xl-6"> #}
+                    {#                            <div class="section-title text-left"> #}
+                    {#                                <span class="section-title__tagline">Etablissement du budget</span> #}
+                    {#                                <h2 class="section-title__title">Choisissez votre offre et vos options</h2> #}
+                    {#                            </div> #}
+                    {#                        </div> #}
+                    {#                        <div class="col-xl-6"> #}
+                    {#                            <div class="pricing-one__content "> #}
+                    {#                                <p class="pricing-one__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit #}
+                    {#                                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat #}
+                    {#                                    volutpat.</p> #}
+                    {#                            </div> #}
+                    {#                        </div> #}
+                    {#                    </div> #}
 
                     <!--                                                            2 MODULES D'OFFRE                                                  -->
 
                     <!--                                                            OFFRE DE GAUCHE                                                  -->
-{#                    <div class="row .d-none">#}
-{#                        <div class="col-xl-6 mr-5 ">#}
-{#                            <div class="pricing-one__left ">#}
-{#                                <ul class="pricing-one__points list-unstyled">#}
-{#                                    <li><span>/</span> La meilleure solution</li>#}
-{#                                    <li><span>/</span> Une expertise à vos côtés</li>#}
-{#                                </ul>#}
-{#                                <ul class="pricing-one__checks-list list-unstyled">#}
-{#                                    <li>#}
-{#                                        <div class="pricing-one__checks-icon">#}
-{#                                            <i class="icon-tick"></i>#}
-{#                                        </div>#}
-{#                                        <div class="pricing-one__checks-text-box">#}
-{#                                            <h3 class="pricing-one__checks-title">Epures</h3>#}
-{#                                            <p class="pricing-one__checks-text">De l'idée principale aux objectifs à#}
-{#                                                atteindre.</p>#}
-{#                                        </div>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                        <div class="pricing-one__checks-icon">#}
-{#                                            <i class="icon-tick"></i>#}
-{#                                        </div>#}
-{#                                        <div class="pricing-one__checks-text-box">#}
-{#                                            <h3 class="pricing-one__checks-title">Plan 3D</h3>#}
-{#                                            <p class="pricing-one__checks-text">L'idée devient progressivement une#}
-{#                                                réalité.#}
-{#                                                L'expérience 3D permet déjà#}
-{#                                                de se projeter dans votre future habitation</p>#}
-{#                                        </div>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                        <div class="pricing-one__checks-icon">#}
-{#                                            <i class="icon-tick"></i>#}
-{#                                        </div>#}
-{#                                        <div class="pricing-one__checks-text-box">#}
-{#                                            <h3 class="pricing-one__checks-title">Assistance</h3>#}
-{#                                            <p class="pricing-one__checks-text">Des artisans séléctionnés pour leurs#}
-{#                                                compétences et leur savoir-être réponderont à votre demande.</p>#}
-{#                                        </div>#}
-{#                                    </li>#}
-{#                                </ul>#}
-{#                            </div>#}
-{#                        </div>#}
+                    {#                    <div class="row .d-none"> #}
+                    {#                        <div class="col-xl-6 mr-5 "> #}
+                    {#                            <div class="pricing-one__left "> #}
+                    {#                                <ul class="pricing-one__points list-unstyled"> #}
+                    {#                                    <li><span>/</span> La meilleure solution</li> #}
+                    {#                                    <li><span>/</span> Une expertise à vos côtés</li> #}
+                    {#                                </ul> #}
+                    {#                                <ul class="pricing-one__checks-list list-unstyled"> #}
+                    {#                                    <li> #}
+                    {#                                        <div class="pricing-one__checks-icon"> #}
+                    {#                                            <i class="icon-tick"></i> #}
+                    {#                                        </div> #}
+                    {#                                        <div class="pricing-one__checks-text-box"> #}
+                    {#                                            <h3 class="pricing-one__checks-title">Epures</h3> #}
+                    {#                                            <p class="pricing-one__checks-text">De l'idée principale aux objectifs à #}
+                    {#                                                atteindre.</p> #}
+                    {#                                        </div> #}
+                    {#                                    </li> #}
+                    {#                                    <li> #}
+                    {#                                        <div class="pricing-one__checks-icon"> #}
+                    {#                                            <i class="icon-tick"></i> #}
+                    {#                                        </div> #}
+                    {#                                        <div class="pricing-one__checks-text-box"> #}
+                    {#                                            <h3 class="pricing-one__checks-title">Plan 3D</h3> #}
+                    {#                                            <p class="pricing-one__checks-text">L'idée devient progressivement une #}
+                    {#                                                réalité. #}
+                    {#                                                L'expérience 3D permet déjà #}
+                    {#                                                de se projeter dans votre future habitation</p> #}
+                    {#                                        </div> #}
+                    {#                                    </li> #}
+                    {#                                    <li> #}
+                    {#                                        <div class="pricing-one__checks-icon"> #}
+                    {#                                            <i class="icon-tick"></i> #}
+                    {#                                        </div> #}
+                    {#                                        <div class="pricing-one__checks-text-box"> #}
+                    {#                                            <h3 class="pricing-one__checks-title">Assistance</h3> #}
+                    {#                                            <p class="pricing-one__checks-text">Des artisans séléctionnés pour leurs #}
+                    {#                                                compétences et leur savoir-être réponderont à votre demande.</p> #}
+                    {#                                        </div> #}
+                    {#                                    </li> #}
+                    {#                                </ul> #}
+                    {#                            </div> #}
+                    {#                        </div> #}
 
 
-{#                        <!--                                               COLONNE DE DROITE AVEC CAROUSSEL                                                  -->#}
+                    {#                        <!--                                               COLONNE DE DROITE AVEC CAROUSSEL                                                  --> #}
 
-{#                        <div class="col-xl-6 ml-5">#}
-{#                            <div class="pricing-one__table-box ">#}
-{#                                <div class="pricing-one__right">#}
-{#                                    <div class="pr-content">#}
-{#                                        <!--                                                       Debut caroussel                                                    -->#}
-{#                                        <div id="myCarousel" class="carousel slide " style="width: 580px" data-bs-touch="false">#}
-{#                                            <div class="carousel-inner ">#}
-{#                                                <!--                                                        Offre 1                                                     -->#}
-{#                                                <div class="carousel-item active d-flex justify-content-center" >#}
-{#                                                    <div class="pr-tab active-tab" id="tab-2" >#}
-{#                                                        <div class="pricing-one__table-box-single "  style="width: 300px ; height: 450px">#}
-{#                                                            <div class="pricing-one__table">#}
-{#                                                                <div class="pricing-one__rate-box">#}
-{#                                                                    <h2><span class="pricing-one__dolar">555€</span>Tarif#}
-{#                                                                        1<span>/ sur demande</span></h2>#}
-{#                                                                </div>#}
-{#                                                                <div class="pricing-one__details-box">#}
-{#                                                                    <h3 class="pricing-one__details-title"> Offre#}
-{#                                                                        complète</h3>#}
-{#                                                                    <ul class="list-unstyled">#}
-{#                                                                        <li>Etude de votre demande</li>#}
-{#                                                                        <li>Plan 3D</li>#}
-{#                                                                        <li>Proposition & solutions</li>#}
-{#                                                                        <li>Selection des offres</li>#}
-{#                                                                        <li>Engagement</li>#}
-{#                                                                    </ul>#}
-{#                                                                </div>#}
-{#                                                                <div class="pricing-one__btn-box">#}
-{#                                                                    <a href="{{ path('app_contact') }}"#}
-{#                                                                       class="pricing-one__btn thm-btn">Contactez#}
-{#                                                                        moi</a>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                </div>#}
+                    {#                        <div class="col-xl-6 ml-5"> #}
+                    {#                            <div class="pricing-one__table-box "> #}
+                    {#                                <div class="pricing-one__right"> #}
+                    {#                                    <div class="pr-content"> #}
+                    {#                                        <!--                                                       Debut caroussel                                                    --> #}
+                    {#                                        <div id="myCarousel" class="carousel slide " style="width: 580px" data-bs-touch="false"> #}
+                    {#                                            <div class="carousel-inner "> #}
+                    {#                                                <!--                                                        Offre 1                                                     --> #}
+                    {#                                                <div class="carousel-item active d-flex justify-content-center" > #}
+                    {#                                                    <div class="pr-tab active-tab" id="tab-2" > #}
+                    {#                                                        <div class="pricing-one__table-box-single "  style="width: 300px ; height: 450px"> #}
+                    {#                                                            <div class="pricing-one__table"> #}
+                    {#                                                                <div class="pricing-one__rate-box"> #}
+                    {#                                                                    <h2><span class="pricing-one__dolar">555€</span>Tarif #}
+                    {#                                                                        1<span>/ sur demande</span></h2> #}
+                    {#                                                                </div> #}
+                    {#                                                                <div class="pricing-one__details-box"> #}
+                    {#                                                                    <h3 class="pricing-one__details-title"> Offre #}
+                    {#                                                                        complète</h3> #}
+                    {#                                                                    <ul class="list-unstyled"> #}
+                    {#                                                                        <li>Etude de votre demande</li> #}
+                    {#                                                                        <li>Plan 3D</li> #}
+                    {#                                                                        <li>Proposition & solutions</li> #}
+                    {#                                                                        <li>Selection des offres</li> #}
+                    {#                                                                        <li>Engagement</li> #}
+                    {#                                                                    </ul> #}
+                    {#                                                                </div> #}
+                    {#                                                                <div class="pricing-one__btn-box"> #}
+                    {#                                                                    <a href="{{ path('app_contact') }}" #}
+                    {#                                                                       class="pricing-one__btn thm-btn">Contactez #}
+                    {#                                                                        moi</a> #}
+                    {#                                                                </div> #}
+                    {#                                                            </div> #}
+                    {#                                                        </div> #}
+                    {#                                                    </div> #}
+                    {#                                                </div> #}
 
-{#                                                <!--                                                             Offre 2                                                   -->#}
-{#                                                <div class="carousel-item d-flex justify-content-center">#}
-{#                                                    <div class="pr-tab active-tab" id="tab-2">#}
-{#                                                        <div class="pricing-one__table-box-single" style="height: 650px">#}
-{#                                                            <div class="pricing-one__table">#}
-{#                                                                <div class="pricing-one__rate-box">#}
-{#                                                                    <h2><span class="pricing-one__dolar">1111€</span>Tarif#}
-{#                                                                        <span>/#}
-{#                                                                                    sur demande</span></h2>#}
-{#                                                                </div>#}
-{#                                                                <div class="pricing-one__details-box">#}
-{#                                                                    <h3 class="pricing-one__details-title"> Offre#}
-{#                                                                        complète</h3>#}
-{#                                                                    <ul class="list-unstyled">#}
-{#                                                                        <li>Etude de votre demande</li>#}
-{#                                                                        <li>Plan 3D</li>#}
-{#                                                                        <li>Proposition & solutions</li>#}
-{#                                                                        <li>Selection des offres</li>#}
-{#                                                                        <li>Engagement</li>#}
-{#                                                                    </ul>#}
-{#                                                                </div>#}
-{#                                                                <div class="pricing-one__btn-box">#}
-{#                                                                    <a href="{{ path('app_contact') }}"#}
-{#                                                                       class="pricing-one__btn thm-btn">Contactez#}
-{#                                                                        moi</a>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                </div>#}
-{#                                                <!--                                                             Offre 3                                                   -->#}
+                    {#                                                <!--                                                             Offre 2                                                   --> #}
+                    {#                                                <div class="carousel-item d-flex justify-content-center"> #}
+                    {#                                                    <div class="pr-tab active-tab" id="tab-2"> #}
+                    {#                                                        <div class="pricing-one__table-box-single" style="height: 650px"> #}
+                    {#                                                            <div class="pricing-one__table"> #}
+                    {#                                                                <div class="pricing-one__rate-box"> #}
+                    {#                                                                    <h2><span class="pricing-one__dolar">1111€</span>Tarif #}
+                    {#                                                                        <span>/ #}
+                    {#                                                                                    sur demande</span></h2> #}
+                    {#                                                                </div> #}
+                    {#                                                                <div class="pricing-one__details-box"> #}
+                    {#                                                                    <h3 class="pricing-one__details-title"> Offre #}
+                    {#                                                                        complète</h3> #}
+                    {#                                                                    <ul class="list-unstyled"> #}
+                    {#                                                                        <li>Etude de votre demande</li> #}
+                    {#                                                                        <li>Plan 3D</li> #}
+                    {#                                                                        <li>Proposition & solutions</li> #}
+                    {#                                                                        <li>Selection des offres</li> #}
+                    {#                                                                        <li>Engagement</li> #}
+                    {#                                                                    </ul> #}
+                    {#                                                                </div> #}
+                    {#                                                                <div class="pricing-one__btn-box"> #}
+                    {#                                                                    <a href="{{ path('app_contact') }}" #}
+                    {#                                                                       class="pricing-one__btn thm-btn">Contactez #}
+                    {#                                                                        moi</a> #}
+                    {#                                                                </div> #}
+                    {#                                                            </div> #}
+                    {#                                                        </div> #}
+                    {#                                                    </div> #}
+                    {#                                                </div> #}
+                    {#                                                <!--                                                             Offre 3                                                   --> #}
 
-{#                                                <div class="carousel-item d-flex justify-content-center">#}
-{#                                                    <div class="pr-tab active-tab" id="tab-2">#}
-{#                                                        <div class="pricing-one__table-box-single" style="height: 650px">#}
-{#                                                            <div class="pricing-one__table">#}
-{#                                                                <div class="pricing-one__rate-box">#}
-{#                                                                    <h2><span class="pricing-one__dolar">777€</span>Tarif#}
-{#                                                                        <span>/#}
-{#                                                                                    sur demande</span></h2>#}
-{#                                                                </div>#}
-{#                                                                <div class="pricing-one__details-box">#}
-{#                                                                    <h3 class="pricing-one__details-title"> Offre#}
-{#                                                                        complète</h3>#}
-{#                                                                    <ul class="list-unstyled">#}
-{#                                                                        <li>Etude de votre demande</li>#}
-{#                                                                        <li>Plan 3D</li>#}
-{#                                                                        <li>Proposition & solutions</li>#}
-{#                                                                        <li>Selection des offres</li>#}
-{#                                                                        <li>Engagement</li>#}
-{#                                                                    </ul>#}
-{#                                                                </div>#}
-{#                                                                <div class="pricing-one__btn-box">#}
-{#                                                                    <a href="{{ path('app_contact') }}"#}
-{#                                                                       class="pricing-one__btn thm-btn">Contactez#}
-{#                                                                        moi</a>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                </div>#}
-{#                                            </div>#}
+                    {#                                                <div class="carousel-item d-flex justify-content-center"> #}
+                    {#                                                    <div class="pr-tab active-tab" id="tab-2"> #}
+                    {#                                                        <div class="pricing-one__table-box-single" style="height: 650px"> #}
+                    {#                                                            <div class="pricing-one__table"> #}
+                    {#                                                                <div class="pricing-one__rate-box"> #}
+                    {#                                                                    <h2><span class="pricing-one__dolar">777€</span>Tarif #}
+                    {#                                                                        <span>/ #}
+                    {#                                                                                    sur demande</span></h2> #}
+                    {#                                                                </div> #}
+                    {#                                                                <div class="pricing-one__details-box"> #}
+                    {#                                                                    <h3 class="pricing-one__details-title"> Offre #}
+                    {#                                                                        complète</h3> #}
+                    {#                                                                    <ul class="list-unstyled"> #}
+                    {#                                                                        <li>Etude de votre demande</li> #}
+                    {#                                                                        <li>Plan 3D</li> #}
+                    {#                                                                        <li>Proposition & solutions</li> #}
+                    {#                                                                        <li>Selection des offres</li> #}
+                    {#                                                                        <li>Engagement</li> #}
+                    {#                                                                    </ul> #}
+                    {#                                                                </div> #}
+                    {#                                                                <div class="pricing-one__btn-box"> #}
+                    {#                                                                    <a href="{{ path('app_contact') }}" #}
+                    {#                                                                       class="pricing-one__btn thm-btn">Contactez #}
+                    {#                                                                        moi</a> #}
+                    {#                                                                </div> #}
+                    {#                                                            </div> #}
+                    {#                                                        </div> #}
+                    {#                                                    </div> #}
+                    {#                                                </div> #}
+                    {#                                            </div> #}
 
-{#                                            <button class="carousel-control-prev" type="button"#}
-{#                                                    data-bs-target="#myCarousel" data-bs-slide="prev">#}
-{#                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
-{#                                                <span class="visually-hidden">Previous</span>#}
-{#                                            </button>#}
-{#                                            <button class="carousel-control-next" type="button"#}
-{#                                                    data-bs-target="#myCarousel" data-bs-slide="next">#}
-{#                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
-{#                                                <span class="visually-hidden">Next</span>#}
-{#                                            </button>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-                        <!--                                                             fin caroussel                                                           -->
-                    </div>
+                    {#                                            <button class="carousel-control-prev" type="button" #}
+                    {#                                                    data-bs-target="#myCarousel" data-bs-slide="prev"> #}
+                    {#                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span> #}
+                    {#                                                <span class="visually-hidden">Previous</span> #}
+                    {#                                            </button> #}
+                    {#                                            <button class="carousel-control-next" type="button" #}
+                    {#                                                    data-bs-target="#myCarousel" data-bs-slide="next"> #}
+                    {#                                                <span class="carousel-control-next-icon" aria-hidden="true"></span> #}
+                    {#                                                <span class="visually-hidden">Next</span> #}
+                    {#                                            </button> #}
+                    {#                                        </div> #}
+                    {#                                    </div> #}
+                    {#                                </div> #}
+                    {#                            </div> #}
+                    {#                        </div> #}
+                    <!--                                                             fin caroussel                                                           -->
                 </div>
             </div>
-        </section>
+    </div>
+    </section>
 
 {% endblock %}
 

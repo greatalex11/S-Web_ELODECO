@@ -22,7 +22,7 @@
             </div>
         </div>
     </section>
-    <!--                                                                              LE SERVICE PRO                                                                    -->
+    <!--                                                          LE SERVICE PRO:    PROJETS PERSONNALISES                                                                -->
     <section class="insuring insuring-page">
         <div class="container">
             <div class="row">
@@ -53,6 +53,8 @@
                                     <p class="insuring__text">{{ servicepro.texte2|striptags }}</p>
                                 {% endif %}
                             {% endfor %}
+
+                            <!--                                                   COMPTEURS                                                              -->
                             <div class="insuring__counter-list-box">
                                 {% for compteurs in services %}
                                     {% if compteurs.type == "compteurs" %}
@@ -77,66 +79,60 @@
             </div>
         </div>
     </section>
+
     <!--                                                                               SERVICES DE QUALITE                                                                    -->
     <section class="services-one">
         <div class="services-one-container">
-
             <div class="section-title text-center">
                 <span class="section-title__tagline">Nous vous offrons</span>
-                <h2 class="section-title__title">Des services de qualité</h2>
+                <h2 class="section-title__title mt-3">Des services de qualité</h2>
             </div>
-            <div class="row">
+            <div class="row mt-3">
                 {% for Contenus in services %}
                     {% if Contenus.type == "3ServicesQUALITE" %}
-
                         <div class="col-xl-4 col-lg-4 ">
-
+                            <!--                SERVICE 1              -->
                             <div class="services-one__single" style="min-height:450px">
                                 <h2 class="services-one__title">
                                     <a>{{ Contenus.titre1 }}</a></h2>
-                                <p class="services-one__text">{{ Contenus.texte1|striptags|u.truncate(150,'...',false) }}</p>
-                                {#                                <a href="{{ path('app_services_details') }}" class="services-one__btn">En savoir #}
-                                {#                                    plus</a> #}
+                                <p class="services-one__text  mt-5">{{ Contenus.texte1|striptags|u.truncate(150,'...',false) }}</p>
                                 <div class="services-one__icon">
                                     <span class="icon-furnitures"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-4 ">
-
-                            <!--SERVICE 2 -->
+                            <!--                SERVICE 2              -->
                             <div class="services-one__single" style="min-height:450px">
                                 <h2 class="services-one__title">
-                                    {#                              <a              href="{{ path('app_services_details') }}">{{ Contenus.titre2 }}</a></h2> #}</h2>
-                                <p class="services-one__text fs-4">{{ Contenus.texte2|striptags|u.truncate(150,'...',false) }}</p>
-
-                                {#                                    <a href="{{ path('app_services_details') }}" class="services-one__btn">En savoir #}
-                                {#                                        plus</a> #}
-                                <div class="services-one__icon">
-                                    <span class="icon-buildings"></span>
+                                    <a>{{ Contenus.titre2 }}</a></h2>
+                                <p class="services-one__text  mt-5">{{ Contenus.texte2|striptags|u.truncate(150,'...',false) }}</p>
+                                <div class="services-one__icon"
+                                     style="width:350px; display: flex; flex-direction: row; justify-content: space-between">
+                                    <div><a href="{{ path('app_contact') }}" class="services-one__btn"
+                                            style="text-align: left; font-size: medium">Me contacter</a></div>
+                                    <span class="icon-buildings"
+                                          style="vertical-align: bottom ; margin-top: auto"></span>
                                 </div>
                             </div>
                         </div>
-                        {#                        <div class="col-xl-4 col-lg-4 "> #}
-                        {#                            <!--SERVICE 3--> #}
-                        {#                            <div class="services-one__single" style="min-height:450px"> #}
-                        {#                                <h2 class="services-one__title"><a #}
-                        {#                                            href="{{ path('app_services_details') }}">{{ Contenus.titre3 }}</a></h2> #}
-                        {#                                <p class="services-one__text">{{ Contenus.texte3|striptags|u.truncate(150,'...',false) }}</p> #}
-                        {#                                <a href="{{ path('app_services_details') }}" class="services-one__btn">En savoir #}
-                        {#                                    plus</a> #}
-                        {#                                <div class="services-one__icon"> #}
-                        {#                                    <span class="icon-house-design"></span> #}
-                        {#                                </div> #}
-                        {#                            </div> #}
-                        {#                        </div> #}
+                        <div class="col-xl-4 col-lg-4 ">
+                            <!--                SERVICE 3              -->
+                            <div class="services-one__single" style="min-height:450px">
+                                <h2 class="services-one__title"><a>{{ Contenus.titre3 }}</a></h2>
+                                <p class="services-one__text  mt-5">{{ Contenus.texte3|striptags|u.truncate(150,'...',false) }}</p>
+                                <div class="services-one__icon">
+                                    <span class="icon-house-design"></span>
+                                </div>
+                            </div>
+                        </div>
                     {% endif %}
                 {% endfor %}
             </div>
         </div>
     </section>
 
-    <section class="trust-experts">
+    <section class="trust-experts h-25">
         <div class="trust-experts-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
              style="background-image: url({{ asset('assets/images/backgrounds/deco_bandeau.jpg') }})"></div>
         <div class="container">

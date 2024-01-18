@@ -77,10 +77,11 @@ class LoginController extends AbstractController
 
     }
 
-//MODFIF POUR VUE GLOBALE + vue detaillee
+//  MODFIF POUR VUE GLOBALE + VUE DETAILLE
     #[Route(path: '/services_details/{slug}', name: 'app_services_details')]
     public function servicesD(Contenus $contenu, ContenusRepository $contenusRepo): Response
     {
+
         $clefs = $contenusRepo->findByType([Contenus::TYPE_SERVICEDETAIL]);
         $services = $contenusRepo->findByPagesName('services_details');
 //     $services = $contenusRepo->findByType([Contenus::TYPE_ServicesGTI]);
