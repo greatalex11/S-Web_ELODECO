@@ -84,10 +84,12 @@ class LoginController extends AbstractController
 
         $clefs = $contenusRepo->findByType([Contenus::TYPE_SERVICEDETAIL]);
         $services = $contenusRepo->findByPagesName('services_details');
+
 //     $services = $contenusRepo->findByType([Contenus::TYPE_ServicesGTI]);
 
         return $this->render('pages/services_details.html.twig', [
             "serviceD" => $services,
+            "serviceSlug"=> $contenu,
             "clef" => $clefs
         ]);
     }

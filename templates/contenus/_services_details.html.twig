@@ -1,17 +1,17 @@
-{# {% if news.images.first %} #}
-{#    {% set image = vich_uploader_asset(news.images.first) %} #}
-{#    {% set imageTitle = news.images.first.titre %} #}
-{# {% else %} #}
-{#    {% set image = asset('assets/images/backgrounds/fond2.png') %} #}
-{#    {% set imageTitle = 'news image' %} #}
-{# {% endif %} #}
+ {% if serviceSlug.images.first %}
+    {% set image = vich_uploader_asset(serviceSlug.images.first) %}
+    {% set imageTitle = serviceSlug.images.first.titre %}
+ {% else %}
+    {% set image = asset('assets/images/backgrounds/fond2.png') %}
+    {% set imageTitle = 'service image' %}
+ {% endif %}
 
 <div class="col-xl-8 col-lg-7">
     <div class="news-details__left">
         <div class="news-details__img text-center">
-            {#            <img style='max-height: 400px; object-fit: contain' class="" src="{{ image }}" alt="{{ imageTitle }}"> #}
+            <img style='max-height: 400px; object-fit: contain' class="" src="{{ image }}" alt="{{ imageTitle }}">
             <div class="news-details__date-box">
-                <p>Septembre 2023</p>
+                <p>{{ serviceSlug.titre2|default('Septembre 2023')}}</p>
             </div>
         </div>
         <div class="news-details__content">
