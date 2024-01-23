@@ -15,18 +15,18 @@
             </div>
         </div>
         <div class="news-details__content">
-            {#            <h3 class="news-details__title">{{ news.titre1 }}bite</h3> #}
+            <h3 class="news-details__title">{{ serviceSlug.titre1|default('Mon offre')}}</h3>
             <div class="row news-text">
-                {#                {{ news.texte1|raw }} #}
+                {{ serviceSlug.texte1|raw }}
             </div>
             <div class="owl-carousel owl-theme">
-                {#                {% for imageNews in news.images[1:] %} #}
-                {#                    <div> #}
-                {#                        <img style="object-fit: contain; height: 350px" #}
-                {#                             src="{{ vich_uploader_asset(imageNews) }}" #}
-                {#                             alt="{{ imageNews.titre }}"> #}
-                {#                    </div> #}
-                {#                {% endfor %} #}
+                {% for imageNews in serviceSlug.images[1:] %}
+                    <div>
+                        <img style="object-fit: contain; height: 350px"
+                             src="{{ vich_uploader_asset(imageNews) }}"
+                             alt="{{ imageNews.titre }}">
+                    </div>
+                {% endfor %}
             </div>
         </div>
 

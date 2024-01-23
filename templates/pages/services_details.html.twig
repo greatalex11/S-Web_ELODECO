@@ -1,14 +1,10 @@
 {% extends 'base.html.twig' %}
-
 {% block content %}
-{{ dump(serviceSlug) }}
     {% set Apps= theme.theme %}
-
     {% for service in serviceD %}
         {% if service.images.first %}
             {% set image = vich_uploader_asset(service.images[0]) %}
             {% set imageTitle = service.images.first.titre %}
-
         {% else %}
             {% set image = asset('assets/images/backgrounds/fond2.png') %}
             {% set imageTitle = 'service détails image' %}
@@ -44,7 +40,29 @@
         <section class="services-details">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-6">
+
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="services-details__sidebar">
+
+
+                            <!--     Coordonnées + lien vers contact     -->
+                            <div class="services-details__help-box mt-0">
+                                <div class="services-details__help-box-bg-overly"></div>
+                                <h3 class="services-details__help-box-title">{{ Apps.titre3menulat|default('Besoin d\'aide?') }} </h3>
+                                <p class="services-details__help-box-text">{{ Apps.textemenulat|striptags|default('Bienvenue') }}
+                                </p>
+                                <a href="tel:92-666-888-0000"
+                                   class="services-details__phone">{{ (Apps.telephone|default('(+33) 06 21 85 33 48')) }}</a>
+                                <a href="{{ path('app_contact') }}" class="thm-btn services-details__help-box-btn"
+                                   style="background-color: {{ Apps.couleuractuellebg }}">Me contacter</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {#                    with {type: servicesGTI} only#}
+                    {% include "contenus/_services_details.html.twig" %}
+
+                    <div class="col-xl-3 col-lg-4">
                         <div class="services-details__sidebar">
                             <div class="services-details__services-list-box">
                                 <ul id="jojo" class="truc services-details__services-list list-unstyled">
@@ -88,22 +106,9 @@
                                     {% endfor %}
                                 </ul>
                             </div>
-                            <!--     Coordonnées + lien vers contact     -->
-                            <div class="services-details__help-box mt-0">
-                                <div class="services-details__help-box-bg-overly"></div>
-                                <h3 class="services-details__help-box-title">{{ Apps.titre3menulat|default('Besoin d\'aide?') }} </h3>
-                                <p class="services-details__help-box-text">{{ Apps.textemenulat|striptags|default('Bienvenue') }}
-                                </p>
-                                <a href="tel:92-666-888-0000"
-                                   class="services-details__phone">{{ (Apps.telephone|default('(+33) 06 21 85 33 48')) }}</a>
-                                <a href="{{ path('app_contact') }}" class="thm-btn services-details__help-box-btn"
-                                   style="background-color: {{ Apps.couleuractuellebg }}">Me contacter</a>
-                            </div>
-
                         </div>
                     </div>
-{#                    with {type: servicesGTI} only#}
-                    {% include "contenus/_services_details.html.twig" %}
+
 
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__right">
