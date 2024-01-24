@@ -651,6 +651,7 @@
 
     .services-one__btn:hover {
         color: #FFFFFF;
+        background-color:lightslategray;
         text-align: left;
         padding-left: 0;
         font-weight: bold;

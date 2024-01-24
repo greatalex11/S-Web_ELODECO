@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block content %}
+
+
     {% set Apps= theme.theme %}
     {% for service in serviceD %}
         {% if service.images.first %}
@@ -35,172 +37,249 @@
         </section>
         <!--                                                                                         fin bandeau                                                                    -->
 
-        <!--                                                                   SECTION 1 : SERVICES details  / image 672x713                                                   -->
 
+        <!--  SECTION 1 : SERVICES details / IMG 672x713                                                                        -->
         <section class="services-details">
             <div class="container">
                 <div class="row">
+                    <!-- Première colonne -->
 
-                    <div class="col-xl-3 col-lg-4">
-                        <div class="services-details__sidebar">
-
-
-                            <!--     Coordonnées + lien vers contact     -->
-                            <div class="services-details__help-box mt-0">
-                                <div class="services-details__help-box-bg-overly"></div>
-                                <h3 class="services-details__help-box-title">{{ Apps.titre3menulat|default('Besoin d\'aide?') }} </h3>
-                                <p class="services-details__help-box-text">{{ Apps.textemenulat|striptags|default('Bienvenue') }}
-                                </p>
-                                <a href="tel:92-666-888-0000"
-                                   class="services-details__phone">{{ (Apps.telephone|default('(+33) 06 21 85 33 48')) }}</a>
-                                <a href="{{ path('app_contact') }}" class="thm-btn services-details__help-box-btn"
-                                   style="background-color: {{ Apps.couleuractuellebg }}">Me contacter</a>
-                            </div>
-                        </div>
+                    <div class="col-md-8">
+                      <!-- Contenu de la première colonne -->
+                      {#                    with {type: servicesGTI} only #}
+                      {% include "contenus/_services_details.html.twig" %}
                     </div>
+                    <!-- Deuxième colonne -->
+                    <div class="col-md-4">
+                        <div class="row">
+                            <!-- Premier bloc de la deuxième colonne -->
+                            <div class="col-12">
+                                <div class="news-details">
+                                    <div class="container">
+                                        <div class="row">
+                                            {#                                        {% include "contenus/_news_details.html.twig" with {news: news} %}#}
+                                            <!--  BLOCK LATERAL DROIT  -->
+                                            <div class="col-lg-10">
+                                                <div class="sidebar__single sidebar__post">
+                                                    <h3 class="sidebar__title">Nos services</h3>
+                                                    <ul class="sidebar__post-list list-unstyled text-break">
 
-                    {#                    with {type: servicesGTI} only#}
-                    {% include "contenus/_services_details.html.twig" %}
-
-                    <div class="col-xl-3 col-lg-4">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list-box">
-                                <ul id="jojo" class="truc services-details__services-list list-unstyled">
-                                    {% for liste in clef %}
-                                        {% set liste=liste.liste %}
-                                        <li data-toggle="popover" title="En détail"
-                                            data-bs-content="{{ liste[1]|default('plan 3d')|striptags|u.truncate(300,'...',false) }}">
-                                            <a style="max-height: 80px">{{ liste[0]|default('sur mesure')|striptags|u.truncate(25,'...',false) }}
-                                                <span class="icon-right-arrow"></span></a>
-                                        </li>
-
-                                        <li class="#jojo" data-toggle="popover" title="En détail"
-                                            data-bs-content="{{ liste[3]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                            <a style="max-height: 80px">{{ liste[2]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
-                                                <span class="icon-right-arrow"></span></a>
-                                        </li>
-
-                                        <li data-toggle="popover" title="En détail"
-                                            data-bs-content="{{ liste[5]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                            <a style="max-height: 80px">{{ liste[4]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
-                                                <span class="icon-right-arrow"></span></a>
-                                        </li>
-
-                                        <li data-toggle="popover" title="En détail"
-                                            data-bs-content="{{ liste[7]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                            <a style="max-height: 80px">{{ liste[6]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
-                                                <span class="icon-right-arrow"></span></a>
-                                        </li>
-
-                                        <li data-toggle="popover" title="En détail"
-                                            data-bs-content="{{ liste[9]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                            <a style="max-height: 80px">{{ liste[8]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
-                                                <span class="icon-right-arrow"></span></a>
-                                        </li>
-
-                                        <li data-toggle="popover" title="En détail"
-                                            data-bs-content="{{ liste[11]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                            <a style="max-height: 80px">{{ liste[10]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
-                                                <span  class="icon-right-arrow"></span></a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-xl-8 col-lg-7">
-                        <div class="services-details__right">
-                            <div class="services-details__img">
-                                <img src="{{ image }}" style="height: 450px ; width: 100% ;object-fit: contain"
-                                     alt="{{ imageTitle }}">
-                            </div>
-                            <div class="services-details__content">
-                                <h2 class="services-details__title">{{ service.titre1|default(('Designer'))|striptags }}</h2>
-                                <p class="services-details__text-1"> {{ service.texte1|default(('le métier en quelques mots'))|striptags }} </p>
-                            </div>
-                            <div class="services-details__designing-box">
-                                <div class="services-details__designing-list-box">
-                                    <h2 class="services-details__designing-list-box-title">Les atouts</h2>
-                                    <ul class="services-details__designing-list list-unstyled">
-                                        {% set list = service.liste %}
-                                        <li>
-                                            <div class="icon">
-                                                <i class="fas fa-slash"></i>
+                                                        {% for servicesF in serviceFiltres %}
+                                                            {% if servicesF.titre1 is not empty %}
+                                                                {% if servicesF.images.first %}
+                                                                    {% set image = vich_uploader_asset(servicesF.images.first) %}
+                                                                {% else %}
+                                                                    {% set image = asset('assets/images/backgrounds/fond2.png') %}
+                                                                {% endif %}
+                                                                <li>
+                                                                    <a class='d-flex align-items-center'
+                                                                       href="{{ path('app_services_details',{slug: servicesF.slug }) }}">
+                                                                        <div class="sidebar__post-image">
+                                                                            <img src="{{ image }}" alt="image du service sectionné">
+                                                                        </div>
+                                                                        <div class="sidebar__post-content">
+                                                                            <h3>
+                                                                                <span class="sidebar__post-content_meta">{{ servicesF.titre1 }}</span>
+                                                                            </h3>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
                                             </div>
-                                            <div class="text">
-                                                <p>{{ list[0] |default(('le métier en quelques mots'))|striptags }}</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon">
-                                                <i class="fas fa-slash"></i>
-                                            </div>
-                                            <div class="text">
-                                                <p>{{ list[1] |default(('100% Satisfait'))|striptags }}</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon">
-                                                <i class="fas fa-slash"></i>
-                                            </div>
-                                            <div class="text">
-                                                <p>{{ list[2] |default(('Respect des engagements'))|striptags }}</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon">
-                                                <i class="fas fa-slash"></i>
-                                            </div>
-                                            <div class="text">
-                                                <p>{{ list[3] |default(('Délais, Coût, Qualité'))|striptags }}</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon">
-                                                <i class="fas fa-slash"></i>
-                                            </div>
-                                            <div class="text">
-                                                <p>{{ list[4] |default(('Les meilleures solutions'))|striptags }}</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon">
-                                                <i class="fas fa-slash"></i>
-                                            </div>
-                                            <div class="text">
-                                                <p>{{ list[5] |default(('Professionnel et Qualifié'))|striptags }}</p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="services-details__designing-img">
-                                    <img src="assets/images/resources/transat_moyen.png"
-                                         alt="image piscine eau bleu derriere une maison, protegée des regard, soleil et transat">
-                                </div>
-                            </div>
-                            <div class="services-details__faq">
-                                <div class="accrodion-grp" data-grp-name="faq-one-accrodion">
-                                    <div class="accrodion active">
-                                        <div class="accrodion-title">
-                                            <h4>{{ list[5] |default(('plan 2D - 3D'))|striptags }}</h4>
-                                        </div>
-                                        <div class="accrodion-content">
-                                            <div class="inner">
-                                                <p>{{ list[6] |default(('Des plans aux cotations fonctionnelles, disponibles pour le particulier comme pour le professionnel.'))|striptags }}
-                                                </p>
-                                            </div><!-- /.inner -->
                                         </div>
                                     </div>
-                                    <div class="accrodion">
-                                        <div class="accrodion-title">
-                                            <h4>{{ list[7] |default(('Planche de tendance et nuancier'))|striptags }}</h4>
-                                        </div>
-                                        <div class="accrodion-content">
-                                            <div class="inner">
-                                                <p>{{ list[8] |default(('Votre dossier personnalisé vous suit dans toutes vos démarches, prêt à répondre à toutes vos inspirations.'))|striptags }}</p>                                       </p>
+                                </div>
+                            </div>
+                            <!-- Deuxième bloc de la deuxième colonne -->
+                            <div class="col-12">
+                                <div class="container">
+                                    <div class="col-lg-10">
+                                        <!--     Coordonnées + lien vers contact     -->
+                                        <div class="services-details__sidebar">
+                                            <div class="services-details__help-box mt-0"
+                                                 style="padding: 36px 21px 53px;">
+                                                <div class="services-details__help-box-bg-overly"></div>
+                                                <h3 class="services-details__help-box-title">{{ Apps.titre3menulat|default('Besoin d\'aide?') }} </h3>
+                                                <p class="services-details__help-box-text">{{ Apps.textemenulat|striptags|default('Bienvenue') }}
+                                                </p>
+                                                <a class="services-details__phone">{{ (Apps.telephone|default('(+33) 06 21 85 33 48')) }}</a>
+                                                <a href="{{ path('app_contact') }}"
+                                                   class="thm-btn services-details__help-box-btn"
+                                                   style="background-color: {{ Apps.couleuractuellebg }}">Me
+                                                    contacter</a>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+            <!-- fin sections supérieures : details du service et miniatures des offres   -->
+
+
+        <!-- Bandeau intermédiaire gris -->
+
+        <section class="services-one" style="padding:50px 0 1px 0; margin: 10% 5%">
+            <div class="services-one-container">
+                <div class="section-title text-center">
+
+                    <span class="section-title__tagline">Nous vous offrons</span>
+                    <h2 class="section-title__title mt-3">Des services de qualité</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section com -->
+        <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-4">
+                    <div class="services-details__sidebar">
+                        <div class="services-details__services-list-box">
+                            <ul id="jojo" class="truc services-details__services-list list-unstyled">
+                                {% for liste in clef %}
+                                    {% set liste=liste.liste %}
+                                    <li data-toggle="popover" title="En détail"
+                                        data-bs-content="{{ liste[1]|default('plan 3d')|striptags|u.truncate(300,'...',false) }}">
+                                        <a style="max-height: 80px">{{ liste[0]|default('sur mesure')|striptags|u.truncate(25,'...',false) }}
+                                            <span class="icon-right-arrow"></span></a>
+                                    </li>
+
+                                    <li class="#jojo" data-toggle="popover" title="En détail"
+                                        data-bs-content="{{ liste[3]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
+                                        <a style="max-height: 80px">{{ liste[2]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                            <span class="icon-right-arrow"></span></a>
+                                    </li>
+
+                                    <li data-toggle="popover" title="En détail"
+                                        data-bs-content="{{ liste[5]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
+                                        <a style="max-height: 80px">{{ liste[4]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                            <span class="icon-right-arrow"></span></a>
+                                    </li>
+
+                                    <li data-toggle="popover" title="En détail"
+                                        data-bs-content="{{ liste[7]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
+                                        <a style="max-height: 80px">{{ liste[6]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                            <span class="icon-right-arrow"></span></a>
+                                    </li>
+
+                                    <li data-toggle="popover" title="En détail"
+                                        data-bs-content="{{ liste[9]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
+                                        <a style="max-height: 80px">{{ liste[8]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                            <span class="icon-right-arrow"></span></a>
+                                    </li>
+
+                                    <li data-toggle="popover" title="En détail"
+                                        data-bs-content="{{ liste[11]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
+                                        <a style="max-height: 80px">{{ liste[10]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                            <span  class="icon-right-arrow"></span></a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-8 col-lg-7">
+                    <div class="services-details__right">
+                        <div class="services-details__img">
+                            <img src="{{ image }}" style="height: 450px ; width: 100% ;object-fit: contain"
+                                 alt="{{ imageTitle }}">
+                        </div>
+                        <div class="services-details__content">
+                            <h2 class="services-details__title">{{ service.titre1|default(('Designer'))|striptags }}</h2>
+                            <p class="services-details__text-1"> {{ service.texte1|default(('le métier en quelques mots'))|striptags }} </p>
+                        </div>
+                        <div class="services-details__designing-box">
+                            <div class="services-details__designing-list-box">
+                                <h2 class="services-details__designing-list-box-title">Les atouts</h2>
+                                <ul class="services-details__designing-list list-unstyled">
+                                    {% set list = service.liste %}
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-slash"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>{{ list[0] |default(('le métier en quelques mots'))|striptags }}</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-slash"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>{{ list[1] |default(('100% Satisfait'))|striptags }}</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-slash"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>{{ list[2] |default(('Respect des engagements'))|striptags }}</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-slash"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>{{ list[3] |default(('Délais, Coût, Qualité'))|striptags }}</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-slash"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>{{ list[4] |default(('Les meilleures solutions'))|striptags }}</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-slash"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>{{ list[5] |default(('Professionnel et Qualifié'))|striptags }}</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="services-details__designing-img">
+                                <img src="assets/images/resources/transat_moyen.png"
+                                     alt="image piscine eau bleu derriere une maison, protegée des regard, soleil et transat">
+                            </div>
+                        </div>
+                        <div class="services-details__faq">
+                            <div class="accrodion-grp" data-grp-name="faq-one-accrodion">
+                                <div class="accrodion active">
+                                    <div class="accrodion-title">
+                                        <h4>{{ list[5] |default(('plan 2D - 3D'))|striptags }}</h4>
+                                    </div>
+                                    <div class="accrodion-content">
+                                        <div class="inner">
+                                            <p>{{ list[6] |default(('Des plans aux cotations fonctionnelles, disponibles pour le particulier comme pour le professionnel.'))|striptags }}
+                                            </p>
+                                        </div><!-- /.inner -->
+                                    </div>
+                                </div>
+                                <div class="accrodion">
+                                    <div class="accrodion-title">
+                                        <h4>{{ list[7] |default(('Planche de tendance et nuancier'))|striptags }}</h4>
+                                    </div>
+                                    <div class="accrodion-content">
+                                        <div class="inner">
+                                            <p>{{ list[8] |default(('Votre dossier personnalisé vous suit dans toutes vos démarches, prêt à répondre à toutes vos inspirations.'))|striptags }}</p>                                       </p>
                                         </div>
                                     </div>
                                 </div>
@@ -209,7 +288,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+     </section>
+
+
     {% endfor %}
     <!--                                                                    fin de la section                                                           -->
 {% endblock %}

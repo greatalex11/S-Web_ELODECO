@@ -27,7 +27,7 @@
             <p class="news-one__text mt-3">{{ service.Texte1|striptags|u.truncate(150,'...',false)|raw }}</p>
 
             <a href="{{ path('app_services_details',{slug: service.slug}) }}" class="services-one__btn mt-3 pb-3"
-               style="font-size: 16px;">
+               style="font-size: 16px">
                 Tout voir</a>
             <p class=" services-one mt-2 mb-4 p-0">
                 {{ service.liste[0] }}<br>{{ service.liste[1] }}

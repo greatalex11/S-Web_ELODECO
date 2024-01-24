@@ -85,13 +85,32 @@ class LoginController extends AbstractController
         $clefs = $contenusRepo->findByType([Contenus::TYPE_SERVICEDETAIL]);
         $services = $contenusRepo->findByPagesName('services_details');
 
-//     $services = $contenusRepo->findByType([Contenus::TYPE_ServicesGTI]);
+        $servicesGTI = $contenusRepo->findByType([Contenus::TYPE_ServicesGTI]);
+        $result = array_filter($servicesGTI, function($item) use ($contenu) {
+            //use ($contenu) idem global $contenu
+            return $item->getId() !== $contenu->getId();
+        });
+
 
         return $this->render('pages/services_details.html.twig', [
-            "serviceD" => $services,
             "serviceSlug"=> $contenu,
-            "clef" => $clefs
+            "clef" => $clefs,
+            "serviceFiltres"=>$result,
+            "serviceD" => $services,
         ]);
+
+//        $servicesGTI = $contenusRepo->findByType([Contenus::TYPE_ServicesGTI]);
+//        $filterServices = function ($servicesGTI, $callback):array {
+//            $result = [];
+//            foreach ($servicesGTI as $k => $item) if ($callback($item)) {
+//                $result[$k] = $item;
+//            }
+//            return $result;
+//        };
+//
+//        dd($filterServices);
+
+
     }
 
     #[Route(path: '/services/{slug}', name: 'app_services_slug')]
