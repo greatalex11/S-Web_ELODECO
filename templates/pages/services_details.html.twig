@@ -187,7 +187,7 @@
                     </div>
                 </div>
                 <!--     Block de DROITE / AVEC LES PHOTOS DE CETTE SECTION    -->
-                <div class="col-xl-8 col-lg-7 mt-xl-5">
+                <div class="col-xl-8 col-lg-7">
                     <div class="services-details__right">
                         {% for servicePub in promoServices %}
 
@@ -199,7 +199,7 @@
                                 {% set imageTitle = 'service détails image' %}
                             {% endif %}
 
-                            <div class="services-details__content">
+                            <div class="services-details__content mt-0">
                                 <h2 class="services-details__title">{{ servicePub.titre1|default(('Designer'))|striptags }}</h2>
                             </div>
 
@@ -211,71 +211,94 @@
                         <div class="services-details__content">
                             <p class="services-details__text-1"> {{ servicePub.texte1|default(('le métier en quelques mots'))|striptags }} </p>
                         </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
 
-                        <div class="services-details__designing-box">
-                            <div class="services-details__designing-list-box">
-                                <h2 class="services-details__designing-list-box-title">Les atouts</h2>
-                                <ul class="services-details__designing-list list-unstyled">
-                                    {% set list = servicePub.liste %}
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-slash"></i>
-                                        </div>
-                                        <div class="text">
-                                            <p>{{ list[0] |default(('le métier en quelques mots'))|striptags }}</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-slash"></i>
-                                        </div>
-                                        <div class="text">
-                                            <p>{{ list[1] |default(('100% Satisfait'))|striptags }}</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-slash"></i>
-                                        </div>
-                                        <div class="text">
-                                            <p>{{ list[2] |default(('Respect des engagements'))|striptags }}</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-slash"></i>
-                                        </div>
-                                        <div class="text">
-                                            <p>{{ list[3] |default(('Délais, Coût, Qualité'))|striptags }}</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-slash"></i>
-                                        </div>
-                                        <div class="text">
-                                            <p>{{ list[4] |default(('Les meilleures solutions'))|striptags }}</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-slash"></i>
-                                        </div>
-                                        <div class="text">
-                                            <p>{{ list[5] |default(('Professionnel et Qualifié'))|striptags }}</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="services-details__designing-img">
-                                <img src="assets/images/resources/transat_moyen.png"
-                                     alt="image piscine eau bleu derriere une maison, protegée des regard, soleil et transat">
-                            </div>
+    <!--  GRID  -->
+    <section>
+
+    {% for servicePub in promoServices %}
+
+        {% if servicePub.images.first %}
+            {% set imagePub = vich_uploader_asset(servicePub.images[0]) %}
+            {% set imagePubTitle = servicePub.images.first.titre %}
+        {% else %}
+            {% set imagePub = asset('assets/images/backgrounds/fond2.png') %}
+            {% set imageTitle = 'service détails image' %}
+        {% endif %}
+
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-4">
+                    <!--   Block de gauche: les atouts                -->
+                    <div class="services-details__designing-box">
+                        <div class="services-details__designing-list-box" style="min-width: 30%">
+                            <h2 class="services-details__designing-list-box-title">Les atouts</h2>
+                            <ul class="services-details__designing-list list-unstyled">
+                                {% set list = servicePub.liste %}
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-slash"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>{{ list[0] |default(('le métier en quelques mots'))|striptags }}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-slash"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>{{ list[1] |default(('100% Satisfait'))|striptags }}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-slash"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>{{ list[2] |default(('Respect des engagements'))|striptags }}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-slash"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>{{ list[3] |default(('Délais, Coût, Qualité'))|striptags }}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-slash"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>{{ list[4] |default(('Les meilleures solutions'))|striptags }}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-slash"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>{{ list[5] |default(('Professionnel et Qualifié'))|striptags }}</p>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="services-details__faq">
+                    </div>
+                </div>
+                <!--   Block de droite : accordéon et photos                                                          -->
+                <div class="col-8">
+                    <div class="services-details__designing-box">
+                        <div class="services-details__faq mt-0">
                             <div class="accrodion-grp" data-grp-name="faq-one-accrodion">
                                 <div class="accrodion active">
-                                    <div class="accrodion-title">
+                                    <div class="accrodion-title pt-2">
                                         <h4>{{ list[5] |default(('plan 2D - 3D'))|striptags }}</h4>
                                     </div>
                                     <div class="accrodion-content">
@@ -296,14 +319,26 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="services-details__designing-img">
+                                {% if servicePub.images.first %}
+                                    {% set imagePub2 = vich_uploader_asset(servicePub.images[1]) %}
+                                    {% set imagePubTitle2 = servicePub.images.first.titre %}
+                                {% else %}
+                                    {% set imagePub = asset('assets/images/backgrounds/fond2.png') %}
+                                    {% set imageTitle = 'service détails image' %}
+                                {% endif %}
+                                <img src="{{ imagePub2 }}" style="height: 450px ; width: 100% ;object-fit: contain"
+                                     alt="{{ imagePubTitle2|default('image piscine eau bleu derriere une maison, protegée des regard, soleil et transat') }}">
+
+                            </div>
                         </div>
-                     {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-     </section>
-
+    {% endfor %}
+</section>
     <!--                                                                    fin de la section                                                           -->
 {% endblock %}
 
