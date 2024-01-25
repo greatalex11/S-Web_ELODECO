@@ -82,8 +82,9 @@ class LoginController extends AbstractController
     public function servicesD(Contenus $contenu, ContenusRepository $contenusRepo): Response
     {
 
-        $clefs = $contenusRepo->findByType([Contenus::TYPE_SERVICEDETAIL]);
+        $clefs = $contenusRepo->findByType([Contenus::TYPE_CLEFSERVICEDETAIL]);
         $services = $contenusRepo->findByPagesName('services_details');
+        $promo=$contenusRepo->findByType([Contenus::TYPE_PROMOSERVICEDETAIL]);
 
         $servicesGTI = $contenusRepo->findByType([Contenus::TYPE_ServicesGTI]);
         $result = array_filter($servicesGTI, function($item) use ($contenu) {
@@ -97,6 +98,8 @@ class LoginController extends AbstractController
             "clef" => $clefs,
             "serviceFiltres"=>$result,
             "serviceD" => $services,
+            "promoServices" => $promo,
+            "serviceGTI"=>$servicesGTI,
         ]);
 
 //        $servicesGTI = $contenusRepo->findByType([Contenus::TYPE_ServicesGTI]);
@@ -112,18 +115,18 @@ class LoginController extends AbstractController
 
 
     }
-
-    #[Route(path: '/services/{slug}', name: 'app_services_slug')]
-    public function servicesSlug(Contenus $contenu, ContenusRepository $contenusRepository): Response
-    {
-
-        //        $service = $contenusRepository->findByType([Contenus::TYPE_ServicesGTI]);
-
-        return $this->render('contenus/_offre_option.html.twig', [
-            "service" => $contenu
-
-        ]);
-    }
+//
+//    #[Route(path: '/services/{slug}', name: 'app_services_slug')]
+//    public function servicesSlug(Contenus $contenu, ContenusRepository $contenusRepository): Response
+//    {
+//
+//        //        $service = $contenusRepository->findByType([Contenus::TYPE_ServicesGTI]);
+//
+//        return $this->render('contenus/_offre_option.html.twig', [
+//            "service" => $contenu
+//
+//        ]);
+//    }
 
 
 // ---------------------------------------------------------------------------------------------------------    ABOUT

@@ -77,7 +77,7 @@ class ContenusCrudController extends AbstractCrudController
 
 
 //          Base pour les news
-            } elseif ($contenu && $contenu->getType() === Contenus::TYPE_ServicesGTI) {
+            } elseif ($contenu && $contenu->getType() === Contenus::TYPE_ServicesGTI||$contenu && $contenu->getType() === Contenus::TYPE_PROMOSERVICEDETAIL) {
                 yield FormField::addTab("Page commune");
 
                 yield CollectionField::new('images')->useEntryCrudForm(ImageCrudController::class)

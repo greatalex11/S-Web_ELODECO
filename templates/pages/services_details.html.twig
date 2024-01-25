@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
+
 {% block content %}
-
-
     {% set Apps= theme.theme %}
     {% for service in serviceD %}
         {% if service.images.first %}
-            {% set image = vich_uploader_asset(service.images[0]) %}
+            {% set imageGd = vich_uploader_asset(service.images[0]) %}
             {% set imageTitle = service.images.first.titre %}
         {% else %}
             {% set image = asset('assets/images/backgrounds/fond2.png') %}
             {% set imageTitle = 'service détails image' %}
         {% endif %}
+    {% endfor %}
 
         <div class="stricky-header stricked-menu main-menu">
             <div class="sticky-header__content"></div>
@@ -24,7 +24,7 @@
             <div class="page-header-border page-header-border-four"></div>
             <div class="page-header-border page-header-border-five"></div>
             <div class="page-header-border page-header-border-six"></div>
-            <div class="container">
+             <div class="container">
                 <div class="page-header__inner">
                     <h2>Services Details</h2>
                     <ul class="thm-breadcrumb list-unstyled">
@@ -39,7 +39,7 @@
 
 
         <!--  SECTION 1 : SERVICES details / IMG 672x713                                                                        -->
-        <section class="services-details">
+        <section class="services-details" style="padding-bottom: 10px">
             <div class="container">
                 <div class="row">
                     <!-- Première colonne -->
@@ -50,7 +50,7 @@
                       {% include "contenus/_services_details.html.twig" %}
                     </div>
                     <!-- Deuxième colonne -->
-                    <div class="col-md-4">
+                    <div class="col 3">
                         <div class="row">
                             <!-- Premier bloc de la deuxième colonne -->
                             <div class="col-12">
@@ -61,21 +61,20 @@
                                             <!--  BLOCK LATERAL DROIT  -->
                                             <div class="col-lg-10">
                                                 <div class="sidebar__single sidebar__post">
-                                                    <h3 class="sidebar__title">Nos services</h3>
+                                                    <h3 class="sidebar__title">Mes services</h3>
                                                     <ul class="sidebar__post-list list-unstyled text-break">
-
                                                         {% for servicesF in serviceFiltres %}
                                                             {% if servicesF.titre1 is not empty %}
                                                                 {% if servicesF.images.first %}
-                                                                    {% set image = vich_uploader_asset(servicesF.images.first) %}
+                                                                    {% set imageF = vich_uploader_asset(servicesF.images.first) %}
                                                                 {% else %}
-                                                                    {% set image = asset('assets/images/backgrounds/fond2.png') %}
+                                                                    {% set imageF = asset('assets/images/backgrounds/fond2.png') %}
                                                                 {% endif %}
                                                                 <li>
                                                                     <a class='d-flex align-items-center'
                                                                        href="{{ path('app_services_details',{slug: servicesF.slug }) }}">
                                                                         <div class="sidebar__post-image">
-                                                                            <img src="{{ image }}" alt="image du service sectionné">
+                                                                            <img src="{{ imageF }}" alt="image sélectionnée">
                                                                         </div>
                                                                         <div class="sidebar__post-content">
                                                                             <h3>
@@ -115,7 +114,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -131,8 +129,7 @@
         <section class="services-one" style="padding:50px 0 1px 0; margin: 10% 5%">
             <div class="services-one-container">
                 <div class="section-title text-center">
-
-                    <span class="section-title__tagline">Nous vous offrons</span>
+                    <span class="section-title__tagline">Je vous offre</span>
                     <h2 class="section-title__title mt-3">Des services de qualité</h2>
                 </div>
             </div>
@@ -140,10 +137,11 @@
 
         <!-- Section com -->
         <section>
-        <div class="container">
+        <div class="container mb-5">
             <div class="row">
-                <div class="col-xl-3 col-lg-4">
-                    <div class="services-details__sidebar">
+                <div class="col-xl-4 col-lg-4">
+                    <div class="services-details__sidebar ">
+                        <!-- 6 clefs de GAUCHE avec les popover -->
                         <div class="services-details__services-list-box">
                             <ul id="jojo" class="truc services-details__services-list list-unstyled">
                                 {% for liste in clef %}
@@ -161,20 +159,20 @@
                                     </li>
 
                                     <li data-toggle="popover" title="En détail"
-                                        data-bs-content="{{ liste[5]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                        <a style="max-height: 80px">{{ liste[4]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                        data-bs-content="{{ liste[5]|default('Home staging')|striptags|u.truncate(300,'...',false) }}">
+                                        <a style="max-height: 80px">{{ liste[4]|default('Home staging')|striptags|u.truncate(25,'...',false) }}
                                             <span class="icon-right-arrow"></span></a>
                                     </li>
 
                                     <li data-toggle="popover" title="En détail"
-                                        data-bs-content="{{ liste[7]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                        <a style="max-height: 80px">{{ liste[6]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                        data-bs-content="{{ liste[7]|default('Aide au suivi')|striptags|u.truncate(300,'...',false) }}">
+                                        <a style="max-height: 80px">{{ liste[6]|default('chantier')|striptags|u.truncate(25,'...',false) }}
                                             <span class="icon-right-arrow"></span></a>
                                     </li>
 
                                     <li data-toggle="popover" title="En détail"
-                                        data-bs-content="{{ liste[9]|default('visite 3D')|striptags|u.truncate(300,'...',false) }}">
-                                        <a style="max-height: 80px">{{ liste[8]|default('virtuelle')|striptags|u.truncate(25,'...',false) }}
+                                        data-bs-content="{{ liste[9]|default('Honneté')|striptags|u.truncate(300,'...',false) }}">
+                                        <a style="max-height: 80px">{{ liste[8]|default('Ecoute')|striptags|u.truncate(25,'...',false) }}
                                             <span class="icon-right-arrow"></span></a>
                                     </li>
 
@@ -188,23 +186,37 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div class="col-xl-8 col-lg-7">
+                <!--     Block de DROITE / AVEC LES PHOTOS DE CETTE SECTION    -->
+                <div class="col-xl-8 col-lg-7 mt-xl-5">
                     <div class="services-details__right">
-                        <div class="services-details__img">
-                            <img src="{{ image }}" style="height: 450px ; width: 100% ;object-fit: contain"
-                                 alt="{{ imageTitle }}">
-                        </div>
+                        {% for servicePub in promoServices %}
+
+                            {% if servicePub.images.first %}
+                                {% set imagePub = vich_uploader_asset(servicePub.images[0]) %}
+                                {% set imagePubTitle = servicePub.images.first.titre %}
+                            {% else %}
+                                {% set imagePub = asset('assets/images/backgrounds/fond2.png') %}
+                                {% set imageTitle = 'service détails image' %}
+                            {% endif %}
+
+                            <div class="services-details__content">
+                                <h2 class="services-details__title">{{ servicePub.titre1|default(('Designer'))|striptags }}</h2>
+                            </div>
+
+                            <div class="services-details__img">
+                                <img src="{{ imagePub }}" style="height: 450px ; width: 100% ;object-fit: contain"
+                                     alt="{{ imagePubTitle|default('image représentant un bureau professionnel') }}">
+                            </div>
+
                         <div class="services-details__content">
-                            <h2 class="services-details__title">{{ service.titre1|default(('Designer'))|striptags }}</h2>
-                            <p class="services-details__text-1"> {{ service.texte1|default(('le métier en quelques mots'))|striptags }} </p>
+                            <p class="services-details__text-1"> {{ servicePub.texte1|default(('le métier en quelques mots'))|striptags }} </p>
                         </div>
+
                         <div class="services-details__designing-box">
                             <div class="services-details__designing-list-box">
                                 <h2 class="services-details__designing-list-box-title">Les atouts</h2>
                                 <ul class="services-details__designing-list list-unstyled">
-                                    {% set list = service.liste %}
+                                    {% set list = servicePub.liste %}
                                     <li>
                                         <div class="icon">
                                             <i class="fas fa-slash"></i>
@@ -285,14 +297,13 @@
                                 </div>
                             </div>
                         </div>
+                     {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
      </section>
 
-
-    {% endfor %}
     <!--                                                                    fin de la section                                                           -->
 {% endblock %}
 
