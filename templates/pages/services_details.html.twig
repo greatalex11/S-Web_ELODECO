@@ -57,7 +57,7 @@
                                 <div class="news-details">
                                     <div class="container">
                                         <div class="row">
-                                            {#                                        {% include "contenus/_news_details.html.twig" with {news: news} %}#}
+
                                             <!--  BLOCK LATERAL DROIT  -->
                                             <div class="col-lg-10">
                                                 <div class="sidebar__single sidebar__post">
@@ -101,8 +101,8 @@
                                             <div class="services-details__help-box mt-0"
                                                  style="padding: 36px 21px 53px;">
                                                 <div class="services-details__help-box-bg-overly"></div>
-                                                <h3 class="services-details__help-box-title">{{ Apps.titre3menulat|default('Besoin d\'aide?') }} </h3>
-                                                <p class="services-details__help-box-text">{{ Apps.textemenulat|striptags|default('Bienvenue') }}
+                                                <h3 class="services-details__help-box-title" style="text-align:left">{{ Apps.titre3menulat|default('Besoin d\'aide?') }} </h3>
+                                                <p class="services-details__help-box-text" style="text-align:left">{{ Apps.textemenulat|striptags|default('Bienvenue') }}
                                                 </p>
                                                 <a class="services-details__phone">{{ (Apps.telephone|default('(+33) 06 21 85 33 48')) }}</a>
                                                 <a href="{{ path('app_contact') }}"

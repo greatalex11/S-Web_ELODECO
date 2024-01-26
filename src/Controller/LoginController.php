@@ -8,6 +8,7 @@ use App\Entity\Contenus;
 use App\Form\ContactType;
 use App\Repository\ClientRepository;
 use App\Repository\ContenusRepository;
+use App\Repository\StyleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -186,17 +187,19 @@ class LoginController extends AbstractController
 // -------------------------------------------------------------------------------------------------------    Style déco
 
     #[Route(path: '/styles', name: 'app_styles')]
-    public function styles(): Response
+    public function styles(StyleRepository $styleRepository): Response
     {
+        $styles= $styleRepository->findByPagesName('styles');
         return $this->render('pages/styles_deco/styles.html.twig', [
+            "style" => $styles,
         ]);
     }
 
 
-    #[Route(path: '/styles_scandinav', name: 'app_styles_scandinav')]
+    #[Route(path: '/styles_details/{slug}', name: 'app_styles_details')]
     public function stylesScandinav(): Response
     {
-        return $this->render('pages/styles_deco/styles_details_scandinav.html.twig', [
+        return $this->render('pages/styles_deco/styles_details.html.twig', [
         ]);
     }
 
@@ -204,7 +207,7 @@ class LoginController extends AbstractController
     #[Route(path: '/styles_contemporain', name: 'app_styles_contemporain')]
     public function stylesContemporain(): Response
     {
-        return $this->render('pages/styles_deco/styles_details_contemporain.html.twig', [
+        return $this->render('styles_details.html.twig', [
         ]);
     }
 

@@ -24,219 +24,218 @@
     </section>
     <!--                                                                -Bandeau supérieur fin                                                            -->
 
-
     <!--                                               STYLES DE DECORATION   / image de font 1894x359 px                                                  -->
 
     <section class="project-one portfolio-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!--                                                                        STYLE 1           370*483                                                   -->
-                    <div class="project-one__single">
-                        <div class="project-one__img-box">
-                            <div class="project-one__img">
-                                <img src="assets/images/styles/scandinav.png"
-                                     alt="logement scandinave, naturel aux lignes simples et minimalistes">
-                                <div class="project-one__hover">
-                                    <a href="assets/images/styles/scandinav.png" class="img-popup"><i
-                                                class="fa fa-search-plus"></i></a>
-                                    <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">Style </p>
-                                        <h2 class="project-one__hover-name"><a
-                                                    href="{{ path('app_styles_scandinav') }}">scandinave </a>
-                                        </h2>
+
+        {% for style in style %}
+
+            {% if style.image.first %}
+                {% set image = vich_uploader_asset(style.image.first) %}
+                {% set imageTitle = style.image.first.titre %}
+            {% else %}
+                {% set image = asset('assets/images/backgrounds/fond2.png') %}
+                {% set imageTitle = 'service image' %}
+            {% endif %}
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="project-one__single">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="{{ image }}" style="height: 300px;width: 100%;object-fit: contain"
+                                             alt="{{ imageTitle }}">
+                                        <div class="project-one__hover">
+                                            <a href="{{ path('app_styles_details',{slug: style.slug}) }}"
+                                               class="img-popup"><i class="fa fa-search-plus"></i></a>
+
+                                            <div class="project-one__hover-content">
+                                                <p class="project-one__hover-title">{{ style.titre1|default('style') }} </p>
+                                                <h2 class="project-one__hover-name">
+                                                    <a href="{{ path('app_styles_details',{slug: style.slug}) }}">
+                                                        {{ style.titre2|default('styles scandinave...') }}</a>
+                                                </h2>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-
-                    <!--                                                 fin  STYLE                                                               -->
-
-
-                    <!--                                                                    STYLE  2                                                              -->
-
-                    <div class="project-one__single">
-                        <div class="project-one__img-box">
-                            <div class="project-one__img">
-                                <img src="assets/images/styles/contemporain.png"
-                                     alt="salon moderne avec escalier épuré sans garde main">
-                                <div class="project-one__hover">
-                                    <a href="{{ path('app_styles_contemporain') }}" class="img-popup"><i
-                                                class="fa fa-search-plus"></i></a>
-                                    <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">Style </p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Moderne</a>
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!--                                                 fin  STYLE  2                                                              -->
-                    <!--Project One Single-->
-
-
-                    <!--                                                     STYLE  3                                                            -->
-
-
-                    <div class="project-one__single">
-                        <div class="project-one__img-box">
-                            <div class="project-one__img">
-                                <img src="assets/images/styles/charmant.png"
-                                     alt="deco charmane avec tasee de café, table bois et baies disposées sur nape planche">
-                                <div class="project-one__hover">
-                                    <a href="assets/images/project/refection-appart.png" class="img-popup"><i
-                                                class="fa fa-search-plus"></i></a>
-                                    <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">Style </p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Charme</a>
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-
-                    <!--                                                        fin  STYLE  3                                                              -->
-
-
-                    <!--                                                           STYLE  4                                                            -->
-                    <div class="project-one__single">
-                        <div class="project-one__img-box">
-                            <div class="project-one__img">
-                                <img src="assets/images/project/projet_indus_moyen.png"
-                                     alt="plan 3d logement après réféction avec cuisine et sejour en sous pente">
-                                <div class="project-one__hover">
-                                    <a href="assets/images/project/projet_sdb_moyen.png" class="img-popup"><i
-                                                class="fa fa-search-plus"></i></a>
-                                    <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">Style </p>
-                                        <h2 class="project-one__hover-name"><a
-                                                    href="portfolio-details.html">Industriel</a>
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-
-                    <!--                                                 fin  STYLE  4                                                              -->
-
-
-                    <!--                                                     STYLE  5                                                            -->
-                    <div class="project-one__single">
-                        <div class="project-one__img-box">
-                            <div class="project-one__img">
-                                <img src="assets/images/project/projet_extension_bois2_moyen.png"
-                                     alt="extension bois avec poele, intérieur chic mais simple en matériaux nobles">
-                                <div class="project-one__hover">
-                                    <a href="assets/images/project/projet_extension_bois2_moyen.png"
-                                       class="img-popup"><i
-                                                class="fa fa-search-plus"></i></a>
-                                    <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">Style </p>
-                                        <h2 class="project-one__hover-name"><a
-                                                    href="portfolio-details.html">Ethnique</a>
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-
-                    <!--                                                 fin  STYLE  5                                                              -->
-
-
-                    <!--                                                     STYLE  6                                                           -->
-                    <div class="project-one__single">
-                        <div class="project-one__img-box">
-                            <div class="project-one__img">
-                                <img src="assets/images/project/projet_extension_bois2_moyen.png"
-                                     alt="extension bois avec poele, intérieur chic mais simple en matériaux nobles">
-                                <div class="project-one__hover">
-                                    <a href="assets/images/project/projet_extension_bois2_moyen.png"
-                                       class="img-popup"><i
-                                                class="fa fa-search-plus"></i></a>
-                                    <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">Style </p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Vintage</a>
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-
-                    <!--                                                 fin  STYLE  6                                                             -->
-
-
-                    <!--                                                     STYLE  7                                                           -->
-                    <div class="project-one__single">
-                        <div class="project-one__img-box">
-                            <div class="project-one__img">
-                                <img src="assets/images/project/projet_extension_bois2_moyen.png"
-                                     alt="extension bois avec poele, intérieur chic mais simple en matériaux nobles">
-                                <div class="project-one__hover">
-                                    <a href="assets/images/project/projet_extension_bois2_moyen.png"
-                                       class="img-popup"><i
-                                                class="fa fa-search-plus"></i></a>
-                                    <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">Style </p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Bord de
-                                                mer</a>
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-
-
-                    <!--                                                     STYLE  8                                                            -->
-                    <div class="project-one__single">
-                        <div class="project-one__img-box">
-                            <div class="project-one__img">
-                                <img src="assets/images/project/projet_extension_bois2_moyen.png"
-                                     alt="extension bois avec poele, intérieur chic mais simple en matériaux nobles">
-                                <div class="project-one__hover">
-                                    <a href="assets/images/project/projet_extension_bois2_moyen.png"
-                                       class="img-popup"><i
-                                                class="fa fa-search-plus"></i></a>
-                                    <div class="project-one__hover-content">
-                                        <p class="project-one__hover-title">Style</p>
-                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Art
-                                                déco</a>
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-
-                    <!--                                                 fin  STYLE  8                                                             -->
-
-
-                    <!--                                                 fin  STYLE  7                                                              -->
-
-
+            </div>
+      {% endfor %}
     </section>
 
-
 {% endblock %}
+
+
+
+
+
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+
+{#                    <!--                                                 fin  STYLE                                                               -->#}
+
+
+
+
+
+{#                    <!--                                                     STYLE  3                                                            -->#}
+
+
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/styles/charmant.png"#}
+{#                                     alt="deco charmane avec tasee de café, table bois et baies disposées sur nape planche">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/refection-appart.png" class="img-popup"><i#}
+{#                                                class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">Style </p>#}
+{#                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Charme</a>#}
+{#                                        </h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+
+{#                    <!--                                                        fin  STYLE  3                                                              -->#}
+
+
+{#                    <!--                                                           STYLE  4                                                            -->#}
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/project/projet_indus_moyen.png"#}
+{#                                     alt="plan 3d logement après réféction avec cuisine et sejour en sous pente">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/projet_sdb_moyen.png" class="img-popup"><i#}
+{#                                                class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">Style </p>#}
+{#                                        <h2 class="project-one__hover-name"><a#}
+{#                                                    href="portfolio-details.html">Industriel</a>#}
+{#                                        </h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+
+{#                    <!--                                                 fin  STYLE  4                                                              -->#}
+
+
+{#                    <!--                                                     STYLE  5                                                            -->#}
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/project/projet_extension_bois2_moyen.png"#}
+{#                                     alt="extension bois avec poele, intérieur chic mais simple en matériaux nobles">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/projet_extension_bois2_moyen.png"#}
+{#                                       class="img-popup"><i#}
+{#                                                class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">Style </p>#}
+{#                                        <h2 class="project-one__hover-name"><a#}
+{#                                                    href="portfolio-details.html">Ethnique</a>#}
+{#                                        </h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+
+{#                    <!--                                                 fin  STYLE  5                                                              -->#}
+
+
+{#                    <!--                                                     STYLE  6                                                           -->#}
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/project/projet_extension_bois2_moyen.png"#}
+{#                                     alt="extension bois avec poele, intérieur chic mais simple en matériaux nobles">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/projet_extension_bois2_moyen.png"#}
+{#                                       class="img-popup"><i#}
+{#                                                class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">Style </p>#}
+{#                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Vintage</a>#}
+{#                                        </h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+
+{#                    <!--                                                 fin  STYLE  6                                                             -->#}
+
+
+{#                    <!--                                                     STYLE  7                                                           -->#}
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/project/projet_extension_bois2_moyen.png"#}
+{#                                     alt="extension bois avec poele, intérieur chic mais simple en matériaux nobles">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/projet_extension_bois2_moyen.png"#}
+{#                                       class="img-popup"><i#}
+{#                                                class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">Style </p>#}
+{#                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Bord de#}
+{#                                                mer</a>#}
+{#                                        </h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+
+
+{#                    <!--                                                     STYLE  8                                                            -->#}
+{#                    <div class="project-one__single">#}
+{#                        <div class="project-one__img-box">#}
+{#                            <div class="project-one__img">#}
+{#                                <img src="assets/images/project/projet_extension_bois2_moyen.png"#}
+{#                                     alt="extension bois avec poele, intérieur chic mais simple en matériaux nobles">#}
+{#                                <div class="project-one__hover">#}
+{#                                    <a href="assets/images/project/projet_extension_bois2_moyen.png"#}
+{#                                       class="img-popup"><i#}
+{#                                                class="fa fa-search-plus"></i></a>#}
+{#                                    <div class="project-one__hover-content">#}
+{#                                        <p class="project-one__hover-title">Style</p>#}
+{#                                        <h2 class="project-one__hover-name"><a href="portfolio-details.html">Art#}
+{#                                                déco</a>#}
+{#                                        </h2>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-4 col-lg-6 col-md-6">#}
+
+{#                    <!--                                                 fin  STYLE  8                                                             -->#}
+
+
+{#                    <!--                                                 fin  STYLE  7                                                              -->#}
+
+
+

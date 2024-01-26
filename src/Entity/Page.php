@@ -26,9 +26,13 @@ class Page
     #[ORM\ManyToMany(targetEntity: Contenus::class, mappedBy: 'pages',fetch: 'EAGER')]
     private Collection $contenus;
 
+    #[ORM\ManyToMany(targetEntity: Style::class, mappedBy: 'page')]
+    private Collection $style;
+
     public function __construct()
     {
         $this->contenus = new ArrayCollection();
+        $this->style= new ArrayCollection();
     }
 
     public function __toString(): string
@@ -91,6 +95,33 @@ class Page
     {
         if ($this->contenus->removeElement($contenu)) {
             $contenu->removePage($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Style>
+     */
+    public function getStyle(): Collection
+    {
+        return $this->style;
+    }
+
+    public function addStyle(Style $style): static
+    {
+        if (!$this->style->contains($style)) {
+            $this->style->add($style);
+            $style->addPage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStyle(Style $style): static
+    {
+        if ($this->style->removeElement($style)) {
+            $style->removePage($this);
         }
 
         return $this;

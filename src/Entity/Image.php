@@ -58,9 +58,13 @@ class Image
     #[ORM\Column]
     private bool $isPeripherique = false;
 
+    #[ORM\ManyToMany(targetEntity: Style::class, mappedBy: 'image')]
+    private Collection $styles;
+
     public function __construct()
     {
         $this->contenus = new ArrayCollection();
+        $this->styles = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -277,6 +281,33 @@ class Image
     public function setIsPeripherique(bool $isPeripherique): static
     {
         $this->isPeripherique = $isPeripherique;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Style>
+     */
+    public function getStyles(): Collection
+    {
+        return $this->styles;
+    }
+
+    public function addStyle(Style $style): static
+    {
+        if (!$this->styles->contains($style)) {
+            $this->styles->add($style);
+            $style->addImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStyle(Style $style): static
+    {
+        if ($this->styles->removeElement($style)) {
+            $style->removeImage($this);
+        }
 
         return $this;
     }

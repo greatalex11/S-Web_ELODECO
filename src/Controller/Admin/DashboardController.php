@@ -9,6 +9,7 @@ use App\Entity\Documents;
 use App\Entity\Image;
 use App\Entity\Page;
 use App\Entity\Projet;
+use App\Entity\Style;
 use App\Entity\Tache;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -77,6 +78,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Thème');
         yield MenuItem::linkToCrud('Pages', 'fas fa-file-alt', Page::class);
         yield MenuItem::linkToCrud('Contenus', 'fas fa-text-height', Contenus::class);
+        yield MenuItem::linkToCrud('Styles', 'fa-brands fa-stack-overflow', Style::class);
         yield MenuItem::linkToCrud('Images', 'fas fa-image', Image::class);
 
         // Pour le thème je charge ma seule entité en base de données en mode édition
