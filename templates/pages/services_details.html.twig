@@ -78,7 +78,7 @@
                                                                         </div>
                                                                         <div class="sidebar__post-content">
                                                                             <h3>
-                                                                                <span class="sidebar__post-content_meta">{{ servicesF.titre1 }}</span>
+                                                                                <span class="sidebar__post-content_meta ">{{ servicesF.titre1 }}</span>
                                                                             </h3>
                                                                         </div>
                                                                     </a>
@@ -126,7 +126,7 @@
 
         <!-- Bandeau intermédiaire gris -->
 
-        <section class="services-one" style="padding:50px 0 1px 0; margin: 10% 5%">
+        <section class="services-one" style="padding-top:25px; padding-bottom:1px; margin: 6% 4% 6% 4%">
             <div class="services-one-container">
                 <div class="section-title text-center">
                     <span class="section-title__tagline">Je vous offre</span>
@@ -137,7 +137,7 @@
 
         <!-- Section com -->
         <section>
-        <div class="container mb-5">
+        <div class="container mb-4">
             <div class="row">
                 <div class="col-xl-4 col-lg-4">
                     <div class="services-details__sidebar ">
@@ -199,17 +199,17 @@
                                 {% set imageTitle = 'service détails image' %}
                             {% endif %}
 
-                            <div class="services-details__content mt-0">
+                            <div class="services-details__content mt-0 mb-5">
                                 <h2 class="services-details__title">{{ servicePub.titre1|default(('Designer'))|striptags }}</h2>
                             </div>
 
                             <div class="services-details__img">
-                                <img src="{{ imagePub }}" style="height: 450px ; width: 100% ;object-fit: contain"
+                                <img src="{{ imagePub }}" style="height: 450px ; width: 100% ;object-fit: contain; margin-bottom: 2%"
                                      alt="{{ imagePubTitle|default('image représentant un bureau professionnel') }}">
                             </div>
 
                         <div class="services-details__content">
-                            <p class="services-details__text-1"> {{ servicePub.texte1|default(('le métier en quelques mots'))|striptags }} </p>
+                            <p class="services-details__text-1 mt-4"> {{ servicePub.texte1|default(('le métier en quelques mots'))|striptags }} </p>
                         </div>
                         {% endfor %}
                     </div>
@@ -219,7 +219,7 @@
      </section>
 
     <!--  GRID  -->
-    <section>
+    <section class="mb-5">
 
     {% for servicePub in promoServices %}
 
@@ -231,7 +231,7 @@
             {% set imageTitle = 'service détails image' %}
         {% endif %}
 
-        <div class="container mb-5">
+        <div class="container" style="margin-bottom: 8%">
             <div class="row">
                 <div class="col-4">
                     <!--   Block de gauche: les atouts                -->
