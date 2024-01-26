@@ -828,6 +828,9 @@
                 $news.height(higher);
             }
         }}
+
+
+
     function logoHeight() {
         let logoHeight = $(".main-menu-wrapper__bottom").outerHeight();
         $('#logo').height(logoHeight - 10);
