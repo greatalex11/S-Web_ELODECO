@@ -2,6 +2,7 @@
 
 {% block content %}
     {% set Apps= theme.theme %}
+
     {% for service in serviceD %}
         {% if service.images.first %}
             {% set imageGd = vich_uploader_asset(service.images[0]) %}

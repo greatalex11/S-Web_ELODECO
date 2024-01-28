@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\ContactForm;
 use App\Entity\Contenus;
+use App\Entity\Style;
 use App\Form\ContactType;
 use App\Repository\ClientRepository;
 use App\Repository\ContenusRepository;
@@ -197,19 +198,22 @@ class LoginController extends AbstractController
 
 
     #[Route(path: '/styles_details/{slug}', name: 'app_styles_details')]
-    public function stylesScandinav(): Response
+    public function stylesDetail(Style $style, StyleRepository $styleRepository): Response
     {
+        $styleActuel=$style;
+        $stylesAll = $styleRepository->findAll();
+        $stylesFilter = array_filter($stylesAll, function($item) use ($style) {
+            //use ($style) idem global $style
+            return $item->getId() !== $style->getId();
+        });
+
         return $this->render('pages/styles_deco/styles_details.html.twig', [
+            'styled'=>$styleActuel,
+            'styleFilter'=>$stylesFilter,
         ]);
     }
 
 
-    #[Route(path: '/styles_contemporain', name: 'app_styles_contemporain')]
-    public function stylesContemporain(): Response
-    {
-        return $this->render('styles_details.html.twig', [
-        ]);
-    }
 
 // ....................................................................................................       news
 
