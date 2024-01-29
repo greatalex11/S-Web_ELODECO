@@ -778,8 +778,26 @@
     // ----------------------------- Mon javascript -----------------------------------------
 
 
+    // Création du caroussel pour les images de style détails
+
+    // $('#styleCarousel').modal('show')
+
+    $(document).ready(
+        // $('#styleCarousel').on('slide.bs.carousel')
+        $('#styleCarousel').on('slide.bs.carousel', () => {
+                $('#styleCarouselPrev').carousel('prev');
+                $('#styleCarouselNext').carousel('next')
+            }
+        )
+    )
 
 
+
+
+
+    // $('#styleCarousel').on('show.bs.modal', function (e) {
+    //     if (!styled) return e.preventDefault() // stops modal from being shown
+    // })
 
 
 
