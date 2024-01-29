@@ -21,6 +21,23 @@ class ProjetRepository extends ServiceEntityRepository
         parent::__construct($registry, Projet::class);
     }
 
+
+//    public function findByPagesName(string $pageName, int $maxResults = 25): array
+//    {
+//        return $this->createQueryBuilder('p')
+//            ->join("p.", "")
+//            ->andWhere('LOWER(p.nom) = :nom')
+//            ->andWhere('s.publier = 1')
+//            ->setParameter('nom', strtolower($pageName))
+////            ->orderBy('c.createdAt', 'DESC')
+//            ->setMaxResults($maxResults)
+//            ->getQuery()
+//            ->getResult();
+//    }
+
+
+
+
 //    /**
 //     * @return Projet[] Returns an array of Projet objects
 //     */

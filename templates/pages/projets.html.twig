@@ -17,7 +17,7 @@
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
-                    <li>Styles de décoration</li>
+                    <li>Mes projets</li>
                 </ul>
             </div>
         </div>
@@ -32,31 +32,33 @@
 
             <div class="container">
                 <div class="row">
-                    {% for style in style %}
+                    {% for projet in projets %}
 
-                    {% if style.image.first %}
-                        {% set image = vich_uploader_asset(style.image.first) %}
-                        {% set imageTitle = style.image.first.titre %}
-                    {% else %}
-                        {% set image = asset('assets/images/styles/charmant.png') %}
-                        {% set imageTitle = 'service image' %}
-                    {% endif %}
+{#                    {% if style.image.first %}#}
+{#                        {% set image = vich_uploader_asset(projets.image.first) %}#}
+{#                        {% set imageTitle = projets.image.first.titre %}#}
+{#                    {% else %}#}
+{#                        {% set image = asset('assets/images/styles/charmant.png') %}#}
+{#                        {% set imageTitle = 'service image' %}#}
+{#                    {% endif %}#}
                     <div class="col-xl-4 col-lg-6 col-md-6">
                         <div class="project-one__single">
                             <div class="project-one__single">
                                 <div class="project-one__img-box">
                                     <div class="project-one__img">
-                                        <img src="{{ image }}" style="height: 370px; width: 100%; object-fit:cover"
-                                             alt="{{ imageTitle }}">
+{#                                        <img src="{{ image }}" style="height: 370px; width: 100%; object-fit:cover"#}
+{#                                             alt="{{ imageTitle }}">#}
                                         <div class="project-one__hover">
-                                            <a href="{{ path('app_styles_details',{slug: style.slug}) }}"
-                                               class="img-popup"><i class="fa fa-search-plus"></i></a>
+{#                                            <a href="{{ path('app_projet_details',{slug: projet.slug}) }}"#}
+                                               <a  href="" class="img-popup"><i class="fa fa-search-plus"></i></a>
 
                                             <div class="project-one__hover-content">
-                                                <p class="project-one__hover-title">{{ style.titre1|default('style') }} </p>
+                                                <p class="project-one__hover-title">{{ projet.titre|default('style') }} </p>
                                                 <h2 class="project-one__hover-name">
-                                                    <a href="{{ path('app_styles_details',{slug: style.slug}) }}">
-                                                        {{ style.titre2|default('styles scandinave...') }}</a>
+{#                                                    {slug: style.slug}   href="{{}}"#}
+                                                    <a>
+                                                        {{ projet.titre|default('l\'essentiel de mes projets...') }}
+                                                    </a>
                                                 </h2>
                                             </div>
                                         </div>

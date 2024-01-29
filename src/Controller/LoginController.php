@@ -5,10 +5,12 @@ namespace App\Controller;
 
 use App\Entity\ContactForm;
 use App\Entity\Contenus;
+use App\Entity\Projet;
 use App\Entity\Style;
 use App\Form\ContactType;
 use App\Repository\ClientRepository;
 use App\Repository\ContenusRepository;
+use App\Repository\ProjetRepository;
 use App\Repository\StyleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -158,32 +160,66 @@ class LoginController extends AbstractController
 // ---------------------------------------------------------------------------------------------------------   Portefolio
 
 
-    #[Route(path: '/portfolio', name: 'app_portfolio')]
-    public function portefolio(ContenusRepository $contenusRepository): Response
+    #[Route(path: '/projets', name: 'app_projets')]
+    public function projets(ProjetRepository $projetRepository): Response
     {
-        $folio = $contenusRepository->findByType([Contenus::TYPE_PortefolioGTI]);
-        return $this->render('pages/portfolio.html.twig', [
-            'thefolio' => $folio
+        $projets= $projetRepository->findAll();
+        return $this->render('pages/projets.html.twig', [
+            "projets" => $projets,
         ]);
     }
 
-    #[Route(path: '/portfolio/{slug}', name: 'app_portfolio_details2')]
-    public function portefolioD(Contenus $contenus, ContenusRepository $contenusRepository): Response
-    {
-        $folio = $contenusRepository->findByType([Contenus::TYPE_PortefolioGTI]);
 
-        return $this->render('pages/portfolio_details.html.twig', [
-            'folios' => $folio,
-//            'lastfolios'=> $contenus,
+    #[Route(path: '/projet_details/{slug}', name: 'app_projet_details')]
+    public function projetDetails (Projet $projet, ProjetRepository $projetRepository): Response
+    {
+        $projetActuel=$projet;
+        $projetsAll = $projetRepository->findAll();
+        $stylesFilter = array_filter($projetsAll, function($item) use ($projet) {
+            //use ($style) idem global $style
+            return $item->getId() !== $projet->getId();
+        });
+
+        return $this->render('pages/projet_details.html.twig', [
+            'projet'=>$projetActuel,
+            'projetsFilter'=>$stylesFilter,
         ]);
     }
 
-    #[Route(path: '/portfolio_details', name: 'app_portfolio_details')]
-    public function portefolioDP(): Response
-    {
-        return $this->render('pages/portfolio_details.html.twig', [
-        ]);
-    }
+
+
+
+
+
+
+
+//
+//    #[Route(path: '/portfolio', name: 'app_portfolio')]
+//    public function portefolio(ContenusRepository $contenusRepository): Response
+//    {
+//        $folio = $contenusRepository->findByType([Contenus::TYPE_PortefolioGTI]);
+//        return $this->render('pages/portfolio.html.twig', [
+//            'thefolio' => $folio
+//        ]);
+//    }
+//
+//    #[Route(path: '/portfolio/{slug}', name: 'app_portfolio_details2')]
+//    public function portefolioD(Contenus $contenus, ContenusRepository $contenusRepository): Response
+//    {
+//        $folio = $contenusRepository->findByType([Contenus::TYPE_PortefolioGTI]);
+//
+//        return $this->render('pages/portfolio_details.html.twig', [
+//            'folios' => $folio,
+////            'lastfolios'=> $contenus,
+//        ]);
+//    }
+//
+//    #[Route(path: '/portfolio_details', name: 'app_portfolio_details')]
+//    public function portefolioDP(): Response
+//    {
+//        return $this->render('pages/portfolio_details.html.twig', [
+//        ]);
+//    }
 
 // -------------------------------------------------------------------------------------------------------    Style déco
 

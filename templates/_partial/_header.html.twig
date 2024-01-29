@@ -1,6 +1,6 @@
 {% set Apps = theme.theme %}
 
-<header class="main-header clearfix">
+<header class="main-header clearfix" style="background-color: {{ Apps.couleurActuelleBg }}">
     <div class="container">
         <div class="main-menu-wrapper">
             <div class="main-header__logo">
@@ -12,8 +12,8 @@
 
                 </a>
             </div>
-            <div class="main-menu-wrapper__top">
-                <div class="main-menu-wrapper__top-inner" style="background-color: {{ Apps.couleurActuelleBg }}">
+            <div class="main-menu-wrapper__top" style="background-color: {{ Apps.couleurActuelleBg }}">
+                <div class="main-menu-wrapper__top-inner">
                     <div class="main-menu-wrapper__left">
                         <div class="main-menu-wrapper__left-content">
                             <ul class="main-menu-wrapper__left-contact-box list-unstyled">
@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </div>
-            <div class="main-menu-wrapper__bottom">
+            <div class="main-menu-wrapper__bottom" style="background-color: {{ Apps.couleurActuelleBg }}">
                 <nav class="main-menu">
                     <div class="main-menu__inner">
                         <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
@@ -71,11 +71,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#">Portfolio</a>
-                                <ul>
-                                    <li><a href="{{ path('app_portfolio') }}">Projets</a></li>
-                                    <li><a href="{{ path('app_portfolio_details') }}">Details des projets</a></li>
-                                </ul>
+                                <a href="{{ path('app_projets') }}">Projets</a>
                             </li>
                             <li class="dropdown">
                                 <a href="{{ path('app_styles') }}">Styles déco</a>

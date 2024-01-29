@@ -11,6 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ProjetRepository::class)]
 class Projet
 {
+    public const prestation=[
+        "gestion complète=> gestion complete",
+        "gestion => gestion ",
+        ];
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -86,6 +90,7 @@ class Projet
         $this->taches = new ArrayCollection();
         $this->client = new ArrayCollection();
         $this->documents = new ArrayCollection();
+//        $this->prestation =new ArrayCollection();
     }
 
 //    public function __toString(): string
