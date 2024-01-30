@@ -11,9 +11,15 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ProjetRepository::class)]
 class Projet
 {
+
+    public const SERVICE_COMPLET= 'gestion totale du projet';
+
+    public const SERVICE_PARTIEL= 'plans et mise en relation';
+
+
     public const prestation=[
-        "gestion complète=> gestion complete",
-        "gestion => gestion ",
+        "gestion complète"=> self::SERVICE_COMPLET,
+        "gestion" => self::SERVICE_PARTIEL,
         ];
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -27,7 +33,7 @@ class Projet
     private ?string $description = null;
 
     #[ORM\Column(nullable: true)]
-    private ?array $prestation = null;
+    private ?string $prestation = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_debut = null;
@@ -38,7 +44,7 @@ class Projet
 
 //    public function __toString(): string
 //    {
-//        return $this->duree;
+//        return $this->client;
 //    }
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -77,7 +83,7 @@ class Projet
     #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Tache::class)]
     private Collection $taches;
 
-    #[ORM\ManyToMany(targetEntity: Client::class, inversedBy: 'projets')]
+    #[ORM\ManyToMany(targetEntity: Client::class, inversedBy: 'projets',fetch: 'EAGER')]
     private Collection $client;
 
     #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Documents::class,)]
@@ -92,11 +98,6 @@ class Projet
         $this->documents = new ArrayCollection();
 //        $this->prestation =new ArrayCollection();
     }
-
-//    public function __toString(): string
-//    {
-//        return $this->documents;
-//    }
 
     public function getId(): ?int
     {
@@ -127,12 +128,12 @@ class Projet
         return $this;
     }
 
-    public function getPrestation(): ?array
+    public function getPrestation(): ?string
     {
         return $this->prestation;
     }
 
-    public function setPrestation(?array $prestation): static
+    public function setPrestation(?string $prestation): static
     {
         $this->prestation = $prestation;
 

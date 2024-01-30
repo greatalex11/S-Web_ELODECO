@@ -6,8 +6,10 @@ use App\Entity\Client;
 use App\Entity\Documents;
 use App\Entity\Projet;
 use App\Entity\Tache;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Option\TextAlign;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
@@ -34,21 +36,20 @@ class ProjetCrudController extends AbstractCrudController
             yield TextField::new('titre'),
             yield TextField::new('localite'),
 
-            yield CollectionField::new('client')->useEntryCrudForm(ClientCrudController::class)
-                ->setEntryIsComplex(true)
-                ->setFormTypeOptions([
-                    'by_reference' => false,
-                ])
-                ->setLabel("nom du client")
-                ->setTemplatePath('fields/raw.html.twig'),
-//            yield AssociationField::new('client')
-//                ->setChoiceLabel('nom')
-//                ->autocomplete()
-//                ->setChoiceLabel(),
 
+//
+//            yield CollectionField::new('client')
+//                ->setEntryIsComplex(true)
+//               ->setFormTypeOptions([
+//                    'by_reference' => false,
+//                ]),
+
+            yield AssociationField::new('client')->autocomplete()
+                ->setTemplatePath('fields/tags.html.twig')
+                ->setTextAlign(TextAlign::LEFT),
 
             yield TextEditorField::new('description')->hideOnIndex(),
-            yield TextField::new('prestation'),
+            yield ChoiceField::new('prestation')->setChoices(Projet::prestation),
 
             yield FormField::addTab("Gestion"),
             yield DateField::new("date_debut"),
@@ -63,15 +64,12 @@ class ProjetCrudController extends AbstractCrudController
             yield FormField::addTab("Artisan"),
 
 
-
-
             yield FormField::addTab("Liste des taches"),
             yield AssociationField::new('taches')
                 ->autocomplete()->setLabel('liste des taches')->hideOnIndex(),
 
             yield FormField::addTab("Document"),
             yield CollectionField::new('documents')
-
                ->useEntryCrudForm(DocumentsCrudController::class)
                 ->setEntryIsComplex(true)
                 ->setFormTypeOptions([

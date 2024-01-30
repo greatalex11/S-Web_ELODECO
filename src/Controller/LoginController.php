@@ -169,7 +169,6 @@ class LoginController extends AbstractController
         ]);
     }
 
-
     #[Route(path: '/projet_details/{slug}', name: 'app_projet_details')]
     public function projetDetails (Projet $projet, ProjetRepository $projetRepository): Response
     {

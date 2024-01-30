@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Artisan;
 use App\Entity\Client;
+use App\Entity\ContactForm;
 use App\Entity\Contenus;
 use App\Entity\Documents;
 use App\Entity\Image;
@@ -75,25 +76,35 @@ class DashboardController extends AbstractDashboardController
         $routeBuilder = $this->container->get(AdminUrlGenerator::class);
 
         yield MenuItem::linkToUrl('EloDeco Site Web', 'fas fa-home', $this->generateUrl('app_home'));
-        yield MenuItem::section('Thème');
-        yield MenuItem::linkToCrud('Pages', 'fas fa-file-alt', Page::class);
-        yield MenuItem::linkToCrud('Contenus', 'fas fa-text-height', Contenus::class);
-        yield MenuItem::linkToCrud('Styles', 'fa-brands fa-stack-overflow', Style::class);
-        yield MenuItem::linkToCrud('Images', 'fas fa-image', Image::class);
 
+
+        yield MenuItem::section('Mes contacts');
+        yield MenuItem::linkToCrud('Messages', 'fa-brands fa-square-threads', ContactForm::class);
+
+        yield MenuItem::section('Thème');
         // Pour le thème je charge ma seule entité en base de données en mode édition
-        yield MenuItem::linkToUrl('Theme', 'fas fa-suse', $routeBuilder
+        yield MenuItem::linkToUrl('Theme', 'fa-brands fa-suse', $routeBuilder
             ->setController(PeripheriquesCrudController::class)
             ->setEntityId(1)
             ->setAction(Action::EDIT));
 
-        yield MenuItem::section('Admin');
-        yield MenuItem::linkToCrud('Artisans', 'fas fa-hammer', Artisan::class);
-        yield MenuItem::linkToCrud('Clients', 'fas fa-users', Client::class);
-        yield MenuItem::linkToCrud('Roles', 'fas fa-users', User::class);
+        yield MenuItem::linkToCrud('Styles déco', 'fa-brands fa-stack-overflow', Style::class);
+
+        yield MenuItem::linkToCrud('Contenus', 'fas fa-text-height', Contenus::class);
+        yield MenuItem::linkToCrud('Images', 'fas fa-image', Image::class);
+        yield MenuItem::linkToCrud('Pages', 'fas fa-file-alt', Page::class);
+
+
+        yield MenuItem::section('Métier');
         yield MenuItem::linkToCrud('Projets', 'fas fa-project-diagram', Projet::class);
         yield MenuItem::linkToCrud('taches', 'fas fa-project-diagram', Tache::class);
         yield MenuItem::linkToCrud('Documents', 'fas fa-project-diagram', Documents::class);
+
+        yield MenuItem::section('Admin');
+        yield MenuItem::linkToCrud('Artisans', 'fas fa-hammer', Artisan::class);
+        yield MenuItem::linkToCrud('Clients', 'fas fa-users', Client::class);
+        yield MenuItem::linkToCrud('Roles', 'fa-brands fa-slack', User::class);
+
     }
 
     public function configureActions(): Actions
