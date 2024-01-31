@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\ContactForm;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Validator\Constraints\Count;
 
 /**
  * @extends ServiceEntityRepository<ContactForm>
@@ -23,20 +24,22 @@ class ContactFormRepository extends ServiceEntityRepository
 
 
 
-//    /**
-//     * @return ContactForm[] Returns an array of ContactForm objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+
+    /**
+     * @return ContactForm[] Returns an array of ContactForm objects
+     */
+    public function countMsg():?string
+    {
+        return $this->createQueryBuilder('c')
+            ->select('COUNT(c.nom)')
+            ->where('c.nom = :nom')
+            ->setParameter('nom', 'grandemanche')
+            ->getQuery()
+            ->getResult();
+//            ->getOneOrNullResult();
+
+//            ->getSingleScalarResult();
+    }
 
 //    public function findOneBySomeField($value): ?ContactForm
 //    {
