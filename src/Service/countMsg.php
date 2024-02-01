@@ -17,9 +17,9 @@ class countMsg
         $msg = $this->contact = $contactForm;
 
         $resultMsg = $msg->createQueryBuilder('c')
-            ->select('COUNT(c.nom)')
-            ->where('c.nom = :nom')
-            ->setParameter('nom', 'grandemanche')
+            ->select('COUNT(c.msgLu)')
+            ->where('c.msgLu = :msgLu')
+            ->setParameter('msgLu', '1')
             ->getQuery()
             ->getResult();
 //            ->getOneOrNullResult();
@@ -34,10 +34,7 @@ class countMsg
     }
 
 
-//    public function msgNonLu(): ContactFormRepository
-//    {
-//
-//
+//    public function msgNonLu(): ContactFormRepository   {
 //
 //        return $this-> $msg;
 //    }

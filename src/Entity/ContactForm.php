@@ -9,6 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ContactFormRepository::class)]
 class ContactForm
 {
+    public const MSGURG= 'urgent';
+    public const MSGENCOURS= 'traitement en cours';
+    public const MSGTRAITE= 'message traité';
+    public const statusMsg=[
+        "urgent"=> self::MSGURG,
+        "traitement en cours" => self::MSGENCOURS,
+        "traité" => self::MSGTRAITE,
+    ];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -34,6 +43,12 @@ class ContactForm
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $status = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $msgLu = false;
 
     public function getId(): ?int
     {
@@ -120,6 +135,30 @@ class ContactForm
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function isMsgLu(): ?bool
+    {
+        return $this->msgLu;
+    }
+
+    public function setMsgLu(?bool $msgLu): static
+    {
+        $this->msgLu = $msgLu;
 
         return $this;
     }
