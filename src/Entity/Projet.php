@@ -80,14 +80,32 @@ class Projet
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_fin = null;
 
-    #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Tache::class)]
+    #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Tache::class,cascade: ['persist'],fetch: 'EAGER')]
     private Collection $taches;
 
     #[ORM\ManyToMany(targetEntity: Client::class, inversedBy: 'projets',fetch: 'EAGER')]
     private Collection $client;
 
-    #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Documents::class,)]
+    #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Documents::class,cascade: ['persist'],fetch: 'EAGER')]
     private Collection $documents;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = null;
+
+    #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'projets', cascade: ['persist'],fetch: 'EAGER')]
+    private Collection $image;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $titre2 = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $uniteDuree = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?array $list = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $texte2 = null;
 
 //cascade: ["persist"]
 
@@ -97,6 +115,7 @@ class Projet
         $this->client = new ArrayCollection();
         $this->documents = new ArrayCollection();
 //        $this->prestation =new ArrayCollection();
+        $this->image = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -382,6 +401,90 @@ class Projet
                 $document->setProjet(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Image>
+     */
+    public function getImage(): Collection
+    {
+        return $this->image;
+    }
+
+    public function addImage(Image $image): static
+    {
+        if (!$this->image->contains($image)) {
+            $this->image->add($image);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): static
+    {
+        $this->image->removeElement($image);
+
+        return $this;
+    }
+
+    public function getTitre2(): ?string
+    {
+        return $this->titre2;
+    }
+
+    public function setTitre2(?string $titre2): static
+    {
+        $this->titre2 = $titre2;
+
+        return $this;
+    }
+
+    public function getUniteDuree(): ?string
+    {
+        return $this->uniteDuree;
+    }
+
+    public function setUniteDuree(?string $uniteDuree): static
+    {
+        $this->uniteDuree = $uniteDuree;
+
+        return $this;
+    }
+
+    public function getList(): ?array
+    {
+        return $this->list;
+    }
+
+    public function setList(?array $list): static
+    {
+        $this->list = $list;
+
+        return $this;
+    }
+
+    public function getTexte2(): ?string
+    {
+        return $this->texte2;
+    }
+
+    public function setTexte2(?string $texte2): static
+    {
+        $this->texte2 = $texte2;
 
         return $this;
     }

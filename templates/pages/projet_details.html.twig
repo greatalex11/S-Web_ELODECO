@@ -19,11 +19,11 @@
         <div class="page-header-border page-header-border-six"></div>
         <div class="container">
             <div class="page-header__inner">
-                <h2>Styles de décorations</h2>
+                <h2>Détail du projet</h2>
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
-                    <li>Styles en détails</li>
+                    <li>{{projetActuel.titre}}</li>
                 </ul>
             </div>
         </div>
@@ -33,9 +33,9 @@
     <!--                                                        SECTION  COMTEMPORAIN  / IMGAGE 1170 X 505                                                    -->
     <section class="portfolio-details">
 
-            {% if styled.image.first %}
-                {% set imageGd = vich_uploader_asset(styled.image.first) %}
-                {% set imageTitle = styled.image.first.titre %}
+            {% if projetActuel.image.first %}
+                {% set imageGd = vich_uploader_asset(projetActuel.image.first) %}
+                {% set imageTitle = projetActuel.image.first.titre %}
             {% else %}
                 {% set imageGd = asset('assets/images/backgrounds/fond2.png') %}
                 {% set imageTitle = 'style en détails et par image' %}
@@ -50,9 +50,9 @@
                             <img src="{{ imageGd }}" alt="{{ imageTitle }}" style="max-height:700px; object-fit: contain">
                             <div class="portfolio-details__info mt-3">
                                 <ul class="portfolio-details__info-list list-unstyled">
-                                    <li>{{ styled.attribut1 }}</li>
-                                    <li>{{ styled.attribut2 }}</li>
-                                    <li>{{ styled.attribut1 }}</li>
+                                    <li>{{ projetActuel.localite }}</li>
+                                    <li>{{ projetActuel.duree }} {{ projetActuel.uniteDuree}}</li>
+                                    <li>{{ projetActuel.budget }}€</li>
                                     <li>
                                         <div class="portfolio-details__social">
                                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -65,10 +65,11 @@
                             </div>
                         </div>
                         <div class="portfolio-details__content pb-0">
-                            <h2 class="portfolio-details__title" >{{ styled.titre1 |default('exemple') }} {{ styled.titre2|default('type de décoration') }}  </h2>
-                            <p class="portfolio-details__text-1">{{ styled.texte1 }}</p>
+                            <h2 class="portfolio-details__title" >{{ projetActuel.titre |default('exemple') }}  </h2>
+                            <p class="portfolio-details__text-1">{{ projetActuel.description|striptags }}</p>
                             <ul class="portfolio-details__list list-unstyled">
-                                {% set list = styled.liste %}
+
+                                {% set list = projetActuel.list %}
                                 {% for list in list %}
                                 <li>
                                     <div class="icon">
@@ -79,7 +80,7 @@
                                     </div>
                                 </li>
                                 {% endfor %}
-                                <p class="portfolio-details__text-2 mt-5">{{styled.texte2|raw  }}</p>
+                                <p class="portfolio-details__text-2 mt-5">{{projetActuel.texte2|raw|striptags  }}</p>
                             </ul>
                         </div>
                     </div>
@@ -89,11 +90,16 @@
 
     <section class="style-details p-5 mb-5 ">
 
-        {% set image1 = vich_uploader_asset(styled.image.first) %}
-        {% set image2 = vich_uploader_asset(styled.image[1]) %}
-        {% set image3 = vich_uploader_asset(styled.image[2]) %}
+        {% set image1 = vich_uploader_asset(projetActuel.image.first) %}
+        {% set image2 = vich_uploader_asset(projetActuel.image[1]) %}
+        {% set image3 = vich_uploader_asset(projetActuel.image[2]) %}
 
-        {#                {% for img in styled.image%}    {% endfor %}#}
+
+{#{%if image2 or image3 is empty %} essais anti bug img empty}
+{#    {% set image3= vich_uploader_asset(projetActuel.image.first) %}#}
+{#    {% set image2 = vich_uploader_asset(projetActuel.image.first) %}#}
+{#        {%endif %}#}
+
 
 
 
@@ -109,14 +115,12 @@
                     <img id="styleImg" class="d-block w-100" src="{{ image1 }}" alt="styled.image[0].titre" width="550px" style="background-color:#B8B8B8;max-height:650px;object-fit: contain">
                 </div>
 
-
-
                 <div class="carousel-item">
                     <img id="styleImg" class="d-block w-100" src="{{ image2 }}" alt="styled.image[1].titre" width="550px" style="background-color:#B8B8B8; max-height:650px; object-fit: contain">
                 </div>
 
                 <div class="carousel-item">
-                    <img id="styleImg" class="d-block w-100" src="{{ image2 }}" alt="styled.image[2].titre" width="550px" style="background-color:#B8B8B8 ;max-height:650px;object-fit: contain">
+                    <img id="styleImg" class="d-block w-100" src="{{ image3 }}" alt="styled.image[2].titre" width="550px" style="background-color:#B8B8B8 ;max-height:650px;object-fit: contain">
                 </div>
 
             </div>

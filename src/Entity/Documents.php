@@ -60,7 +60,7 @@ class Documents
     #[ORM\Column(type: Types::JSON, nullable: true)]
     private ?array $mise_en_copie = null;
 
-    #[ORM\ManyToOne(inversedBy: 'documents')]
+    #[ORM\ManyToOne(cascade: ['remove'],inversedBy: 'documents')]
     private ?Projet $projet = null;
 
     #[ORM\Column(length: 255, nullable: true)]

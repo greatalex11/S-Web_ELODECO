@@ -61,10 +61,14 @@ class Image
     #[ORM\ManyToMany(targetEntity: Style::class, mappedBy: 'image')]
     private Collection $styles;
 
+    #[ORM\ManyToMany(targetEntity: Projet::class, mappedBy: 'image')]
+    private Collection $projets;
+
     public function __construct()
     {
         $this->contenus = new ArrayCollection();
         $this->styles = new ArrayCollection();
+        $this->projets = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -307,6 +311,33 @@ class Image
     {
         if ($this->styles->removeElement($style)) {
             $style->removeImage($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Projet>
+     */
+    public function getProjets(): Collection
+    {
+        return $this->projets;
+    }
+
+    public function addProjet(Projet $projet): static
+    {
+        if (!$this->projets->contains($projet)) {
+            $this->projets->add($projet);
+            $projet->addImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProjet(Projet $projet): static
+    {
+        if ($this->projets->removeElement($projet)) {
+            $projet->removeImage($this);
         }
 
         return $this;

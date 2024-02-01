@@ -53,7 +53,6 @@ class Client
     #[ORM\OneToOne(inversedBy: 'client', cascade: ['persist', 'remove'],fetch: 'EAGER')]
     private ?User $user = null;
 
-
     #[ORM\ManyToMany(targetEntity: Projet::class, mappedBy: 'client')]
     private Collection $projets;
 

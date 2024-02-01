@@ -76,6 +76,11 @@ class Artisan
 
     }
 
+    public function __toString()
+    {
+            return $this->nom_etablissement;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

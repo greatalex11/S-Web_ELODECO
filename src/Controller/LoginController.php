@@ -180,7 +180,7 @@ class LoginController extends AbstractController
         });
 
         return $this->render('pages/projet_details.html.twig', [
-            'projet'=>$projetActuel,
+            'projetActuel'=>$projetActuel,
             'projetsFilter'=>$stylesFilter,
         ]);
     }

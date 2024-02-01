@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ClientCrudController extends AbstractCrudController
@@ -36,5 +37,6 @@ class ClientCrudController extends AbstractCrudController
 
         yield FormField::addTab("Informations", 'fas fa fa-info');
         yield TextField::new("nom")->setLabel('nom');
+        yield TextEditorField::new("commentaire")->setLabel('commentaire');
     }
 }

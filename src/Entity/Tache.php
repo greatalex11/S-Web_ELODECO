@@ -47,7 +47,7 @@ class Tache
     private ?string $status = null;
 
 
-    #[ORM\ManyToOne(inversedBy: 'tache')]
+    #[ORM\ManyToOne(inversedBy: 'tache', cascade: ['persist'],fetch: 'EAGER')]
     private ?Artisan $artisan = null;
 
     #[ORM\ManyToOne(inversedBy: 'taches')]
@@ -58,6 +58,18 @@ class Tache
     {
         $this->artisan = new ArrayCollection();
     }
+
+//    public function __toString()
+//    {
+//        if($this->artisan==!null){
+//            return $this->artisan->getNomEtablissement();
+//        }
+//        else{
+//            return 'etablissement non reference';
+//        }
+//
+//    }
+
 
     public function getId(): ?int
     {
