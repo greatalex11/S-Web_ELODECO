@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MissionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -52,6 +54,14 @@ class Mission
 
     #[ORM\Column(nullable: true)]
     private ?array $liste = null;
+
+    #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'missions')]
+    private Collection $image;
+
+    public function __construct()
+    {
+        $this->image = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -210,6 +220,30 @@ class Mission
     public function setListe(?array $liste): static
     {
         $this->liste = $liste;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Image>
+     */
+    public function getImage(): Collection
+    {
+        return $this->image;
+    }
+
+    public function addImage(Image $image): static
+    {
+        if (!$this->image->contains($image)) {
+            $this->image->add($image);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): static
+    {
+        $this->image->removeElement($image);
 
         return $this;
     }

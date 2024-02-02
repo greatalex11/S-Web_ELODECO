@@ -67,12 +67,16 @@ class Image
     #[ORM\ManyToMany(targetEntity: About::class, mappedBy: 'image')]
     private Collection $abouts;
 
+    #[ORM\ManyToMany(targetEntity: Mission::class, mappedBy: 'image')]
+    private Collection $missions;
+
     public function __construct()
     {
         $this->contenus = new ArrayCollection();
         $this->styles = new ArrayCollection();
         $this->projets = new ArrayCollection();
         $this->abouts = new ArrayCollection();
+        $this->missions = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -369,6 +373,33 @@ class Image
     {
         if ($this->abouts->removeElement($about)) {
             $about->removeImage($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Mission>
+     */
+    public function getMissions(): Collection
+    {
+        return $this->missions;
+    }
+
+    public function addMission(Mission $mission): static
+    {
+        if (!$this->missions->contains($mission)) {
+            $this->missions->add($mission);
+            $mission->addImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMission(Mission $mission): static
+    {
+        if ($this->missions->removeElement($mission)) {
+            $mission->removeImage($this);
         }
 
         return $this;
