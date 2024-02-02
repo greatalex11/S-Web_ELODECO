@@ -27,6 +27,7 @@ use PhpParser\Node\Expr\Yield_;
 
 class ProjetCrudController extends AbstractCrudController
 {
+
     public static function getEntityFqcn(): string
     {
         return Projet::class;

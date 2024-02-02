@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\About;
 use App\Entity\Artisan;
 use App\Entity\Client;
 use App\Entity\ContactForm;
@@ -121,6 +122,7 @@ class DashboardController extends AbstractDashboardController
             ->setAction(Action::EDIT));
 
         yield MenuItem::linkToCrud('Styles déco', 'fa-brands fa-stack-overflow', Style::class);
+        yield MenuItem::linkToCrud('A propos', 'fa-brands fa-stack-overflow', About::class);
 
         yield MenuItem::linkToCrud('Contenus', 'fas fa-text-height', Contenus::class);
         yield MenuItem::linkToCrud('Images', 'fas fa-image', Image::class);

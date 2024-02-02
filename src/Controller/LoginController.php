@@ -8,6 +8,7 @@ use App\Entity\Contenus;
 use App\Entity\Projet;
 use App\Entity\Style;
 use App\Form\ContactType;
+use App\Repository\AboutRepository;
 use App\Repository\ClientRepository;
 use App\Repository\ContenusRepository;
 use App\Repository\ProjetRepository;
@@ -135,29 +136,31 @@ class LoginController extends AbstractController
 
 // ---------------------------------------------------------------------------------------------------------    ABOUT
     #[Route(path: '/about', name: 'app_about')]
-    public function about(ContenusRepository $contenusRepo): Response
+    public function about(ContenusRepository $contenusRepo, AboutRepository $aboutRepository): Response
     {
+        $about=$aboutRepository->find(['id'=>1]);
         $services = $contenusRepo->findByPagesName('About');
         return $this->render('pages/about.html.twig', [
             'about' => $services,
+            'visio'=>$about,
         ]);
     }
 
-    #[Route(path: '/our_mission', name: 'app_our_mission')]
+    #[Route(path: '/ma_mission', name: 'app_our_mission')]
     public function mission(): Response
     {
         return $this->render('pages/our_mission.html.twig', [
         ]);
     }
 
-    #[Route(path: '/team', name: 'app_team')]
-    public function team(): Response
-    {
-        return $this->render('pages/team.html.twig', [
-        ]);
-    }
+//    #[Route(path: '/team', name: 'app_team')]
+//    public function team(): Response
+//    {
+//        return $this->render('pages/team.html.twig', [
+//        ]);
+//    }
 
-// ---------------------------------------------------------------------------------------------------------   Portefolio
+// ---------------------------------------------------------------------------------------------------------   PROJETS
 
 
     #[Route(path: '/projets', name: 'app_projets')]
@@ -192,15 +195,15 @@ class LoginController extends AbstractController
 
 
 
-//
-//    #[Route(path: '/portfolio', name: 'app_portfolio')]
-//    public function portefolio(ContenusRepository $contenusRepository): Response
-//    {
-//        $folio = $contenusRepository->findByType([Contenus::TYPE_PortefolioGTI]);
-//        return $this->render('pages/portfolio.html.twig', [
-//            'thefolio' => $folio
-//        ]);
-//    }
+
+    #[Route(path: '/portfolio', name: 'app_portfolio')]
+    public function portefolio(ContenusRepository $contenusRepository): Response
+    {
+        $folio = $contenusRepository->findByType([Contenus::TYPE_PortefolioGTI]);
+        return $this->render('pages/portfolio.html.twig', [
+            'thefolio' => $folio
+        ]);
+    }
 //
 //    #[Route(path: '/portfolio/{slug}', name: 'app_portfolio_details2')]
 //    public function portefolioD(Contenus $contenus, ContenusRepository $contenusRepository): Response

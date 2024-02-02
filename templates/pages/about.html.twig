@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+
+    <!-- Alimentation de la vue par l'entité ABOUT & par les contenus témoignage et nos artisans -->
+
     {% set Apps=theme.theme %}
-    <!--                                                 -Bandeau supérieur   / image de font 1894x359 px                                           -->
-    <section class="page-header" style="background-image: url(assets/images/backgrounds/fond2.png);">
+    <!-- -Bandeau supérieur   / image de font 1894x359 px -->
+    <section class="page-header" style="background-image: url({{ vich_uploader_asset(Apps.image1CarouselHome) }});">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -12,7 +15,7 @@
         <div class="page-header-border page-header-border-six"></div>
         <div class="container">
             <div class="page-header__inner">
-                <h2>About</h2>
+                <h2>A propos</h2>
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
@@ -29,67 +32,83 @@
     <section class="about-company">
         <div class="container">
             <div class="row">
-                {% for contenu in about %}
-                    {% if contenu.type =="blogAboutConcept" %}
+{#                {% for contenu in about %}#}
+{#                    {% if contenu.type =="blogAboutConcept" %}#}
 
                         <div class="col-xl-6">
 
-                        {% if contenu.liste is defined %}
-                            {% set clef = contenu.liste %}
+{#                        {% if contenu.liste is defined %}#}
+{#                            {% set clef = contenu.liste %}#}
 
                             <div class="about-company__img">
 
-                                {% if contenu.Images[0] is defined %}
-                                    {% set image = contenu.Images[0] %}
+{#                                {% if contenu.Images[0] is defined %}#}
+{#                                    {% set image = contenu.Images[0] %}#}
+                                {% set image = visio.image[0] %}
                                     <img src="{{ vich_uploader_asset(image) }}"
                                          alt="{{ image.titre|default('image') }}">
-                                {% endif %}
+{#                                {% endif %}#}
+
                                 <div class="about-company__trusted-by">
-                                    <p>{{ clef[0]|striptags }}</p>
-                                    <span>{{ clef[1]|striptags }}</span>
+{#                                    <p>{{ clef[0]|striptags }}</p>#}
+{#                                    <span>{{ clef[1]|striptags }}</span>#}
+                                    <p>{{ visio.visioarg4}}</p>
+                                    <span>{{ visio.visiochiffre2}}%</span>
                                 </div>
                             </div>
                             <p class="about-company__text-2 align-text-bottom mt-4 .text-justify" style="max-width:100%; max-height: 350px">
-                                {{ contenu.texte3 |striptags }}
+{#                                {{ contenu.texte3 |striptags }}#}
+                                {{ visio.visiotexte2 |striptags }}
                             </p>
                             </div>
                             <div class="col-xl-6">
                                 <div class="about-company__right">
                                     <div class="section-title text-left">
-                                        <span class="section-title__tagline">{{ contenu.titre1|striptags }}</span>
-                                        <h2 class="section-title__title">{{ contenu.titre2|striptags }}</h2>
+{#                                        <span class="section-title__tagline">{{ contenu.titre1|striptags }}</span>#}
+{#                                        <h2 class="section-title__title">{{ contenu.titre2|striptags }}</h2>#}
+                                        <span class="section-title__tagline">{{ visio.visiot1 }}</span>
+                                        <h2 class="section-title__title">{{ visio.visiot2 }}</h2>
                                     </div>
                                     <ul class="about-company__points list-unstyled">
-                                        <li><span>/</span> {{ contenu.texte1 |striptags }}</li>
-                                        <li><span>/</span> {{ contenu.texte2 |striptags }}</li>
+{#                                        <li><span>/</span> {{ contenu.texte1 |striptags }}</li>#}
+{#                                        <li><span>/</span> {{ contenu.texte2 |striptags }}</li>#}
+                                        <li><span>/</span> {{visio.visioarg1 }}</li>
+                                        <li><span>/</span> {{ visio.visioarg2}}</li>
                                     </ul>
 
                                     <div class="about-company__progress">
-                                        <h4 class="about-company__progress-title">{{ clef[2]|striptags }}</h4>
+{#                                        <h4 class="about-company__progress-title">{{ clef[2]|striptags }}</h4>#}
+                                        <h4 class="about-company__progress-title">{{ visio.visiot3|striptags  }}</h4>
                                         <div class="bar">
+{#                                            <div class="bar-inner count-bar counted"#}
+{#                                                 data-percent="{{ clef[3]|striptags }}">#}
                                             <div class="bar-inner count-bar counted"
-                                                 data-percent="{{ clef[3]|striptags }}">
-                                                <div class="count-text">{{ clef[3]|striptags }}</div>
+                                                 data-percent={{ visio.visiochiffre1|striptags }}%>
+
+                                              <div class="count-text">{{ visio.visiochiffre1 |striptags }}%</div>
+{#                                                <div class="count-text">{{ clef[3]|striptags }}</div>#}
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="about-company__icon-and-text">
                                         <div class="about-company__icon">
                                             <span class="icon-blueprint"></span>
                                         </div>
 
                                         <div class="about-company__text-box mb-5">
-                                            <p class="about-company__text">{{ clef[4]|striptags }}</p>
+{#                                            <p class="about-company__text">{{ clef[4]|striptags }}</p>#}
+                                            <p class="about-company__text" style="vertical-align: center;margin: auto">{{  visio.visioarg4 }}</p>
                                         </div>
                                     </div>
-                                    <p class="about-company__text-2 ">{{ contenu.texte2 |striptags }} </p>
-                                    <a href="{{ path('app_portfolio') }}"
-                                       class="about-company__btn thm-btn" style="background-color: {{ Apps.couleuractuellebg }}">Portfolio</a>
+                                    <p class="about-company__text-2 ">{{visio.visiotexte1|striptags }} </p>
+                                    <a href="{{ path('app_projets') }}"
+                                       class="about-company__btn thm-btn" style="background-color: {{ Apps.couleuractuellebg }}">Mes projets</a>
                                 </div>
                             </div>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
+{#                        {% endif %}#}
+{#                    {% endif %}#}
+{#                {% endfor %}#}
             </div>
         </div>
     </section>
@@ -147,8 +166,8 @@
     <section class="team-one about-page-team">
         <div class="container">
             <div class="section-title text-center">
-                <span class="section-title__tagline">Les entreprises partenaires</span>
-                <h2 class="section-title__title">EXPERTS DANS NOTRE REGION</h2>
+                <span class="section-title__tagline">{{ visio.expertt1 }}</span>
+                <h2 class="section-title__title">{{ visio.expertt2 }}</h2>
             </div>
 
             <div class="row">
