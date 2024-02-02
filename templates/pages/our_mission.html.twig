@@ -23,7 +23,13 @@
         </div>
     </section>
     <!--                                                                -Bandeau supérieur fin                                                             -->
-
+    {% if mission.image.first %}
+        {% set image = vich_uploader_asset(mission.image.first) %}
+        {% set imageTitle = mission.image.first.titre %}
+    {% else %}
+        {% set image = asset('assets/images/styles/charmant.png') %}
+        {% set imageTitle = 'service image' %}
+    {% endif %}
 
      <!--                                                               MA MISSION  image 530x463                                                                                        -->
     <section class="productive">
@@ -32,30 +38,29 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="productive__left">
                         <div class="productive__img">
-                            <img src="assets/images/resources/cuisine3d.png" alt="image cuisine 3d avec meubles, frigidere et ustensiles">
+                            <img src="{{image}}" alt="{{imageTitle}}">
+
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="productive__right">
                         <div class="section-title text-left">
-                            <span class="section-title__tagline">Mes avantages</span>
-                            <h2 class="section-title__title">Des solutions sur mesure</h2>
+                            <span class="section-title__tagline">{{ mission.missiont1 }}</span>
+                            <h2 class="section-title__title">{{ mission.missiont2 }}</h2>
                         </div>
                         <ul class="productive__points list-unstyled">
-                            <li><span>/</span> Le bon choix</li>
-                            <li><span>/</span> L'expertise</li>
+                            <li><span>/</span> {{ mission.missionarg1 }}</li>
+                            <li><span>/</span> {{ mission.missionarg2 }}</li>
                         </ul>
-                        <p class="productive__text"> Je peut maximiser l'utilisation de l'espace, optimisant ainsi la fonctionnalité d'une pièce tout en conservant une sensation de confort.
-                            En outre, mon expertise permet de
-                            créer des espaces harmonieux en jouant avec les couleurs, les textures et les formes, ce qui contribue à une atmosphère agréable et stimulant.</p>
+                        <p class="productive__text"> {{ mission.missiontexte1|striptags }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!--                                                                    fin texte1                                                          -->
-
+{#    {{ dump(mission.image[0].image) }}#}
     <!--                                                                       texte 2                                                      -->
     <section class="benefits">
         <div class="container">
@@ -63,8 +68,9 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="benefits__left">
                         <div class="section-title text-left">
-                            <span class="section-title__tagline">Vos bénéfices</span>
-                            <h2 class="section-title__title">Plans 3D de qualité</h2>
+                            <span class="section-title__tagline">{{ mission.missiont3 }}</span>
+
+                            <h2 class="section-title__title">{{ mission.missiont4 }}</h2>
                         </div>
                         <div class="benefits__checks-box">
                             <ul class="benefits__checks-list list-unstyled">
@@ -73,9 +79,8 @@
                                         <span class="icon-tick"></span>
                                     </div>
                                     <div class="content">
-                                        <h3>Agencement optimal</h3>
-                                        <p> Je peux également vous proposer des solutions innovantes pour résoudre
-                                            des défis spécifiques liés à la disposition des meubles, à l'éclairage ou à la circulation dans l'espace.</p>
+                                        <h3>{{ mission.missionarg3 }}</h3>
+                                        <p>  {{ mission.missiontexte2|striptags }}</p>
                                     </div>
                                 </li>
                                 <li>
@@ -83,8 +88,8 @@
                                         <span class="icon-tick"></span>
                                     </div>
                                     <div class="content">
-                                        <h3>Visite virtuelle</h3>
-                                        <p>Immersion dans votre future réalité.</p>
+                                        <h3>{{ mission.missionarg4 }}</h3>
+                                        <p> {{ mission.missiontexte3|striptags}}</p>
                                     </div>
                                 </li>
                             </ul>
@@ -94,7 +99,14 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="benefits__right">
                         <div class="benefits__img">
-                            <img src="assets/images/resources/projet_logement530.png" alt="plan 3d appartement en sous pente type modern avec cuisine ouverte sur séjour">
+                            {% if mission.image[1] %}
+                                {% set image2 = vich_uploader_asset(mission.image[1]) %}
+                                {% set imageTitle2 = mission.image[1].image %}
+                            {% else %}
+                                {% set image2 = asset('assets/images/styles/charmant.png') %}
+                                {% set imageTitle2 = 'service image' %}
+                            {% endif %}
+                            <img src="{{ image2 }}" alt="{{imageTitle2}}">
                         </div>
                     </div>
                 </div>
@@ -106,7 +118,7 @@
     <!--                                                        temoin 1                                                -->
     <section class="testimonials-two our-mission-page-testimonial">
         <div class="testimonials-two-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-             style="background-image: url(assets/images/backgrounds/testimonials-two-bg.jpg)"></div>
+             style="background-image: url(({{ vich_uploader_asset(Apps.image1CarouselHome) }})"></div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -192,8 +204,8 @@
     <section class="how-we-works">
         <div class="container">
             <div class="section-title text-center">
-                <span class="section-title__tagline">3 étapes</span>
-                <h2 class="section-title__title">Comment je travaille</h2>
+                <span class="section-title__tagline"> {{ mission.missiont5 }}</span>
+                <h2 class="section-title__title"> {{ mission.missiont6 }}</h2>
             </div>
             <div class="row">
                 <div class="col-xl-12">

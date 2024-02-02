@@ -9,6 +9,7 @@ use App\Entity\ContactForm;
 use App\Entity\Contenus;
 use App\Entity\Documents;
 use App\Entity\Image;
+use App\Entity\Mission;
 use App\Entity\Page;
 use App\Entity\Projet;
 use App\Entity\Style;
@@ -111,7 +112,7 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Mes contacts');
         yield MenuItem::linkToCrud('Messages', 'fa-brands fa-square-threads', ContactForm::class)
-        ->setBadge(  $this->msg);
+        ->setBadge( $this->msg);
 //        ->setAction(count('message'));
 
         yield MenuItem::section('Thème');
@@ -123,6 +124,7 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::linkToCrud('Styles déco', 'fa-brands fa-stack-overflow', Style::class);
         yield MenuItem::linkToCrud('A propos', 'fa-brands fa-stack-overflow', About::class);
+        yield MenuItem::linkToCrud('Ma mission', 'fa-brands fa-stack-overflow', Mission::class);
 
         yield MenuItem::linkToCrud('Contenus', 'fas fa-text-height', Contenus::class);
         yield MenuItem::linkToCrud('Images', 'fas fa-image', Image::class);

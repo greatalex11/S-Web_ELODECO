@@ -55,8 +55,11 @@ class Mission
     #[ORM\Column(nullable: true)]
     private ?array $liste = null;
 
-    #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'missions')]
+    #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'missions', cascade:['persist'] ,fetch: 'EAGER')]
     private Collection $image;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $missionarg2 = null;
 
     public function __construct()
     {
@@ -244,6 +247,18 @@ class Mission
     public function removeImage(Image $image): static
     {
         $this->image->removeElement($image);
+
+        return $this;
+    }
+
+    public function getMissionarg2(): ?string
+    {
+        return $this->missionarg2;
+    }
+
+    public function setMissionarg2(?string $missionarg2): static
+    {
+        $this->missionarg2 = $missionarg2;
 
         return $this;
     }

@@ -11,6 +11,7 @@ use App\Form\ContactType;
 use App\Repository\AboutRepository;
 use App\Repository\ClientRepository;
 use App\Repository\ContenusRepository;
+use App\Repository\MissionRepository;
 use App\Repository\ProjetRepository;
 use App\Repository\StyleRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -147,9 +148,11 @@ class LoginController extends AbstractController
     }
 
     #[Route(path: '/ma_mission', name: 'app_our_mission')]
-    public function mission(): Response
+    public function mission(MissionRepository $missionRepository): Response
     {
+        $mission=$missionRepository->find(['id'=>1]);
         return $this->render('pages/our_mission.html.twig', [
+            'mission'=>$mission,
         ]);
     }
 
