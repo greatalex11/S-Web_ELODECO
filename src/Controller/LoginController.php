@@ -300,8 +300,8 @@ class LoginController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success', 'Votre message a bien été envoyé. Merci.');
             $message_send = true;
-        }
-//        return $this->redirectToRoute('app_contact', [], Response::HTTP_SEE_OTHER);
+            };
+
         return $this->render('pages/contact.html.twig', [
             'form' => $form->createView(),
             'message_send' => $message_send

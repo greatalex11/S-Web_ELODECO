@@ -32,6 +32,7 @@ class Contenus
     public const TYPE_3SERVICESQUALITE = '3ServicesQUALITE';
     public const TYPE_PHOTOGP = 'BlockPhotos';
     public const TYPE_CLEFSERVICEDETAIL= '6clefsServiceDetails';
+    public const TYPE_SERVICEDETAIL= 'ServiceDetails';
 
     public const TYPE_PROMOSERVICEDETAIL= 'PromoServiceDetails';
     public const TYPES = [
@@ -54,6 +55,7 @@ class Contenus
         'tarif à la carte'=> self::TYPE_TARIFS,
         '6 clefs services détails'=> self::TYPE_CLEFSERVICEDETAIL,
         'Promo Services Détails' => self::TYPE_PROMOSERVICEDETAIL,
+        'Services Détails' => self::TYPE_SERVICEDETAIL,
 
     ];
 
