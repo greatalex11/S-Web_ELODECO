@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -63,22 +64,37 @@ class AboutCrudController extends AbstractCrudController
             yield NumberField::new('visiochiffre2')->setLabel('chiffre 2')->hideOnIndex(),
 
             yield FormField::addTab("Les experts"),
-            yield TextField::new('expertt1')->setLabel('titre 1'),
-            yield TextField::new('expertt2')->setLabel('titre 2')->hideOnIndex(),
-            yield TextField::new('expertt3')->setLabel('titre 3')->hideOnIndex(),
-            yield TextField::new('expertt4')->setLabel('titre 4')->hideOnIndex(),
+            yield TextField::new('expertt1')->setLabel('Expert titre 1'),
+            yield TextField::new('expertt2')->setLabel('Expert titre 2')->hideOnIndex(),
+            yield TextField::new('expertt3')->setLabel('Temoignage titre 1')->hideOnIndex(),
+            yield TextField::new('expertt4')->setLabel('Temoignage titre 1')->hideOnIndex(),
 
-            yield FormField::addTab("Mon image"),
+            yield FormField::addTab("Mon image & artisans"),
             yield CollectionField::new('image')->useEntryCrudForm(ImageCrudController::class)
                 ->setLabel('Mon image')
-                ->setHelp('titre de \'image important pour le référencement')
+                ->setHelp('titre important pour le référencementimage, artisan en 330x448, image métier en 285x281px environs')
                 ->setEntryIsComplex(true)
                 ->setFormTypeOptions([
                     'by_reference' => false,
                 ])
                 ->setColumns(10)
                 ->setTemplatePath('fields/images.html.twig'),
+
+            yield FormField::addTab("Mes artisans"),
+            yield ArrayField::new('liste_artisan')->setLabel(' Liste des arguments')
+                ->setHelp('1 titre pour l\'étape, 1 phrase d\'explication')
+                ->setColumns(12)
+                ->hideOnIndex(),
+
+
+            yield FormField::addTab("Ce qu'ils font"),
+            yield ArrayField::new('liste_t5')->setLabel(' Liste des arguments')
+                ->setHelp('1 titre pour le metier')
+                ->setColumns(12)
+                ->hideOnIndex(),
+
         ];
+
     }
 
 }

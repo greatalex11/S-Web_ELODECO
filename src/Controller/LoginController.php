@@ -150,18 +150,25 @@ class LoginController extends AbstractController
     #[Route(path: '/ma_mission', name: 'app_our_mission')]
     public function mission(MissionRepository $missionRepository): Response
     {
+
         $mission=$missionRepository->find(['id'=>1]);
+        $listing=$missionRepository-> findByListe();
+        $listed=$listing[0];
+
+//      $listing=null;
+//      $missionnee=null;
+//        foreach ( $mission as $missionnee){
+//            $missionnee= json_decode($mission['liste']);
+//        foreach ( $missionnee as $k=>$v){
+//            $listing=[$missionnee[$k]=>$missionnee[$v]];
+//       } dd($listing);
+
         return $this->render('pages/our_mission.html.twig', [
             'mission'=>$mission,
+            'liste1'=>$listed,
         ]);
     }
 
-//    #[Route(path: '/team', name: 'app_team')]
-//    public function team(): Response
-//    {
-//        return $this->render('pages/team.html.twig', [
-//        ]);
-//    }
 
 // ---------------------------------------------------------------------------------------------------------   PROJETS
 
@@ -190,12 +197,6 @@ class LoginController extends AbstractController
             'projetsFilter'=>$stylesFilter,
         ]);
     }
-
-
-
-
-
-
 
 
 

@@ -115,7 +115,8 @@
     </section>
     <!--                                                                                fin texte 2                                                             -->
 
-    <!--                                                        temoin 1                                                -->
+    <!--  Célébrité: citations                                               -->
+    {% set listeC=mission.listeCelebrite%}
     <section class="testimonials-two our-mission-page-testimonial">
         <div class="testimonials-two-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
              style="background-image: url(({{ vich_uploader_asset(Apps.image1CarouselHome) }})"></div>
@@ -129,21 +130,20 @@
                             <div class="testimonials-two__client-info-box">
                                 <div class="testimonials-two__client-info">
                                     <div class="testimonials-two__client-img">
-                                        <img src="assets/images/testimonial/Ellipse80.png" alt="miniature ciculaire d'une maison 3d">
+                                        <img src="{{ asset('assets/images/testimonial/Ellipse80.png') }}" alt='miniature circulaire de maison miniature'>
                                         <div class="testimonials-two__quote-icon">
-                                            <img src="assets/images/testimonial/testimonials-two-quote-icon.png"
-                                                 alt="">
+                                            <img src="{{ asset('assets/images/testimonial/testimonials-two-quote-icon.png') }}"
+                                                 alt="petite icone de crochet encradrant une citation">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="testimonials-two__client-name-box">
-                                    <h5 class="testimonials-two__client-name">Nate Berkus </h5>
-                                    <p class="testimonials-two__client-title"> designer d'intérieur renommé</p>
+                                    <h5 class="testimonials-two__client-name">{{listeC['1']|default('Nate Berkus')}}</h5>
+                                    <p class="testimonials-two__client-title"> {{listeC['2']|default('designer interieur renomme')}} </p>
                                 </div>
                             </div>
                             <div class="testimonials-two__text-box">
-                                <p class="testimonials-two__text">"Le design d'intérieur, c'est plus qu'une simple décoration.
-                                    C'est l'art de transformer un espace pour créer une expérience unique, harmonieuse et fonctionnelle."</p>
+                                <p class="testimonials-two__text"> {{listeC['3']|default('Le design intérieur est plus qu une simple décoration...') }}</p>
                             </div>
                         </div>
 
@@ -152,21 +152,20 @@
                             <div class="testimonials-two__client-info-box">
                                 <div class="testimonials-two__client-info">
                                     <div class="testimonials-two__client-img">
-                                        <img src="assets/images/testimonial/Ellipse80.png" alt="miniature ciculaire d'une maison 3d">
+                                        <img src="{{ asset('assets/images/testimonial/Ellipse80.png') }}" alt="miniature ciculaire d'une maison 3d">
                                         <div class="testimonials-two__quote-icon">
-                                            <img src="assets/images/testimonial/testimonials-two-quote-icon.png"
-                                                 alt="">
+                                            <img src="{{ asset('assets/images/testimonial/testimonials-two-quote-icon.png') }}"
+                                                 alt="petite icone de crochet encradrant une citation">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="testimonials-two__client-name-box">
-                                    <h5 class="testimonials-two__client-name">Kelly Hoppen </h5>
-                                    <p class="testimonials-two__client-title">Designer d'intérieur de renommée mondiale</p>
+                                    <h5 class="testimonials-two__client-name">{{listeC['4']|default('Kelly Hoppen')}} </h5>
+                                    <p class="testimonials-two__client-title">{{listeC['5']|default('Designer intérieur de renommée mondiale')}}</p>
                                 </div>
                             </div>
                             <div class="testimonials-two__text-box">
-                                <p class="testimonials-two__text">"Un bon design d'intérieur ne doit pas seulement être beau.
-                                    Il doit également raconter une histoire, refléter la personnalité de ceux qui l'habitent et créer un sentiment d'équilibre et de bien-être." </p>
+                                <p class="testimonials-two__text">{{listeC['6']|default('Le designer intérieur est...')}} </p>
                             </div>
                         </div>
 
@@ -175,21 +174,20 @@
                             <div class="testimonials-two__client-info-box">
                                 <div class="testimonials-two__client-info">
                                     <div class="testimonials-two__client-img">
-                                        <img src="assets/images/testimonial/Ellipse80.png" alt="miniature ciculaire d'une maison 3d">
+                                        <img src="{{ asset('assets/images/testimonial/Ellipse80.png')}}" alt="miniature ciculaire d'une maison 3d">
                                         <div class="testimonials-two__quote-icon">
-                                            <img src="assets/images/testimonial/testimonials-two-quote-icon.png"
-                                                 alt="">
+                                            <img src="{{ asset('assets/images/testimonial/testimonials-two-quote-icon.png')}}"
+                                                 alt="petite icone de crochet encradrant une citation">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="testimonials-two__client-name-box">
-                                    <h5 class="testimonials-two__client-name">Philippe Starck</h5>
-                                    <p class="testimonials-two__client-title">Designer et architecte français de renom</p>
+                                    <h5 class="testimonials-two__client-name">{{listeC['7']|default('Philippe Starck')}} </h5>
+                                    <p class="testimonials-two__client-title">{{listeC['8']|default('Designer et architecte français de renom')}} </p>
                                 </div>
                             </div>
                             <div class="testimonials-two__text-box">
-                                <p class="testimonials-two__text">"Le design d'intérieur consiste à créer des espaces qui améliorent
-                                    la qualité de vie et la culture des occupants. C'est bien plus que l'agencement des meubles; c'est une fusion d'art, de science et de passion."</p>
+                                <p class="testimonials-two__text">{{listeC['9']|default('Le designer intérieur est...')}} </p>
                             </div>
                         </div>
 
@@ -210,45 +208,48 @@
             <div class="row">
                 <div class="col-xl-12">
                     <ul class="list-unstyled how-we-works__single-list">
-                        <!--                                                étape  1                                                                -->
+
+                        <!-- REPO fonction findListe() -->
+{#                        {% for list in liste1 %}#}
+{#                        {{ dump(list[1]) }}.#}
+{#                            {{ dump(list[2]) }}#}
+{#                        {% endfor %}#}
+
+                        <!-- LOGINCONTROLLER variable Mission -->
+                        {% set listeRencontre=mission.liste%}
                         <li class="how-we-works__single">
                             <div class="how-we-works__icon-box">
                                 <div class="how-we-works__icon">
                                     <span class="icon-team"></span>
                                     <div class="how-we-works__count">
-
                                     </div>
                                 </div>
                             </div>
-                            <h3 class="how-we-works__title">Première rencontre</h3>
-                            <p class="how-we-works__text">Apprendre à se connaître, définir votre projet, vos envies, le budget</p>
-                        </li>
-                        <!--                                                étape 2                                                                     -->
+                            <h3 class="how-we-works__title">{{ listeRencontre['1']|default('PREMIÈRE RENCONTRE') }}</h3>
+                            <p class="how-we-works__text">{{ listeRencontre['2']|default('Apprendre à se connaître') }}</p>
+                            <!--                                                étape 2                                                                     -->
                         <li class="how-we-works__single">
                             <div class="how-we-works__icon-box">
                                 <div class="how-we-works__icon">
                                     <span class="icon-checklist"></span>
                                     <div class="how-we-works__count">
-
                                     </div>
                                 </div>
                             </div>
-                            <h3 class="how-we-works__title">Réalisation des plans 3D</h3>
-                            <p class="how-we-works__text">Présentation des résultats, ajustement si nécessaire, et validation</p>
+                            <h3 class="how-we-works__title">{{ listeRencontre['3']|default('Réalisation des plans 3D') }}</h3>
+                            <p class="how-we-works__text">{{ listeRencontre['4']|default('Présentation des résultats') }}</p>
                         </li>
                         <li class="how-we-works__single">
                             <div class="how-we-works__icon-box">
                                 <div class="how-we-works__icon">
                                     <span class="icon-outsourcing"></span>
                                     <div class="how-we-works__count">
-
                                     </div>
                                 </div>
                             </div>
-
                             <!--                                                étape 3                                                                    -->
-                            <h3 class="how-we-works__title">Satisfaction & réalisation</h3>
-                            <p class="how-we-works__text">Suivant la formule, plans en mains et poursuite du projet avec mes artisans</p>
+                            <h3 class="how-we-works__title">{{ listeRencontre['5']|default('Satisfaction & réalisation') }}</h3>
+                            <p class="how-we-works__text">{{ listeRencontre['6']|default('Suivant la formule') }}</p>
                         </li>
                     </ul>
                 </div>
@@ -288,34 +289,34 @@
                 }}'>
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/rectangle1.png" alt="rectange rouge">
+                        <img src="{{ asset('assets/images/resources/rectangle1.png') }} " alt="rectange rouge">
                     </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/rectangle2.png" alt="rectange rose">
+                        <img src="{{ asset('assets/images/resources/rectangle2.png') }} " alt="rectange rose">
                     </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/rectangle3.png" alt="rectangle violet">
+                        <img src="{{ asset('assets/images/resources/rectangle3.png') }} " alt="rectangle violet">
                     </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/rectangle4.png" alt="rectangle bleu">
+                        <img src="{{ asset('assets/images/resources/rectangle4.png') }} " alt="rectangle bleu">
                     </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/rectangle5.png" alt="rectangle turquoise">
+                        <img src="{{ asset('assets/images/resources/rectangle5.png') }}" alt="rectangle turquoise">
                     </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/rectangle6.png" alt="rectangle vert">
+                        <img src="{{ asset('assets/images/resources/rectangle6.png') }} " alt="rectangle vert">
                     </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/rectangle7.png" alt="rectangle gris marron">
+                        <img src="{{ asset('assets/images/resources/rectangle7.png') }} " alt="rectangle gris marron">
                     </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/rectangle8.png" alt="rectangle vert fluo">
+                        <img src="{{ asset('assets/images/resources/rectangle8.png') }} " alt="rectangle vert fluo">
                     </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/rectangle9.png" alt="rectangle orange">
+                        <img src="{{ asset('assets/images/resources/rectangle9.png') }} " alt="rectangle orange">
                     </div>
                     <div class="swiper-slide">
-                        <img src="assets/images/resources/rectangle10.png" alt="rectange saumon">
+                        <img src="{{ asset('assets/images/resources/rectangle10.png') }} " alt="rectange saumon">
                     </div>
                 </div>
             </div>

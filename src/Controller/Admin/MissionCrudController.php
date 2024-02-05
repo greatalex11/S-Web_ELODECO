@@ -66,7 +66,19 @@ class MissionCrudController extends AbstractCrudController
                 ->setColumns(10)
                 ->setTemplatePath('fields/images.html.twig'),
 
-            yield ArrayField::new('liste')->setLabel(' Liste des arguments de la pub')->hideOnIndex()
+            yield FormField::addTab("Célébrités"),
+            yield ArrayField::new('listeCelebrite')->setLabel(' Liste des arguments de la pub')
+                ->setHelp('Nom de la célébrité, métier ou fonction, citation')
+                ->hideOnIndex(),
+
+
+
+            yield FormField::addTab("Comment je fais"),
+            yield ArrayField::new('liste')->setLabel(' Liste des arguments de la pub')
+                ->setHelp('1 titre pour l\'étape, 1 phrase d\'explication')
+                ->setColumns(12)
+                ->hideOnIndex(),
+
 
         ];
 

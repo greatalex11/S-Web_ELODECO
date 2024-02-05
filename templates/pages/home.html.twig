@@ -346,6 +346,109 @@
                 {% endfor %}
             </div>
         </section>
+{#        <!--  SECTION  GROUPE BLOCK PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px  -->#}
+
+{#        <!--                                          statique                                                         -->#}
+{#        <section class="project-two">#}
+{#            <div class="project-two__container">#}
+{#                <div class="section-title text-center">#}
+{#                    <span class="section-title__tagline">Ce que j'ai fais</span>#}
+{#                    <h2 class="section-title__title">Mes derniers projets</h2>#}
+{#                </div>#}
+{#                <div class="row masonary-layout">#}
+{#                    <!--                                          dynamique                                                         -->#}
+
+{#                    {% for blocksPhotos in home %}#}
+{#                        {% if blocksPhotos.type == 'BlockPhotos' %}#}
+{#                            {% set image6 = blocksPhotos.images %}#}
+
+{#                            <div class="col-xl-3 col-lg-6 col-md-6">#}
+{#                                <div class="project-two__single">#}
+{#                                    <div class="project-two__img">#}
+{#                                        <img src="{{ vich_uploader_asset(image6[0]) }}"#}
+{#                                             alt="{{ image6[0].titre|default('image') }}">#}
+
+{#                                        <div class="project-two__architect">#}
+{#                                            <p>{{ blocksPhotos.liste[0] }}</p>#}
+{#                                            <h3> <a href="{{ path('app_projets') }}">{{ blocksPhotos.titre1 }}</a></h3>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+
+{#                            <div class="col-xl-3 col-lg-6 col-md-6">#}
+{#                                <div class="project-two__single">#}
+{#                                    <div class="project-two__img">#}
+{#                                        <img src="{{ vich_uploader_asset(image6[1]) }}"#}
+{#                                             alt="{{ image6[1].titre|default('image') }}">#}
+{#                                        <div class="project-two__architect">#}
+{#                                            <p>{{ blocksPhotos.liste[1] }}</p>#}
+{#                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.titre2 }}</a></h3>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+
+{#                            <div class="col-xl-6 col-lg-6 col-md-6">#}
+{#                                <div class="project-two__single">#}
+{#                                    <div class="project-two__img">#}
+{#                                        <img src="{{ vich_uploader_asset(image6[2]) }}"#}
+{#                                             alt="{{ image6[2].titre|default('image') }}">#}
+{#                                        <div class="project-two__architect">#}
+{#                                            <p>{{ blocksPhotos.liste[2] }}</p>#}
+{#                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.titre3 }}</a></h3>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+
+{#                            <div class="col-xl-6 col-lg-6 col-md-6">#}
+{#                                <div class="project-two__single">#}
+{#                                    <div class="project-two__img">#}
+{#                                        <img src="{{ vich_uploader_asset(image6[3]) }}"#}
+{#                                             alt="{{ image6[3].titre|default('image') }}">#}
+{#                                        <div class="project-two__architect">#}
+{#                                            <p>{{ blocksPhotos.liste[3] }}</p>#}
+{#                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.texte1 }}</a></h3>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+
+
+{#                            <div class="col-xl-3 col-lg-6 col-md-6">#}
+{#                                <div class="project-two__single">#}
+{#                                    <div class="project-two__img">#}
+{#                                        <img src="{{ vich_uploader_asset(image6[4]) }}"#}
+{#                                             alt="{{ image6[4].titre|default('image') }}">#}
+{#                                        <div class="project-two__architect">#}
+{#                                            <p>{{ blocksPhotos.liste[4] }}</p>#}
+{#                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.texte2 }}</a></h3>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+
+{#                            <div class="col-xl-3 col-lg-6 col-md-6">#}
+{#                                <div class="project-two__single">#}
+{#                                    <div class="project-two__img">#}
+{#                                        <img src="{{ vich_uploader_asset(image6[5]) }}"#}
+{#                                             alt="{{ image6[5].titre|default('image') }}">#}
+
+{#                                        <div class="project-two__architect">#}
+{#                                            <p>{{ blocksPhotos.liste[5] }}</p>#}
+{#                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.texte3 }}</a></h3>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+
+
         <!--  SECTION  GROUPE BLOCK PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px  -->
 
         <!--                                          statique                                                         -->
@@ -359,109 +462,8 @@
                     <!--                                          dynamique                                                         -->
 
                     {% for blocksPhotos in home %}
-                        {% if blocksPhotos.type == 'BlockPhotos' %}
-                            {% set image6 = blocksPhotos.images %}
 
-                            <div class="col-xl-3 col-lg-6 col-md-6">
-                                <div class="project-two__single">
-                                    <div class="project-two__img">
-                                        <img src="{{ vich_uploader_asset(image6[0]) }}"
-                                             alt="{{ image6[0].titre|default('image') }}">
-
-                                        <div class="project-two__architect">
-                                            <p>{{ blocksPhotos.liste[0] }}</p>
-                                            <h3> <a href="{{ path('app_projets') }}">{{ blocksPhotos.titre1 }}</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-6 col-md-6">
-                                <div class="project-two__single">
-                                    <div class="project-two__img">
-                                        <img src="{{ vich_uploader_asset(image6[1]) }}"
-                                             alt="{{ image6[1].titre|default('image') }}">
-                                        <div class="project-two__architect">
-                                            <p>{{ blocksPhotos.liste[1] }}</p>
-                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.titre2 }}</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6 col-lg-6 col-md-6">
-                                <div class="project-two__single">
-                                    <div class="project-two__img">
-                                        <img src="{{ vich_uploader_asset(image6[2]) }}"
-                                             alt="{{ image6[2].titre|default('image') }}">
-                                        <div class="project-two__architect">
-                                            <p>{{ blocksPhotos.liste[2] }}</p>
-                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.titre3 }}</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6 col-lg-6 col-md-6">
-                                <div class="project-two__single">
-                                    <div class="project-two__img">
-                                        <img src="{{ vich_uploader_asset(image6[3]) }}"
-                                             alt="{{ image6[3].titre|default('image') }}">
-                                        <div class="project-two__architect">
-                                            <p>{{ blocksPhotos.liste[3] }}</p>
-                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.texte1 }}</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-xl-3 col-lg-6 col-md-6">
-                                <div class="project-two__single">
-                                    <div class="project-two__img">
-                                        <img src="{{ vich_uploader_asset(image6[4]) }}"
-                                             alt="{{ image6[4].titre|default('image') }}">
-                                        <div class="project-two__architect">
-                                            <p>{{ blocksPhotos.liste[4] }}</p>
-                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.texte2 }}</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-6 col-md-6">
-                                <div class="project-two__single">
-                                    <div class="project-two__img">
-                                        <img src="{{ vich_uploader_asset(image6[5]) }}"
-                                             alt="{{ image6[5].titre|default('image') }}">
-
-                                        <div class="project-two__architect">
-                                            <p>{{ blocksPhotos.liste[5] }}</p>
-                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.texte3 }}</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-
-
-        <!--  SECTION  GROUPE BLOCK PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px  -->
-
-        <!--                                          statique                                                         -->
-        <section class="project-two">
-            <div class="project-two__container">
-                <div class="section-title text-center">
-                    <span class="section-title__tagline">Ce que j'ai fais</span>
-                    <h2 class="section-title__title">Mes derniers projets</h2>
-                </div>
-                <div class="row masonary-layout">
-                    <!--                                          dynamique                                                         -->
-
-                    {% for blocksPhotos in home %}
+{#                        {% set blocksPhotos= blocksPhoto[0] %}#}
                         {% if blocksPhotos.type == 'BlockPhotos' %}
                             {% set image6 = blocksPhotos.images %}
 

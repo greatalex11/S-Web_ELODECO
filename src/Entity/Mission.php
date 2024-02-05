@@ -61,6 +61,9 @@ class Mission
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $missionarg2 = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?array $ListeCelebrite = null;
+
     public function __construct()
     {
         $this->image = new ArrayCollection();
@@ -259,6 +262,18 @@ class Mission
     public function setMissionarg2(?string $missionarg2): static
     {
         $this->missionarg2 = $missionarg2;
+
+        return $this;
+    }
+
+    public function getListeCelebrite(): ?array
+    {
+        return $this->ListeCelebrite;
+    }
+
+    public function setListeCelebrite(?array $ListeCelebrite): static
+    {
+        $this->ListeCelebrite = $ListeCelebrite;
 
         return $this;
     }

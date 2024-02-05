@@ -64,6 +64,15 @@ class About
     #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'abouts',cascade: ['persist'],fetch: 'EAGER')]
     private Collection $image;
 
+    #[ORM\Column(nullable: true)]
+    private ?array $listeArtisan = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $artisanT5 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?array $listeT5 = null;
+
     public function __construct()
     {
         $this->image = new ArrayCollection();
@@ -274,6 +283,42 @@ class About
     public function removeImage(Image $image): static
     {
         $this->image->removeElement($image);
+
+        return $this;
+    }
+
+    public function getListeArtisan(): ?array
+    {
+        return $this->listeArtisan;
+    }
+
+    public function setListeArtisan(?array $listeArtisan): static
+    {
+        $this->listeArtisan = $listeArtisan;
+
+        return $this;
+    }
+
+    public function getArtisanT5(): ?string
+    {
+        return $this->artisanT5;
+    }
+
+    public function setArtisanT5(?string $artisanT5): static
+    {
+        $this->artisanT5 = $artisanT5;
+
+        return $this;
+    }
+
+    public function getListeT5(): ?array
+    {
+        return $this->listeT5;
+    }
+
+    public function setListeT5(?array $listeT5): static
+    {
+        $this->listeT5 = $listeT5;
 
         return $this;
     }

@@ -171,97 +171,158 @@
             </div>
 
             <div class="row">
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
-                    {% for contenus in about %}
-                    {% if contenus.type =="blogAboutExpert" %}
-                    <div class="team-one__single">
+               <!--Ancienne verion avec la distribution dynamique par contenu -->
+                {#                    {% for contenus in about %}#}
+                {#                    {% if contenus.type =="blogAboutExpert" %}#}
+                {#                    {% if contenus.Images[0] is defined %}#}
+                {#                    {% set image = contenus.Images[0] %}#}
+                {#                    {% endif %}#}
+                {#                    {% endif %}#}
+                {#                    {% endfor %}#}
+                {# https://www.linkedin.com/in/elodie-kolly-a652041b2/?trk=public_profile_samename-profile&originalSubdomain=fr  class="fab fa-linkedin"#}
 
+                <!--Nouvelle verion avec la distribution entité About et les listes json -->
+                {% set artisan=visio.listeArtisan %}
+                {% set metier=visio.listeT5 %}
+                {% set image=visio.image %}
+{#                {% set temoignage=visio.listeT5 %}#}
+                <!--image artisan 1 -->
+                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                    <div class="team-one__single">
                         <div class="team-one__img-box">
                             <div class="team-one__img">
-                                {% if contenus.Images[0] is defined %}
-                                    {% set image = contenus.Images[0] %}
-                                    <img src="{{ vich_uploader_asset(image) }}"
-                                         alt="{{ image.titre|default('image') }}">
-                                {% endif %}
+                                    <img src="{{ vich_uploader_asset(image[1]) }}"
+                                         alt="{{ image[1].titre|default('image') }}" style="width: 330px ; object-fit: contain">
+                                    <div class="team-one__social">
+                                        <a href="{{ path('app_contact') }}"
+                                           class="clr-dri"><img src="{{ asset('assets/images/LOGO_ELODECO_2.png') }}" alt="logo de l'entreprise Elo Deco" style="width: 55px"></a>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="team-one__content">
+                            <h3 class="team-one__name">{{ artisan['1']|striptags }}</h3>
+                            <p class="team-one__title">{{ artisan['2']|striptags }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--image artisan 2 -->
+                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
+                    <div class="team-one__single">
+                        <div class="team-one__img-box">
+                            <div class="team-one__img">
+                                <img src="{{ vich_uploader_asset(image[2]) }}"
+                                     alt="{{ image[2].titre|default('image') }}" style="width: 330px ; object-fit: contain">
 
                                 <div class="team-one__social">
-                                    <a href="https://www.linkedin.com/in/elodie-kolly-a652041b2/?trk=public_profile_samename-profile&originalSubdomain=fr"
-                                       class="clr-dri"><i class="fab fa-linkedin"></i></a>
+                                    <a href="{{ path('app_contact') }}"
+                                       class="clr-dri"><img src="{{ asset('assets/images/LOGO_ELODECO_2.png') }}" alt="logo de l'entreprise Elo Deco" style="width: 55px"></a>
                                 </div>
                             </div>
                         </div>
                         <div class="team-one__content">
-                            <h3 class="team-one__name">{{ contenus.titre1 |striptags }}</h3>
-                            <p class="team-one__title">{{ contenus.titre2 |striptags }}</p>
+                            <h3 class="team-one__name">{{ artisan['3']|striptags }}</h3>
+                            <p class="team-one__title">{{ artisan['4']|striptags }}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
-                    {% endif %}
-                    {% endfor %}
+
+                <!--image artisan 3 -->
+                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="team-one__single">
+                        <div class="team-one__img-box">
+                            <div class="team-one__img">
+                                <img src="{{ vich_uploader_asset(image[3]) }}"
+                                     alt="{{ image[3].titre|default('image') }}" style="width: 330px ; object-fit: contain">
+
+                                <div class="team-one__social">
+                                    <a href="{{ path('app_contact') }}"
+                                       class="clr-dri"><img src="{{ asset('assets/images/LOGO_ELODECO_2.png') }}" alt="logo de l'entreprise Elo Deco" style="width: 55px"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-one__content">
+                            <h3 class="team-one__name">{{ artisan['5']|striptags }}</h3>
+                            <p class="team-one__title">{{ artisan['6']|striptags }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms"> </div>
+            </div>
+        </div>
+    </section>
+
+    <!--              PUB EN L :   IMAGE  285x281          -->
+    <section class="two-boxes two-boxes-about">
+        <div class="container">
+            <div class="row">
+                <!--Ancienne verion avec la distribution dynamique par contenu -->
+{#                {% for contenus in about %}#}
+{#                    {% if contenus.type =="blogenL" %}#}
+{#                    {% endif %}#}
+{#                {% endfor %}   {{ contenus.titre1 |striptags }}   #}
+
+                <div class="col-xl-6 col-lg-6">
+                    <div class="two-boxes__single">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="two-boxes__content">
+                                    <h2>{{ metier['1']|striptags }}</h2>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="two-boxes__img">
+                                    <img src="{{ vich_uploader_asset(image[4]) }}"
+                                         alt="{{ image[4].titre|default('image') }}"
+                                         style="width: 285px ; object-fit: contain">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="two-boxes__single">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="two-boxes__content">
+                                    <h2>{{ metier['2'] |striptags }}</h2>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="two-boxes__img">
+                                    <img src="{{ vich_uploader_asset(image[5]) }}"
+                                         alt="{{ image[5].titre|default('image') }}"
+                                         style="width: 285px ; object-fit: contain">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    <!--      fin pub en L       -->
 
-    <!--                                                                        fin image moyenne 3                                                                   -->
-
-    <!--                                                                    PUB EN L :   IMAGE  285x281                                                                -->
-
-    <section class="two-boxes two-boxes-about">
-        <div class="container">
-            <div class="row">
-                {% for contenus in about %}
-                    {% if contenus.type =="blogenL" %}
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="two-boxes__single">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-6">
-                                        <div class="two-boxes__content">
-                                            <h2>{{ contenus.titre1 |striptags }}</h2>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6">
-                                        <div class="two-boxes__img">
-                                            {% if contenus.Images[0] is defined %}
-                                                {% set image = contenus.Images[0] %}
-                                                <img src="{{ vich_uploader_asset(image) }}"
-                                                     alt="{{ image.titre|default('image') }}">
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-    <!--                                                                        fin pub en L                                                          -->
-
- <!--                                                                             TEMOINS                                                              -->
-
-   <!--Testimonials One Start-->
+ <!--             TEMOINS       -->
     <section class="testimonials-one about-page-testimonial">
         <div class="container">
             <div class="section-title text-center">
-                <span class="section-title__tagline">Votre témoignage</span>
-                <h2 class="section-title__title">Ce qu'ils en disent</h2>
+                <span class="section-title__tagline"> {{visio.expertt3|default('Votre témoignage...')}}</span>
+                <h2 class="section-title__title">{{ visio.expertt4|default('ils en disent..')}} </h2>
             </div>
             <div class="row">
                 <div class="col-xl-12" >
                     <div class="testimonials-one__carousel owl-theme owl-carousel ">
                                 {% for contenus in about %}
-                                    {% if contenus.type =="blogTemoins"  %}
-                                            <div class="testimonials-one__box" style="min-height: 490px;">
-                                                <div class="testimonials-one__single"style="min-height: 490px;">
+                                    {% if contenus.type =="blogTemoins" %}
+                                            <div class="testimonials-one__box">
+                                                <div class="testimonials-one__single" style="height: 500px; object-fit: contain">
                                                     <div class="testimonials-one__content">
                                                         <p class="testimonials-one__text">{{ contenus.texte1|striptags|u.truncate(150,'...',false)}}</p>
                                                         <div class="testimonials-one__client-info">
                                                             <div class="testimonials-one__client-img">
-                                                                <img src="assets/images/testimonial/testimonials-one__client-img-1.png"
-                                                                     alt="">
+                                                                <img src="{{ asset('assets/images/testimonial/testimonials-one__client-img-1.png') }}"
+                                                                     alt="temoignage des clients">
                                                             </div>
                                                             <div class="testimonials-one__client-details">
                                                                 <h5 class="testimonials-one__client-name">{{ contenus.titre1|striptags}}</h5>
