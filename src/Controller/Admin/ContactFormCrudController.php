@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\ContactForm;
+use App\Service\countMsg;
+use App\Service\gestionMsg;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
@@ -17,12 +19,52 @@ class ContactFormCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return ContactForm::class;
+       return ContactForm::class;
     }
 
+//  Essai avec fonction
+//    public function dynTraitMsg():Boolean
+//    {   $ContactForm = ContactForm::class;
+//        $status = $ContactForm->$ContactForm->getStatus();
+//        $boolMsg = $ContactForm->$ContactForm->isMsgLu();
+//
+//        if ($status === "") {
+//            $ContactForm->$ContactForm->setMsgLu("0");
+//        }else{
+//            $ContactForm->$ContactForm->setMsgLu("$boolMsg");
+//        }
+//        $bool=$ContactForm->$ContactForm->isMsgLu();
+//        return $bool;
+//    }
+//    private bool $bool;
+//    public function __construct(Boolean $bool)
+//    {
+//        $this->dynTraitMsg($bool);
+//    }
+
+    public function __construct(gestionMsg $gmsg)
+    {
+        $this->gmsg = $gmsg;
+    }
 
     public function configureFields(string $pageName): iterable
     {
+//        //  Essai avec context
+//        $entity=$this->getContext()->getEntity()->getInstance();
+//
+//        /** @var ContactForm $contactForm */
+//        $contactForm=$entity;
+//        $boolMsg = $contactForm->isMsgLu();
+//        $status = $contactForm->getStatus();
+//
+//        if ($status === "") {
+//            $contactForm->setMsgLu("0");
+//        }else{
+//            $contactForm->setMsgLu("$boolMsg");
+//        }
+//        $bool=$contactForm->isMsgLu();
+
+
         return [
             yield FormField::addTab("listing"),
 //            yield IdField::new('id'),
@@ -30,12 +72,13 @@ class ContactFormCrudController extends AbstractCrudController
             yield TextField::new('sujet'),
             yield DateField::new('date_creation'),
             yield ChoiceField::new('status')
-            ->setChoices(ContactForm::statusMsg)
+                ->setChoices(ContactForm::statusMsg)
                 ->setEmptyData('A traiter')
-            ->setLabel('statut'),
+                ->setLabel('statut'),
 
             yield BooleanField::new('msgLu')->renderAsSwitch()
                 ->setLabel('Pas encore lu')
+//                ->setValue($this->gmsg)
                 ->setTemplatePath('fields/bouton.html.twig'),
 
             yield FormField::addTab("Message")->hideOnIndex(),
@@ -48,7 +91,7 @@ class ContactFormCrudController extends AbstractCrudController
                 ->hideOnIndex(),
             yield TextField::new('email')
                 ->hideOnIndex(),
-
         ];
     }
 }
+
