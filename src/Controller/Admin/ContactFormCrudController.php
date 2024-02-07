@@ -3,8 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\ContactForm;
+use App\Repository\ContactFormRepository;
 use App\Service\countMsg;
 use App\Service\gestionMsg;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
@@ -22,7 +25,23 @@ class ContactFormCrudController extends AbstractCrudController
        return ContactForm::class;
     }
 
-//  Essai avec fonction
+    public function configureFilters(Filters $filters): Filters
+    {
+        return $filters
+            ->add('nom')
+            ->add('sujet');
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return parent::configureCrud($crud)
+            ->setEntityLabelInPlural('Contacts')
+            ->setEntityLabelInSingular('Contacts')
+            ->setAutofocusSearch();
+//            ->setDefaultSort(['updatedAt' => 'DESC']);
+    }
+
+//  ******* Essai avec fonction ******
 //    public function dynTraitMsg():Boolean
 //    {   $ContactForm = ContactForm::class;
 //        $status = $ContactForm->$ContactForm->getStatus();
@@ -37,33 +56,41 @@ class ContactFormCrudController extends AbstractCrudController
 //        return $bool;
 //    }
 //    private bool $bool;
+
 //    public function __construct(Boolean $bool)
 //    {
 //        $this->dynTraitMsg($bool);
 //    }
 
-    public function __construct(gestionMsg $gmsg)
-    {
-        $this->gmsg = $gmsg;
-    }
+//  ******* Essai avec le service  ******
+//    public function __construct(gestionMsg $list)
+//    {
+//        $this->list = $list;
+//    }
 
-    public function configureFields(string $pageName): iterable
-    {
-//        //  Essai avec context
-//        $entity=$this->getContext()->getEntity()->getInstance();
-//
+//  ******* Essai avec entity ******
 //        /** @var ContactForm $contactForm */
 //        $contactForm=$entity;
-//        $boolMsg = $contactForm->isMsgLu();
-//        $status = $contactForm->getStatus();
-//
-//        if ($status === "") {
-//            $contactForm->setMsgLu("0");
+//        $boolMsg=null ;
+//        $status = null;//
+//        if ($contactForm->getStatus() != "à traiter") {
+//            $contactForm->setMsgLu("0");//
 //        }else{
 //            $contactForm->setMsgLu("$boolMsg");
 //        }
 //        $bool=$contactForm->isMsgLu();
 
+//        //  Essai avec SQL
+//        $entity=$this->getContext()->getEntity()->getInstance();//
+//        $entity->update('ContactForm', 'c')
+//            ->set('c.msgLu', '0')
+//            ->where('c.status = :status')
+//            ->setParameter('status', 'traitement en cours')
+//            ->getQuery()
+//            ->getResult();
+
+    public function configureFields(string $pageName): iterable
+    {
 
         return [
             yield FormField::addTab("listing"),
@@ -77,7 +104,8 @@ class ContactFormCrudController extends AbstractCrudController
 
             yield BooleanField::new('msgLu')->renderAsSwitch()
                 ->setLabel('Pas encore lu')
-//                ->setValue($this->gmsg)
+//              ->setValue($this->list)
+//              ->setValue($this->$bool)
                 ->setTemplatePath('fields/bouton.html.twig'),
 
             yield FormField::addTab("Message")->hideOnIndex(),

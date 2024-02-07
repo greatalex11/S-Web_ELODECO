@@ -4,7 +4,9 @@ namespace App\Service;
 
 
 
+use App\Entity\ContactForm;
 use App\Repository\ContactFormRepository;
+use mysql_xdevapi\TableUpdate;
 
 class gestionMsg
 {
@@ -12,23 +14,17 @@ class gestionMsg
     private ?ContactFormRepository $contactForm;
 
 
-    public function __construct(ContactFormRepository $contactForm)
+    public function __construct(ContactForm $contactForm, ContactFormRepository $contactFormRepository)
     {
-        $msg = $this->contact = $contactForm;
+        $table=$this->$contactForm()->update('ContactForm', 'c')
+        ->set('c.msgLu', '0')
+        ->where('c.status = :status')
+        ->setParameter('status', 'traitement en cours')
+        ->getQuery()
+        ->getResult();
 
-        $resultMsg = $msg->createQueryBuilder('c')
-            ->select('c.msgLu', 'c.status')
-            ->where('c.msgLu = :msgLu')
-            ->andWhere('c.status=:status')
-            ->setParameter('msgLu', '1')
-            ->setParameter('status', 'urgent')
-            ->getQuery()
-            ->getResult();
-        $this->resultMsg = $resultMsg;
+
+        return $this;
     }
-//        public function __toString(): string
-//    {
-//
-//        return strval($this->resultMsg[1]);
-//    }
 }
+
