@@ -39,8 +39,8 @@ class AboutCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return parent::configureCrud($crud)
-            ->setEntityLabelInPlural('Mes pages a propos')
-            ->setEntityLabelInSingular('Ma page a propos')
+            ->setEntityLabelInPlural('A propos de moi')
+            ->setEntityLabelInSingular('A propos de moi')
             ->setAutofocusSearch();
     }
 

@@ -28,12 +28,6 @@ class StyleCrudController extends AbstractCrudController
         return Style::class;
     }
 
-    public function configureFilters(Filters $filters): Filters
-    {
-        return $filters
-            ->add('page');
-    }
-
     public function configureActions(Actions $actions): Actions
     {
         return parent::configureActions($actions)
@@ -44,8 +38,8 @@ class StyleCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return parent::configureCrud($crud)
-            ->setEntityLabelInPlural('Style')
-            ->setEntityLabelInSingular('Styles')
+            ->setEntityLabelInPlural('Mes styles')
+            ->setEntityLabelInSingular('Mon style')
             ->setAutofocusSearch();
 //            ->setDefaultSort(['updatedAt' => 'DESC']);
     }
@@ -78,10 +72,7 @@ class StyleCrudController extends AbstractCrudController
                 ->setTemplatePath('fields/images.html.twig');
 
         }
-        yield FormField::addTab("Page");
-        yield AssociationField::new('page')->autocomplete()
-            ->setTemplatePath('fields/tags.html.twig')
-            ->setTextAlign(TextAlign::LEFT);
+
 
         yield BooleanField::new('publier')->renderAsSwitch();
 //        yield DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Dernière modification');

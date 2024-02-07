@@ -43,10 +43,7 @@ class Style
     #[ORM\Column(nullable: true)]
     private ?bool $publier = null;
 
-    #[ORM\ManyToMany(targetEntity: Page::class, inversedBy: 'page', cascade: ['persist'], fetch: 'EAGER')]
-    private Collection $page;
-
-    #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'styles', cascade: ['persist'], fetch: 'EAGER')]
+   #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'styles', cascade: ['persist'], fetch: 'EAGER')]
     private Collection $image;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -171,29 +168,6 @@ class Style
         return $this;
     }
 
-    /**
-     * @return Collection<int, Page>
-     */
-    public function getPage(): Collection
-    {
-        return $this->page;
-    }
-
-    public function addPage(Page $page): static
-    {
-        if (!$this->page->contains($page)) {
-            $this->page->add($page);
-        }
-
-        return $this;
-    }
-
-    public function removePage(Page $page): static
-    {
-        $this->page->removeElement($page);
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Image>
