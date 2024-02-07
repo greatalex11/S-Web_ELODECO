@@ -1,0 +1,12 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+
+{% for message in app.flashes('success') %}
+    <div id="flash-message" class="alert alert-success">
+        {{ message }}
+        <button  id="flashbtn"  type="button" class="close">ok?;</button>
+    </div>
+{% endfor %}
+
+{#onclick="hideFlashMessage()#}

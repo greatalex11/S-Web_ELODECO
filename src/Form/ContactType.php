@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use function PHPUnit\Framework\isEmpty;
 use function PHPUnit\Framework\stringContains;
@@ -21,7 +22,7 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('status', HiddenType::class, [
-                'empty_data' => 'A traiter',
+                'empty_data'=>ContactForm::MSGATRAITE,
             ])
             ->add('msgLu', HiddenType::class, [
                 'empty_data' => 'false',
@@ -41,6 +42,7 @@ class ContactType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ContactForm::class,
+
         ]);
 
     }

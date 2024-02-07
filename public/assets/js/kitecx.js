@@ -777,6 +777,15 @@
 
     // ----------------------------- Mon javascript -----------------------------------------
 
+    // let flashForm = document.getElementById('flash-message')
+    let flashForm=$('#flash-message');
+    if(flashform.length){
+        $('#flashbtn').addEventListener('click', ()=>{
+            $('#flash-message').style.display='none';
+        })
+    }
+
+
 
     // Création du caroussel pour les images de style détails
 
@@ -793,13 +802,9 @@
 
 
 
-
-
     // $('#styleCarousel').on('show.bs.modal', function (e) {
     //     if (!styled) return e.preventDefault() // stops modal from being shown
     // })
-
-
 
 
     // Création du caroussel pour les images de news
@@ -841,13 +846,10 @@
                     higher = height;
                 }
             });
-
             if (window.innerWidth >= 992) {
                 $news.height(higher);
             }
         }}
-
-
 
     function logoHeight() {
         let logoHeight = $(".main-menu-wrapper__bottom").outerHeight();

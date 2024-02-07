@@ -73,7 +73,6 @@ class ContactFormCrudController extends AbstractCrudController
             yield DateField::new('date_creation'),
             yield ChoiceField::new('status')
                 ->setChoices(ContactForm::statusMsg)
-                ->setEmptyData('A traiter')
                 ->setLabel('statut'),
 
             yield BooleanField::new('msgLu')->renderAsSwitch()

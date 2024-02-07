@@ -9,7 +9,7 @@
 
 
 
-    <section class="page-header" style="{{ asset('assets/images/backgrounds/fond2.png') }}">
+    <section class="page-header" style="{{ asset('assets/images/backgrounds/fond2.png')}}">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -60,81 +60,67 @@
                                      <div class="col-xl-8">
                                         <div class="contact-page__input-box">
                                          {{ form_row(form.prenom, { 'label': 'prenom' }) }}
-{#                                                                            {{ form_label(form.nom) }}#}
-{#                                                                            <input type="text" placeholder="Votre nom" name="name">#}
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-xl-6">
-                                                                        <div class="contact-page__input-box">
-                                                                            {{ form_row(form.nom, { 'label': 'nom' }) }}
-{#                                                                            {{ form_widget(form.nom) }} nom#}
-                                                                            {#                                                                            {{ form_label(form.nom) }}#}
-                                                                            {#                                                                            <input type="text" placeholder="Votre nom" name="name">#}
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-xl-6">
-                                                                        <div class="contact-page__input-box">
-                                                                            {{ form_row(form.email, { 'label': 'mail' }) }}
-{#                                                                            <input type="email" placeholder="Votre prémom" name="email">#}
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-xl-6">
-                                                                        <div class="contact-page__input-box">
-                                                                            {{ form_row(form.telephone, { 'label': 'telephone' }) }}
-                                                                            {#                                                                            <input type="email" placeholder="Votre prémom" name="email">#}
-                                                                        </div>
-                                                                    </div>
+                                        </div>
+                                            </div>
+                                                <div class="col-xl-6">
+                                                    <div class="contact-page__input-box">
+                                                         {{ form_row(form.nom, { 'label': 'nom' }) }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <div class="contact-page__input-box">
+                                                         {{ form_row(form.email, { 'label': 'mail' }) }}
+                                                     </div>
+                                                </div>
+                                                 <div class="col-xl-6">
+                                                        <div class="contact-page__input-box">
+                                                         {{ form_row(form.telephone, { 'label': 'telephone' }) }}
+                                                       </div>
+                                                 </div>
+                                                  <div class="row">
+                                                       <div class="col-xl-12">
+                                                           <div class="contact-page__input-box">
+                                                             {{ form_row(form.sujet, { 'label': 'sujet' }) }}
+                                                           </div>
+                                                       </div>
+                                                 </div>
 
-                                                                </div>
-
-                                                                <div class="row">
-                                                                    <div class="col-xl-12">
-                                                                        <div class="contact-page__input-box">
-                                                                            {{ form_row(form.sujet, { 'label': 'sujet' }) }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row mb-4">
-                                                                    <div class="col-xl-12">
-                                                                        <div class="contact-page__input-box">
-                                                                            {{ form_row(form.message, { 'label': 'message' }) }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-xl-12">
-                                                                        <div class="contact-page__input-box">
-{#                                                                            {{ form_label(form.message, 'Message', {'label_attr': {'class': 'your-css-class'}}) }}#}
-                                                                            {{ form_row(form.submit, {'attr': {'class': "thm-btn contact-page__btn"}}, {'label': 'Envoyer le message'}) }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                    <div class="contact-page__input-box">
-                                    </div>
-
+                                                  <div class="row mb-4">
+                                                      <div class="col-xl-12">
+                                                              <div class="contact-page__input-box">
+                                                                {{ form_row(form.message, { 'label': 'message' }) }}
+                                                              </div>
+                                                        </div>
+                                                   </div>
+                                                   <div class="row">
+                                                       <div class="col-xl-12">
+                                                            <div class="contact-page__input-box">
+                                                                {{ form_row(form.submit, {'attr': {'class': "thm-btn contact-page__btn"}}, {'label': 'Envoyer le message'}) }}
+                                                            </div>
+                                                          </div>
+                                                    </div>
+                                          <div class="contact-page__input-box">
+                                        </div>
                                     {{ form_end(form) }}
-                                </div>
-                            </div>
-
-                        {% else %}
-                            <div class="alert alert-success">
-                                {% for flashMessage in app.session.flashbag.get('success') %}
-                                    {{ flashMessage }}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-
+                                  </div>
+                              </div>
                     </div>
                 </div>
+                </div>
                 <div class="col-xl-4 col-lg-5">
+
+                    {% else %}
+                        <div class="alert alert-success">
+                            {% for flashMessage in app.session.flashbag.get('success') %}
+                                {{ flashMessage }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                     <div class="contact-page__details">
                         <div class="contact-page__details-shape"
-                             style="background-image: url(assets/images/shapes/contact-page__details-shape.png)">
+                             style="background-image: url({{ asset('assets/images/shapes/contact-page__details-shape.png') }})">
                         </div>
                         <p class="contact-page__details-text">Vous pouvez me joindre également par mail ou par téléphone.</p>
-
-
 
                         <div class="contact-page__details-contact-info">
                             <ul class="list-unstyled contact-page__details-contact-list">

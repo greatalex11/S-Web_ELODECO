@@ -12,7 +12,10 @@ class ContactForm
     public const MSGURG= 'urgent';
     public const MSGENCOURS= 'traitement en cours';
     public const MSGTRAITE= 'message traité';
+    public const MSGATRAITE= 'message a traité';
+
     public const statusMsg=[
+        "à traiter"=>self::MSGATRAITE,
         "urgent"=> self::MSGURG,
         "traitement en cours" => self::MSGENCOURS,
         "traité" => self::MSGTRAITE,
