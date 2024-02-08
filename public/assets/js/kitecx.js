@@ -778,10 +778,11 @@
     // ----------------------------- Mon javascript -----------------------------------------
 
     // let flashForm = document.getElementById('flash-message')
-    let flashForm=$('#flash-message');
-    if(flashform.length){
-        $('#flashbtn').addEventListener('click', ()=>{
-            $('#flash-message').style.display='none';
+    let flashForm=$('.alert-success');
+    if(flashForm.length){
+        $('.close').addEventListener('click', ()=>{
+            flashForm.hide();
+            // flashForm.style.display='none';
         })
     }
 

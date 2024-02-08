@@ -22,6 +22,15 @@
             <div class="container">
                 <div class="row">
                     <div class=" vh-100 bg-dark mt-5 mb-5">
+                        <div class="row">
+                            {% for message in app.flashes('success') %}
+                                <div id="flash-message" class="alert alert-success">
+                                    {{ message }}
+                                    <button  id="flashbtn"  type="button" class="close">Fermer</button>
+                                </div>
+                            {% endfor %}
+                        </div>
+
 
                         {#                        <div class="d-flex row col-3 justify-content-left  m-lg-3 " #}
                         {#                             style=" background-color:whitesmoke"> #}
@@ -171,14 +180,17 @@
                                 </li>
                             </ul>
                         </div>
-                        {% for message in app.flashes('success') %}
-                            {% set message = message %}
-                            <div class="alert alert-success" style="max-height: 100px">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
+
+
+
+
+
+
+
+
+
                     </div>
-                    {#                <div class="col bg-white mt-5 mb-5"></div> #}
+                    <div class="col bg-white mt-5 mb-5"></div>
                 </div>
                 <div class="row">
                     <div class="col-1 bg-white"></div>

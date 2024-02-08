@@ -68,6 +68,12 @@ class Artisan
     #[ORM\OneToMany(mappedBy: 'artisan', targetEntity: Tache::class)]
     private Collection $tache;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $nom_rue = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $email = null;
+
 
 
     public function __construct()
@@ -307,6 +313,30 @@ class Artisan
                 $tache->setArtisan(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNomRue(): ?string
+    {
+        return $this->nom_rue;
+    }
+
+    public function setNomRue(?string $nom_rue): static
+    {
+        $this->nom_rue = $nom_rue;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): static
+    {
+        $this->email = $email;
 
         return $this;
     }

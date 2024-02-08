@@ -20,18 +20,19 @@ class ArtisanType extends AbstractType
             ->add('prenom_gerant')
             ->add('date_naissance')
             ->add('numero_rue')
-//            ->add('nom_rue')
+            ->add('nom_rue')
             ->add('code_postal')
             ->add('localite')
+            ->add('email')
             ->add('tel_fixe')
             ->add('tel_portable')
             ->add('fax')
+            ->add('submit', SubmitType::class);
 //            ->add('note_globale')
 //            ->add('commentaire')
-            ->add('Valider', SubmitType::class)
 //            ->add('status')
 //            ->add('user')
-        ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
