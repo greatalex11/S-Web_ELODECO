@@ -73,7 +73,6 @@ class StyleCrudController extends AbstractCrudController
 
         }
 
-
         yield BooleanField::new('publier')->renderAsSwitch();
 //        yield DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Dernière modification');
     }

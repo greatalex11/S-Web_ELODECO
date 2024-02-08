@@ -232,7 +232,7 @@ class LoginController extends AbstractController
     #[Route(path: '/styles', name: 'app_styles')]
     public function styles(StyleRepository $styleRepository): Response
     {
-        $styles= $styleRepository->findByPagesName('styles');
+        $styles= $styleRepository->findAll();
         return $this->render('pages/styles_deco/styles.html.twig', [
             "style" => $styles,
         ]);

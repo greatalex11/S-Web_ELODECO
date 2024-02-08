@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
     {% set Apps=theme.theme %}
     <!--                                                                   BANDEAU SUPERIEUR    image 1894x359                                                            -->
     <div class="stricky-header stricked-menu main-menu">
@@ -33,65 +32,166 @@
     </div>
 
     <!--                                                                   plan médian                                       -->
-    <section class="border vh-75 vw-100 border">
-        <div class="container ">
-            <div class="row">            <!--Menu-->
-                <div class=" mt-5 mb-5 col-2 offcanvas offcanvas-start" style="background-color:lightgrey" tabindex="-1"
-                     id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-                    <div class="offcanvas-header">
-                        <h3 class="mt-4 mb-3 offcanvas-title d-none d-sm-block" id="offcanvas">Menu</h3>
-                    </div>
-                    <div class="offcanvas-body px-0">
-                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
-                            <li class="nav-item">
-                                <a href="{{ path('app_artisan_show',{ 'id': artisans.id}) }}"
-                                   class="nav-link text-truncate">
-                                    <i class="fs-5 bi-house"></i><span
-                                            class="ms-1 d-none d-sm-inline">Coordonnées</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('app_documents_index', { 'id': artisans.id}) }}"
-                                   data-bs-toggle="collapse" class="nav-link text-truncate">
-                                    <i class="fs-5 bi-speedometer2"></i><span
-                                            class="ms-1 d-none d-sm-inline">Documents</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link text-truncate">
-                                    <i class="fs-5 bi-grid"></i><span
-                                            class="ms-1 d-none d-sm-inline">Projet</span></a>
-                            </li>
-                            <li>
-                                <a href="" class="nav-link text-truncate mb-6">
-                                    <i class="fs-5 bi-table"></i><span
-                                            class="ms-1 d-none d-sm-inline">Contact</span></a>
-                            </li>
 
-                            <a href="{{ path('app_logout') }}" class=" m-3 fs-6 font-italic">
-                                <i class="fs-5 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Déconnecter </span></a>
-                        </ul>
+
+    <section class="contact-page">
+        <div class="container m-auto" style="max-width: 1500px">
+            <div class="row">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="col-xl-7 col-lg-6">
+                            <div class="contact-page__title">
+                                <div class="section-title text-left">
+                                    <span class="section-title__tagline">Espace PRO</span>
+                                    <h2 class="section-title__title">ARTISAN</h2>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="vh-100 col-xl-9 bg-dark mt-5 mb-5"></div>
-                <div class="col bg-white mt-5 mb-5"></div>
-            </div>
-            <div class="row">
-                <div class="col-10 bg-white"></div>
+
+                <div class="row">
+                    <!--colonne gauche-->
+                    <div class="col-2">
+                        <div class="contact-page__details" style="padding: 61px 32px 60px">
+                            <div class="contact-page__details-shape"
+                                 style="background-image: url({{ asset('assets/images/shapes/contact-page__details-shape.png') }})">
+                            </div>
+                            <p class="contact-page__details-text">Vous pouvez me joindre également par mail ou par
+                                téléphone.</p>
+
+                            <div class=" mt-5 mb-5 col offcanvas offcanvas-start"
+                                 style="background-color:lightgrey" tabindex="-1"
+                                 id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+                                <div class="offcanvas-header">
+                                    <h3 class="mt-1 mb-1 offcanvas-title d-none d-sm-block" id="offcanvas">Menu</h3>
+                                </div>
+                            </div>
+
+                            <div class="contact-page__details-contact-info">
+                                <div class="row">
+                                    <!--Menu   -->
+                                    <!--Gauche -->
+                                    <div class="offcanvas-body px-0">
+                                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start"
+                                            id="menu">
+                                            <li class="nav-item">
+                                                <a href="{{ path('app_artisan_show',{ 'id': artisans.id}) }}"
+                                                   class="nav-link text-truncate">
+                                                    <i class="fs-5 bi-house"></i><span
+                                                            class="ms-1 d-none d-sm-inline">Coordonnées</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('app_documents_index', { 'id': artisans.id}) }}"
+                                                   data-bs-toggle="collapse" class="nav-link text-truncate">
+                                                    <i class="fs-5 bi-speedometer2"></i><span
+                                                            class="ms-1 d-none d-sm-inline">Documents</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="nav-link text-truncate">
+                                                    <i class="fs-5 bi-grid"></i><span
+                                                            class="ms-1 d-none d-sm-inline">Projet</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="" class="nav-link text-truncate mb-6">
+                                                    <i class="fs-5 bi-table"></i><span
+                                                            class="ms-1 d-none d-sm-inline">Contact</span></a>
+                                            </li>
+
+                                            <a href="{{ path('app_logout') }}"
+                                               class=" m-3 fs-6 font-italic">
+                                                <i class="fs-5 bi-table"></i> <span
+                                                        class="ms-1 d-none d-sm-inline">Déconnecter </span></a>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--colonne droit-->
+                    <div class="col bg-dark">
+
+                        <div class="mt-2 m-auto justify-content-center">
+                            {% set image1 = Apps.image1CarouselHome %}
+                            <img src="{{ vich_uploader_asset(image1) }}"
+                                 alt="{{ image1.titre|default('image') }}" style="width: 100%">
+                        </div>
+
+                        {#                       <div class="col"> #}
+                        <div class="contact-page__left">
+                            {#                            <div class="row"> #}
+                            {#                                <div class="col"> #}
+                            {#                                    <div class="row"> #}
+                            <div class="col">
+                                <div class="contact-page__input-box">
+
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="contact-page__input-box">
+
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="contact-page__input-box">
+
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="contact-page__input-box">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="contact-page__input-box">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="contact-page__input-box">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="contact-page__input-box">
+
+                                    </div>
+                                </div>
+                                <div class="contact-page__input-box">
+                                </div>
+                            </div>
+                            {#                                    </div> #}
+                            {#                                </div> #}
+                            {#                            </div> #}
+                        </div>
+                        {#                      </div> #}
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>
 
-    <div class="main-menu__right">
-        <h1 style="color: #FFFFFF">ELO DECO RIOZ </h1>
-    </div>
+
     <!--                                                                        GOOGLE MAP                                                                                  -->
-    <section class="contact-page-google-map border">
+<section class="contact-page-google-map border">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25673.90316580553!2d6.038971473616049!3d47.43852811122367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47929a78f73fbb87%3A0x214ef58707775bbf!2sSur%20la%20Vigne%2C%2070190%20Tr%C3%A9silley!5e0!3m2!1sfr!2sfr!4v1700909448497!5m2!1sfr!2sfr"
                 width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
                 class="contact-page-google-map__one" allowfullscreen>
         </iframe>
-    </section>    <!--                                                                        fin Google Map                                                                 -->
+</section>    <!--                                                                        fin Google Map                                                                 -->
 
 {% endblock %}

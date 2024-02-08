@@ -24,18 +24,18 @@ class StyleRepository extends ServiceEntityRepository
     /**
      * @return Style[] Returns an array of Style objects
      */
-    public function findByPagesName(string $pageName, int $maxResults = 25): array
-    {
-        return $this->createQueryBuilder('s')
-            ->join("s.page", "p")
-            ->andWhere('LOWER(p.nom) = :nom')
-            ->andWhere('s.publier = 1')
-            ->setParameter('nom', strtolower($pageName))
-//            ->orderBy('c.createdAt', 'DESC')
-            ->setMaxResults($maxResults)
-            ->getQuery()
-            ->getResult();
-    }
+//    public function findByPagesName(string $pageName, int $maxResults = 25): array
+//    {
+//        return $this->createQueryBuilder('s')
+//            ->join("s.page", "p")
+////            ->andWhere('LOWER(p.nom) = :nom')
+////            ->andWhere('s.publier = 1')
+//            ->setParameter('nom', strtolower($pageName))
+////            ->orderBy('c.createdAt', 'DESC')
+//            ->setMaxResults($maxResults)
+//            ->getQuery()
+//            ->getResult();
+//    }
 
 //    public function findOneBySomeField($value): ?Style
 //    {
