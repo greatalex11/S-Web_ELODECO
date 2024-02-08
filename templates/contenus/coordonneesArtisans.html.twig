@@ -1,13 +1,13 @@
-{% extends '/base.html.twig' %}
+{#{% extends '/base.html.twig' %}#}
 {% set Apps = theme.theme %}
 
 {% block content %}
 
 
-    <section class="mt-xl-5 row justify-content-center m-auto">
-        <div class="mb-5">
-            <h5 style="margin-left: 10%">Vos informations personnelles</h5>
-        </div>
+    <section class="mt-2 row justify-content-center m-auto">
+{#        <div class="mb-5">#}
+{#            <h5 style="margin-left: 10%">Vos informations personnelles</h5>#}
+{#        </div>#}
 
         <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between"
                  style="max-height:100px; padding:30px; margin: 0 10% 0 10%">
@@ -187,49 +187,49 @@
             </div>
         </section>
 
-        <div class="main-menu__right mb-4">
-            <h1 style="color: #FFFFFF">ELO DECO RIOZ </h1>
+        <div class=" raw mt-5">
+            <h2 style="color: #FFFFFF;text-align: center">Elo Deco à Rioz </h2>
         </div>
 
 
-        <div class="d-flex row-cols-6 justify-content-xl-between">
-            <div>
-                <a style="padding: 20px; border-radius: 20px ; margin: 40px;color:#FFFFFF;background-color: rgb(115, 115, 115)"
-                   class="text-center portfolio-details__info-list list-unstyled alert-info"
-                   href="{{ path('app_artisan_accueil',{ 'id': artisans.id}) }}"> <span class="m-2"><<</span>Retour</a>
-            </div>
+        <div class="row-cols-6 d-flex flex-row-reverse bd-highlight mt-5 mb-5">
+{#            <div>#}
+{#                <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)"#}
+{#                   class="text-center portfolio-details__info-list list-unstyled alert-info"#}
+{#                   href="{{ path('app_artisan_accueil',{ 'id': artisans.id}) }}"> <span class="m-2"><<</span>Retour</a>#}
+{#            </div>#}
 
             <div>
-                <a style="padding: 20px; border-radius: 20px ; margin: 40px;color:#FFFFFF;background-color: rgb(115, 115, 115)"
+                <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)"
                    class=" text-center portfolio-details__info-list list-unstyled alert-info"
-                   href="{{ path('app_artisan_edit',{ 'id': artisans.id}) }}">Corriger<span class="m-2">>> </span> </a>
+                   href="{{ path('app_artisan_change_coordonnees',{ 'id': artisans.id}) }}">Corriger<span class="m-2">>> </span> </a>
             </div>
 
         </div>
 
-        <div class="d-flex col-10 justify-content-center m-auto">
-            <div style="margin: 5% 10% 5% 10%">
+{#        <div class="d-flex col-10 justify-content-center m-auto">#}
+{#            <div style="margin: 5% 10% 5% 10%">#}
 
-                {% if form is defined %}
+{#                {% if form is defined %}#}
 
 
-                    <section
-                            class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between"
-                            style="max-height:100px; padding:30px; margin: 10%">
+{#                    <section#}
+{#                            class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between"#}
+{#                            style="max-height:100px; padding:30px; margin: 10%">#}
 
-                        <h4 style="text-align: center; color: #FFFFFF">Vous pouvez apporter des modifications</h4>
+{#                        <h4 style="text-align: center; color: #FFFFFF">Vous pouvez apporter des modifications</h4>#}
 
-                    </section>
-                    <div>
+{#                    </section>#}
+{#                    <div>#}
 
-                    </div>
+{#                    </div>#}
 
-                    {{ form_start(form) }}
+{#                    {{ form_start(form) }}#}
 
-                    {{ form_end(form) }}
-                {% endif %}
-            </div>
-        </div>
+{#                    {{ form_end(form) }}#}
+{#                {% endif %}#}
+{#            </div>#}
+{#        </div>#}
 
 
     </section>

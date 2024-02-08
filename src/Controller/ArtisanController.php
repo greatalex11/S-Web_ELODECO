@@ -10,7 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_ARTISAN')]
 #[Route('/artisan_accueil')]
 class ArtisanController extends AbstractController
 {
@@ -34,8 +36,19 @@ class ArtisanController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_artisan_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Artisan $artisan, EntityManagerInterface $entityManager): Response
+
+//    #[Route('/artisan_change_coordonnees/{id}', name: 'app_artisan_change_coordonnees', methods: ['GET'])]
+//    public function changeCoordoArtisan(Artisan $artisan): Response
+//    {
+////        $this->checkIsTheSameArtisan($artisan);
+//        $artisans = $artisan;
+//        return $this->render('contenus/modifCoordoArtisans.html.twig', [
+//            'artisans' => $artisans,
+//        ]);
+//    }
+
+    #[Route('/artisan_change_coordonnees/{id}', name: 'app_artisan_change_coordonnees', methods: ['GET', 'POST'])]
+    public function changeCoordoArtisan(Request $request, Artisan $artisan, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ArtisanType::class, $artisan);
         $form->handleRequest($request);
@@ -47,12 +60,12 @@ class ArtisanController extends AbstractController
             $entityManager->persist($artisan);
             $entityManager->flush();
             $this->addFlash('success', 'vos modification sont prises en compte');
-            return $this->redirectToRoute('app_artisan_show', [
+            return $this->redirectToRoute('app_artisan_accueil', [
                 'id' => $id
             ], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('contenus/coordonneesArtisans.html.twig', [
+        return $this->render('contenus/modifCoordoArtisans.html.twig', [
             'artisans' => $artisan,
             'form' => $form,
         ]);

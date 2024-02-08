@@ -116,12 +116,30 @@
 
                     <!--colonne droit-->
                     <div class="col bg-dark">
-
+                        <!-- Image avant affichage des données -->
                         <div class="mt-2 m-auto justify-content-center">
                             {% set image1 = Apps.image1CarouselHome %}
                             <img src="{{ vich_uploader_asset(image1) }}"
                                  alt="{{ image1.titre|default('image') }}" style="width: 100%">
                         </div>
+
+{#                        {% if (contenu.type =="NewsGTI")or (contenu.type =="blogNews") and contenu.publier %}#}
+{#                        {% if is_granted('ROLE_ARTISAN') ? ''%}#}
+
+                            {% include "contenus/coordonneesArtisans.html.twig" %}
+
+
+
+
+
+{#                        {% else %}#}
+{#                            Vous n'avez pas accès à cet espace - contactez l'administrateur#}
+
+{#                        {% endif %}    {{ is_granted() }}#}
+
+{#                        {% endif %}#}
+
+
 
                         {#                       <div class="col"> #}
                         <div class="contact-page__left">
