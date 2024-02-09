@@ -26,188 +26,215 @@
                                 </div>
                             {% endfor %}
                         </div>
-                        <!--    ***    données en cours d'attribution    ***  -->
+                        <!-- 1ere ligne -->
+                        <div class="row bg-light">
+                            <!-- 1 gauche sup -->
+                            <div class="d-flex row col-3 justify-content-left m-2 "
+                                 style=" background-color:whitesmoke">
+                                <ul class="pricing-one__checks-list list-unstyled pt-3">
+                                    <li class="p-2">
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 class="odometer" style="color: {{ theme.theme.couleurActuelleBg }}"
+                                                data-count="{{ artisans.raisonSociale|striptags|default('77') }}">00</h3>
+                                            <p class="counter-one__text">Raison sociale</p>
+                                        </div>
+                                    </li>
 
-                        {#                        <div class="d-flex row col-3 justify-content-left  m-lg-3 " #}
-                        {#                             style=" background-color:whitesmoke"> #}
-                        {#                            #}{#            <p class="counter-one__text">Vous contacter</p> #}
-                        {#                            <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%"> #}
+                                    <li class="p-2">
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.nomGerant|striptags|default('grande rue') }}</h3>
+                                            <p class="counter-one__text">nom</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
 
-                        {#                                <li> #}
-                        {#                                    <div class="pricing-one__checks-icon"> #}
-                        {#                                        <i class="icon-tick"></i> #}
-                        {#                                    </div> #}
+                            <!-- 1 centre sup -->
+                            <div class="d-flex row col-4 justify-content-left  m-2"
+                                 style=" background-color:whitesmoke">
 
-                        {#                                    <div class="pricing-one__checks-text-box"> #}
-                        {#                                        <h3 class="odometer" style="color: {{ theme.theme.couleurActuelleBg }}" #}
-                        {#                                            data-count="{{ artisans.numeroRue|striptags|default('77') }}">00</h3> #}
-                        {#                                        <p class="counter-one__text">n°</p> #}
-                        {#                                    </div> #}
-                        {#                                </li> #}
-                        {#                                <li> #}
-                        {#                                    <div class="pricing-one__checks-icon"> #}
-                        {#                                        <i class="icon-tick"></i> #}
-                        {#                                    </div> #}
+                                <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">
+                                    <li class="p-2">
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.nomEtablissement|striptags|default('grande rue') }}</h3>
+                                            <p class="counter-one__text">rue</p>
+                                        </div>
+                                    </li>
 
-                        {#                                    <div class="pricing-one__checks-text-box"> #}
-                        {#                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.numeroRue|striptags|default('grande rue') }}</h3> #}
-                        {#                                        <p class="counter-one__text">rue</p> #}
-                        {#                                    </div> #}
-                        {#                                </li> #}
-
-                        {#                                <li> #}
-                        {#                                    <div class="pricing-one__checks-icon"> #}
-                        {#                                        <i class="icon-tick"></i> #}
-                        {#                                    </div> #}
-
-                        {#                                    <div class="pricing-one__checks-text-box"> #}
-                        {#                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.codePostal|striptags|default('grande rue') }}</h3> #}
-                        {#                                        <p class="counter-one__text">code postal</p> #}
-                        {#                                    </div> #}
-                        {#                                </li> #}
-                        {#                                <li> #}
-                        {#                                    <div class="pricing-one__checks-icon"> #}
-                        {#                                        <i class="icon-tick"></i> #}
-                        {#                                    </div> #}
-
-                        {#                                    <div class="pricing-one__checks-text-box"> #}
-                        {#                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}" #}
-                        {#                                            class="col-12"> {{ artisans.localite|striptags|default('grande rue') }} #}
-                        {#                                        </h3> #}
-                        {#                                        <p class="counter-one__text">Localité</p> #}
-                        {#                                    </div> #}
-                        {#                                </li> #}
-                        {#                            </ul> #}
-                        {#                        </div> #}
-
-                        <!--                                  INFORMATION PROPRE A L'ENTREPRISE                                                               -->
-
-                        {#                        <div class="col-4 d-flex justify-content-left row  m-lg-4 align-middle" #}
-                        {#                             style=" background-color:whitesmoke"> #}
-                        {#                            #}{#            <p class="counter-one__text">Vous contacter</p> #}
-                        {#                            <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%"> #}
-
-                        {#                                <li> #}
-                        {#                                    <div class="pricing-one__checks-icon"> #}
-                        {#                                        <i class="icon-tick"></i> #}
-                        {#                                    </div> #}
-
-                        {#                                    <div class="pricing-one__checks-text-box"> #}
-                        {#                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.raisonSociale|striptags|default('grande rue') }}</h3> #}
-                        {#                                        <p class="counter-one__text">code postal</p> #}
-                        {#                                    </div> #}
-                        {#                                </li> #}
-
-                        {#                                <li> #}
-                        {#                                    <div class="pricing-one__checks-icon"> #}
-                        {#                                        <i class="icon-tick"></i> #}
-                        {#                                    </div> #}
-
-                        {#                                    <div class="pricing-one__checks-text-box"> #}
-                        {#                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.nomEtablissement|striptags|default('établissement...') }}</h3> #}
-                        {#                                        <p class="counter-one__text">rue</p> #}
-                        {#                                    </div> #}
-                        {#                                </li> #}
-
-                        {#                                <li> #}
-                        {#                                    <div class="pricing-one__checks-icon"> #}
-                        {#                                        <i class="icon-tick"></i> #}
-                        {#                                    </div> #}
-
-                        {#                                    <div class="pricing-one__checks-text-box"> #}
-                        {#                                        <h3 class="odometer" style="color: {{ theme.theme.couleurActuelleBg }}" #}
-                        {#                                            data-count="{{ artisans.siret|striptags|default('77') }}">00</h3> #}
-                        {#                                        <p class="counter-one__text">SIRET</p> #}
-                        {#                                    </div> #}
-                        {#                                </li> #}
-                        {#                            </ul> #}
-                        {#                        </div> #}
-
-
-                        <!--       min-width:20%;max-width:30%;height:50vh;                                                           coordonnées électroniques                                                    -->
-
-                        <div class="col-6 d-flex justify-content-left row m-lg-5" style="background-color:whitesmoke">
-                            {#            <p class="counter-one__text">Vous contacter</p> #}
-                            <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">
-                                <li>
-                                    <div class="pricing-one__checks-icon">
-                                        <i class="icon-tick"></i>
-                                    </div>
-
-                                    <div class="pricing-one__checks-text-box">
-                                        <h3 class="pricing-one__checks-title"
-                                            style="color: {{ theme.theme.couleurActuelleBg }}"> {{ artisans.telPortable|striptags|default('03.84....') }}</h3>
-                                        <p class="pricing-one__checks-text">Téléphone portable</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="pricing-one__checks-icon">
-                                        <i class="icon-tick"></i>
-                                    </div>
-
-                                    <div class="pricing-one__checks-text-box">
-                                        <h3 class="pricing-one__checks-title"> {{ artisans.telFixe|striptags|default('06 07....') }}</h3>
-                                        <p class="pricing-one__checks-text">Téléphone fixe</p>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="pricing-one__checks-icon">
-                                        <i class="icon-tick"></i>
-                                    </div>
-
-                                    <div class="pricing-one__checks-text-box">
-                                        <h3 class="col-12"> {{ artisans.fax|striptags|default('grande rue') }}
+                                    <li class="p-2">
+                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}"
+                                            class="col-12"> {{ artisans.prenomGerant|striptags|default('praenomen') }}
                                         </h3>
-                                        <p class="counter-one__text">Fax</p>
-                                    </div>
-                                </li>
+                                        <p class="counter-one__text">Prénom</p>
+                                    </li>
+                                  </ul>
+                            </div>
 
+                            <div class="d-flex row col-4 justify-content-left m-2 "
+                                 style=" background-color:whitesmoke">
+                                <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">
+                                    <li class="p-2">
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.siret|striptags|default('siret') }}</h3>
+                                            <p class="counter-one__text">SIRET</p>
+                                        </div>
+                                    </li>
 
-                                <li>
-                                    <div class="pricing-one__checks-icon">
-                                        <i class="icon-tick"></i>
-                                    </div>
-
-                                    <div class="pricing-one__checks-text-box">
-                                        <h3 class="pricing-one__checks-title"> {{ artisans.user.email|striptags|default('06 07....') }}</h3>
-                                        <p class="pricing-one__checks-text">email</p>
-                                    </div>
-                                </li>
-                            </ul>
+                                    <li class="p-2">
+                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}"
+                                            class="col-12"> {{ artisans.dateNaissance|date("m/d/Y")|default('01 janvier 1972') }}
+                                        </h3>
+                                        <p>Date de naissance</p>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col bg-white mt-5 mb-5"></div>
-                </div>
-                <div class="row">
-                    <div class="col-1 bg-white"></div>
+
+                        <!-- 2eme ligne -->
+                        <div class="row bg-light">
+
+                            <div class="col-5 d-flex justify-content-left row m-2" style="background-color:whitesmoke">
+
+                                <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">
+                                    <li>
+                                        <div class="pricing-one__checks-icon">
+                                            <i class="icon-tick"></i>
+                                        </div>
+
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 class="pricing-one__checks-title"
+                                                style="color: {{ theme.theme.couleurActuelleBg }}"> {{ artisans.telPortable|striptags|default('03.84....') }}</h3>
+                                            <p class="pricing-one__checks-text">Téléphone portable</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="pricing-one__checks-icon">
+                                            <i class="icon-tick"></i>
+                                        </div>
+
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 class="pricing-one__checks-title"> {{ artisans.telFixe|striptags|default('06 07....') }}</h3>
+                                            <p class="pricing-one__checks-text">Téléphone fixe</p>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="pricing-one__checks-icon">
+                                            <i class="icon-tick"></i>
+                                        </div>
+
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 class="col-12"> {{ artisans.fax|striptags|default('grande rue') }}
+                                            </h3>
+                                            <p class="counter-one__text">Fax</p>
+                                        </div>
+                                    </li>
+
+
+                                    <li>
+                                        <div class="pricing-one__checks-icon">
+                                            <i class="icon-tick"></i>
+                                        </div>
+
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 class="pricing-one__checks-title"> {{ artisans.user.email|striptags|default('06 07....') }}</h3>
+                                            <p class="pricing-one__checks-text">email</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+
+                        </div>
+
+                        <!-- 3eme ligne -->
+
+                        <div class="row bg-light m-0">
+
+                            <div class="d-flex row col-4 justify-content-left  m-2 "
+                                 style=" background-color:whitesmoke">
+                                <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">
+                                    <li>
+                                        <div class="pricing-one__checks-icon">
+                                            <i class="icon-tick"></i>
+                                        </div>
+
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 class="odometer" style="color: {{ theme.theme.couleurActuelleBg }}"
+                                                data-count="{{ artisans.numeroRue|striptags|default('77') }}">00</h3>
+                                            <p class="counter-one__text">n°</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="pricing-one__checks-icon">
+                                            <i class="icon-tick"></i>
+                                        </div>
+
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.codePostal|striptags|default('grande rue') }}</h3>
+                                            <p class="counter-one__text">code postal</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- 1 centre sup -->
+                            <div class="d-flex row col-4 justify-content-left  m-lg-3 "
+                                 style=" background-color:whitesmoke">
+                                <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">
+                                    <li>
+                                        <div class="pricing-one__checks-icon">
+                                            <i class="icon-tick"></i>
+                                        </div>
+
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.nomRue|striptags|default('grande rue') }}</h3>
+                                            <p class="counter-one__text">rue</p>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="pricing-one__checks-icon">
+                                            <i class="icon-tick"></i>
+                                        </div>
+
+                                        <div class="pricing-one__checks-text-box">
+                                            <h3 style="color: {{ theme.theme.couleurActuelleBg }}"
+                                                class="col-12"> {{ artisans.localite|striptags|default('grande rue') }}
+                                            </h3>
+                                            <p class="counter-one__text">Localité</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                 </div>
 
+                <div class="row-cols-6 d-flex flex-row-reverse bd-highlight mt-5 mb-5">
+                    {#            <div> #}
+                    {#                <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)" #}
+                    {#                   class="text-center portfolio-details__info-list list-unstyled alert-info" #}
+                    {#                   href="{{ path('app_artisan_accueil',{ 'id': artisans.id}) }}"> <span class="m-2"><<</span>Retour</a> #}
+                    {#            </div> #}
+
+                    <div>
+                        <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)"
+                           class=" text-center portfolio-details__info-list list-unstyled alert-info"
+                           href="{{ path('app_artisan_change_coordonnees',{ 'id': artisans.id}) }}">Corriger<span
+                                    class="m-2">>> </span> </a>
+                    </div>
+                </div>
             </div>
         </section>
 
         <div class=" raw mt-5">
-            <h2 style="color: #FFFFFF;text-align: center">Elo Deco à Rioz </h2>
+            <h2 style="color: #FFFFFF;text-align: center">Elo Deco - Rioz </h2>
         </div>
 
 
-        <div class="row-cols-6 d-flex flex-row-reverse bd-highlight mt-5 mb-5">
 
-            {#            <div> #}
-            {#                <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)" #}
-            {#                   class="text-center portfolio-details__info-list list-unstyled alert-info" #}
-            {#                   href="{{ path('app_artisan_accueil',{ 'id': artisans.id}) }}"> <span class="m-2"><<</span>Retour</a> #}
-            {#            </div> #}
-
-            <div>
-                <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)"
-                   class=" text-center portfolio-details__info-list list-unstyled alert-info"
-                   href="{{ path('app_artisan_change_coordonnees',{ 'id': artisans.id}) }}">Corriger<span
-                            class="m-2">>> </span> </a>
-            </div>
-
-        </div>
-    </section>
 
 
 
