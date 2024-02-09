@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Artisan;
 use App\Entity\User;
 use App\Form\ArtisanType;
+use App\Repository\DocumentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,32 +21,49 @@ class ArtisanController extends AbstractController
     #[Route('/{id}', name: 'app_artisan_accueil', methods: ['GET'])]
     public function index(Artisan $artisan): Response
     {
-        $artisans = $artisan;
+       $artisans = $artisan;
         return $this->render('pages/espace_artisan.html.twig', [
             'artisans' => $artisans,
         ]);
     }
 
+
+    #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET'])]
+    public function indexDoc(Artisan $artisan, DocumentsRepository $documentsRepository, Request $request): Response
+    {
+
+//        $polo=[
+//            'id'=>$artisans->getId(),
+//            'nom'=>$artisans->getNomGerant(),
+//         '$prenom'=>$artisans->getPrenomGerant()
+//        ];
+
+        $artisans = $artisan;
+        $doc = $request->get('doc');
+        if ($doc) {
+            $listDoc = "DOCUMENTS";
+            return $this->render('pages/espace_artisan.html.twig', [
+                'artisans' => $artisans,
+                'document' => $listDoc,
+//              'polo'=>$polo,
+            ]);
+        }
+        return $this->render('pages/espace_artisan.html.twig', [
+            'artisans' => $artisans,
+        ]);
+    }
+
+
     #[Route('/show/{id}', name: 'app_artisan_show', methods: ['GET'])]
     public function show(Artisan $artisan): Response
     {
-//        $this->checkIsTheSameArtisan($artisan);
+//      $this->checkIsTheSameArtisan($artisan);
         $artisans = $artisan;
         return $this->render('contenus/coordonneesArtisans.html.twig', [
             'artisans' => $artisans,
         ]);
     }
 
-
-//    #[Route('/artisan_change_coordonnees/{id}', name: 'app_artisan_change_coordonnees', methods: ['GET'])]
-//    public function changeCoordoArtisan(Artisan $artisan): Response
-//    {
-////        $this->checkIsTheSameArtisan($artisan);
-//        $artisans = $artisan;
-//        return $this->render('contenus/modifCoordoArtisans.html.twig', [
-//            'artisans' => $artisans,
-//        ]);
-//    }
 
     #[Route('/artisan_change_coordonnees/{id}', name: 'app_artisan_change_coordonnees', methods: ['GET', 'POST'])]
     public function changeCoordoArtisan(Request $request, Artisan $artisan, EntityManagerInterface $entityManager): Response

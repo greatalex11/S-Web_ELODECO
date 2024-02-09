@@ -3,16 +3,12 @@
 
 {% block content %}
 
-
+    <!--        page coordonnees conditionnée par href "coordonnées" depuis page accueil artisan        -->
     <section class="mt-2 row justify-content-center m-auto">
-{#        <div class="mb-5">#}
-{#            <h5 style="margin-left: 10%">Vos informations personnelles</h5>#}
-{#        </div>#}
-
         <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between"
                  style="max-height:100px; padding:30px; margin: 0 10% 0 10%">
             <ul class="portfolio-details__info-list list-unstyled">
-                <li>{{ artisans.prenomgerant|striptags|default('prénom') }}</li>
+                <li>{{ artisans.prenomGerant|striptags|default('prénom') }}</li>
                 <li>{{ artisans.nomgerant|striptags|default('NOM')|upper }}</li>
                 <li>{{ 'now'|date }}</li>
             </ul>
@@ -26,11 +22,11 @@
                             {% for message in app.flashes('success') %}
                                 <div id="flash-message" class="alert alert-success">
                                     {{ message }}
-                                    <button  id="flashbtn"  type="button" class="close">Fermer</button>
+                                    <button id="flashbtn" type="button" class="close">Fermer</button>
                                 </div>
                             {% endfor %}
                         </div>
-
+                        <!--    ***    données en cours d'attribution    ***  -->
 
                         {#                        <div class="d-flex row col-3 justify-content-left  m-lg-3 " #}
                         {#                             style=" background-color:whitesmoke"> #}
@@ -196,111 +192,23 @@
 
 
         <div class="row-cols-6 d-flex flex-row-reverse bd-highlight mt-5 mb-5">
-{#            <div>#}
-{#                <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)"#}
-{#                   class="text-center portfolio-details__info-list list-unstyled alert-info"#}
-{#                   href="{{ path('app_artisan_accueil',{ 'id': artisans.id}) }}"> <span class="m-2"><<</span>Retour</a>#}
-{#            </div>#}
+
+            {#            <div> #}
+            {#                <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)" #}
+            {#                   class="text-center portfolio-details__info-list list-unstyled alert-info" #}
+            {#                   href="{{ path('app_artisan_accueil',{ 'id': artisans.id}) }}"> <span class="m-2"><<</span>Retour</a> #}
+            {#            </div> #}
 
             <div>
                 <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)"
                    class=" text-center portfolio-details__info-list list-unstyled alert-info"
-                   href="{{ path('app_artisan_change_coordonnees',{ 'id': artisans.id}) }}">Corriger<span class="m-2">>> </span> </a>
+                   href="{{ path('app_artisan_change_coordonnees',{ 'id': artisans.id}) }}">Corriger<span
+                            class="m-2">>> </span> </a>
             </div>
 
         </div>
-
-{#        <div class="d-flex col-10 justify-content-center m-auto">#}
-{#            <div style="margin: 5% 10% 5% 10%">#}
-
-{#                {% if form is defined %}#}
-
-
-{#                    <section#}
-{#                            class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between"#}
-{#                            style="max-height:100px; padding:30px; margin: 10%">#}
-
-{#                        <h4 style="text-align: center; color: #FFFFFF">Vous pouvez apporter des modifications</h4>#}
-
-{#                    </section>#}
-{#                    <div>#}
-
-{#                    </div>#}
-
-{#                    {{ form_start(form) }}#}
-
-{#                    {{ form_end(form) }}#}
-{#                {% endif %}#}
-{#            </div>#}
-{#        </div>#}
-
-
     </section>
 
 
-
-
-    {#        <div class="d-flex justify-content-left row w-50 m-lg-5"> #}
-    {#            #}{#            <p class="counter-one__text">Vous contacter</p> #}
-    {#            <ul class="pricing-one__checks-list list-unstyled"> #}
-    {#                <li> #}
-    {#                    <div class="pricing-one__checks-icon"> #}
-    {#                        <i class="icon-tick"></i> #}
-    {#                    </div> #}
-
-    {#                    <div class="pricing-one__checks-text-box"style="background-color: #00b3ff"> #}
-    {#                        <h3 class="pricing-one__checks-title"> {{ clients.commentaire|striptags|default('a propos de vous')| u.truncate(250,'...',false)}}</h3> #}
-    {#                        <p class="pricing-one__checks-text">A propos de vous en quelques mots</p> #}
-    {#                    </div> #}
-    {#                </li> #}
-    {#                <li> #}
-    {#                    <div class="pricing-one__checks-icon"> #}
-    {#                        <i class="icon-tick"></i> #}
-    {#                    </div> #}
-
-    {#                    <div class="pricing-one__checks-text-box" style="background-color: #00b3ff"> #}
-    {#                         {{ clients.dateNaissance|default('01/01/..') }} #}
-    {#                        <p class="pricing-one__checks-text">Date de naissance</p> #}
-    {#                    </div> #}
-    {#                </li> #}
-
-
-    {#            </ul> #}
-
-    {#        </div> #}
-
-
-
-
-
-    {#    {% if contenu.type =="blogNews" and contenu.publier %} #}
-    {#    #}{#                            {% include "contenus/_news.html.twig" with {new: contenu} %} #}
-    {#    #}{#                        {% endif %} #}
-
-    {#    {% if categorie == 'bd' %} #}
-    {#        {% block bd %}class="active"{% endblock %} #}
-    {#    {% else %} #}
-    {#        {% block jeunesse %}class="active"{% endblock %} #}
-    {#    {% endif %} #}
-
-    {#    {{ dump(form) }} #}
-
-
-
-
-
-
-    {#    {{ include('client/_form.html.twig') }} #}
-
-
-
-
-    {#        <li class="counter-one__single"> #}
-    {#            <div class="counter-one__icon"> #}
-    {#                <span class="icon-architect-5"></span> #}
-    {#            </div> #}
-    {#            <h3 class="odometer" data-count="{{ blocks.texte1|striptags }}">00</h3> #}
-    {#            <p class="counter-one__text">{{ blocks.titre1 }}</p> #}
-    {#        </li> #}
 
 {% endblock %}

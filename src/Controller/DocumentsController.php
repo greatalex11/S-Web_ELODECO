@@ -33,19 +33,29 @@ class DocumentsController extends AbstractController
 //            throw $this->createAccessDeniedException("Document pas encore accessible");
 //        }
 //    }
+//
+//    #[Route('/{id}', name: 'app_documents_index', methods: ['GET'])]
+//    public function index(DocumentsRepository $documentsRepository, Client $client): Response
+//    {
+////        $this->miseEnCopie($client);
+//        $this->checkIsTheSameClient($client);
+//
+//        return $this->render('contenus/documents.html.twig', [
+//            'documents' => $documentsRepository->findAll(),
+//        ]);
+//    }
 
-    #[Route('/{id}', name: 'app_documents_index', methods: ['GET'])]
-    public function index(DocumentsRepository $documentsRepository, Client $client): Response
+    #[Route('artisan/{id}', name: 'app_documents_artisan', methods: ['GET'])]
+    public function docArtisan(DocumentsRepository $documentsRepository, Client $client): Response
     {
 //        $this->miseEnCopie($client);
-        $this->checkIsTheSameClient($client);
+//        $this->checkIsTheSameClient($client);
 
-        return $this->render('contenus/documents.html.twig', [
-            'documents' => $documentsRepository->findAll(),
+        return $this->render('pages/espace_artisan.html.twig', [
+//            'documents' => $documentsRepository->findAll(),
+        'documents'=> 'ta mere'
         ]);
     }
-
-
 
     #[Route('/news/{slug}', name: 'app_documents_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -93,14 +103,14 @@ class DocumentsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_documents_delete', methods: ['POST'])]
-    public function delete(Request $request, Documents $document, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$document->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($document);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('app_documents_index', [], Response::HTTP_SEE_OTHER);
-    }
+//    #[Route('/{id}', name: 'app_documents_delete', methods: ['POST'])]
+//    public function delete(Request $request, Documents $document, EntityManagerInterface $entityManager): Response
+//    {
+//        if ($this->isCsrfTokenValid('delete'.$document->getId(), $request->request->get('_token'))) {
+//            $entityManager->remove($document);
+//            $entityManager->flush();
+//        }
+//
+//        return $this->redirectToRoute('app_documents_index', [], Response::HTTP_SEE_OTHER);
+//    }
 }
