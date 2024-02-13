@@ -20,7 +20,7 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item .active" href="{{ path('app_artisan_documents', { 'id': artisans.id }) }}">Liste par projet</a>
+                <a class="dropdown-item active" href="{{ path('app_artisan_documents', { 'id': artisans.id }) }}">Liste par projet</a>
                 <a class="dropdown-item" href="#">Liste par client</a>
 {#                <a class="dropdown-item" href="#">Something else here</a>#}
             </div>
@@ -28,11 +28,18 @@
 
 
 
-        {% if app.request.attributes.get('_route') == 'app_artisan_documents' %}
-            {% include "documents/show.html.twig" %}
-        {% else %}
-            <div class="alert-info"> Documents indisponibles pour le moment</div>
-        {% endif %}
+            <div class="alert-primary"> ma liste de document
+            {% include "contenus/listeDocArtisans.html.twig" %}
+            </div>
+
+
+
+{#        {% if app.request.attributes.get('_route') == 'app_artisan_documents' %}#}
+{#            {% include "documents/show.html.twig" %}#}
+{#            <div class="alert-primary"> ma liste de document</div>#}
+{#        {% else %}#}
+{#            <div class="alert-info"> Documents indisponibles pour le moment</div>#}
+{#        {% endif %}#}
 
 
     </section>

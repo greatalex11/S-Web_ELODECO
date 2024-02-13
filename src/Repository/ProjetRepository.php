@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Artisan;
+use App\Entity\Documents;
 use App\Entity\Projet;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -22,25 +23,36 @@ class ProjetRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Projet::class);
+
     }
 
 // recherche de document
-    public function findProjetByNomClient($idArtisan, ): array
+    public function findProjetByNomClient($idArtisan ): array
     {
+//        $qb = $this->createQueryBuilder('p');
+//
+//        $qb->select('d', 'p', 't')
+//            ->from('App:Documents', 'd')
+//            ->innerJoin('d.projet', 'p') // Assuming Document entity has a projet property
+//            ->innerJoin('p.taches', 't') // Assuming Projet entity has a taches collection property
+//            ->where('d.id_artisan = :idArtisan')
+//            ->setParameter('idArtisan', $idArtisan);
+//
+//        $result = $qb->getQuery()->getResult();
 
-        $qb = $this->createQueryBuilder('d');
 
-        $qb->select('d.document')
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->select('p.titre')
             ->from('App:Documents', 'd')
-            ->innerJoin('App:Projet', 'p', 'WITH', 'd.projet = p.id')
+            ->innerJoin('App:Documents', 'd', 'WITH', ' d.projet_id= p.id')
             ->innerJoin('App:Tache', 't', 'WITH', 't.projet = p.id')
-            ->where('d.id_artisan = :idArtisan')
+            ->where('t.artisan_id = :idArtisan')
             ->setParameter('idArtisan', $idArtisan);
 
-        $result = $qb->getQuery()->getResult();
 
-        return $result;
 
+        return $qb->getQuery()->getResult();
     }
 
 
