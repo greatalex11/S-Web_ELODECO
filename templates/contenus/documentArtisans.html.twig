@@ -1,4 +1,4 @@
-{#{% extends '/base.html.twig' %}#}
+
 {% set Apps = theme.theme %}
 
 {% block content %}
@@ -12,6 +12,25 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="dropdown" >
+            <a  class="btn btn-secondary dropdown-toggle"  role="button" id="document"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sélection par choix
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item .active" href="#">Liste par projet</a>
+                <a class="dropdown-item" href="#">Liste par client</a>
+{#                <a class="dropdown-item" href="#">Something else here</a>#}
+            </div>
+        </div>
+
+
+
+
+
+
 <a href="{{ path('app_documents_show',{ 'id': artisans.id })}}">doc show</a>
 
         {% if app.request.attributes.get('_route') == 'app_artisan_accueil' %}

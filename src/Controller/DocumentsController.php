@@ -26,9 +26,19 @@ class DocumentsController extends AbstractController
         }
     }
 
+    //balise <a href... >document 3
+    #[Route('/{id}', name: 'app_documents_show', methods: ['GET'])]
+    public function show(Documents $document,EntityManagerInterface $entityManager): Response
+    {
+
+        return $this->render('documents/show.html.twig', [
+            'document' => $document,
+        ]);
+    }
+
     #[Route('/{id}/edit', name: 'app_documents_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Documents $document, EntityManagerInterface $entityManager): Response
-    {
+    { $id=$request->get('id');
         $form = $this->createForm(DocumentsType::class, $document);
         $form->handleRequest($request);
 
@@ -103,13 +113,7 @@ class DocumentsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_documents_show', methods: ['GET'])]
-    public function show(Documents $document): Response
-    {
-        return $this->render('documents/show.html.twig', [
-            'document' => $document,
-        ]);
-    }
+
 
 
 

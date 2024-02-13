@@ -24,7 +24,7 @@ class DocumentsRepository extends ServiceEntityRepository
     /**
      * @return Documents[] Returns an array of Documents objects
      */
-    public function findByExampleField($value): array
+    public function findById($value): array
     {
         return $this->createQueryBuilder('d')
             ->andWhere('d.exampleField = :val')

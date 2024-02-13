@@ -787,6 +787,11 @@
     }
 
 
+    //dropmenu document
+    $('.dropdown-toggle').dropdown('toggle');
+
+
+
 
     // Création du caroussel pour les images de style détails
 
