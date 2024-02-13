@@ -59,15 +59,21 @@ class ArtisanController extends AbstractController
     }
 
    // route document href 'document1'
-    #[Route('/{id]/document', name: 'app_artisan_documents', methods: ['GET'])]
+    #[Route('/{id}/document', name: 'app_artisan_documents', methods: ['GET'])]
     public function show(Artisan $artisan, ProjetRepository $projetRepository,EntityManagerInterface $entityManager,Request $request): Response
     {
         $idArtisan = $request->get('id');
+//        $idArtisan=$artisan->getId();
         $ListDoc= $projetRepository->findProjetByNomClient($idArtisan);
+
+        dd($ListDoc);
 //      $this->checkIsTheSameArtisan($artisan);
         $artisans = $artisan;
-        return $this->render('contenus/coordonneesArtisans.html.twig', [
+
+        return $this->render('pages/espace_artisan.html.twig', [
+
             'artisans' => $artisans,
+            'listDoc'=>$ListDoc,
             'doc'=>$ListDoc,
         ]);
     }

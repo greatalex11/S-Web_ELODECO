@@ -28,12 +28,7 @@
 
 
 
-
-
-
-<a href="{{ path('app_artisan_documents',{ 'id': artisans.id })}}">doc show</a>
-
-        {% if app.request.attributes.get('_route') == 'app_artisan_accueil' %}
+        {% if app.request.attributes.get('_route') == 'app_artisan_documents' %}
             {% include "documents/show.html.twig" %}
         {% else %}
             <div class="alert-info"> Documents indisponibles pour le moment</div>

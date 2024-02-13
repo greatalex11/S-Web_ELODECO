@@ -146,7 +146,7 @@
                             <img src="{{ vich_uploader_asset(image1) }}"
                                  alt="{{ image1.titre|default('image') }}" style="width: 100%">
                         </div>
-
+{#                        {{ dump(listDoc) }}#}
                         {% if app.request.attributes.get('_route') == 'app_artisan_accueil' %}
                             {% include "contenus/coordonneesArtisans.html.twig" %}
 
