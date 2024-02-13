@@ -2,8 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\Artisan;
 use App\Entity\Projet;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query\Expr\Select;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,19 +24,24 @@ class ProjetRepository extends ServiceEntityRepository
         parent::__construct($registry, Projet::class);
     }
 
+// recherche de document
+    public function findProjetByNomClient(TacheRepository $tacheRepository, $idArtisan, EntityManagerInterface $entityManager): array
+    {
 
-//    public function findByPagesName(string $pageName, int $maxResults = 25): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->join("p.", "")
-//            ->andWhere('LOWER(p.nom) = :nom')
-//            ->andWhere('s.publier = 1')
-//            ->setParameter('nom', strtolower($pageName))
-////            ->orderBy('c.createdAt', 'DESC')
-//            ->setMaxResults($maxResults)
-//            ->getQuery()
-//            ->getResult();
-//    }
+        $qb = $entityManager->createQueryBuilder();
+
+        $qb->select('d.document')
+            ->from('App:Documents', 'd')
+            ->innerJoin('App:Projet', 'p', 'WITH', 'd.projet = p.id')
+            ->innerJoin('App:Tache', 't', 'WITH', 't.projet = p.id')
+            ->where('d.id_artisan = :idArtisan')
+            ->setParameter('idArtisan', $idArtisan);
+
+        $result = $qb->getQuery()->getResult();
+
+        return $result;
+
+    }
 
 
 

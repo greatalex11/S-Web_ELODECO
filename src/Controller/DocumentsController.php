@@ -7,6 +7,7 @@ use App\Entity\Documents;
 use App\Entity\User;
 use App\Form\DocumentsType;
 use App\Repository\DocumentsRepository;
+use App\Repository\ProjetRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,9 +28,10 @@ class DocumentsController extends AbstractController
     }
 
     //balise <a href... >document 3
-    #[Route('/{id}', name: 'app_documents_show', methods: ['GET'])]
-    public function show(Documents $document,EntityManagerInterface $entityManager): Response
+    #[Route('/{id}/projet', name: 'app_documents_show_projet', methods: ['GET'])]
+    public function show(Documents $document,EntityManagerInterface $entityManager, ProjetRepository $projetRepository): Response
     {
+
 
         return $this->render('documents/show.html.twig', [
             'document' => $document,

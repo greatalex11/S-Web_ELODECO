@@ -20,7 +20,7 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item .active" href="#">Liste par projet</a>
+                <a class="dropdown-item .active" href="{{ path('app_artisan_documents', { 'id': artisans.id }) }}">Liste par projet</a>
                 <a class="dropdown-item" href="#">Liste par client</a>
 {#                <a class="dropdown-item" href="#">Something else here</a>#}
             </div>
@@ -31,7 +31,7 @@
 
 
 
-<a href="{{ path('app_documents_show',{ 'id': artisans.id })}}">doc show</a>
+<a href="{{ path('app_artisan_documents',{ 'id': artisans.id })}}">doc show</a>
 
         {% if app.request.attributes.get('_route') == 'app_artisan_accueil' %}
             {% include "documents/show.html.twig" %}

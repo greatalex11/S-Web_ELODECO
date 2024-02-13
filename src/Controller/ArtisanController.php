@@ -6,6 +6,7 @@ use App\Entity\Artisan;
 use App\Entity\User;
 use App\Form\ArtisanType;
 use App\Repository\DocumentsRepository;
+use App\Repository\ProjetRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -57,14 +58,17 @@ class ArtisanController extends AbstractController
         ]);
     }
 
-
-    #[Route('/show/{id}', name: 'app_artisan_show', methods: ['GET'])]
-    public function show(Artisan $artisan): Response
+   // route document href 'document1'
+    #[Route('/{id]/document', name: 'app_artisan_documents', methods: ['GET'])]
+    public function show(Artisan $artisan, ProjetRepository $projetRepository,EntityManagerInterface $entityManager,Request $request): Response
     {
+        $idArtisan = $request->get('id');
+        $ListDoc= $projetRepository->findProjetByNomClient($idArtisan);
 //      $this->checkIsTheSameArtisan($artisan);
         $artisans = $artisan;
         return $this->render('contenus/coordonneesArtisans.html.twig', [
             'artisans' => $artisans,
+            'doc'=>$ListDoc,
         ]);
     }
 
