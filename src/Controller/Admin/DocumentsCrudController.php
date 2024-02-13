@@ -79,6 +79,5 @@ class DocumentsCrudController extends AbstractCrudController
                 ->hideOnIndex(),
 
         ];
-                }
-
+      }
 }

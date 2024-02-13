@@ -126,6 +126,7 @@ class ProjetCrudController extends AbstractCrudController
                 ->setEntryIsComplex(true)
                 ->setFormTypeOptions([
                     'by_reference' => false,
+                    'document.tire'=>$this->getContext()->getEntity()->getFields()->getTitre()
                 ])
                 ->setLabel("Document")
                 ->hideOnIndex()

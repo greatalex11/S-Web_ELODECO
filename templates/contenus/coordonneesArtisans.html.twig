@@ -3,6 +3,8 @@
 
 {% block content %}
 
+
+
     <!--        page coordonnees conditionnée par href "coordonnées" depuis page accueil artisan        -->
     <section class="mt-2 row justify-content-center m-auto">
         <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between"
@@ -17,7 +19,7 @@
         <section class="border">
             <div class="container">
                 <div class="row">
-                    <div class=" vh-100 bg-dark mt-5 mb-5">
+                    <div class="bg-dark mt-5 mb-5">
                         <div class="row">
                             {% for message in app.flashes('success') %}
                                 <div id="flash-message" class="alert alert-success">
@@ -26,16 +28,17 @@
                                 </div>
                             {% endfor %}
                         </div>
+
                         <!-- 1ere ligne -->
                         <div class="row bg-light">
+
                             <!-- 1 gauche sup -->
                             <div class="d-flex row col-3 justify-content-left m-2 "
                                  style=" background-color:whitesmoke">
                                 <ul class="pricing-one__checks-list list-unstyled pt-3">
                                     <li class="p-2">
                                         <div class="pricing-one__checks-text-box">
-                                            <h3 class="odometer" style="color: {{ theme.theme.couleurActuelleBg }}"
-                                                data-count="{{ artisans.raisonSociale|striptags|default('77') }}">00</h3>
+                                            <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.raisonSociale|striptags|default('77') }}</h3>
                                             <p class="counter-one__text">Raison sociale</p>
                                         </div>
                                     </li>
@@ -117,6 +120,13 @@
                                             <p class="pricing-one__checks-text">Téléphone fixe</p>
                                         </div>
                                     </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-5 d-flex justify-content-left row m-2" style="background-color:whitesmoke">
+
+                                <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">
+
 
                                     <li>
                                         <div class="pricing-one__checks-icon">
@@ -146,40 +156,38 @@
                         </div>
 
 
+                    </div>
 
+                    <!-- 3eme ligne -->
 
+                    <div class="row bg-light m-0">
+
+                        <div class="d-flex row col-4 justify-content-left  m-2 "
+                             style=" background-color:whitesmoke">
+                            <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">
+                                <li>
+                                    <div class="pricing-one__checks-icon">
+                                        <i class="icon-tick"></i>
+                                    </div>
+
+                                    <div class="pricing-one__checks-text-box">
+                                        <h3 class="odometer" style="color: {{ theme.theme.couleurActuelleBg }}"
+                                            data-count="{{ artisans.numeroRue|striptags|default('77') }}">00</h3>
+                                        <p class="counter-one__text">n°</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pricing-one__checks-icon">
+                                        <i class="icon-tick"></i>
+                                    </div>
+
+                                    <div class="pricing-one__checks-text-box">
+                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.codePostal|striptags|default('grande rue') }}</h3>
+                                        <p class="counter-one__text">code postal</p>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-
-                        <!-- 3eme ligne -->
-
-                        <div class="row bg-light m-0">
-
-                            <div class="d-flex row col-4 justify-content-left  m-2 "
-                                 style=" background-color:whitesmoke">
-                                <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">
-                                    <li>
-                                        <div class="pricing-one__checks-icon">
-                                            <i class="icon-tick"></i>
-                                        </div>
-
-                                        <div class="pricing-one__checks-text-box">
-                                            <h3 class="odometer" style="color: {{ theme.theme.couleurActuelleBg }}"
-                                                data-count="{{ artisans.numeroRue|striptags|default('77') }}">00</h3>
-                                            <p class="counter-one__text">n°</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="pricing-one__checks-icon">
-                                            <i class="icon-tick"></i>
-                                        </div>
-
-                                        <div class="pricing-one__checks-text-box">
-                                            <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.codePostal|striptags|default('grande rue') }}</h3>
-                                            <p class="counter-one__text">code postal</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
                             <!-- 1 centre sup -->
                             <div class="d-flex row col-4 justify-content-left  m-lg-3 "
                                  style=" background-color:whitesmoke">
@@ -229,9 +237,7 @@
             </div>
         </section>
 
-        <div class=" raw mt-5">
-            <h2 style="color: #FFFFFF;text-align: center">Elo Deco - Rioz </h2>
-        </div>
+
 
 
 

@@ -7,7 +7,9 @@ use App\Entity\User;
 use App\Form\ArtisanType;
 use App\Repository\DocumentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,7 +33,7 @@ class ArtisanController extends AbstractController
     #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET'])]
     public function indexDoc(Artisan $artisan, DocumentsRepository $documentsRepository, Request $request): Response
     {
-
+            $id=$artisan->getId();
 //        $polo=[
 //            'id'=>$artisans->getId(),
 //            'nom'=>$artisans->getNomGerant(),
@@ -41,12 +43,14 @@ class ArtisanController extends AbstractController
         $artisans = $artisan;
         $doc = $request->get('doc');
         if ($doc) {
-            $listDoc = "DOCUMENTS";
-            return $this->render('pages/espace_artisan.html.twig', [
-                'artisans' => $artisans,
-                'document' => $listDoc,
+
+            $this->redirectToRoute('app_documents_edit', [ 'id' => $id] );
+//            $listDoc = "DOCUMENTS";
+//            return $this->render('pages/espace_artisan.html.twig', [
+//                'artisans' => $artisans,
+//                'document' => $listDoc,
 //              'polo'=>$polo,
-            ]);
+//            ]);
         }
         return $this->render('pages/espace_artisan.html.twig', [
             'artisans' => $artisans,
@@ -65,8 +69,8 @@ class ArtisanController extends AbstractController
     }
 
 
-    #[Route('/artisan_change_coordonnees/{id}', name: 'app_artisan_change_coordonnees', methods: ['GET', 'POST'])]
-    public function changeCoordoArtisan(Request $request, Artisan $artisan, EntityManagerInterface $entityManager): Response
+    #[Route('{id}/change_coordonnees/', name: 'app_artisan_change_coordonnees', methods: ['GET', 'POST'])]
+    public function artisanChangeCoordonnees(Request $request, Artisan $artisan, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ArtisanType::class, $artisan);
         $form->handleRequest($request);

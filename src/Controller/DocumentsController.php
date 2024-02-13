@@ -26,6 +26,30 @@ class DocumentsController extends AbstractController
         }
     }
 
+    #[Route('/{id}/edit', name: 'app_documents_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Documents $document, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(DocumentsType::class, $document);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_documents_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('documents/edit.html.twig', [
+            'document' => $document,
+            'form' => $form,
+        ]);
+    }
+
+
+
+
+
+
+
 //    private function miseEnCopie(DocumentsRepository $documentsRepository, $id): void
 //    {//
 //        $miseencopie = $documentsRepository->findBy('id'=$id);
@@ -45,6 +69,8 @@ class DocumentsController extends AbstractController
 //        ]);
 //    }
 
+
+//.......................................................................................................... doc Artisan
     #[Route('artisan/{id}', name: 'app_documents_artisan', methods: ['GET'])]
     public function docArtisan(DocumentsRepository $documentsRepository, Client $client): Response
     {
@@ -85,23 +111,7 @@ class DocumentsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_documents_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Documents $document, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(DocumentsType::class, $document);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_documents_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('documents/edit.html.twig', [
-            'document' => $document,
-            'form' => $form,
-        ]);
-    }
 
 //    #[Route('/{id}', name: 'app_documents_delete', methods: ['POST'])]
 //    public function delete(Request $request, Documents $document, EntityManagerInterface $entityManager): Response

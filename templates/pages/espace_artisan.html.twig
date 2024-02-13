@@ -41,10 +41,9 @@
     </div>
 
     <!--                                                                   plan médian                                       -->
-    <section class="contact-page border-bottom mt-5 pt-0">
+    <section class="contact-page border-bottom mb-5 mt-5 pb-5 pt-0">
         <div class="container  m-auto" style="max-width: 1500px">
             <div class="row">
-
                 <div class="row">
                     <div class="col">
                         <div class="col-xl-7 col-lg-6">
@@ -75,7 +74,7 @@
                                     <h3 class="mt-1 mb-1 offcanvas-title d-none d-sm-block" id="offcanvas">Menu</h3>
                                 </div>
                             </div>
-
+                            {#                                                {% if artisans is defined %} #}
                             <div class="contact-page__details-contact-info">
                                 <div class="row">
                                     <!--Menu   -->
@@ -84,7 +83,6 @@
                                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start"
                                             id="menu">
                                             <li class="nav-item">
-{#                                                {% if artisans is defined %}#}
                                                 <a href="{{ path('app_artisan_accueil',{ 'id': artisans.id}) }}"
                                                    class="nav-link text-truncate">
                                                     <i class="fs-5 bi-house"></i><span
@@ -110,18 +108,29 @@
                                                             class="ms-1 d-none d-sm-inline">Projet</span></a>
                                             </li>
                                             <li>
-                                                <a href="" class="nav-link text-truncate mb-6">
+                                                <a href="{{ path('app_contact') }}" class="nav-link text-truncate mb-6">
                                                     <i class="fs-5 bi-table"></i><span
                                                             class="ms-1 d-none d-sm-inline">Contact</span></a>
                                             </li>
+                                            <li>
+                                                <a href="{{ path('app_logout') }}" class="nav-link text-truncate mb-6">
+                                                    <i class="fs-5 bi-table"></i><span
+                                                            class="ms-1 d-none d-sm-inline">Déconnecter</span></a>
+                                            </li>
 
-                                            <a href="{{ path('app_logout') }}"
-                                               class=" m-3 fs-6 font-italic">
-                                                <i class="fs-5 bi-table"></i> <span
-                                                        class="ms-1 d-none d-sm-inline">Déconnecter </span></a>
+                                            <li>
+                                            <a href="{{ path('app_documents_edit', { 'id': artisans.id }) }}"
+                                               class="nav-link text-truncate">
+                                                <i class="fs-5 bi-speedometer2"></i><span
+                                                        class="ms-1 d-none d-sm-inline">Documents 2</span>
+                                            </a>
+                                            </li>
+
+
+
+
                                         </ul>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -129,7 +138,7 @@
                     <!--fin colonne gauche -->
 
                     <!--colonne de droite  -->
-                    <div class="col bg-dark">
+                    <div class="col bg-dark mb-5">
                         <!-- Image avant affichage des données -->
                         <div class="mt-2 m-auto justify-content-center">
                             {% set image1 = Apps.image1CarouselHome %}
@@ -143,87 +152,41 @@
                         {% elseif app.request.attributes.get('_route') == 'app_artisan_accueilDoc' %}
                             {% include "contenus/documentArtisans.html.twig" %}
 
+                        {% elseif app.request.attributes.get('_route') == 'app_contact' %}
+                            {% include "pages/contact.html.twig" %}
+
                         {% else %}
-                            <div> rien à voir </div>
+                            <div class="alert-info"> rien à voir</div>
                         {% endif %}
 
-{#                          <div>Vous n'avez pas accès à cet espace - contactez l'administrateur</div>#}
-{#                        {% endif %}    {{ is_granted() }}#}
-{#                        {% endif %}#}
+                        {#                          <div>Vous n'avez pas accès à cet espace - contactez l'administrateur</div> #}
+                        {#                        {% endif %}    {{ is_granted() }} #}
+                        {#                        {% endif %} #}
 
-                        {#                       <div class="col"> #}
-                        <div class="contact-page__left">
-                            {#                            <div class="row"> #}
-                            {#                                <div class="col"> #}
-                            {#                                    <div class="row"> #}
-                            <div class="col">
-                                <div class="contact-page__input-box">
-
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="contact-page__input-box">
-
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="contact-page__input-box">
-
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="contact-page__input-box">
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="contact-page__input-box">
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-4">
-                                <div class="col">
-                                    <div class="contact-page__input-box">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="contact-page__input-box">
-
-                                    </div>
-                                </div>
-                                <div class="contact-page__input-box">
-                                </div>
-                            </div>
-                            {#                                    </div> #}
-                            {#                                </div> #}
-                            {#                            </div> #}
+                        <div class=" raw mt-5 mt-5 mb-5 bg-dark">
+                            <h2 style="color: #FFFFFF;text-align: center">Elo Deco - Rioz </h2>
                         </div>
-                        {#                      </div> #}
                     </div>
-
                 </div>
             </div>
         </div>
-    </section>
+</section>
 
+<!--                                                                        GOOGLE MAP                                                                                  -->
+<section class="contact-page-google-map w-100 align-items-center m-auto  mb-5">
+   <div class="container">
+       <div class="row">
+           <div class=" col-2"> </div>
 
-    <!--                                                                        GOOGLE MAP                                                                                  -->
-<section class="contact-page-google-map border-top w-75 align-items-center m-auto bg-light mt-5 mb-5">
-    <div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25673.90316580553!2d6.038971473616049!3d47.43852811122367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47929a78f73fbb87%3A0x214ef58707775bbf!2sSur%20la%20Vigne%2C%2070190%20Tr%C3%A9silley!5e0!3m2!1sfr!2sfr!4v1700909448497!5m2!1sfr!2sfr"
-                width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                class="contact-page-google-map__one" allowfullscreen>
-        </iframe>
-
-    </div>
-
+           <div class="col bg-light border-top p-5 mt-5 w-100 ">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25673.90316580553!2d6.038971473616049!3d47.43852811122367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47929a78f73fbb87%3A0x214ef58707775bbf!2sSur%20la%20Vigne%2C%2070190%20Tr%C3%A9silley!5e0!3m2!1sfr!2sfr!4v1700909448497!5m2!1sfr!2sfr"
+                       width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+                       referrerpolicy="no-referrer-when-downgrade"
+                       class="contact-page-google-map__one" allowfullscreen>
+               </iframe>
+           </div>
+       </div>
+   </div>
 </section>    <!--                                                                        fin Google Map                                                                 -->
 
 {% endblock %}
