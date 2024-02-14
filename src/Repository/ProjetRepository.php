@@ -27,29 +27,19 @@ class ProjetRepository extends ServiceEntityRepository
     }
 
 // recherche de document
-    public function findProjetByNomClient($idArtisan ): array
+    public function findProjetByNomClient($nomClient): array
     {
-//        $qb = $this->createQueryBuilder('p');
-//
-//        $qb->select('d', 'p', 't')
-//            ->from('App:Documents', 'd')
-//            ->innerJoin('d.projet', 'p') // Assuming Document entity has a projet property
-//            ->innerJoin('p.taches', 't') // Assuming Projet entity has a taches collection property
-//            ->where('d.id_artisan = :idArtisan')
-//            ->setParameter('idArtisan', $idArtisan);
-//
-//        $result = $qb->getQuery()->getResult();
-
-
         $qb = $this->createQueryBuilder('p');
 
-        $qb->select('p')
-//            ->from('App:Documents', 'd')
-            ->innerJoin('App:Documents', 'd', 'WITH', ' p.id= d.projet')
-            ->innerJoin('App:Tache', 't', 'WITH', 't.projet = p.id');
-//            ->where('t.artisan= :idArtisan')
-//            ->setParameter('idArtisan', $idArtisan);
- $result=$qb->getQuery()->getResult();
+        $qb->select('p', 't','c','a')
+            ->from('App:Client', 'c')
+            ->innerJoin('d.projet', 'p') // Assuming Document entity has a projet property
+            ->innerJoin('p.taches', 't','WITH', 'p.id=d.projet')
+            ->where('c.nom = :nomClient')
+            ->setParameter('nomClient', $nomClient);
+
+        $result = $qb->getQuery()->getResult();
+
 
 
         return $result;

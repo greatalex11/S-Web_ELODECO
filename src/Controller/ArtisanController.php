@@ -31,7 +31,7 @@ class ArtisanController extends AbstractController
     }
 
 
-    // ....................................................................................... page accueil document
+    // ...........................................DOCUMENTS....................................... page accueil document
 
     #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET'])]
     public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository , Request $request): Response
@@ -42,10 +42,8 @@ class ArtisanController extends AbstractController
         $artisans = $artisan;
         $doc = $request->get('doc');
         if ($doc) {
-
             $idArtisan=$artisan->getId();
             $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
-
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
                 'artisans' => $artisans,
@@ -57,7 +55,7 @@ class ArtisanController extends AbstractController
         ]);
     }
 
-    // ..........................................................  choix idArtisan/  dqg liste - documents href 'document-id artisan'
+    // ...............................................Choix idArtisan/  dqg liste - documents href 'document-id artisan'
     #[Route('/{id}/documentList', name: 'app_artisan_documents_liste', methods: ['GET'])]
     public function show(Artisan $artisan, DocumentsRepository $documentsRepository,Request $request): Response
     {
@@ -65,16 +63,34 @@ class ArtisanController extends AbstractController
 //      $idArtisan = $request->get('id');// recup id url
 //      $ListDoc= $projetRepository->findProjetByNomClient($idArtisan); dql depuis projet
 
-      $artisans = $artisan;
-      $idArtisan=$artisan->getId();
-      $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
+//      $artisans = $artisan;
+//      $idArtisan=$artisan->getId();
+//      $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
 
-        return $this->render('contenus/documentArtisans.html.twig', [
-            'documentIdArtisan'=>$documentIdArtisan,
-            'artisans'=>$artisans
-        ]);
+        return $this->render('contenus/documentArtisans.html.twig');
+//            [
+//            'documentIdArtisan'=>$documentIdArtisan,
+//            'artisans'=>$artisans
+//        ]);
     }
+// ...............................................Choix idArtisan & nom client/  documents href 'document-id artisan'
+    #[Route('/{id}/documentListPjt', name: 'app_artisan_documents_listep', methods: ['GET'])]
+    public function showDocPjt(Artisan $artisan, DocumentsRepository $documentsRepository,Request $request): Response
+    {
+//      $this->checkIsTheSameArtisan($artisan); check if artisan = user
+//      $idArtisan = $request->get('id');// recup id url
+//      $ListDoc= $projetRepository->findProjetByNomClient($idArtisan); dql depuis projet
 
+//      $artisans = $artisan;
+//      $idArtisan=$artisan->getId();
+//      $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
+
+        return $this->render('contenus/documentArtisans.html.twig');
+//            [
+//            'documentIdArtisan'=>$documentIdArtisan,
+//            'artisans'=>$artisans
+//        ]);
+    }
 
 //.........................................................................................  coordonnee form changement
     #[Route('{id}/change_coordonnees/', name: 'app_artisan_change_coordonnees', methods: ['GET', 'POST'])]
