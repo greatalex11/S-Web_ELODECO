@@ -25,6 +25,29 @@ class DocumentsRepository extends ServiceEntityRepository
      * @return Documents[] Returns an array of Documents objects
      */
 
+
+    public function findDocumentArtisan($idArtisan ): array
+    {
+
+        $qb = $this->createQueryBuilder('d');
+
+        $qb->select('d.document')
+//            ->from('App:Documents', 'd')
+            ->innerJoin('App:Projet', 'p', 'WITH', 'p.id=d.projet')
+            ->innerJoin('App:Tache', 't', 'WITH', 't.projet = p.id')
+            ->where('t.artisan = :idArtisan')
+            ->setParameter('idArtisan', $idArtisan);
+        $result = $qb->getQuery()->getResult();
+        return $result;
+    }
+
+
+
+
+
+
+
+
     public function findById($value): array
     {
         return $this->createQueryBuilder('d')

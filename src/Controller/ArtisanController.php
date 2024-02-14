@@ -30,21 +30,21 @@ class ArtisanController extends AbstractController
         ]);
     }
 
-    // ..........................................................  choix et affichage resultte document href 'document1'
+    // ..........................................................  affichage liste  documents href 'document-id artisan'
     #[Route('/{id}/document', name: 'app_artisan_documents', methods: ['GET'])]
-    public function show(Artisan $artisan, ProjetRepository $projetRepository,EntityManagerInterface $entityManager,Request $request): Response
+    public function show(Artisan $artisan, ProjetRepository $projetRepository, DocumentsRepository $documentsRepository,Request $request): Response
     {
-        $idArtisan = $request->get('id');
+//      $this->checkIsTheSameArtisan($artisan); check if artisan = user
+//      $idArtisan = $request->get('id');// recup id url
+//      $ListDoc= $projetRepository->findProjetByNomClient($idArtisan); dql depuis projet
+
+      $artisans = $artisan;
       $idArtisan=$artisan->getId();
-      $ListDoc= $projetRepository->findProjetByNomClient($idArtisan);
-
-
-//      $this->checkIsTheSameArtisan($artisan);
-        $artisans = $artisan;
+      $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
 
         return $this->render('contenus/listeDocArtisans.html.twig', [
-
-            'listDoc'=>$ListDoc,
+            'documentIdArtisan'=>$documentIdArtisan,
+            'artisans'=>$artisans
         ]);
     }
 
