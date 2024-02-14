@@ -2,11 +2,9 @@
 {% set Apps = theme.theme %}
 
 {% block content %}
-
-    <div class="alert-primary mb-5"> Résultat
-
+  {% if  documentIdArtisan is defined %}
+    <div class="alert-primary mb-5 bg-light">
         <p> Exemple de tableau</p>
-
         <table class="table">
             <thead>
             <tr>
@@ -28,18 +26,24 @@
         </table>
     </div>
 
-    <p> Exemple de card</p>
-
-    {% for key, arrayCard in documentIdArtisan %}
-
-    <div class="card" style="width: 18rem;">
-        <img src="{{ asset('/assets/images/blog_scandinav.png') }}..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text"><i>N°{{ key }}</i> {{ arrayCard['document']}}</p>
+    <section class="mt-3">
+        <div class="container"> Exemple de card
+            <div class="row">
+                {% for key, arrayCard in documentIdArtisan %}
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="{{ asset('/assets/images/blog_scandinav.png') }}..." class="card-img-top"
+                                     alt="...">
+                                <h5 class="card-title"><i>N°{{ key }}</i> {{ arrayCard['document'] }}</h5>
+                                {#                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> #}
+                                <a href="#" class="btn btn-primary">Visualiser le document</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
-    {% endfor %}
-
-
-
+    </section>
+{% endif %}
 {% endblock %}

@@ -1,26 +1,26 @@
-{% extends 'base.html.twig' %}
+
 {% set Apps = theme.theme %}
 
 {% block content %}
 
 
     <section class="mt-2 row justify-content-center m-auto" style="min-height: 25%">
-        <div class="container">
-            <div class="row">
-                <div class="mb-5 bg-info">
-                    <h5 style="margin-left: 10%">DOCUMENTS ARTISAN</h5>
-                </div>
-            </div>
-        </div>
+{#        <div class="container">#}
+{#            <div class="row mt-2 mb-5">#}
+{#                <div class="text-left">#}
+{#                    <h5 style="color: #B8B8B8">DOCUMENTS ARTISAN</h5>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
 
-
-        <div class="dropdown" >
+        <div class="dropdown mt-5">
             <a  class="btn btn-secondary dropdown-toggle"  role="button" id="document"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sélection par choix
             </a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item active" href="{{ path('app_artisan_documents', { 'id': artisans.id }) }}">Liste par projet</a>
+                <a class="dropdown-item"></a>
+                <a class="dropdown-item active" href="{{ path('app_artisan_documents_liste', { 'id': artisans.id }) }}">Liste par projet</a>
                 <a class="dropdown-item" href="#">Liste par client</a>
 {#                <a class="dropdown-item" href="#">Something else here</a>#}
             </div>
@@ -28,11 +28,28 @@
 
 
 
-            <div class="alert-primary"> ma liste de document
-                {% if app.request.attributes.get('_route') == 'app_artisan_documents' %}
-            {% include "contenus/listeDocArtisans.html.twig" %}
-                {% endif %}
-            </div>
+{#            {% if app.request.attributes.get('_route') == 'app_artisan_documents' %}#}
+{#                {% include "contenus/listeDocArtisans.html.twig" %}#}
+{#                {{ documentIdArtisan }}#}
+{#            {% endif %}     #}
+
+{#    {% if documentIdArtisan is defined %}#}
+{#        {% include "contenus/listeDocArtisans.html.twig" %}#}
+{#    {% endif %}#}
+
+{#    {% if app.request.attributes.get('_route') == 'app_artisan_documents_liste' %}#}
+        <div class="bg-light mt-xl-5">
+    {% include "contenus/listeDocArtisans.html.twig" %}
+        </div>
+{#    {% endif %}#}
+
+
+
+
+
+
+
+
 
 
 

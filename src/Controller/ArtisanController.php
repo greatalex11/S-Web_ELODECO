@@ -20,7 +20,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/artisan_accueil')]
 class ArtisanController extends AbstractController
 {
-
+    // ..............................................................................................  accueil  artisan'
     #[Route('/{id}', name: 'app_artisan_accueil', methods: ['GET'])]
     public function index(Artisan $artisan): Response
     {
@@ -30,9 +30,36 @@ class ArtisanController extends AbstractController
         ]);
     }
 
-    // ..........................................................  affichage liste  documents href 'document-id artisan'
-    #[Route('/{id}/document', name: 'app_artisan_documents', methods: ['GET'])]
-    public function show(Artisan $artisan, ProjetRepository $projetRepository, DocumentsRepository $documentsRepository,Request $request): Response
+
+    // ....................................................................................... page accueil document
+
+    #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET'])]
+    public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository , Request $request): Response
+    {
+//      $polo=['id'=>$artisans->getId(), 'nom'=>$artisans->getNomGerant(), '$prenom'=>$artisans->getPrenomGerant()];
+
+        $id=$artisan->getId();
+        $artisans = $artisan;
+        $doc = $request->get('doc');
+        if ($doc) {
+
+            $idArtisan=$artisan->getId();
+            $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
+
+            return $this->render('pages/espace_artisan.html.twig', [
+                'id' => $id,
+                'artisans' => $artisans,
+                'documentIdArtisan'=>$documentIdArtisan,
+            ] );
+        }
+        return $this->render('pages/espace_artisan.html.twig', [
+            'artisans' => $artisans,
+        ]);
+    }
+
+    // ..........................................................  choix idArtisan/  dqg liste - documents href 'document-id artisan'
+    #[Route('/{id}/documentList', name: 'app_artisan_documents_liste', methods: ['GET'])]
+    public function show(Artisan $artisan, DocumentsRepository $documentsRepository,Request $request): Response
     {
 //      $this->checkIsTheSameArtisan($artisan); check if artisan = user
 //      $idArtisan = $request->get('id');// recup id url
@@ -42,47 +69,11 @@ class ArtisanController extends AbstractController
       $idArtisan=$artisan->getId();
       $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
 
-        return $this->render('contenus/listeDocArtisans.html.twig', [
+        return $this->render('contenus/documentArtisans.html.twig', [
             'documentIdArtisan'=>$documentIdArtisan,
             'artisans'=>$artisans
         ]);
     }
-
-
-    // ....................................................................................... page accueil document
-
-    #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET'])]
-    public function indexDoc(Artisan $artisan, DocumentsRepository $documentsRepository, Request $request): Response
-    {
-
-//        $polo=[
-//            'id'=>$artisans->getId(),
-//            'nom'=>$artisans->getNomGerant(),
-//         '$prenom'=>$artisans->getPrenomGerant()
-//        ];
-        $id=$artisan->getId();
-        $artisans = $artisan;
-        $doc = $request->get('doc');
-        if ($doc) {
-//            $this->redirectToRoute('app_documents_edit', [ 'id' => $id] );
-            return $this->render('contenus/documentArtisans.html.twig', [
-                'id' => $id,
-                'artisans' => $artisans,
-            ] );
-
-
-//            $listDoc = "DOCUMENTS";
-//            return $this->render('pages/espace_artisan.html.twig', [
-//                'artisans' => $artisans,
-//                'document' => $listDoc,
-//              'polo'=>$polo,
-//            ]);
-        }
-        return $this->render('pages/espace_artisan.html.twig', [
-            'artisans' => $artisans,
-        ]);
-    }
-
 
 
 //.........................................................................................  coordonnee form changement
