@@ -54,18 +54,23 @@ class ArtisanController extends AbstractController
     #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET'])]
     public function indexDoc(Artisan $artisan, DocumentsRepository $documentsRepository, Request $request): Response
     {
-            $id=$artisan->getId();
+
 //        $polo=[
 //            'id'=>$artisans->getId(),
 //            'nom'=>$artisans->getNomGerant(),
 //         '$prenom'=>$artisans->getPrenomGerant()
 //        ];
-
+        $id=$artisan->getId();
         $artisans = $artisan;
         $doc = $request->get('doc');
         if ($doc) {
+//            $this->redirectToRoute('app_documents_edit', [ 'id' => $id] );
+            return $this->render('contenus/documentArtisans.html.twig', [
+                'id' => $id,
+                'artisans' => $artisans,
+            ] );
 
-            $this->redirectToRoute('app_documents_edit', [ 'id' => $id] );
+
 //            $listDoc = "DOCUMENTS";
 //            return $this->render('pages/espace_artisan.html.twig', [
 //                'artisans' => $artisans,

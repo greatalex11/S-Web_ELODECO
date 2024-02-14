@@ -1,4 +1,4 @@
-
+{% extends 'base.html.twig' %}
 {% set Apps = theme.theme %}
 
 {% block content %}
@@ -29,7 +29,9 @@
 
 
             <div class="alert-primary"> ma liste de document
+                {% if app.request.attributes.get('_route') == 'app_artisan_documents' %}
             {% include "contenus/listeDocArtisans.html.twig" %}
+                {% endif %}
             </div>
 
 

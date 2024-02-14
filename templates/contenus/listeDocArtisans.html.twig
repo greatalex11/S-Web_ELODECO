@@ -3,16 +3,42 @@
 
 {% block content %}
 
+    <div class="alert-primary mb-5"> Résultat
 
+        <p> Exemple de tableau</p>
 
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"><i> N°</i></th>
+                <th scope="col"><i> Titre du document </i></th>
+                {#            <th scope="col">Nom</th> #}
+                {#            <th scope="col">-</th> #}
+                {#            <th scope="col">-</th> #}
+            </tr>
+            </thead>
+            <tbody>
+            {% for key, array in documentIdArtisan %}
+                <tr>
+                    <th scope="row">{{ key }}</th>
+                    <td class="m-lg-5">{{ array['document'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
+    <p> Exemple de card</p>
 
+    {% for key, arrayCard in documentIdArtisan %}
 
-            <div class="alert-primary"> Résultat
-
-                {{ dump(documentIdArtisan) }}
-
-            </div>
+    <div class="card" style="width: 18rem;">
+        <img src="{{ asset('/assets/images/blog_scandinav.png') }}..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text"><i>N°{{ key }}</i> {{ arrayCard['document']}}</p>
+        </div>
+    </div>
+    {% endfor %}
 
 
 
