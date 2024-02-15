@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Encoder\JsonDecode;
 
 #[ORM\Entity(repositoryClass: TacheRepository::class)]
 class Tache
@@ -54,10 +55,11 @@ class Tache
     private ?Projet $projet = null;
 
 
-    public function __construct()
-    {
-        $this->artisan = new ArrayCollection();
-    }
+//    public function __construct()
+//    {
+//        $this->artisan = new ArrayCollection();
+////        $jsonContent = $serializer->serialize($person, 'json');
+//    }
 
 //    public function __toString()
 //    {

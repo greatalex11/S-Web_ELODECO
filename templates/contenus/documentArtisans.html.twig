@@ -21,10 +21,48 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item"></a>
                 <a class="dropdown-item active" href="{{ path('app_artisan_documents_liste', { 'id': artisans.id }) }}">Liste par projet</a>
-                <a class="dropdown-item" href="#">Liste par client</a>
+                <a class="dropdown-item" href="#">Transmettre un document</a>
 {#                <a class="dropdown-item" href="#">Something else here</a>#}
             </div>
         </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-7"></div>
+        <div class="col">
+            <div class="row">
+                <div class="input-group bg-light w-75 mt-4">
+                    <span class="input-group-text icon-magnifying-glass"></span>
+                    <textarea id="myTextarea" class="form-control " aria-label="With textarea"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <p class="ms-1 d-none d-sm-inline">Saisir localité ou nom client</p>
+            </div>
+            <div id="output" class="row">
+                {% set foo = '' %}
+              <p class="bg-gradient"> return {{ foo }} </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+        <script>
+            var textarea = document.getElementById('myTextarea');
+
+            textarea.addEventListener('input', function() {
+                var inputValue = textarea.value;
+                // This will update the div with the ID 'output' to show the current value of the textarea
+                document.getElementById('output').textContent = inputValue;
+            });
+        </script>
+
+
+
 
 
 {#    {% if documentIdArtisan is defined %}#}
