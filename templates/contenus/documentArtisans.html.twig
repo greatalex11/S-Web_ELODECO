@@ -41,6 +41,7 @@
             </div>
             <div id="output" class="row">
                 {% set foo = '' %}
+
               <p class="bg-gradient"> return {{ foo }} </p>
             </div>
         </div>
@@ -48,18 +49,25 @@
     </div>
 </div>
 
-
+{#     Essai de recup argument dans textarea pour alimenter filtreDoc, ma fonction twig pour filtrer le tableau   #}
+     <div class="bg-light">
+         {% for listingFiltrer in documentIdArtisan  %}
+         {{ listingFiltrer| filtreDoc }}
+         {% endfor %}
+     </div>
 
 
         <script>
-            var textarea = document.getElementById('myTextarea');
+            let textarea = document.getElementById('myTextarea');
 
-            textarea.addEventListener('input', function() {
-                var inputValue = textarea.value;
-                // This will update the div with the ID 'output' to show the current value of the textarea
+            textarea.addEventListener('input', function () {
+                let inputValue = textarea.value;
                 document.getElementById('output').textContent = inputValue;
             });
         </script>
+
+
+
 
 
 
@@ -82,3 +90,6 @@
 
 
 {% endblock %}
+
+
+

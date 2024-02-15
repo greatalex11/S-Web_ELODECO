@@ -778,19 +778,25 @@
     // ----------------------------- Mon javascript -----------------------------------------
 
     // let flashForm = document.getElementById('flash-message')
-    let flashForm=$('.alert-success');
-    if(flashForm.length){
-        $('.close').addEventListener('click', ()=>{
+    let flashForm = $('.alert-success');
+    if (flashForm.length) {
+        $('.close').addEventListener('click', () => {
             flashForm.hide();
             // flashForm.style.display='none';
         })
     }
 
 
-    //dropmenu document
+    //dropdown menu document : liste ou transmettre un document
     $('.dropdown-toggle').dropdown('toggle');
 
+    let textarea = document.getElementById('myTextarea');
 
+    textarea.addEventListener('input', function() {
+        let inputValue = textarea.value;
+        inputValue= '<?=$paramFiltre?>'
+        document.getElementById('output').textContent = inputValue;
+    });
 
 
     // Création du caroussel pour les images de style détails
@@ -805,7 +811,6 @@
             }
         )
     )
-
 
 
     // $('#styleCarousel').on('show.bs.modal', function (e) {
@@ -836,6 +841,7 @@
         calculateHeightNews();
         logoHeight();
     });
+
     function calculateHeightNews() {
         //  Si il y a des news
         if ($("#news")) {
@@ -855,12 +861,14 @@
             if (window.innerWidth >= 992) {
                 $news.height(higher);
             }
-        }}
+        }
+    }
 
     function logoHeight() {
         let logoHeight = $(".main-menu-wrapper__bottom").outerHeight();
         $('#logo').height(logoHeight - 10);
     }
+
     $('#pricing-tab  .pr-tab').on('click', function (e) {
         $('#pricing-tab .pr-tab').removeClass('active-tab')
         $(this).addClass('active-tab');
@@ -870,13 +878,13 @@
 })(jQuery);
 
 
-    // fonction popover service details
+// fonction popover service details
 
-    let ul = document.getElementById("jojo");
-    let li = ul.querySelectorAll("li");
+let ul = document.getElementById("jojo");
+let li = ul.querySelectorAll("li");
 
-    li.forEach(function(li) {
-    li.addEventListener("click", function(e) {
+li.forEach(function (li) {
+    li.addEventListener("click", function (e) {
         $(this).popover({
             container: 'body'
         });
