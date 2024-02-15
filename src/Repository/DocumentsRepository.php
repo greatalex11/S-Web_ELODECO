@@ -31,7 +31,7 @@ class DocumentsRepository extends ServiceEntityRepository
 
         $qb = $this->createQueryBuilder('d');
 
-        $qb->select('d.document')
+        $qb->select('d')
 //            ->from('App:Documents', 'd')
             ->innerJoin('App:Projet', 'p', 'WITH', 'p.id=d.projet')
             ->innerJoin('App:Tache', 't', 'WITH', 't.projet = p.id')

@@ -27,39 +27,17 @@
         </div>
 
 
-
-{#            {% if app.request.attributes.get('_route') == 'app_artisan_documents' %}#}
-{#                {% include "contenus/listeDocArtisans.html.twig" %}#}
-{#                {{ documentIdArtisan }}#}
-{#            {% endif %}     #}
-
 {#    {% if documentIdArtisan is defined %}#}
 {#        {% include "contenus/listeDocArtisans.html.twig" %}#}
 {#    {% endif %}#}
 
-
+<!-- Affichage des documents de l'artisan - if non fonctionnel sur ce partial pour condition/ dropdown App-a...d...liste-->
 {#    {% if app.request.attributes.get('_route') == 'app_artisan_documents_liste' %}#}
         <div class="bg-light mt-xl-5">
     {% include "contenus/listeDocArtisans.html.twig" %}
         </div>
 {#    {% endif %}#}
 
-
-
-
-
-
-
-
-
-
-
-{#        {% if app.request.attributes.get('_route') == 'app_artisan_documents' %}#}
-{#            {% include "documents/show.html.twig" %}#}
-{#            <div class="alert-primary"> ma liste de document</div>#}
-{#        {% else %}#}
-{#            <div class="alert-info"> Documents indisponibles pour le moment</div>#}
-{#        {% endif %}#}
 
 
     </section>

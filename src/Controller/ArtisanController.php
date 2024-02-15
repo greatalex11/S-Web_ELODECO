@@ -61,17 +61,10 @@ class ArtisanController extends AbstractController
     {
 //      $this->checkIsTheSameArtisan($artisan); check if artisan = user
 //      $idArtisan = $request->get('id');// recup id url
-//      $ListDoc= $projetRepository->findProjetByNomClient($idArtisan); dql depuis projet
 
-//      $artisans = $artisan;
-//      $idArtisan=$artisan->getId();
-//      $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
-
+        //permet l'affiage du template avec dropdown filtre doc : id Artisan ou nom client
         return $this->render('contenus/documentArtisans.html.twig');
-//            [
-//            'documentIdArtisan'=>$documentIdArtisan,
-//            'artisans'=>$artisans
-//        ]);
+
     }
 // ...............................................Choix idArtisan & nom client/  documents href 'document-id artisan'
     #[Route('/{id}/documentListPjt', name: 'app_artisan_documents_listep', methods: ['GET'])]
@@ -81,15 +74,8 @@ class ArtisanController extends AbstractController
 //      $idArtisan = $request->get('id');// recup id url
 //      $ListDoc= $projetRepository->findProjetByNomClient($idArtisan); dql depuis projet
 
-//      $artisans = $artisan;
-//      $idArtisan=$artisan->getId();
-//      $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
-
+        //Les données sont préparées dans le contoller 'app_artisan_accueilDoc' ; data dispo avant affichage
         return $this->render('contenus/documentArtisans.html.twig');
-//            [
-//            'documentIdArtisan'=>$documentIdArtisan,
-//            'artisans'=>$artisans
-//        ]);
     }
 
 //.........................................................................................  coordonnee form changement
