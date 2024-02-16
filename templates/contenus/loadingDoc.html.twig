@@ -1,0 +1,18 @@
+
+{% set Apps = theme.theme %}
+
+{% block content %}
+{#  {% if  documentIdArtisan is defined %}#}
+    <div class="alert-primary bg-light m-5">
+        <h2>Envoyer vos documents</h2>
+
+        <div class="bg-light mt-xl-5">
+{#            {{ form(form2) }}#}
+{#            {{ form_widget(form2) }}#}
+{#            {{ form_end(form2) }}#}
+            {{ dump(form2) }}
+        </div>
+    </div>
+
+{#{% endif %}#}
+{% endblock %}

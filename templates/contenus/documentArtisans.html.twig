@@ -5,13 +5,6 @@
 
 
     <section class="mt-2 row justify-content-center m-auto" style="min-height: 25%">
-{#        <div class="container">#}
-{#            <div class="row mt-2 mb-5">#}
-{#                <div class="text-left">#}
-{#                    <h5 style="color: #B8B8B8">DOCUMENTS ARTISAN</h5>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
 
         <div class="dropdown mt-5">
             <a  class="btn btn-secondary dropdown-toggle"  role="button" id="document"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -21,7 +14,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item"></a>
                 <a class="dropdown-item active" href="{{ path('app_artisan_documents_liste', { 'id': artisans.id }) }}">Liste par projet</a>
-                <a class="dropdown-item" href="#">Transmettre un document</a>
+                <a class="dropdown-item" href="{{ path('app_artisan_document_loading', { 'id': artisans.id }) }}">Transmettre un document</a>
 {#                <a class="dropdown-item" href="#">Something else here</a>#}
             </div>
         </div>
@@ -39,10 +32,9 @@
             <div class="row">
                 <p class="ms-1 d-none d-sm-inline">Saisir localité ou nom client</p>
             </div>
-            <div id="output" class="row">
-                {% set foo = '' %}
-
-              <p class="bg-gradient"> return {{ foo }} </p>
+            <div id="output" class="row bg-gradient w-75">
+{#             {% set foo = '' %}#}
+            <p class="bg-gradient w-75"> return  </p>
             </div>
         </div>
 
@@ -51,8 +43,12 @@
 
 {#     Essai de recup argument dans textarea pour alimenter filtreDoc, ma fonction twig pour filtrer le tableau   #}
      <div class="bg-light">
-         {% for listingFiltrer in documentIdArtisan  %}
-         {{ listingFiltrer| filtreDoc }}
+         {% for listingFiltrer2 in documentIdArtisan %}
+             {% set docPjt = listingFiltrer2.projet.localite %}
+{#             {% set valTextarea =foo %}#}
+             {% if docPjt == "vesoul" %}
+{#                 {{ dump(listingFiltrer2) }}#}
+             {% endif %}
          {% endfor %}
      </div>
 
@@ -62,27 +58,49 @@
 
             textarea.addEventListener('input', function () {
                 let inputValue = textarea.value;
+                // inputValue= '<?=$paramFiltre?>'
                 document.getElementById('output').textContent = inputValue;
             });
         </script>
-
-
-
-
-
-
 
 
 {#    {% if documentIdArtisan is defined %}#}
 {#        {% include "contenus/listeDocArtisans.html.twig" %}#}
 {#    {% endif %}#}
 
-<!-- Affichage des documents de l'artisan - if non fonctionnel sur ce partial pour condition/ dropdown App-a...d...liste-->
-{#    {% if app.request.attributes.get('_route') == 'app_artisan_documents_liste' %}#}
+
+{#        {% if app.request.attributes.get('_route') != 'app_artisan_document_loading' %}#}
         <div class="bg-light mt-xl-5">
-    {% include "contenus/listeDocArtisans.html.twig" %}
+{#            {% include "contenus/loadingDoc.html.twig", {form2:'form2'}%}#}
         </div>
-{#    {% endif %}#}
+
+        {% set content %}
+             {% if form2 is defined %}
+{#            {% if app.request.attributes.get('_route') == 'app_artisan_document_loading' %}#}
+
+                {{ dump(form2) }}
+{#            {% endif %}#}
+            {% endif %}
+        {% endset %}
+
+{#        {% endif %}#}
+
+        <!-- Affichage des documents de l'artisan - if non fonctionnel sur ce partial pour condition/ dropdown App-a...d...liste-->
+        {% if app.request.attributes.get('_route') != 'app_artisan_documents_liste' %}
+            <div class="bg-light mt-xl-5">
+                {% include 'contenus/loadingDoc.html.twig' %}
+            </div>
+        {% endif %}
+
+
+        {% if app.request.attributes.get('_route') != 'app_artisan_document_loading' %}
+            <div class="bg-light mt-xl-5">
+                   {% include "contenus/listeDocArtisans.html.twig" %}
+            </div>
+        {% endif %}
+
+
+
 
 
 
