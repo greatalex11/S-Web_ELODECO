@@ -29,18 +29,18 @@
 
 
 {#            {% if app.request.attributes.get('_route') == 'app_artisan_documents' %}#}
-{#                {% include "contenus/listeDocArtisans.html.twig" %}#}
+{#                {% include "contenus/_listeDocArtisans.html.twig" %}#}
 {#                {{ documentIdArtisan }}#}
 {#            {% endif %}     #}
 
 {#    {% if documentIdArtisan is defined %}#}
-{#        {% include "contenus/listeDocArtisans.html.twig" %}#}
+{#        {% include "contenus/_listeDocArtisans.html.twig" %}#}
 {#    {% endif %}#}
 
 
 {#    {% if app.request.attributes.get('_route') == 'app_artisan_documents_liste' %}#}
         <div class="bg-light mt-xl-5">
-    {% include "contenus/listeDocArtisans.html.twig" %}
+    {% include "contenus/_listeDocArtisans.html.twig" %}
         </div>
 {#    {% endif %}#}
 

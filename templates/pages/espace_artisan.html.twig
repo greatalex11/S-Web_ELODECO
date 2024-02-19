@@ -135,10 +135,10 @@
                         </div>
 {#                        {{ dump(listDoc) }}#}
                         {% if app.request.attributes.get('_route') == 'app_artisan_accueil' %}
-                            {% include "contenus/coordonneesArtisans.html.twig" %}
+                            {% include "contenus/_coordonneesArtisans.html.twig" %}
 
                         {% elseif app.request.attributes.get('_route') == 'app_artisan_accueilDoc' %}
-                            {% include "contenus/documentArtisans.html.twig" %}
+                            {% include "contenus/_documentArtisans.html.twig" %}
 
 
                         {% elseif app.request.attributes.get('_route') == 'app_contact' %}

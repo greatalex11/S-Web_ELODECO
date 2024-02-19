@@ -258,6 +258,4 @@ class Documents
         return $this->TitreDefault;
     }
 
-
-
 }

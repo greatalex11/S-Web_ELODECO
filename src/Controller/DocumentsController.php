@@ -34,7 +34,7 @@ class DocumentsController extends AbstractController
     public function show(Documents $document,EntityManagerInterface $entityManager, ProjetRepository $projetRepository): Response
     {
 
-        return $this->render('contenus/listeDocArtisans.html.twig');
+        return $this->render('_listeDocArtisans.html.twig');
     }
 
 

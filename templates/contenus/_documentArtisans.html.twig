@@ -65,37 +65,37 @@
 
 
 {#    {% if documentIdArtisan is defined %}#}
-{#        {% include "contenus/listeDocArtisans.html.twig" %}#}
+{#        {% include "contenus/_listeDocArtisans.html.twig" %}#}
 {#    {% endif %}#}
 
 
 {#        {% if app.request.attributes.get('_route') != 'app_artisan_document_loading' %}#}
-        <div class="bg-light mt-xl-5">
-{#            {% include "contenus/loadingDoc.html.twig", {form2:'form2'}%}#}
-        </div>
+{#        <div class="bg-light mt-xl-5">#}
+{#            {% include "contenus/_loadingDoc.html.twig", {form2:'form2'}%}#}
+{#        </div>#}
 
         {% set content %}
              {% if form2 is defined %}
 {#            {% if app.request.attributes.get('_route') == 'app_artisan_document_loading' %}#}
 
-                {{ dump(form2) }}
+{#                {{ dump(form2) }}#}
 {#            {% endif %}#}
             {% endif %}
         {% endset %}
 
 {#        {% endif %}#}
-
+        <!--Essais affichage conditionnel suivant href selectionné - embedded template ne coopère pas -->
         <!-- Affichage des documents de l'artisan - if non fonctionnel sur ce partial pour condition/ dropdown App-a...d...liste-->
         {% if app.request.attributes.get('_route') != 'app_artisan_documents_liste' %}
             <div class="bg-light mt-xl-5">
-                {% include 'contenus/loadingDoc.html.twig' %}
+                {% include 'contenus/_loadingDoc.html.twig' %}
             </div>
         {% endif %}
 
 
         {% if app.request.attributes.get('_route') != 'app_artisan_document_loading' %}
             <div class="bg-light mt-xl-5">
-                   {% include "contenus/listeDocArtisans.html.twig" %}
+                   {% include "contenus/_listeDocArtisans.html.twig" %}
             </div>
         {% endif %}
 

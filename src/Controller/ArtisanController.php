@@ -37,33 +37,31 @@ class ArtisanController extends AbstractController
     // ...........................................DOCUMENTS....................................... page accueil document
 
     #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET'])]
-    public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository ,Documents $documents ,Request $request): Response
+    public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository ,Request $request): Response
     {
-//      $polo=['id'=>$artisans->getId(), 'nom'=>$artisans->getNomGerant(), '$prenom'=>$artisans->getPrenomGerant()];
+////      $polo=['id'=>$artisans->getId(), 'nom'=>$artisans->getNomGerant(), '$prenom'=>$artisans->getPrenomGerant()];
 
         $id=$artisan->getId();
         $artisans = $artisan;
 
         $doc = $request->get('doc');
-        if ($doc) {
+       if ($doc) {
             $idArtisan=$artisan->getId();
             $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
 
-
-            $form2 = $this->createFormBuilder($documents)
-                ->add('size')
-                ->add('typo')
-                ->add('document')
-                ->add('titreDefault')
-                ->add('save', SubmitType::class, ['label' => 'Ajout document'])
-                ->getForm();
-
+//            $form2 = $this->createFormBuilder($documents) //$form2 doesn't exist dans documentLoading
+//                ->add('size')
+//                ->add('typo')
+//                ->add('document')
+//                ->add('titreDefault')
+//                ->add('save', SubmitType::class, ['label' => 'Ajout document'])
+//                ->getForm();
 
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
                 'artisans' => $artisans,
                 'documentIdArtisan'=>$documentIdArtisan,
-                'form2'=>$form2,
+//                'form2'=>$form2,
             ] );
         }
         return $this->render('pages/espace_artisan.html.twig', [
@@ -79,7 +77,7 @@ class ArtisanController extends AbstractController
 //      $idArtisan = $request->get('id');// recup id url
 
         //permet l'affiage du template avec dropdown filtre doc : id Artisan ou nom client
-        return $this->render('contenus/documentArtisans.html.twig');
+        return $this->render('_documentArtisans.html.twig');
 
     }
 // ...............................................Choix idArtisan & nom client/  documents href 'document-id artisan'
@@ -91,12 +89,12 @@ class ArtisanController extends AbstractController
 //      $ListDoc= $projetRepository->findProjetByNomClient($idArtisan); dql depuis projet
 
         //Les données sont préparées dans le contoller 'app_artisan_accueilDoc' ; data dispo avant affichage
-        return $this->render('contenus/documentArtisans.html.twig');
+        return $this->render('_documentArtisans.html.twig');
     }
 
 
+//.................................................................................................  loader un document
 
-//..................................................................................................  loader un document
     #[Route('/{id}/documentLoading', name: 'app_artisan_document_loading', methods: ['GET', 'POST'])]
     public function documentLoadding(Request $request, Artisan $artisan, EntityManagerInterface $entityManager, Documents $documents): Response
     {
@@ -108,33 +106,32 @@ class ArtisanController extends AbstractController
             ->add('titreDefault')
             ->add('save', SubmitType::class, ['label' => 'Ajout document'])
             ->getForm();
-        return $this->render('contenus/documentArtisans.html.twig', [
+        return $this->render('_documentArtisans.html.twig', [
             'artisans' => $artisan,
-                'form2' => $form2,
-
+//                'form2' => $form2,
+// return $this->render('contenus/_loadingDoc.html.twig');
         ]);
 
     }
 
+    #[Route('/{id}/documentLoader', name: 'app_artisan_document_loader', methods: ['GET', 'POST'])]
+    public function documentLoader(Request $request, Artisan $artisan, EntityManagerInterface $entityManager, Documents $documents): Response
+    {
 
-//    #[Route('/{id}/documentLoader', name: 'app_artisan_document_loader', methods: ['GET', 'POST'])]
-//    public function documentLoader(Request $request, Artisan $artisan, EntityManagerInterface $entityManager, Documents $documents): Response
-//    {
-//
-//        $form2 = $this->createFormBuilder($documents)
-//            ->add('size')
-//            ->add('typo')
-//            ->add('document')
-//            ->add('titreDefault')
-//
-//            ->add('save', SubmitType::class, ['label' => 'Ajout document'])
-//            ->getForm();
-//
-//        return $this->redirectToRoute('app_artisan_document_loader', [
-//            'artisans' => $artisan,
-//            'form2' => $form2,
-//        ]);
-//    }
+        $form2 = $this->createFormBuilder($documents)
+            ->add('size')
+            ->add('typo')
+            ->add('document')
+            ->add('titreDefault')
+
+            ->add('save', SubmitType::class, ['label' => 'Ajout document'])
+            ->getForm();
+
+        return $this->redirectToRoute('app_artisan_document_loader', [
+            'artisans' => $artisan,
+            'form2' => $form2,
+        ]);
+    }
 
 
 
