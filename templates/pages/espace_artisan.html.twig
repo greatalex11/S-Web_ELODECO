@@ -103,7 +103,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="nav-link text-truncate">
+                                                <a href="{{ path('app_artisan_accueilPjt', {'id': artisans.id, 'projet': 'projet' }) }}" class="nav-link text-truncate">
                                                     <i class="fs-5 bi-grid"></i><span
                                                             class="ms-1 d-none d-sm-inline">Projet</span></a>
                                             </li>
@@ -134,11 +134,18 @@
                                  alt="{{ image1.titre|default('image') }}" style="width: 100%">
                         </div>
 {#                        {{ dump(listDoc) }}#}
+
+                        {% include "contenus/_projetArtisans.html.twig" %}
+
+
                         {% if app.request.attributes.get('_route') == 'app_artisan_accueil' %}
                             {% include "contenus/_coordonneesArtisans.html.twig" %}
 
                         {% elseif app.request.attributes.get('_route') == 'app_artisan_accueilDoc' %}
                             {% include "contenus/_documentArtisans.html.twig" %}
+
+
+
 
 
                         {% elseif app.request.attributes.get('_route') == 'app_contact' %}

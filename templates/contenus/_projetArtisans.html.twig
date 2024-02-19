@@ -13,36 +13,28 @@
 {#            </div>#}
 {#        </div>#}
 
-        <div class="dropdown mt-5">
+        <div class="dropdown mt-5 bg-secondary">
             <a  class="btn btn-secondary dropdown-toggle"  role="button" id="document"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Sélection par choix
+                Sélection projet
             </a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item"></a>
-                <a class="dropdown-item active" href="{{ path('app_artisan_documents_liste', { 'id': artisans.id }) }}">Liste des projets</a>
-                <a class="dropdown-item" href="{{path('app_artisan_document_loading')}}">Transmettre un document</a>
+                <a class="dropdown-item active" href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet' }) }}">Liste des projets</a>
+{#                <a class="dropdown-item" href="{{path('app_artisan_document_loading')}}">Transmettre un document</a>#}
 {#                <a class="dropdown-item" href="#">Something else here</a>#}
             </div>
+
+            <div class="bg-light mt-xl-5">
+                {% include "contenus/_listePjtArtisans.html.twig" %}
+            </div>
+
+
+
         </div>
 
 
 
-{#            {% if app.request.attributes.get('_route') == 'app_artisan_documents' %}#}
-{#                {% include "contenus/_listeDocArtisans.html.twig" %}#}
-{#                {{ documentIdArtisan }}#}
-{#            {% endif %}     #}
-
-{#    {% if documentIdArtisan is defined %}#}
-{#        {% include "contenus/_listeDocArtisans.html.twig" %}#}
-{#    {% endif %}#}
-
-
-{#    {% if app.request.attributes.get('_route') == 'app_artisan_documents_liste' %}#}
-        <div class="bg-light mt-xl-5">
-    {% include "contenus/_listeDocArtisans.html.twig" %}
-        </div>
-{#    {% endif %}#}
 
 
 

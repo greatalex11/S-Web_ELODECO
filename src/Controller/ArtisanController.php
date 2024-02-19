@@ -77,7 +77,7 @@ class ArtisanController extends AbstractController
 //      $idArtisan = $request->get('id');// recup id url
 
         //permet l'affiage du template avec dropdown filtre doc : id Artisan ou nom client
-        return $this->render('_documentArtisans.html.twig');
+        return $this->render('contenus/_listeDocArtisans.html.twig');
 
     }
 // ...............................................Choix idArtisan & nom client/  documents href 'document-id artisan'
@@ -133,7 +133,29 @@ class ArtisanController extends AbstractController
         ]);
     }
 
+////////////////////////////////////////////////////
+    #[Route('/{id}/{projet}', name: 'app_artisan_accueilPjt', methods: ['GET'])]
+    public function indexProjet(Artisan $artisan,ProjetRepository $projetRepository,Request $request): Response
+    {
+        $id=$artisan->getId();
+        $artisans = $artisan;
+        $pjt = $request->get('projet');
 
+        if ($pjt) {
+            $idArtisan=$artisan->getId();
+            $projetList=$projetRepository-> findProjetByNomClient($idArtisan); //dql depuis document
+
+            return $this->render('contenus/_listePjtArtisans.html.twig', [
+                'id' => $id,
+                'artisans' => $artisans,
+                'listePjt'=>$projetList,
+
+            ] );
+        }
+        return $this->render('pages/espace_artisan.html.twig', [
+            'artisans' => $artisans,
+        ]);
+    }
 
 
 

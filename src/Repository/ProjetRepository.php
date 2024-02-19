@@ -27,31 +27,26 @@ class ProjetRepository extends ServiceEntityRepository
     }
 
 // recherche de document
-    public function findProjetByNomClient($nomClient): array
+    public function findProjetByNomClient($idArtisan): array
     {
         $qb = $this->createQueryBuilder('p');
 
-        $qb->select('p', 't','c','a')
-            ->from('App:Client', 'c')
-            ->innerJoin('d.projet', 'p') // Assuming Document entity has a projet property
-            ->innerJoin('p.taches', 't','WITH', 'p.id=d.projet')
-            ->where('c.nom = :nomClient')
-            ->setParameter('nomClient', $nomClient);
+        $qb->select('p','t', 'a')
+            ->from('App:Tache', 't')
+//            ->innerJoin('d.projet', 'p') // Assuming Document entity has a projet property
+            ->innerJoin('projet', 'p','WITH', 'p.id=t.p.id')
+            ->where('t.artisan_id = :artisanId')
+            ->setParameter('artisanId', $idArtisan);
 
         $result = $qb->getQuery()->getResult();
-
-
-
         return $result;
     }
 
 
-
-
-//    /**
-//     * @return Projet[] Returns an array of Projet objects
-//     */
-    public function findByExampleField($value): array
+    /**
+     * @return Projet[] Returns an array of Projet objects
+     */
+    public function findPjtByIdArtisan($idArtisan): array
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')
@@ -60,7 +55,7 @@ class ProjetRepository extends ServiceEntityRepository
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
 //    public function findOneBySomeField($value): ?Projet

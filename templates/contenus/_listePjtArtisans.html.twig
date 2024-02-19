@@ -1,0 +1,67 @@
+
+{% set Apps = theme.theme %}
+
+{% block content %}
+{#  {% if  documentIdArtisan is defined %}#}
+    <div class="alert-primary bg-secondary m-5">
+        <h2>Listing projets</h2>
+
+{#    {{ dump(listePjt) }}#}
+
+        <!-- Liste des documents-->
+{#        <table class="table m-4">#}
+{#            <thead>#}
+{#            <tr>#}
+{#                <th scope="col"><i> N°</i></th>#}
+{#                <th scope="col"><i> Type </i></th>#}
+{#                <th scope="col">Titre</th>#}
+{#                <th scope="col">Localité</th>#}
+{#                <th scope="col">Client</th>#}
+{#            </tr>#}
+{#            </thead>#}
+
+{#            {% for key, tableDoc in documentIdArtisan %}#}
+{#                <tbody>#}
+{#                <tr>#}
+{#                    <th scope="row">{{ key }}</th>#}
+{#                    <td class="m-lg-5">{{ tableDoc.type }}</td>#}
+{#                    <td class="m-lg-5">{{ tableDoc.titre }}</td>#}
+{#                    <td class="m-lg-5">{{ tableDoc.projet.localite }}</td>#}
+{#                    {% set clientList=tableDoc.projet.client %}#}
+{#                    {% for client in clientList %}#}
+{#                     <td class="m-lg-5">{{ client.prenom }} {{ client.nom }}</td>#}
+{#                    {% endfor %}#}
+{#                </tr>#}
+{#                </tbody>#}
+{#            {% endfor %}#}
+{#        </table>#}
+{#    </div>#}
+
+    <!-- Card des documents-->
+{#    <section class="h-auto">#}
+{#        <div class="container">#}
+{#            <div class="row align-content-around">#}
+{#                {% for key, arrayCard in documentIdArtisan %}#}
+{#                    <div class="col-sm-4">#}
+{#                        <div class="card m-3">#}
+{#                            <div class="card-body m-2" style="height: 500px ; object-fit: contain">#}
+{#                                <img src="{{ asset('/assets/images/blog_scandinav.png') }}..." class="card-img-top"#}
+{#                                     alt="...">#}
+{#                                <h5 class="card-title mt-3"><i>N°{{ key }}</i> {{ arrayCard.titre|u.truncate(50,'...',false)|raw }}</h5>#}
+
+{#                                {% set clientList=arrayCard.projet.client %}#}
+{#                                {% for client in clientList %}#}
+{#                                    <p class="card-text">{{ client.prenom }} {{ client.nom }}</p>#}
+{#                                    <p class="card-text">{{ arrayCard.projet.localite }}</p>#}
+{#                              {% endfor %}#}
+
+{#                                <a href="#" class="btn btn-primary">Visualiser le document</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+{#{% endif %}#}
+{% endblock %}
