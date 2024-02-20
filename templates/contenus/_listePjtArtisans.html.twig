@@ -2,40 +2,45 @@
 {% set Apps = theme.theme %}
 
 {% block content %}
-{#  {% if  documentIdArtisan is defined %}#}
+
     <div class="alert-primary bg-secondary m-5">
         <h2>Listing projets</h2>
+    {{ dump(listePjt) }}
 
-{#    {{ dump(listePjt) }}#}
+{#        {{ dump(listePjt.taches) }}#}
+        <!-- Liste des projets-->
+        <table class="table m-4">
+            <thead>
+            <tr>
+                <th scope="col"><i> N°</i></th>
+                <th scope="col"><i> Localité </i></th>
+                <th scope="col"><i> Client </i></th>
+                <th scope="col">Titre</th>
+                <th scope="col">Date de début</th>
+                <th scope="col">Durée</th>
+            </tr>
+            </thead>
 
-        <!-- Liste des documents-->
-{#        <table class="table m-4">#}
-{#            <thead>#}
-{#            <tr>#}
-{#                <th scope="col"><i> N°</i></th>#}
-{#                <th scope="col"><i> Type </i></th>#}
-{#                <th scope="col">Titre</th>#}
-{#                <th scope="col">Localité</th>#}
-{#                <th scope="col">Client</th>#}
-{#            </tr>#}
-{#            </thead>#}
+                <tbody>
+                <tr>
+                    {% for key, pjt in listePjt %}
+                    <th scope="row">{{ key }}</th>
 
-{#            {% for key, tableDoc in documentIdArtisan %}#}
-{#                <tbody>#}
-{#                <tr>#}
-{#                    <th scope="row">{{ key }}</th>#}
-{#                    <td class="m-lg-5">{{ tableDoc.type }}</td>#}
-{#                    <td class="m-lg-5">{{ tableDoc.titre }}</td>#}
-{#                    <td class="m-lg-5">{{ tableDoc.projet.localite }}</td>#}
+                    <td class="m-lg-5">{{ pjt.localite }}</td>
+                    <td class="m-lg-5">{{ pjt.titre }}</td>
+{#                        <td class="m-lg-5">{{ pjt.date_debut|date("m/d/Y")|default('à saisir')}}</td>#}
+                    <td class="m-lg-5">{{ pjt.duree}}</td>
+
+{#                    <td class="m-lg-5">{{ pjt.duree }}</td>#}
 {#                    {% set clientList=tableDoc.projet.client %}#}
 {#                    {% for client in clientList %}#}
 {#                     <td class="m-lg-5">{{ client.prenom }} {{ client.nom }}</td>#}
-{#                    {% endfor %}#}
-{#                </tr>#}
-{#                </tbody>#}
+                    {% endfor %}
+                </tr>
+                </tbody>
 {#            {% endfor %}#}
-{#        </table>#}
-{#    </div>#}
+        </table>
+    </div>
 
     <!-- Card des documents-->
 {#    <section class="h-auto">#}

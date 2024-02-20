@@ -134,7 +134,7 @@ class ArtisanController extends AbstractController
     }
 
 ////////////////////////////////////////////////////
-    #[Route('/{id}/{projet}', name: 'app_artisan_accueilPjt', methods: ['GET'])]
+    #[Route('/{id}/{projet}/{value}', name: 'app_artisan_accueilPjt', methods: ['GET', 'POST'])]
     public function indexProjet(Artisan $artisan,ProjetRepository $projetRepository,Request $request): Response
     {
         $id=$artisan->getId();
@@ -144,6 +144,20 @@ class ArtisanController extends AbstractController
         if ($pjt) {
             $idArtisan=$artisan->getId();
             $projetList=$projetRepository-> findProjetByNomClient($idArtisan); //dql depuis document
+
+            foreach ($projetList as $intraList ){
+
+                foreach ($intraList as $key=>$values){
+                    if($values=='taches'){
+                        $taches=$values;
+                        dd($taches);
+                    }
+//
+                }
+            }
+
+
+
 
             return $this->render('contenus/_listePjtArtisans.html.twig', [
                 'id' => $id,
