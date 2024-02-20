@@ -80,17 +80,6 @@ class ArtisanController extends AbstractController
         return $this->render('contenus/_listeDocArtisans.html.twig');
 
     }
-// ...............................................Choix idArtisan & nom client/  documents href 'document-id artisan'
-    #[Route('/{id}/documentListPjt', name: 'app_artisan_documents_listep', methods: ['GET'])]
-    public function showDocPjt(Artisan $artisan, DocumentsRepository $documentsRepository,Request $request): Response
-    {
-//      $this->checkIsTheSameArtisan($artisan); check if artisan = user
-//      $idArtisan = $request->get('id');// recup id url
-//      $ListDoc= $projetRepository->findProjetByNomClient($idArtisan); dql depuis projet
-
-        //Les données sont préparées dans le contoller 'app_artisan_accueilDoc' ; data dispo avant affichage
-        return $this->render('_documentArtisans.html.twig');
-    }
 
 
 //.................................................................................................  loader un document
@@ -133,7 +122,21 @@ class ArtisanController extends AbstractController
         ]);
     }
 
-////////////////////////////////////////////////////
+
+
+// ......................................................................................  Menu/Projet à accueil projet
+    #[Route('/{id}/documentListeProjet', name: 'app_artisan_documents_listep', methods: ['GET'])]
+    public function showDocPjt(Artisan $artisan, Request $request): Response
+    {
+//      $this->checkIsTheSameArtisan($artisan); check if artisan = user
+        $idArtisan = $request->get('id');// recup id url
+
+        return $this->render('contenus/_projetArtisans.html.twig', [
+            'id' => $idArtisan,
+        ]);
+    }
+
+
     #[Route('/{id}/{projet}/{value}', name: 'app_artisan_accueilPjt', methods: ['GET', 'POST'])]
     public function indexProjet(Artisan $artisan,ProjetRepository $projetRepository,Request $request): Response
     {
@@ -145,21 +148,19 @@ class ArtisanController extends AbstractController
             $idArtisan=$artisan->getId();
             $projetList=$projetRepository-> findProjetByNomClient($idArtisan); //dql depuis document
 
-            foreach ($projetList as $intraList ){
-
-                foreach ($intraList as $key=>$values){
-                    if($values=='taches'){
-                        $taches=$values;
-                        dd($taches);
-                    }
+//            foreach ($projetList as $intraList ){
 //
-                }
-            }
+//                foreach ($intraList as $key=>$values){
+//                    if($values=='taches'){
+//                        $taches=$values;
+//                        dd($taches);
+//                    }
+////
+//                }
+//            }
 
 
-
-
-            return $this->render('contenus/_listePjtArtisans.html.twig', [
+            return $this->render('contenus/_projetArtisans.html.twig', [
                 'id' => $id,
                 'artisans' => $artisans,
                 'listePjt'=>$projetList,
