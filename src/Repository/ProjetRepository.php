@@ -43,16 +43,16 @@ class ProjetRepository extends ServiceEntityRepository
     /**
      * @return Projet[] Returns an array of Projet objects
      */
-    public function findPjtByIdPjt($idProjet): array
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.id = :val')
-            ->setParameter('val', $idProjet)
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-            ;
-    }
+//    public function findPjtByIdPjt($idProjet): array
+//    {
+//        return $this->createQueryBuilder('p')
+//            ->andWhere('p.id = :val')
+//            ->setParameter('val', $idProjet)
+//            ->setMaxResults(10)
+//            ->getQuery()
+//            ->getResult()
+//            ;
+//    }
 
 //    public function findOneBySomeField($value): ?Projet
 //    {

@@ -21,9 +21,23 @@ class TacheRepository extends ServiceEntityRepository
         parent::__construct($registry, Tache::class);
     }
 
-//    /**
-//     * @return Tache[] Returns an array of Tache objects
-//     */
+    /**
+     * @return Tache[] Returns an array of Tache objects
+     */
+
+    public function findPjtByIdPjt($idProjet): array
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.projet = :val')
+            ->setParameter('val', $idProjet)
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
+
 //    public function findByExampleField($value): array
 //    {
 //        return $this->createQueryBuilder('t')

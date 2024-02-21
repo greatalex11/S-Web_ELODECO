@@ -9,6 +9,7 @@ use App\Form\ArtisanType;
 use App\Form\DocumentsType;
 use App\Repository\DocumentsRepository;
 use App\Repository\ProjetRepository;
+use App\Repository\TacheRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -138,7 +139,7 @@ class ArtisanController extends AbstractController
 
 // ...............................................................................................  page generale projet
     #[Route('/{id}/{projet}/{value}', name: 'app_artisan_accueilPjt', methods: ['GET', 'POST'])]
-    public function indexProjet(Artisan $artisan,ProjetRepository $projetRepository,Request $request): Response
+    public function indexProjet(Artisan $artisan,ProjetRepository $projetRepository,TacheRepository $tacheRepository,Request $request): Response
     {
         $id=$artisan->getId();
         $artisans = $artisan;
@@ -158,41 +159,25 @@ class ArtisanController extends AbstractController
 //                    }
 //                }
 //            }
-
+            // ..................................................................... page recherche de taches/ id projet
+            $idProjet = $request->get('value');
+            $tacheList=[];
+            if ($idProjet) {
+                $tacheList = $tacheRepository->findPjtByIdPjt($idProjet); //dql depuis projet
+            }
 
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
                 'artisans' => $artisans,
                 'listePjt'=>$projetList,
-
-            ] );
-        }
-        return $this->render('pages/espace_artisan.html.twig', [
-            'artisans' => $artisans,
-        ]);
-    }
-// ................................................................................. page recherche de taches/ id projet
-    #[Route('/{id}/{projet}/{value}', name: 'app_artisan_accueilPjtTache', methods: ['GET', 'POST'])]
-    public function indexProjetTache(Artisan $artisan,ProjetRepository $projetRepository,Request $request): Response
-    {
-        $id=$artisan->getId();
-        $artisans = $artisan;
-        $idProjet = $request->get('value');
-
-        if ($idProjet) {
-            $idArtisan=$artisan->getId();
-            $tacheList=$projetRepository-> findPjtByIdPjt($idProjet); //dql depuis projet
-
-
-            return $this->render('pages/espace_artisan.html.twig', [
                 'listeTaches'=>$tacheList,
+
             ] );
         }
         return $this->render('pages/espace_artisan.html.twig', [
             'artisans' => $artisans,
         ]);
     }
-
 
 
 //.........................................................................................  coordonnee form changement

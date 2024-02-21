@@ -22,7 +22,7 @@
         <tr>
             <th scope="row">{{ key }}</th>
             <td colspan="1">{{ pjt.localite }}</td>
-            <td colspan="2" ><a class="hoverDetailPjt" href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id })}}">{{ pjt.titre }}</a></td>
+            <td colspan="2" ><a class="hoverDetailPjt bg-info" href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id })}}">{{ pjt.titre }}</a></td>
             <td colspan="1">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
             <td colspan="2">{{ pjt.duree }}</td>
 
@@ -39,10 +39,10 @@
         </tbody>
     </table>
 </div>
-{#{{ dump(listeTaches) }}#}
+
 <div class="bg-light">
-{% if listeTaches is defined %}
-{#    {{ dump(listeTaches) }}#}
+{% if listeTaches is not empty %}
+    {{ dump(listeTaches) }}
 
     {#             {% set  tachesList=pjt.taches %}#}
     {#                             {% for tache in tachesList %}#}
@@ -53,14 +53,15 @@
 {% endif%}
 </div>
 
+
 <!-- Card des documents-->
 <section>
-    <div class="container">
+    <div class="container ">
         <div class="row align-content-around">
             {% for key, pjt2 in listePjt %}
-                <div class="col-sm-4">
+                <div class="col-sm-4 " style="object-fit: contain">
                     <div class="card m-3">
-                        <div class="card-body m-2" style="height: 500px ; object-fit: contain">
+                        <div class="card-body m-2" >
                             <img src="{{ asset('/assets/images/artisan/luminaires.jpg') }}..." class="card-img-top"
                                  alt="...">
                             <h5 class="card-title mt-3">
@@ -78,7 +79,8 @@
                                         Début{{ tache.datedebut|date("m/d/Y")|default('à saisir') }}</i>
                                     <br><i class="bi bi-arrow-right-circle-fill">{{ tache.budget }} € </i></td>
                             {% endfor %}
-                            <br> <a href="#" class="btn btn-primary">Visualiser le document</a>
+                            <br> <a class="hoverDetailPjt btn btn-info" href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt2.id })}}">Visualiser le travail</a>
+{#                            <a href="#" class="btn btn-primary">Visualiser le document</a>#}
                         </div>
                     </div>
                 </div>

@@ -39,12 +39,12 @@
             </div>
         </div>
 
-{% block list %}
-        <!-- rendu du tableau de bord -->
-                {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
-                    {% include "contenus/_listePjtArtisans.html.twig" with {'listePjt': listePjt} %}
-                {% endif %}
-{% endblock list %}
+    {% block list %}
+        <!-- rendu du tableau de bord -->    >
+        {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
+            {% include "contenus/_listePjtArtisans.html.twig" with {'listePjt': listePjt} %}
+        {% endif %}
+    {% endblock list %}
 
 
     {#         <div class="alert-info"> Documents indisponibles pour le moment</div> #}
