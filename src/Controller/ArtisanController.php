@@ -124,7 +124,7 @@ class ArtisanController extends AbstractController
 
 
 
-// ......................................................................................  Menu/Projet à accueil projet
+// ..................................A supprimer si tjr pas utilisee ................... ( Menu/Projet à accueil projet)
     #[Route('/{id}/documentListeProjet', name: 'app_artisan_documents_listep', methods: ['GET'])]
     public function showDocPjt(Artisan $artisan, Request $request): Response
     {
@@ -136,7 +136,7 @@ class ArtisanController extends AbstractController
         ]);
     }
 
-
+// ...............................................................................................  page generale projet
     #[Route('/{id}/{projet}/{value}', name: 'app_artisan_accueilPjt', methods: ['GET', 'POST'])]
     public function indexProjet(Artisan $artisan,ProjetRepository $projetRepository,Request $request): Response
     {
@@ -148,6 +148,7 @@ class ArtisanController extends AbstractController
             $idArtisan=$artisan->getId();
             $projetList=$projetRepository-> findProjetByNomClient($idArtisan); //dql depuis document
 
+//          ESSAI fonction ARRAY dans array
 //            foreach ($projetList as $intraList ){
 //
 //                foreach ($intraList as $key=>$values){
@@ -164,6 +165,27 @@ class ArtisanController extends AbstractController
                 'artisans' => $artisans,
                 'listePjt'=>$projetList,
 
+            ] );
+        }
+        return $this->render('pages/espace_artisan.html.twig', [
+            'artisans' => $artisans,
+        ]);
+    }
+// ................................................................................. page recherche de taches/ id projet
+    #[Route('/{id}/{projet}/{value}', name: 'app_artisan_accueilPjtTache', methods: ['GET', 'POST'])]
+    public function indexProjetTache(Artisan $artisan,ProjetRepository $projetRepository,Request $request): Response
+    {
+        $id=$artisan->getId();
+        $artisans = $artisan;
+        $idProjet = $request->get('value');
+
+        if ($idProjet) {
+            $idArtisan=$artisan->getId();
+            $tacheList=$projetRepository-> findPjtByIdPjt($idProjet); //dql depuis projet
+
+
+            return $this->render('pages/espace_artisan.html.twig', [
+                'listeTaches'=>$tacheList,
             ] );
         }
         return $this->render('pages/espace_artisan.html.twig', [

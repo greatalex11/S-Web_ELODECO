@@ -786,11 +786,18 @@
         })
     }
 
-    //détail du projet
+
+    //détail du projet (methode1)
+    // let pjt=document.querySelector('.hoverDetailPjt');
+    // pjt.addEventListener('mouseover', ()=>{
+    //     alert('blabla');
+    //     $(this).css("color","red");
+    // });
+
+    //détail du projet (methode2)
     $('.hoverDetailPjt').hover(function (){
         alert('blabla');
         $(this).css("color","red");
-
     })
 
     //dropdown menu document : liste ou transmettre un document

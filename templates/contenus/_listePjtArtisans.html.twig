@@ -22,7 +22,7 @@
         <tr>
             <th scope="row">{{ key }}</th>
             <td colspan="1">{{ pjt.localite }}</td>
-            <td colspan="2" ><a  class="hoverDetailPjt" href="{{ asset('images/flags/CV.svg') }}">{{ pjt.titre }}</a> </td>
+            <td colspan="2" ><a class="hoverDetailPjt" href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id })}}">{{ pjt.titre }}</a></td>
             <td colspan="1">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
             <td colspan="2">{{ pjt.duree }}</td>
 
@@ -35,18 +35,22 @@
         <tr>
         {% endfor %}
 
-
-
-{#                {% set  tachesList=pjt.taches %}#}
-{#                {% for tache in tachesList %}#}
-{#                    <td colspan="2">{{ tache.titre }}<br>Début{{ tache.datedebut|date("m/d/Y")|default('à saisir') }}#}
-{#                        <br>{{ tache.budget }} €#}
-{#                    </td>#}
-{#                {% endfor %}#}
-
         </tr>
         </tbody>
     </table>
+</div>
+{#{{ dump(listeTaches) }}#}
+<div class="bg-light">
+{% if listeTaches is defined %}
+{#    {{ dump(listeTaches) }}#}
+
+    {#             {% set  tachesList=pjt.taches %}#}
+    {#                             {% for tache in tachesList %}#}
+    {#                                 <td colspan="2">{{ tache.titre }}<br>Début{{ tache.datedebut|date("m/d/Y")|default('à saisir') }}#}
+    {#                                     <br>{{ tache.budget }} €#}
+    {#                                 </td>#}
+    {#                             {% endfor %}#}
+{% endif%}
 </div>
 
 <!-- Card des documents-->
