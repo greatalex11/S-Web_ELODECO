@@ -1,15 +1,16 @@
-{% set Apps = theme.theme %}
+
 <!-- Tableau de bord artisan : list des projets-->
-<div class="alert-primary bg-secondary m-5 table-responsive">
+
+<div class=" alert-primary bg-light m-5 table-responsive ">
     <h2>Listing projets</h2>
 
     <!-- Liste des projets-->
-    <table class="table m-4  table align-middle">
+    <table class="table  table align-middle">
         <thead>
         <tr>
-            <th scope="col"><i> N°</i></th>
-            <th scope="col"><i> Localité </i></th>
-            <th scope="col"><i> Client(s) </i></th>
+            <th scope="col"><i>N°</i></th>
+            <th scope="col"><i>Localité</i></th>
+            <th scope="col"><i>Client</i></th>
             <th scope="col">Nom du projet</th>
             <th scope="col">Date de début</th>
             <th scope="col">Durée</th>
@@ -44,7 +45,7 @@
 </div>
 
 <!-- Card des documents-->
-<section class="h-auto">
+<section>
     <div class="container">
         <div class="row align-content-around">
             {% for key, pjt2 in listePjt %}
@@ -76,3 +77,4 @@
         </div>
     </div>
 </section>
+

@@ -155,12 +155,11 @@ class ArtisanController extends AbstractController
 //                        $taches=$values;
 //                        dd($taches);
 //                    }
-////
 //                }
 //            }
 
 
-            return $this->render('contenus/_projetArtisans.html.twig', [
+            return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
                 'artisans' => $artisans,
                 'listePjt'=>$projetList,

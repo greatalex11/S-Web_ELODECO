@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block content %}
+{% set Apps=theme.theme %}
 
-    {% set Apps=theme.theme %}
+{% block title %}Elo Deco: espace Artisan {% endblock %}
+
+{% block content %}
 
     <!--                                                                   BANDEAU SUPERIEUR    image 1894x359                                                            -->
     <div class="stricky-header stricked-menu main-menu">
@@ -149,7 +151,7 @@
                 {% include "contenus/_projetArtisans.html.twig" %}
             {% endif %}
 
-            {%if app.request.attributes.get('_route') == 'app_contact' %}
+            {% if app.request.attributes.get('_route') == 'app_contact' %}
                 {% include "pages/contact.html.twig" %}
             {% endif %}
 

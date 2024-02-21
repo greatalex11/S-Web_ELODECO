@@ -1,70 +1,64 @@
-<!-- template permettant de séectionner la liste des projets et de faire des recherches -->
 
-<section class="mt-2 row justify-content-center m-auto" style="min-height: 25%">
+{#{% extends 'pages/espace_artisan.html.twig' %}#}
 
-    <div class="dropdown mt-5 bg-secondary">
-        <a class="btn btn-secondary dropdown-toggle" role="button" id="document" data-bs-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">
-            Sélection projet
-        </a>
+{% block title %}Elo Deco: espace Artisan, liste des projets{% endblock %}
 
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item"></a>
-            <a class="dropdown-item active"
-               href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet', 'value':'value' }) }}">Liste
-                des projets</a>
-            {#                <a class="dropdown-item" href="{{path('app_artisan_document_loading')}}">Transmettre un document</a> #}
-            {#                <a class="dropdown-item" href="#">Something else here</a> #}
-        </div>
+{% block content %}
 
-        <!--bouton search dans twig-->
+    <!-- template permettant de séectionner la liste des projets et de faire des recherches -->
+<section class="mt-2 row justify-content-center m-auto" style="min-height: 35%">
+
+
+<!--   retrait du selecteur - utile pour un update des taches par l'artisan?  -->
+{#    <div class="dropdown mt-5 bg-secondary">#}
+{#        <a class="btn btn-secondary dropdown-toggle" role="button" id="document" data-bs-toggle="dropdown"#}
+{#           aria-haspopup="true" aria-expanded="false">#}
+{#            Sélection projet#}
+{#        </a>#}
+{#    </div>#}
+
+
+  <!--bouton search dans twig-->
         <div class="container">
             <div class="row">
                 <div class="col-7"></div>
                 <div class="col">
                     <div class="row">
-
+                        <!-- Formulaire de recherche -->
                         <form class="formSearch"
                               action="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value': 'value' }) }}"
                               method="POST">
                             <div class="input-group bg-light w-75 mt-4">
-                                <button id="validValue" class="input-group-text icon-magnifying-glass"> Recherche
+                                <button id="validValue" class="input-group-text icon-magnifying-glass">
                                 </button>
                                 <textarea id="valueSearch" class="form-control " aria-label="With textarea"></textarea>
                             </div>
                         </form>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
 
-        <div class="bg-light mt-xl-5">
+{% block list %}
+        <!-- rendu du tableau de bord -->
+                {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
+                    {% include "contenus/_listePjtArtisans.html.twig" with {'listePjt': listePjt} %}
+                {% endif %}
+{% endblock list %}
 
-            {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
-                {% include "contenus/_listePjtArtisans.html.twig" with {'listePjt': listePjt} %}
-            {% endif %}
-        </div>
 
-        <!--script du renvoi de la valeur de recherche - search bar-->
-        <script>
-            let btn = document.querySelector("#validValue");
-            let submit = btn.on('click', () => {
-                var value = document.querySelector('#valueSearch').value;
-                return value;
-            });
-
-        </script>
-
-    </div>
-    {#        {% if app.request.attributes.get('_route') == 'app_artisan_documents' %} #}
-    {#            {% include "documents/show.html.twig" %} #}
-    {#            <div class="alert-primary"> ma liste de document</div> #}
-    {#        {% else %} #}
-    {#            <div class="alert-info"> Documents indisponibles pour le moment</div> #}
+    {#         <div class="alert-info"> Documents indisponibles pour le moment</div> #}
     {#        {% endif %} #}
 
-
 </section>
+
+<!--script du renvoi de la valeur de recherche - search bar -->
+<script>
+    let btn = document.querySelector("#validValue");
+    let submit = btn.on('click', () => {
+        var value = document.querySelector('#valueSearch').value;
+        return value;
+    });
+</script>
+
+{% endblock %}
