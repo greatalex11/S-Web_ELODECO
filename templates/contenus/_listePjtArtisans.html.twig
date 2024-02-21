@@ -5,42 +5,47 @@
     <h2>Listing projets</h2>
 
     <!-- Liste des projets-->
-    <table class="table  table align-middle">
+    <table class="table table-hover align-middle">
         <thead>
         <tr>
-            <th scope="col"><i>N°</i></th>
-            <th scope="col"><i>Localité</i></th>
-            <th scope="col"><i>Client</i></th>
-            <th scope="col">Nom du projet</th>
-            <th scope="col">Date de début</th>
-            <th scope="col">Durée</th>
-            <th scope="col">Taches à faire</th>
+            <th colspan="1" scope="col">N°</th>
+            <th colspan="1" scope="col">Localité</th>
+            <th colspan="2" scope="col" > Projet</th>
+            <th colspan="1" scope="col">Date début</th>
+            <th colspan="1" scope="col">Durée (mois)</th>
+{#            <th colspan="2" scope="col">Taches</th>#}
         </tr>
         </thead>
 
         <tbody>
+        {% for key, pjt in listePjt %}
         <tr>
-            {% for key, pjt in listePjt %}
-                <th scope="row">{{ key }}</th>
-                <td colspan="2" class="m-2">{{ pjt.localite }}</td>
-                {% set  clientList=pjt.client %}
-                {% for client in clientList %}
-                    <td class="m-2">{{ client.prenom }}{{ client.nom }}/</td>
-                {% endfor %}
-                <td colspan="2" class=" m-2">{{ pjt.titre }}</td>
-                <td class="m-2">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
-                <td class="m-2">{{ pjt.duree }}</td>
+            <th scope="row">{{ key }}</th>
+            <td colspan="1">{{ pjt.localite }}</td>
+            <td colspan="2" ><a  class="hoverDetailPjt" href="{{ asset('images/flags/CV.svg') }}">{{ pjt.titre }}</a> </td>
+            <td colspan="1">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
+            <td colspan="2">{{ pjt.duree }}</td>
 
-                {% set  tachesList=pjt.taches %}
-                {% for tache in tachesList %}
-                    <td class="m-2">{{ tache.titre }}<br>Début{{ tache.datedebut|date("m/d/Y")|default('à saisir') }}
-                        <br>{{ tache.budget }} €
-                    </td>
-                {% endfor %}
+            {% set  clientList=pjt.client %}
+            {% for key, client in clientList %}
+            <tr> <th scope="row">Client</th>
+                <td colspan="2">{{ client.prenom }} {{ client.nom }}</td>
+            </tr>
             {% endfor %}
+        <tr>
+        {% endfor %}
+
+
+
+{#                {% set  tachesList=pjt.taches %}#}
+{#                {% for tache in tachesList %}#}
+{#                    <td colspan="2">{{ tache.titre }}<br>Début{{ tache.datedebut|date("m/d/Y")|default('à saisir') }}#}
+{#                        <br>{{ tache.budget }} €#}
+{#                    </td>#}
+{#                {% endfor %}#}
+
         </tr>
         </tbody>
-
     </table>
 </div>
 
@@ -57,8 +62,8 @@
                             <h5 class="card-title mt-3">
                                 <i>N°{{ key }}</i> {{ pjt2.titre|u.truncate(50,'...',false)|raw }}</h5>
                             {% set  clientList=pjt2.client %}
-                            {% for client in clientList %}
-                                <p class="card-text">{{ client.prenom }} {{ client.nom }}</p>
+                            {% for key, client in clientList %}
+                                <p class="card-text">{{ client.prenom }} {{ client.nom }}</p><br>
                             {% endfor %}
                             <p class="card-text">{{ pjt2.localite }}</p>
 
@@ -77,4 +82,3 @@
         </div>
     </div>
 </section>
-

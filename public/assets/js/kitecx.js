@@ -786,6 +786,12 @@
         })
     }
 
+    //détail du projet
+    $('.hoverDetailPjt').hover(function (){
+        alert('blabla');
+        $(this).css("color","red");
+
+    })
 
     //dropdown menu document : liste ou transmettre un document
     $('.dropdown-toggle').dropdown('toggle');
