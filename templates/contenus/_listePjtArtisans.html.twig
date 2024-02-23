@@ -1,7 +1,7 @@
 <!-- Tableau de bord artisan : list des projets-->
 
 <div class=" alert-primary bg-light m-5 table-responsive ">
-    <h2>Listing projets</h2>
+    <h2 class="mb-4">Listing projets</h2>
 
     <!-- Liste des projets-->
     <table class="table table-hover align-middle">
@@ -22,8 +22,8 @@
             <th scope="row">{{ key }}</th>
             <td colspan="1">{{ pjt.localite }}</td>
             <td colspan="2" class=""><a data-bs-toggle="modal" data-bs-target="#exampleModal"
-             class="hoverDetailPjt"
-             href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}">{{ pjt.titre }}</a>
+             class="hoverDetailPjt  fa-arrow-alt-circle-left"
+             href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
             </td>
             <td colspan="1">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
             <td colspan="2">{{ pjt.duree }}</td>
@@ -80,6 +80,7 @@
 
 <!-- Card des documents-->
 <section>
+    <h2 class="mb-4">Cards des projets </h2>
     <div class="container" style="height:800px">
         <div class="row align-content-around">
             {% for key, pjt2 in listePjt %}
