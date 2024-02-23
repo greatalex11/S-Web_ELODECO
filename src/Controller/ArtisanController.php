@@ -7,6 +7,7 @@ use App\Entity\Documents;
 use App\Entity\User;
 use App\Form\ArtisanType;
 use App\Form\DocumentsType;
+use App\Form\SearchFormType;
 use App\Repository\DocumentsRepository;
 use App\Repository\ProjetRepository;
 use App\Repository\TacheRepository;
@@ -145,6 +146,11 @@ class ArtisanController extends AbstractController
         $artisans = $artisan;
         $pjt = $request->get('projet');
 
+        $search = new SearchFormType();
+        $form = $this->createForm(SearchFormType::class, $search);
+        $form->handleRequest($request);
+
+
         if ($pjt) {
             $idArtisan=$artisan->getId();
             $projetList=$projetRepository-> findProjetByNomClient($idArtisan); //dql depuis document
@@ -162,6 +168,7 @@ class ArtisanController extends AbstractController
             // ..................................................................... page recherche de taches/ id projet
             $idProjet = $request->get('value');
             $tacheList=[];
+
             if ($idProjet) {
                 $tacheList = $tacheRepository->findPjtByIdPjt($idProjet); //dql depuis projet
             }
@@ -171,6 +178,7 @@ class ArtisanController extends AbstractController
                 'artisans' => $artisans,
                 'listePjt'=>$projetList,
                 'listeTaches'=>$tacheList,
+                'formSearch'=>$form,
 
             ] );
         }

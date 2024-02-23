@@ -347,6 +347,10 @@ class Projet
         return $this;
     }
 
+
+
+
+
     /**
      * @return Collection<int, Client>
      */

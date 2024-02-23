@@ -12,8 +12,21 @@
 {#        <a class="btn btn-secondary dropdown-toggle" role="button" id="document" data-bs-toggle="dropdown"#}
 {#           aria-haspopup="true" aria-expanded="false">#}
 {#            Sélection projet#}
-{#        </a>#}
+{#  'search':valeur      </a>#}
 {#    </div>#}
+{{ dump(formSearch) }}
+
+    <div class="form-control">
+        <i class="fa fa-calendar"></i>
+{#        {{ form_label(form.dueDate) }}#}
+        {{ form_widget(formSearch.searchValue) }}
+
+{#        <small>{{ form_help(form.dueDate) }}</small>#}
+        {{ form_widget(formSearch.recherche) }}
+        <div class="form-error">
+{#            {{ form_errors(form.dueDate) }}#}
+        </div>
+    </div>
 
 
   <!--bouton search dans twig-->
@@ -24,7 +37,8 @@
                     <div class="row m-auto justify-content-end">
                         <!-- Formulaire de recherche -->
                         <form class="formSearch w-75 "
-                              action="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value': 'value' }) }}"
+                              action="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value': 'ouilll',  }) }}"
+
                               method="POST">
                             <div class="input-group bg-light  mt-4">
                                 <button id="validValue" class="input-group-text icon-magnifying-glass" style="background-color: {{ theme.theme.couleurActuelleBg }}">
@@ -50,13 +64,12 @@
 
 </section>
 
-<!--script du renvoi de la valeur de recherche - search bar -->
-<script>
-    let btn = document.querySelector("#validValue");
-    let submit = btn.on('click', () => {
-        var value = document.querySelector('#valueSearch').value;
-        return value;
-    });
-</script>
+<!--script de recheche de vaur  - search bar -->
+    <script>
+        let btn = document.querySelector("#validValue");
+        btn.addEventListener('click', () => {
+        var valeur = document.querySelector('#valueSearch').value;
+        });
+    </script>
 
 {% endblock %}
