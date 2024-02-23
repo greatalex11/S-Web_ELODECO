@@ -17,14 +17,14 @@
 {{ dump(formSearch) }}
 
     <div class="form-control">
-        <i class="fa fa-calendar"></i>
-{#        {{ form_label(form.dueDate) }}#}
+        <i class="fa fa-search-location"></i>
+        {{ form_label(formSearch, 'Saisir un lieu ou un nom de client') }}
         {{ form_widget(formSearch.searchValue) }}
 
 {#        <small>{{ form_help(form.dueDate) }}</small>#}
         {{ form_widget(formSearch.recherche) }}
         <div class="form-error">
-{#            {{ form_errors(form.dueDate) }}#}
+{#            {{ form_errors(formSearch.dueDate) }}#}
         </div>
     </div>
 

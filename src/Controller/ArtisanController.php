@@ -148,8 +148,22 @@ class ArtisanController extends AbstractController
 
         $search = new SearchFormType();
         $form = $this->createForm(SearchFormType::class, $search);
+//        ,[
+//            'action' => $this->generateUrl('app_artisan_accueilPjt',[
+//                'id' => $id,
+//                'projet' => $pjt,
+//                'value'=>'search',
+//
+//            ]),
+//            'method' => 'POST'
+//        ]);
+
         $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $search = $form->getData();
+            dd($search);
+        }
 
         if ($pjt) {
             $idArtisan=$artisan->getId();
