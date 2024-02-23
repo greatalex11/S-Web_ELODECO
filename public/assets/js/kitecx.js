@@ -777,6 +777,7 @@
 
     // ----------------------------- Mon javascript -----------------------------------------
 
+    //flash message après modification coordonnées espace perso
     // let flashForm = document.getElementById('flash-message')
     let flashForm = $('.alert-success');
     if (flashForm.length) {
@@ -787,18 +788,11 @@
     }
 
 
-    //détail du projet (methode1)
-    // let pjt=document.querySelector('.hoverDetailPjt');
-    // pjt.addEventListener('mouseover', ()=>{
-    //     alert('blabla');
-    //     $(this).css("color","red");
-    // });
-
     //détail du projet (methode2)
-    $('.hoverDetailPjt').hover(function (){
-        alert('blabla');
+    $('.hoverDetailPjt').mouseover(function (){
         $(this).css("color","red");
     })
+
 
     //dropdown menu document : liste ou transmettre un document
     $('.dropdown-toggle').dropdown('toggle');

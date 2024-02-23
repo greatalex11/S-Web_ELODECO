@@ -1,8 +1,6 @@
 
-{#{% extends 'pages/espace_artisan.html.twig' %}#}
 
-{% block title %}Elo Deco: espace Artisan, liste des projets{% endblock %}
-
+{% block title %}Elo Deco - espace Artisan - liste des projets{% endblock %}
 {% block content %}
 
     <!-- template permettant de séectionner la liste des projets et de faire des recherches -->
@@ -29,7 +27,7 @@
                               action="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value': 'value' }) }}"
                               method="POST">
                             <div class="input-group bg-light w-75 mt-4">
-                                <button id="validValue" class="input-group-text icon-magnifying-glass">
+                                <button id="validValue" class="input-group-text icon-magnifying-glass" style="background-color: {{ theme.theme.couleurActuelleBg }}">
                                 </button>
                                 <textarea id="valueSearch" class="form-control " aria-label="With textarea"></textarea>
                             </div>
@@ -40,7 +38,7 @@
         </div>
 
     {% block list %}
-        <!-- rendu du tableau de bord -->    >
+        <!-- rendu du tableau de bord -->
         {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
             {% include "contenus/_listePjtArtisans.html.twig" with {'listePjt': listePjt} %}
         {% endif %}
