@@ -200,6 +200,7 @@ class ArtisanController extends AbstractController
                 'listeTaches'=>$tacheList,
                 'formSearch'=>$form,
                 'search'=>$value,
+                'dump'=>$search,
 
             ] );
         }
