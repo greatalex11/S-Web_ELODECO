@@ -14,14 +14,14 @@ class SearchFormType extends AbstractType
     {
         $builder
             ->add('searchValue', TextType::class, ['mapped' => false])
-            ->add('recherche', SubmitType::class)
+            ->add('rechercher', SubmitType::class)
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver): void
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => SearchFormType::class,
+            'data_class' => null,
         ]);
     }
 }

@@ -152,22 +152,26 @@ class ArtisanController extends AbstractController
 //            'action' => $this->generateUrl('app_artisan_accueilPjt',[
 //                'id' => $id,
 //                'projet' => $pjt,
-//                'value'=>'search',
-//
+//                'value'=>'search',//
 //            ]),
 //            'method' => 'POST'
 //        ]);
 
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $search = $form->getData();
-            dd($search);
+            $search = $form->get('searchValue')->getData();
         }
+
+
 
         if ($pjt) {
             $idArtisan=$artisan->getId();
             $projetList=$projetRepository-> findProjetByNomClient($idArtisan); //dql depuis document
+            foreach ($projetList as $item=>$value){
+                $value= array_keys($projetList, $search);
+            }
+//
+
 
 //          ESSAI fonction ARRAY dans array
 //            foreach ($projetList as $intraList ){
@@ -193,6 +197,7 @@ class ArtisanController extends AbstractController
                 'listePjt'=>$projetList,
                 'listeTaches'=>$tacheList,
                 'formSearch'=>$form,
+                'search'=>$value,
 
             ] );
         }

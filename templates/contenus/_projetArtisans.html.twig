@@ -14,42 +14,31 @@
 {#            Sélection projet#}
 {#  'search':valeur      </a>#}
 {#    </div>#}
-{{ dump(formSearch) }}
 
-    <div class="form-control">
-        <i class="fa fa-search-location"></i>
-        {{ form_label(formSearch, 'Saisir un lieu ou un nom de client') }}
-        {{ form_widget(formSearch.searchValue) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col">
+                <div class="form-control">
+                    <i class="fa fa-search-location"></i>
+                    {{ form_label(formSearch, 'Saisir un lieu ou un nom de client') }}
+                    {{ form_widget(formSearch.searchValue) }}
+{#                            <small>{{ form_help(formSearch, 'aide toi') }}</small>#}
 
-{#        <small>{{ form_help(form.dueDate) }}</small>#}
-        {{ form_widget(formSearch.recherche) }}
-        <div class="form-error">
-{#            {{ form_errors(formSearch.dueDate) }}#}
-        </div>
-    </div>
-
-
-  <!--bouton search dans twig-->
-        <div class="container">
-            <div class="row">
-                <div class="col-8"></div>
-                <div class="col">
-                    <div class="row m-auto justify-content-end">
-                        <!-- Formulaire de recherche -->
-                        <form class="formSearch w-75 "
-                              action="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value': 'ouilll',  }) }}"
-
-                              method="POST">
-                            <div class="input-group bg-light  mt-4">
-                                <button id="validValue" class="input-group-text icon-magnifying-glass" style="background-color: {{ theme.theme.couleurActuelleBg }}">
-                                </button>
-                                <textarea id="valueSearch" class="form-control " aria-label="With textarea"></textarea>
-                            </div>
-                        </form>
+                    <div class="contact-page__input-box mt-3">
+                        {{ form_widget(formSearch.rechercher, {'attr': {'class': "thm-btn contact-page__btn"}}) }}
+                    </div>
+                    {#        {{ form_widget(formSearch.rechercher,{'attr': {'class': "thm-btn contact-page__btn"}}, {'label': 'Envoyer le message'})) }} #}
+                    <div class="form-error">
+                        {#            {{ form_errors(formSearch, 'erreur de saisie') }} #}
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+{{ dump(search) }}
+
 
     {% block list %}
         <!-- rendu du tableau de bord -->
@@ -58,18 +47,41 @@
         {% endif %}
     {% endblock list %}
 
-
     {#         <div class="alert-info"> Documents indisponibles pour le moment</div> #}
     {#        {% endif %} #}
 
 </section>
 
-<!--script de recheche de vaur  - search bar -->
-    <script>
-        let btn = document.querySelector("#validValue");
-        btn.addEventListener('click', () => {
-        var valeur = document.querySelector('#valueSearch').value;
-        });
-    </script>
-
 {% endblock %}
+
+
+
+<!--script de recheche de vaur  -    search bar   -   a supprimer lors du refactor-->
+{#    <script>#}
+{#        let btn = document.querySelector("#validValue");#}
+{#        btn.addEventListener('click', () => {#}
+{#        var valeur = document.querySelector('#valueSearch').value;#}
+{#        });#}
+{#    </script>#}
+
+{#  <!--bouton search dans twig  a supprimer lors du refactor-->#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-8"></div>#}
+{#                <div class="col">#}
+{#                    <div class="row m-auto justify-content-end">#}
+{#                        <!-- Formulaire de recherche -->#}
+{#                        <form class="formSearch w-75 "#}
+{#                              action="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value': 'ouilll',  }) }}"#}
+
+{#                              method="POST">#}
+{#                            <div class="input-group bg-light  mt-4">#}
+{#                                <button id="validValue" class="input-group-text icon-magnifying-glass" style="background-color: {{ theme.theme.couleurActuelleBg }}">#}
+{#                                </button>#}
+{#                                <textarea id="valueSearch" class="form-control " aria-label="With textarea"></textarea>#}
+{#                            </div>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
