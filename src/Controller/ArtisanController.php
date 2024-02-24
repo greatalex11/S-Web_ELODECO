@@ -157,6 +157,7 @@ class ArtisanController extends AbstractController
 //            'method' => 'POST'
 //        ]);
 
+        // formulaire de recherche
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $search = $form->get('searchValue')->getData();
@@ -167,6 +168,7 @@ class ArtisanController extends AbstractController
         if ($pjt) {
             $idArtisan=$artisan->getId();
             $projetList=$projetRepository-> findProjetByNomClient($idArtisan); //dql depuis document
+            // iteration sur la liste des projet de l'artisan avec filtre search/ valeur saisie
             foreach ($projetList as $item=>$value){
                 $value= array_keys($projetList, $search);
             }
