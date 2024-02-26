@@ -146,49 +146,38 @@ class ArtisanController extends AbstractController
         $artisans = $artisan;
         $pjt = $request->get('projet');
 
-        $search = new SearchFormType();
-        $form = $this->createForm(SearchFormType::class, $search);
-//        ,[
-//            'action' => $this->generateUrl('app_artisan_accueilPjt',[
-//                'id' => $id,
-//                'projet' => $pjt,
-//                'value'=>'search',//
-//            ]),
-//            'method' => 'POST'
-//        ]);
-
-        // formulaire de recherche
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $search = $form->get('searchValue')->getData();
-        }
-
 
 
         if ($pjt) {
             $idArtisan=$artisan->getId();
             $projetList=$projetRepository-> findProjetByNomClient($idArtisan); //dql depuis document
-            // iteration sur la liste des projet de l'artisan avec filtre search/ valeur saisie
-            foreach ($projetList as $item=>$value){
-                $value= array_keys($projetList, $search);
-            }
-//
+
+            // création du formulaire 'search'
+            $search = new SearchFormType();
+            $formSearch = $this->createForm(SearchFormType::class, $search);
+            $formSearch->handleRequest($request);
+
+            // si le formulaire de recherche est 'submit'
+            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+                $search = $formSearch->get('searchValue')->getData();
+
+                // loop in array of array + test itération/ valeur de $search
+                $resultList = [];
+                foreach ($projetList as $list) {
+                    $resultList = array_filter($list, function ($v, $k) use ($search) {
+                        return $k == $search;
+                    });
+                }
+                print_r($resultList);
+             //affactation du tableau filtré avec la valeur $search à $projetList
+                    if($resultList){
+                        $projetList=$resultList;
+                    }
 
 
-//          ESSAI fonction ARRAY dans array
-//            foreach ($projetList as $intraList ){
-//
-//                foreach ($intraList as $key=>$values){
-//                    if($values=='taches'){
-//                        $taches=$values;
-//                        dd($taches);
-//                    }
-//                }
-//            }
-            // ..................................................................... page recherche de taches/ id projet
+            //........................................................ page recherche de taches/ id projet
             $idProjet = $request->get('value');
             $tacheList=[];
-
             if ($idProjet) {
                 $tacheList = $tacheRepository->findPjtByIdPjt($idProjet); //dql depuis projet
             }
@@ -198,9 +187,9 @@ class ArtisanController extends AbstractController
                 'artisans' => $artisans,
                 'listePjt'=>$projetList,
                 'listeTaches'=>$tacheList,
-                'formSearch'=>$form,
-                'search'=>$value,
-                'dump'=>$search,
+                'formSearch'=>$formSearch,
+//                'search'=>$value,
+                'mavaleur'=>$search,
 
             ] );
         }

@@ -28,18 +28,19 @@
                     <div class="contact-page__input-box mt-3">
                         {{ form_widget(formSearch.rechercher, {'attr': {'class': "thm-btn contact-page__btn"}}) }}
                     </div>
-                    {#        {{ form_widget(formSearch.rechercher,{'attr': {'class': "thm-btn contact-page__btn"}}, {'label': 'Envoyer le message'})) }} #}
+{#                            {{ form_widget(formSearch.rechercher,{'attr': {'class': "thm-btn contact-page__btn"}}, {'label': 'Envoyer le message'})) }}#}
                     <div class="form-error">
-                        {#            {{ form_errors(formSearch, 'erreur de saisie') }} #}
+{#                    {{ form_errors(formSearch, 'erreur de saisie') }}#}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    {{ dump(search) }}
-
-{{ dump(search) }}
+<pre>
+{#    {{ dump(mavaleur) }}#}
+</pre>
+{#{{ dump(search) }}#}
 
 
     {% block list %}
