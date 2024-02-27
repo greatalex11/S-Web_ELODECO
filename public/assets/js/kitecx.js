@@ -788,9 +788,14 @@
     }
 
 
-    //détail du projet (methode2)
-    $('.hoverDetailPjt').mouseover(function (){
-        $(this).css("color","red");
+    //détail du projet : hover = police en rouge & fire du modal 'show data du pjt selectionné par <a>'
+    $('.hoverDetailPjt').mouseover(function () {
+        $(this).css("color", "red");
+    })
+
+    $('#lienPjt').on('click', (e) => {
+        e.preventDefault();
+        $('#modalPjt').modal('show');
     })
 
 
@@ -799,9 +804,9 @@
 
     let textarea = document.getElementById('myTextarea');
 
-    textarea.addEventListener('input', function() {
+    textarea.addEventListener('input', function () {
         let inputValue = textarea.value;
-        inputValue= '<?=$paramFiltre?>'
+        inputValue = '<?=$paramFiltre?>'
         document.getElementById('output').textContent = inputValue;
     });
 

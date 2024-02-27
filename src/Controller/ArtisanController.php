@@ -138,7 +138,8 @@ class ArtisanController extends AbstractController
         ]);
     }
 
-// ...............................................................................................  page generale projet
+
+ //............................................v finale bugg......................................  page generale projet
     #[Route('/{id}/{projet}/{value}', name: 'app_artisan_accueilPjt', methods: ['GET', 'POST'])]
     public function indexProjet(Artisan $artisan,ProjetRepository $projetRepository,TacheRepository $tacheRepository,Request $request): Response
     {
@@ -158,28 +159,30 @@ class ArtisanController extends AbstractController
             $formSearch->handleRequest($request);
 
             // si le formulaire de recherche est 'submit'
-            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
-                $search = $formSearch->get('searchValue')->getData();
-
-                // loop in array of array + test itération/ valeur de $search
-                $resultList = [];
-                foreach ($projetList as $list) {
-                    $resultList = array_filter($list, function ($v, $k) use ($search) {
-                        return $k == $search;
-                    });
-                }
-                print_r($resultList);
+//            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+//                $search = $formSearch->get('searchValue')->getData();
+//
+//                // loop in array of array + test itération/ valeur de $search
+//                $resultList = [];
+//                foreach ($projetList as $list) {
+//                    $resultList = array_filter($list, function ($v, $k) use ($search) {
+//                        return $k == $search;
+//                    });
+//                }
+//                print_r($resultList);
              //affactation du tableau filtré avec la valeur $search à $projetList
-                    if($resultList){
-                        $projetList=$resultList;
-                    }
+//                    if($resultList){
+//                        $projetList=$resultList;
+//                    }
 
 
             //........................................................ page recherche de taches/ id projet
             $idProjet = $request->get('value');
+            dump($idProjet);
             $tacheList=[];
             if ($idProjet) {
                 $tacheList = $tacheRepository->findPjtByIdPjt($idProjet); //dql depuis projet
+                dump($tacheList);
             }
 
             return $this->render('pages/espace_artisan.html.twig', [
@@ -196,7 +199,7 @@ class ArtisanController extends AbstractController
         return $this->render('pages/espace_artisan.html.twig', [
             'artisans' => $artisans,
         ]);
-    }
+    } //expect statement
 
 
 //.........................................................................................  coordonnee form changement

@@ -24,7 +24,6 @@
                     {{ form_label(formSearch, 'Saisir un lieu ou un nom de client') }}
                     {{ form_widget(formSearch.searchValue) }}
 {#                            <small>{{ form_help(formSearch, 'aide toi') }}</small>#}
-
                     <div class="contact-page__input-box mt-3">
                         {{ form_widget(formSearch.rechercher, {'attr': {'class': "thm-btn contact-page__btn"}}) }}
                     </div>
@@ -42,20 +41,25 @@
 </pre>
 {#{{ dump(search) }}#}
 
-
     {% block list %}
         <!-- rendu du tableau de bord -->
         {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
             {% include "contenus/_listePjtArtisans.html.twig" with {'listePjt': listePjt} %}
         {% endif %}
     {% endblock list %}
-
     {#         <div class="alert-info"> Documents indisponibles pour le moment</div> #}
     {#        {% endif %} #}
-
 </section>
-
 {% endblock %}
+
+
+
+
+
+
+
+
+
 
 
 

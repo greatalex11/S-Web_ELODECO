@@ -2,7 +2,6 @@
 
 <div class=" alert-primary bg-light m-5 table-responsive ">
     <h2 class="mb-4">Listing projets</h2>
-{# {{ dump(result) }}#}
     <!-- Liste des projets-->
     <table class="table table-hover align-middle">
         <thead>
@@ -16,14 +15,16 @@
         </tr>
         </thead>
 
+        <!-- data-bs-toggle="modal data-bs-target="#exampleModal" sorti de la balise <a> ; erreur generation url avec paramètre  -->
         <tbody>
         {% for key, pjt in listePjt %}
         <tr>
             <th scope="row">{{ key }}</th>
             <td colspan="1">{{ pjt.localite }}</td>
-            <td colspan="2" class=""><a data-bs-toggle="modal" data-bs-target="#exampleModal"
-             class="hoverDetailPjt  fa-arrow-alt-circle-left"
-             href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
+            <td colspan="2" class="">
+             <a id="lienPjt"
+             class="hoverDetailPjt fa-arrow-alt-circle-left" href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}
+             </a>
             </td>
 
             <td colspan="1">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
@@ -45,7 +46,7 @@
 
 <!--   fenetre modal : affichage des taches suivant click/ lien projet -->
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalPjt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -54,7 +55,6 @@
             </div>
             <div class="modal-body">
                 {% if listeTaches is not empty %}
-
                     {% for listeTaches in listeTaches %}
                         <ul>
                             <li>{{ listeTaches.titre }}</li>
