@@ -1,13 +1,13 @@
 <!-- Tableau de bord artisan : list des projets-->
 
+<!-- loader -->
+<div class="row col-2 d-flex align-items-center visually-hidden  spinnerPjt" id="spinnerPjt">
+    <strong role="status">Loading...</strong>
+    <div class="spinner-border ms-auto" aria-hidden="true"></div>
+</div>
+
 <div class="alert-primary bg-light m-5 table-responsive ">
     <h2 class="mb-4">Listing projets</h2>
-
-    <!-- loader -->
-    <div class="row d-flex align-items-center visually-hidden" id="spinnerPjt ">
-        <strong role="status">Loading...</strong>
-        <div class="spinner-border ms-auto" aria-hidden="true"></div>
-    </div>
 
     <!-- Liste des projets-->
     <table class="table table-hover align-middle">
@@ -49,12 +49,12 @@
 </div>
 
 <!--   fenetre modal : affichage des taches suivant click/ lien projet -->
-<div class="modal fade modalPjt" id="modalPjt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade modalPjt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Travail à faire</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btnModal"  data-bs-dismiss="modal" aria-label="Close" value="true"></button>
             </div>
             <div class="modal-body">
                 {% if listeTaches is not empty %}
@@ -73,7 +73,7 @@
                 {#                </div> #}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary btnModal" data-bs-dismiss="modal" >Close</button>
                 <!-- button utilisable pour un appel de formulaire update si gestion déléguée à l'artisan -->
                 {#                <button type="button" class="btn btn-primary">Save changes</button> #}
             </div>

@@ -788,27 +788,37 @@
     }
 
     //détail du projet : hover = police en rouge & fire du modal 'show data du pjt selectionné par <a>
-    $( document ).ready(()=> {
+    $(document).ready(() => {
         $('.hoverDetailPjt').on({
             mouseover: function () {
                 $(this).css("color", "red");
             },
             click: function (e) {
                 // e.preventDefault();
-                showSpinner();
+                let fire = $('.modalPjt').modal('show');
+                showSpinner(fire);
+                //buug : la fenetre se ferme au bout de 5'' - essai de temporiser - malgré dump(variable) ok
+                $('.modalPjt').modal('show');
+                let modalShow = $('.btnModal').on('click');
+                if(modalShow) {
+                    $('.modalPjt').modal('hide');
+                } else {
+                    $('.modalPjt').modal('show');
                 }
+            }
         });
     });
 
-    function showSpinner() {
-        // Montrer le spinner
-        $('#spinner').removeClass('.visually-hidden');
-        let fire = $('#spinner').modal('show');
+    // Montrer le spinner
+    function showSpinner(fire) {
         if (fire.ready()) {
-            $('#spinner').addClass('.visually-hidden');
+            $('#spinnerPjt').addClass('visually-hidden');
+            alert('liste prête')
+        } else {
+            $('#spinnerPjt').removeClass('visually-hidden');
+            alert('en préparation')
         }
     }
-
 
     //dropdown menu document : liste ou transmettre un document
     $('.dropdown-toggle').dropdown('toggle');
