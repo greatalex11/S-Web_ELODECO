@@ -787,16 +787,27 @@
         })
     }
 
+    //détail du projet : hover = police en rouge & fire du modal 'show data du pjt selectionné par <a>
+    $( document ).ready(()=> {
+        $('.hoverDetailPjt').on({
+            mouseover: function () {
+                $(this).css("color", "red");
+            },
+            click: function (e) {
+                // e.preventDefault();
+                showSpinner();
+                }
+        });
+    });
 
-    //détail du projet : hover = police en rouge & fire du modal 'show data du pjt selectionné par <a>'
-    $('.hoverDetailPjt').mouseover(function () {
-        $(this).css("color", "red");
-    })
-
-    $('#lienPjt').on('click', (e) => {
-        e.preventDefault();
-        $('#modalPjt').modal('show');
-    })
+    function showSpinner() {
+        // Montrer le spinner
+        $('#spinner').removeClass('.visually-hidden');
+        let fire = $('#spinner').modal('show');
+        if (fire.ready()) {
+            $('#spinner').addClass('.visually-hidden');
+        }
+    }
 
 
     //dropdown menu document : liste ou transmettre un document

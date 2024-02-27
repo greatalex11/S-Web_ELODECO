@@ -147,8 +147,6 @@ class ArtisanController extends AbstractController
         $artisans = $artisan;
         $pjt = $request->get('projet');
 
-
-
         if ($pjt) {
             $idArtisan=$artisan->getId();
             $projetList=$projetRepository-> findProjetByNomClient($idArtisan); //dql depuis document
@@ -159,8 +157,9 @@ class ArtisanController extends AbstractController
             $formSearch->handleRequest($request);
 
             // si le formulaire de recherche est 'submit'
-//            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
-//                $search = $formSearch->get('searchValue')->getData();
+            if ($formSearch->isSubmitted() && $formSearch->isValid()){
+                $search = $formSearch->get('searchValue')->getData();
+            }
 //
 //                // loop in array of array + test itération/ valeur de $search
 //                $resultList = [];
@@ -178,11 +177,10 @@ class ArtisanController extends AbstractController
 
             //........................................................ page recherche de taches/ id projet
             $idProjet = $request->get('value');
-            dump($idProjet);
+
             $tacheList=[];
             if ($idProjet) {
                 $tacheList = $tacheRepository->findPjtByIdPjt($idProjet); //dql depuis projet
-                dump($tacheList);
             }
 
             return $this->render('pages/espace_artisan.html.twig', [
