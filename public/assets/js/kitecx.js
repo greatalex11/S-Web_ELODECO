@@ -795,30 +795,32 @@
             },
             click: function (e) {
                 // e.preventDefault();
-                let fire = $('.modalPjt').modal('show');
-                showSpinner(fire);
-                //buug : la fenetre se ferme au bout de 5'' - essai de temporiser - malgré dump(variable) ok
-                $('.modalPjt').modal('show');
-                let modalShow = $('.btnModal').on('click');
-                if(modalShow) {
-                    $('.modalPjt').modal('hide');
-                } else {
-                    $('.modalPjt').modal('show');
-                }
+                $(".modalPjt").attr('a','data-bs-toggle="modal" data-bs-target="#exampleModal"');
+
+                // let fire = $('.modalPjt').modal('show');
+                // showSpinner(fire);
+                // //buug : la fenetre se ferme au bout de 5'' - essai de temporiser - malgré dump(variable) ok
+                // $('.modalPjt').modal('show');
+                // let modalShow = $('.btnModal').on('click');
+                // if(modalShow) {
+                //     $('.modalPjt').modal('hide');
+                // } else {
+                //     $('.modalPjt').modal('show');
+               // }
             }
         });
     });
 
     // Montrer le spinner
-    function showSpinner(fire) {
-        if (fire.ready()) {
-            $('#spinnerPjt').addClass('visually-hidden');
-            alert('liste prête')
-        } else {
-            $('#spinnerPjt').removeClass('visually-hidden');
-            alert('en préparation')
-        }
-    }
+    // function showSpinner(fire) {
+    //     if (fire.ready()) {
+    //         $('#spinnerPjt').addClass('visually-hidden');
+    //         alert('liste prête')
+    //     } else {
+    //         $('#spinnerPjt').removeClass('visually-hidden');
+    //         alert('en préparation')
+    //     }
+    // }
 
     //dropdown menu document : liste ou transmettre un document
     $('.dropdown-toggle').dropdown('toggle');
