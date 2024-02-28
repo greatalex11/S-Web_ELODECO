@@ -794,20 +794,32 @@
                 $(this).css("color", "red");
             },
             click: function (e) {
-                // e.preventDefault();
 
-                $(this).attr('data-bs-toggle', 'modal').attr('data-bs-target', '#exampleModal');
+                // $("#fixerrormodal").modal()
+                // $("#fixerrormodal").modal('toggle')
+                // $('.modalPjt').modal('show');
 
+                $('.modalPjt').modal('show');
 
-                // let fire = $('.modalPjt').modal('show');
-                showSpinner(fire);
+                let modalShow = $('.btnModal').on('click');
+                if(!modalShow) {
+                    $('.hoverDetailPjt').attr('data-bs-toggle', 'modal');
+                    e.preventDefault();
+                    $('.modalPjt').modal('show');
+
+                }else{
+                    $('.hoverDetailPjt').removeAttribute('data-bs-toggle')
+                    $('.modalPjt').modal('hide');
+                }
+                //let fire = $('.modalPjt').modal('show');
+               // showSpinner(fire);
                 // //buug : la fenetre se ferme au bout de 5'' - essai de temporiser - malgré dump(variable) ok
                 // $('.modalPjt').modal('show');
-                let modalShow = $('.btnModal').on('click');
-                if(modalShow) {
-                    $(this).removeAttribute('data-bs-toggle').removeAttribute('data-bs-target');
-                    alert('autre séléction disponible')
-                }
+                // let modalShow = $('.btnModal').on('click');
+                // if(modalShow) {
+                //     $(this).removeAttribute('data-bs-toggle').removeAttribute('data-bs-target');
+                //     alert('autre séléction disponible')
+                // }
                 //     $('.modalPjt').modal('hide');
                 // } else {
                 //     $('.modalPjt').modal('show');

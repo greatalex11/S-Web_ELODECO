@@ -22,14 +22,14 @@
         </tr>
         </thead>
 
-        <!--  data-bs-toggle="modal data-bs-target="#exampleModal" sorti de la balise <a> ; erreur generation url avec paramètre  -->
+        <!--  data-bs-toggle="modal" implementé en js et sorti de la balise <a> - erreur generation url avec paramètre  -->
         <tbody>
         {% for key, pjt in listePjt %}
         <tr>
             <th scope="row">{{ key }}</th>
             <td colspan="1">{{ pjt.localite }}</td>
             <td colspan="2" class="" >
-                <a class="hoverDetailPjt"
+                <a class="hoverDetailPjt " data-bs-target="#exampleModal"
                    href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
             </td>
             <td colspan="1">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
@@ -49,12 +49,12 @@
 </div>
 
 <!--   fenetre modal : affichage des taches suivant click/ lien projet -->
-<div class="modal fade modalPjt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+<div class="modal fade modalPjt" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Travail à faire</h5>
-                <button type="button" class="btn-close btnModal"  data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btnModal" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 {% if listeTaches is not empty %}
@@ -73,16 +73,13 @@
                 {#                </div> #}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btnModal" data-bs-dismiss="modal" >Close</button>
+                <button type="button" class="btn btn-secondary btnModal" data-bs-dismiss="modal">Close</button>
                 <!-- button utilisable pour un appel de formulaire update si gestion déléguée à l'artisan -->
                 {#                <button type="button" class="btn btn-primary">Save changes</button> #}
             </div>
         </div>
     </div>
 </div>
-
-
-
 
 <!-- Card des documents-->
 <section>
