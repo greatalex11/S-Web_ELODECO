@@ -163,41 +163,41 @@ class ArtisanController extends AbstractController
 //            dump($projetList);
 
 
-//            //...................................................  recherche de Projet/  searchValue:: Class 'search'
-//            $search = new SearchFormType();
-//            $formSearch = $this->createForm(SearchFormType::class, $search);
-//            $formSearch->handleRequest($request);
-//            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
-//                $search = $formSearch->get('searchValue')->getData();
-//                $search->get('searchValue')->setData(true);
-//                dump("ta mere");
-//                dump($search);
-////                return $this->redirectToRoute('app_artisan_accueilPjt');
-//            }
-//
-//            //...................................................  formulaire 'search' dans le controller
-//            $defaultData = ['message' => 'Votre séletion'];
-//            $form3 = $this->createFormBuilder($defaultData)
-//                ->add('targetSearch', TextType::class)
-//                ->add('submit', SubmitType::class)
-//                ->getForm();
-//            $form3->handleRequest($request);
-//            if ($form3->isSubmitted() && $form3->isValid()) {
-//                // data is an array with "name", "email", and "message" keys
-//                $value = $request->getPayload()->get('targetSearch');
-//                dump("$value");
-//                $data = $form3->getData();
-//                dump($data);
-////                return $this->redirectToRoute('app_artisan_accueilPjt');
-//            }
+            //...................................................  recherche de Projet/  searchValue:: Class 'search'
+            $search = new SearchFormType();
+            $formSearch = $this->createForm(SearchFormType::class, $search);
+            $formSearch->handleRequest($request);
+            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+                $search = $formSearch->get('searchValue')->getData();
+                $search->get('searchValue')->setData(true);
+                dump("ta mere");
+                dump($search);
+//                return $this->redirectToRoute('app_artisan_accueilPjt');
+            }
+
+            //...................................................  formulaire 'search' dans le controller
+            $defaultData = ['message' => 'Votre séletion'];
+            $form3 = $this->createFormBuilder($defaultData)
+                ->add('targetSearch', TextType::class)
+                ->add('submit', SubmitType::class)
+                ->getForm();
+            $form3->handleRequest($request);
+            if ($form3->isSubmitted() && $form3->isValid()) {
+                // data is an array with "name", "email", and "message" keys
+                $value = $request->getPayload()->get('targetSearch');
+                dump("$value");
+                $data = $form3->getData();
+                dump($data);
+//                return $this->redirectToRoute('app_artisan_accueilPjt');
+            }
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
                 'artisans' => $artisans,
                 'listePjt' => $projetList,
                 'listeTaches' => $tacheList,
-//                'formSearch' => $formSearch,
-//                'form3' => $form3,
-////                'search'=>$value,
+                'formSearch' => $formSearch,
+                'form3' => $form3,
+//                'search'=>$value,
 //                'mavaleur' => $search,
             ]);
         }
