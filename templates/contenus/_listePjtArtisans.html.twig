@@ -30,7 +30,7 @@
             <td colspan="1">{{ pjt.localite }}</td>
             <td colspan="2" class="" >
                 <a class="hoverDetailPjt"
-                   href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}" > {{ pjt.titre }}</a>
+                   href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
             </td>
             <td colspan="1">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
             <td colspan="2">{{ pjt.duree }}</td>

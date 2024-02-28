@@ -15,6 +15,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -148,6 +149,27 @@ class ArtisanController extends AbstractController
         $pjt = $request->get('projet');
 
 
+        //...................................................  formulaire 'search' dans le controller
+        $defaultData = ['message' => 'Votre séletion'];
+        $form3 = $this->createFormBuilder($defaultData)
+            ->add('cible', TextType::class)
+            ->add('valider', SubmitType::class)
+            ->getForm();
+
+        $form3->handleRequest($request);
+
+        if ($form3->isSubmitted() && $form3->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $value= $request->getPayload()->get('cible');
+            dump("$value");
+            $data = $form3->getData();
+            dump($data);
+        }
+
+
+
+
+
         if ($pjt) {
 
             //........................................................ page recherche de Taches/ id projet
@@ -156,6 +178,7 @@ class ArtisanController extends AbstractController
             if ($idProjet) {
                 $tacheList = $tacheRepository->findPjtByIdPjt($idProjet); //dql depuis projet
             }
+
             //........................................................ page recherche de Projet/ id artisan
             $idArtisan=$artisan->getId();
             $projetList=$projetRepository-> findProjetByNomClient($idArtisan); //dql depuis document
@@ -163,17 +186,25 @@ class ArtisanController extends AbstractController
 
             //...................................................  recherche de Projet/  formulaire 'search'
 
+
+
+
+
+
+
             $search = new SearchFormType();
             $formSearch = $this->createForm(SearchFormType::class, $search);
             $formSearch->handleRequest($request);
-
+            $search = $formSearch->get('searchValue')->getData();
+            dump("ta mere");
+            dump($search);
             if($formSearch->isSubmitted() && $formSearch->isValid()){
-                $search = $formSearch->get('searchValue')->getData();
+                $search = $formSearch->get('searchValue')->getData();               ;
                 dump("ta mere");
                 dump($search);
 //                return $this->redirectToRoute('app_artisan_accueilPjt');
             }
-            dump($search);
+
 //                // loop in array of array + test itération/ valeur de $search
 //                $resultList = [];
 //                foreach ($projetList as $list){
@@ -195,6 +226,7 @@ class ArtisanController extends AbstractController
                 'listePjt'=>$projetList,
                 'listeTaches'=>$tacheList,
                 'formSearch'=>$formSearch,
+                'form3'=>$form3,
 //                'search'=>$value,
                 'mavaleur'=>$search,
 
