@@ -11,6 +11,7 @@ use App\Form\SearchFormType;
 use App\Repository\DocumentsRepository;
 use App\Repository\ProjetRepository;
 use App\Repository\TacheRepository;
+use App\Service\searchFunction;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,6 +27,14 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/artisan_accueil')]
 class ArtisanController extends AbstractController
 {
+
+ // injection du service searchFunction -> lorsque la config service yaml sera possible
+    public function __construct(searchFunction $searchFunction)
+    {
+        $this->searchFunction = $searchFunction;
+    }
+
+
     // ..............................................................................................  accueil  artisan'
     #[Route('/{id}', name: 'app_artisan_accueil', methods: ['GET'])]
     public function index(Artisan $artisan): Response
@@ -151,6 +160,7 @@ class ArtisanController extends AbstractController
         if ($pjt) {
 
             //.................................................. page recherche de Taches/ id projet
+
             $idProjet = $request->get('value');
             $tacheList = [];
 
@@ -159,17 +169,21 @@ class ArtisanController extends AbstractController
             }
 
             //................................................. page recherche de Projet/ id artisan
+
             $idArtisan = $artisan->getId();
             $projetList = $projetRepository->findProjetByNomClient($idArtisan); //dql depuis document
 
 
             //....................................  recherche de Projet/  searchValue:: Class 'search'
+
             $search = new SearchFormType();
             $formSearch = $this->createForm(SearchFormType::class, $search);
             $formSearch->handleRequest($request);
             if ($formSearch->isSubmitted() && $formSearch->isValid()) {
                 $search = $formSearch->get('searchValue')->getData();
-                dump($search);
+                $getResult=$this->searchFunction->getResultSearch($projetList,$search);
+                //searchFunction($search, $projetList);
+                dump($getResult);
             }
 
             return $this->render('pages/espace_artisan.html.twig', [
@@ -187,19 +201,6 @@ class ArtisanController extends AbstractController
         ]);
     }
 
-
-//                // loop in array of array + test itération/ valeur de $search
-//                $resultList = [];
-//                foreach ($projetList as $list){
-//                    $resultList = array_filter($list, function ($v, $k) use ($search) {
-//                        return $k == $search;
-//                    });
-//                }
-//                dump($resultList);
-//                //affactation du tableau filtré avec la valeur $search à $projetList
-//                if ($resultList) {
-//                    $projetList = $resultList;
-//                }
 
 //.........................................................................................  coordonnee form changement
     #[Route('{id}/change_coordonnees/', name: 'app_artisan_change_coordonnees', methods: ['GET', 'POST'])]

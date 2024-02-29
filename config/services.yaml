@@ -11,6 +11,15 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
+
+
+    App\Service\searchFunction:
+        arguments:
+            $projetList
+            $search
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
 #    countMsg:
 #        class: App\Service\countMsg
 #        autowire: true      # Automatically injects dependencies in your services.
