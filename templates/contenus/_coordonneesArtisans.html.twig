@@ -33,9 +33,9 @@
                 </div>
             </div>
             <div class="row mt-3">
-                        <div class="col-xl-4 col-lg-4 ">
-                            <!--                SERVICE 1              -->
-                            <div class="services-one__single" style="min-height:450px">
+                        <div class="col-xl-4 col-lg-4 h-100">
+                            <!--                Entreprise              -->
+                            <div class="services-one__single" style="height:1200px">
                                 <h2 class="services-one__title">
                                     <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.raisonSociale|striptags|default('77') }}</a>
                                 </h2>
@@ -44,6 +44,13 @@
                                 <h2 class="services-one__title mt-5" style="color: {{ theme.theme.couleurActuelleBg }}"><a style="color: {{ theme.theme.couleurActuelleBg }}"> {{ artisans.nomEtablissement|striptags|default('eurl...') }} </a>
                                 </h2>
                                 <p class="services-one__text">Etablissement</p>
+
+                                <h2 class="services-one__title mt-5">
+                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.siret|striptags|default('siret') }}</a>
+                                </h2>
+                                <p class="services-one__text">SIRET</p>
+
+                                <p class="row border-bottom mt-5"></p>
 
                                 <h2 class="odometer mt-5" style="color: {{ theme.theme.couleurActuelleBg }}"
                                     data-count="{{artisans.numeroRue|striptags|default('77') }}">00</h2>
@@ -70,322 +77,68 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-4 col-lg-4 ">
+                        <!--      Info gérant    -->
+                        <div class="col-xl-4 col-lg-4 h-100 ">
+                            <div class="services-one__single" style="height:1200px">
 
-
-                            <!--                SERVICE 2              -->
-                            <div class="services-one__single" style="min-height:450px">
                                 <h2 class="services-one__title">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}"
-                                        class="col-12"> {{ artisans.prenomGerant|striptags|default('praenomen') }}
-                                    </a>
+                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.prenomGerant|striptags|default('praenomen')}}</a>
                                 </h2>
-                                <p class="services-one__text  mt-5"> Prénom</p>
+                                <p class="services-one__text">Prénom</p>
 
-
-
-                                <h2 style="color: {{ theme.theme.couleurActuelleBg }}"><a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.nomGerant|striptags|default('nom gérant') }}</a>
+                                <h2 class="services-one__title mt-5">
+                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.nomGerant|striptags|default('nom gérant') }}</a>
                                 </h2>
-                                <p class="counter-one__text">nom du gérant </p>
+                                <p class="services-one__text">nom du gérant</p>
 
-
-
-                                <h2 class="services-one__title" style="color: {{ theme.theme.couleurActuelleBg }}"> <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.siret|striptags|default('siret') }}</a>
+                                <h2 class="services-one__title mt-5">
+                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.dateNaissance|date("m/d/Y")|default('01 janvier 1972') }}</a>
                                 </h2>
-                                <p class="counter-one__text">SIRET</p>
+                                <p class="services-one__text">Date de naissance</p>
 
-                                <h2 class="services-one__title" style="color: {{ theme.theme.couleurActuelleBg }}">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}"> {{ artisans.dateNaissance|date("m/d/Y")|default('01 janvier 1972') }}</a>
-                                </h2>
-                                <p>Date de naissance</p>
-
-
-
-
-
-
-
-
-
-
-
-                                <div class="services-one__icon"
-                                     style="width:350px; display: flex; flex-direction: row; justify-content: space-between">
-
-                                    <span class="icon-buildings"
-                                          style="vertical-align: bottom ; margin-top: auto"></span>
+                                <div class="services-one__icon">
+                                    <span class="icon-buildings"></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-4 ">
-                            <!--                SERVICE 3              -->
-                            <div class="services-one__single" style="min-height:450px">
-                                <h2 class="services-one__title"
-                                    style="color: {{ theme.theme.couleurActuelleBg }}"> <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.telPortable|striptags|default('03.84....') }}</a></h2>
-                                <p class="services-one__text  mt-5">Téléphone portable</p>
 
-                                <h2 class="services-one__title"><a style="color: {{ theme.theme.couleurActuelleBg }}"> {{ artisans.telFixe|striptags|default('06 07....') }}</a></h2>
-                                <p class="services-one__text  mt-5">Téléphone fixe</p>
-
-                                <h2 class="services-one__title"> <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.fax|striptags|default('grande rue') }}</a>
+                        <!--    Coordonnées gérant et entreprise    -->
+                        <div class="col-xl-4 col-lg-4 h-100">
+                            <div class="services-one__single" style="height:1200px">
+                                <h2 class="services-one__title">
+                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.telPortable|striptags|default('06.07....') }}</a>
                                 </h2>
-                                <p class="services-one__text  mt-5">Fax</p>
+                                <p class="services-one__text">Téléphone portable</p>
 
-                                <h2 class="services-one__title"><a style="color: {{ theme.theme.couleurActuelleBg }}"> {{ artisans.user.email|striptags|default('...@aol.fr') }}</a></h2>
-                                <p class="services-one__text  mt-5">email</p>
+                                <h2 class="services-one__title mt-5">
+                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.telFixe|striptags|default('03 84....') }}</a>
+                                </h2>
+                                <p class="services-one__text">Téléphone fixe</p>
 
+                                <h2 class="services-one__title mt-5">
+                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.fax|striptags|default('n°fax') }}</a>
+                                </h2>
+                                <p class="services-one__text">Fax</p>
 
-
-                                <h2 class="services-one__title" style="color: {{ theme.theme.couleurActuelleBg }}"><a style="color: {{ theme.theme.couleurActuelleBg }}"> {{ artisans.nomRue|striptags|default('grande rue') }}</a></h2>
-                                    <p class="counter-one__text">rue</p>
-
-
-                                        <h2 class="services-one__title" style="color: {{ theme.theme.couleurActuelleBg }}">
-                                            <a style="color: {{ theme.theme.couleurActuelleBg }}"> {{ artisans.localite|striptags|default('grande rue') }}</a>
-                                        </h2>
-                                        <p class="services-one__text  mt-5">Localité</p>
-
-
+                                <h2 class="services-one__title mt-5">
+                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.user.email|striptags|default('...@aol.fr') }}</a>                                </h2>
+                                <p class="services-one__text">Email</p>
 
                                 <div class="services-one__icon">
                                     <span class="icon-house-design"></span>
                                 </div>
                             </div>
                         </div>
-{#                    {% endif %}#}
-{#                {% endfor %}#}
+            </div>
+        </div>
+        <div class="d-flex justify-content-end  bd-highlight mt-5 m-2">
+            <div>
+                <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)"
+                   class=" text-center portfolio-details__info-list list-unstyled alert-info"
+                   href="{{ path('app_artisan_change_coordonnees',{ 'id': artisans.id}) }}">Corriger<span class="m-2">>> </span>
+                </a>
             </div>
         </div>
     </section>
-
-
-<!-- actuel  -->
-        <section class="border">
-            <div class="container">
-{#                <div class="row">#}
-{#                    <div class="bg-dark mt-5 mb-5">#}
-{#                        <div class="row">#}
-{#                            {% for message in app.flashes('success') %}#}
-{#                                <div id="flash-message" class="alert alert-success">#}
-{#                                    {{ message }}#}
-{#                                    <button id="flashbtn" type="button" class="close">Fermer</button>#}
-{#                                </div>#}
-{#                            {% endfor %}#}
-{#                        </div>#}
-
-{#                        <!-- 1ere ligne -->#}
-{#                        <div class="row bg-light">#}
-
-{#                            <!-- 1 gauche sup -->#}
-{#                            <div class="d-flex row col-3 justify-content-left m-2 "#}
-{#                                 style=" background-color:whitesmoke">#}
-{#                                <ul class="pricing-one__checks-list list-unstyled pt-3">#}
-{#                                    <li class="p-2">#}
-{#                                        <div class="pricing-one__checks-text-box">#}
-{#                                            <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.raisonSociale|striptags|default('77') }}</h3>#}
-{#                                            <p class="counter-one__text">Raison sociale</p>#}
-{#                                        </div>#}
-{#                                    </li>#}
-
-{#                                    <li class="p-2">#}
-{#                                        <div class="pricing-one__checks-text-box">#}
-{#                                            <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.nomGerant|striptags|default('grande rue') }}</h3>#}
-{#                                            <p class="counter-one__text">nom</p>#}
-{#                                        </div>#}
-{#                                    </li>#}
-{#                                </ul>#}
-{#                            </div>#}
-
-{#                            <!-- 1 centre sup -->#}
-{#                            <div class="d-flex row col-4 justify-content-left  m-2"#}
-{#                                 style=" background-color:whitesmoke">#}
-
-{#                                <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">#}
-{#                                    <li class="p-2">#}
-{#                                        <div class="pricing-one__checks-text-box">#}
-{#                                            <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.nomEtablissement|striptags|default('grande rue') }}</h3>#}
-{#                                            <p class="counter-one__text">rue</p>#}
-{#                                        </div>#}
-{#                                    </li>#}
-
-{#                                    <li class="p-2">#}
-{#                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}"#}
-{#                                            class="col-12"> {{ artisans.prenomGerant|striptags|default('praenomen') }}#}
-{#                                        </h3>#}
-{#                                        <p class="counter-one__text">Prénom</p>#}
-{#                                    </li>#}
-{#                                </ul>#}
-{#                            </div>#}
-
-{#                            <div class="d-flex row col-4 justify-content-left m-2 "#}
-{#                                 style=" background-color:whitesmoke">#}
-{#                                <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">#}
-{#                                    <li class="p-2">#}
-{#                                        <div class="pricing-one__checks-text-box">#}
-{#                                            <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.siret|striptags|default('siret') }}</h3>#}
-{#                                            <p class="counter-one__text">SIRET</p>#}
-{#                                        </div>#}
-{#                                    </li>#}
-
-{#                                    <li class="p-2">#}
-{#                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}"#}
-{#                                            class="col-12"> {{ artisans.dateNaissance|date("m/d/Y")|default('01 janvier 1972') }}#}
-{#                                        </h3>#}
-{#                                        <p>Date de naissance</p>#}
-{#                                    </li>#}
-{#                                </ul>#}
-{#                            </div>#}
-{#                        </div>#}
-
-{#                        <!-- 2eme ligne -->#}
-{#                        <div class="row bg-light">#}
-
-{#                            <div class="col-5 d-flex justify-content-left row m-2" style="background-color:whitesmoke">#}
-
-{#                                <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">#}
-{#                                    <li>#}
-{#                                        <div class="pricing-one__checks-icon">#}
-{#                                            <i class="icon-tick"></i>#}
-{#                                        </div>#}
-
-{#                                        <div class="pricing-one__checks-text-box">#}
-{#                                            <h3 class="pricing-one__checks-title"#}
-{#                                                style="color: {{ theme.theme.couleurActuelleBg }}"> {{ artisans.telPortable|striptags|default('03.84....') }}</h3>#}
-{#                                            <p class="pricing-one__checks-text">Téléphone portable</p>#}
-{#                                        </div>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                        <div class="pricing-one__checks-icon">#}
-{#                                            <i class="icon-tick"></i>#}
-{#                                        </div>#}
-
-{#                                        <div class="pricing-one__checks-text-box">#}
-{#                                            <h3 class="pricing-one__checks-title"> {{ artisans.telFixe|striptags|default('06 07....') }}</h3>#}
-{#                                            <p class="pricing-one__checks-text">Téléphone fixe</p>#}
-{#                                        </div>#}
-{#                                    </li>#}
-{#                                </ul>#}
-{#                            </div>#}
-
-{#                            <div class="col-5 d-flex justify-content-left row m-2" style="background-color:whitesmoke">#}
-
-{#                                <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">#}
-
-
-{#                                    <li>#}
-{#                                        <div class="pricing-one__checks-icon">#}
-{#                                            <i class="icon-tick"></i>#}
-{#                                        </div>#}
-
-{#                                        <div class="pricing-one__checks-text-box">#}
-{#                                            <h3 class="col-12"> {{ artisans.fax|striptags|default('grande rue') }}#}
-{#                                            </h3>#}
-{#                                            <p class="counter-one__text">Fax</p>#}
-{#                                        </div>#}
-{#                                    </li>#}
-
-
-{#                                    <li>#}
-{#                                        <div class="pricing-one__checks-icon">#}
-{#                                            <i class="icon-tick"></i>#}
-{#                                        </div>#}
-
-{#                                        <div class="pricing-one__checks-text-box">#}
-{#                                            <h3 class="pricing-one__checks-title"> {{ artisans.user.email|striptags|default('...@aol.fr') }}</h3>#}
-{#                                            <p class="pricing-one__checks-text">email</p>#}
-{#                                        </div>#}
-{#                                    </li>#}
-{#                                </ul>#}
-{#                            </div>#}
-{#                        </div>#}
-
-
-{#                    </div>#}
-
-{#                    <!-- 3eme ligne -->#}
-
-{#                    <div class="row bg-light m-0">#}
-
-{#                        <div class="d-flex row col-4 justify-content-left  m-2 "#}
-{#                             style=" background-color:whitesmoke">#}
-{#                            <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">#}
-{#                                <li>#}
-{#                                    <div class="pricing-one__checks-icon">#}
-{#                                        <i class="icon-tick"></i>#}
-{#                                    </div>#}
-
-{#                                    <div class="pricing-one__checks-text-box">#}
-{#                                        <h3 class="odometer" style="color: {{ theme.theme.couleurActuelleBg }}"#}
-{#                                            data-count="{{ artisans.numeroRue|striptags|default('77') }}">00</h3>#}
-{#                                        <p class="counter-one__text">n°</p>#}
-{#                                    </div>#}
-{#                                </li>#}
-{#                                <li>#}
-{#                                    <div class="pricing-one__checks-icon">#}
-{#                                        <i class="icon-tick"></i>#}
-{#                                    </div>#}
-
-{#                                    <div class="pricing-one__checks-text-box">#}
-{#                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.codePostal|striptags|default('grande rue') }}</h3>#}
-{#                                        <p class="counter-one__text">code postal</p>#}
-{#                                    </div>#}
-{#                                </li>#}
-{#                            </ul>#}
-{#                        </div>#}
-{#                        <!-- 1 centre sup -->#}
-{#                        <div class="d-flex row col-4 justify-content-left  m-lg-3 "#}
-{#                             style=" background-color:whitesmoke">#}
-{#                            <ul class="pricing-one__checks-list list-unstyled" style="padding: 5%">#}
-{#                                <li>#}
-{#                                    <div class="pricing-one__checks-icon">#}
-{#                                        <i class="icon-tick"></i>#}
-{#                                    </div>#}
-
-{#                                    <div class="pricing-one__checks-text-box">#}
-{#                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.nomRue|striptags|default('grande rue') }}</h3>#}
-{#                                        <p class="counter-one__text">rue</p>#}
-{#                                    </div>#}
-{#                                </li>#}
-
-{#                                <li>#}
-{#                                    <div class="pricing-one__checks-icon">#}
-{#                                        <i class="icon-tick"></i>#}
-{#                                    </div>#}
-
-{#                                    <div class="pricing-one__checks-text-box">#}
-{#                                        <h3 style="color: {{ theme.theme.couleurActuelleBg }}"#}
-{#                                            class="col-12"> {{ artisans.localite|striptags|default('grande rue') }}#}
-{#                                        </h3>#}
-{#                                        <p class="counter-one__text">Localité</p>#}
-{#                                    </div>#}
-{#                                </li>#}
-{#                            </ul>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-
-                <div class="row-cols-6 d-flex flex-row-reverse bd-highlight mt-5 mb-5">
-                    {#            <div> #}
-                    {#                <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)" #}
-                    {#                   class="text-center portfolio-details__info-list list-unstyled alert-info" #}
-                    {#                   href="{{ path('app_artisan_accueil',{ 'id': artisans.id}) }}"> <span class="m-2"><<</span>Retour</a> #}
-                    {#            </div> #}
-
-                    <div>
-                        <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)"
-                           class=" text-center portfolio-details__info-list list-unstyled alert-info"
-                           href="{{ path('app_artisan_change_coordonnees',{ 'id': artisans.id}) }}">Corriger<span
-                                    class="m-2">>> </span> </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-
-
 
 {% endblock %}

@@ -156,9 +156,9 @@
             {% endif %}
 
 
-            {#           A voir : error template  {% if not ... %}#}
-            {#                  <div class="alert-info"> rien à voir</div>#}
-            {#                  {% endif %}#}
+            {#           A voir : error template  {% if not ... %} #}
+            {#                  <div class="alert-info"> rien à voir</div> #}
+            {#                  {% endif %} #}
 
             {#           A voir : is granted          <div>Vous n'avez pas accès à cet espace - contactez l'administrateur</div> #}
             {#                  {% endif %}    {{ is_granted() }} #}
@@ -173,21 +173,21 @@
         </div>
         </section>
     {% endblock %}
-    <!--                                                                        GOOGLE MAP                                                                                  -->
-    <section class="contact-page-google-map w-100 align-items-center m-auto  mb-5">
-        <div class="container">
-            <div class="row">
-                <div class=" col-2"></div>
+    <!--          GOOGLE MAP        -->
+    <section class="contact-page-google-map mb-5">
+        <div class="container d-flex justify-content-center">
 
-                <div class="col bg-light border-top p-5 mt-5 w-100 ">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25673.90316580553!2d6.038971473616049!3d47.43852811122367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47929a78f73fbb87%3A0x214ef58707775bbf!2sSur%20la%20Vigne%2C%2070190%20Tr%C3%A9silley!5e0!3m2!1sfr!2sfr!4v1700909448497!5m2!1sfr!2sfr"
-                            width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
-                            class="contact-page-google-map__one" allowfullscreen>
-                    </iframe>
-                </div>
+            <div class=" col-2"></div>
+
+            <div class="col bg-light border-top p-5 mt-5">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25673.90316580553!2d6.038971473616049!3d47.43852811122367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47929a78f73fbb87%3A0x214ef58707775bbf!2sSur%20la%20Vigne%2C%2070190%20Tr%C3%A9silley!5e0!3m2!1sfr!2sfr!4v1700909448497!5m2!1sfr!2sfr"
+                        width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="contact-page-google-map__one" allowfullscreen>
+                </iframe>
             </div>
         </div>
-    </section>    <!--                                                                        fin Google Map                                                                 -->
+    </section>
+    <!--   fin Google Map    -->
 
 {% endblock %}
