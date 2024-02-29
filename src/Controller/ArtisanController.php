@@ -28,11 +28,12 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class ArtisanController extends AbstractController
 {
 
- // injection du service searchFunction -> lorsque la config service yaml sera possible
-    public function __construct(searchFunction $searchFunction)
-    {
-        $this->searchFunction = $searchFunction;
-    }
+ // injection du service searchFunction -> lorsque la config service yaml sera corrigée
+    // Cannot autowire service "App\Service\searchFunction": argument "$projetList" of method "__construct()" is type-hinted "array", you should configure its value explicitly.
+//    public function __construct(searchFunction $searchFunction)
+//    {
+//        $this->searchFunction = $searchFunction;
+//    }
 
 
     // ..............................................................................................  accueil  artisan'
@@ -149,7 +150,7 @@ class ArtisanController extends AbstractController
     }
 
 
- //............................................v finale bugg......................................  page generale projet
+ //...............................................................................................  page generale projet
     #[Route('/{id}/{projet}/{value}', name: 'app_artisan_accueilPjt', methods: ['GET', 'POST'])]
     public function indexProjet(Artisan $artisan,ProjetRepository $projetRepository,TacheRepository $tacheRepository,Request $request): Response
     {
@@ -181,10 +182,43 @@ class ArtisanController extends AbstractController
             $formSearch->handleRequest($request);
             if ($formSearch->isSubmitted() && $formSearch->isValid()) {
                 $search = $formSearch->get('searchValue')->getData();
-                $getResult=$this->searchFunction->getResultSearch($projetList,$search);
-                //searchFunction($search, $projetList);
-                dump($getResult);
-            }
+                // utilisation du service ci-dessous qd il fonctionnera
+                //$getResult=$this->searchFunction->getResultSearch($projetList,$search);
+
+                //  loop in array of array + test itération/ valeur de $search
+//                dump($projetList);
+//                foreach($projetList as $row => $value){
+//                    $result=array_merge($projetList,$value);
+//                    dd($result);
+//                    foreach($value as $row2 => $value2)
+//                        dump($value2);
+//                }
+                foreach ($projetList as  $cle => $valeur) {
+                    dump($valeur);
+                    foreach ($valeur as $cle2 => $valeur2) {
+                        dump($valeur2);
+//                        dump($search);
+                        $resultList = array_filter($valeur2, function ($k,$v) use ($search) {
+                           return   $k == $search;
+                        });
+                        dump($resultList);
+                    }
+                }
+
+//                $resultList = [];
+//                foreach ($projetList as $list){
+//                    $resultList = array_filter($list, function ($v, $k) use ($search) {
+//                        return $k == $search;
+//                    });
+                }
+                // la liste filtrée est donc $resultList
+
+//                //affactation du tableau filtré avec la valeur $search à $projetList
+//                if ($resultList) {
+//                    $projetList = $resultList;
+//                }
+
+
 
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
