@@ -23,6 +23,7 @@
         </thead>
 
         <!--  data-bs-toggle="modal" implementé en js et sorti de la balise <a> - erreur generation url avec paramètre  -->
+
         <tbody>
         {% for key, pjt in listePjt %}
         <tr>
@@ -57,7 +58,7 @@
                 <button type="button" class="btn-close btnModal" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                {% if listeTaches is not empty %}
+{#                {% if listeTaches is defined %}#}
                     {% for listeTaches in listeTaches %}
                         <ul>
                             <li>{{ listeTaches.titre }}</li>
@@ -69,8 +70,8 @@
                             {#    <li>{{ listeTaches.dateAcompte }}</li> #}
                         </ul>
                     {% endfor %}
-                {% endif %}
-                {#                </div> #}
+{#                {% endif %}#}
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btnModal" data-bs-dismiss="modal">Close</button>
@@ -86,6 +87,7 @@
     <h2 class="mb-4">Cards des projets </h2>
     <div class="container" style="height:800px">
         <div class="row align-content-around">
+{#            {%if listePjt is not empty %}#}
             {% for key, pjt2 in listePjt %}
                 <div class="col-sm-4 " style="height: 350px; object-fit: contain">
                     <div class="card mt-3" >
@@ -115,6 +117,7 @@
                     </div>
                 </div>
             {% endfor %}
+{#            {% endif %}#}
         </div>
     </div>
 </section>

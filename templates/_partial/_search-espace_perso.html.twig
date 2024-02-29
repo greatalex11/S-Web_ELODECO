@@ -1,0 +1,24 @@
+
+   <!-- search from -->
+    <div class="container">
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col">
+                <div class="form-control">
+                    {{ form_start(formSearch) }}
+                    <i class="fa fa-search-location"></i>
+                    {{ form_label(formSearch, 'Saisir un lieu ou un nom de client') }}
+                    {{ form_widget(formSearch.searchValue) }}
+                    {#                            <small>{{ form_help(formSearch, 'aide toi') }}</small>#}
+                    <div class="contact-page__input-box mt-3">
+                        {{ form_widget(formSearch.rechercher, {'attr': {'class': "thm-btn contact-page__btn"}}) }}
+                    </div>
+                    {#                        {{ form_widget(formSearch.rechercher,{'attr': {'class': "thm-btn contact-page__btn"}}, {'label': 'Envoyer le message'})) }}#}
+                    <div class="form-error">
+                        {#                    {{ form_errors(formSearch, 'erreur de saisie') }}#}
+                    </div>
+                    {{ form_end(formSearch) }}
+                </div>
+            </div>
+        </div>
+    </div>

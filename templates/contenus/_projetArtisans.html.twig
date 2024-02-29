@@ -1,10 +1,36 @@
 
-
 {% block title %}Elo Deco - espace Artisan - liste des projets{% endblock %}
+
 {% block content %}
 
     <!-- template permettant de séectionner la liste des projets et de faire des recherches -->
-<section class="mt-2 row justify-content-center m-auto" style="min-height: 35%">
+    <section class="mt-2 row justify-content-center m-auto" style="min-height: 35%">
+
+        {% block search %}
+            {% include('_partial/_search-espace_perso.html.twig') with {'formSearch': formSearch} %}
+        {% endblock search %}
+
+        <pre>
+            {#  {{ dump(mavaleur) }} #}
+            {#  {{ dump(search) }}  #}
+        </pre>
+
+        <!-- rendu du tableau de bord -->
+        {% block list %}
+            {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
+                {% include "contenus/_listePjtArtisans.html.twig" with {'listePjt': listePjt} %}
+            {% endif %}
+        {% endblock list %}
+        {#         <div class="alert-info"> Documents indisponibles pour le moment</div> #}
+        {#        {% endif %} #}
+
+    </section>
+
+{% endblock %}
+
+
+
+
 
 
 <!--   retrait du selecteur - utile pour un update des taches par l'artisan?  -->
@@ -14,55 +40,6 @@
 {#            Sélection projet#}
 {#  'search':valeur      </a>#}
 {#    </div>#}
-
-    <div class="container">
-        <div class="row">
-            <div class="col-8"></div>
-            <div class="col">
-                <div class="form-control">
-                    <i class="fa fa-search-location"></i>
-                    {{ form_label(formSearch, 'Saisir un lieu ou un nom de client') }}
-                    {{ form_widget(formSearch.searchValue) }}
-{#                            <small>{{ form_help(formSearch, 'aide toi') }}</small>#}
-                    <div class="contact-page__input-box mt-3">
-                        {{ form_widget(formSearch.rechercher, {'attr': {'class': "thm-btn contact-page__btn"}}) }}
-                    </div>
-{#                        {{ form_widget(formSearch.rechercher,{'attr': {'class': "thm-btn contact-page__btn"}}, {'label': 'Envoyer le message'})) }}#}
-                    <div class="form-error">
-{#                    {{ form_errors(formSearch, 'erreur de saisie') }}#}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<pre>
-{#    {{ dump(mavaleur) }}#}
-</pre>
-{#{{ dump(search) }}#}
-
-    {% block list %}
-        <!-- rendu du tableau de bord -->
-        {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
-            {% include "contenus/_listePjtArtisans.html.twig" with {'listePjt': listePjt} %}
-        {% endif %}
-    {% endblock list %}
-    {#         <div class="alert-info"> Documents indisponibles pour le moment</div> #}
-    {#        {% endif %} #}
-</section>
-
-
-    {{ form_widget(form3)}}
-
-{% endblock %}
-
-
-
-
-
-
-
-
 
 
 
