@@ -3,17 +3,12 @@
 
 {% block content %}
 
-    <!-- template permettant de séectionner la liste des projets et de faire des recherches -->
+    <!-- template permettant de sélectionner la liste des projets et de faire des recherches -->
     <section class="mt-2 row justify-content-center m-auto" style="min-height: 35%">
 
         {% block search %}
             {% include('_partial/_search-espace_perso.html.twig') with {'formSearch': formSearch} %}
         {% endblock search %}
-
-        <pre>
-            {#  {{ dump(mavaleur) }} #}
-            {#  {{ dump(search) }}  #}
-        </pre>
 
         <!-- rendu du tableau de bord -->
         {% block list %}
@@ -23,7 +18,6 @@
         {% endblock list %}
         {#         <div class="alert-info"> Documents indisponibles pour le moment</div> #}
         {#        {% endif %} #}
-
     </section>
 
 {% endblock %}

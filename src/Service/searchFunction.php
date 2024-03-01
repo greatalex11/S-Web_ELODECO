@@ -29,16 +29,4 @@ class searchFunction
 
 
 
-//                // loop in array of array + test itération/ valeur de $search
-//                $resultList = [];
-//                foreach ($projetList as $list){
-//                    $resultList = array_filter($list, function ($v, $k) use ($search) {
-//                        return $k == $search;
-//                    });
-//                }
-//                dump($resultList);
-//                //affactation du tableau filtré avec la valeur $search à $projetList
-//                if ($resultList) {
-//                    $projetList = $resultList;
-//                }
 

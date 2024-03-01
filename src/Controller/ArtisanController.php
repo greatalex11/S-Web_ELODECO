@@ -49,7 +49,7 @@ class ArtisanController extends AbstractController
 
     // ...........................................DOCUMENTS....................................... page accueil document
 
-    #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET'])]
+    #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET', 'POST'])]
     public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository ,Request $request): Response
     {
 ////      $polo=['id'=>$artisans->getId(), 'nom'=>$artisans->getNomGerant(), '$prenom'=>$artisans->getPrenomGerant()];
@@ -61,6 +61,13 @@ class ArtisanController extends AbstractController
        if ($doc) {
             $idArtisan=$artisan->getId();
             $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
+
+           $search = new SearchFormType();
+           $formSearch = $this->createForm(SearchFormType::class, $search);
+           $formSearch->handleRequest($request);
+           if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+               $search = $formSearch->get('searchValue')->getData();
+           }
 
 //            $form2 = $this->createFormBuilder($documents) //$form2 doesn't exist dans documentLoading
 //                ->add('size')
@@ -74,6 +81,7 @@ class ArtisanController extends AbstractController
                 'id' => $id,
                 'artisans' => $artisans,
                 'documentIdArtisan'=>$documentIdArtisan,
+                'formSearch'=>$formSearch,
 //                'form2'=>$form2,
             ] );
         }
