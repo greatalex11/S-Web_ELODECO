@@ -190,9 +190,9 @@ class ArtisanController extends AbstractController
                 //  loop in array of array + test itération/ valeur de $search
                 // version avec Objet de Class
 
-                foreach ($projetList as $item) {
-                    dump($item);
-                    foreach ($item as $k => $field) {
+                foreach ($projetList as $key=> $value) {
+                    dump($value);
+                    foreach ($value as $k => $field) {
                         // Vérifie si $field est une chaîne de caractères
                         if (is_string($field) && strpos($field, $search) !== FALSE) {
                             return $field;
