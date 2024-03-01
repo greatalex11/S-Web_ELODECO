@@ -182,34 +182,26 @@ class ArtisanController extends AbstractController
             $formSearch->handleRequest($request);
             if ($formSearch->isSubmitted() && $formSearch->isValid()) {
                 $search = $formSearch->get('searchValue')->getData();
+
                 // utilisation du service ci-dessous qd il fonctionnera
                 //$getResult=$this->searchFunction->getResultSearch($projetList,$search);
 
+
                 //  loop in array of array + test itération/ valeur de $search
-//                dump($projetList);
-//                foreach($projetList as $row => $value){
-//                    $result=array_merge($projetList,$value);
-//                    dd($result);
-//                    foreach($value as $row2 => $value2)
-//                        dump($value2);
-//                }
-                foreach ($projetList as  $cle => $valeur) {
-                    dump($valeur);
-                    foreach ($valeur as $cle2 => $valeur2) {
-                        dump($valeur2);
-//                        dump($search);
-                        $resultList = array_filter($valeur2, function ($k,$v) use ($search) {
-                           return   $k == $search;
-                        });
-                        dump($resultList);
+                // version avec Objet de Class
+
+                foreach ($projetList as $item) {
+                    dump($item);
+                    foreach ($item as $k => $field) {
+                        // Vérifie si $field est une chaîne de caractères
+                        if (is_string($field) && strpos($field, $search) !== FALSE) {
+                            return $field;
+                        }
+                        dump($field);
                     }
                 }
 
-//                $resultList = [];
-//                foreach ($projetList as $list){
-//                    $resultList = array_filter($list, function ($v, $k) use ($search) {
-//                        return $k == $search;
-//                    });
+
                 }
                 // la liste filtrée est donc $resultList
 
