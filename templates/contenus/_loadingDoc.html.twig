@@ -3,18 +3,16 @@
 
 {% block content %}
 {#  {% if  documentIdArtisan is defined %}#}
-    <div class="alert-primary bg-light m-5">
-        <h2>Envoyer vos documents</h2>
+{#    <div class="alert-primary bg-light m-5">#}
+{#        <h2>Envoyer vos documents</h2>#}
 {#        <div class="col-md-6">#}
-{#            {{ form_row(form2, {#}
-{#                label: 'TitreDefault',#}
-{#                'attr': {'class': 'form-control'}#}
-{#            }) }}#}
+{#            {{ form_row(formLoadDoc.documentFiles}}#}
 {#        </div>#}
 {#{{ dump(form2.documentsFile) }}#}
-    {% if formLoadDoc is defined %}
-    {{ dump(formLoadDoc) }}
-    {% endif %}
+    {{ dump(formLoadDoc.document) }}
+{#    {% if formLoadDoc is defined %}#}
+{#    {{ dump(formLoadDoc) }}#}
+{#    {% endif %}#}
 {#        <div class="bg-light mt-xl-5">#}
 {#            {{ form(form2) }}#}
 {#            {{ form_widget(form2) }}#}

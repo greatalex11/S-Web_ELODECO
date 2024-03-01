@@ -29,12 +29,12 @@ class DocumentsController extends AbstractController
 
     //ajout document par l'artisan
     #[Route('/{id}/edit', name: 'app_documents_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Documents $document, EntityManagerInterface $entityManager, User $user): Response
+    public function edit(Request $request, Documents $document, EntityManagerInterface $entityManager): Response
     {
        $idRequest=$request->get('id');
-       $checkId=$user->getId();
-
-        if($idRequest==$checkId) {
+//       $checkId=$user->getId();
+//
+//        if($idRequest==$checkId) {
 
             $formLoadDoc = $this->createForm(DocumentsType::class, $document);
             $formLoadDoc->handleRequest($request);
@@ -46,24 +46,25 @@ class DocumentsController extends AbstractController
                 $this->addFlash('success', 'Votre document est bien enregistré');
             }
             // si l'utilisateur en cours = artisan
-            if ($user->getRoles() == "artisan") {
+//            if ($user->getRoles() == "artisan") {
                 return $this->redirectToRoute('app_artisan_accueilDoc', [
                     'id' => $idRequest,
+                    'doc'=>'doc',
                     'formLoadDoc'=>$formLoadDoc,
                 ]);
 
             // si l'utilisateur en cours = client
-            } else {
-                return $this->redirectToRoute('app_client_accueil', [
-                    'id' => $idRequest,
-                    'formLoadDoc'=>$formLoadDoc,
-                ]);
-            }
-        }
-            // throw $this->createAccessDeniedException
-            return $this->redirectToRoute('app_login', [
-                'id' => $idRequest
-            ]);
+//            } else {
+//                return $this->redirectToRoute('app_client_accueil', [
+//                    'id' => $idRequest,
+//                    'formLoadDoc'=>$formLoadDoc,
+//                ]);
+//            }
+//        }
+//            // throw $this->createAccessDeniedException
+//            return $this->redirectToRoute('app_login', [
+//                'id' => $idRequest
+//            ]);
         }
 
 
