@@ -7,6 +7,7 @@ use App\Entity\Documents;
 use App\Entity\User;
 use App\Form\ArtisanType;
 use App\Form\DocumentsType;
+use App\Form\LoaderVichType;
 use App\Form\SearchFormType;
 use App\Repository\DocumentsRepository;
 use App\Repository\ProjetRepository;
@@ -50,7 +51,7 @@ class ArtisanController extends AbstractController
     // ...........................................DOCUMENTS....................................... page accueil document
 
     #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET', 'POST'])]
-    public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository ,Request $request): Response
+    public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository,Request $request): Response
     {
 ////      $polo=['id'=>$artisans->getId(), 'nom'=>$artisans->getNomGerant(), '$prenom'=>$artisans->getPrenomGerant()];
 
@@ -69,20 +70,20 @@ class ArtisanController extends AbstractController
                $search = $formSearch->get('searchValue')->getData();
            }
 
-//            $form2 = $this->createFormBuilder($documents) //$form2 doesn't exist dans documentLoading
-//                ->add('size')
-//                ->add('typo')
-//                ->add('document')
-//                ->add('titreDefault')
-//                ->add('save', SubmitType::class, ['label' => 'Ajout document'])
-//                ->getForm();
+            $loader= new DocumentsType();
+            $form2 = $this->createFormBuilder(DocumentsType::class, (array)$loader);
+            //$form2->handleRequest($request);
+//           if ($form2->isSubmitted() && $form2->isValid()) {
+//               /** @var documents $documents */
+//               $brochureFile = $form2->get('documentsFile')->getData();
+//           }
 
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
                 'artisans' => $artisans,
                 'documentIdArtisan'=>$documentIdArtisan,
                 'formSearch'=>$formSearch,
-//                'form2'=>$form2,
+                'form2'=>$form2,
             ] );
         }
         return $this->render('pages/espace_artisan.html.twig', [

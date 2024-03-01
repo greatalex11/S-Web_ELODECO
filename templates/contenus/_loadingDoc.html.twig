@@ -5,14 +5,21 @@
 {#  {% if  documentIdArtisan is defined %}#}
     <div class="alert-primary bg-light m-5">
         <h2>Envoyer vos documents</h2>
-
-        <div class="bg-light mt-xl-5">
+{#        <div class="col-md-6">#}
+{#            {{ form_row(form2, {#}
+{#                label: 'TitreDefault',#}
+{#                'attr': {'class': 'form-control'}#}
+{#            }) }}#}
+{#        </div>#}
+{{ dump(form2.documentsFile) }}
+{#    {{ dump(form2) }}#}
+{#        <div class="bg-light mt-xl-5">#}
 {#            {{ form(form2) }}#}
 {#            {{ form_widget(form2) }}#}
 {#            {{ form_end(form2) }}#}
 {#            {{ dump(form2) }}#}
-        </div>
-    </div>
+{#        </div>#}
+{#    </div>#}
 
 {#{% endif %}#}
 {% endblock %}
