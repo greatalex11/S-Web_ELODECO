@@ -27,39 +27,55 @@ class DocumentsController extends AbstractController
         }
     }
 
-
-
-    //  ESSAI    implementation de la vue avec préparation de la variable dans le controller Artisan "app_artisan_documents"
-    #[Route('/{id}/projet', name: 'app_documents_show_projet', methods: ['GET'])]
-    public function show(Documents $document,EntityManagerInterface $entityManager, ProjetRepository $projetRepository): Response
-    {
-
-        return $this->render('_listeDocArtisans.html.twig');
-    }
-
-
-
-
-
+    //ajout document par l'artisan
     #[Route('/{id}/edit', name: 'app_documents_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Documents $document, EntityManagerInterface $entityManager): Response
-    { $id=$request->get('id');
-        $form = $this->createForm(DocumentsType::class, $document);
-        $form->handleRequest($request);
+    public function edit(Request $request, Documents $document, EntityManagerInterface $entityManager, User $user): Response
+    {
+       $idRequest=$request->get('id');
+       $checkId=$user->getId();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+        if($idRequest==$checkId) {
 
-            return $this->redirectToRoute('app_documents_index', [], Response::HTTP_SEE_OTHER);
+            $formLoadDoc = $this->createForm(DocumentsType::class, $document);
+            $formLoadDoc->handleRequest($request);
+            if ($formLoadDoc->isSubmitted() && $formLoadDoc->isValid()) {
+                $entityManager->flush();
+                $formLoadDoc->getData();
+                $entityManager->persist($document);
+                $entityManager->flush();
+                $this->addFlash('success', 'Votre document est bien enregistré');
+            }
+            // si l'utilisateur en cours = artisan
+            if ($user->getRoles() == "artisan") {
+                return $this->redirectToRoute('app_artisan_accueilDoc', [
+                    'id' => $idRequest,
+                    'formLoadDoc'=>$formLoadDoc,
+                ]);
+
+            // si l'utilisateur en cours = client
+            } else {
+                return $this->redirectToRoute('app_client_accueil', [
+                    'id' => $idRequest,
+                    'formLoadDoc'=>$formLoadDoc,
+                ]);
+            }
+        }
+            // throw $this->createAccessDeniedException
+            return $this->redirectToRoute('app_login', [
+                'id' => $idRequest
+            ]);
         }
 
-        return $this->render('documents/edit.html.twig', [
-            'document' => $document,
-            'form' => $form,
-        ]);
-    }
 
 
+//
+//    //  ESSAI    implementation de la vue avec préparation de la variable dans le controller Artisan "app_artisan_documents"
+//    #[Route('/{id}/projet', name: 'app_documents_show_projet', methods: ['GET'])]
+//    public function show(Documents $document,EntityManagerInterface $entityManager, ProjetRepository $projetRepository): Response
+//    {
+//
+//        return $this->render('_listeDocArtisans.html.twig');
+//    }
 
 
 

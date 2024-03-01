@@ -23,6 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[IsGranted('ROLE_ARTISAN')]
 #[Route('/artisan_accueil')]
@@ -57,34 +58,36 @@ class ArtisanController extends AbstractController
 
         $id=$artisan->getId();
         $artisans = $artisan;
-
         $doc = $request->get('doc');
-       if ($doc) {
-            $idArtisan=$artisan->getId();
-            $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
+        if ($doc) {
+           $idArtisan=$artisan->getId();
+           $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
 
+           //formulaire search document
            $search = new SearchFormType();
            $formSearch = $this->createForm(SearchFormType::class, $search);
            $formSearch->handleRequest($request);
            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
                $search = $formSearch->get('searchValue')->getData();
+               //search fonction à faire
            }
 
-            $loader= new DocumentsType();
-            $form2 = $this->createFormBuilder(DocumentsType::class, (array)$loader);
-            //$form2->handleRequest($request);
-//           if ($form2->isSubmitted() && $form2->isValid()) {
-//               /** @var documents $documents */
-//               $brochureFile = $form2->get('documentsFile')->getData();
-//           }
+//           //formulaire upload depuis DocumentFormType
+//           $documents=new Documents();
+//           $form2 = $this->createFormBuilder(DocumentsType::class, (array)$documents);
+////           $form2->handleRequest($request);
+////           if ($form2->isSubmitted() && $form2->isValid()) {
+////               /** @var documents $documents */
+////               $brochureFile = $form2->get('documentsFile')->getData();
+////           }
 
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
                 'artisans' => $artisans,
-                'documentIdArtisan'=>$documentIdArtisan,
-                'formSearch'=>$formSearch,
-                'form2'=>$form2,
-            ] );
+                'documentIdArtisan' => $documentIdArtisan,
+                'formSearch' => $formSearch,
+//                'form2'=>$form2,
+            ]);
         }
         return $this->render('pages/espace_artisan.html.twig', [
             'artisans' => $artisans,

@@ -11,8 +11,10 @@
 {#                'attr': {'class': 'form-control'}#}
 {#            }) }}#}
 {#        </div>#}
-{{ dump(form2.documentsFile) }}
-{#    {{ dump(form2) }}#}
+{#{{ dump(form2.documentsFile) }}#}
+    {% if formLoadDoc is defined %}
+    {{ dump(formLoadDoc) }}
+    {% endif %}
 {#        <div class="bg-light mt-xl-5">#}
 {#            {{ form(form2) }}#}
 {#            {{ form_widget(form2) }}#}
