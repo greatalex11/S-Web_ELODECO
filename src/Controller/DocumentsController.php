@@ -50,7 +50,10 @@ class DocumentsController extends AbstractController
                 return $this->redirectToRoute('app_artisan_accueilDoc', [
                     'id' => $idRequest,
                     'doc'=>'doc',
-                    'formLoadDoc'=>$formLoadDoc,
+                    //passage du form+option puis traitement -> accueilDoc
+                    'formType' => get_class($formLoadDoc),
+                    'formOptions' => $formLoadDoc->getConfig()->getOptions(),
+
                 ]);
 
             // si l'utilisateur en cours = client

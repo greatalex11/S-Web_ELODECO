@@ -52,7 +52,7 @@ class ArtisanController extends AbstractController
     // ...........................................DOCUMENTS....................................... page accueil document
 
     #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET', 'POST'])]
-    public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository,Documents $documents,Request $request): Response
+    public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository,Documents $documents,EntityManagerInterface $entityManager,$formType, $formOptions,Request $request): Response
     {
 ////      $polo=['id'=>$artisans->getId(), 'nom'=>$artisans->getNomGerant(), '$prenom'=>$artisans->getPrenomGerant()];
 
@@ -80,13 +80,22 @@ class ArtisanController extends AbstractController
 ////               /** @var documents $documents */
 ////               $brochureFile = $form2->get('documentsFile')->getData();
 ////           }
-          ;
+            $form = $this->createForm($formType, null, $formOptions);
+            $form->handleRequest($request);
+               if ($form->isSubmitted() && $form->isValid()) {
+                   /** @var documents $documents */
+                   $File = $form->get('documentsFile')->getData();
+                   $entityManager->persist($File);
+                   $entityManager->flush();
+                   $this->addFlash('success', 'Votre document est bien enregistré');
+               }
+
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
                 'artisans' => $artisans,
                 'documentIdArtisan' => $documentIdArtisan,
-                'formSearch' => $formSearch,
-//                'formLoadDoc'=>$formLoadDoc,
+                'formSearch' => $formSearch->createView(),
+                'formLoadDoc'=>$form,
 //                'form2'=>$form2,
             ]);
         }
