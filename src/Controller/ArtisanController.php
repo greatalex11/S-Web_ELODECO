@@ -18,6 +18,7 @@ use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,9 +53,10 @@ class ArtisanController extends AbstractController
     // ...........................................DOCUMENTS....................................... page accueil document
 
     #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET', 'POST'])]
-    public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository,Documents $documents,EntityManagerInterface $entityManager,$formType, $formOptions,Request $request): Response
+    public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository,Documents $documents,EntityManagerInterface $entityManager,SluggerInterface $slugger,Request $request): Response
     {
 ////      $polo=['id'=>$artisans->getId(), 'nom'=>$artisans->getNomGerant(), '$prenom'=>$artisans->getPrenomGerant()];
+        //$formType, $formOptions,
 
         $id=$artisan->getId();
         $artisans = $artisan;
@@ -80,15 +82,68 @@ class ArtisanController extends AbstractController
 ////               /** @var documents $documents */
 ////               $brochureFile = $form2->get('documentsFile')->getData();
 ////           }
-            $form = $this->createForm($formType, null, $formOptions);
-            $form->handleRequest($request);
-               if ($form->isSubmitted() && $form->isValid()) {
-                   /** @var documents $documents */
+///
+///
+///  //formulaire upload depuis FormType bidouillée en document et ici
+//            $formType = new $formType();
+//            $formType->setDocumentsFile('Nouveau document');
+//
+//            $form = $this->createForm($formType, null, $formOptions);
+//            $form->handleRequest($request);
+//               if ($form->isSubmitted() && $form->isValid()) {
+//                   /** @var documents $documents */
+//                   $File = $form->get('documentsFile')->getData();
+//                   $entityManager->persist($File);
+//                   $entityManager->flush();
+//                   $this->addFlash('success', 'Votre document est bien enregistré');
+//               }
+
+            /** @var documents $documents */
+           $documents = new $documents();
+           $documents->setDocument('nouveau document');
+           $form=$this->createForm(DocumentsType::class, $documents);
+            if ($form->isSubmitted() && $form->isValid()) {
                    $File = $form->get('documentsFile')->getData();
+
+                // this condition is needed because the 'documentsFile' field is not required
+                // so the PDF file must be processed only when a file is uploaded
+                if ($File) {
+                    $originalFilename = pathinfo($File->getClientOriginalName(), PATHINFO_FILENAME);
+                    // this is needed to safely include the file name as part of the URL
+                    $safeFilename = $slugger->slug($originalFilename);
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$File->guessExtension();
+
+                    // Move the file to the directory where brochures are stored
+                    try {
+                        $File->move(
+                            $this->getParameter('brochures_directory'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+
+                    // updates the 'brochureFilename' property to store the PDF file name
+                    // instead of its contents
+                    $documents->setDocumentsFile(($newFilename));
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
                    $entityManager->persist($File);
                    $entityManager->flush();
                    $this->addFlash('success', 'Votre document est bien enregistré');
-               }
+              }
 
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,

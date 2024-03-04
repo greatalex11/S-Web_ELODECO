@@ -40,8 +40,9 @@ class DocumentsType extends AbstractType
 //                        'mimeTypesMessage' => 'Please upload a valid PDF document',
 //                    ])
 //                ],
-            ]);
-//        ->add('submit', 'submit', array('label' => "Ajouter"));
+            ])
+            ->add('save', SubmitType::class, [
+                'attr' => ['class' => 'save']]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

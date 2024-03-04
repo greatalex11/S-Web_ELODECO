@@ -2,24 +2,24 @@
 {% set Apps = theme.theme %}
 
 {% block content %}
-{#  {% if  documentIdArtisan is defined %}#}
-{#    <div class="alert-primary bg-light m-5">#}
-{#        <h2>Envoyer vos documents</h2>#}
+  {% if  documentIdArtisan is defined %}
+    <div class="alert-primary bg-light m-5">
+        <h2>Envoyer vos documents</h2>
 {#        <div class="col-md-6">#}
-{#            {{ form_row(formLoadDoc.documentFiles}}#}
+{#            {{ form_row(formLoadDoc)}}#}
 {#        </div>#}
 {#{{ dump(form2.documentsFile) }}#}
-    {{ dump(formLoadDoc.document) }}
+{#    {{ dump(formLoadDoc.documentsFile) }}#}
 {#    {% if formLoadDoc is defined %}#}
 {#    {{ dump(formLoadDoc) }}#}
 {#    {% endif %}#}
-{#        <div class="bg-light mt-xl-5">#}
-{#            {{ form(form2) }}#}
-{#            {{ form_widget(form2) }}#}
-{#            {{ form_end(form2) }}#}
-{#            {{ dump(form2) }}#}
-{#        </div>#}
+        <div class="bg-light mt-xl-5">
+            {{ form_start(formLoadDoc) }}
+            {{ form_widget(formLoadDoc.documentsFile) }}
+            {{ form_end(formLoadDoc) }}
+
+        </div>
 {#    </div>#}
 
-{#{% endif %}#}
+{% endif %}
 {% endblock %}
