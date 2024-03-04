@@ -74,16 +74,7 @@ class ArtisanController extends AbstractController
                //search fonction à faire
            }
 
-//           //formulaire upload depuis DocumentFormType
-//           $documents=new Documents();
-//           $form2 = $this->createFormBuilder(DocumentsType::class, (array)$documents);
-////           $form2->handleRequest($request);
-////           if ($form2->isSubmitted() && $form2->isValid()) {
-////               /** @var documents $documents */
-////               $brochureFile = $form2->get('documentsFile')->getData();
-////           }
-///
-///
+
 ///  //formulaire upload depuis FormType bidouillée en document et ici
 //            $formType = new $formType();
 //            $formType->setDocumentsFile('Nouveau document');
@@ -103,15 +94,14 @@ class ArtisanController extends AbstractController
            $documents->setDocument('nouveau document');
            $form=$this->createForm(DocumentsType::class, $documents);
             if ($form->isSubmitted() && $form->isValid()) {
-                   $File = $form->get('documentsFile')->getData();
-
+                $File = $form->get('documentsFile')->getData();
                 // this condition is needed because the 'documentsFile' field is not required
                 // so the PDF file must be processed only when a file is uploaded
                 if ($File) {
                     $originalFilename = pathinfo($File->getClientOriginalName(), PATHINFO_FILENAME);
                     // this is needed to safely include the file name as part of the URL
                     $safeFilename = $slugger->slug($originalFilename);
-                    $newFilename = $safeFilename.'-'.uniqid().'.'.$File->guessExtension();
+                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $File->guessExtension();
 
                     // Move the file to the directory where brochures are stored
                     try {
@@ -125,25 +115,12 @@ class ArtisanController extends AbstractController
 
                     // updates the 'brochureFilename' property to store the PDF file name
                     // instead of its contents
-                    $documents->setDocumentsFile(($newFilename));
+                    $documents->setDocument(($newFilename));
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-                   $entityManager->persist($File);
-                   $entityManager->flush();
-                   $this->addFlash('success', 'Votre document est bien enregistré');
-              }
+                $entityManager->persist($File);
+                $entityManager->flush();
+                $this->addFlash('success', 'Votre document est bien enregistré');
+            }
 
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,

@@ -1,12 +1,14 @@
 
 {% set Apps = theme.theme %}
-
+{% set renderedField = form_row(formLoadDoc) %}
 {% block content %}
   {% if  documentIdArtisan is defined %}
     <div class="alert-primary bg-light m-5">
         <h2>Envoyer vos documents</h2>
 {#        <div class="col-md-6">#}
-{#            {{ form_row(formLoadDoc)}}#}
+      form_start()
+      {{ renderedField }}
+      form_end()
 {#        </div>#}
 {#{{ dump(form2.documentsFile) }}#}
 {#    {{ dump(formLoadDoc.documentsFile) }}#}
@@ -14,9 +16,9 @@
 {#    {{ dump(formLoadDoc) }}#}
 {#    {% endif %}#}
         <div class="bg-light mt-xl-5">
-            {{ form_start(formLoadDoc) }}
-            {{ form_widget(formLoadDoc.documentsFile) }}
-            {{ form_end(formLoadDoc) }}
+{#            {{ form_start(formLoadDoc) }}#}
+{#            {{ form_widget(formLoadDoc) }}#}
+{#            {{ form_end(formLoadDoc) }}#}
 
         </div>
 {#    </div>#}
