@@ -67,15 +67,24 @@ class RegistrationController extends AbstractController
                 // si registerFORM VALIDE on part dans perso au lieu de /_profile
 
            if($choice==="artisan"){
-           return $this->redirectToRoute('app_login');}
-
-           //app_login au lieu d'app_artisan  **** prevoir le message 'profile en attente de valiation
+               //si l'artisan click sur le lien reçu dans le mail de vérif alors on load son role dans la base
+               $retourEmail=$user->isVerified();
+               if($retourEmail==1){
+                   $user->setRoles(["artisan"]);
+                   $this->addFlash('success','Vous allez pouvoir accéder à votre espace personnel et saisir vos coordonnées - merci.');
+                   return $this->redirectToRoute('app_login');}
+               }
 
             if($choice==="Client"){
-               return $this->redirectToRoute('app_login');
+                if($user->isVerified()==1){
+                    $user->setRoles(["ROLE_CLIENT"]);
+                    $this->addFlash('success','Vous allez pouvoir accéder à votre espace personnel et saisir vos coordonnées - merci.');
+                    return $this->redirectToRoute('app_login');}
+            }
+            return $this->redirectToRoute('app_login');
            }
 
-    }
+
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
@@ -93,7 +102,6 @@ class RegistrationController extends AbstractController
             $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
-
             return $this->redirectToRoute('app_register');
         }
 
