@@ -243,27 +243,32 @@ class ArtisanController extends AbstractController
 
 
                 //  loop in array of array + test itération/ valeur de $search
-                // version avec Objet de Class
+                // version avec Objet de Class :  property_exists() ou get_object_vars()
+                //&& strpos($value, $search) !== FALSE
 
-                foreach ($projetList as $key=> $value) {
-                    dump($value);
-                    foreach ($value as $k => $field) {
-                        // Vérifie si $field est une chaîne de caractères
-                        if (is_string($field) && strpos($field, $search) !== FALSE) {
-                            return $field;
+
+                $listeFiltree = [];
+                foreach ($projetList as $projet) {
+
+                    $properties = get_object_vars($projet);
+                    $properties2 = property_exists($projet, $search);
+                    dump($properties);
+
+                    foreach ($properties as $property => $value) {
+                        $properties3 = property_exists($property, $search);
+                        //dump($properties3);
+                        if ($value === $search) {
+                            $listeFiltree[] = $projet;
+                            break; // arrêt de la boucle
                         }
-                        dump($field);
                     }
                 }
+                dump($listeFiltree);
 
-
-                }
-                // la liste filtrée est donc $resultList
-
-//                //affactation du tableau filtré avec la valeur $search à $projetList
-//                if ($resultList) {
-//                    $projetList = $resultList;
-//                }
+//                    foreach ($value as $k => $field) {
+//                        // Vérifie si $field est une chaîne de caractères
+//                        if (is_string($field) && strpos($field, $search) !== FALSE) {
+//                            return $field;
 
 
 

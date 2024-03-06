@@ -790,8 +790,11 @@
     //détail du projet : hover = police en rouge & fire du modal 'show data du pjt selectionné par <a>
     $(document).ready(() => {
         $('.hoverDetailPjt').on({
-            mouseover: function () {
+            hover: function () {
                 $(this).css("color", "red");
+            },
+            mouseout: function () {
+                $(this).css("color", "black");
             },
             click: function (e) {
 
