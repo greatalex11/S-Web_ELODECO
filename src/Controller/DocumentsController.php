@@ -29,48 +29,48 @@ class DocumentsController extends AbstractController
     }
 
     //ajout document par l'artisan
-    #[Route('/{id}/edit', name: 'app_documents_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, TokenInterface $token, Documents $document, EntityManagerInterface $entityManager): Response
-    {
-        $idRequest = $request->get('id');
-        $user = $token->getUser()->getUserIdentifier();
-        $role = $token->getRoleNames();
-        // essai : creation du formulaire dans DocumentsController puis rendu via ArtisanController
-        // si id user == id requete
-        if ($idRequest == $user) {
-            $formLoadDoc = $this->createForm(DocumentsType::class, $document);
-            $formLoadDoc->handleRequest($request);
-            if ($formLoadDoc->isSubmitted() && $formLoadDoc->isValid()) {
-                $entityManager->flush();
-                $formLoadDoc->getData();
-                $entityManager->persist($document);
-                $entityManager->flush();
-                $this->addFlash('success', 'Votre document est bien enregistré');
-
-                // si l'utilisateur en cours = artisan
-                if ($role == "artisan") {
-                    return $this->redirectToRoute('app_artisan_accueilDoc', [
-                        'id' => $idRequest,
-                        'doc' => 'doc',
-                        //passage du form+option puis traitement -> accueilDoc
-                        'formType' => get_class($formLoadDoc),
-//                        'formOptions' => $formLoadDoc->getConfig()->getOptions(),
-                    ]);
-
-                // si l'utilisateur en cours = client
-                } else {
-                    return $this->redirectToRoute('app_client_accueil', [
-                        'id' => $idRequest,
-                        'formLoadDoc' => $formLoadDoc,
-                    ]);
-                }
-            }
-        }
-        // throw $this->createAccessDeniedException
-        return $this->redirectToRoute('app_login', [
-            'id' => $idRequest
-        ]);
-    }
+//    #[Route('/{id}/edit', name: 'app_documents_edit', methods: ['GET', 'POST'])]
+//    public function edit(Request $request, TokenInterface $token, Documents $document, EntityManagerInterface $entityManager): Response
+//    {
+//        $idRequest = $request->get('id');
+//        $user = $token->getUser()->getUserIdentifier();
+//        $role = $token->getRoleNames();
+//        // essai : creation du formulaire dans DocumentsController puis rendu via ArtisanController
+//        // si id user == id requete
+//        if ($idRequest == $user) {
+//            $formLoadDoc = $this->createForm(DocumentsType::class, $document);
+//            $formLoadDoc->handleRequest($request);
+//            if ($formLoadDoc->isSubmitted() && $formLoadDoc->isValid()) {
+//                $entityManager->flush();
+//                $formLoadDoc->getData();
+//                $entityManager->persist($document);
+//                $entityManager->flush();
+//                $this->addFlash('success', 'Votre document est bien enregistré');
+//
+//                // si l'utilisateur en cours = artisan
+//                if ($role == "artisan") {
+//                    return $this->redirectToRoute('app_artisan_accueilDoc', [
+//                        'id' => $idRequest,
+//                        'doc' => 'doc',
+//                        //passage du form+option puis traitement -> accueilDoc
+//                        'formType' => get_class($formLoadDoc),
+////                        'formOptions' => $formLoadDoc->getConfig()->getOptions(),
+//                    ]);
+//
+//                // si l'utilisateur en cours = client
+//                } else {
+//                    return $this->redirectToRoute('app_client_accueil', [
+//                        'id' => $idRequest,
+//                        'formLoadDoc' => $formLoadDoc,
+//                    ]);
+//                }
+//            }
+//        }
+//        // throw $this->createAccessDeniedException
+//        return $this->redirectToRoute('app_login', [
+//            'id' => $idRequest
+//        ]);
+//    }
 
 
 

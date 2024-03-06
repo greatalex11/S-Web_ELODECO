@@ -4,13 +4,16 @@ namespace App\Form;
 
 use App\Entity\Documents;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Entity\File;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class DocumentsType extends AbstractType
@@ -19,16 +22,9 @@ class DocumentsType extends AbstractType
     {
         $builder
 
-
-
-//            ->add('titre', TextType::class)
-//            ->add('documentsFile', FileType::class)
-//            ->add('size',TextType::class)
-//            ->add('titreDefault', TextType::class)
-
-            ->add('documentsFile',  FileType::class, [
+            ->add('documentsFile',  VichImageType::class, [
                 'label' => 'Votre document (PDF file)',
-                'mapped' => true,
+                'mapped' => false,
                 'required' => false,
 //                'constraints' => [
 //                    new File([
@@ -41,10 +37,14 @@ class DocumentsType extends AbstractType
 //                    ])
 //                ],
             ])
+            ->add('titre', TextType::class)
+            ->add('size',NumberType::class)
+            ->add('typo',TextType::class)
             ->add('save', SubmitType::class, [
                 'attr' => ['class' => 'save']]);
-    }
 
+
+    }
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

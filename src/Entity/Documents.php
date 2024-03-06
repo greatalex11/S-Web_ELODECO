@@ -70,8 +70,8 @@ class Documents
 //        return $this-> mise_en_copie;
 //    }
 
-
-    #[Vich\UploadableField(mapping: 'documents', fileNameProperty: 'TitreDefault', size: 'size', mimeType:'typo')]
+//fileNameProperty : propriété en bdd qui contiendra le nom du fichier: "titre_default"
+    #[Vich\UploadableField(mapping: 'documents', fileNameProperty: 'titre_default', size: 'size', mimeType:'typo',originalName: 'titre')]
     private ?File $documentsFile = null;
 
     #[ORM\Column(nullable: true)]

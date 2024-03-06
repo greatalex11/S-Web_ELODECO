@@ -91,12 +91,13 @@ class ArtisanController extends AbstractController
 
             /** @var documents $documents */
            $documents = new $documents();
-           $documents->setDocument('nouveau document');
-           $form=$this->createForm(DocumentsType::class, $documents);
-            if ($form->isSubmitted() && $form->isValid()) {
-                $File = $form->get('documentsFile')->getData();
+//           $documents->setDocument('nouveau document');
+           $formDoc=$this->createForm(DocumentsType::class, $documents);
+            if ($formDoc->isSubmitted() && $formDoc->isValid()) {
+                $File = $formDoc->get('documentsFile')->getData();
                 // this condition is needed because the 'documentsFile' field is not required
                 // so the PDF file must be processed only when a file is uploaded
+
                 if ($File) {
                     $originalFilename = pathinfo($File->getClientOriginalName(), PATHINFO_FILENAME);
                     // this is needed to safely include the file name as part of the URL
@@ -127,7 +128,7 @@ class ArtisanController extends AbstractController
                 'artisans' => $artisans,
                 'documentIdArtisan' => $documentIdArtisan,
                 'formSearch' => $formSearch->createView(),
-                'formLoadDoc'=>$form,
+                'formLoadDoc'=>$formDoc,
 //                'form2'=>$form2,
             ]);
         }
@@ -151,43 +152,43 @@ class ArtisanController extends AbstractController
 
 //.................................................................................................  loader un document
 
-    #[Route('/{id}/documentLoading', name: 'app_artisan_document_loading', methods: ['GET', 'POST'])]
-    public function documentLoadding(Request $request, Artisan $artisan, EntityManagerInterface $entityManager, Documents $documents): Response
-    {
+//    #[Route('/{id}/documentLoading', name: 'app_artisan_document_loading', methods: ['GET', 'POST'])]
+//    public function documentLoadding(Request $request, Artisan $artisan, EntityManagerInterface $entityManager, Documents $documents): Response
+//    {
+//
+//        $form2 = $this->createFormBuilder($documents)
+//            ->add('size')
+//            ->add('typo')
+//            ->add('document')
+//            ->add('titreDefault')
+//            ->add('save', SubmitType::class, ['label' => 'Ajout document'])
+//            ->getForm();
+//        return $this->render('_documentArtisans.html.twig', [
+//            'artisans' => $artisan,
+////                'form2' => $form2,
+//// return $this->render('contenus/_loadingDoc.html.twig');
+//        ]);
+//
+//    }
 
-        $form2 = $this->createFormBuilder($documents)
-            ->add('size')
-            ->add('typo')
-            ->add('document')
-            ->add('titreDefault')
-            ->add('save', SubmitType::class, ['label' => 'Ajout document'])
-            ->getForm();
-        return $this->render('_documentArtisans.html.twig', [
-            'artisans' => $artisan,
-//                'form2' => $form2,
-// return $this->render('contenus/_loadingDoc.html.twig');
-        ]);
-
-    }
-
-    #[Route('/{id}/documentLoader', name: 'app_artisan_document_loader', methods: ['GET', 'POST'])]
-    public function documentLoader(Request $request, Artisan $artisan, EntityManagerInterface $entityManager, Documents $documents): Response
-    {
-
-        $form2 = $this->createFormBuilder($documents)
-            ->add('size')
-            ->add('typo')
-            ->add('document')
-            ->add('titreDefault')
-
-            ->add('save', SubmitType::class, ['label' => 'Ajout document'])
-            ->getForm();
-
-        return $this->redirectToRoute('app_artisan_document_loader', [
-            'artisans' => $artisan,
-            'form2' => $form2,
-        ]);
-    }
+//    #[Route('/{id}/documentLoader', name: 'app_artisan_document_loader', methods: ['GET', 'POST'])]
+//    public function documentLoader(Request $request, Artisan $artisan, EntityManagerInterface $entityManager, Documents $documents): Response
+//    {
+//
+//        $form2 = $this->createFormBuilder($documents)
+//            ->add('size')
+//            ->add('typo')
+//            ->add('document')
+//            ->add('titreDefault')
+//
+//            ->add('save', SubmitType::class, ['label' => 'Ajout document'])
+//            ->getForm();
+//
+//        return $this->redirectToRoute('app_artisan_document_loader', [
+//            'artisans' => $artisan,
+//            'form2' => $form2,
+//        ]);
+//    }
 
 
 
