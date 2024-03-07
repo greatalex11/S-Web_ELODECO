@@ -4,14 +4,19 @@ namespace App\Form;
 
 use App\Entity\ContactForm;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use Symfony\Component\DomCrawler\Field\TextareaFormField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use function PHPUnit\Framework\isEmpty;
 use function PHPUnit\Framework\stringContains;
@@ -31,8 +36,11 @@ class ContactType extends AbstractType
             ->add('prenom')
             ->add('telephone',TextType::class, ['attr' => ['maxlength' => 10]])
             ->add('email', EmailType::class)
-            ->add('sujet',TextType::class, ['attr' => ['maxlength' => 250]])
-            ->add('message')
+            ->add('sujet',TextType::class, ['attr' => ['maxlength' => 50]])
+            ->add('message', TextType::class, ['attr' => [
+                'maxlength' => 350,
+                'style' => 'height: 200px',
+                ]])
             ->add('submit', SubmitType::class, [
                 'label' => 'Envoyer le message'
             ]);

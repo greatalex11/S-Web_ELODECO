@@ -249,11 +249,7 @@ class ArtisanController extends AbstractController
 
                 $listeFiltree = [];
                 foreach ($projetList as $projet) {
-
                     $properties = get_object_vars($projet);
-                    $properties2 = property_exists($projet, $search);
-                    dump($properties);
-
                     foreach ($properties as $property => $value) {
                         $properties3 = property_exists($property, $search);
                         //dump($properties3);
@@ -269,7 +265,12 @@ class ArtisanController extends AbstractController
 //                        // Vérifie si $field est une chaîne de caractères
 //                        if (is_string($field) && strpos($field, $search) !== FALSE) {
 //                            return $field;
+//                        }
+//                        dump($field);
+//                    }
 
+
+            }
 
 
             return $this->render('pages/espace_artisan.html.twig', [
