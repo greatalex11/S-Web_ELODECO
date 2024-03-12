@@ -28,7 +28,6 @@ class DocumentsCrudController extends AbstractCrudController
         return Documents::class;
     }
 
-
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -41,18 +40,17 @@ class DocumentsCrudController extends AbstractCrudController
             yield TextEditorField::new('description'),
             yield ImageField::new('document')
                 ->setBasePath('assets/documents/uploads')
-                ->setUploadDir('public/assets/documents/uploads'),
-//
-//            yield TextField::new('documentsFile')
-//                ->setLabel(false)
-//                ->setFormType(VichImageType::class)
-//                ->setFormTypeOptions([
-//                    'allow_delete' => false,
-//                ])
-//                ->setColumns(12)
-//                ->onlyOnForms(),
-
-
+                ->setUploadDir('public/assets/documents/uploads')
+                ->setTemplatePath('fields/document.html.twig')
+                ->hideOnForm(),
+            yield TextField::new('documentsFile')
+                ->setLabel(false)
+                ->setFormType(VichImageType::class)
+                ->setFormTypeOptions([
+                    'allow_delete' => false,
+                ])
+                ->setColumns(12)
+                ->onlyOnForms(),
 
 
             yield FormField::addTab("Données du document"),
@@ -60,17 +58,10 @@ class DocumentsCrudController extends AbstractCrudController
                 ->renderAsChoice()
                 ->setLabel('date de retrait du document')
                 ->hideOnIndex(),
-
-            yield TextField::new('TitreDefault')->hideOnIndex(),
+            
             yield NumberField::new('size')->hideOnIndex(),
             yield TextField::new('typo')->hideOnIndex(),
 
-//            yield FormField::addTab("Associé à quel projet?"),
-////            yield AssociationField::new('projet')
-//////                ->setFormTypeOption('choice_label', 'titre')
-////                ->setFormTypeOption('by_reference', false)
-////                ->autocomplete()
-////                ->hideOnIndex(),
 
             yield FormField::addTab("Partager le document avec?"),
             yield ChoiceField::new('mise_en_copie')

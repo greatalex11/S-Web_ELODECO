@@ -41,12 +41,6 @@ class Projet
     #[ORM\Column(nullable: true)]
     private ?int $duree = null;
 
-
-//    public function __toString(): string
-//    {
-//        return $this->client;
-//    }
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $numero = null;
 
@@ -116,6 +110,11 @@ class Projet
         $this->documents = new ArrayCollection();
 //        $this->prestation =new ArrayCollection();
         $this->image = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return ucfirst($this->titre);
     }
 
     public function getId(): ?int

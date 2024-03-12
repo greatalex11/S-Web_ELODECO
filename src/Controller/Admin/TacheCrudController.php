@@ -25,7 +25,7 @@ class TacheCrudController extends AbstractCrudController
             yield TextField::new('titre'),
             yield TextEditorField::new('description'),
             yield AssociationField::new('artisan'),
-
+            yield AssociationField::new('projet'),
         ];
     }
 

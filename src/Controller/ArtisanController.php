@@ -7,7 +7,6 @@ use App\Entity\Documents;
 use App\Entity\User;
 use App\Form\ArtisanType;
 use App\Form\DocumentsType;
-use App\Form\LoaderVichType;
 use App\Form\SearchFormType;
 use App\Repository\DocumentsRepository;
 use App\Repository\ProjetRepository;
@@ -91,7 +90,7 @@ class ArtisanController extends AbstractController
 
             /** @var documents $documents */
            $documents = new $documents();
-//           $documents->setDocument('nouveau document');
+//         $documents->setDocument('nouveau document');
            $formDoc=$this->createForm(DocumentsType::class, $documents);
             if ($formDoc->isSubmitted() && $formDoc->isValid()) {
                 $File = $formDoc->get('documentsFile')->getData();
@@ -150,7 +149,8 @@ class ArtisanController extends AbstractController
     }
 
 
-//.................................................................................................  loader un document
+//....................................
+//.............................................................  loader un document
 
 //    #[Route('/{id}/documentLoading', name: 'app_artisan_document_loading', methods: ['GET', 'POST'])]
 //    public function documentLoadding(Request $request, Artisan $artisan, EntityManagerInterface $entityManager, Documents $documents): Response
@@ -245,21 +245,38 @@ class ArtisanController extends AbstractController
                 //  loop in array of array + test itération/ valeur de $search
                 // version avec Objet de Class :  property_exists() ou get_object_vars()
                 //&& strpos($value, $search) !== FALSE
-
+                //$properties = get_object_vars($objetPjt);
+                //$properties3 = property_exists($objetPjt, $search)
 
                 $listeFiltree = [];
-                foreach ($projetList as $projet) {
-                    $properties = get_object_vars($projet);
-                    foreach ($properties as $property => $value) {
-                        $properties3 = property_exists($property, $search);
+                foreach ($projetList as $objetPjt) {
+                    dump($objetPjt);
+                    $keyProperties = property_exists($objetPjt, 'id');// trouve id dès 2nd itération
+                    dump($keyProperties);
+
+                    $properties = get_object_vars($objetPjt);// result: []
+                    dump($properties);
+                    die();
+
+
+                    foreach ($objetPjt as $key=>$propertySearch) {
+
+                            dump($key);
+
+                    }
+
+                    foreach ($objetPjt as $property) {
+                        dump($property);
+
+                        //$properties3 = property_exists($property, $search);
                         //dump($properties3);
                         if ($value === $search) {
-                            $listeFiltree[] = $projet;
+                            $listeFiltree[] = $objetPjt;
                             break; // arrêt de la boucle
                         }
                     }
                 }
-                dump($listeFiltree);
+                //dump($listeFiltree);
 
 //                    foreach ($value as $k => $field) {
 //                        // Vérifie si $field est une chaîne de caractères

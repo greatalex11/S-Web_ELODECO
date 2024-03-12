@@ -1,0 +1,15 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+
+<div>
+        {% for document in entity.instance.documents %}
+        {# @var document \App\Entity\Documents #}
+                <ul>
+                        <li>Type : {{ document.type }}</li>
+                        <li>Titre : {{ document.titre }}</li>
+                        <li><a target="_blank" href="{{ vich_uploader_asset(document) }}">Télécharger</a></li>
+                </ul>
+                {{ dump(document, vich_uploader_asset(document)) }}
+        {% endfor %}
+</div>

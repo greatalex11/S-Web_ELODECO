@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Artisan;
+use App\Entity\Client;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
@@ -53,9 +55,6 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $entityManager->persist($user);
-            $entityManager->flush();
-
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
@@ -68,27 +67,22 @@ class RegistrationController extends AbstractController
 
                 // si registerFORM VALIDE on part dans perso au lieu de /_profile
            $choice=$request->get('choice');
-           if($choice==="artisan"){
-               //si l'artisan click sur le lien reçu dans le mail de vérif alors on load son role dans la base
-               $retourEmail=$user->isVerified();
-               if($retourEmail==1){
-                   $user->setRoles(["artisan"]);
-//                   $entityManager->persist($user);
-//                   $entityManager->flush();
-                   $this->addFlash('success','Vous allez pouvoir accéder à votre espace personnel et saisir vos coordonnées - merci.');
-                   return $this->redirectToRoute('app_login');}
-               }
+           if($choice==="Artisan"){
+               $artisan = new Artisan();
+               $user->setArtisan($artisan);
+               $user->setRoles(["artisan"]);
+           }
 
             if($choice==="Client"){
-//                if($user->isVerified()==1){
-//                    $user->setRoles(["ROLE_CLIENT"]);
-//                    $this->addFlash('success','Vous allez pouvoir accéder à votre espace personnel et saisir vos coordonnées - merci.');
-//                    return $this->redirectToRoute('app_login');}
+                $client = new Client();
+                $user->setRoles(["client"]);
+                $user->setClient($client);
             }
+
+            $entityManager->persist($user);
+            $entityManager->flush();
             return $this->redirectToRoute('app_login');
         }
-
-
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),

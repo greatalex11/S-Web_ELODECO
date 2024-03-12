@@ -72,6 +72,11 @@ class Tache
 //
 //    }
 
+ public function __toString(): string
+{
+    return $this->titre;
+}
+
 
     public function getId(): ?int
     {

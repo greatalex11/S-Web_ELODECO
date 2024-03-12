@@ -793,9 +793,9 @@
             hover: function () {
                 $(this).css("color", "red");
             },
-            mouseout: function () {
-                $(this).css("color", "black");
-            },
+            // mouseout: function () {
+            //     $(this).css("color", "black");
+            // },
             click: function (e) {
 
                 // $("#fixerrormodal").modal()

@@ -660,11 +660,13 @@
 
                                 <div class="col-xl-6 ">
                                     <div class="pricing-one__table-box">
+                                        {% set first = true %}
+                                        {% for prix in home %}
+                                        {% if prix.type =="tarifs" %}
                                         <div class="pricing-one__right">
-                                            {% for prix in home %}
-                                            {% if prix.type =="tarifs" %}
                                             <div class="pr-content">
-                                                <div class="pr-tab active-tab" id="tab-2" style="max-height: 80%">
+                                                <div class="pr-tab {% if first %}active-tab{% endif %}" id="tab-2" style="max-height: 80%">
+                                                    {% set first = false %}
                                                     <div class="pricing-one__table-box-single">
                                                         <div class="pricing-one__table">
                                                             <div class="pricing-one__rate-box">
@@ -719,10 +721,9 @@
                                                 {#                                                </div> #}
                                                 {#                                            </div> #}
                                             </div>
+                                            {% endif %}
+                                            {% endfor %}
                                         </div>
-
-                                        {% endif %}
-                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>

@@ -118,17 +118,20 @@ class ProjetCrudController extends AbstractCrudController
 
             yield FormField::addTab("Liste des taches"),
             yield AssociationField::new('taches')
-                ->autocomplete()->setLabel('liste des taches'),
+                ->autocomplete()->setLabel('liste des taches')->setFormTypeOptions([
+                    'by_reference' => false,
+                    'multiple' => true,
+                ])
+                ->setTemplatePath('fields/taches.html.twig'),
 
             yield FormField::addTab("Document"),
-            yield CollectionField::new('documents')
-                ->useEntryCrudForm(DocumentsCrudController::class)
-                ->setEntryIsComplex(true)
-                ->setFormTypeOptions([
+            yield AssociationField::new('documents')
+                ->autocomplete()->setLabel('liste des taches')->setFormTypeOptions([
                     'by_reference' => false,
-//                    'document.tire'=>$this->getContext()->getEntity()->getFields()->getTitre()
+                    'multiple' => true,
                 ])
                 ->setLabel("Document")
+                ->setTemplatePath('fields/documents.html.twig')
                 ->hideOnIndex()
         ];
     }

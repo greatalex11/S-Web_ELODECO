@@ -1,0 +1,24 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# ea te donne ton contexte easyadmin, c'est la que tu aura l'action, la recherche, les filtres, ou tout ce qui sert a la config de easyAdmin #}
+
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# field c'est tout ce qui est lié au field easyadmin que tu as utilisé pour faire cette section AssocientField #}
+
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+{# entity lien avec tes entités symfony, ici tu es dans le crud dep rojet donc c'est projet englobé dans une super variable easyadmin qui te donne d'autre info (l'entité et dans instance) #}
+
+{% if ea.crud.currentAction == 'detail' %}
+<div>
+    Le nombre de taches associées à ce projet est {{ entity.instance.taches|length|default(0) }}
+</div>
+<div>
+    {% for tache in entity.instance.taches %}
+        {# @var tache \App\Entity\Tache #}
+        {{ dump(entity) }}
+    {% endfor %}
+</div>
+{% else %}
+    <div>
+        {{ entity.instance.taches|length|default(0) }} taches
+    </div>
+{% endif %}
