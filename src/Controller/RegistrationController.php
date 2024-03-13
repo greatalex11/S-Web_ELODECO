@@ -5,11 +5,14 @@ namespace App\Controller;
 use App\Entity\Artisan;
 use App\Entity\Client;
 use App\Entity\User;
+use App\Form\ArtisanType;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Mailer;
@@ -42,11 +45,26 @@ class RegistrationController extends AbstractController
 
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, string $choice): Response
     {
+        /** @var artisan $artisan */
+        $formCusto = null;
+
+        //création de la partie dynamique du formulaire en fonction du choix artisan/ client : ne marche pas/ submission
+//        if ($choice === "Artisan") {
+//            $artisan = new Artisan();
+//            $formCusto = $this->createFormBuilder($artisan)
+//                ->add('nom_etablissement', TextType::class, ['label' => 'Nom de l\établissement'])
+//                ->add('raison_sociale', TextType::class, ['label' => 'Raison sociale'])
+//                -> add('save', SubmitType::class, ['label' => 'Create Task'])
+//                ->getForm();
+//        }
+
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $formCusto->isSubmitted();
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -54,6 +72,9 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+
+            $entityManager->persist($user);
+            $entityManager->flush();
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
@@ -65,27 +86,43 @@ class RegistrationController extends AbstractController
             );
             // do anything else you need here, like send an email
 
-                // si registerFORM VALIDE on part dans perso au lieu de /_profile
-           $choice=$request->get('choice');
-           if($choice==="Artisan"){
-               $artisan = new Artisan();
-               $user->setArtisan($artisan);
-               $user->setRoles(["artisan"]);
-           }
 
-            if($choice==="Client"){
+            // si registerFORM VALIDE on part dans perso au lieu de /_profile
+
+
+
+            if ($choice === "Artisan") {
+                $artisan = new Artisan();
+                $user->setArtisan($artisan);
+                $user->setRoles(["artisan"]);
+
+                //ne fonctionne pas à cause de la submission : 2 forms/ 2 obj differents
+//                $nom_etablissement= $formCusto->get('nom_etablissement')->getData();
+//                $raison_sociale= $formCusto->get('raison_sociale')->getData();
+//                dump($nom_etablissement);
+//                $artisan->setNomEtablissement($nom_etablissement);
+//                $artisan->setRaisonSociale($raison_sociale);
+
+            }
+
+            if ($choice === "Client") {
                 $client = new Client();
                 $user->setRoles(["client"]);
                 $user->setClient($client);
             }
-
             $entityManager->persist($user);
+            //$entityManager->persist($artisan);
             $entityManager->flush();
+
+
             return $this->redirectToRoute('app_login');
         }
 
+
+
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+           //'formCusto'=> $formCusto->createView(),
         ]);
 
     }
@@ -106,7 +143,7 @@ class RegistrationController extends AbstractController
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
-        $this-> getUser()->setIsVerified(1);
+        //$this-> getUser()->setIsVerified(1);
 
 
    // app_register : on reste dans le registerform après le check email

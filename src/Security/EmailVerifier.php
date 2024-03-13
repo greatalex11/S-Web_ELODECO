@@ -25,6 +25,14 @@ class EmailVerifier
     public function sendEmailConfirmation(string $verifyEmailRouteName, UserInterface $user, TemplatedEmail $email): void
     {
         assert($user instanceof User);
+
+        $userId = $user->getId();
+
+        if ($userId === null) {
+            // Handle the case where the user ID is null
+            throw new \Exception('User ID is null');
+        }
+
         $signatureComponents = $this->verifyEmailHelper->generateSignature(
             $verifyEmailRouteName,
             $user->getId(),

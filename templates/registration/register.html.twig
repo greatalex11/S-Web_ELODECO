@@ -31,6 +31,13 @@
      }) }}
      {{ form_row(registrationForm.agreeTerms) }}
 
+{#    {%if formCusto is not null %} fonctionne pas à cause de la submission multiple en 1#}
+{#     {{ form_start(formCusto) }}#}
+{#     {{ form_row(formCusto.nom_etablissement) }}#}
+{#     {{ form_row(formCusto.raison_sociale) }}#}
+{#        {{ form_row(formCusto.save, { 'label': 'Submit me' }) }}#}
+{#     {%endif %}#}
+
      <button type="submit" class="btn bg-light thm-btn contact-page__btn mt-4 contact-page__input-box fw-bold border p-5 pt-1 pb-1">S'enregistrer</button>
      {{ form_end(registrationForm) }}
 
