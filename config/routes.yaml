@@ -4,3 +4,7 @@ controllers:
         namespace: App\Controller
     type: attribute
 
+#register_form:
+#    path: /register/{choice}
+#    namespace: App\Controller
+#    controller: App\Controller\RegisterController::register

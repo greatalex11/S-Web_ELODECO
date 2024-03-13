@@ -11,17 +11,22 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class RegistrationFormType extends AbstractType
 {
-    private $requestStack;
+    //injection du service 'resquestack'
+    public function __construct(
+        protected RequestStack $requestStack,
+    ) {
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
      {
-
         //formulaire principal
         $builder
             ->add('email')
@@ -51,29 +56,44 @@ class RegistrationFormType extends AbstractType
                 ],
             ]);
 
-        // dynamisation du formulaire suivant le param de l'url - artisan ou client.
-         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event):void {
+         /**
+          * @Route("/register/{choice}", name="app_register")
+          */
+
+         // dynamisation du formulaire suivant le param de l'url - artisan ou client.
+         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+
              $form = $event->getForm();
              $request = $this->requestStack->getCurrentRequest();
-
-             if ($request->query->has('choice')) {
-                 $choice = $request->query->get('choice');
+             //mapped 'false' car liés a Artisan ou Clien, pas User
+             if ($request) {
+                 $choice = $this->requestStack->getMainRequest()->getPathInfo();
                  switch ($choice) {
-                     case 'Artisan':
-                         $form->add('nom_etablissement', TextType::class, ['label' => 'Nom de l\'établissement']);
-                         $form->add('$raison_sociale', TextType::class, ['label' => '$raison_sociale']);
-                         break;
-                     case 'Client':
-                         $form->add('prenom', TextType::class, ['label' => 'Votre prenom']);
-                         $form->add('nom', TextType::class, ['label' => 'Votre nom']);
+                     case '/register/Artisan':
+                         $form->add('nom_etablissement', TextType::class, [
+                             'label' => 'Nom de l\'établissement',
+                             'mapped' => false,
+                             ]);
+                         $form->add('raison_sociale', TextType::class, [
+                             'label' => '$raison_sociale',
+                             'mapped' => false,
+                         ]);
                          break;
 
+                     case '/register/Client':
+                         $form->add('prenom', TextType::class, [
+                             'label' => 'Votre prenom',
+                             'mapped' => false,
+                             ]);
+                         $form->add('nom', TextType::class, [
+                             'label' => 'Votre nom',
+                             'mapped' => false,
+                             ]);
+                         break;
                  }
              }
          });
-
     }
-
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
