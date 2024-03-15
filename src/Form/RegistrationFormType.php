@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -56,6 +57,9 @@ class RegistrationFormType extends AbstractType
                 ],
             ]);
 
+
+
+
          /**
           * @Route("/register/{choice}", name="app_register")
           */
@@ -65,32 +69,38 @@ class RegistrationFormType extends AbstractType
 
              $form = $event->getForm();
              $request = $this->requestStack->getCurrentRequest();
-             //mapped 'false' car liés a Artisan ou Clien, pas User
+             //mapped 'false' car liés a Artisan ou Client, pas User
              if ($request) {
                  $choice = $this->requestStack->getMainRequest()->getPathInfo();
                  switch ($choice) {
                      case '/register/Artisan':
                          $form->add('nom_etablissement', TextType::class, [
-                             'label' => 'Nom de l\'établissement',
+                             'label' => 'Nom de votre entreprise',
                              'mapped' => false,
                              ]);
                          $form->add('raison_sociale', TextType::class, [
-                             'label' => '$raison_sociale',
+                             'label' => 'raison_sociale',
                              'mapped' => false,
                          ]);
                          break;
 
                      case '/register/Client':
                          $form->add('prenom', TextType::class, [
-                             'label' => 'Votre prenom',
+                             'label' => 'Prenom',
                              'mapped' => false,
                              ]);
                          $form->add('nom', TextType::class, [
-                             'label' => 'Votre nom',
+                             'label' => 'Nom',
                              'mapped' => false,
                              ]);
                          break;
-                 }
+                 };
+                 $form->add('jiraStatus', SubmitType::class, [
+                     'label' => 'Enregistrement',
+                     'attr' => [
+                         'class' => 'btn w-100 bg-light thm-btn contact-page__btn mt-5 mb-2 contact-page__input-box fw-bold border p-5 pt-1 pb-1',
+                     ],
+                 ]);
              }
          });
     }

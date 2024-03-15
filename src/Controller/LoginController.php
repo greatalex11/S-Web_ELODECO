@@ -199,7 +199,6 @@ class LoginController extends AbstractController
     }
 
 
-
     #[Route(path: '/portfolio', name: 'app_portfolio')]
     public function portefolio(ContenusRepository $contenusRepository): Response
     {
@@ -238,7 +237,6 @@ class LoginController extends AbstractController
         ]);
     }
 
-
     #[Route(path: '/styles_details/{slug}', name: 'app_styles_details')]
     public function stylesDetail(Style $style, StyleRepository $styleRepository): Response
     {
@@ -254,7 +252,6 @@ class LoginController extends AbstractController
             'styleFilter'=>$stylesFilter,
         ]);
     }
-
 
 
 // ....................................................................................................       news

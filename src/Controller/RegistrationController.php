@@ -83,26 +83,31 @@ class RegistrationController extends AbstractController
             // do anything else you need here, like send an email
 
             // si registerFORM VALIDE on part dans perso au lieu de /_profile
-            //$form->getData();
+           // à cette étape, enregistrement dans user du Role et Info perso Client si Client, Ets si Ets
             if ($choice === "Artisan") {
                 $artisan = new Artisan();
                 $user->setArtisan($artisan);
                 $user->setRoles(["artisan"]);
-
                 $nomEts=$form->get('nom_etablissement')->getData();
                 $artisan->setNomEtablissement($nomEts);
                 $raisonSociale= $form->get('raison_sociale')->getData();
                 $artisan->setRaisonSociale($raisonSociale);
+                $entityManager->persist($artisan);
+
             }
 
             if ($choice === "Client") {
                 $client = new Client();
                 $user->setRoles(["client"]);
                 $user->setClient($client);
+                $nomClient=$form->get('nom')->getData();
+                $client->setNom($nomClient);
+                $prenomClient= $form->get('prenom')->getData();
+                $client->setPrenom($prenomClient);
+                $entityManager->persist($client);
             }
 
             $entityManager->persist($user);
-            $entityManager->persist($artisan);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_login');
