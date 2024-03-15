@@ -49,7 +49,7 @@ class ClientType extends AbstractType
                     ]]])
             ->add('nom_conjoint')
             ->add('prenom_conjoint')
-            ->add('commentaire',TextareaType::class)
+            //->add('commentaire',TextareaType::class)
             ->add('Valider', SubmitType::class)
 //            ->add('status')
 //            ->add('user')
