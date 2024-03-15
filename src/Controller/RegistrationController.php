@@ -87,7 +87,7 @@ class RegistrationController extends AbstractController
             if ($choice === "Artisan") {
                 $artisan = new Artisan();
                 $user->setArtisan($artisan);
-                $user->setRoles(["artisan"]);
+                $user->setRoles(["ROLE_ARTISAN"]);
                 $nomEts=$form->get('nom_etablissement')->getData();
                 $artisan->setNomEtablissement($nomEts);
                 $raisonSociale= $form->get('raison_sociale')->getData();
@@ -98,7 +98,7 @@ class RegistrationController extends AbstractController
 
             if ($choice === "Client") {
                 $client = new Client();
-                $user->setRoles(["client"]);
+                $user->setRoles(["ROLE_CLIENT"]);
                 $user->setClient($client);
                 $nomClient=$form->get('nom')->getData();
                 $client->setNom($nomClient);
