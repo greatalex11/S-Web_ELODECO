@@ -256,7 +256,7 @@ class ArtisanController extends AbstractController
 
                     $properties = get_object_vars($objetPjt);// result: []
                     dump($properties);
-                    die();
+//                    die();
 
 
                     foreach ($objetPjt as $key=>$propertySearch) {
@@ -270,7 +270,7 @@ class ArtisanController extends AbstractController
 
                         //$properties3 = property_exists($property, $search);
                         //dump($properties3);
-                        if ($value === $search) {
+                        if ($property === $search) {
                             $listeFiltree[] = $objetPjt;
                             break; // arrêt de la boucle
                         }

@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-//#[IsGranted("ROLE_CLIENT")]
+#[IsGranted("ROLE_CLIENT")]
 #[Route('/client_accueil')]
 class ClientController extends AbstractController
 {
@@ -28,6 +28,40 @@ class ClientController extends AbstractController
             'clients' => $clients,
         ]);
     }
+
+//.........................................................................................  coordonnee form changement
+    #[Route('{id}/change_coordonnees/', name: 'app_client_change_coordonnees', methods: ['GET', 'POST'])]
+    public function clientChangeCoordonnees(Request $request, Client $client, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(ClientType::class, $client);
+        $form->handleRequest($request);
+        $form->getData();
+        $entityManager->persist($client);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $id = $client->getId();
+            $form->getData();
+            $entityManager->persist($client);
+            $entityManager->flush();
+            $this->addFlash('success', 'vos modification sont prises en compte');
+            return $this->redirectToRoute('app_client_accueil', [
+                'id' => $id
+            ], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('contenus/modifCoordoArtisans.html.twig', [
+            'clients' => $client,
+            'form' => $form,
+        ]);
+    }
+
+
+
+
+
+
+
+
+
 
 
     //---------------------------------------------  MANQUE CONTROLE PROJET

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Artisan;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +19,11 @@ class ArtisanType extends AbstractType
             ->add('siret')
             ->add('nom_gerant')
             ->add('prenom_gerant')
-            ->add('date_naissance')
+            //->add('date_naissance')
+            ->add('date_naissance', BirthdayType::class, [
+                'placeholder' => 'Sélectionnez une valeur',
+                'years' => range(date('Y') - 90, date('Y')),
+                ])
             ->add('numero_rue')
             ->add('nom_rue')
             ->add('code_postal')
