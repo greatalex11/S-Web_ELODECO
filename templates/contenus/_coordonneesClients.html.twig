@@ -34,21 +34,21 @@
             </div>
             <div class="row mt-3">
                         <div class="col-xl-4 col-lg-4 h-100">
-                            <!--                Entreprise              -->
+                            <!--                Info client              -->
                             <div class="services-one__single" style="height:1200px">
 {#                                <h2 class="services-one__title">#}
 {#                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.raisonSociale|striptags|default('77') }}</a>#}
 {#                                </h2>#}
 {#                                <p class="services-one__text">Raison sociale</p>#}
 
-{#                                <h2 class="services-one__title mt-5" style="color: {{ theme.theme.couleurActuelleBg }}"><a style="color: {{ theme.theme.couleurActuelleBg }}"> {{ artisans.nomEtablissement|striptags|default('eurl...') }} </a>#}
-{#                                </h2>#}
-{#                                <p class="services-one__text">Etablissement</p>#}
+                                <h2 class="services-one__title" style="color: {{ theme.theme.couleurActuelleBg }}"><a style="color: {{ theme.theme.couleurActuelleBg }}"> {{ clients.prenom|striptags|default('prénom') }} </a>
+                                </h2>
+                                <p class="services-one__text">Prénom</p>
 
-{#                                <h2 class="services-one__title mt-5">#}
-{#                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.siret|striptags|default('siret') }}</a>#}
-{#                                </h2>#}
-{#                                <p class="services-one__text">SIRET</p>#}
+                                <h2 class="services-one__title mt-5">
+                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.nom|striptags|default('nom') }}</a>
+                                </h2>
+                                <p class="services-one__text">Nom</p>
 
                                 <p class="row border-bottom mt-5"></p>
 
@@ -76,6 +76,30 @@
                                 </div>
                             </div>
                         </div>
+                <!--    Coordonnées client   -->
+                <div class="col-xl-4 col-lg-4 h-100">
+                    <div class="services-one__single" style="height:1200px">
+                        <h2 class="services-one__title">
+                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.telPortable|striptags|default('06.07....') }}</a>
+                        </h2>
+                        <p class="services-one__text">Téléphone portable</p>
+
+                        <h2 class="services-one__title mt-5">
+                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.telFix|striptags|default('03 84....') }}</a>
+                        </h2>
+                        <p class="services-one__text">Téléphone fixe</p>
+
+
+{#  modification email, contacter le web master ou emailverifier dans controller?#}
+{#                        <h2 class="services-one__title mt-5">                            #}
+{#                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.user.email|striptags|default('...@aol.fr') }}</a>        </h2>#}
+{#                        <p class="services-one__text">Email</p>#}
+
+                        <div class="services-one__icon">
+                            <span class="icon-house-design"></span>
+                        </div>
+                    </div>
+                </div>
 
                         <!--      Info gérant    -->
                         <div class="col-xl-4 col-lg-4 h-100 ">
@@ -91,10 +115,25 @@
 {#                                </h2>#}
 {#                                <p class="services-one__text">nom du gérant</p>#}
 
-                                <h2 class="services-one__title mt-5">
+                                <h2 class="services-one__title">
                                     <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.dateNaissance|date("m/d/Y")|default('01 janvier 1972') }}</a>
                                 </h2>
                                 <p class="services-one__text">Date de naissance</p>
+
+                                <h2 class="services-one__title">
+                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.statusMarital|date("m/d/Y")|default('statut marital') }}</a>
+                                </h2>
+                                <p class="services-one__text">Statut marital</p>
+
+                                <h2 class="services-one__title">
+                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.prenomConjoint|date("m/d/Y")|default('prénom conjoint') }}</a>
+                                </h2>
+                                <p class="services-one__text">Prénom conjoint</p>
+
+                                <h2 class="services-one__title">
+                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.nomConjoint|date("m/d/Y")|default('nom conjoint') }}</a>
+                                </h2>
+                                <p class="services-one__text">Nom conjoint</p>
 
                                 <div class="services-one__icon">
                                     <span class="icon-buildings"></span>
@@ -102,33 +141,7 @@
                             </div>
                         </div>
 
-                        <!--    Coordonnées gérant et entreprise    -->
-                        <div class="col-xl-4 col-lg-4 h-100">
-                            <div class="services-one__single" style="height:1200px">
-                                <h2 class="services-one__title">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.telPortable|striptags|default('06.07....') }}</a>
-                                </h2>
-                                <p class="services-one__text">Téléphone portable</p>
 
-                                <h2 class="services-one__title mt-5">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.telFix|striptags|default('03 84....') }}</a>
-                                </h2>
-                                <p class="services-one__text">Téléphone fixe</p>
-
-{#                                <h2 class="services-one__title mt-5">#}
-{#                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ client.fax|striptags|default('n°fax') }}</a>#}
-{#                                </h2>#}
-{#                                <p class="services-one__text">Fax</p>#}
-
-                                <h2 class="services-one__title mt-5">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.user.email|striptags|default('...@aol.fr') }}</a>                                </h2>
-                                <p class="services-one__text">Email</p>
-
-                                <div class="services-one__icon">
-                                    <span class="icon-house-design"></span>
-                                </div>
-                            </div>
-                        </div>
             </div>
         </div>
         <div class="d-flex justify-content-end  bd-highlight mt-5 m-2">

@@ -21,7 +21,6 @@ class ClientController extends AbstractController
     public function index(ClientRepository $clientRepository, Client $client): Response
     {
         $form = $this->createForm(ClientType::class);
-
         $clients = $client;
         return $this->render('pages/espace_client.html.twig', [
             'form' => $form,
@@ -40,6 +39,9 @@ class ClientController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $id = $client->getId();
             $form->getData();
+//            emailverifier ???
+//            $email=$form->get('email')->getData();
+//            $User->setmail($email);
             $entityManager->persist($client);
             $entityManager->flush();
             $this->addFlash('success', 'vos modification sont prises en compte');
@@ -48,7 +50,7 @@ class ClientController extends AbstractController
             ], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('contenus/modifCoordoArtisans.html.twig', [
+        return $this->render('contenus/modifCoordoClients.html.twig', [
             'clients' => $client,
             'form' => $form,
         ]);
@@ -75,7 +77,7 @@ class ClientController extends AbstractController
 //        $this->checkIsTheSameClient($client);
         return $this->render('contenus/coordonnees.html.twig', [
             'clients' => $client,
-//            'form' => $form,
+           'form' => $form,
             'mail' => $mail,
         ]);
 

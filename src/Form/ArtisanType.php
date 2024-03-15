@@ -32,7 +32,7 @@ class ArtisanType extends AbstractType
             ->add('tel_fixe')
             ->add('tel_portable')
             ->add('fax')
-            ->add('submit', SubmitType::class);
+            ->add('Valider', SubmitType::class);
 //            ->add('note_globale')
 //            ->add('commentaire')
 //            ->add('status')

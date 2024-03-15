@@ -56,6 +56,15 @@ class Client
     #[ORM\ManyToMany(targetEntity: Projet::class, mappedBy: 'client')]
     private Collection $projets;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $statusMarital = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $nomConjoint = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $prenomConjoint = null;
+
     public function __construct()
     {
         $this->projets = new ArrayCollection();
@@ -241,6 +250,42 @@ class Client
         if ($this->projets->removeElement($projet)) {
             $projet->removeClient($this);
         }
+
+        return $this;
+    }
+
+    public function getStatusMarital(): ?string
+    {
+        return $this->statusMarital;
+    }
+
+    public function setStatusMarital(?string $statusMarital): static
+    {
+        $this->statusMarital = $statusMarital;
+
+        return $this;
+    }
+
+    public function getNomConjoint(): ?string
+    {
+        return $this->nomConjoint;
+    }
+
+    public function setNomConjoint(?string $nomConjoint): static
+    {
+        $this->nomConjoint = $nomConjoint;
+
+        return $this;
+    }
+
+    public function getPrenomConjoint(): ?string
+    {
+        return $this->prenomConjoint;
+    }
+
+    public function setPrenomConjoint(?string $prenomConjoint): static
+    {
+        $this->prenomConjoint = $prenomConjoint;
 
         return $this;
     }
