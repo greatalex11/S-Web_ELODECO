@@ -61,7 +61,6 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -91,8 +90,9 @@ class RegistrationController extends AbstractController
                 $user->setRoles(["artisan"]);
 
                 $nomEts=$form->get('nom_etablissement')->getData();
-                $form->get('raison_sociale')->getData();
                 $artisan->setNomEtablissement($nomEts);
+                $raisonSociale= $form->get('raison_sociale')->getData();
+                $artisan->setRaisonSociale($raisonSociale);
             }
 
             if ($choice === "Client") {
