@@ -1,18 +1,27 @@
+<html>
+<head>
 
-
- {% block stylesheets %}
+    {% block stylesheets %}
 
      <link rel="stylesheet" href="{{ asset('assets/css/kitecx.css') }}"/>
      <link rel="stylesheet" href="{{ asset('assets/css/kitecx-responsive.css') }}"/>
      <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap/css/bootstrap.min.css') }}"/>
 
+        {% block title %}{% endblock %}
 
+    {% endblock %}
 
+</head>
+<body>
 
-{% block title %}{% endblock %}
-
- {% endblock %}
-
+{# read and display all flash messages #}
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="flash-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
 
 {% block body %}
     <div class="container h-100 d-flex flex-column justify-content-center align-items-center m-auto">
@@ -61,3 +70,6 @@
     </div>
 
 {% endblock %}
+
+</body>
+</html>

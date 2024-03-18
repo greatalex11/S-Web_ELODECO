@@ -46,6 +46,9 @@ class Style
    #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'styles', cascade: ['persist'], fetch: 'EAGER')]
     private Collection $image;
 
+    #[ORM\ManyToMany(targetEntity: Page::class, inversedBy: 'style', cascade: ['persist'], fetch: 'EAGER')]
+    private Collection $page;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $slug = null;
 

@@ -133,7 +133,7 @@ class RegistrationController extends AbstractController
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Your email address has been verified.');
+        $this->addFlash('success', 'Votre email a été vérifié avec succès.');
         //$this-> getUser()->setIsVerified(1);
 
    // app_register : on reste dans le registerform après le check email

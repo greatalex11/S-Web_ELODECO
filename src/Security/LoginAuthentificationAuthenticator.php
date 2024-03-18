@@ -49,8 +49,13 @@ class LoginAuthentificationAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
+        /** @var User $user */
         $user = $token->getUser();
         $userRoles = $token->getRoleNames();
+
+        if (!$user->isVerified()) {
+            // Si il est pas vérifié, redirigé vers une page qui dit qui faut checker le mail et le déconnecté
+        }
 
         if (in_array(User::ROLE_ADMIN, $userRoles)) {
             return new RedirectResponse($this->urlGenerator->generate('admin', []));
