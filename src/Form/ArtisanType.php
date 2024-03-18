@@ -28,7 +28,7 @@ class ArtisanType extends AbstractType
             ->add('nom_rue')
             ->add('code_postal')
             ->add('localite')
-            ->add('email')
+           // ->add('email')
             ->add('tel_fixe')
             ->add('tel_portable')
             ->add('fax')
