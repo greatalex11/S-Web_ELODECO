@@ -781,7 +781,7 @@
     // let flashForm = document.getElementById('flash-message')
     let flashForm = $('.alert-success');
     if (flashForm.length) {
-        $('.close').addEventListener('click', () => {
+        $('document').on('click','.close',() => {
             flashForm.hide();
             // flashForm.style.display='none';
         })
@@ -833,15 +833,20 @@
     }
 
     //dropdown menu document : liste ou transmettre un document
-    $('.dropdown-toggle').dropdown('toggle');
+    if( $('.dropdown-toggle').length) {
+        $('.dropdown-toggle').dropdown('toggle');
+    }
+
 
     let textarea = document.getElementById('myTextarea');
+    if(textarea) {
+        textarea.addEventListener('input', function () {
+            let inputValue = textarea.value;
+            inputValue = '<?=$paramFiltre?>'
+            document.getElementById('output').textContent = inputValue;
+        });
+    }
 
-    textarea.addEventListener('input', function () {
-        let inputValue = textarea.value;
-        inputValue = '<?=$paramFiltre?>'
-        document.getElementById('output').textContent = inputValue;
-    });
 
 
     // Création du caroussel pour les images de style détails
