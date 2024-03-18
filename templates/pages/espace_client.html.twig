@@ -11,6 +11,7 @@
         <div class="sticky-header__content"></div>
     </div>
     {% set image1 = Apps.image1CarouselHome %}
+
     <section class="page-header mb-2" style="background-image: url({{ vich_uploader_asset(image1) }});">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
@@ -24,14 +25,7 @@
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
-                    <li>{{ clients.prenom|default('nomen') }}  {{ clients.nom|default('praenomen') }}</li>
-                    {#                    {% if artisans is defined %} #}
-                    {#                        <li>{{ artisans.nomGerant|default('nomen')}}  {{ artisans.prenomGerant|default('praenomen')}}</li> #}
-                    {#                    {% else %} #}
-                    {#                        {% set artisans = polo %} #}
-                    {#                        <li>{{ polo.nom|default('nomen')}}  {{ polo.prenom|default('praenomen')}}</li> #}
-                    {#                    {% endif %} #}
-
+                    <li>{{ clients.prenom }}  {{ clients.nom }}</li>
                 </ul>
             </div>
         </div>
