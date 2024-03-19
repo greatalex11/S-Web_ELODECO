@@ -63,41 +63,43 @@
                         {{ form_row(form.nom_gerant, { 'label': 'Nom (gérant)' }) }}
                     </div>
                 </div>
-                <div class=" col-4 align-item-center  p-0 border bg-light">
-                    <div class="contact-page__input-box bg-light">
-                    {{ form_row(form.date_naissance, {'attr': {'class': "bg-light"}}, {'label': 'Date de naissance'}) }}
+
+                <div class="col-7 d-flex align-item-center p-0 mt-4 m-lg-3 ">
+                    <div class="contact-page__input-box">
+                        {{ form_row(form.date_naissance, {'attr': {'class': "m-0"}}, {'label': 'Date de naissance'}) }}
                     </div>
                 </div>
+
             </div>
             <div class="row border-bottom mt-2 mb-5">
-                <div class="col-3">
+{#                <div class="col-3">#}
 {#                    <div class="contact-page__input-box">#}
 {#                        {{ form_row(form.email, { 'label': 'email' }) }}#}
 {#                    </div>#}
-                </div>
+{#                </div>#}
                 <div class="col-3">
                     <div class="contact-page__input-box">
-                        {{ form_row(form.tel_portable, { 'label': 'telephone portable' }) }}
+                        {{ form_row(form.tel_portable, { 'label': 'Telephone portable' }) }}
                     </div>
                 </div>
                 <div class="col-3 contact-page__input-box">
-                    {{ form_row(form.tel_fixe, { 'label': 'telephone fixe' }) }}
+                    {{ form_row(form.tel_fixe, { 'label': 'Telephone fixe' }) }}
                 </div>
                 <div class="col-3 contact-page__input-box">
                     <div class="contact-page__input-box">
-                        {{ form_row(form.fax, { 'label': 'fax' }) }}
+                        {{ form_row(form.fax, { 'label': 'Fax' }) }}
                     </div>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-3 contact-page__input-box">
-                    {{ form_row(form.numero_rue, { 'label': 'numéro de rue' }) }}
+                    {{ form_row(form.numero_rue, { 'label': 'Numéro de rue' }) }}
                 </div>
                 <div class="col-3 contact-page__input-box">
-                    {{ form_row(form.nom_rue, { 'label': 'nom de la rue' }) }}
+                    {{ form_row(form.nom_rue, { 'label': 'Nom de la rue' }) }}
                 </div>
                 <div class="col-3 contact-page__input-box">
-                    {{ form_row(form.code_postal, { 'label': 'code postal' }) }}
+                    {{ form_row(form.code_postal, { 'label': 'Code postal' }) }}
                 </div>
 
                 <div class="col-3 contact-page__input-box">
