@@ -4,14 +4,20 @@
 
 {% block title %}Elo Deco: espace Artisan {% endblock %}
 
+{% block header %}
+
+{% endblock %}
+
 {% block content %}
 
     <!--                                                                   BANDEAU SUPERIEUR    image 1894x359                                                            -->
     <div class="stricky-header stricked-menu main-menu">
         <div class="sticky-header__content"></div>
     </div>
+
     {% set image1 = Apps.image1CarouselHome %}
-    <section class="page-header " style="background-image: url({{ vich_uploader_asset(image1) }});">
+    <section class="page-header"
+             style="background-image: url({{ vich_uploader_asset(image1) }});">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -24,26 +30,18 @@
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
-                    <li>{{ artisans.nomGerant|default('nomen') }}  {{ artisans.prenomGerant|default('praenomen') }}</li>
-
-                    {#                    {% if artisans is defined %} #}
-                    {#                        <li>{{ artisans.nomGerant|default('nomen')}}  {{ artisans.prenomGerant|default('praenomen')}}</li> #}
-                    {#                    {% else %} #}
-                    {#                        {% set artisans = polo %} #}
-                    {#                        <li>{{ polo.nom|default('nomen')}}  {{ polo.prenom|default('praenomen')}}</li> #}
-                    {#                    {% endif %} #}
-
+                    <li class="mt-3">{{ artisans.nomGerant|default('nomen') }}  {{ artisans.prenomGerant|default('praenomen') }}</li>
                 </ul>
             </div>
         </div>
     </section>
-    <!--                                                                   Bandeau fin                                                                                 -->
+    <!--                                                             Bandeau fin                                     -->
 
     <div class=" col-lg-10" style="margin:5px 0 5px 5%">
     </div>
 
-    <!--                                                                   plan médian                                       -->
-    <section class="contact-page border-bottom mb-1 mt-5 pb-2 pt-0">
+    <!--                                                             plan médian                                     -->
+    <section class="contact-page border-bottom mb-1 mt-4 pb-2 pt-0">
     <div class="container m-auto" style="max-width: 1500px">
     <div class="row">
     <div class="row">
@@ -61,8 +59,8 @@
 
     <div class="row">
     <!--colonne gauche-->
-    <div class="col-2 h-100">
-        <div class="contact-page__details" style="padding: 61px 32px 60px">
+    <div class="col-2 h-75">
+        <div class="contact-page__details" style="padding: 45px 32px 40px">
             <div class="contact-page__details-shape"
                  style="background-image: url({{ asset('assets/images/shapes/contact-page__details-shape.png') }})">
             </div>
@@ -76,12 +74,11 @@
                     <h3 class="mt-1 mb-1 offcanvas-title d-none d-sm-block" id="offcanvas">Menu</h3>
                 </div>
             </div>
-            {#                                                {% if artisans is defined %} #}
             <div class="contact-page__details-contact-info">
                 <div class="row">
                     <!--Menu   -->
                     <!--Gauche -->
-                    <div class="offcanvas-body px-0">
+                    <div class="offcanvas-body px-0 h-50">
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start"
                             id="menu">
                             <li class="nav-item">
@@ -105,11 +102,11 @@
                                     <i class="fs-5 bi-grid"></i><span
                                             class="ms-1 d-none d-sm-inline">Projet</span></a>
                             </li>
-                            <li>
-                                <a href="{{ path('app_contact') }}" class="nav-link text-truncate mb-6">
-                                    <i class="fs-5 bi-table"></i><span
-                                            class="ms-1 d-none d-sm-inline">Contact</span></a>
-                            </li>
+                            {#                            <li> #}
+                            {#                                <a href="{{ path('app_contact') }}" class="nav-link text-truncate mb-6"> #}
+                            {#                                    <i class="fs-5 bi-table"></i><span #}
+                            {#                                            class="ms-1 d-none d-sm-inline">Contact</span></a> #}
+                            {#                            </li> #}
                             <li>
                                 <a href="{{ path('app_logout') }}" class="nav-link text-truncate mb-6">
                                     <i class="fs-5 bi-table"></i><span
@@ -124,7 +121,7 @@
     <!--fin colonne gauche -->
     {% block body %}
         <!--colonne de droite  -->
-        <div class="col bg-light mb-5">
+        <div class="col bg-light mb-4">
             <!-- Image avant affichage des données -->
             <div class="mt-2 m-auto justify-content-center">
                 {% set image1 = Apps.image1CarouselHome %}

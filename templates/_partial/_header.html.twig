@@ -22,7 +22,7 @@
                                         <i class="fas fa-phone-square-alt"></i>
                                     </div>
                                     <div class="text">
-                                        <p><a href="tel:0384000000">{{ Apps.telephone }}</a></p>
+                                        <p><a>{{ Apps.telephone }}</a></p>
                                     </div>
                                 </li>
                                 <li>
@@ -30,7 +30,7 @@
                                         <i class="fas fa-envelope"></i>
                                     </div>
                                     <div class="text">
-                                        <p><a href="mailto:needhelp@company.com">{{ Apps.mail }}</a></p>
+                                        <p><a>{{ Apps.mail }}</a></p>
                                     </div>
                                 </li>
                             </ul>
@@ -38,11 +38,15 @@
                     </div>
                     <div class="main-menu-wrapper__right">
                         <div class="main-menu-wrapper__right-social">
-                            <a href="{{ Apps.linkedIn }}" target="_blank" class="clr-fb"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
-                            <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                            {#                            <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a> #}
+                            {#                            <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a> #}
                             <a href="{{ Apps.linkedIn|default('[No name]') }}" target="_blank" class="clr-fb"><i
+                                        class="fab fa-linkedin"></i></a>
+
+                            <a href="{{ Apps.twiter|default('[No name]') }}" target="_blank"><i
+                                        class="fab fa-twitter"></i></a>
+
+                            <a href="{{ Apps.facebook|default('[No name]') }}" target="_blank" class="clr-fb"><i
                                         class="fab fa-facebook"></i></a>
                         </div>
                     </div>

@@ -305,7 +305,7 @@ class ArtisanController extends AbstractController
             $form->getData();
             $entityManager->persist($artisan);
             $entityManager->flush();
-            $this->addFlash('success', 'vos modification sont prises en compte');
+            $this->addFlash('success', 'Vos modification sont prises en compte !');
             return $this->redirectToRoute('app_artisan_accueil', [
                 'id' => $id
             ], Response::HTTP_SEE_OTHER);
