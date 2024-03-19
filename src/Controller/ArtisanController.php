@@ -54,27 +54,27 @@ class ArtisanController extends AbstractController
     #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET', 'POST'])]
     public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository,EntityManagerInterface $entityManager,SluggerInterface $slugger,Request $request): Response
     {
-        $id=$artisan->getId();
+        $id = $artisan->getId();
         $artisans = $artisan;
         $doc = $request->get('doc');
         if ($doc) {
-           $idArtisan=$id;
-           $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
-           if(!$documentIdArtisan){
-               $this->addFlash(
-                   'notice',
-                   'Vous n\'avez pas encore de document en ligne.'
-               );
-           }
+            $idArtisan = $id;
+            $documentIdArtisan = $documentsRepository->findDocumentArtisan($idArtisan); //dql depuis document
+            if (!$documentIdArtisan) {
+                $this->addFlash(
+                    'notice',
+                    'Vous n\'avez pas encore de document en ligne.'
+                );
+            }
 
-           //formulaire search document
-           $search = new SearchFormType();
-           $formSearch = $this->createForm(SearchFormType::class, $search);
-           $formSearch->handleRequest($request);
-           if ($formSearch->isSubmitted() && $formSearch->isValid()) {
-               $search = $formSearch->get('searchValue')->getData();
-               //search fonction à faire
-           }
+            //formulaire search document
+            $search = new SearchFormType();
+            $formSearch = $this->createForm(SearchFormType::class, $search);
+            $formSearch->handleRequest($request);
+            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+                $search = $formSearch->get('searchValue')->getData();
+                //search fonction à faire
+            }
 
 
 ///  //formulaire upload depuis FormType bidouillée en document et ici
@@ -91,16 +91,18 @@ class ArtisanController extends AbstractController
 //                   $this->addFlash('success', 'Votre document est bien enregistré');
 //               }
 
-       //     /** @var documents $documents */
+            /** @var documents $documents */
+            $documents = Documents::class;
 
-         //  $documents = new $documents();
-////         $documents->setDocument('nouveau document');
-//           $formDoc=$this->createForm(DocumentsType::class, $documents);
-//            if ($formDoc->isSubmitted() && $formDoc->isValid()) {
-//                $File = $formDoc->get('documentsFile')->getData();
-//                // this condition is needed because the 'documentsFile' field is not required
-//                // so the PDF file must be processed only when a file is uploaded
-//
+            $documents = new $documents();
+            $documents->setDocument('nouveau document');
+            $formDoc = $this->createForm(DocumentsType::class, $documents);
+
+            if ($formDoc->isSubmitted() && $formDoc->isValid()) {
+                $File = $formDoc->get('documentsFile')->getData();
+                // this condition is needed because the 'documentsFile' field is not required
+                // so the PDF file must be processed only when a file is uploaded
+
 //                if ($File) {
 //                    $originalFilename = pathinfo($File->getClientOriginalName(), PATHINFO_FILENAME);
 //                    // this is needed to safely include the file name as part of the URL
@@ -116,25 +118,26 @@ class ArtisanController extends AbstractController
 //                    } catch (FileException $e) {
 //                        // ... handle exception if something happens during file upload
 //                    }
-//
-//                    // updates the 'brochureFilename' property to store the PDF file name
-//                    // instead of its contents
-//                    $documents->setDocument(($newFilename));
-//                }
-//                $entityManager->persist($File);
-//                $entityManager->flush();
-//                $this->addFlash('success', 'Votre document est bien enregistré');
-//            }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                //$documents->setDocument($File);
+
+                $entityManager->persist($File);
+                $entityManager->flush();
+                $this->addFlash('success', 'Votre document est bien enregistré');
+            }
 
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
                 'artisans' => $artisans,
                 'documentIdArtisan' => $documentIdArtisan,
                 'formSearch' => $formSearch->createView(),
-//                'formLoadDoc'=>$formDoc,
-//                'form2'=>$form2,
+                'formLoadDoc' => $formDoc,
+                //                'form2'=>$form2,
             ]);
-       }
+        }
+
         return $this->render('pages/espace_artisan.html.twig', [
             'artisans' => $artisans,
         ]);

@@ -26,23 +26,23 @@ class DocumentsType extends AbstractType
                 'label' => 'Votre document (PDF file)',
                 'mapped' => false,
                 'required' => false,
-//                'constraints' => [
-//                    new File([
+//               'constraints' => [
+//                   new File([
 //                        'maxSize' => '1024k',
-//                        'mimeTypes' => [
-//                            'application/pdf',
-//                            'application/x-pdf',
-//                        ],
+//
+//                        'mimeTypes' => [                 'application/pdf',
+//                           'application/x-pdf',
+//                       ],
 //                        'mimeTypesMessage' => 'Please upload a valid PDF document',
 //                    ])
 //                ],
             ])
             ->add('titre', TextType::class)
             ->add('size',NumberType::class)
-            ->add('typo',TextType::class)
-            ->add('save', SubmitType::class, [
-                'attr' => ['class' => 'save']]);
-
+            ->add('typo',TextType::class);
+//            ->add('save', SubmitType::class, [
+//                'label' => 'Enregistrement',
+//                'attr' => ['class' => 'btn w-100 bg-light thm-btn contact-page__btn mt-5 mb-2 contact-page__input-box fw-bold border p-5 pt-1 pb-1']]);
 
     }
     public function configureOptions(OptionsResolver $resolver): void

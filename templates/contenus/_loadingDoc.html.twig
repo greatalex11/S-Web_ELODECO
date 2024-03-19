@@ -4,7 +4,7 @@
 {% block content %}
   {% if  documentIdArtisan is defined %}
     <div class="alert-primary bg-light m-5">
-        <h2>Envoyer vos documents</h2>
+        <h2 style="color: white">Envoyer vos documents</h2>
 {#        <div class="col-md-6">#}
 {#      form_start()#}
 {#      {{ renderedField }}#}
@@ -24,10 +24,10 @@
 {#    {% endif %}#}
         <div class="bg-light mt-xl-5">
 
-{#            {{ form_start(formLoadDoc) }}#}
-{#            {{ form_row(formLoadDoc.documentsFile) }}#}
-{#            {{ form_end(formLoadDoc) }}#}
-{#{{ dump(formLoadDoc) }}#}
+            {{ form_start(formLoadDoc) }}
+            {{ form_row(formLoadDoc.documentsFile) }}
+            {{ form_end(formLoadDoc) }}
+
         </div>
 {#    </div>#}
 

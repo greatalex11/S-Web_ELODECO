@@ -66,7 +66,7 @@
                         </div>
                         <div class="portfolio-details__content pb-0">
                             <h2 class="portfolio-details__title" >{{ styled.titre1 |default('exemple') }} {{ styled.titre2|default('type de décoration') }}  </h2>
-                            <p class="portfolio-details__text-1">{{ styled.texte1 }}</p>
+                            <p class="portfolio-details__text-1">{{ styled.texte1|raw }}</p>
                             <ul class="portfolio-details__list list-unstyled">
                                 {% set list = styled.liste %}
                                 {% for list in list %}
