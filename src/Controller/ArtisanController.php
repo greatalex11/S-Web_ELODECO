@@ -233,6 +233,12 @@ class ArtisanController extends AbstractController
             $idArtisan = $artisan->getId();
             $projetList = $projetRepository->findProjetByNomClient($idArtisan); //dql depuis document
 
+            if(!$projetList){
+                $this->addFlash(
+                    'notice',
+                    'Vous n\'avez pas encore de projet en ligne.'
+                );
+            }
 
             //....................................  recherche de Projet/  searchValue:: Class 'search'
 

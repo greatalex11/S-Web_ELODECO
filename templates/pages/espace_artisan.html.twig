@@ -11,7 +11,7 @@
         <div class="sticky-header__content"></div>
     </div>
     {% set image1 = Apps.image1CarouselHome %}
-    <section class="page-header mb-2" style="background-image: url({{ vich_uploader_asset(image1) }});">
+    <section class="page-header " style="background-image: url({{ vich_uploader_asset(image1) }});">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -137,11 +137,22 @@
                 {% include "contenus/_coordonneesArtisans.html.twig" %}
             {% endif %}
 
-            <!--Gestion affichage documents - flash msg si pas de doc en bdd: dans page-documentArtisans-->
+            <!--flash message absence de document ou de projet-->
+            {% for message in app.flashes('notice') %}
+                <div class="flash-info bg-gradient w-100 text-center mt-xl-5 mb-xl-5">
+                    <b> {{ message }}</b>
+                </div>
+            {% endfor %}
+
+            <!--Gestion affichage documents-->
 
             {% if app.request.attributes.get('_route') == 'app_artisan_accueilDoc' %}
                 {% include "contenus/_documentArtisans.html.twig" %}
             {% endif %}
+
+
+
+
 
             <!--Affichage liste des documents -->
             {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
