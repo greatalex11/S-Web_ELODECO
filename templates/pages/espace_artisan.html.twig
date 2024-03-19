@@ -91,11 +91,6 @@
                                             class="ms-1 d-none d-sm-inline">Coordonnées</span>
                                 </a>
 
-                                {#     essai condition sur variable              {% else %} #}
-                                {#                                               {% set artisans = polo %} #}
-                                {#                                                <a href="{{ path('app_artisan_... #}
-                                {#                                                {% endif %} #}
-
                             </li>
                             <li>
                                 <a href="{{ path('app_artisan_accueilDoc', { 'id': artisans.id, 'doc': 'doc' }) }}"
@@ -142,11 +137,13 @@
                 {% include "contenus/_coordonneesArtisans.html.twig" %}
             {% endif %}
 
+            <!--Gestion affichage documents - flash msg si pas de doc en bdd: dans page-documentArtisans-->
 
             {% if app.request.attributes.get('_route') == 'app_artisan_accueilDoc' %}
                 {% include "contenus/_documentArtisans.html.twig" %}
             {% endif %}
 
+            <!--Affichage liste des documents -->
             {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
                 {% include "contenus/_projetArtisans.html.twig" %}
             {% endif %}

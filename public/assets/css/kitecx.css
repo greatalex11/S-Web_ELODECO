@@ -6379,13 +6379,13 @@ ul {
     margin-bottom: 20px;
     border-radius: 0px;
     outline: none;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--thm-gray);
     font-weight: 500;
 }
 
 .comment-form__input-box textarea {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--thm-gray);
     height: 190px;
     width: 100%;
@@ -7527,13 +7527,13 @@ ul {
     margin-bottom: 20px;
     border-radius: 0px;
     outline: none;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--thm-gray);
     font-weight: 500;
 }
 
 .contact-page__input-box textarea {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--thm-gray);
     height: 190px;
     width: 100%;

@@ -781,11 +781,13 @@
     // let flashForm = document.getElementById('flash-message')
     let flashForm = $('.alert-success');
     if (flashForm.length) {
-        $('document').on('click','.close',() => {
+        $(document).on('click','.close',() => {
+            console.log('coucou');
             flashForm.hide();
             // flashForm.style.display='none';
         })
     }
+
 
     //détail du projet : hover = police en rouge & fire du modal 'show data du pjt selectionné par <a>
     $(document).ready(() => {
@@ -887,7 +889,7 @@
 
     // Redimentionnement des news pour les ecran > 992px
     $(window).on("resize", function () {
-        console.log("resize")
+       // console.log("resize")
         calculateHeightNews();
         logoHeight();
     });
@@ -928,15 +930,15 @@
 })(jQuery);
 
 
-// fonction popover service details
-
-let ul = document.getElementById("jojo");
-let li = ul.querySelectorAll("li");
-
-li.forEach(function (li) {
-    li.addEventListener("click", function (e) {
-        $(this).popover({
-            container: 'body'
-        });
-    });
-});
+// // fonction popover service details
+//
+// let ul = document.getElementById("jojo");
+// let li = ul.querySelectorAll("li");
+//
+// li.forEach(function (li) {
+//     li.addEventListener("click", function (e) {
+//         $(this).popover({
+//             container: 'body'
+//         });
+//     });
+// });

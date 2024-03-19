@@ -26,9 +26,8 @@ class DocumentsRepository extends ServiceEntityRepository
      */
 
 
-    public function findDocumentArtisan($idArtisan ): array
+    public function findDocumentArtisan($idArtisan): array
     {
-
         $qb = $this->createQueryBuilder('d');
 
         $qb->select('d')

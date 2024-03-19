@@ -17,7 +17,7 @@
                 <th scope="col">Client</th>
             </tr>
             </thead>
-
+            {% if documentIdArtisan is defined %}
             {% for key, tableDoc in documentIdArtisan %}
                 <tbody>
                 <tr>
@@ -32,6 +32,7 @@
                 </tr>
                 </tbody>
             {% endfor %}
+            {% endif %}
         </table>
     </div>
 
@@ -39,6 +40,7 @@
     <section class="h-auto">
         <div class="container">
             <div class="row align-content-around">
+                {% if documentIdArtisan is defined %}
                 {% for key, arrayCard in documentIdArtisan %}
                     <div class="col-sm-4">
                         <div class="card m-3">
@@ -58,6 +60,7 @@
                         </div>
                     </div>
                 {% endfor %}
+                {% endif %}
             </div>
         </div>
     </section>

@@ -52,17 +52,20 @@ class ArtisanController extends AbstractController
     // ...........................................DOCUMENTS....................................... page accueil document
 
     #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET', 'POST'])]
-    public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository,Documents $documents,EntityManagerInterface $entityManager,SluggerInterface $slugger,Request $request): Response
+    public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository,EntityManagerInterface $entityManager,SluggerInterface $slugger,Request $request): Response
     {
-////      $polo=['id'=>$artisans->getId(), 'nom'=>$artisans->getNomGerant(), '$prenom'=>$artisans->getPrenomGerant()];
-        //$formType, $formOptions,
-
         $id=$artisan->getId();
         $artisans = $artisan;
         $doc = $request->get('doc');
         if ($doc) {
-           $idArtisan=$artisan->getId();
+           $idArtisan=$id;
            $documentIdArtisan=$documentsRepository-> findDocumentArtisan($idArtisan); //dql depuis document
+           if(!$documentIdArtisan){
+               $this->addFlash(
+                   'notice',
+                   'Vous n\'avez pas encore de document en ligne.'
+               );
+           }
 
            //formulaire search document
            $search = new SearchFormType();
@@ -88,49 +91,50 @@ class ArtisanController extends AbstractController
 //                   $this->addFlash('success', 'Votre document est bien enregistré');
 //               }
 
-            /** @var documents $documents */
-           $documents = new $documents();
-//         $documents->setDocument('nouveau document');
-           $formDoc=$this->createForm(DocumentsType::class, $documents);
-            if ($formDoc->isSubmitted() && $formDoc->isValid()) {
-                $File = $formDoc->get('documentsFile')->getData();
-                // this condition is needed because the 'documentsFile' field is not required
-                // so the PDF file must be processed only when a file is uploaded
+       //     /** @var documents $documents */
 
-                if ($File) {
-                    $originalFilename = pathinfo($File->getClientOriginalName(), PATHINFO_FILENAME);
-                    // this is needed to safely include the file name as part of the URL
-                    $safeFilename = $slugger->slug($originalFilename);
-                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $File->guessExtension();
-
-                    // Move the file to the directory where brochures are stored
-                    try {
-                        $File->move(
-                            $this->getParameter('brochures_directory'),
-                            $newFilename
-                        );
-                    } catch (FileException $e) {
-                        // ... handle exception if something happens during file upload
-                    }
-
-                    // updates the 'brochureFilename' property to store the PDF file name
-                    // instead of its contents
-                    $documents->setDocument(($newFilename));
-                }
-                $entityManager->persist($File);
-                $entityManager->flush();
-                $this->addFlash('success', 'Votre document est bien enregistré');
-            }
+         //  $documents = new $documents();
+////         $documents->setDocument('nouveau document');
+//           $formDoc=$this->createForm(DocumentsType::class, $documents);
+//            if ($formDoc->isSubmitted() && $formDoc->isValid()) {
+//                $File = $formDoc->get('documentsFile')->getData();
+//                // this condition is needed because the 'documentsFile' field is not required
+//                // so the PDF file must be processed only when a file is uploaded
+//
+//                if ($File) {
+//                    $originalFilename = pathinfo($File->getClientOriginalName(), PATHINFO_FILENAME);
+//                    // this is needed to safely include the file name as part of the URL
+//                    $safeFilename = $slugger->slug($originalFilename);
+//                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $File->guessExtension();
+//
+//                    // Move the file to the directory where brochures are stored
+//                    try {
+//                        $File->move(
+//                            $this->getParameter('brochures_directory'),
+//                            $newFilename
+//                        );
+//                    } catch (FileException $e) {
+//                        // ... handle exception if something happens during file upload
+//                    }
+//
+//                    // updates the 'brochureFilename' property to store the PDF file name
+//                    // instead of its contents
+//                    $documents->setDocument(($newFilename));
+//                }
+//                $entityManager->persist($File);
+//                $entityManager->flush();
+//                $this->addFlash('success', 'Votre document est bien enregistré');
+//            }
 
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
                 'artisans' => $artisans,
                 'documentIdArtisan' => $documentIdArtisan,
                 'formSearch' => $formSearch->createView(),
-                'formLoadDoc'=>$formDoc,
+//                'formLoadDoc'=>$formDoc,
 //                'form2'=>$form2,
             ]);
-        }
+       }
         return $this->render('pages/espace_artisan.html.twig', [
             'artisans' => $artisans,
         ]);
