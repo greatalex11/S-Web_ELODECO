@@ -15,31 +15,32 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class Documents
 {
     use DateTrait;
-    public const CLIENT= 'clients';
-    public const ARTISAN= 'artisan';
 
-    public const FACTURE= 'facture';
-    public const PLAN= 'plan';
-    public const DEVIS= 'devis';
-    public const TITRE= 'titrePropriete';
-    public const ASSUR= 'assurance';
-    public const CONTRAT= 'contrat';
-    public const CONSEIL= 'conseil';
-    public const AUTRE= 'autre';
+    public const CLIENT = 'clients';
+    public const ARTISAN = 'artisan';
 
-    public const MISEENCOPIE =[
-        "Artisan"=> self::ARTISAN,
-        "Client"=> self::CLIENT,
+    public const FACTURE = 'facture';
+    public const PLAN = 'plan';
+    public const DEVIS = 'devis';
+    public const TITRE = 'titrePropriete';
+    public const ASSUR = 'assurance';
+    public const CONTRAT = 'contrat';
+    public const CONSEIL = 'conseil';
+    public const AUTRE = 'autre';
+
+    public const MISEENCOPIE = [
+        "Artisan" => self::ARTISAN,
+        "Client" => self::CLIENT,
     ];
-    public const TYPEDEDOCUMENT =[
-        "Assurance"=> self::ASSUR,
-        "Conseil"=> self::CONSEIL,
-        "Contrat"=> self::CONTRAT,
-        "Devis"=> self::DEVIS,
-        "Facture"=> self::FACTURE,
-        "Plan"=> self::PLAN,
-        "Titre de propriété"=> self::TITRE,
-        "Autre"=> self::AUTRE,
+    public const TYPEDEDOCUMENT = [
+        "Assurance" => self::ASSUR,
+        "Conseil" => self::CONSEIL,
+        "Contrat" => self::CONTRAT,
+        "Devis" => self::DEVIS,
+        "Facture" => self::FACTURE,
+        "Plan" => self::PLAN,
+        "Titre de propriété" => self::TITRE,
+        "Autre" => self::AUTRE,
     ];
 
     #[ORM\Id]
@@ -55,13 +56,13 @@ class Documents
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_peremption = null;
 
     #[ORM\Column(type: Types::JSON, nullable: true)]
     private ?array $mise_en_copie = null;
 
-    #[ORM\ManyToOne(cascade: ['persist'],fetch: 'EAGER',inversedBy: 'documents')]
+    #[ORM\ManyToOne(cascade: ['persist'], fetch: 'EAGER', inversedBy: 'documents')]
     private ?Projet $projet = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -80,13 +81,13 @@ class Documents
     private ?string $typo = null;
 
     //selection des documents par titre avec première lettre en Maj
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $TitreDefault = null;
+
     public function __toString(): string
     {
         return ucfirst($this->titre);
     }
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $TitreDefault = null;
 
     public function getId(): ?int
     {

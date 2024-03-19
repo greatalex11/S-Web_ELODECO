@@ -138,20 +138,13 @@
             {% endif %}
 
             <!--flash message absence de document ou de projet-->
-            {% for message in app.flashes('notice') %}
-                <div class="flash-info bg-gradient w-100 text-center mt-xl-5 mb-xl-5">
-                    <b> {{ message }}</b>
-                </div>
-            {% endfor %}
+            {% include "fields/flashMsg.html.twig" %}
 
             <!--Gestion affichage documents-->
 
             {% if app.request.attributes.get('_route') == 'app_artisan_accueilDoc' %}
                 {% include "contenus/_documentArtisans.html.twig" %}
             {% endif %}
-
-
-
 
 
             <!--Affichage liste des documents -->

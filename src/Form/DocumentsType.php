@@ -3,17 +3,16 @@
 namespace App\Form;
 
 use App\Entity\Documents;
+use App\Entity\Projet;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\CallbackTransformer;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Entity\File;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class DocumentsType extends AbstractType
@@ -21,11 +20,11 @@ class DocumentsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-
-            ->add('documentsFile',  VichImageType::class, [
+            ->add('documentsFile', VichImageType::class, [
                 'label' => 'Votre document (PDF file)',
-                'mapped' => false,
                 'required' => false,
+                'download_uri' => false,
+                'allow_delete' => false,
 //               'constraints' => [
 //                   new File([
 //                        'maxSize' => '1024k',
@@ -38,17 +37,29 @@ class DocumentsType extends AbstractType
 //                ],
             ])
             ->add('titre', TextType::class)
-            ->add('size',NumberType::class)
-            ->add('typo',TextType::class);
-//            ->add('save', SubmitType::class, [
-//                'label' => 'Enregistrement',
-//                'attr' => ['class' => 'btn w-100 bg-light thm-btn contact-page__btn mt-5 mb-2 contact-page__input-box fw-bold border p-5 pt-1 pb-1']]);
-
+            // ->add('size',NumberType::class)
+            ->add('type', ChoiceType::class, ['choices' => Documents::TYPEDEDOCUMENT])
+            ->add('projet', EntityType::class, [
+                'class' => Projet::class,
+                'query_builder' => function (EntityRepository $er) use ($options): QueryBuilder {
+                    return $er->createQueryBuilder('p')
+                        ->leftJoin('p.taches', "taches")
+                        ->where('taches.artisan = :artisan')
+                        ->setParameters([
+                            'artisan' => $options['artisan']
+                        ]);
+                },
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Enregistrement',
+                'attr' => ['class' => 'btn w-100 bg-light thm-btn contact-page__btn mt-5 mb-2 contact-page__input-box fw-bold border p-5 pt-1 pb-1']]);;
     }
+
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Documents::class,
+            'artisan' => null,
         ]);
     }
 

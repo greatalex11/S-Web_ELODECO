@@ -22,14 +22,6 @@
 {#        </div>#}
 
 
-
-
-        {% block loadDoc %}
-            {% if formLoadDoc is defined %}
-            {% include('contenus/_loadingDoc.html.twig') %}
-            {% endif %}
-        {% endblock loadDoc %}
-
         {% block search %}
             {% if formSearch is defined %}
             {% include('_partial/_search-espace_perso.html.twig') with {'formSearch': formSearch} %}
@@ -57,7 +49,7 @@
 
         <!--Essais affichage conditionnel suivant href selectionné - embedded template ne coopère pas -->
         <!-- Affichage des documents de l'artisan - if non fonctionnel sur ce partial pour condition/ dropdown App-a...d...liste-->
-        {% if app.request.attributes.get('_route') != 'app_artisan_documents_liste' %}
+        {% if app.request.attributes.get('_route') != 'app_artisan_documents_liste' and formLoadDoc is defined %}
             <div class="bg-light mt-xl-5">
                 {% include 'contenus/_loadingDoc.html.twig' %}
             </div>

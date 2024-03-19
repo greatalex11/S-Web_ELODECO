@@ -11,14 +11,8 @@ use App\Form\SearchFormType;
 use App\Repository\DocumentsRepository;
 use App\Repository\ProjetRepository;
 use App\Repository\TacheRepository;
-use App\Service\searchFunction;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,7 +24,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ArtisanController extends AbstractController
 {
 
- // injection du service searchFunction -> lorsque la config service yaml sera corrigée
+    // injection du service searchFunction -> lorsque la config service yaml sera corrigée
     // Cannot autowire service "App\Service\searchFunction": argument "$projetList" of method "__construct()" is type-hinted "array", you should configure its value explicitly.
 //    public function __construct(searchFunction $searchFunction)
 //    {
@@ -42,7 +36,7 @@ class ArtisanController extends AbstractController
     #[Route('/{id}', name: 'app_artisan_accueil', methods: ['GET'])]
     public function index(Artisan $artisan): Response
     {
-       $artisans = $artisan;
+        $artisans = $artisan;
         return $this->render('pages/espace_artisan.html.twig', [
             'artisans' => $artisans,
         ]);
@@ -52,12 +46,28 @@ class ArtisanController extends AbstractController
     // ...........................................DOCUMENTS....................................... page accueil document
 
     #[Route('/{id}/{doc}', name: 'app_artisan_accueilDoc', methods: ['GET', 'POST'])]
-    public function indexDoc(Artisan $artisan,DocumentsRepository $documentsRepository,EntityManagerInterface $entityManager,SluggerInterface $slugger,Request $request): Response
+    public function indexDoc(Artisan $artisan, DocumentsRepository $documentsRepository, EntityManagerInterface $entityManager, SluggerInterface $slugger, Request $request): Response
     {
+        /** @var User $user */
+        $user = $this->getUser();
+        if ($user->getArtisan() != $artisan) {
+            throw $this->createAccessDeniedException("fuck");
+        }
         $id = $artisan->getId();
         $artisans = $artisan;
         $doc = $request->get('doc');
         if ($doc) {
+            /** @var documents $documents */
+            $documents = new Documents();
+            $formDoc = $this->createForm(DocumentsType::class, $documents, ['artisan' => $artisan]);
+            $formDoc->handleRequest($request);
+            if ($formDoc->isSubmitted() && $formDoc->isValid()) {
+                $entityManager->persist($documents);
+                $entityManager->flush();
+                $this->addFlash('success', 'Votre document est bien enregistré');
+                return $this->redirectToRoute('app_artisan_accueilDoc', ['id' => $id, 'doc' => $doc]);
+            }
+
             $idArtisan = $id;
             $documentIdArtisan = $documentsRepository->findDocumentArtisan($idArtisan); //dql depuis document
             if (!$documentIdArtisan) {
@@ -91,42 +101,6 @@ class ArtisanController extends AbstractController
 //                   $this->addFlash('success', 'Votre document est bien enregistré');
 //               }
 
-            /** @var documents $documents */
-            $documents = Documents::class;
-
-            $documents = new $documents();
-            $documents->setDocument('nouveau document');
-            $formDoc = $this->createForm(DocumentsType::class, $documents);
-
-            if ($formDoc->isSubmitted() && $formDoc->isValid()) {
-                $File = $formDoc->get('documentsFile')->getData();
-                // this condition is needed because the 'documentsFile' field is not required
-                // so the PDF file must be processed only when a file is uploaded
-
-//                if ($File) {
-//                    $originalFilename = pathinfo($File->getClientOriginalName(), PATHINFO_FILENAME);
-//                    // this is needed to safely include the file name as part of the URL
-//                    $safeFilename = $slugger->slug($originalFilename);
-//                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $File->guessExtension();
-//
-//                    // Move the file to the directory where brochures are stored
-//                    try {
-//                        $File->move(
-//                            $this->getParameter('brochures_directory'),
-//                            $newFilename
-//                        );
-//                    } catch (FileException $e) {
-//                        // ... handle exception if something happens during file upload
-//                    }
-
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
-                //$documents->setDocument($File);
-
-                $entityManager->persist($File);
-                $entityManager->flush();
-                $this->addFlash('success', 'Votre document est bien enregistré');
-            }
 
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
@@ -145,7 +119,7 @@ class ArtisanController extends AbstractController
 
     // ...............................................Choix idArtisan/  dqg liste - documents href 'document-id artisan'
     #[Route('/{id}/documentList', name: 'app_artisan_documents_liste', methods: ['GET'])]
-    public function show(Artisan $artisan, DocumentsRepository $documentsRepository,Request $request): Response
+    public function show(Artisan $artisan, DocumentsRepository $documentsRepository, Request $request): Response
     {
 //      $this->checkIsTheSameArtisan($artisan); check if artisan = user
 //      $idArtisan = $request->get('id');// recup id url
@@ -198,7 +172,6 @@ class ArtisanController extends AbstractController
 //    }
 
 
-
 // ..................................A supprimer si tjr pas utilisee ................... ( Menu/Projet à accueil projet)
     #[Route('/{id}/documentListeProjet', name: 'app_artisan_documents_listep', methods: ['GET'])]
     public function showDocPjt(Artisan $artisan, Request $request): Response
@@ -212,9 +185,9 @@ class ArtisanController extends AbstractController
     }
 
 
- //...............................................................................................  page generale projet
+    //...............................................................................................  page generale projet
     #[Route('/{id}/{projet}/{value}', name: 'app_artisan_accueilPjt', methods: ['GET', 'POST'])]
-    public function indexProjet(Artisan $artisan,ProjetRepository $projetRepository,TacheRepository $tacheRepository,Request $request): Response
+    public function indexProjet(Artisan $artisan, ProjetRepository $projetRepository, TacheRepository $tacheRepository, Request $request): Response
     {
         $id = $artisan->getId();
         $artisans = $artisan;
@@ -236,7 +209,7 @@ class ArtisanController extends AbstractController
             $idArtisan = $artisan->getId();
             $projetList = $projetRepository->findProjetByNomClient($idArtisan); //dql depuis document
 
-            if(!$projetList){
+            if (!$projetList) {
                 $this->addFlash(
                     'notice',
                     'Vous n\'avez pas encore de projet en ligne.'
@@ -272,9 +245,9 @@ class ArtisanController extends AbstractController
 //                    die();
 
 
-                    foreach ($objetPjt as $key=>$propertySearch) {
+                    foreach ($objetPjt as $key => $propertySearch) {
 
-                            dump($key);
+                        dump($key);
 
                     }
 
