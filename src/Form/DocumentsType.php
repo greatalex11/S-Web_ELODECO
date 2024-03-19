@@ -38,6 +38,7 @@ class DocumentsType extends AbstractType
             ])
             ->add('titre', TextType::class)
             // ->add('size',NumberType::class)
+                
             ->add('type', ChoiceType::class, ['choices' => Documents::TYPEDEDOCUMENT])
             ->add('projet', EntityType::class, [
                 'class' => Projet::class,

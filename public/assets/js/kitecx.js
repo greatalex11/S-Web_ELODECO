@@ -774,14 +774,13 @@
     }
 
 
-
     // ----------------------------- Mon javascript -----------------------------------------
 
     //flash message après modification coordonnées espace perso
     // let flashForm = document.getElementById('flash-message')
     let flashForm = $('.alert-success');
     if (flashForm.length) {
-        $(document).on('click','.close',() => {
+        $(document).on('click', '.close', () => {
             console.log('coucou');
             flashForm.hide();
             // flashForm.style.display='none';
@@ -795,29 +794,29 @@
             hover: function () {
                 $(this).css("color", "red");
             },
-            // mouseout: function () {
-            //     $(this).css("color", "black");
-            // },
+            mouseout: function () {
+                $(this).css("color", "black");
+            },
             click: function (e) {
-
-                // $("#fixerrormodal").modal()
-                // $("#fixerrormodal").modal('toggle')
-                // $('.modalPjt').modal('show');
-
                 $('.modalPjt').modal('show');
+                let shown = $('.modalPjt').modal('isShown');
+                if (shown) {
+                    let modalShow = $('.btnModal').on('click');
+                    return
+                }
 
-                let modalShow = $('.btnModal').on('click');
-                if(!modalShow) {
+
+                if (!modalShow) {
                     $('.hoverDetailPjt').attr('data-bs-toggle', 'modal');
                     e.preventDefault();
                     $('.modalPjt').modal('show');
 
-                }else{
+                } else {
                     $('.hoverDetailPjt').removeAttribute('data-bs-toggle')
                     $('.modalPjt').modal('hide');
                 }
-                //let fire = $('.modalPjt').modal('show');
-               // showSpinner(fire);
+                // let fire = $('.modalPjt').modal('show');
+                // showSpinner(fire);
 
             }
         });
@@ -835,20 +834,19 @@
     }
 
     //dropdown menu document : liste ou transmettre un document
-    if( $('.dropdown-toggle').length) {
+    if ($('.dropdown-toggle').length) {
         $('.dropdown-toggle').dropdown('toggle');
     }
 
 
     let textarea = document.getElementById('myTextarea');
-    if(textarea) {
+    if (textarea) {
         textarea.addEventListener('input', function () {
             let inputValue = textarea.value;
             inputValue = '<?=$paramFiltre?>'
             document.getElementById('output').textContent = inputValue;
         });
     }
-
 
 
     // Création du caroussel pour les images de style détails
@@ -889,7 +887,7 @@
 
     // Redimentionnement des news pour les ecran > 992px
     $(window).on("resize", function () {
-       // console.log("resize")
+        // console.log("resize")
         calculateHeightNews();
         logoHeight();
     });

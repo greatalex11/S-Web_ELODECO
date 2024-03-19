@@ -216,72 +216,52 @@ class ArtisanController extends AbstractController
                 );
             }
 
-            //....................................  recherche de Projet/  searchValue:: Class 'search'
+//........... Recherche de Projet/  searchValue:: Class 'search' : en attente de développement
 
-            $search = new SearchFormType();
-            $formSearch = $this->createForm(SearchFormType::class, $search);
-            $formSearch->handleRequest($request);
-            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
-                $search = $formSearch->get('searchValue')->getData();
+//            $search = new SearchFormType();
+//            $formSearch = $this->createForm(SearchFormType::class, $search);
+//            $formSearch->handleRequest($request);
+//            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+//                $search = $formSearch->get('searchValue')->getData();
 
-                // utilisation du service ci-dessous qd il fonctionnera
-                //$getResult=$this->searchFunction->getResultSearch($projetList,$search);
+            //  loop in array of array + test itération/ valeur de $search
+            // version avec Objet de Class :  property_exists() ou get_object_vars()
+            //&& strpos($value, $search) !== FALSE
+            //$properties = get_object_vars($objetPjt);
+            //$properties3 = property_exists($objetPjt, $search)
 
-
-                //  loop in array of array + test itération/ valeur de $search
-                // version avec Objet de Class :  property_exists() ou get_object_vars()
-                //&& strpos($value, $search) !== FALSE
-                //$properties = get_object_vars($objetPjt);
-                //$properties3 = property_exists($objetPjt, $search)
-
-                $listeFiltree = [];
-                foreach ($projetList as $objetPjt) {
-                    dump($objetPjt);
-                    $keyProperties = property_exists($objetPjt, 'id');// trouve id dès 2nd itération
-                    dump($keyProperties);
-
-                    $properties = get_object_vars($objetPjt);// result: []
-                    dump($properties);
+            // attente de développement
+            $listeFiltree = [];
+//                foreach ($projetList as $objetPjt) {
+//                    dump($objetPjt);
+//                    $keyProperties = property_exists($objetPjt, 'id');// trouve id dès 2nd itération
+//                    dump($keyProperties);
+//
+//                    $properties = get_object_vars($objetPjt);// result: []
+//                    dump($properties);
 //                    die();
-
-
-                    foreach ($objetPjt as $key => $propertySearch) {
-
-                        dump($key);
-
-                    }
-
-                    foreach ($objetPjt as $property) {
-                        dump($property);
-
-                        //$properties3 = property_exists($property, $search);
-                        //dump($properties3);
-                        if ($property === $search) {
-                            $listeFiltree[] = $objetPjt;
-                            break; // arrêt de la boucle
-                        }
-                    }
-                }
-                //dump($listeFiltree);
-
-//                    foreach ($value as $k => $field) {
-//                        // Vérifie si $field est une chaîne de caractères
-//                        if (is_string($field) && strpos($field, $search) !== FALSE) {
-//                            return $field;
-//                        }
-//                        dump($field);
+//                    foreach ($objetPjt as $key => $propertySearch) {
+//                        dump($key);
 //                    }
-
-
-            }
-
+//                    foreach ($objetPjt as $property) {
+//                        dump($property);
+//
+//                        //$properties3 = property_exists($property, $search);
+//                        //dump($properties3);
+//                        if ($property === $search) {
+//                            $listeFiltree[] = $objetPjt;
+//                            break; // arrêt de la boucle
+//                        }
+//                    }
+//                }
+//            }
 
             return $this->render('pages/espace_artisan.html.twig', [
                 'id' => $id,
                 'artisans' => $artisans,
                 'listePjt' => $projetList,
                 'listeTaches' => $tacheList,
-                'formSearch' => $formSearch,
+//                'formSearch' => $formSearch,
 //                'search'=>$value,
 //                'mavaleur' => $search,
             ]);

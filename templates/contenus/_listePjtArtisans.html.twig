@@ -27,9 +27,9 @@
         <tbody>
         {% for key, pjt in listePjt %}
         <tr>
-            <th scope="row">{{ key }}</th>
-            <td colspan="1">{{ pjt.localite }}</td>
-            <td colspan="2" class="" >
+            <th scope="row" style="color:brown">{{ key }}</th>
+            <td colspan="1" style="color:brown">{{ pjt.localite }}</td>
+            <td colspan="2">
                 <a class="hoverDetailPjt " data-bs-target="#exampleModal"
                    href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
             </td>
@@ -49,8 +49,10 @@
     </table>
 </div>
 
+
 <!--   fenetre modal : affichage des taches suivant click/ lien projet -->
-<div class="modal fade modalPjt" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade modalPjt" data-bs-toggle="modal" id="exampleModal" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -58,7 +60,7 @@
                 <button type="button" class="btn-close btnModal" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-{#                {% if listeTaches is defined %}#}
+                {% if listeTaches is defined %}
                     {% for listeTaches in listeTaches %}
                         <ul>
                             <li>{{ listeTaches.titre }}</li>
@@ -67,57 +69,55 @@
                             <li>{{ listeTaches.dateDebut|date("m/d/Y")|default('à saisir') }}</li>
                             <li>{{ listeTaches.dateFin|date("m/d/Y")|default('à saisir') }}</li>
                             <!-- date accompte + donnees compta si gestion déléguée à l'artisan -->
-                            {#    <li>{{ listeTaches.dateAcompte }}</li> #}
+                            {#                            <li>{{ listeTaches.dateAcompte }}</li> #}
                         </ul>
                     {% endfor %}
-{#                {% endif %}#}
+                {% endif %}
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btnModal" data-bs-dismiss="modal">Close</button>
-                <!-- button utilisable pour un appel de formulaire update si gestion déléguée à l'artisan -->
-                {#                <button type="button" class="btn btn-primary">Save changes</button> #}
             </div>
         </div>
     </div>
 </div>
 
-<!-- Card des documents-->
-<section>
-    <h2 class="mb-4">Cards des projets </h2>
-    <div class="container" style="height:800px">
-        <div class="row align-content-around">
-{#            {%if listePjt is not empty %}#}
-            {% for key, pjt2 in listePjt %}
-                <div class="col-sm-4 " style="height: 350px; object-fit: contain">
-                    <div class="card mt-3" >
-                        <div class="card-body m-2" >
-                            <img src="{{ asset('/assets/images/artisan/luminaires.jpg') }}..." class="card-img-top"
-                                 alt="photo de lampadaire type industriel" height="300">
-                            <h4 class="card-title mt-3"> <i>n°{{ key }} - </i>{{ pjt2.titre|u.truncate(50,'...',false)|raw }}</h4>
-                           <p class="card-text mt-3"> Lieu: {{ pjt2.localite }}</p>
-                            {% set  clientList=pjt2.client %}
-                            <i style="text-decoration: underline">Client<br></i>
-                            <ul>
-                            {% for key, client in clientList %}
-                                    <li class="card-text">{{ client.prenom }} {{ client.nom }}</li>
-                            {% endfor %}
-                            </ul>
-                            {% set  tachesList=pjt2.taches %}
-                            {% for tache in tachesList %}
-                            <td class="mt-3 "><i style="text-decoration: underline">Travail</i><br>{{ tache.titre }}
-                                <br> <i class="text-decoration-underline mt-5">Date de début</i>: {{ tache.datedebut|date("m/d/Y")|default('à saisir')}}
-                                {#                                    <br><i class="bi bi-arrow-right-circle-fill">{{ tache.budget }} € </i></td>#}
-                                {% endfor %}
+<!-- Card des documents : fonctionnel - A DECOMMENTER SI BESOIN -->
+{# <section> #}
+{#    <h2 class="mb-4">Cards des projets </h2> #}
+{#    <div class="container" style="height:800px"> #}
+{#        <div class="row align-content-around"> #}
+{#            {%if listePjt is not empty %} #}
+{#            {% for key, pjt2 in listePjt %} #}
+{#                <div class="col-sm-4 " style="height: 350px; object-fit: contain"> #}
+{#                    <div class="card mt-3" > #}
+{#                        <div class="card-body m-2" > #}
+{#                            <img src="{{ asset('/assets/images/artisan/luminaires.jpg') }}..." class="card-img-top" #}
+{#                                 alt="photo de lampadaire type industriel" height="300"> #}
+{#                            <h4 class="card-title mt-3"> <i>n°{{ key }} - </i>{{ pjt2.titre|u.truncate(50,'...',false)|raw }}</h4> #}
+{#                           <p class="card-text mt-3"> Lieu: {{ pjt2.localite }}</p> #}
+{#                            {% set  clientList=pjt2.client %} #}
+{#                            <i style="text-decoration: underline">Client<br></i> #}
+{#                            <ul> #}
+{#                            {% for key, client in clientList %} #}
+{#                                    <li class="card-text">{{ client.prenom }} {{ client.nom }}</li> #}
+{#                            {% endfor %} #}
+{#                            </ul> #}
+{#                            {% set  tachesList=pjt2.taches %} #}
+{#                            {% for tache in tachesList %} #}
+{#                            <td class="mt-3 "><i style="text-decoration: underline">Travail</i><br>{{ tache.titre }} #}
+{#                                <br> <i class="text-decoration-underline mt-5">Date de début</i>: {{ tache.datedebut|date("m/d/Y")|default('à saisir')}} #}
+{#                                #}{#                                    <br><i class="bi bi-arrow-right-circle-fill">{{ tache.budget }} € </i></td> #}
+{#                                {% endfor %} #}
 
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                            class="hoverDetailPjt btn mt-3" style="background-color: {{ theme.theme.couleurActuelleBg }}"
-                            href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt2.id }) }}">Visualiser le travail</a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-{#            {% endif %}#}
-        </div>
-    </div>
-</section>
+{#                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" #}
+{#                            class="hoverDetailPjt btn mt-3" style="background-color: {{ theme.theme.couleurActuelleBg }}" #}
+{#                            href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt2.id }) }}">Visualiser le travail</a> #}
+{#                        </div> #}
+{#                    </div> #}
+{#                </div> #}
+{#            {% endfor %} #}
+{#            {% endif %} #}
+{#        </div> #}
+{#    </div> #}
+{# </section> #}
