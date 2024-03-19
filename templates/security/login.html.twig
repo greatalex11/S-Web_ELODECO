@@ -48,8 +48,9 @@
 
                 <input class="contact-page__input-box " type="hidden" name="_csrf_token"
                        value="{{ csrf_token('authenticate') }}">
-                <div class="contact-page__input-box mt-3">
-                    <button class="btn bg-light thm-btn contact-page__btn mb-4 mt-4 contact-page__input-box fw-bold border p-4 pt-1 pb-1"
+
+                <div class="contact-page__input-box w-100  mt-3">
+                    <button class="thm-btn contact-page__btn w-100"
                             type="submit">
                         Se connecter
                     </button>
@@ -61,7 +62,7 @@
             <div class="w-25 flex-column justify-content-center mt-5 m-auto form-control p-3">
                 <h4 class=" font-weight-normal ">Créer un compte</h4>
                 <a href="{{ path('app_register_choice') }}"
-                   class="btn bg-light thm-btn contact-page__btn mb-4 mt-4 contact-page__input-box fw-bold border">Nouveau
+                   class="thm-btn contact-page__btn w-100">Nouveau
                     membre</a>
 
             </div>
