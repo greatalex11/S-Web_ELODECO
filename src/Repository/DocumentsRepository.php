@@ -41,6 +41,19 @@ class DocumentsRepository extends ServiceEntityRepository
 
     }
 
+    public function findDocumentClient($idClient): array
+    {
+        $qb = $this->createQueryBuilder('d');
+        $qb->select('d')
+//            ->from('App:Documents', 'd')
+            ->innerJoin('App:Projet', 'p', 'WITH', 'p.id=d.projet')
+            ->innerJoin('App:Client', 'c', 'WITH', 'c.id = p.id')
+            ->where('p.id = :idClient')
+            ->setParameter('idClient', $idClient);
+        $result = $qb->getQuery()->getResult();
+        return $result;
+
+    }
 //    public function findById($value): array
 //    {
 //        return $this->createQueryBuilder('d')

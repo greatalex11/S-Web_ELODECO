@@ -1,0 +1,43 @@
+{% set Apps = theme.theme %}
+{# {% set renderedField = form_row(formLoadDoc) %} #}
+{% block content %}
+    {% if  documentIdClient is defined %}
+        <div class="alert-primary bg-light m-4">
+            <h2>Envoyez vos documents</h2>
+
+
+            {# Loader de vich #}
+            <div>
+                <div class="row justify-content-center m-auto bg-light mt-xl-5">
+                    <div class="col-6">
+                        {{ form_start(formLoadDocClient) }}
+                        <div class="row">
+                            <div class="contact-page__input-box">
+                                {{ form_row(formLoadDocClient.documentsFile) }}
+                            </div>
+                            <div class="mt-5">
+                                {{ form_row(formLoadDocClient.titre, {'label':'Titre du document' }) }}
+                            </div>
+                            <div class="mt-5">
+                                {{ form_row(formLoadDocClient.type,{'label':'Type de document' }) }}
+                            </div>
+                            <div class="mt-5">
+                                {{ form_row(formLoadDocClient.projet, {'label':'Concerne le projet suivant' }) }}
+                            </div>
+                            <div class=" mt-xl-5 d-flex justify-content-end m-auto">
+                                <div>
+                                    {{ form_row(formLoadDocClient.save) }}
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                {{ form_end(formLoadDocClient) }}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}

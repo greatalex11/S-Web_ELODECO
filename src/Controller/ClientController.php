@@ -6,7 +6,6 @@ use App\Entity\Client;
 use App\Entity\Documents;
 use App\Entity\User;
 use App\Form\ClientType;
-use App\Form\DocumentsType;
 use App\Repository\ClientRepository;
 use App\Repository\DocumentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -74,19 +73,19 @@ class ClientController extends AbstractController
         $doc = $request->get('doc');
         if ($doc) {
             /** @var documents $documents */
-            $documents = new Documents();
-            $formDoc = $this->createForm(DocumentsType::class, $documents, ['client' => $client]);
-            $formDoc->handleRequest($request);
-            if ($formDoc->isSubmitted() && $formDoc->isValid()) {
-                $entityManager->persist($documents);
-
-                $entityManager->flush();
-                $this->addFlash('success', 'Votre document est bien enregistré');
-                return $this->redirectToRoute('app_client_accueilDoc', ['id' => $id, 'doc' => $doc]);
-            }
+//            $documents = new Documents();
+//            $formDocClient = $this->createForm(DocumentsTypeClient::class, $documents, ['client' => $client]);
+//            $formDocClient->handleRequest($request);
+//            if ($formDocClient->isSubmitted() && $formDocClient->isValid()) {
+//                $entityManager->persist($documents);
+//
+//                $entityManager->flush();
+//                $this->addFlash('success', 'Votre document est bien enregistré');
+//                return $this->redirectToRoute('app_client_accueilDoc', ['id' => $id, 'doc' => $doc]);
+//            }
 
             $idClient = $id;
-            $documentIdClient = $documentsRepository->findDocumentArtisan($idClient); //dql depuis document
+            $documentIdClient = $documentsRepository->findDocumentClient($idClient); //dql depuis document
             if (!$documentIdClient) {
                 $this->addFlash(
                     'notice',
@@ -103,15 +102,15 @@ class ClientController extends AbstractController
 //                //search fonction à faire
 //            }
 
-            return $this->render('pages/espace_artisan.html.twig', [
+            return $this->render('pages/espace_client.html.twig', [
                 'id' => $id,
                 'clients' => $clients,
-                'documentIdArtisan' => $documentIdClient,
-                'formLoadDoc' => $formDoc,
+                'documentIdClient' => $documentIdClient,
+//                'formLoadDocClient' => $formDocClient,
             ]);
         }
 
-        return $this->render('pages/espace_artisan.html.twig', [
+        return $this->render('pages/espace_client.html.twig', [
             'client' => $client,
         ]);
     }
