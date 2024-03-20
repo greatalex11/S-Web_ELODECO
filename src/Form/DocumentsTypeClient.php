@@ -38,14 +38,6 @@ class DocumentsTypeClient extends AbstractType
                         ->setParameters([
                             'client' => $options['client']
                         ]);
-
-//                        ->innerJoin('App:Projet', 'p', 'WITH', 'projet=projet_client.projet_id')
-//                        ->innerJoin('App:Client', 'c', 'WITH', 'c.id = p.id')
-//                        //->innerJoin('p.projet_id', "pid")
-//                        ->andWhere('c.client_id = client')
-//                        ->setParameters([
-//                            'client' => $options['client']
-//                        ]);
                 },
             ])
             ->add('save', SubmitType::class, [

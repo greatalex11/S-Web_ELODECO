@@ -79,7 +79,6 @@ class ClientController extends AbstractController
             $formDocClient->handleRequest($request);
             if ($formDocClient->isSubmitted() && $formDocClient->isValid()) {
                 $entityManager->persist($documents);
-
                 $entityManager->flush();
                 $this->addFlash('success', 'Votre document est bien enregistré');
                 return $this->redirectToRoute('app_client_accueilDoc', ['id' => $id, 'doc' => $doc]);

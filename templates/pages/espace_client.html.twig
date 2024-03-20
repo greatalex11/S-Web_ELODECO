@@ -139,6 +139,10 @@
             </div>
             {#                        {{ dump(listDoc) }} #}
 
+            <!--flash message absence de document ou de projet-->
+            {% include "fields/flashMsg.html.twig" %}
+            
+
             {% if app.request.attributes.get('_route') == 'app_client_accueil' %}
                 {% include "contenus/_coordonneesClients.html.twig" %}
             {% endif %}
