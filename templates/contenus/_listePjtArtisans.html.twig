@@ -22,7 +22,7 @@
         </tr>
         </thead>
 
-        <!--  data-bs-toggle="modal" implementé en js et sorti de la balise <a> - erreur generation url avec paramètre  -->
+        <!--  data-bs-target="#exampleModal+ data-bs-toggle="modal" implementé en js et sorti de la balise <a> - erreur generation url avec paramètre  -->
 
         <tbody>
         {% for key, pjt in listePjt %}
@@ -30,9 +30,10 @@
             <th scope="row" style="color:brown">{{ key }}</th>
             <td colspan="1" style="color:brown">{{ pjt.localite }}</td>
             <td colspan="2">
-                <a class="hoverDetailPjt " data-bs-target="#exampleModal"
+                <a class="hoverDetailPjt"
                    href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
             </td>
+
             <td colspan="1">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
             <td colspan="2">{{ pjt.duree }}</td>
             {% set  clientList=pjt.client %}

@@ -2,7 +2,11 @@
 
 {% set Apps=theme.theme %}
 
-{% block title %}Elo Deco: espace Artisan {% endblock %}
+{% block title %}Elo Deco: espace Client {% endblock %}
+
+{% block header %}
+
+{% endblock %}
 
 {% block content %}
 
@@ -55,7 +59,7 @@
     <div class="row">
     <!--colonne gauche-->
     <div class="col-2 h-100">
-        <div class="contact-page__details" style="padding: 61px 32px 60px">
+        <div class="contact-page__details p-4">
             <div class="contact-page__details-shape"
                  style="background-image: url({{ asset('assets/images/shapes/contact-page__details-shape.png') }})">
             </div>
@@ -93,26 +97,26 @@
                             </li>
 
                             <li>
-{#                                <a href="{{ path('app_artisan_accueilDoc', { 'id': artisans.id, 'doc': 'doc' }) }}  class="nav-link text-truncate">"#}
-                                <a href="{{ path('app_client_show', { 'id': clients.id}) }}" data-bs-toggle="collapse" class="nav-link text-truncate">
+                                {#                                <a href="{{ path('app_artisan_accueilDoc', { 'id': artisans.id, 'doc': 'doc' }) }}  class="nav-link text-truncate">" #}
+                                <a href="{{ path('app_client_show', { 'id': clients.id}) }}" data-bs-toggle="collapse"
+                                   class="nav-link text-truncate">
                                     <i class="fs-5 bi-speedometer2"></i><span
                                             class="ms-1 d-none d-sm-inline">Documents</span>
                                 </a>
                             </li>
 
 
-
                             <li>
-{#                                <a href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value': 'value' }) }}"#}
+                                <a href="{{ path('app_artisan_accueilPjt', { 'id': clients.id,'projet': 'projet','value': 'value' }) }}"
                                    class="nav-link text-truncate">
                                     <i class="fs-5 bi-grid"></i><span
                                             class="ms-1 d-none d-sm-inline">Projet</span></a>
                             </li>
-                            <li>
-                                <a href="{{ path('app_contact') }}" class="nav-link text-truncate mb-6">
-                                    <i class="fs-5 bi-table"></i><span
-                                            class="ms-1 d-none d-sm-inline">Contact</span></a>
-                            </li>
+                            {#                            <li> #}
+                            {#                                <a href="{{ path('app_contact') }}" class="nav-link text-truncate mb-6"> #}
+                            {#                                    <i class="fs-5 bi-table"></i><span #}
+                            {#                                            class="ms-1 d-none d-sm-inline">Contact</span></a> #}
+                            {#                            </li> #}
                             <li>
                                 <a href="{{ path('app_logout') }}" class="nav-link text-truncate mb-6">
                                     <i class="fs-5 bi-table"></i><span

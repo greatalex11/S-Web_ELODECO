@@ -1,10 +1,15 @@
 {% extends '/base.html.twig' %}
 {% set Apps = theme.theme %}
 
+{% block header %}
+
+{% endblock %}
+
 {% block content %}
 
-    <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between w-75 m-auto mt-5"
-             style="max-height:100px; padding:30px;">
+    <section
+            class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between w-75 m-auto mt-5"
+            style="max-height:100px; padding:30px;">
         <ul class="portfolio-details__info-list list-unstyled">
             <li>{{ artisans.prenomgerant|striptags|default('prénom') }}</li>
             <li>{{ artisans.nomgerant|striptags|default('NOM')|upper }}</li>
@@ -72,11 +77,11 @@
 
             </div>
             <div class="row border-bottom mt-2 mb-5">
-{#                <div class="col-3">#}
-{#                    <div class="contact-page__input-box">#}
-{#                        {{ form_row(form.email, { 'label': 'email' }) }}#}
-{#                    </div>#}
-{#                </div>#}
+                {#                <div class="col-3"> #}
+                {#                    <div class="contact-page__input-box"> #}
+                {#                        {{ form_row(form.email, { 'label': 'email' }) }} #}
+                {#                    </div> #}
+                {#                </div> #}
                 <div class="col-3">
                     <div class="contact-page__input-box">
                         {{ form_row(form.tel_portable, { 'label': 'Telephone portable' }) }}
@@ -165,7 +170,7 @@
         </div>
         </section>
     {% endif %}
-<!--                                                                Fin formulaire contact                                                          -->
+    <!--                                                                Fin formulaire contact                                                          -->
 
     <!--                                                                        GOOGLE MAP                                                                                  -->
     <section class="bg-light contact-page-google-map mt-5 w-100 p-5 m-auto align-items-center border">
