@@ -23,6 +23,13 @@
         {#            </div> #}
         {#        {% endif %} #}
 
+        {% if app.request.attributes.get('_route') != 'app_artisan_accueilDoc' and formLoadDocClient is defined %}
+            <div class="bg-light mt-xl-5">
+                {% include 'contenus/_loadingDocClient.html.twig' %}
+            </div>
+        {% endif %}
+
+
         {% if app.request.attributes.get('_route') != 'app_artisan_accueilDoc' and documentIdClient is defined %}
             <div class="bg-light mt-xl-5">
                 {% include "contenus/_listeDocClients.html.twig" %}

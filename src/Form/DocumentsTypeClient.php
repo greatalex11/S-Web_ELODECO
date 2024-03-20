@@ -33,11 +33,19 @@ class DocumentsTypeClient extends AbstractType
                 'class' => Projet::class,
                 'query_builder' => function (EntityRepository $er) use ($options): QueryBuilder {
                     return $er->createQueryBuilder('p')
-                        ->innerJoin('p.projet_id', "pid")
-                        ->andWhere('c.client_id = client')
+                        ->leftJoin('p.client', "pc")
+                        ->where('pc.id = :client')
                         ->setParameters([
                             'client' => $options['client']
                         ]);
+
+//                        ->innerJoin('App:Projet', 'p', 'WITH', 'projet=projet_client.projet_id')
+//                        ->innerJoin('App:Client', 'c', 'WITH', 'c.id = p.id')
+//                        //->innerJoin('p.projet_id', "pid")
+//                        ->andWhere('c.client_id = client')
+//                        ->setParameters([
+//                            'client' => $options['client']
+//                        ]);
                 },
             ])
             ->add('save', SubmitType::class, [

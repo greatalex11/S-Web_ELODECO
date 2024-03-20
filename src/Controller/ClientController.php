@@ -6,6 +6,7 @@ use App\Entity\Client;
 use App\Entity\Documents;
 use App\Entity\User;
 use App\Form\ClientType;
+use App\Form\DocumentsTypeClient;
 use App\Repository\ClientRepository;
 use App\Repository\DocumentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -73,16 +74,16 @@ class ClientController extends AbstractController
         $doc = $request->get('doc');
         if ($doc) {
             /** @var documents $documents */
-//            $documents = new Documents();
-//            $formDocClient = $this->createForm(DocumentsTypeClient::class, $documents, ['client' => $client]);
-//            $formDocClient->handleRequest($request);
-//            if ($formDocClient->isSubmitted() && $formDocClient->isValid()) {
-//                $entityManager->persist($documents);
-//
-//                $entityManager->flush();
-//                $this->addFlash('success', 'Votre document est bien enregistré');
-//                return $this->redirectToRoute('app_client_accueilDoc', ['id' => $id, 'doc' => $doc]);
-//            }
+            $documents = new Documents();
+            $formDocClient = $this->createForm(DocumentsTypeClient::class, $documents, ['client' => $client]);
+            $formDocClient->handleRequest($request);
+            if ($formDocClient->isSubmitted() && $formDocClient->isValid()) {
+                $entityManager->persist($documents);
+
+                $entityManager->flush();
+                $this->addFlash('success', 'Votre document est bien enregistré');
+                return $this->redirectToRoute('app_client_accueilDoc', ['id' => $id, 'doc' => $doc]);
+            }
 
             $idClient = $id;
             $documentIdClient = $documentsRepository->findDocumentClient($idClient); //dql depuis document
@@ -107,7 +108,7 @@ class ClientController extends AbstractController
                 'id' => $id,
                 'clients' => $clients,
                 'documentIdClient' => $documentIdClient,
-//                'formLoadDocClient' => $formDocClient,
+                'formLoadDocClient' => $formDocClient,
             ]);
         }
 
