@@ -30,10 +30,13 @@
             <th scope="row" style="color:brown">{{ key }}</th>
             <td colspan="1" style="color:brown">{{ pjt.localite }}</td>
             <td colspan="2">
-                <a class="hoverDetailPjt"
-                   href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
-            </td>
+                {#                <a class="hoverDetailPjt" #}
+                {#                   href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a> #}
 
+                <a class="hoverDetailPjt"
+                   href="{{ path('app_ajax_get', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}">
+                    ajax{{ pjt.titre }}</a>
+            </td>
             <td colspan="1">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
             <td colspan="2">{{ pjt.duree }}</td>
             {% set  clientList=pjt.client %}
@@ -49,6 +52,27 @@
         </tbody>
     </table>
 </div>
+
+
+{% if listeTaches is defined and app.request.attributes.get('_route') == 'app_ajax_get' %}
+    {% include "contenus/_listeTachesArtisans.html.twig" %}
+{% endif %}
+
+<button class="btnhoverDetailPjt">pop</button>
+<div class="maToggleDiv">
+    "lol"
+</div>
+
+{% block javascripts %}
+    {#    {{ parent() }} #}
+    <script>
+        $(document).ready(function () {
+            $(".btnhoverDetailPjt").click(function () {
+                $(".maToggleDiv").toggle();
+            });
+        });
+    </script>
+{% endblock %}
 
 
 <!--   fenetre modal : affichage des taches suivant click/ lien projet -->

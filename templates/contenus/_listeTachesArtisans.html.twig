@@ -1,0 +1,46 @@
+<!-- Detail des taches/ id projet et id user-->
+
+
+<h2 class="m-4">Détail du travail à faire</h2>
+
+{# {% for tache in listeTaches %} #}
+{#    #}{#    <ul> #}
+{#    #}{#        <li>tache.nom</li> #}
+{#    #}{#    </ul> #}
+{#    {{ dump(listeTaches) }} #}
+
+
+
+{# {% endfor %} #}
+
+<div id="test-time" class="text-center text-success"></div>
+<div id="test-get" class="text-center text-primary"></div>
+
+<script>
+
+    function synchroneData() {
+        let divTestTime = document.querySelector("#test-time");
+        divTestTime.innerHTML = 'fonction synchrone'
+    }
+
+    async function fetchData() {
+        let divAjaxGet = document.querySelector("#test-get");
+
+        try {
+            let response = await fetch('/{id}/{value}/ajax', {
+                method: 'GET',
+                headers: {"X-Requested-with": "XMLHttpRequest"},
+            });
+
+            divAjaxGet.innerHTML = await response.text();
+
+        } catch (error) {
+
+            console.error("Erreur lors de la récupération des données:", error);
+        }
+    }
+
+    fetchData();
+    synchroneData();
+
+</script>

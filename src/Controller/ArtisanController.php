@@ -13,11 +13,13 @@ use App\Repository\ProjetRepository;
 use App\Repository\TacheRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
+
 
 #[IsGranted('ROLE_ARTISAN')]
 #[Route('/artisan_accueil')]
@@ -40,6 +42,27 @@ class ArtisanController extends AbstractController
         return $this->render('pages/espace_artisan.html.twig', [
             'artisans' => $artisans,
         ]);
+    }
+
+
+//...............................................................................................        Ajax taches
+    #[Route('/{id}/{value}/ajax', name: 'app_ajax_get', methods: ['GET'])]
+    public function ajaxTache(Artisan $artisan, ProjetRepository $projetRepository, TacheRepository $tacheRepository, Request $request): Response
+    {
+        $id = $artisan->getId();
+        $pjt = $request->get('value');
+        if ($request->isXmlHttpRequest()) {
+            sleep(5); //tempo
+            $tacheList = $tacheRepository->findPjtByIdPjt($pjt); //.......dql depuis projet
+            $tacheListArray = [];
+            return new JsonResponse($tacheList);
+            //return new Response('Appel Ajax asynchrone réussi');
+
+        } else {
+            return new Response('<span class="text-danger">Cet appel doit être effectué via AJAX.</span>', Response::HTTP_BAD_REQUEST);
+        }
+
+
     }
 
 
@@ -185,7 +208,7 @@ class ArtisanController extends AbstractController
     }
 
 
-    //...............................................................................................  page generale projet
+    //............................................................................................  page generale projet
     #[Route('/{id}/{projet}/{value}', name: 'app_artisan_accueilPjt', methods: ['GET', 'POST'])]
     public function indexProjet(Artisan $artisan, ProjetRepository $projetRepository, TacheRepository $tacheRepository, Request $request): Response
     {
@@ -208,6 +231,13 @@ class ArtisanController extends AbstractController
 
             $idArtisan = $artisan->getId();
             $projetList = $projetRepository->findProjetByNomClient($idArtisan); //dql depuis document
+
+            if ($projetList) {
+                $this->render('contenus/_listeTachesArtisans.html.twig', [
+                    'listeTaches' => $tacheList,
+                ]);
+            }
+
 
             if (!$projetList) {
                 $this->addFlash(
@@ -270,7 +300,30 @@ class ArtisanController extends AbstractController
             'artisans' => $artisans,
         ]);
     }
-
+//
+////...............................................................................................        Ajax taches
+//    #[Route('/{id}/{projet}/{value}/ajax', name: 'app_ajax_get', methods: ['GET', 'POST'])]
+//    public function ajaxTache(Artisan $artisan, ProjetRepository $projetRepository, TacheRepository $tacheRepository, Request $request): Response
+//    {
+//        $id = $artisan->getId();
+//        $artisans = $artisan;
+//        $pjt = $request->get('value');
+//
+//        //essai en appel ajax
+//        if ($request->isXmlHttpRequest()) {
+//            sleep(5); //tempo
+//            //$idArtisan = $artisan->getId();
+//            $tacheList = $tacheRepository->findPjtByIdPjt($pjt); //.......dql depuis projet
+//            $tacheListArray = [];
+//            return new JsonResponse($tacheList);
+////            return new Response('Appel Ajax asynchrone réussi');
+//
+//        } else {
+//            return new Response('<span class="text-danger">Cet appel doit être effectué via AJAX.</span>', Response::HTTP_BAD_REQUEST);
+//        }
+//
+//
+//    }
 
 //.........................................................................................  coordonnee form changement
     #[Route('{id}/change_coordonnees/', name: 'app_artisan_change_coordonnees', methods: ['GET', 'POST'])]
