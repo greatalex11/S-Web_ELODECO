@@ -788,6 +788,11 @@
 
 
     //détail du projet : hover = police en rouge & fire du modal 'show data du pjt selectionné par <a>
+
+    if ('.table th') {
+        $(this).css("border-bottom: 1px solid #000");
+    }
+
     $(document).ready(() => {
         $('.hoverDetailPjt').on({
             hover: function () {

@@ -1,35 +1,43 @@
-
 {% set Apps = theme.theme %}
-{#{% set renderedField = form_row(formLoadDoc) %}#}
+{# {% set renderedField = form_row(formLoadDoc) %} #}
 {% block content %}
-  {% if  documentIdArtisan is defined %}
-    <div class="alert-primary bg-light m-5">
-        <h2 style="color: white">Envoyer vos documents</h2>
-{#        <div class="col-md-6">#}
-{#      form_start()#}
-{#      {{ renderedField }}#}
-{#      form_end()#}
-{#        </div>#}
-{#{{ dump(form2.documentsFile) }}#}
-{#    {{ dump(formLoadDoc.documentsFile) }}#}
-{#    {% if formLoadDoc is defined %}#}
+    {% if  documentIdArtisan is defined %}
+        <div class="alert-primary bg-light m-4">
+            <h2>Envoyez vos documents</h2>
 
-{#      {{ form_widget(formLoadDoc._token) }}#}{# needed if you're using CSRF #}
-{#      {{ form_end(formLoadDoc, {'render_rest' : false}) }}#}
-{#      {% set documentsFileField = form_widget(formLoadDoc) %}#}
-{#      {{ documentsFileField }}#}
 
-{#    {{ dump(formLoadDoc) }}#}
+            {# Loader de vich #}
+            <div>
+                <div class="row justify-content-center m-auto bg-light mt-xl-5">
+                    <div class="col-6">
+                        {{ form_start(formLoadDoc) }}
+                        <div class="row">
+                            <div class="contact-page__input-box">
+                                {{ form_row(formLoadDoc.documentsFile) }}
+                            </div>
+                            <div class="mt-5">
+                                {{ form_row(formLoadDoc.titre, {'label':'Titre du document' }) }}
+                            </div>
+                            <div class="mt-5">
+                                {{ form_row(formLoadDoc.type,{'label':'Type de document' }) }}
+                            </div>
+                            <div class="mt-5">
+                                {{ form_row(formLoadDoc.projet, {'label':'Concerne le projet suivant' }) }}
+                            </div>
+                            <div class=" mt-xl-5 d-flex justify-content-end m-auto">
+                                <div>
+                                    {{ form_row(formLoadDoc.save) }}
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                {{ form_end(formLoadDoc) }}
+                            </div>
 
-{#    {% endif %}#}
-        <div class="bg-light mt-xl-5">
-
-            {{ form_start(formLoadDoc) }}
-            {{ form_row(formLoadDoc.documentsFile) }}
-            {{ form_end(formLoadDoc) }}
-
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-{#    </div>#}
 
-{% endif %}
+    {% endif %}
 {% endblock %}

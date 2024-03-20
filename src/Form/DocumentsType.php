@@ -21,7 +21,7 @@ class DocumentsType extends AbstractType
     {
         $builder
             ->add('documentsFile', VichImageType::class, [
-                'label' => 'Votre document (PDF file)',
+                'label' => 'Votre document (PDF de préférence)',
                 'required' => false,
                 'download_uri' => false,
                 'allow_delete' => false,
@@ -38,7 +38,7 @@ class DocumentsType extends AbstractType
             ])
             ->add('titre', TextType::class)
             // ->add('size',NumberType::class)
-                
+
             ->add('type', ChoiceType::class, ['choices' => Documents::TYPEDEDOCUMENT])
             ->add('projet', EntityType::class, [
                 'class' => Projet::class,
@@ -53,7 +53,7 @@ class DocumentsType extends AbstractType
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Enregistrement',
-                'attr' => ['class' => 'btn w-100 bg-light thm-btn contact-page__btn mt-5 mb-2 contact-page__input-box fw-bold border p-5 pt-1 pb-1']]);;
+                'attr' => ['class' => 'center thm-btn contact-page__btn']]);;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
