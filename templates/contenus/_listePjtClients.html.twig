@@ -1,0 +1,151 @@
+<!-- Tableau de bord clients : list des projets-->
+
+<!-- loader -->
+<div class="row col-2 d-flex align-items-center visually-hidden  spinnerPjt" id="spinnerPjt">
+    <strong role="status">Loading...</strong>
+    <div class="spinner-border ms-auto" aria-hidden="true"></div>
+</div>
+
+<div class="alert-primary bg-light m-5 table-responsive ">
+    <h2 class="m-4">Liste de vos projets</h2>
+
+    <!-- Liste des projets-->
+    <table class="table table-hover align-middle">
+        <thead>
+        <tr>
+            <th colspan="1" scope="col">N°</th>
+            <th colspan="1" scope="col">Localité</th>
+            <th colspan="2" scope="col"> Projet</th>
+            <th colspan="1" scope="col">Date début</th>
+            <th colspan="1" scope="col">Durée (mois)</th>
+            {#            <th colspan="2" scope="col">Taches</th> #}
+        </tr>
+        </thead>
+
+        <!--  data-bs-target="#exampleModal+ data-bs-toggle="modal" implementé en js et sorti de la balise <a> - erreur generation url avec paramètre  -->
+
+        <tbody>
+        {% for key, pjt in listePjt %}
+        <tr>
+            <th scope="row" style="color:brown">{{ key }}</th>
+            <td colspan="1" style="color:brown">{{ pjt.localite }}</td>
+            <td colspan="2">
+                <a class="hoverDetailPjt"
+                   href="{{ path('app_client_accueilDoc', { 'id': clients.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
+            </td>
+            <td colspan="1">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
+            <td colspan="2">{{ pjt.duree }}</td>
+            {% set  clientList=pjt.client %}
+            {% for key, client in clientList %}
+            <tr>
+                <th scope="row">Client</th>
+                <td colspan="2">{{ client.prenom }} {{ client.nom }}</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            {% endfor %}
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+{# <button id="btnAjax" value="2" onclick="geek()">ajax!</button> #}
+
+
+non ajax
+{% include "contenus/_listeTachesArtisans.html.twig" %}
+
+
+ajax
+{% if listeTaches is defined and app.request.attributes.get('_route') == 'app_ajax_get' %}
+    {% include "contenus/_listeTachesClients.html.twig" with {'listePjt':listePjt} %}
+{% endif %}
+<!--essai ajax-->
+
+
+<!--essai toggle-->
+{# <button class="btnhoverDetailPjt">pop</button> #}
+{# <div class="maToggleDiv"></div> #}
+{# {% block javascripts %} #}
+{#    #}{#    {{ parent() }} #}
+{#    <script> #}
+{#        $(document).ready(function () { #}
+{#            $(".btnhoverDetailPjt").click(function () { #}
+{#                $(".maToggleDiv").toggle(); #}
+{#            }); #}
+{#        }); #}
+{#    </script> #}
+{# {% endblock %} #}
+
+
+<!--   fenetre modal : affichage des taches suivant click/ lien projet -->
+<div class="modal fade modalPjt" data-bs-toggle="modal" id="exampleModal" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Travail à faire</h5>
+                <button type="button" class="btn-close btnModal" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% if listeTaches is defined %}
+                    {% for listeTaches in listeTaches %}
+                        <ul>
+                            <li>{{ listeTaches.titre }}</li>
+                            <li>{{ listeTaches.description|raw }}</li>
+                            <li>{{ listeTaches.budget|default('à saisir') }}€</li>
+                            <li>{{ listeTaches.dateDebut|date("m/d/Y")|default('à saisir') }}</li>
+                            <li>{{ listeTaches.dateFin|date("m/d/Y")|default('à saisir') }}</li>
+                            <!-- date accompte + donnees compta si gestion déléguée à l'artisan -->
+                            {#                            <li>{{ listeTaches.dateAcompte }}</li> #}
+                        </ul>
+                    {% endfor %}
+                {% endif %}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btnModal" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card des documents : fonctionnel - A DECOMMENTER SI BESOIN -->
+{# <section> #}
+{#    <h2 class="mb-4">Cards des projets </h2> #}
+{#    <div class="container" style="height:800px"> #}
+{#        <div class="row align-content-around"> #}
+{#            {%if listePjt is not empty %} #}
+{#            {% for key, pjt2 in listePjt %} #}
+{#                <div class="col-sm-4 " style="height: 350px; object-fit: contain"> #}
+{#                    <div class="card mt-3" > #}
+{#                        <div class="card-body m-2" > #}
+{#                            <img src="{{ asset('/assets/images/artisan/luminaires.jpg') }}..." class="card-img-top" #}
+{#                                 alt="photo de lampadaire type industriel" height="300"> #}
+{#                            <h4 class="card-title mt-3"> <i>n°{{ key }} - </i>{{ pjt2.titre|u.truncate(50,'...',false)|raw }}</h4> #}
+{#                           <p class="card-text mt-3"> Lieu: {{ pjt2.localite }}</p> #}
+{#                            {% set  clientList=pjt2.client %} #}
+{#                            <i style="text-decoration: underline">Client<br></i> #}
+{#                            <ul> #}
+{#                            {% for key, client in clientList %} #}
+{#                                    <li class="card-text">{{ client.prenom }} {{ client.nom }}</li> #}
+{#                            {% endfor %} #}
+{#                            </ul> #}
+{#                            {% set  tachesList=pjt2.taches %} #}
+{#                            {% for tache in tachesList %} #}
+{#                            <td class="mt-3 "><i style="text-decoration: underline">Travail</i><br>{{ tache.titre }} #}
+{#                                <br> <i class="text-decoration-underline mt-5">Date de début</i>: {{ tache.datedebut|date("m/d/Y")|default('à saisir')}} #}
+{#                                #}{#                                    <br><i class="bi bi-arrow-right-circle-fill">{{ tache.budget }} € </i></td> #}
+{#                                {% endfor %} #}
+
+{#                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" #}
+{#                            class="hoverDetailPjt btn mt-3" style="background-color: {{ theme.theme.couleurActuelleBg }}" #}
+{#                            href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt2.id }) }}">Visualiser le travail</a> #}
+{#                        </div> #}
+{#                    </div> #}
+{#                </div> #}
+{#            {% endfor %} #}
+{#            {% endif %} #}
+{#        </div> #}
+{#    </div> #}
+{# </section> #}

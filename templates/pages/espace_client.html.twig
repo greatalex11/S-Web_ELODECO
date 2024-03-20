@@ -106,7 +106,7 @@
 
 
                             <li>
-                                <a href="{{ path('app_artisan_accueilPjt', { 'id': clients.id,'projet': 'projet','value': 'value' }) }}"
+                                <a href="{{ path('app_client_accueilPjt', { 'id': clients.id,'projet': 'projet','value': 'value' }) }}"
                                    class="nav-link text-truncate">
                                     <i class="fs-5 bi-grid"></i><span
                                             class="ms-1 d-none d-sm-inline">Projet</span></a>
@@ -141,7 +141,7 @@
 
             <!--flash message absence de document ou de projet-->
             {% include "fields/flashMsg.html.twig" %}
-            
+
 
             {% if app.request.attributes.get('_route') == 'app_client_accueil' %}
                 {% include "contenus/_coordonneesClients.html.twig" %}
@@ -152,13 +152,10 @@
                 {% include "contenus/_documentClients.html.twig" %}
             {% endif %}
 
-            {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
-                {% include "contenus/_projetArtisans.html.twig" %}
+            {% if app.request.attributes.get('_route') == 'app_client_accueilPjt' %}
+                {% include "contenus/_projetClients.html.twig" %}
             {% endif %}
 
-            {% if app.request.attributes.get('_route') == 'app_contact' %}
-                {% include "pages/contact.html.twig" %}
-            {% endif %}
 
 
             {#           A voir : error template  {% if not ... %} #}

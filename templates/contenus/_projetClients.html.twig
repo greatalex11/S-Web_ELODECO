@@ -1,0 +1,55 @@
+<div style="color: white">
+    {% block title %}Elo Deco - espace Artisan - liste des projets{% endblock %}
+</div>
+
+
+{% block content %}
+
+    <!-- template permettant de sélectionner la liste des projets et de faire des recherches -->
+    <section class="mt-2 row justify-content-center m-auto" style="min-height: 35%">
+        {# En attente de développement #}
+        {#        {% block search %} #}
+        {#            {% include('_partial/_search-espace_perso.html.twig') with {'formSearch': formSearch} %} #}
+        {#        {% endblock search %} #}
+
+        <!-- rendu du tableau de bord -->
+        {% block list %}
+            {% if app.request.attributes.get('_route') == 'ROLE_ARTISAN' %}
+                {% include "contenus/_listePjtClients.html.twig" with {'listePjt': listePjt} %}
+            {% endif %}
+        {% endblock list %}
+
+    </section>
+
+{% endblock %}
+
+
+<!--script de recheche de vaur  -    search bar   -   a supprimer lors du refactor-->
+{#    <script> #}
+{#        let btn = document.querySelector("#validValue"); #}
+{#        btn.addEventListener('click', () => { #}
+{#        var valeur = document.querySelector('#valueSearch').value; #}
+{#        }); #}
+{#    </script> #}
+
+{#  <!--bouton search dans twig  a supprimer lors du refactor--> #}
+{#        <div class="container"> #}
+{#            <div class="row"> #}
+{#                <div class="col-8"></div> #}
+{#                <div class="col"> #}
+{#                    <div class="row m-auto justify-content-end"> #}
+{#                        <!-- Formulaire de recherche --> #}
+{#                        <form class="formSearch w-75 " #}
+{#                              action="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value': 'ouilll',  }) }}" #}
+
+{#                              method="POST"> #}
+{#                            <div class="input-group bg-light  mt-4"> #}
+{#                                <button id="validValue" class="input-group-text icon-magnifying-glass" style="background-color: {{ theme.theme.couleurActuelleBg }}"> #}
+{#                                </button> #}
+{#                                <textarea id="valueSearch" class="form-control " aria-label="With textarea"></textarea> #}
+{#                            </div> #}
+{#                        </form> #}
+{#                    </div> #}
+{#                </div> #}
+{#            </div> #}
+{#        </div> #}

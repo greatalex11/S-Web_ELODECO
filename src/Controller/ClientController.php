@@ -9,6 +9,8 @@ use App\Form\ClientType;
 use App\Form\DocumentsTypeClient;
 use App\Repository\ClientRepository;
 use App\Repository\DocumentsRepository;
+use App\Repository\ProjetRepository;
+use App\Repository\TacheRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -116,8 +118,68 @@ class ClientController extends AbstractController
         ]);
     }
 
-    //---------------------------------------------  MANQUE CONTROLE PROJET
+    //............................................................................................  page generale projet
+    #[Route('/{id}/{projet}/{value}', name: 'app_client_accueilPjt', methods: ['GET', 'POST'])]
+    public function indexProjet(Client $client, ProjetRepository $projetRepository, TacheRepository $tacheRepository, Request $request): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
 
+        if ($user->getClient() != $client) {
+            throw $this->createAccessDeniedException("Vous n'êtes pas enregistré");
+        }
+
+
+        $id = $client->getId();
+        $clients = $client;
+        $pjt = $request->get('projet');
+
+        if ($pjt) {
+
+            //.................................................. page recherche de Taches/ id projet
+
+            $idProjet = $request->get('value');
+            $tacheList = [];
+            if ($idProjet) {
+                $tacheList = $tacheRepository->findPjtByIdPjt($idProjet); //.......dql depuis projet
+            }
+
+            //................................................. page recherche de Projet/ id artisan
+
+            $idClient = $client->getId();
+            $projetList = $projetRepository->findProjetByNomClient($idClient); //dql depuis document
+
+            if ($projetList) {
+                $this->render('contenus/_listeTachesClients.html.twig', [
+                    'listeTaches' => $tacheList,
+                ]);
+            }
+
+
+            if (!$projetList) {
+                $this->addFlash(
+                    'notice',
+                    'Vous n\'avez pas encore de projet en ligne.'
+                );
+            }
+
+
+            return $this->render('pages/espace_client.html.twig', [
+                'id' => $id,
+                'clients' => $clients,
+                'listePjt' => $projetList,
+                'listeTaches' => $tacheList,
+//                'formSearch' => $formSearch,
+//                'search'=>$value,
+//                'mavaleur' => $search,
+            ]);
+        }
+        return $this->render('pages/espace_client.html.twig', [
+            'clients' => $clients,
+        ]);
+    }
+
+//   ....................................................................................................... client show
     #[Route('/show/{id} ', name: 'app_client_show', methods: ['GET'])]
     public function show(Client $theClient, User $user, ClientRepository $clientRepository): Response
     {
