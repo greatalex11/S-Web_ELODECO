@@ -47,9 +47,9 @@ class DocumentsRepository extends ServiceEntityRepository
         $qb->select('d')
 //            ->from('App:Documents', 'd')
             ->innerJoin('App:Projet', 'p', 'WITH', 'p.id=d.projet')
-            ->innerJoin('App:Client', 'c', 'WITH', 'c.id = p.id')
-            ->where('p.id = :idClient')
-            ->setParameter('idClient', $idClient);
+            ->innerJoin('App:Client', 'c', 'WITH', 'c.id = p.id');
+//            ->where('p.d.document = :idClient')
+//            ->setParameter('idClient', $idClient);
         $result = $qb->getQuery()->getResult();
         return $result;
 

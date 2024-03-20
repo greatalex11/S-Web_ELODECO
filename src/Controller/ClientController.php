@@ -86,6 +86,7 @@ class ClientController extends AbstractController
 
             $idClient = $id;
             $documentIdClient = $documentsRepository->findDocumentClient($idClient); //dql depuis document
+
             if (!$documentIdClient) {
                 $this->addFlash(
                     'notice',
