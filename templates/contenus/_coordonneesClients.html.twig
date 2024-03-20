@@ -1,4 +1,4 @@
-{#{% extends '/base.html.twig' %}#}
+{# {% extends '/base.html.twig' %} #}
 {% set Apps = theme.theme %}
 
 {% block content %}
@@ -7,22 +7,24 @@
 
     <!--        page coordonnees conditionnée par href "coordonnées" depuis page accueil artisan        -->
     <section class="mt-2 row justify-content-center m-auto">
-        <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between"
-                 style="max-height:100px; padding:30px; margin: 0 10% 0 10%">
-            <ul class="portfolio-details__info-list list-unstyled">
-                <li>{{ clients.prenom|striptags|default('prénom') }}</li>
-                <li>{{ clients.nom|striptags|default('NOM')|upper }}</li>
-                <li>{{ 'now'|date }}</li>
-            </ul>
-        </section>
+    <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between"
+             style="max-height:100px; padding:30px; margin: 0 10% 0 10%">
+        <ul class="portfolio-details__info-list list-unstyled">
+            <li>{{ clients.prenom|striptags|default('prénom') }}</li>
+            <li>{{ clients.nom|striptags|default('NOM')|upper }}</li>
+            <li>{{ 'now'|date("d/m/Y", "Europe/Paris") }}</li>
+        </ul>
+    </section>
 
 
     <!-- cible -->
-    <section class="services-one">
+    <section class="services-one pt-xl-3">
         <div class="services-one-container">
-            <div class="section-title text-center">
+            <div class="section-title text-center mt-5">
                 <span class="section-title__tagline">Vos informations personnelles</span>
+            </div>
 
+            <div class="section-title text-center">
                 <div class="row">
                     {% for message in app.flashes('success') %}
                         <div id="flash-message" class="alert alert-success">
@@ -33,49 +35,50 @@
                 </div>
             </div>
             <div class="row mt-3">
-                        <div class="col-xl-4 col-lg-4 h-100">
-                            <!--                Info client              -->
-                            <div class="services-one__single" style="height:1200px">
-{#                                <h2 class="services-one__title">#}
-{#                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.raisonSociale|striptags|default('77') }}</a>#}
-{#                                </h2>#}
-{#                                <p class="services-one__text">Raison sociale</p>#}
+                <div class="col-xl-4 col-lg-4 h-100">
+                    <!--                Info client              -->
+                    <div class="services-one__single" style="height:1200px">
+                        {#                                <h2 class="services-one__title"> #}
+                        {#                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.raisonSociale|striptags|default('77') }}</a> #}
+                        {#                                </h2> #}
+                        {#                                <p class="services-one__text">Raison sociale</p> #}
 
-                                <h2 class="services-one__title" style="color: {{ theme.theme.couleurActuelleBg }}"><a style="color: {{ theme.theme.couleurActuelleBg }}"> {{ clients.prenom|striptags|default('prénom') }} </a>
-                                </h2>
-                                <p class="services-one__text">Prénom</p>
+                        <h2 class="services-one__title" style="color: {{ theme.theme.couleurActuelleBg }}"><a
+                                    style="color: {{ theme.theme.couleurActuelleBg }}"> {{ clients.prenom|striptags|default('prénom') }} </a>
+                        </h2>
+                        <p class="services-one__text">Prénom</p>
 
-                                <h2 class="services-one__title mt-5">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.nom|striptags|default('nom') }}</a>
-                                </h2>
-                                <p class="services-one__text">Nom</p>
+                        <h2 class="services-one__title mt-5">
+                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.nom|striptags|default('nom') }}</a>
+                        </h2>
+                        <p class="services-one__text">Nom</p>
 
-                                <p class="row border-bottom mt-5"></p>
+                        <p class="row border-bottom mt-5"></p>
 
-                                <h2 class="odometer mt-5" style="color: {{ theme.theme.couleurActuelleBg }}"
-                                    data-count="{{clients.numeroRue|striptags|default('77') }}">00</h2>
-                                <p class="services-one__text mt-2">Numéro de la rue</p>
+                        <h2 class="odometer mt-5" style="color: {{ theme.theme.couleurActuelleBg }}"
+                            data-count="{{ clients.numeroRue|striptags|default('77') }}">00</h2>
+                        <p class="services-one__text mt-2">Numéro de la rue</p>
 
-                                <h2 class="services-one__title mt-5" style="color: {{ theme.theme.couleurActuelleBg }}">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.rue|striptags|default('grande rue') }}</a>
-                                </h2>
-                                <p class="services-one__text">Nom de la rue</p>
+                        <h2 class="services-one__title mt-5" style="color: {{ theme.theme.couleurActuelleBg }}">
+                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.rue|striptags|default('grande rue') }}</a>
+                        </h2>
+                        <p class="services-one__text">Nom de la rue</p>
 
-                                <h2 class="services-one__title mt-5">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.codePostal|striptags|default('70000') }}</a>
-                                </h2>
-                                <p class="services-one__text">Code postal</p>
+                        <h2 class="services-one__title mt-5">
+                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.codePostal|striptags|default('70000') }}</a>
+                        </h2>
+                        <p class="services-one__text">Code postal</p>
 
-                                <h2 class="services-one__title mt-5">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.localite|striptags|default('Vesoul') }}</a>
-                                </h2>
-                                <p class="services-one__text">Localité</p>
+                        <h2 class="services-one__title mt-5">
+                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.localite|striptags|default('Vesoul') }}</a>
+                        </h2>
+                        <p class="services-one__text">Localité</p>
 
-                                <div class="services-one__icon">
-                                    <span class="icon-furnitures"></span>
-                                </div>
-                            </div>
+                        <div class="services-one__icon">
+                            <span class="icon-furnitures"></span>
                         </div>
+                    </div>
+                </div>
                 <!--    Coordonnées client   -->
                 <div class="col-xl-4 col-lg-4 h-100">
                     <div class="services-one__single" style="height:1200px">
@@ -90,10 +93,10 @@
                         <p class="services-one__text">Téléphone fixe</p>
 
 
-{#  modification email, contacter le web master ou emailverifier dans controller?#}
-{#                        <h2 class="services-one__title mt-5">                            #}
-{#                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.user.email|striptags|default('...@aol.fr') }}</a>        </h2>#}
-{#                        <p class="services-one__text">Email</p>#}
+                        {#  modification email, contacter le web master ou emailverifier dans controller? #}
+                        {#                        <h2 class="services-one__title mt-5">                            #}
+                        {#                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.user.email|striptags|default('...@aol.fr') }}</a>        </h2> #}
+                        {#                        <p class="services-one__text">Email</p> #}
 
                         <div class="services-one__icon">
                             <span class="icon-house-design"></span>
@@ -101,45 +104,45 @@
                     </div>
                 </div>
 
-                        <!--      Info gérant    -->
-                        <div class="col-xl-4 col-lg-4 h-100 ">
-                            <div class="services-one__single" style="height:1200px">
+                <!--      Info gérant    -->
+                <div class="col-xl-4 col-lg-4 h-100 ">
+                    <div class="services-one__single" style="height:1200px">
 
-{#                                <h2 class="services-one__title">#}
-{#                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.prenomGerant|striptags|default('praenomen')}}</a>#}
-{#                                </h2>#}
-{#                                <p class="services-one__text">Prénom</p>#}
+                        {#                                <h2 class="services-one__title"> #}
+                        {#                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.prenomGerant|striptags|default('praenomen')}}</a> #}
+                        {#                                </h2> #}
+                        {#                                <p class="services-one__text">Prénom</p> #}
 
-{#                                <h2 class="services-one__title mt-5">#}
-{#                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.nomGerant|striptags|default('nom gérant') }}</a>#}
-{#                                </h2>#}
-{#                                <p class="services-one__text">nom du gérant</p>#}
+                        {#                                <h2 class="services-one__title mt-5"> #}
+                        {#                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.nomGerant|striptags|default('nom gérant') }}</a> #}
+                        {#                                </h2> #}
+                        {#                                <p class="services-one__text">nom du gérant</p> #}
 
-                                <h2 class="services-one__title">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.dateNaissance|date("m/d/Y")|default('01 janvier 1972') }}</a>
-                                </h2>
-                                <p class="services-one__text">Date de naissance</p>
+                        <h2 class="services-one__title">
+                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.dateNaissance|date("m/d/Y")|default('01 janvier 1972') }}</a>
+                        </h2>
+                        <p class="services-one__text">Date de naissance</p>
 
-                                <h2 class="services-one__title mt-4 mb-4">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.statusMarital|default('statut marital') }}</a>
-                                </h2>
-                                <p class="services-one__text">Statut marital</p>
+                        <h2 class="services-one__title mt-4 mb-4">
+                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.statusMarital|default('statut marital') }}</a>
+                        </h2>
+                        <p class="services-one__text">Statut marital</p>
 
-                                <h2 class="services-one__title mt-4 mb-4">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.prenomConjoint|default('prénom conjoint') }}</a>
-                                </h2>
-                                <p class="services-one__text">Prénom conjoint</p>
+                        <h2 class="services-one__title mt-4 mb-4">
+                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.prenomConjoint|default('prénom conjoint') }}</a>
+                        </h2>
+                        <p class="services-one__text">Prénom conjoint</p>
 
-                                <h2 class="services-one__title mt-4 mb-4">
-                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.nomConjoint|default('nom conjoint') }}</a>
-                                </h2>
-                                <p class="services-one__text">Nom conjoint</p>
+                        <h2 class="services-one__title mt-4 mb-4">
+                            <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.nomConjoint|default('nom conjoint') }}</a>
+                        </h2>
+                        <p class="services-one__text">Nom conjoint</p>
 
-                                <div class="services-one__icon">
-                                    <span class="icon-buildings"></span>
-                                </div>
-                            </div>
+                        <div class="services-one__icon">
+                            <span class="icon-buildings"></span>
                         </div>
+                    </div>
+                </div>
 
 
             </div>
@@ -148,7 +151,8 @@
             <div>
                 <a style="padding: 20px; border-radius: 20px ; margin: 10px;color:#FFFFFF;background-color: rgb(115, 115, 115)"
                    class=" text-center portfolio-details__info-list list-unstyled alert-info"
-                   href="{{ path('app_client_change_coordonnees',{ 'id': clients.id}) }}">Corriger<span class="m-2">>> </span>
+                   href="{{ path('app_client_change_coordonnees',{ 'id': clients.id}) }}">Corriger<span
+                            class="m-2">>> </span>
                 </a>
             </div>
         </div>

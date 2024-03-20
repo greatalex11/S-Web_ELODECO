@@ -73,7 +73,7 @@ class ArtisanController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
         if ($user->getArtisan() != $artisan) {
-            throw $this->createAccessDeniedException("fuck");
+            throw $this->createAccessDeniedException("Vous n'êtes pas enregistré");
         }
         $id = $artisan->getId();
         $artisans = $artisan;

@@ -3,15 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\Client;
+use App\Entity\Documents;
 use App\Entity\User;
 use App\Form\ClientType;
+use App\Form\DocumentsType;
 use App\Repository\ClientRepository;
+use App\Repository\DocumentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[IsGranted("ROLE_CLIENT")]
 #[Route('/client_accueil')]
@@ -56,15 +60,61 @@ class ClientController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/{doc}', name: 'app_client_accueilDoc', methods: ['GET', 'POST'])]
+    public function indexDoc(Client $client, DocumentsRepository $documentsRepository, EntityManagerInterface $entityManager, SluggerInterface $slugger, Request $request): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
 
+        if ($user->getClient() != $client) {
+            throw $this->createAccessDeniedException("Vous n'êtes pas enregistré");
+        }
+        $id = $client->getId();
+        $clients = $client;
+        $doc = $request->get('doc');
+        if ($doc) {
+            /** @var documents $documents */
+            $documents = new Documents();
+            $formDoc = $this->createForm(DocumentsType::class, $documents, ['client' => $client]);
+            $formDoc->handleRequest($request);
+            if ($formDoc->isSubmitted() && $formDoc->isValid()) {
+                $entityManager->persist($documents);
 
+                $entityManager->flush();
+                $this->addFlash('success', 'Votre document est bien enregistré');
+                return $this->redirectToRoute('app_client_accueilDoc', ['id' => $id, 'doc' => $doc]);
+            }
 
+            $idClient = $id;
+            $documentIdClient = $documentsRepository->findDocumentArtisan($idClient); //dql depuis document
+            if (!$documentIdClient) {
+                $this->addFlash(
+                    'notice',
+                    'Vous n\'avez pas encore de document en ligne.'
+                );
+            }
 
+            //formulaire search document
+//            $search = new SearchFormType();
+//            $formSearch = $this->createForm(SearchFormType::class, $search);
+//            $formSearch->handleRequest($request);
+//            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+//                $search = $formSearch->get('searchValue')->getData();
+//                //search fonction à faire
+//            }
 
+            return $this->render('pages/espace_artisan.html.twig', [
+                'id' => $id,
+                'clients' => $clients,
+                'documentIdArtisan' => $documentIdClient,
+                'formLoadDoc' => $formDoc,
+            ]);
+        }
 
-
-
-
+        return $this->render('pages/espace_artisan.html.twig', [
+            'client' => $client,
+        ]);
+    }
 
     //---------------------------------------------  MANQUE CONTROLE PROJET
 
@@ -77,7 +127,7 @@ class ClientController extends AbstractController
 //        $this->checkIsTheSameClient($client);
         return $this->render('contenus/coordonnees.html.twig', [
             'clients' => $client,
-           'form' => $form,
+            'form' => $form,
             'mail' => $mail,
         ]);
 

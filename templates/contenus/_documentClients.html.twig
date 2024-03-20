@@ -1,0 +1,83 @@
+{% set Apps = theme.theme %}
+
+{% block content %}
+
+    <section class="mt-2 row justify-content-center m-auto" style="min-height: 25%">
+
+        {#    {% if documentIdArtisan is defined %} #}
+        {#        {% include "contenus/_listeDocArtisans.html.twig" %} #}
+        {#    {% endif %} #}
+
+        {#        {% if app.request.attributes.get('_route') != 'app_artisan_document_loading' %} #}
+        {#        <div class="bg-light mt-xl-5"> #}
+        {#            {% include "contenus/_loadingDoc.html.twig", {form2:'form2'}%} #}
+        {#        </div> #}
+
+
+        <!--Essais affichage conditionnel suivant href selectionné - embedded template ne coopère pas -->
+        <!-- Affichage des documents de l'artisan - if non fonctionnel sur ce partial pour condition/ dropdown App-a...d...liste-->
+        {% if app.request.attributes.get('_route') != 'app_artisan_documents_liste' and formLoadDoc is defined %}
+            <div class="bg-light mt-xl-5">
+                {% include 'contenus/_loadingDoc.html.twig' %}
+            </div>
+        {% endif %}
+
+        {% if app.request.attributes.get('_route') != 'app_artisan_document_loading' %}
+            <div class="bg-light mt-xl-5">
+                {% include "contenus/_listeDocArtisans.html.twig" %}
+            </div>
+        {% endif %}
+    </section>
+
+{% endblock %}
+
+
+{# pour un futur developpement   -   A DECOMMENTER SI BESOIN #}
+{#        {% block search %} #}
+{#            {% if formSearch is defined %} #}
+{#            {% include('_partial/_search-espace_perso.html.twig') with {'formSearch': formSearch} %} #}
+{#            {%endif %} #}
+{#        {% endblock search %} #}
+
+
+{#  Test : recup argument dans textarea pour alimenter filtreDoc, ma fonction twig pour filtrer le tableau   #}
+{#        <div class="bg-light"> #}
+{#            {% for listingFiltrer2 in documentIdArtisan %} #}
+{#                {% set docPjt = listingFiltrer2.projet.localite %} #}
+{#                #}{#             {% set valTextarea =foo %} #}
+{#                {% if docPjt == "vesoul" %} #}
+{#                    #}{#                 {{ dump(listingFiltrer2) }} #}
+{#                {% endif %} #}
+{#            {% endfor %} #}
+{#        </div> #}
+
+<!-- test : search avec getData on page -->
+{# <div class="container"> #}
+{#    <div class="row"> #}
+{#        <div class="col-7"></div> #}
+{#        <div class="col"> #}
+{#            <div class="row"> #}
+{#                <div class="input-group bg-light w-75 mt-4"> #}
+{#                    <span class="input-group-text icon-magnifying-glass"></span> #}
+{#                    <textarea id="myTextarea" class="form-control " aria-label="With textarea"></textarea> #}
+{#                </div> #}
+{#            </div> #}
+{#            <div class="row"> #}
+{#                <p class="ms-1 d-none d-sm-inline">Saisir localité ou nom client</p> #}
+{#            </div> #}
+{#            <div id="output" class="row bg-gradient w-75"> #}
+{#                #}{#             {% set foo = '' %} #}
+{#                <p class="bg-gradient w-75"> return  </p> #}
+{#            </div> #}
+{#        </div> #}
+
+{#    </div> #}
+{# </div> #}
+{# <script> #}
+{#    let textarea = document.getElementById('myTextarea'); #}
+{#    textarea.addEventListener('input', function () { #}
+{#        let inputValue = textarea.value; #}
+{#        // inputValue= '<?=$paramFiltre?>' #}
+{#        document.getElementById('output').textContent = inputValue; #}
+{#    }); #}
+{# </script> #}
