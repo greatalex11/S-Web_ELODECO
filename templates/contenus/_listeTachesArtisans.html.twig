@@ -7,16 +7,29 @@
 {#    #}{#    <ul> #}
 {#    #}{#        <li>tache.nom</li> #}
 {#    #}{#    </ul> #}
-{#    {{ dump(listeTaches) }} #}
-
-
+    {{ dump(listeTaches) }}
+{% if listePjt is defined %}
+    {{ dump(listePjt) }}
+{% endif %}
 
 {# {% endfor %} #}
 
 <div id="test-time" class="text-center text-success"></div>
 <div id="test-get" class="text-center text-primary"></div>
 
+<button id="btnAjax" value="2" onclick="geek()">ajax!</button>
+
+
 <script>
+
+    let btnAjax = $('#btnAjax');
+    btnAjax.on('click', function () {
+        let tacheNumber = btnAjax.val();
+        alert('ajax');
+        console.log(tacheNumber);
+
+    });
+
 
     function synchroneData() {
         let divTestTime = document.querySelector("#test-time");
