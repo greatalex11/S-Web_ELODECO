@@ -39,7 +39,7 @@ class ProjetRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('p');
         $qb->select('p')
-            ->innerJoin('App:Tache', 't', 'WITH', 't.projet=p.id')
+            ->leftJoin('App:Tache', 't', 'WITH', 't.projet=p.id')
             ->innerJoin('p.client', 'c')
             ->where('c.id = :clientId')
             ->setParameter('clientId', $idClient);
