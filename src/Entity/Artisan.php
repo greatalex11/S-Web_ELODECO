@@ -75,16 +75,15 @@ class Artisan
     private ?string $email = null;
 
 
-
     public function __construct()
     {
-       $this->tache = new ArrayCollection();
+        $this->tache = new ArrayCollection();
 
     }
 
-    public function __toString()
+    public function __toString(): string
     {
-            return $this->nom_etablissement;
+        return $this->nom_etablissement ? ucfirst($this->nom_etablissement) : "Etablissement #" . $this->getId();
     }
 
     public function getId(): ?int
@@ -286,7 +285,6 @@ class Artisan
     }
 
 
-
     /**
      * @return Collection<int, Tache>
      */
@@ -340,7 +338,6 @@ class Artisan
 
         return $this;
     }
-
 
 
 }

@@ -41,16 +41,6 @@ class RegistrationController extends AbstractController
     {
         /** @var artisan $artisan */
 
-        //création de la partie dynamique du formulaire en fonction du choix artisan/ client : ne marche pas/ submission
-//        if ($choice === "Artisan") {
-//            $artisan = new Artisan();
-//            $formCusto = $this->createFormBuilder($artisan)
-//                ->add('nom_etablissement', TextType::class, ['label' => 'Nom de l\établissement'])
-//                ->add('raison_sociale', TextType::class, ['label' => 'Raison sociale'])
-//                -> add('save', SubmitType::class, ['label' => 'Create Task'])
-//                ->getForm();
-//        }
-
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -100,7 +90,7 @@ class RegistrationController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('tamere@lapute.com', 'test'))
                     ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
+                    ->subject('Veuillez confirmer votre email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
@@ -137,7 +127,7 @@ class RegistrationController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('tamere@lapute.com', 'test'))
                     ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
+                    ->subject('Veuillez confirmer votre email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             return $this->redirectToRoute('app_login');
