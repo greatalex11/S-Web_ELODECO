@@ -19,7 +19,8 @@ security:
       custom_authenticator: App\Security\LoginAuthentificationAuthenticator
       logout:
         path: app_logout
-        target: app_home
+        target: app_login
+        clear_site_data: true
 
         # where to redirect after logout
         # target: app_any_route

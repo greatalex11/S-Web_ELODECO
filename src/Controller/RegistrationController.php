@@ -136,7 +136,7 @@ class RegistrationController extends AbstractController
         $this->addFlash('success', 'Votre email a été vérifié avec succès.');
         //$this-> getUser()->setIsVerified(1);
 
-   // app_register : on reste dans le registerform après le check email
-        return $this->redirectToRoute('app_register');
+        // app_register : on reste dans le registerform après le check email
+        return $this->redirectToRoute('app_login');
     }
 }

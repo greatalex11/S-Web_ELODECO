@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Authenticator\AbstractLoginFormAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
@@ -14,8 +15,10 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
+use Symfony\Component\Security\Http\Event\LogoutEvent;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class LoginAuthentificationAuthenticator extends AbstractLoginFormAuthenticator
 {
@@ -23,7 +26,7 @@ class LoginAuthentificationAuthenticator extends AbstractLoginFormAuthenticator
 
     public const LOGIN_ROUTE = 'app_login';
 
-    public function __construct(private readonly UrlGeneratorInterface $urlGenerator)
+    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly TokenStorageInterface $tokenStorage, private EventDispatcherInterface $eventDispatcher)
     {
     }
 
@@ -54,7 +57,20 @@ class LoginAuthentificationAuthenticator extends AbstractLoginFormAuthenticator
         $userRoles = $token->getRoleNames();
 
         if (!$user->isVerified()) {
-            // Si il est pas vérifié, redirigé vers une page qui dit qui faut checker le mail et le déconnecté
+            $logoutEvent = new LogoutEvent($request, $this->tokenStorage->getToken());
+            $this->eventDispatcher->dispatch($logoutEvent);
+
+            // Set the token to null
+            $this->tokenStorage->setToken(null);
+
+            // Optionally clear the session
+            $request->getSession()->invalidate();
+
+            // Redirect to another route
+            $response = new RedirectResponse($this->urlGenerator->generate('app_login', ["verify" => false]));
+            $response->headers->clearCookie('REMEMBERME');
+            $response->send();
+            return $response;
         }
 
         if (in_array(User::ROLE_ADMIN, $userRoles)) {
