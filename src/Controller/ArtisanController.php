@@ -229,7 +229,7 @@ class ArtisanController extends AbstractController
             //................................................. page recherche de Projet/ id artisan
 
             $idArtisan = $artisan->getId();
-            $projetList = $projetRepository->findProjetByNomClient($idArtisan); //dql depuis document
+            $projetList = $projetRepository->findProjetByNomArtisan($idArtisan); //dql depuis document
 
             if ($projetList) {
                 $this->render('contenus/_listeTachesArtisans.html.twig', [

@@ -2,12 +2,8 @@
 
 namespace App\Repository;
 
-use App\Entity\Artisan;
-use App\Entity\Documents;
 use App\Entity\Projet;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Query\Expr\Select;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -27,7 +23,7 @@ class ProjetRepository extends ServiceEntityRepository
     }
 
 // recherche de document
-    public function findProjetByNomClient(?string $idArtisan): array
+    public function findProjetByNomArtisan(?string $idArtisan): array
     {
         $qb = $this->createQueryBuilder('p');
         $qb->select('p')
@@ -39,6 +35,17 @@ class ProjetRepository extends ServiceEntityRepository
         return $result;
     }
 
+    public function findProjetByNomClient(?string $idClient): array
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->select('p')
+            ->innerJoin('App:Tache', 't', 'WITH', 't.projet=p.id')
+            ->innerJoin('p.client', 'c')
+            ->where('c.id = :clientId')
+            ->setParameter('clientId', $idClient);
+        $result = $qb->getQuery()->getResult();
+        return $result;
+    }
 
     /**
      * @return Projet[] Returns an array of Projet objects

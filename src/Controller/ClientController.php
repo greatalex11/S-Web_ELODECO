@@ -144,11 +144,11 @@ class ClientController extends AbstractController
                 $tacheList = $tacheRepository->findPjtByIdPjt($idProjet); //.......dql depuis projet
             }
 
-            //................................................. page recherche de Projet/ id artisan
+            //................................................. page recherche de Projet/ id client
 
             $idClient = $client->getId();
             $projetList = $projetRepository->findProjetByNomClient($idClient); //dql depuis document
-
+            dump($projetList);
             if ($projetList) {
                 $this->render('contenus/_listeTachesClients.html.twig', [
                     'listeTaches' => $tacheList,
