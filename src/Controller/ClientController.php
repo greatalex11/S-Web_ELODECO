@@ -177,18 +177,6 @@ class ClientController extends AbstractController
             'clients' => $clients,
         ]);
     }
-//..............................................................................................................................
-
-//
-//    // ..............................................................................................  accueil  artisan'
-//    #[Route('/{id}', name: 'app_artisan_accueil', methods: ['GET'])]
-//    public function index(Artisan $artisan): Response
-//    {
-//        $artisans = $artisan;
-//        return $this->render('pages/espace_artisan.html.twig', [
-//            'artisans' => $artisans,
-//        ]);
-//    }
 
 //   ....................................................................................................... client show
     #[Route('/show/{id} ', name: 'app_client_show', methods: ['GET'])]
