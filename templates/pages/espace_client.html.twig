@@ -143,14 +143,18 @@
             {% include "fields/flashMsg.html.twig" %}
 
 
-            {% if app.request.attributes.get('_route') == 'app_client_accueil' %}
+            {% if app.request.attributes.get('_route') == 'app_client_show' or app.request.attributes.get('_route') == 'app_client_accueil' %}
                 {% include "contenus/_coordonneesClients.html.twig" %}
             {% endif %}
+
+            {#            {% include "contenus/_coordonneesClients.html.twig" %} #}
 
 
             {% if app.request.attributes.get('_route') == 'app_client_accueilDoc' %}
                 {% include "contenus/_documentClients.html.twig" %}
             {% endif %}
+
+
 
             {% if app.request.attributes.get('_route') == 'app_client_accueilPjt' %}
                 {% include "contenus/_projetClients.html.twig" %}

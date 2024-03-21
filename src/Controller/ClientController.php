@@ -163,7 +163,6 @@ class ClientController extends AbstractController
                 );
             }
 
-
             return $this->render('pages/espace_client.html.twig', [
                 'id' => $id,
                 'clients' => $clients,
@@ -178,14 +177,30 @@ class ClientController extends AbstractController
             'clients' => $clients,
         ]);
     }
+//..............................................................................................................................
+
+//
+//    // ..............................................................................................  accueil  artisan'
+//    #[Route('/{id}', name: 'app_artisan_accueil', methods: ['GET'])]
+//    public function index(Artisan $artisan): Response
+//    {
+//        $artisans = $artisan;
+//        return $this->render('pages/espace_artisan.html.twig', [
+//            'artisans' => $artisans,
+//        ]);
+//    }
 
 //   ....................................................................................................... client show
     #[Route('/show/{id} ', name: 'app_client_show', methods: ['GET'])]
     public function show(Client $theClient, User $user, ClientRepository $clientRepository): Response
     {
+        if ($user->getClient() != $theClient) {
+            throw $this->createAccessDeniedException("Vous n'êtes pas enregistré");
+        }
+
         $form = $this->createForm(ClientType::class);
         $client = $theClient;
-        $mail = $user->getEmail();
+        // $mail = $user->getEmail();
 //        $this->checkIsTheSameClient($client);
         return $this->render('contenus/coordonnees.html.twig', [
             'clients' => $client,

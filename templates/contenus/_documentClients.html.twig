@@ -28,13 +28,14 @@
                 {% include 'contenus/_loadingDocClient.html.twig' %}
             </div>
         {% endif %}
-
+        {% include 'contenus/_loadingDocClient.html.twig' %}
 
         {% if app.request.attributes.get('_route') != 'app_client_accueilDoc' and documentIdClient is defined %}
             <div class="bg-light mt-xl-5">
                 {% include "contenus/_listeDocClients.html.twig" %}
             </div>
         {% endif %}
+        {% include "contenus/_listeDocClients.html.twig" %}
     </section>
 
 {% endblock %}

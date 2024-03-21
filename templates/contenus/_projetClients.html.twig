@@ -14,7 +14,7 @@
 
         <!-- rendu du tableau de bord -->
         {% block list %}
-            {% if app.request.attributes.get('_route') == 'ROLE_ARTISAN' %}
+            {% if app.request.attributes.get('_route') == 'app_client_accueilPjt' %}
                 {% include "contenus/_listePjtClients.html.twig" with {'listePjt': listePjt} %}
             {% endif %}
         {% endblock list %}
