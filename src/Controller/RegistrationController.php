@@ -5,24 +5,19 @@ namespace App\Controller;
 use App\Entity\Artisan;
 use App\Entity\Client;
 use App\Entity\User;
-use App\Form\ArtisanType;
 use App\Form\RegistrationFormType;
+use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\Mailer;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
-use TheSeer\Tokenizer\TokenCollection;
 
 class RegistrationController extends AbstractController
 {
@@ -38,11 +33,10 @@ class RegistrationController extends AbstractController
     public function registerChoice(Request $request): Response
     {
         return $this->render('registration/registerChoice.html.twig', [
-            ]);
+        ]);
     }
 
     #[Route('/register/{choice}', name: 'app_register')]
-
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, string $choice): Response
     {
         /** @var artisan $artisan */
@@ -72,25 +66,16 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('elodeco@gmail.com', 'admin'))
-                    ->to($user->getEmail())
-                    ->subject('Merci de confirmer votre Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
-            // do anything else you need here, like send an email
 
             // si registerFORM VALIDE on part dans perso au lieu de /_profile
-           // à cette étape, enregistrement dans user du Role et Info perso Client si Client, Ets si Ets
+            // à cette étape, enregistrement dans user du Role et Info perso Client si Client, Ets si Ets
             if ($choice === "Artisan") {
                 $artisan = new Artisan();
                 $user->setArtisan($artisan);
                 $user->setRoles(["ROLE_ARTISAN"]);
-                $nomEts=$form->get('nom_etablissement')->getData();
+                $nomEts = $form->get('nom_etablissement')->getData();
                 $artisan->setNomEtablissement($nomEts);
-                $raisonSociale= $form->get('raison_sociale')->getData();
+                $raisonSociale = $form->get('raison_sociale')->getData();
                 $artisan->setRaisonSociale($raisonSociale);
                 $entityManager->persist($artisan);
 
@@ -100,9 +85,9 @@ class RegistrationController extends AbstractController
                 $client = new Client();
                 $user->setRoles(["ROLE_CLIENT"]);
                 $user->setClient($client);
-                $nomClient=$form->get('nom')->getData();
+                $nomClient = $form->get('nom')->getData();
                 $client->setNom($nomClient);
-                $prenomClient= $form->get('prenom')->getData();
+                $prenomClient = $form->get('prenom')->getData();
                 $client->setPrenom($prenomClient);
                 $entityManager->persist($client);
             }
@@ -110,7 +95,16 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_login');
+            // generate a signed url and email it to the user
+            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                (new TemplatedEmail())
+                    ->from(new Address('tamere@lapute.com', 'test'))
+                    ->to($user->getEmail())
+                    ->subject('Please Confirm your Email')
+                    ->htmlTemplate('registration/confirmation_email.html.twig')
+            );
+            // do anything else you need here, like send an email
+            return $this->redirectToRoute('app_login', ["check_email" => true]);
         }
 
         return $this->render('registration/register.html.twig', [
@@ -119,24 +113,39 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
+    public function verifyUserEmail(Request $request, TranslatorInterface $translator, UserRepository $userRepository): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $id = $request->query->get('id');
+
+        if (null === $id) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $user = $userRepository->find($id);
+
+        if (null === $user) {
+            return $this->redirectToRoute('app_login');
+        }
 
         // validate email confirmation link, sets User::isVerified=true and persists
         try {
-            $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
-
+            $this->emailVerifier->handleEmailConfirmation($request, $user);
         } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('danger', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
+            $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
+            $this->addFlash('info', "Un nouvel email de validation vous a été envoyé, veuillez cliquer sur le lien de validation");
+            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                (new TemplatedEmail())
+                    ->from(new Address('tamere@lapute.com', 'test'))
+                    ->to($user->getEmail())
+                    ->subject('Please Confirm your Email')
+                    ->htmlTemplate('registration/confirmation_email.html.twig')
+            );
             return $this->redirectToRoute('app_login');
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Votre email a été vérifié avec succès.');
-        //$this-> getUser()->setIsVerified(1);
+        $this->addFlash('success', 'Votre email a été vérifié avec succès. Vous pouvez désormais vous connecter');
 
-        // app_register : on reste dans le registerform après le check email
         return $this->redirectToRoute('app_login');
     }
 }

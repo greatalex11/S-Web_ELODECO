@@ -78,7 +78,9 @@ class ArtisanController extends AbstractController
         $id = $artisan->getId();
         $artisans = $artisan;
         $doc = $request->get('doc');
+
         if ($doc) {
+//          loading de documents
             /** @var documents $documents */
             $documents = new Documents();
             $formDoc = $this->createForm(DocumentsType::class, $documents, ['artisan' => $artisan]);
@@ -90,8 +92,10 @@ class ArtisanController extends AbstractController
                 return $this->redirectToRoute('app_artisan_accueilDoc', ['id' => $id, 'doc' => $doc]);
             }
 
+//          Liste des documents/ artisan
             $idArtisan = $id;
             $documentIdArtisan = $documentsRepository->findDocumentArtisan($idArtisan); //dql depuis document
+            dump($documentIdArtisan);
             if (!$documentIdArtisan) {
                 $this->addFlash(
                     'notice',

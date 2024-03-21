@@ -32,9 +32,10 @@ class DocumentsRepository extends ServiceEntityRepository
 
         $qb->select('d')
 //            ->from('App:Documents', 'd')
-            ->innerJoin('App:Projet', 'p', 'WITH', 'p.id=d.projet')
-            ->innerJoin('App:Tache', 't', 'WITH', 't.projet = p.id')
-            ->where('t.artisan = :idArtisan')
+            ->innerJoin('App:Projet', 'p', 'WITH', 'd.projet=p.id')
+            ->innerJoin('App:Tache', 't', 'WITH', 't.id= p.id')
+            ->innerJoin('App:Artisan', 'a', 'WITH', 'a.id= p.id')
+            ->where('a.id = :idArtisan')
             ->setParameter('idArtisan', $idArtisan);
         $result = $qb->getQuery()->getResult();
         return $result;

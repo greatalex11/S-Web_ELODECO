@@ -48,8 +48,9 @@ class LoginAuthentificationAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        // a la connexion ce souvient du dernier lien ou va sur le lien connecté
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-            return new RedirectResponse($targetPath);
+            // return new RedirectResponse($targetPath);
         }
 
         /** @var User $user */

@@ -11,34 +11,27 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 class RegistrationFormType extends AbstractType
 {
     //injection du service 'resquestack'
     public function __construct(
         protected RequestStack $requestStack,
-    ) {
+    )
+    {
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
-     {
+    {
         //formulaire principal
         $builder
             ->add('email')
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'J\'accepte les conditions générales',
-                    ]),
-                ],
-            ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
@@ -58,52 +51,60 @@ class RegistrationFormType extends AbstractType
             ]);
 
 
+        /**
+         * @Route("/register/{choice}", name="app_register")
+         */
 
+        // dynamisation du formulaire suivant le param de l'url - artisan ou client.
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
 
-         /**
-          * @Route("/register/{choice}", name="app_register")
-          */
+            $form = $event->getForm();
+            $request = $this->requestStack->getCurrentRequest();
+            //mapped 'false' car liés a Artisan ou Client, pas User
+            if ($request) {
+                $choice = $this->requestStack->getMainRequest()->getPathInfo();
+                switch ($choice) {
+                    case '/register/Artisan':
+                        $form->add('nom_etablissement', TextType::class, [
+                            'label' => 'Nom de votre entreprise',
+                            'mapped' => false,
+                        ]);
+                        $form->add('raison_sociale', TextType::class, [
+                            'label' => 'Raison sociale',
+                            'mapped' => false,
+                        ]);
+                        break;
 
-         // dynamisation du formulaire suivant le param de l'url - artisan ou client.
-         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+                    case '/register/Client':
+                        $form->add('prenom', TextType::class, [
+                            'label' => 'Prenom',
+                            'mapped' => false,
+                        ]);
+                        $form->add('nom', TextType::class, [
+                            'label' => 'Nom',
+                            'mapped' => false,
+                        ]);
+                        break;
+                };
+                $form->add('jiraStatus', SubmitType::class, [
+                    'label' => 'Enregistrement',
+                    'attr' => [
+                        'class' => 'btn w-100 bg-light thm-btn contact-page__btn mt-5 mb-2 contact-page__input-box fw-bold border p-5 pt-1 pb-1',
+                    ],
+                ]);
+            }
+        });
 
-             $form = $event->getForm();
-             $request = $this->requestStack->getCurrentRequest();
-             //mapped 'false' car liés a Artisan ou Client, pas User
-             if ($request) {
-                 $choice = $this->requestStack->getMainRequest()->getPathInfo();
-                 switch ($choice) {
-                     case '/register/Artisan':
-                         $form->add('nom_etablissement', TextType::class, [
-                             'label' => 'Nom de votre entreprise',
-                             'mapped' => false,
-                             ]);
-                         $form->add('raison_sociale', TextType::class, [
-                             'label' => 'raison_sociale',
-                             'mapped' => false,
-                         ]);
-                         break;
-
-                     case '/register/Client':
-                         $form->add('prenom', TextType::class, [
-                             'label' => 'Prenom',
-                             'mapped' => false,
-                             ]);
-                         $form->add('nom', TextType::class, [
-                             'label' => 'Nom',
-                             'mapped' => false,
-                             ]);
-                         break;
-                 };
-                 $form->add('jiraStatus', SubmitType::class, [
-                     'label' => 'Enregistrement',
-                     'attr' => [
-                         'class' => 'btn w-100 bg-light thm-btn contact-page__btn mt-5 mb-2 contact-page__input-box fw-bold border p-5 pt-1 pb-1',
-                     ],
-                 ]);
-             }
-         });
+        $builder->add('agreeTerms', CheckboxType::class, [
+            'mapped' => false,
+            'constraints' => [
+                new IsTrue([
+                    'message' => 'J\'accepte les conditions générales',
+                ]),
+            ],
+        ]);
     }
+
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

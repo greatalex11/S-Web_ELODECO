@@ -90,22 +90,22 @@ class LoginController extends AbstractController
 
         $clefs = $contenusRepo->findByType([Contenus::TYPE_CLEFSERVICEDETAIL]);
         $services = $contenusRepo->findByPagesName('services_details');
-        $promo=$contenusRepo->findByType([Contenus::TYPE_PROMOSERVICEDETAIL]);
+        $promo = $contenusRepo->findByType([Contenus::TYPE_PROMOSERVICEDETAIL]);
 
         $servicesGTI = $contenusRepo->findByType([Contenus::TYPE_ServicesGTI]);
-        $result = array_filter($servicesGTI, function($item) use ($contenu) {
+        $result = array_filter($servicesGTI, function ($item) use ($contenu) {
             //use ($contenu) idem global $contenu
             return $item->getId() !== $contenu->getId();
         });
 
 
         return $this->render('pages/services_details.html.twig', [
-            "serviceSlug"=> $contenu,
+            "serviceSlug" => $contenu,
             "clef" => $clefs,
-            "serviceFiltres"=>$result,
+            "serviceFiltres" => $result,
             "serviceD" => $services,
             "promoServices" => $promo,
-            "serviceGTI"=>$servicesGTI,
+            "serviceGTI" => $servicesGTI,
         ]);
 
 //        $servicesGTI = $contenusRepo->findByType([Contenus::TYPE_ServicesGTI]);
@@ -139,11 +139,11 @@ class LoginController extends AbstractController
     #[Route(path: '/about', name: 'app_about')]
     public function about(ContenusRepository $contenusRepo, AboutRepository $aboutRepository): Response
     {
-        $about=$aboutRepository->find(['id'=>1]);
+        $about = $aboutRepository->find(['id' => 1]);
         $services = $contenusRepo->findByPagesName('About');
         return $this->render('pages/about.html.twig', [
             'about' => $services,
-            'visio'=>$about,
+            'visio' => $about,
         ]);
     }
 
@@ -151,9 +151,9 @@ class LoginController extends AbstractController
     public function mission(MissionRepository $missionRepository): Response
     {
 
-        $mission=$missionRepository->find(['id'=>1]);
-        $listing=$missionRepository-> findByListe();
-        $listed=$listing[0];
+        $mission = $missionRepository->find(['id' => 1]);
+        $listing = $missionRepository->findByListe();
+        $listed = $listing[0];
 
 //      $listing=null;
 //      $missionnee=null;
@@ -164,8 +164,8 @@ class LoginController extends AbstractController
 //       } dd($listing);
 
         return $this->render('pages/our_mission.html.twig', [
-            'mission'=>$mission,
-            'liste1'=>$listed,
+            'mission' => $mission,
+            'liste1' => $listed,
         ]);
     }
 
@@ -176,25 +176,25 @@ class LoginController extends AbstractController
     #[Route(path: '/projets', name: 'app_projets')]
     public function projets(ProjetRepository $projetRepository): Response
     {
-        $projets= $projetRepository->findAll();
+        $projets = $projetRepository->findAll();
         return $this->render('pages/projets.html.twig', [
             "projets" => $projets,
         ]);
     }
 
     #[Route(path: '/projet_details/{slug}', name: 'app_projet_details')]
-    public function projetDetails (Projet $projet, ProjetRepository $projetRepository): Response
+    public function projetDetails(Projet $projet, ProjetRepository $projetRepository): Response
     {
-        $projetActuel=$projet;
+        $projetActuel = $projet;
         $projetsAll = $projetRepository->findAll();
-        $stylesFilter = array_filter($projetsAll, function($item) use ($projet) {
+        $stylesFilter = array_filter($projetsAll, function ($item) use ($projet) {
             //use ($style) idem global $style
             return $item->getId() !== $projet->getId();
         });
 
         return $this->render('pages/projet_details.html.twig', [
-            'projetActuel'=>$projetActuel,
-            'projetsFilter'=>$stylesFilter,
+            'projetActuel' => $projetActuel,
+            'projetsFilter' => $stylesFilter,
         ]);
     }
 
@@ -231,7 +231,7 @@ class LoginController extends AbstractController
     #[Route(path: '/styles', name: 'app_styles')]
     public function styles(StyleRepository $styleRepository): Response
     {
-        $styles= $styleRepository->findAll();
+        $styles = $styleRepository->findAll();
         return $this->render('pages/styles_deco/styles.html.twig', [
             "style" => $styles,
         ]);
@@ -240,16 +240,16 @@ class LoginController extends AbstractController
     #[Route(path: '/styles_details/{slug}', name: 'app_styles_details')]
     public function stylesDetail(Style $style, StyleRepository $styleRepository): Response
     {
-        $styleActuel=$style;
+        $styleActuel = $style;
         $stylesAll = $styleRepository->findAll();
-        $stylesFilter = array_filter($stylesAll, function($item) use ($style) {
+        $stylesFilter = array_filter($stylesAll, function ($item) use ($style) {
             //use ($style) idem global $style
             return $item->getId() !== $style->getId();
         });
 
         return $this->render('pages/styles_deco/styles_details.html.twig', [
-            'styled'=>$styleActuel,
-            'styleFilter'=>$stylesFilter,
+            'styled' => $styleActuel,
+            'styleFilter' => $stylesFilter,
         ]);
     }
 
@@ -298,7 +298,7 @@ class LoginController extends AbstractController
             $this->addFlash('success', 'Votre message a bien été envoyé. Merci.');
             $message_send = true;
             return $this->redirectToRoute('app_contact');
-            };
+        };
 
         return $this->render('pages/contact.html.twig', [
             'form' => $form->createView(),

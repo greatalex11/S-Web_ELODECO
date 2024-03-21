@@ -15,28 +15,20 @@ use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 class EmailVerifier
 {
     public function __construct(
-        private readonly VerifyEmailHelperInterface $verifyEmailHelper,
-        private readonly MailerInterface            $mailer,
-        private readonly EntityManagerInterface     $entityManager
+        private VerifyEmailHelperInterface $verifyEmailHelper,
+        private MailerInterface            $mailer,
+        private EntityManagerInterface     $entityManager
     )
     {
     }
 
     public function sendEmailConfirmation(string $verifyEmailRouteName, UserInterface $user, TemplatedEmail $email): void
     {
-        assert($user instanceof User);
-
-        $userId = $user->getId();
-
-        if ($userId === null) {
-            // Handle the case where the user ID is null
-            throw new \Exception('User ID is null');
-        }
-
         $signatureComponents = $this->verifyEmailHelper->generateSignature(
             $verifyEmailRouteName,
             $user->getId(),
-            $user->getEmail()
+            $user->getEmail(),
+            ['id' => $user->getId()]
         );
 
         $context = $email->getContext();
@@ -48,7 +40,7 @@ class EmailVerifier
 
         try {
             $this->mailer->send($email);
-        } catch (TransportExceptionInterface) {
+        } catch (TransportExceptionInterface $e) {
         }
     }
 
