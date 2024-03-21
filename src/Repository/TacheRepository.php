@@ -27,13 +27,13 @@ class TacheRepository extends ServiceEntityRepository
 
     public function findPjtByIdPjt($idProjet): array
     {
+        dump($idProjet);
         return $this->createQueryBuilder('t')
             ->andWhere('t.projet = :val')
             ->setParameter('val', $idProjet)
-            ->setMaxResults(10)
+            ->setMaxResults(25)
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
 
