@@ -11,7 +11,7 @@
         <div class="news-details__img text-center">
             <img style='max-height: 400px; object-fit: contain' class="" src="{{ image }}" alt="{{ imageTitle }}">
             <div class="news-details__date-box">
-                <p>Septembre 2023</p>
+                <p>{{ news.titre2 }}</p>
             </div>
         </div>
         <div class="news-details__content">
@@ -20,9 +20,9 @@
                 {{ news.texte1|raw }}
             </div>
             {# faire un slider avec les images qui reste #}
-            <div class="owl-carousel owl-theme">
+            <div class="owl-carousel owl-theme mb-xl-5">
                 {% for imageNews in news.images[1:] %}
-                    <div>
+                    <div class="mt-4">
                         <img style="object-fit: contain; height: 350px"
                              src="{{ vich_uploader_asset(imageNews) }}"
                              alt="{{ imageNews.titre }}">
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="author-one mt-4">
+        <div class="author-one mt-4 mb-4">
             <div class="author-one__image text-center">
                 <img src="{{ asset('assets/images/LOGO_ELODECO_1.png') }}" width="128" alt="logo de l'entreprise">
             </div>

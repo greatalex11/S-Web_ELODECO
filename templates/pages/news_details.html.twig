@@ -22,16 +22,19 @@
                 </ul>
             </div>
         </div>
+        bite
     </section>
     <section class="news-details">
         <div class="container">
-            <div class="row">
+            <div class="row p-4">
+
                 {% include "contenus/_news_details.html.twig" with {news: news} %}
+
                 <!--  BLOCK LATERAL DROIT  -->
-                <div class="col-xl-4 col-lg-5">
+                <div class="col-xl-4 col-lg-4">
                     <div class="sidebar__single sidebar__post">
                         <h3 class="sidebar__title">Dernières news</h3>
-                        <ul class="sidebar__post-list list-unstyled text-break">
+                        <ul class="sidebar__post-list list-unstyled text-break m-4">
                             {% for lastNew in lastNews %}
                                 {% if lastNew.titre1 is not empty %}
                                     {% if lastNew.images.first %}
@@ -39,11 +42,11 @@
                                     {% else %}
                                         {% set image = asset('assets/images/backgrounds/fond2.png') %}
                                     {% endif %}
-                                    <li>
+                                    <li style="object-fit: contain">
                                         <a class='d-flex align-items-center'
                                            href="{{ path('app_news_details',{slug: lastNew.slug }) }}">
                                             <div class="sidebar__post-image">
-                                                <img src="{{ image }}" alt="{{ lastNew.images.first.Titre}}">
+                                                <img src="{{ image }}" alt="{{ lastNew.images.first.Titre }}">
                                             </div>
                                             <div class="sidebar__post-content">
                                                 <h3>
