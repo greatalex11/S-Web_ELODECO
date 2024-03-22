@@ -1,5 +1,4 @@
-
-{%  set Apps = theme.theme %}
+{% set Apps = theme.theme %}
 <footer class="site-footer">
 
 
@@ -9,11 +8,12 @@
                 <div class="site-footer__top-left">
                     <div class="site-footer__top-logo-box">
                         {% set attribut = Apps.logo %}
-                        <a href="{{ path('app_about') }}"><img src="{{vich_uploader_asset(attribut)}}"
-                             alt="{{ attribut.titre|default('image') }}" width="80"></a>
+                        <a href="{{ path('app_about') }}"><img src="{{ vich_uploader_asset(attribut) }}"
+                                                               alt="{{ attribut.titre|default('image') }}"
+                                                               width="80"></a>
                     </div>
                     <div class="site-footer__top-text">
-                        <p>{{Apps.titreFooter}}</p>
+                        <p>{{ Apps.titreFooter }}</p>
                     </div>
                 </div>
                 <div class="site-footer_top-btn-box">
@@ -24,7 +24,7 @@
     </div>
     <div class="site-footer__main">
         <div class="site-footer__main-pattern-bg1"
-             style="background-image: url(assets/images/pattern/pattern-1.jpg);"></div>
+             style="background-image: url({{ asset('assets/images/pattern/pattern-1.jpg') }});"></div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
@@ -37,8 +37,7 @@
                                     <i class="fas fa-phone-square-alt"></i>
                                 </div>
                                 <div class="text">
-                                    <p><a href="tel:92-666-888-0000">{{ Apps.telephone  }}</a></p>
-                                   <!-- |default('06 21 85 33 48') |default('elodiekolly.deco@gmail.com') -->
+                                    <p>>{{ Apps.telephone }}</a></p>
                                 </div>
                             </li>
                             <li>
@@ -46,7 +45,7 @@
                                     <i class="fas fa-envelope"></i>
                                 </div>
                                 <div class="text">
-                                    <p><a href="mailto:needhelp@company.com">{{ Apps.mail }}</a></p>
+                                    <p>{{ Apps.mail }}</a></p>
                                 </div>
                             </li>
                             <li>
@@ -66,7 +65,6 @@
                         <ul class="footer-widget__links-list list-unstyled">
                             <li><a href="{{ path('app_about') }}">About</a></li>
                             <li><a href="{{ path('app_our_mission') }}">Ma mission</a></li>
-{#                            <li><a href="team.html">Meet the Team</a></li>#}
                             <li><a href="{{ path('app_projets') }}">Portfolio</a></li>
                             <li><a href="{{ path('app_contact') }}">Contact</a></li>
                         </ul>
@@ -93,11 +91,12 @@
                         <h3 class="footer-widget__title">Se retrouver sur les réseaux sociaux</h3>
                         <p class="footer-widget__newsletter-text"></p>
                         <div class="site-footer__social">
+                            <a href="{{ Apps.linkedIn }}" target="_blank" class="clr-fb"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
-                            <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
-                            <a href="{{ Apps.linkedIn}}" target="_blank" class="clr-fb"><i class="fab fa-linkedin"></i></a>
+                            <a href="{{ Apps.facebook }}" class="clr-fb"><i class="fab fa-facebook"></i></a>
+                            {#                            <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a> #}
+                            {#                            <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a> #}
+
                         </div>
                     </div>
                 </div>
@@ -110,7 +109,7 @@
                 <div class="col-xl-12">
                     <div class="site-footer-bottom__inner">
                         <div class="site-footer-bottom__left">
-                            <p>© Copyright 2023 by <a href="#">elodiekolly.deco@gmail.com</a></p>
+                            <p>© Copyright 2023 by <a>{{ Apps.mail|default('elodiekolly.deco@gmail.com') }} </a></p>
                         </div>
                         <ul class="site-footer-bottom__menu list-unstyled">
                             <li><a href="#">Politique du site</a></li>
