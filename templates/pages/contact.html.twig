@@ -9,7 +9,7 @@
 
 
 
-    <section class="page-header" style="{{ asset('assets/images/backgrounds/fond2.png')}}">
+    <section class="page-header" style="{{ asset('assets/images/backgrounds/fond2.png') }}">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -35,7 +35,7 @@
     <section class="contact-page">
         <div class="container">
             <div class="row">
-                <div class="col-xl-7 col-lg-6">
+                <div class="col-xl-8 col-lg-6">
                     <div class="contact-page__title">
                         <div class="section-title text-left">
                             <span class="section-title__tagline">Prenez contact avec moi</span>
@@ -45,71 +45,72 @@
                 </div>
                 <div class="col-xl-5 col-lg-6">
                     <div class="contact-page__top-text-box">
-{#                        <p class="contact-page__top-text">Je vous réponderai dans les meilleurs délais</p>#}
+                        {#                        <p class="contact-page__top-text">Je vous réponderai dans les meilleurs délais</p> #}
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-8 col-1">
+                <div class="col-xl-9 col-4">
                     <div class="contact-page__left">
                         {% if not message_send %}
-                            <div class="row">
-                                <div class="col-xl-9">
-                                    {{ form_start(form, {attr: {'class': "bite"}}) }}
-                                      <div class="row">
-                                     <div class="col-xl-8">
+                        <div class="row" style="min-width: 320px">
+                            <div class="col-xl-9">
+                                {{ form_start(form, {attr: {'class': "bite"}}) }}
+                                <div class="row">
+                                    <div class="col-xl-8">
                                         <div class="contact-page__input-box">
-                                         {{ form_row(form.prenom, { 'label': 'prenom' }) }}
+                                            {{ form_row(form.prenom, { 'label': 'prenom' }) }}
                                         </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="contact-page__input-box">
+                                            {{ form_row(form.nom, { 'label': 'nom' }) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="contact-page__input-box">
+                                            {{ form_row(form.email, { 'label': 'mail' }) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="contact-page__input-box">
+                                            {{ form_row(form.telephone, { 'label': 'telephone' }) }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12" style="min-width: 320px">
+                                            <div class="contact-page__input-box">
+                                                {{ form_row(form.sujet, { 'label': 'sujet' }) }}
                                             </div>
-                                                <div class="col-xl-6">
-                                                    <div class="contact-page__input-box">
-                                                         {{ form_row(form.nom, { 'label': 'nom' }) }}
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6">
-                                                    <div class="contact-page__input-box">
-                                                         {{ form_row(form.email, { 'label': 'mail' }) }}
-                                                     </div>
-                                                </div>
-                                                 <div class="col-xl-6">
-                                                        <div class="contact-page__input-box">
-                                                         {{ form_row(form.telephone, { 'label': 'telephone' }) }}
-                                                       </div>
-                                                 </div>
-                                                  <div class="row">
-                                                       <div class="col-xl-12">
-                                                           <div class="contact-page__input-box">
-                                                             {{ form_row(form.sujet, { 'label': 'sujet' }) }}
-                                                           </div>
-                                                       </div>
-                                                 </div>
-                                                  <div class="row mb-4">
-                                                      <div class="col-xl-12">
-                                                              <div class="contact-page__input-box">
-                                                                {{ form_row(form.message, { 'label': 'message' }) }}
-                                                              </div>
-                                                        </div>
-                                                   </div>
-                                                   <div class="row">
-                                                       <div class="col-xl-12">
-                                                            <div class="contact-page__input-box">
-                                                                {{ form_row(form.submit, {'attr': {'class': "thm-btn contact-page__btn"}}, {'label': 'Envoyer le message'}) }}
-                                                            </div>
-                                                          </div>
-                                                    </div>
-                                          <div class="contact-page__input-box">
                                         </div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col-xl-12">
+                                            <div class="contact-page__input-box" style="min-width: 290px">
+                                                {{ form_row(form.message, { 'label': 'message' }) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" row
+                                            ">
+                                        <div class="col-xl-12">
+                                            <div class="contact-page__input-box" style="min-width: 290px">
+                                                {{ form_row(form.submit, {'attr': {'class': "thm-btn contact-page__btn"}}, {'label': 'Envoyer le message'}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contact-page__input-box">
+                                    </div>
                                     {{ form_end(form) }}
-                                  </div>
-                              </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div class="col-xl-4 col-lg-3">
 
                     {% else %}
-                        <div class="alert alert-success" >
+                        <div class="alert alert-success">
                             {% for flashMessage in app.session.flashbag.get('success') %}
                                 {{ flashMessage }}
                             {% endfor %}
@@ -119,7 +120,8 @@
                         <div class="contact-page__details-shape"
                              style="background-image: url({{ asset('assets/images/shapes/contact-page__details-shape.png') }})">
                         </div>
-                        <p class="contact-page__details-text">Vous pouvez me joindre également par mail ou par téléphone.</p>
+                        <p class="contact-page__details-text">Vous pouvez me joindre également par mail ou par
+                            téléphone.</p>
 
                         <div class="contact-page__details-contact-info">
                             <ul class="list-unstyled contact-page__details-contact-list">
@@ -170,11 +172,11 @@
 
 
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25673.90316580553!2d6.038971473616049!3d47.43852811122367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47929a78f73fbb87%3A0x214ef58707775bbf!2sSur%20la%20Vigne%2C%2070190%20Tr%C3%A9silley!5e0!3m2!1sfr!2sfr!4v1700909448497!5m2!1sfr!2sfr"
-                width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
                 class="contact-page-google-map__one" allowfullscreen>
 
         </iframe>
-
 
 
     </section>
