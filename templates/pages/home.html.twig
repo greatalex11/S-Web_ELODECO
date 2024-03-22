@@ -40,7 +40,8 @@
                             <div class="row">
                                 <div class="col-lg-12 text-center">
                                     <div class="main-slider__content">
-                                        <h2>{{ Apps.nomentreprise }}<br>{{ Apps.titre1home }}</h2>
+                                        <h2>{{ Apps.nomentreprise }}<br></h2>
+                                        <h2>    {{ Apps.titre1home }}</h2>
                                         <a href="{{ path('app_about') }}" class="cta-one__btn thm-btn">A propos</a>
                                     </div>
                                 </div>
@@ -69,7 +70,8 @@
                             <div class="row">
                                 <div class="col-lg-12 text-center">
                                     <div class="main-slider__content">
-                                        <h2>{{ Apps.nomentreprise }}<br>{{ Apps.titre2home }}</h2>
+                                        <h2>{{ Apps.nomentreprise }}<br></h2>
+                                        <h2> {{ Apps.titre2home }}</h2>
                                         <a href="{{ path('app_about') }}" class="cta-one__btn thm-btn">A propos</a>
                                     </div>
                                 </div>
@@ -93,8 +95,8 @@
                             <div class="row">
                                 <div class="col-lg-12 text-center">
                                     <div class="main-slider__content">
-                                        <h2>{{ Apps.nomentreprise }}<br>{{ Apps.titre3home }}</h2>
-                                        {#                                        <h2>Créativité à votre écoute</h2> #}
+                                        <h2>{{ Apps.nomentreprise }} <br></h2>
+                                        <h2>  {{ Apps.titre3home }}</h2>
                                         <a href="{{ path('app_about') }}" class="cta-one__btn thm-btn">A propos</a>
                                     </div>
                                 </div>
@@ -346,110 +348,9 @@
                 {% endfor %}
             </div>
         </section>
-{#        <!--  SECTION  GROUPE BLOCK PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px  -->#}
-
-{#        <!--                                          statique                                                         -->#}
-{#        <section class="project-two">#}
-{#            <div class="project-two__container">#}
-{#                <div class="section-title text-center">#}
-{#                    <span class="section-title__tagline">Ce que j'ai fais</span>#}
-{#                    <h2 class="section-title__title">Mes derniers projets</h2>#}
-{#                </div>#}
-{#                <div class="row masonary-layout">#}
-{#                    <!--                                          dynamique                                                         -->#}
-
-{#                    {% for blocksPhotos in home %}#}
-{#                        {% if blocksPhotos.type == 'BlockPhotos' %}#}
-{#                            {% set image6 = blocksPhotos.images %}#}
-
-{#                            <div class="col-xl-3 col-lg-6 col-md-6">#}
-{#                                <div class="project-two__single">#}
-{#                                    <div class="project-two__img">#}
-{#                                        <img src="{{ vich_uploader_asset(image6[0]) }}"#}
-{#                                             alt="{{ image6[0].titre|default('image') }}">#}
-
-{#                                        <div class="project-two__architect">#}
-{#                                            <p>{{ blocksPhotos.liste[0] }}</p>#}
-{#                                            <h3> <a href="{{ path('app_projets') }}">{{ blocksPhotos.titre1 }}</a></h3>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-
-{#                            <div class="col-xl-3 col-lg-6 col-md-6">#}
-{#                                <div class="project-two__single">#}
-{#                                    <div class="project-two__img">#}
-{#                                        <img src="{{ vich_uploader_asset(image6[1]) }}"#}
-{#                                             alt="{{ image6[1].titre|default('image') }}">#}
-{#                                        <div class="project-two__architect">#}
-{#                                            <p>{{ blocksPhotos.liste[1] }}</p>#}
-{#                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.titre2 }}</a></h3>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-
-{#                            <div class="col-xl-6 col-lg-6 col-md-6">#}
-{#                                <div class="project-two__single">#}
-{#                                    <div class="project-two__img">#}
-{#                                        <img src="{{ vich_uploader_asset(image6[2]) }}"#}
-{#                                             alt="{{ image6[2].titre|default('image') }}">#}
-{#                                        <div class="project-two__architect">#}
-{#                                            <p>{{ blocksPhotos.liste[2] }}</p>#}
-{#                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.titre3 }}</a></h3>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-
-{#                            <div class="col-xl-6 col-lg-6 col-md-6">#}
-{#                                <div class="project-two__single">#}
-{#                                    <div class="project-two__img">#}
-{#                                        <img src="{{ vich_uploader_asset(image6[3]) }}"#}
-{#                                             alt="{{ image6[3].titre|default('image') }}">#}
-{#                                        <div class="project-two__architect">#}
-{#                                            <p>{{ blocksPhotos.liste[3] }}</p>#}
-{#                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.texte1 }}</a></h3>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
 
 
-{#                            <div class="col-xl-3 col-lg-6 col-md-6">#}
-{#                                <div class="project-two__single">#}
-{#                                    <div class="project-two__img">#}
-{#                                        <img src="{{ vich_uploader_asset(image6[4]) }}"#}
-{#                                             alt="{{ image6[4].titre|default('image') }}">#}
-{#                                        <div class="project-two__architect">#}
-{#                                            <p>{{ blocksPhotos.liste[4] }}</p>#}
-{#                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.texte2 }}</a></h3>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-
-{#                            <div class="col-xl-3 col-lg-6 col-md-6">#}
-{#                                <div class="project-two__single">#}
-{#                                    <div class="project-two__img">#}
-{#                                        <img src="{{ vich_uploader_asset(image6[5]) }}"#}
-{#                                             alt="{{ image6[5].titre|default('image') }}">#}
-
-{#                                        <div class="project-two__architect">#}
-{#                                            <p>{{ blocksPhotos.liste[5] }}</p>#}
-{#                                            <h3><a href="{{ path('app_projets') }}">{{ blocksPhotos.texte3 }}</a></h3>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        {% endif %}#}
-{#                    {% endfor %}#}
-{#                </div>#}
-{#            </div>#}
-{#        </section>#}
-
-
-        <!--  SECTION  GROUPE BLOCK PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px  -->
+        {#        <!--  SECTION  GROUPE BLOCK PHOTOS SOUS /PROJECTS 4 unités 473x473 et 2 en 948x473 px  --> #}
 
         <!--                                          statique                                                         -->
         <section class="project-two">
@@ -463,7 +364,7 @@
 
                     {% for blocksPhotos in home %}
 
-{#                        {% set blocksPhotos= blocksPhoto[0] %}#}
+                        {#                        {% set blocksPhotos= blocksPhoto[0] %} #}
                         {% if blocksPhotos.type == 'BlockPhotos' %}
                             {% set image6 = blocksPhotos.images %}
 
@@ -475,7 +376,7 @@
 
                                         <div class="project-two__architect">
                                             <p>{{ blocksPhotos.liste[0] }}</p>
-                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.titre1 }}</a></h3>
+                                            <h3>{{ blocksPhotos.titre1 }}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -488,7 +389,7 @@
                                              alt="{{ image6[1].titre|default('image') }}">
                                         <div class="project-two__architect">
                                             <p>{{ blocksPhotos.liste[1] }}</p>
-                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.titre2 }}</a></h3>
+                                            <h3>{{ blocksPhotos.titre2 }}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -501,7 +402,7 @@
                                              alt="{{ image6[2].titre|default('image') }}">
                                         <div class="project-two__architect">
                                             <p>{{ blocksPhotos.liste[2] }}</p>
-                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.titre3 }}</a></h3>
+                                            <h3>{{ blocksPhotos.titre3 }}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -515,7 +416,7 @@
                                              alt="{{ image6[3].titre|default('image') }}">
                                         <div class="project-two__architect">
                                             <p>{{ blocksPhotos.liste[3] }}</p>
-                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.texte1 }}</a></h3>
+                                            <h3>{{ blocksPhotos.texte1 }}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -528,7 +429,7 @@
                                              alt="{{ image6[4].titre|default('image') }}">
                                         <div class="project-two__architect">
                                             <p>{{ blocksPhotos.liste[4] }}</p>
-                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.texte2 }}</a></h3>
+                                            <h3>{{ blocksPhotos.texte2 }}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -542,7 +443,7 @@
 
                                         <div class="project-two__architect">
                                             <p>{{ blocksPhotos.liste[5] }}</p>
-                                            <h3><a href="portfolio-details.html">{{ blocksPhotos.texte3 }}</a></h3>
+                                            <h3>{{ blocksPhotos.texte3 }}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -665,7 +566,8 @@
                                         {% if prix.type =="tarifs" %}
                                         <div class="pricing-one__right">
                                             <div class="pr-content">
-                                                <div class="pr-tab {% if first %}active-tab{% endif %}" id="tab-2" style="max-height: 80%">
+                                                <div class="pr-tab {% if first %}active-tab{% endif %}" id="tab-2"
+                                                     style="max-height: 80%">
                                                     {% set first = false %}
                                                     <div class="pricing-one__table-box-single">
                                                         <div class="pricing-one__table">
@@ -688,11 +590,16 @@
                                                                     <li>{{ li[5]| default ('professionnel') |striptags | default ('engagement') }}</li>
                                                                 </ul>
                                                             </div>
-                                                            <div class="pricing-one__btn-box">
-                                                                <a href="{{ path('app_contact') }}"
-                                                                   class="pricing-one__btn thm-btn"
-                                                                   style="background-color: {{ Apps.couleuractuellebg }}">Contactez
-                                                                    moi</a>
+                                                            {#                                                            <div class="pricing-one__btn-box"> #}
+                                                            {#                                                                <a href="{{ path('app_contact') }}" #}
+                                                            {#                                                                   class="pricing-one__btn thm-btn" #}
+                                                            {#                                                                   style="background-color: {{ Apps.couleuractuellebg }}">Contactez #}
+                                                            {#                                                                    moi</a> #}
+                                                            {#                                                            </div> #}
+                                                            <div class="trust-experts__inner m-1">
+                                                                <a href="{{ path("app_contact") }}"
+                                                                   class="trust-experts__btn thm-btn"
+                                                                   style="background-color: {{ Apps.couleuractuellebg }}">Appellez-moi</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -733,7 +640,7 @@
             </div>
         </section>
 
-        <!--    SECTION 8 : confiance  -->
+        <!--    SECTION 8 : savoir faire  -->
         <section class="trust-experts">
             <div class="trust-experts-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
                  style="background-image: url({{ vich_uploader_asset(image1) }})"></div>

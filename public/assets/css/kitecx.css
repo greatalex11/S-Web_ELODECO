@@ -1776,7 +1776,8 @@ ul {
     transform: translateY(120px);
     transition-delay: 1000ms;
     transition: transform 2000ms ease, opacity 2000ms ease;
-    font-size: 100px;
+    font-size: 90px;
+    overflow-wrap: break-word;
     line-height: 110px;
     text-transform: uppercase;
 }
