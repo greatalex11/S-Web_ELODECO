@@ -54,10 +54,9 @@
                                 <li>{{ projetActuel.budget }}€</li>
                                 <li>
                                     <div class="portfolio-details__social">
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>
-                                        <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
-                                        <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                                        <a href="{{ Apps.linkedIn }}" target="_blank" class="clr-fb"><i
+                                                    class="fab fa-linkedin"></i></a>
+                                        <a href="{{ Apps.facebook }}" class="clr-fa"><i class="fab fa-facebook"></i></a>
                                     </div>
                                 </li>
                             </ul>
@@ -90,31 +89,6 @@
     <section class="style-details p-5 mb-5 ">
 
 
-    {% for k, image in projetActuel.image %}
-        {% if k==0 %}
-            {% set image1 = (vich_uploader_asset(projetActuel.image.first)) %}
-            {% set imageTitle = projetActuel.image.first.titre %}
-        {% else %}
-            {% set image1 = asset('assets/images/uploads/projet-logement-indus-65bbb2336e9a3757732500.png') %}
-            {% set imageTitle = 'Logement de type industriel' %}
-        {% endif %}
-
-        {% if k==1 %}
-            {% set image2 = (vich_uploader_asset(projetActuel.image[1])) %}
-            {% set imageTitle = projetActuel.image[1].titre %}
-        {% else %}
-            {% set image2 = asset('assets/images/uploads/projet-logement-indus-65bbb2336e9a3757732500.png') %}
-            {% set imageTitle = 'Logement de type industriel' %}
-        {% endif %}
-
-        {% if k==2 %}
-            {% set image3 = (vich_uploader_asset(projetActuel.image[2])) %}
-            {% set imageTitle = projetActuel.image[2].titre %}
-        {% else %}
-            {% set image3 = asset('assets/images/uploads/projet-logement-indus-65bbb2336e9a3757732500.png') %}
-            {% set imageTitle = 'Logement de type industriel' %}
-        {% endif %}
-
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"
              style="margin:auto;justify-content:center; width: 75%; max-height: 650px">
             <ol class="carousel-indicators">
@@ -125,22 +99,50 @@
             </ol>
             <div class="carousel-inner">
 
-                <div class="carousel-item active">
-                    <img id="styleImg" class="d-block w-100" src="{{ image1 }}" alt="styled.image[0].titre"
-                         width="550px" style="background-color:#B8B8B8;max-height:650px;object-fit: contain">
-                </div>
+                {% for k, image in projetActuel.image %}
+                    {% if k==0 %}
+                        {% set image1 = (vich_uploader_asset(projetActuel.image.first)) %}
+                        {% set imageTitle = projetActuel.image.first.titre %}
+                    {% else %}
+                        {% set image1 = asset('assets/images/uploads/projet-logement-indus-65bbb2336e9a3757732500.png') %}
+                        {% set imageTitle = 'Logement de type industriel' %}
+                    {% endif %}
 
-                <div class="carousel-item">
-                    <img id="styleImg" class="d-block w-100" src="{{ image2 }}" alt="styled.image[1].titre"
-                         width="550px" style="background-color:#B8B8B8; max-height:650px; object-fit: contain">
-                </div>
+                    {% if k==1 %}
+                        {% set image2 = (vich_uploader_asset(projetActuel.image[1])) %}
+                        {% set imageTitle = projetActuel.image[1].titre %}
+                    {% else %}
+                        {% set image2 = asset('assets/images/uploads/projet-logement-indus-65bbb2336e9a3757732500.png') %}
+                        {% set imageTitle = 'Logement de type industriel' %}
+                    {% endif %}
 
-                <div class="carousel-item">
-                    <img id="styleImg" class="d-block w-100" src="{{ image3 }}" alt="styled.image[2].titre"
-                         width="550px" style="background-color:#B8B8B8 ;max-height:650px;object-fit: contain">
-                </div>
+                    {% if k==2 %}
+                        {% set image3 = (vich_uploader_asset(projetActuel.image[2])) %}
+                        {% set imageTitle = projetActuel.image[2].titre %}
+                    {% else %}
+                        {% set image3 = asset('assets/images/uploads/projet-logement-indus-65bbb2336e9a3757732500.png') %}
+                        {% set imageTitle = 'Logement de type industriel' %}
+                    {% endif %}
 
+                    {% if k==0 %}
+                        <div class="carousel-item active">
+                            <img id="styleImg" class="d-block w-100" src="{{ image1 }}" alt="styled.image[0].titre"
+                                 width="550px" style="background-color:#B8B8B8;max-height:650px;object-fit: contain">
+                        </div>
+                    {% endif %}
+
+                    <div class="carousel-item">
+                        <img id="styleImg" class="d-block w-100" src="{{ image2 }}" alt="styled.image[1].titre"
+                             width="550px" style="background-color:#B8B8B8; max-height:650px; object-fit: contain">
+                    </div>
+
+                    <div class="carousel-item">
+                        <img id="styleImg" class="d-block w-100" src="{{ image3 }}" alt="styled.image[2].titre"
+                             width="550px" style="background-color:#B8B8B8 ;max-height:650px;object-fit: contain">
+                    </div>
+                {% endfor %}
             </div>
+
             <a id="styleCarouselPrev" class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -154,7 +156,7 @@
         </div>
 
 
-        </section>
+    </section>
 
-    {% endfor %}
+
 {% endblock %}
