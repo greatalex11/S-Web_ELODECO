@@ -7,8 +7,9 @@
         <div class="sticky-header__content"></div>
     </div>
 
+    <section class="page-header"
+             style="background-image: url({{ vich_uploader_asset(Apps.image1CarouselHome) }});">
 
-    <section class="page-header" style="{{ asset('assets/images/backgrounds/fond2.png') }}">
         <div class="page-header-border"></div>
         <div class="page-header-border page-header-border-two"></div>
         <div class="page-header-border page-header-border-three"></div>
@@ -26,13 +27,13 @@
             </div>
         </div>
     </section>
+
     <!--                                                                   Bandeau fin                                                                                 -->
     <!--                                                 Formulaire contact avec rappel de coordonnées à droite                                                        -->
 
     <div class="text-center justify-content-center w-75 m-auto mt-xl-5">
-        <!--flash message absence de document ou de projet-->
+        <!-- flash message bien parti -->
         {% include "fields/flashMsg.html.twig" %}
-
     </div>
 
     <section class="contact-page">
@@ -48,14 +49,13 @@
                 </div>
                 <div class="col-xl-5 col-lg-6">
                     <div class="contact-page__top-text-box">
-                        {#                        <p class="contact-page__top-text">Je vous réponderai dans les meilleurs délais</p> #}
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-8 col-4">
                     <div class="contact-page__left">
-                        {% if not message_send %}
+                        {#                        {% if not message_send %} #}
                         <div class="row" style="min-width: 320px">
                             <div class="col-xl-10">
                                 {{ form_start(form, {attr: {'class': "bite"}}) }}
@@ -94,8 +94,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class=" row
-                                            ">
+                                    <div class=" row     ">
                                         <div class="col-xl-12">
                                             <div class="contact-page__input-box" style="min-width: 290px">
                                                 {{ form_row(form.submit, {'attr': {'class': "thm-btn contact-page__btn"}}, {'label': 'Envoyer le message'}) }}
@@ -112,13 +111,13 @@
                 </div>
                 <div class="col-xl-4 col-lg-3">
 
-                    {% else %}
-                        <div class="alert alert-success">
-                            {% for flashMessage in app.session.flashbag.get('success') %}
-                                {{ flashMessage }}
-                            {% endfor %}
-                        </div>
-                    {% endif %}
+                    {#                    {% else %} #}
+                    {#                        <div class="alert alert-success"> #}
+                    {#                            {% for flashMessage in app.session.flashbag.get('success') %} #}
+                    {#                                {{ flashMessage }} #}
+                    {#                            {% endfor %} #}
+                    {#                        </div> #}
+                    {#                    {% endif %} #}
                     <div class="contact-page__details">
                         <div class="contact-page__details-shape"
                              style="background-image: url({{ asset('assets/images/shapes/contact-page__details-shape.png') }})">
