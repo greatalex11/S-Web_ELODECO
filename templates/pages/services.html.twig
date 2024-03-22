@@ -106,16 +106,22 @@
                             <div class="services-one__single" style="min-height:450px">
                                 <h2 class="services-one__title">
                                     <a>{{ Contenus.titre2 }}</a></h2>
-                                <p class="services-one__text  mt-5">{{ Contenus.texte2|striptags|u.truncate(150,'...',false) }}</p>
-                                <div class="services-one__icon"
-                                     style="width:350px; display: flex; flex-direction: row; justify-content: space-between">
-                                    <div><a href="{{ path('app_contact') }}" class="services-one__btn"
-                                            style="margin-left:1px;text-align: left; font-size: medium">Me contacter</a></div>
-                                    <span class="icon-buildings"
-                                          style="vertical-align: bottom ; margin-top: auto"></span>
+                                <p class="services-one__text  mt-5">{{ Contenus.texte2|striptags|u.truncate(120,'...',false) }}</p>
+                                <div class="services-one__icon row  w-75">
+                                    <div class="container d-flex">
+                                        <div class="col-8"><a href="{{ path('app_contact') }}"
+                                                              class="services-one__btn "
+                                                              style="text-align: left; font-size: small">Me
+                                                contacter</a>
+                                        </div>
+                                        <div class="col d-flex align-items-end justify-content-end ">
+                                            <span class="icon-buildings "></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-xl-4 col-lg-4 ">
                             <!--                SERVICE 3              -->
                             <div class="services-one__single" style="min-height:450px">
@@ -132,13 +138,13 @@
         </div>
     </section>
     <!--   L'OEIL DE L'EXPERT       -->
-    <section class="trust-experts p-5 mb-2" >
-        <div  class="trust-experts-bg jarallax m-0" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
+    <section class="trust-experts p-5 mb-2">
+        <div class="trust-experts-bg jarallax m-0" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
              style="z-index: unset;background-image: url({{ asset('assets/images/backgrounds/deco_bandeau.jpg') }});"></div>
-        <div class="container" >
+        <div class="container">
             <div class="trust-experts__inner">
-                <h2  class="trust-experts__text ">L'oeil de l'expert<br> dans toutes vos réalisations</h2>
-{#                                <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a>#}
+                <h2 class="trust-experts__text ">L'oeil de l'expert<br> dans toutes vos réalisations</h2>
+                {#                                <a href="{{path('app_services_details')}}" class="services-one__btn">En savoir plus</a> #}
             </div>
         </div>
     </section>
