@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
-
+{% set Apps= theme.theme %}
 {% block content %}
 
     <!--                                                                   BANDEAU SUPERIEUR    image 1894x359                                                            -->
     <div class="stricky-header stricked-menu main-menu">
         <div class="sticky-header__content"></div>
     </div>
-
 
 
     <section class="page-header" style="{{ asset('assets/images/backgrounds/fond2.png') }}">
@@ -30,7 +29,11 @@
     <!--                                                                   Bandeau fin                                                                                 -->
     <!--                                                 Formulaire contact avec rappel de coordonnées à droite                                                        -->
 
+    <div class="text-center justify-content-center w-75 m-auto mt-xl-5">
+        <!--flash message absence de document ou de projet-->
+        {% include "fields/flashMsg.html.twig" %}
 
+    </div>
 
     <section class="contact-page">
         <div class="container">
@@ -38,7 +41,7 @@
                 <div class="col-xl-8 col-lg-6">
                     <div class="contact-page__title">
                         <div class="section-title text-left">
-                            <span class="section-title__tagline">Prenez contact avec moi</span>
+                            <span class="section-title__tagline mb-2">Prenez contact avec moi</span>
                             <h2 class="section-title__title">Envoyez-moi un message</h2>
                         </div>
                     </div>
@@ -50,11 +53,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-9 col-4">
+                <div class="col-xl-8 col-4">
                     <div class="contact-page__left">
                         {% if not message_send %}
                         <div class="row" style="min-width: 320px">
-                            <div class="col-xl-9">
+                            <div class="col-xl-10">
                                 {{ form_start(form, {attr: {'class': "bite"}}) }}
                                 <div class="row">
                                     <div class="col-xl-8">
@@ -130,15 +133,15 @@
                                         <i class="fas fa-phone-square-alt"></i>
                                     </div>
                                     <div class="text">
-                                        <p><a href="tel:92-666-888-0000">06 21 85 33 48</a></p>
+                                        <p>{{ Apps.telephone }}</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="icon">
                                         <i class="fas fa-envelope"></i>
                                     </div>
-                                    <div class="text">
-                                        <p><a href="mailto:needhelp@company.com">elodiekolly.deco@gmail.com</a></p>
+                                    <div class="text p-1" style="min-width: 300px">
+                                        <p>{{ Apps.mail }}</p>
                                     </div>
                                 </li>
                                 <li>
@@ -146,16 +149,15 @@
                                         <i class="fas fa-map-marker-alt"></i>
                                     </div>
                                     <div class="text">
-                                        <p>70190 TRESILLEY, FRANCE.</p>
+                                        <p>{{ Apps.rue }} {{ Apps.localite }}</p>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="contact-page__details-social">
+                            <a href="{{ Apps.linkedIn }}" target="_blank" class="clr-fb"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
-                            <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ Apps.facebook }}" class="clr-fb"><i class="fab fa-facebook"></i></a>
                         </div>
                     </div>
                 </div>
