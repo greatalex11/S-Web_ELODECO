@@ -23,7 +23,7 @@
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><a href="{{ path('app_home') }}">Home</a></li>
                     <li><span>/</span></li>
-                    <li>Styles en détails</li>
+                    <li> Style {{ styled.titre2|default('type de décoration') }}</li>
                 </ul>
             </div>
         </div>
@@ -49,9 +49,11 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="portfolio-details__img">
-                        {% set image1 = vich_uploader_asset(styled.image.first) %}
-                        {% set imageTitle = styled.image.first.titre %}
-                        {% if image1 is empty %}
+                        {% if styled.image is not empty %}
+                            {% set image1 = vich_uploader_asset(styled.image.first) %}
+                            {% set imageTitle = styled.image.first.titre %}
+                        {% else %}
+                            {#                        {% if image1 is empty %} #}
                             {% set image1 = asset('assets/images/backgrounds/fond2.png') %}
                             {% set imageTitle = 'style en détails et par image' %}
                         {% endif %}
@@ -63,13 +65,18 @@
                             <ul class="portfolio-details__info-list list-unstyled">
                                 <li>{{ styled.attribut1 }}</li>
                                 <li>{{ styled.attribut2 }}</li>
-                                <li>{{ styled.attribut1 }}</li>
+                                <li>{{ styled.attribut3 }}</li>
                                 <li>
                                     <div class="portfolio-details__social">
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#" class="clr-fb"><i class="fab fa-facebook"></i></a>
-                                        <a href="#" class="clr-dri"><i class="fab fa-dribbble"></i></a>
-                                        <a href="#" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                                        <a href="{{ Apps.linkedIn|default('[No name]') }}" target="_blank"
+                                           class="clr-fb"><i
+                                                    class="fab fa-linkedin"></i></a>
+                                        <a href="{{ Apps.twiter|default('[No name]') }}" target="_blank"><i
+                                                    class="fab fa-twitter"></i></a>
+                                        <a href="{{ Apps.facebook|default('[No name]') }}"
+                                           target="_blank"
+                                           class="clr-fb"><i
+                                                    class="fab fa-facebook"></i></a>
                                     </div>
                                 </li>
                             </ul>
@@ -122,7 +129,7 @@
 
 
             {% for k, image in styled.image %}
-                {% if k==0 %}
+                {% if k==0 and image is defined %}
                     {% set image1 = vich_uploader_asset(styled.image.first) %}
                     {% set imageTitle = image.titre %}
 
@@ -134,19 +141,27 @@
                 {% if k==1 %}
                     {% set image2 = (vich_uploader_asset(styled.image[1])) %}
                     {% set imageTitle = styled.image[1].titre %}
-
-                {% else %}
-                    {% set image2 = asset('assets/images/uploads/projet-logement-indus-65bbb2336e9a3757732500.png') %}
-                    {% set imageTitle = 'Logement de type industriel' %}
+                {% endif %}
+                {% if k==1 is not defined %}
+                    {% set image2 = image1 %}
+                    {% set imageTitle = imageTitle %}
                 {% endif %}
 
                 {% if k==2 %}
                     {% set image3 = (vich_uploader_asset(styled.image[2])) %}
                     {% set imageTitle = styled.image[2].titre %}
-                {% else %}
-                    {% set image3 = asset('assets/images/uploads/projet-logement-indus-65bbb2336e9a3757732500.png') %}
-                    {% set imageTitle = 'Logement de type industriel' %}
                 {% endif %}
+
+                {% if k==2 is not defined %}
+                    {% set image3 = image1 %}
+                    {% set imageTitle = imageTitle %}
+                {% endif %}
+
+                {#                {% endif %}     #}
+                {#                {% else %} #}
+                {#                    {% set image3 = asset('assets/images/uploads/projet-logement-indus-65bbb2336e9a3757732500.png') %} #}
+                {#                    {% set imageTitle = 'Logement de type industriel' %} #}
+                {#                {% endif %} #}
 
                 <div class="carousel-inner">
                     {% if k==0 %}
