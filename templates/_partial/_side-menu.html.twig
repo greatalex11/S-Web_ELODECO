@@ -1,3 +1,5 @@
+{% set Apps = theme.theme %}
+
 <div class="side-menu__block">
     <div class="side-menu__block-overlay custom-cursor__overlay side-menu__toggler">
         <div class="cursor"></div>
@@ -33,24 +35,25 @@
             <ul class="side-menu__block-contact__list">
                 <li class="side-menu__block-contact__list-item">
                     <i class="fa fa-map-marker"></i>
-                    70190 TRESILLEY, FRANCE.
+                    {{ Apps.codePostal }} {{ Apps.localite }}
                 </li><!-- autre info? -->
                 <li class="side-menu__block-contact__list-item">
                     <i class="fa fa-phone"></i>
-                    (+33) 06 21 85 33 48
+                    {{ Apps.telephone }}
                 </li><!--  autre info?-->
                 <li class="side-menu__block-contact__list-item">
                     <i class="fa fa-envelope"></i>
-                    elodiekolly.deco@gmail.com
+                    {{ Apps.mail }}
                 </li><!--  autre info? -->
                 <li class="side-menu__block-contact__list-item">
                     <i class="fa fa-clock"></i>
-                    09.00 to 18.00 <br> Samedi & dimanche : fermé
+                    {{ Apps.HoraireMatin }} à {{ Apps.HorairePm }} <br> {{ Apps.JoursFermes }}
                 </li><!--  autre info?-->
             </ul><!--  autre info?-->
         </div><!--  autre info? -->
-        <p class="side-menu__block__text site-footer__copy-text"><a href="#">Elo Deco</a> <i
+        <p class="side-menu__block__text site-footer__copy-text">{{ Apps.NomEntreprise }}<i
                     class="fa fa-copyright"></i>
             2023 All Right Reserved</p>
     </div>
-</div><!--                                                              Fin menu lateral                                                             -->
+</div>
+<!--                                                              Fin menu lateral                                                             -->
