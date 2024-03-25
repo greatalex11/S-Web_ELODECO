@@ -2,40 +2,41 @@
 
 {% block content %}
     {#  {% if  documentIdArtisan is defined %} #}
-    <div class="alert-primary bg-light mt-xl-5 m-5 mb-4">
-        <h2>Liste de vos documents partagés</h2>
+    <div class="alert-primary bg-light mt-0 m-4 mb-4">
+        <h2 class="text-truncate mb-2">Liste de vos documents partagés</h2>
 
         <!-- Liste des documents-->
-        <table class="table m-4 border-bottom mt-xl-5">
-            <thead>
-            <tr class=text-center">
-                <th scope="col"><i> N°</i></th>
-                <th scope="col"><i> Type </i></th>
-                <th scope="col">Titre</th>
-                <th scope="col">Localité</th>
-                <th scope="col" class=text-center">Client 1</th>
-                <th scope="col" class=text-center">Client 2</th>
-            </tr>
-            </thead>
-            {% if documentIdClient is defined %}
-                {% for key, tableDoc in documentIdClient %}
-                    <tbody>
-                    <tr>
-                        <th scope="row">{{ key }}</th>
-                        <td class="m-lg-5">{{ tableDoc.type }}</td>
-                        <td class="m-lg-5">{{ tableDoc.titre }}</td>
-                        <td class="m-lg-5">{{ tableDoc.projet.localite }}</td>
-                        {% set clientList=tableDoc.projet.client %}
-                        {% for client in clientList %}
-                            <td class="m-lg-5">{{ client.prenom }} <br> {{ client.nom }}</td>
-                        {% endfor %}
-                    </tr>
-                    </tbody>
-                {% endfor %}
-            {% endif %}
-        </table>
+        <div class="table-responsive">
+            <table class="border-bottom m-1 border-bottom mt-xl-5">
+                <thead>
+                <tr class=text-center">
+                    <th scope="col" class="text-truncate"><i> N°</i></th>
+                    <th scope="col" class="text-truncate"><i> Type </i></th>
+                    <th scope="col" class="text-truncate">Titre</th>
+                    <th scope="col" class="text-truncate">Localité</th>
+                    <th scope="col" class="text-center text-truncate">Client 1</th>
+                    <th scope="col" class="text-center text-truncater">Client 2</th>
+                </tr>
+                </thead>
+                {% if documentIdClient is defined %}
+                    {% for key, tableDoc in documentIdClient %}
+                        <tbody>
+                        <tr>
+                            <th scope="row">{{ key }}</th>
+                            <td class="m-lg-5 text-truncate">{{ tableDoc.type }}</td>
+                            <td class="m-lg-5 text-truncate">{{ tableDoc.titre }}</td>
+                            <td class="m-lg-5 text-truncate">{{ tableDoc.projet.localite }}</td>
+                            {% set clientList=tableDoc.projet.client %}
+                            {% for client in clientList %}
+                                <td class="m-lg-5 text-truncate">{{ client.prenom }} <br> {{ client.nom }}</td>
+                            {% endfor %}
+                        </tr>
+                        </tbody>
+                    {% endfor %}
+                {% endif %}
+            </table>
+        </div>
     </div>
-
     <!-- Card des documents fonctionnel- A DECOMMENTER SI BESOIN  -->
     {#    <section class="h-auto"> #}
     {#        <div class="container"> #}

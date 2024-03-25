@@ -1,0 +1,49 @@
+{% set Apps = theme.theme %}
+
+<header class="main-header clearfix p-2 m-0 ">
+    <div class="main-menu-wrapper row"
+         style="background-color: {{ Apps.couleurActuelleBg }}; max-height: 120px">
+        <!--Logo colonne de gauche-->
+        <div class="col-3 justify-content-left align-content-center">
+            {% set image1 = Apps.logo %}
+            <img src="{{ vich_uploader_asset(image1) }}"
+                 alt="{{ image1.titre|default('image') }}" width="60">
+        </div>
+
+        <!--Menu supérieur -navigation -->
+        <div class="col align-content-center p-0 m-2">
+            <nav class="main-menu">
+                <div class="main-menu__inner">
+                    <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                    <ul class="main-menu__list justify-content-around m-auto">
+                        <li class="current">
+                            <a href="{{ path('app_client_accueil',{ 'id': clients.id}) }}">Coordonnées</a>
+                        </li>
+                        <li class="current ">
+                            <a href="{{ path('app_client_accueilDoc', { 'id': clients.id, 'doc': 'doc' }) }}">Documents</a>
+                        </li>
+                        <li class="current">
+                            <a href="{{ path('app_client_accueilPjt', { 'id': clients.id,'projet': 'projet','value': 'value' }) }}">Projets</a>
+                        </li>
+                    </ul>
+
+                    <div class="main-menu__right" style="padding: 0 30px 0 30px">
+                        {% if is_granted('ROLE_USER') %}
+                            <a href="{{ path('app_logout') }}">Déconnexion</a>
+                        {% else %}
+                            <a href="{{ path('app_logout') }}" class="nav-link text-truncate"> "
+                                class="side-menu__toggler">
+                                <i class="font-italic">Connexion</i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="stricky-header stricked-menu main-menu">
+    <div class="sticky-header__content"></div>
+</div>
+

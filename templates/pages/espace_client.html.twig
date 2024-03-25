@@ -36,98 +36,29 @@
     </section>
     <!--                                                                   Bandeau fin                                                                                 -->
 
-    <div class=" col-lg-10" style="margin:5px 0 5px 5%">
-    </div>
-
     <!--                                                                   plan médian                                       -->
-    <section class="contact-page border-bottom mb-1 mt-5 pb-2 pt-0">
+    <section class="contact-page border-bottom mb-1 mt-4 pb-2 pt-0">
     <div class="container m-auto" style="max-width: 1500px">
-    <div class="row">
+    <div class="row m-1">
     <div class="row">
         <div class="col">
             <div class="col-xl-7 col-lg-6">
                 <div class="contact-page__title">
                     <div class="section-title text-left mb-0">
-                        <span class="section-title__tagline">Espace Client</span>
-                        <h2 class="section-title__title">CLIENT</h2>
+                        <span class="section-title__tagline mt-5">Espace Client</span>
+                        {#                        <h2 class="section-title__title">CLIENT</h2> #}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
-    <!--colonne gauche-->
-    <div class="col-2 h-100">
-        <div class="contact-page__details p-4">
-            <div class="contact-page__details-shape"
-                 style="background-image: url({{ asset('assets/images/shapes/contact-page__details-shape.png') }})">
-            </div>
-            <p class="contact-page__details-text">Vous pouvez me joindre également par mail ou par
-                téléphone.</p>
-
-            <div class=" mt-5 mb-5 col offcanvas offcanvas-start"
-                 style="background-color:lightgrey" tabindex="-1"
-                 id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-                <div class="offcanvas-header">
-                    <h3 class="mt-1 mb-1 offcanvas-title d-none d-sm-block" id="offcanvas">Menu</h3>
-                </div>
-            </div>
-            {#                                                {% if artisans is defined %} #}
-            <div class="contact-page__details-contact-info">
-                <div class="row">
-                    <!--Menu   -->
-                    <!--Gauche -->
-                    <div class="offcanvas-body px-0">
-                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start"
-                            id="menu">
-
-                            <li class="nav-item">
-                                <a href="{{ path('app_client_accueil',{ 'id': clients.id}) }}"
-                                   class="nav-link text-truncate">
-                                    <i class="fs-5 bi-house"></i><span
-                                            class="ms-1 d-none d-sm-inline">Coordonnées</span>
-                                </a>
-
-                                {#     essai condition sur variable              {% else %} #}
-                                {#                                               {% set artisans = polo %} #}
-                                {#                                                <a href="{{ path('app_artisan_... #}
-                                {#                                                {% endif %} #}
-
-                            </li>
-
-                            <li>
-                                <a href="{{ path('app_client_accueilDoc', { 'id': clients.id, 'doc': 'doc' }) }}"
-                                   class="nav-link text-truncate">
-                                    <i class="fs-5 bi-speedometer2"></i><span
-                                            class="ms-1 d-none d-sm-inline">Documents</span>
-                                </a>
-                            </li>
-
-
-                            <li>
-                                <a href="{{ path('app_client_accueilPjt', { 'id': clients.id,'projet': 'projet','value': 'value' }) }}"
-                                   class="nav-link text-truncate">
-                                    <i class="fs-5 bi-grid"></i><span
-                                            class="ms-1 d-none d-sm-inline">Projet</span></a>
-                            </li>
-                            {#                            <li> #}
-                            {#                                <a href="{{ path('app_contact') }}" class="nav-link text-truncate mb-6"> #}
-                            {#                                    <i class="fs-5 bi-table"></i><span #}
-                            {#                                            class="ms-1 d-none d-sm-inline">Contact</span></a> #}
-                            {#                            </li> #}
-                            <li>
-                                <a href="{{ path('app_logout') }}" class="nav-link text-truncate mb-6">
-                                    <i class="fs-5 bi-table"></i><span
-                                            class="ms-1 d-none d-sm-inline">Déconnecter</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- header : 1 pour l'artisan et 1 pour le client car les href sont adaptés -->
+    <div class="p-1">
+        {% include "_partial/_header_EspaceClient.html.twig" %}
     </div>
-    <!--fin colonne gauche -->
+
+    <!--  Datas des user  -->
     {% block body %}
         <!--colonne de droite  -->
         <div class="col bg-light mb-5">
@@ -137,30 +68,22 @@
                 <img src="{{ vich_uploader_asset(image1) }}"
                      alt="{{ image1.titre|default('image') }}" style="width: 100%">
             </div>
-            {#                        {{ dump(listDoc) }} #}
 
             <!--flash message absence de document ou de projet-->
             {% include "fields/flashMsg.html.twig" %}
 
-
             {% if app.request.attributes.get('_route') == 'app_client_show' or app.request.attributes.get('_route') == 'app_client_accueil' %}
                 {% include "contenus/_coordonneesClients.html.twig" %}
             {% endif %}
-
-            {#            {% include "contenus/_coordonneesClients.html.twig" %} #}
-
 
             {% if app.request.attributes.get('_route') == 'app_client_accueilDoc' %}
                 {% include "contenus/_documentClients.html.twig" %}
             {% endif %}
 
 
-
             {% if app.request.attributes.get('_route') == 'app_client_accueilPjt' %}
                 {% include "contenus/_projetClients.html.twig" %}
             {% endif %}
-
-
 
             {#           A voir : error template  {% if not ... %} #}
             {#                  <div class="alert-info"> rien à voir</div> #}
@@ -176,7 +99,7 @@
         </div>
         </div>
         </div>
-        </div>
+
         </section>
     {% endblock %}
     <!--          GOOGLE MAP        -->
@@ -194,6 +117,6 @@
             </div>
         </div>
     </section>
-    <!--   fin Google Map    -->
+    {#    <!--   fin Google Map    --> #}
 
 {% endblock %}
