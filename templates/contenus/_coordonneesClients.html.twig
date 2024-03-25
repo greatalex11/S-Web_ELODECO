@@ -7,20 +7,19 @@
 
     <!--        page coordonnees conditionnée par href "coordonnées" depuis page accueil artisan        -->
     <section class="mt-2 row justify-content-center m-auto">
-    <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between"
-             style="max-height:100px; padding:30px; margin: 0 10% 0 10%">
-        <ul class="portfolio-details__info-list list-unstyled">
+    <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between mb-2"
+             style="max-height:150px; padding:30px; margin: 0 10% 0 10%">
+        <ul class="portfolio-details__info-list list-unstyled h-100">
             <li>{{ clients.prenom|striptags|default('prénom') }}</li>
             <li>{{ clients.nom|striptags|default('NOM')|upper }}</li>
             <li>{{ 'now'|date("d/m/Y", "Europe/Paris") }}</li>
         </ul>
     </section>
 
-
     <!-- cible -->
-    <section class="services-one pt-xl-3">
+    <section class="services-one pt-5">
         <div class="services-one-container">
-            <div class="section-title text-center mt-5">
+            <div class="section-title text-center mt-2">
                 <span class="section-title__tagline">Vos informations personnelles</span>
             </div>
 

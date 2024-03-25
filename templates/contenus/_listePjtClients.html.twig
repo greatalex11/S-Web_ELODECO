@@ -6,47 +6,49 @@
     <div class="spinner-border ms-auto" aria-hidden="true"></div>
 </div>
 
-<div class="alert-primary bg-light m-5 table-responsive ">
-    <h2 class="m-4">Liste de vos projets</h2>
+<div class="alert-primary bg-light table-responsive ">
+    <h2 class="mb-4">Liste de vos projets</h2>
 
     <!-- Liste des projets-->
-    <table class="table table-hover align-middle">
-        <thead>
-        <tr>
-            <th colspan="1" scope="col">N°</th>
-            <th colspan="1" scope="col">Localité</th>
-            <th colspan="2" scope="col"> Projet</th>
-            <th colspan="1" scope="col">Date début</th>
-            <th colspan="1" scope="col">Durée (mois)</th>
-            {#            <th colspan="2" scope="col">Taches</th> #}
-        </tr>
-        </thead>
-
-        <!--  data-bs-target="#exampleModal+ data-bs-toggle="modal" implementé en js et sorti de la balise <a> - erreur generation url avec paramètre  -->
-
-        <tbody>
-        {% for key, pjt in listePjt %}
-        <tr>
-            <th scope="row" style="color:brown">{{ key }}</th>
-            <td colspan="1" style="color:brown">{{ pjt.localite }}</td>
-            <td colspan="2">
-                <a class="hoverDetailPjt"
-                   href="{{ path('app_client_accueilPjt', { 'id': clients.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
-            </td>
-            <td colspan="1">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
-            <td colspan="2">{{ pjt.duree }}</td>
-            {% set  clientList=pjt.client %}
-            {% for key, client in clientList %}
+    <div class="table-responsive">
+        <table class="table-responsive table-hover align-middle w-100">
+            <thead>
             <tr>
-                <th scope="row">Client</th>
-                <td colspan="2">{{ client.prenom }} {{ client.nom }}</td>
+                <th colspan="1" scope="col" class="text-truncate">N°</th>
+                <th colspan="1" scope="col" class="text-truncate p-2">Localité</th>
+                <th colspan="2" scope="col" class="text-truncate p-4">Projet</th>
+                <th colspan="1" scope="col" class="text-truncate p-2">Date début</th>
+                <th colspan="1" scope="col" class="text-truncate text-center p-2">Durée (mois)</th>
+                {#            <th colspan="2" scope="col">Taches</th> #}
             </tr>
-        {% endfor %}
-        <tr>
+            </thead>
+
+            <!--  data-bs-target="#exampleModal+ data-bs-toggle="modal" implementé en js et sorti de la balise <a> - erreur generation url avec paramètre  -->
+
+            <tbody>
+            {% for key, pjt in listePjt %}
+            <tr>
+                <th scope="row" style="color:brown" class="text-truncate">{{ key }}</th>
+                <td colspan="1" style="color:brown" class="text-truncate p-2 m-1">{{ pjt.localite }}</td>
+                <td colspan="2" class="text-truncate p-2">
+                    <a class="hoverDetailPjt p-4"
+                       href="{{ path('app_client_accueilPjt', { 'id': clients.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
+                </td>
+                <td colspan="1" class="text-truncate p-2">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
+                <td colspan="1" class="text-truncate p-2 text-center">{{ pjt.duree }}</td>
+                {% set  clientList=pjt.client %}
+                {% for key, client in clientList %}
+                <tr>
+                    <th scope="row" class="text-truncate p-2 text-start">Client1 <br> Client2</th>
+                    <td colspan="2" class="text-truncate p-2">{{ client.prenom }} <br> {{ client.nom }}</td>
+                </tr>
             {% endfor %}
-        </tr>
-        </tbody>
-    </table>
+            <tr>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 {# <button id="btnAjax" value="2" onclick="geek()">ajax!</button> #}

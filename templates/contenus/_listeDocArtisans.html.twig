@@ -2,12 +2,12 @@
 
 {% block content %}
     {#  {% if  documentIdArtisan is defined %} #}
-    <div class="alert-primary bg-light mt-0 m-4 mb-4">
-        <h2 class="text-truncate mb-2">Liste de vos documents partagés</h2>
+    <div class="alert-primary bg-light mt-0 m-4 mb-5">
+        <h2 class="text-truncate mb-4 text-center">Liste de vos documents partagés</h2>
 
         <!-- Liste des documents-->
         <div class="table-responsive">
-            <table class="table m-1 border-bottom mt-xl-5">
+            <table class="table m-1 border-bottom mt-xl-5 w-75">
                 <thead>
                 <tr class=text-center">
                     <th scope="col" class="text-truncate"><i> N°</i></th>
@@ -25,11 +25,12 @@
                         <tr>
                             <th scope="row">{{ key }}</th>
                             <td class="m-lg-5 text-truncate">{{ tableDoc.type }}</td>
-                            <td class="m-lg-5 text-truncate">{{ tableDoc.titre }}</td>
+                            <td class="m-lg-3 text-truncate p-3"> {{ tableDoc.titre }}</td>
                             <td class="m-lg-5 text-truncate">{{ tableDoc.projet.localite }}</td>
                             {% set clientList=tableDoc.projet.client %}
                             {% for client in clientList %}
-                                <td class="m-lg-5 text-truncate">{{ client.prenom }} <br> {{ client.nom }}</td>
+                                <td class="m-lg-5 text-truncate text-center">{{ client.prenom }} <br> {{ client.nom }}
+                                </td>
                             {% endfor %}
                         </tr>
                         </tbody>

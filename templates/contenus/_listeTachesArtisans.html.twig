@@ -57,3 +57,71 @@
     synchroneData();
 
 </script>
+
+
+<!-- Affichage résultat TACHES  -->
+<!--colonne gauche-->
+{#    <div class="row"> #}
+    {#        <div class="col-2 h-75"> #}
+    {#            <div class="contact-page__details" style="padding: 51px 32px 40px"> #}
+
+
+    {#                <div class="contact-page__details-shape" #}
+    {#                     style="background-image: url({{ asset('assets/images/shapes/contact-page__details-shape.png') }})"> #}
+    {#                </div> #}
+    {#                <p class="contact-page__details-text">Vous pouvez me joindre également par mail ou par #}
+    {#                    téléphone.</p> #}
+
+
+    {#                <div class=" mt-5 mb-5 col offcanvas offcanvas-start" #}
+    {#                     style="background-color:lightgrey" tabindex="-1" #}
+    {#                     id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false"> #}
+    {#                    <div class="offcanvas-header"> #}
+    {#                        <h3 class="mt-1 mb-1 offcanvas-title d-none d-sm-block" id="offcanvas">Menu</h3> #}
+    {#                    </div> #}
+    {#                </div> #}
+    {#                <div class="contact-page__details-contact-info"> #}
+    {#                    <div class="row"> #}
+    {#                        <!--Menu   --> #}
+    {#                        <!--Gauche --> #}
+    {#                        <div class="offcanvas-body px-0 h-50"> #}
+    {#                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" #}
+    {#                                id="menu"> #}
+    {#                                <li class="nav-item"> #}
+    {#                                    <a href="{{ path('app_artisan_accueil',{ 'id': artisans.id}) }}" #}
+    {#                                       class="nav-link text-truncate"> #}
+    {#                                        <i class="fs-5 bi-house"></i><span #}
+    {#                                                class="ms-1 d-none d-sm-inline">Coordonnées</span> #}
+    {#                                    </a> #}
+
+    {#                                </li> #}
+    {#                                <li> #}
+    {#                                    <a href="{{ path('app_artisan_accueilDoc', { 'id': artisans.id, 'doc': 'doc' }) }}" #}
+    {#                                       class="nav-link text-truncate"> #}
+    {#                                        <i class="fs-5 bi-speedometer2"></i><span #}
+    {#                                                class="ms-1 d-none d-sm-inline">Documents</span> #}
+    {#                                    </a> #}
+    {#                                </li> #}
+    {#                                <li> #}
+    {#                                    <a href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value': 'value' }) }}" #}
+    {#                                       class="nav-link text-truncate"> #}
+    {#                                        <i class="fs-5 bi-grid"></i><span #}
+    {#                                                class="ms-1 d-none d-sm-inline">Projet</span></a> #}
+    {#                                </li> #}
+    {#                                                            <li> #}
+    {#                                                                <a href="{{ path('app_contact') }}" class="nav-link text-truncate mb-6"> #}
+    {#                                                                    <i class="fs-5 bi-table"></i><span #}
+    {#                                                                            class="ms-1 d-none d-sm-inline">Contact</span></a> #}
+    {#                                                            </li> #}
+    {#                                <li> #}
+    {#                                    <a href="{{ path('app_logout') }}" class="nav-link text-truncate mb-6"> #}
+    {#                                        <i class="fs-5 bi-table"></i><span #}
+    {#                                                class="ms-1 d-none d-sm-inline">Déconnecter</span></a> #}
+    {#                                </li> #}
+    {#                            </ul> #}
+    {#                        </div> #}
+    {#                    </div> #}
+    {#            </div> #}
+    {#        </div> #}
+    {#    </div> #}
+<!--fin colonne gauche -->

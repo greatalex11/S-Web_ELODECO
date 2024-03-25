@@ -6,39 +6,37 @@
     <div class="spinner-border ms-auto" aria-hidden="true"></div>
 </div>
 
-<h3>Liste de vos projets</h3>
+<h3 class="mb-4">Liste de vos projets</h3>
 <!-- Liste des projets-->
-<div class="alert-primary bg-light mb-5 mt-0 table-responsive ">
-    <table class="table table-hover align-middle mt-5">
+<div class="table-responsive">
+    <table class="table-responsive table-hover align-middle w-100">
         <thead>
         <tr>
-            <th colspan="1" scope="col">N°</th>
+            <th colspan="1" scope="col" class="text-truncate">N°</th>
             <th colspan="1" scope="col" class="text-truncate">Localité</th>
-            <th colspan="2" scope="col" class="text-truncate"> Projet</th>
-            <th colspan="1" scope="col" class="text-truncate">Date début</th>
-            <th colspan="1" scope="col" class="text-truncate">Durée (mois)</th>
+            <th colspan="2" scope="col" class="text-truncate p-2"> Projet</th>
+            <th colspan="1" scope="col" class="text-truncate p-4">Date début</th>
+            <th colspan="1" scope="col" class="text-truncate p-2">Durée (mois)</th>
             {#            <th colspan="2" scope="col">Taches</th> #}
         </tr>
         </thead>
-
         <!--  data-bs-target="#exampleModal+ data-bs-toggle="modal" implementé en js et sorti de la balise <a> - erreur generation url avec paramètre  -->
-
         <tbody>
         {% for key, pjt in listePjt %}
         <tr>
-            <th scope="row" style="color:brown">{{ key }}</th>
-            <td colspan="1" style="color:brown" class="text-truncate">{{ pjt.localite }}</td>
-            <td colspan="2">
-                <a class="hoverDetailPjt text-truncate"
+            <th scope="row" style="color:brown" class="text-truncate">{{ key }}</th>
+            <td colspan="1" style="color:brown" class="text-truncate p-2 m-1">{{ pjt.localite }}</td>
+            <td colspan="2" class="text-truncate p-2">
+                <a class="hoverDetailPjt text-truncate p-4"
                    href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
             </td>
-            <td colspan="1" class="text-truncate">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
-            <td colspan="2">{{ pjt.duree }}</td>
+            <td colspan="1" class="text-truncate p-2">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
+            <td colspan="2" class="text-truncate p-2 text-center">{{ pjt.duree }}</td>
             {% set  clientList=pjt.client %}
             {% for key, client in clientList %}
             <tr>
-                <th scope="row" class="text-truncate"><small>Client</small></th>
-                <td colspan="2" class="text-truncate">{{ client.prenom }} {{ client.nom }}</td>
+                <th scope="row" class="text-truncate p-2 text-start"><small>Client1 <br> Client2</small></th>
+                <td colspan="2" class="text-truncate p-2">{{ client.prenom }} {{ client.nom }}</td>
             </tr>
         {% endfor %}
         <tr>
