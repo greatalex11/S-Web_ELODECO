@@ -2,7 +2,7 @@
 
 {% block content %}
     {#  {% if  documentIdArtisan is defined %} #}
-    <div class="alert-primary bg-light mt-xl-5 m-5 mb-4">
+    <div class="alert-primary bg-light mt-0 m-4 mb-4">
         <h2>Liste de vos documents partagés</h2>
 
         <!-- Liste des documents-->
@@ -19,6 +19,7 @@
             </thead>
             {% if documentIdArtisan is defined %}
                 {% for key, tableDoc in documentIdArtisan %}
+                    {{ dump(documentIdArtisan) }}
                     <tbody>
                     <tr>
                         <th scope="row">{{ key }}</th>
