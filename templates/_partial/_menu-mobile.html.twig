@@ -1,6 +1,9 @@
 {# {{ theme }} #}
 {% set Apps = theme.theme %}
 
+{% set user=app.user %}
+
+
 {# style="background-color: {{ Apps.couleurActuelleBg }} #}
 
 <div class="mobile-nav__wrapper">
@@ -11,13 +14,19 @@
 
         <div class="logo-box">
             <a href="{{ path('app_home') }}" aria-label="logo image">
-                <img src="{{ asset('assets/images/LOGO_ELODECO_1.png') }}" width="155"
+                <img src="{{ asset('assets/images/LOGO_ELODECO_1.png') }}" width="87"
                      alt="Logo de l'entreprise ELODECO, conseil en décoration intérieure, représentant une maison sur fond blanc avec des éléments végétaux">
             </a>
         </div>
+
         <ul class="mobile-nav__contact list-unstyled">
-            <li><a href="{{ path('app_login') }}" class="font-italic">Se connecter</a></li>
+            {% if user %}
+                <li><a href="{{ path('app_logout') }}" class="font-italic">Déconnexion</a></li>
+            {% else %}
+                <li><a href="{{ path('app_login') }}" class="font-italic">Se connecter</a></li>
+            {% endif %}
         </ul>
+
         <!-- /.logo-box -->
         <div class="mobile-nav__container"></div>
         <!-- /.mobile-nav__container -->
