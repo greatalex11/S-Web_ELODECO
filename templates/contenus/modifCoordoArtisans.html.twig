@@ -21,7 +21,7 @@
         <h1 style="color: #FFFFFF">ELO DECO RIOZ </h1>
     </div>
 
-    <section class="contact-page p-0  justify-content-center m-auto">
+    <section class="contact-page p-0 justify-content-center m-auto">
     <div class="container" style="max-width: 1500px">
     <div class="row" style="margin-left: 0">
     <!--ligne1-->
@@ -34,9 +34,9 @@
         </div>
     </div>
     <!--ligne2-->
-    <div class="row justify-content-center m-auto">
+    <div class="row justify-content-center m-auto p-2">
     <!-- colonne gauche data-->
-    <div class="col-12 mb-2 p-3">
+    <div class="col-12 mb-2 ">
     {% if form is defined %}
         {{ form_start(form, {attr: {'class': "bite"}}) }}
         <div class="contact-page__left p-2">
@@ -76,23 +76,23 @@
                 </div>
             </div>
 
-            <div class="row border-bottom mb-2" style="min-width: 330px">
-                <div class="col-9 col-lg-2">
+            <div class="row border-bottom mb-2 p-2" style="min-width: 330px">
+                <div class="col-10 col-lg-2">
                     <div class="contact-page__input-box">
-                        {{ form_row(form.tel_portable, {'attr': {'class': 'p-2 text-truncate'}, 'label': 'Telephone portable' }) }}
+                        {{ form_row(form.tel_portable, {'attr': {'class': 'p-1 text-truncate'}, 'label': 'Telephone portable' }) }}
                     </div>
                 </div>
-                <div class="col-9 col-lg-2 contact-page__input-box">
-                    {{ form_row(form.tel_fixe, {'attr': {'class': 'p-2 text-truncate'}, 'label': 'Telephone fixe' }) }}
+                <div class="col-10 col-lg-2 contact-page__input-box">
+                    {{ form_row(form.tel_fixe, {'attr': {'class': 'p-1 text-truncate'}, 'label': 'Telephone fixe' }) }}
                 </div>
-                <div class="col-9 col-lg-2 contact-page__input-box">
+                <div class="col-10 col-lg-2 contact-page__input-box">
                     <div class="contact-page__input-box">
-                        {{ form_row(form.fax, {'attr': {'class': 'p-2 text-truncate'}, 'label': 'Fax' }) }}
+                        {{ form_row(form.fax, {'attr': {'class': 'p-1 text-truncate'}, 'label': 'Fax' }) }}
                     </div>
                 </div>
             </div>
 
-            <div class="row mt-5 p-2 mb-4">
+            <div class="row mt-5 p-1 mb-2">
                 <div class="col-12 col-lg-1 contact-page__input-box">
                     {{ form_row(form.numero_rue, {'attr': {'class': 'p-2 text-truncate'}, 'label': 'Numéro' }) }}
                 </div>
@@ -108,19 +108,21 @@
                 </div>
             </div>
 
-            <div class="mt-2 container d-flex justify-content-between m-auto p-2 w-75 ">
+            <!-- bouton validation du formulaire et bouton retour sans modification -->
+            <div class="mt-2 container d-flex justify-content-center p-1">
+                <div class="row w-100">
+                    <div class="col-12 col-lg-6 contact-page__input-box d-flex justify-content-center mt-5 mb-5">
+                        <a style="padding: 15px ;color:#FFFFFF;background-color: rgb(115, 115, 115)"
+                           class="thm-btn contact-page__btn"
+                           href="{{ path('app_artisan_accueil',{'attr': {'class': 'text-truncate'}, 'id': artisans.id}) }}">
+                            <span><<</span> Retour </a>
+                    </div>
 
-                <div class="col-8 col-lg-6 contact-page__input-box mt-5 justify-content-center mb-5 ">
-                    <a style="padding: 10px; border-radius: 10px ;color:#FFFFFF;background-color: rgb(115, 115, 115)"
-                       class="thm-btn contact-page__btn"
-                       href="{{ path('app_artisan_accueil',{ 'id': artisans.id}) }}"> <span
-                                class="m-2"><<</span> Retour </a>
-                </div>
-                <div class="col-8 col-lg-6 contact-page__input-box d-flex justify-content-end m-auto mt-5 mb-5">
-                    {{ form_row(form.Valider, {'attr': {'class': "thm-btn contact-page__btn text-truncate"}}, {'label': 'Envoyer le message'}) }}
+                    <div class="col-12 col-lg-6 contact-page__input-box d-flex justify-content-center mt-5 p-0">
+                        {{ form_row(form.Valider, {'attr': {'class': "thm-btn contact-page__btn text-truncate"}}, {'label': 'Envoyer le message'}) }}
+                    </div>
                 </div>
             </div>
-            <div class="contact-page__input-box"></div>
             {{ form_end(form) }}
         </div>
         </div>

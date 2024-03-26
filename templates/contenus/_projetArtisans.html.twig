@@ -7,15 +7,17 @@
 
     <!-- template permettant de sélectionner la liste des projets et de faire des recherches -->
     <section class="mt-2 row justify-content-center m-auto" style="min-height: 35%">
+
         {# En attente de développement #}
         {#        {% block search %} #}
         {#            {% include('_partial/_search-espace_perso.html.twig') with {'formSearch': formSearch} %} #}
         {#        {% endblock search %} #}
 
+
         <!-- rendu du tableau de bord -->
         {% block list %}
             {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
-                {% include "contenus/_listePjtArtisans.html.twig" with {'listePjt': listePjt} %}
+                {% include "contenus/_listePjtArtisans.html.twig" %}
             {% endif %}
         {% endblock list %}
 
@@ -24,7 +26,7 @@
 {% endblock %}
 
 
-<!--script de recheche de vaur  -    search bar   -   a supprimer lors du refactor-->
+<!--script de recheche de valeur  -    search bar   -   a supprimer lors du refactor-->
 {#    <script> #}
 {#        let btn = document.querySelector("#validValue"); #}
 {#        btn.addEventListener('click', () => { #}

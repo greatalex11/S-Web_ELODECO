@@ -42,36 +42,22 @@
     <section class="contact-page border-bottom mb-1 mt-4 pb-2 pt-0">
     <div class="container m-auto" style="max-width: 1500px">
     <div class="row m-1">
-
-    <div class="row">
-        <div class="col p-0">
-            <div class="col-xl-7 col-lg-6">
-                <div class="contact-page__title">
-                    <div class="section-title text-left mb-0">
-                        <span class="section-title__tagline mt-5"> Espace PRO</span>
-                        {#                        <h3 class="section-title__title">ARTISAN</h3> #}
-                    </div>
-                </div>
-            </div>
+        <div class="section-title text-left mb-1 mt-5 p-0">
+            <span class="section-title__tagline"> Espace PRO</span>
+            {#                        <h3 class="section-title__title">ARTISAN</h3> #}
         </div>
     </div>
 
     <!-- header : 1 pour l'artisan et 1 pour le client car les href sont adaptés -->
-    <div class="p-4 pb-1">
+    <div class="p-2">
         {% include "_partial/_header_EspaceArtisan.html.twig" %}
     </div>
 
-
-
     <!--  Datas des user  -->
     {% block body %}
-
-        <!--                                                             Test menu mobile                                     -->
-        {% include "_partial/_side-menu.html.twig" %}
-
         <div class="col">
             <!-- Image avant affichage des données -->
-            <div class="mt-2 m-auto justify-content-center bg-light h-10">
+            <div class=" m-auto justify-content-center bg-light h-10">
                 {% set image1 = Apps.image1CarouselHome %}
                 <img src="{{ vich_uploader_asset(image1) }}"
                      alt="{{ image1.titre|default('image') }}" style="width: 100%">
@@ -115,16 +101,13 @@
             </div>
         </div>
         </div>
-        </div>
         </section>
     {% endblock %}
     <!--          GOOGLE MAP        -->
-    <section class="contact-page-google-map mb-5">
-        <div class="container d-flex justify-content-center">
-
+    <section class="contact-page-google-map mb-5 d-flex justify-content-center">
+        <div class="container m-3 w-100">
             <div class=" col-2"></div>
-
-            <div class="col bg-light border-top p-5 mt-5">
+            <div class="col bg-light border-top p-2 mt-5 w-100">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25673.90316580553!2d6.038971473616049!3d47.43852811122367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47929a78f73fbb87%3A0x214ef58707775bbf!2sSur%20la%20Vigne%2C%2070190%20Tr%C3%A9silley!5e0!3m2!1sfr!2sfr!4v1700909448497!5m2!1sfr!2sfr"
                         width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"

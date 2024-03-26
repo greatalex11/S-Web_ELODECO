@@ -1,63 +1,49 @@
 <!-- Detail des taches/ id projet et id user-->
+{% set Apps = theme.theme %}
 
+{% if listeTaches is defined and listeTaches is not null %}
 
-<h2 class="m-4">Détail du travail à faire</h2>
+    <h2 class="m-4 mb-5">Détail du travail à faire</h2>
 
-{# {% for tache in listeTaches %} #}
-{#    #}{#    <ul> #}
-{#    #}{#        <li>tache.nom</li> #}
-{#    #}{#    </ul> #}
-    {{ dump(listeTaches) }}
-{% if listePjt is defined %}
-    {{ dump(listePjt) }}
+    <div class="container" style="height:800px">
+        <div class="row align-content-around">
+            {% for key, pjt2 in listeTaches %}
+                <div class="col-sm-4 mb-3 " style="height: 750px; object-fit: contain">
+                    <div class="card mt-3">
+                        <div class="card-body m-2">
+                            <div class="col-3 justify-content-left align-content-center">
+                                {% set image1 = Apps.logo %}
+                                <img src="{{ vich_uploader_asset(image1) }}"
+                                     alt="{{ image1.titre|default('image') }}" width="60">
+                            </div>
+                            <small> Identifiant de la
+                                tâche: {{ pjt2.id }} <br>
+                            </small>
+                            <h4 class="card-title mt-3">
+                                {{ pjt2.titre|u.truncate(50,'...',false)|raw }}
+                            </h4>
+                            <p class="card-text mt-3 text-truncate"> Description: <br> {{ pjt2.description |raw }}</p>
+                            <p class="card-text mt-3 text-truncate"> Budjet: {{ pjt2.budget|default('-') }} €</p>
+                            <p class="card-text mt-3 text-truncate"> Date de
+                                début: {{ pjt2.dateDebut|date("d/m/Y") }}</p>
+                            <p class="card-text mt-3 text-truncate"> Date de fin: {{ pjt2.dateFin|date("d/m/Y") }}</p>
+                            <p class="card-text mt-3 text-truncate"> Montant
+                                facture: {{ pjt2.montantFacture|default('-') }}
+                                €</p>
+                            <p class="card-text mt-3 text-truncate"> Date
+                                facture: {{ pjt2.dateFacture|date("d/m/Y") }}</p>
+                            <p class="card-text mt-3 text-truncate"> Montant
+                                accompte: {{ pjt2.montantAcompte |default('-') }} €</p>
+                            <p class="card-text mt-3 text-truncate"> Date
+                                accompte: {{ pjt2.dateAcompte|date("d/m/Y") }}</p>
+                        </div>
+                        <small class="text-center bg-light text-truncate">Date d'aujourd'hui affichée par défaut</small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endif %}
-
-{# {% endfor %} #}
-
-<div id="test-time" class="text-center text-success"></div>
-<div id="test-get" class="text-center text-primary"></div>
-
-<button id="btnAjax" value="2" onclick="geek()">ajax!</button>
-
-
-<script>
-
-    let btnAjax = $('#btnAjax');
-    btnAjax.on('click', function () {
-        let tacheNumber = btnAjax.val();
-        alert('ajax');
-        console.log(tacheNumber);
-
-    });
-
-
-    function synchroneData() {
-        let divTestTime = document.querySelector("#test-time");
-        divTestTime.innerHTML = 'fonction synchrone'
-    }
-
-    async function fetchData() {
-        let divAjaxGet = document.querySelector("#test-get");
-
-        try {
-            let response = await fetch('/{id}/{value}/ajax', {
-                method: 'GET',
-                headers: {"X-Requested-with": "XMLHttpRequest"},
-            });
-
-            divAjaxGet.innerHTML = await response.text();
-
-        } catch (error) {
-
-            console.error("Erreur lors de la récupération des données:", error);
-        }
-    }
-
-    fetchData();
-    synchroneData();
-
-</script>
-
 
 <!-- Affichage résultat TACHES  -->
 <!--colonne gauche-->
