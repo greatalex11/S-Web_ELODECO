@@ -13,7 +13,7 @@
         <ul class="portfolio-details__info-list list-unstyled">
             <li>{{ artisans.prenomgerant|striptags|default('prénom') }}</li>
             <li>{{ artisans.nomgerant|striptags|default('NOM')|upper }}</li>
-            <li>{{ 'now'|date }}</li>
+            <li>{{ 'now'|date("d/m/Y", "Europe/Paris") }}</li>
         </ul>
     </section>
 

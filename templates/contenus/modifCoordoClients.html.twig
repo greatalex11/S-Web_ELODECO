@@ -1,15 +1,21 @@
 {% extends '/base.html.twig' %}
 {% set Apps = theme.theme %}
 
+
+
+{% block header %}
+
+{% endblock %}
+
 {% block content %}
 
     <section
             class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between w-75 m-auto mt-5"
-            style="max-height:100px; padding:30px;">
+            style="max-height:150px; padding:30px;">
         <ul class="portfolio-details__info-list list-unstyled">
             <li>{{ clients.prenom|striptags|default('Prénom') }}</li>
             <li>{{ clients.nom|striptags|default('NOM')|upper }}</li>
-            <li>{{ 'now'|date }}</li>
+            <li>{{ 'now'|date("d/m/Y", "Europe/Paris") }}</li>
         </ul>
     </section>
 
@@ -22,7 +28,7 @@
     <div class="row" style="margin-left: 0">
     <!--ligne1-->
     <div class="row justify-content-center m-auto">
-        <div class="contact-page__title">
+        <div class="contact-page__title p-0">
             <div class="section-title text-left">
                 <span class="section-title__tagline mt-5 mb-2">Espace CLIENT</span>
                 <h2 class="section-title__title ">Mes modifications</h2>
@@ -32,7 +38,7 @@
     <!--ligne2-->
     <div class="row justify-content-center m-auto ">
     <!-- colonne gauche data-->
-    <div class="col-12 mb-2">
+    <div class="col-12 mb-2 p-3">
     {% if form is defined %}
         {{ form_start(form, {attr: {'class': "bite"}}) }}
         <div class="contact-page__left">
@@ -65,45 +71,44 @@
             </div>
 
             <div class="row border-bottom mt-2 mb-5" style="min-width: 330px">
-                <div class="col-3 p-1" style="min-width: 150px ">
+                <div class="col-3 p-1" style="min-width: 140px ">
                     <div class="contact-page__input-box  text-truncate  p-0">
                         {{ form_row(form.tel_portable, {'attr': {'class': 'p-1 text-truncate'}, 'label': 'Portable' }) }}
                     </div>
                 </div>
-                <div class="col-3 contact-page__input-box  text-truncate  p-1" style="min-width: 120px">
+                <div class="col-3 contact-page__input-box  text-truncate  p-1" style="min-width: 135px">
                     {{ form_row(form.tel_fix, {'attr': {'class': 'p-1 text-truncate'}, 'label': 'Fixe' }) }}
                 </div>
             </div>
 
-            <div class="row h-75 m-0 mb-4 ">
-                <div class="col-12 col-lg-5 d-flex align-item-center p-0 mb-3">
+            <div class="row h-75 m-0 mb-1 ">
+                <div class="col-12 col-lg-5 d-flex align-item-center p-2 mb-3">
                     <div class="contact-page__input-box">
                         {{ form_row(form.date_naissance, {'attr': {'class': "m-0"}}, {'label': 'Date de naissance'}) }}
                     </div>
                 </div>
-                <div class=" col-12 col-lg-5 m-auto justify-content-between ">
-                    <div class="row mb-4 contact-page__input-box bg-white mb-5">
+                <div class=" col-12 col-lg-6 m-auto justify-content-between ">
+                    <div class="row mb-4 contact-page__input-box bg-white mb-3">
                         {{ form_row(form.statusMarital, { 'label': 'Statut marital' }) }}
                     </div>
-                    <div class="row m-0 mb-4 contact-page__input-box bg-white align">
-                        {{ form_row(form.prenom_conjoint, { 'label': 'Prénom conjoint(e)' }) }}
+                    <div class="row m-0 mb-2 contact-page__input-box bg-white align p-1">
+                        {{ form_row(form.prenom_conjoint, {'attr': {'class': 'p-2 text-truncate'}, 'label': 'Prénom conjoint(e)' }) }}
                     </div>
-                    <div class="row m-0 mb-4 contact-page__input-box bg-white">
-                        {{ form_row(form.nom_conjoint, { 'label': 'Nom conjoint(e)' }) }}
+                    <div class="row m-0 mb-2 contact-page__input-box bg-white p-1">
+                        {{ form_row(form.nom_conjoint, { 'attr': {'class': 'p-2 text-truncate'},'label': 'Nom conjoint(e)' }) }}
                     </div>
                 </div>
             </div>
 
-
-            <div class="row mt-4">
-                <div class="col-7 contact-page__input-box">
-                    <a style="padding: 10px; border-radius: 10px ;color:#FFFFFF;background-color: rgb(115, 115, 115)"
+            <div class="row mt-2 container d-flex justify-content-center m-auto">
+                <div class="col-8 contact-page__input-box mt-5 justify-content-center">
+                    <a style=";padding: 10px; border-radius: 10px ;color:#FFFFFF;background-color: rgb(115, 115, 115)"
                        class="thm-btn contact-page__btn"
                        href="{{ path('app_client_accueil',{ 'id': clients.id}) }}"> <span
                                 class="m-2"><<</span> Retour </a>
                 </div>
-                <div class="col-5 contact-page__input-box d-flex justify-content-end m-auto">
-                    {{ form_row(form.Valider, {'attr': {'class': "thm-btn contact-page__btn"}}, {'label': 'Envoyer le message'}) }}
+                <div class="col contact-page__input-box d-flex justify-content-end m-auto mt-5">
+                    {{ form_row(form.Valider, {'attr': {'class': "thm-btn contact-page__btn text-truncate"}}, {'label': 'Envoyer le message'}) }}
                 </div>
             </div>
             <div class="contact-page__input-box"></div>
