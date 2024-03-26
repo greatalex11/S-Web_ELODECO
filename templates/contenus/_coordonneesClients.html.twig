@@ -6,7 +6,7 @@
 
 
     <!--        page coordonnees conditionnée par href "coordonnées" depuis page accueil artisan        -->
-    <section class="mt-2 row justify-content-center m-auto">
+    <section class=" row justify-content-center m-auto">
     <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between mb-2"
              style="max-height:150px; padding:30px; margin: 0 10% 0 10%">
         <ul class="portfolio-details__info-list list-unstyled h-100">
@@ -36,7 +36,7 @@
             <div class="row mt-3">
                 <div class="col-xl-4 col-lg-4 h-100">
                     <!--                Info client              -->
-                    <div class="services-one__single" style="height:1200px">
+                    <div class="services-one__single p-4" style="height:1200px">
                         {#                                <h2 class="services-one__title"> #}
                         {#                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.raisonSociale|striptags|default('77') }}</a> #}
                         {#                                </h2> #}
@@ -80,7 +80,7 @@
                 </div>
                 <!--    Coordonnées client   -->
                 <div class="col-xl-4 col-lg-4 h-100">
-                    <div class="services-one__single" style="height:1200px">
+                    <div class="services-one__single p-4" style="height:1200px">
                         <h2 class="services-one__title">
                             <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ clients.telPortable|striptags|default('06.07....') }}</a>
                         </h2>
@@ -105,7 +105,7 @@
 
                 <!--      Info gérant    -->
                 <div class="col-xl-4 col-lg-4 h-100 ">
-                    <div class="services-one__single" style="height:1200px">
+                    <div class="services-one__single p-4" style="height:1200px">
 
                         {#                                <h2 class="services-one__title"> #}
                         {#                                    <a style="color: {{ theme.theme.couleurActuelleBg }}">{{ artisans.prenomGerant|striptags|default('praenomen')}}</a> #}

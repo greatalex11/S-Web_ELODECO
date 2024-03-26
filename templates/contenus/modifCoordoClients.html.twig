@@ -3,8 +3,9 @@
 
 {% block content %}
 
-    <section class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between w-75 m-auto mt-5"
-             style="max-height:100px; padding:30px;">
+    <section
+            class="counters-one counters-one-martopminus d-flex row  text-center justify-content-xl-between w-75 m-auto mt-5"
+            style="max-height:100px; padding:30px;">
         <ul class="portfolio-details__info-list list-unstyled">
             <li>{{ clients.prenom|striptags|default('Prénom') }}</li>
             <li>{{ clients.nom|striptags|default('NOM')|upper }}</li>
@@ -23,79 +24,68 @@
     <div class="row justify-content-center m-auto">
         <div class="contact-page__title">
             <div class="section-title text-left">
-                <span class="section-title__tagline">Espace CLIENT</span>
+                <span class="section-title__tagline mt-5 mb-2">Espace CLIENT</span>
                 <h2 class="section-title__title ">Mes modifications</h2>
             </div>
         </div>
     </div>
     <!--ligne2-->
-    <div class="row justify-content-center m-auto">
+    <div class="row justify-content-center m-auto ">
     <!-- colonne gauche data-->
-    <div class="col-12 mb-5">
+    <div class="col-12 mb-2">
     {% if form is defined %}
         {{ form_start(form, {attr: {'class': "bite"}}) }}
         <div class="contact-page__left">
-
-
-            <div class="row mt-5 mb-5">
-                <div class="col-4 h-50">
-                    <div class="contact-page__input-box">
-                        {{ form_row(form.prenom, { 'label': 'Prenom' }) }}
+            <div class="row mt-3 mb-1" style="min-width: 340px">
+                <div class="col-4 h-50 p-1">
+                    <div class="contact-page__input-box text-truncate p-0">
+                        {{ form_row(form.prenom, {'attr': {'class': 'p-2 text-truncate'},'label': 'Prenom' }) }}
                     </div>
                 </div>
-                <div class="col-4">
-                    <div class="contact-page__input-box">
-                        {{ form_row(form.nom, { 'label': 'Nom' }) }}
+                <div class="col-4 p-1">
+                    <div class="contact-page__input-box text-truncate p-0">
+                        {{ form_row(form.nom, {'attr': {'class': 'p-2'}, 'label': 'Nom' }) }}
                     </div>
                 </div>
             </div>
 
-            <div class="row mt-5">
-                <div class="col-3 contact-page__input-box">
-                    {{ form_row(form.numero_rue, { 'label': 'Numéro de rue' }) }}
+            <div class="row mt-2 justify-content-between">
+                <div class="col-3 contact-page__input-box text-truncate p-1">
+                    {{ form_row(form.numero_rue, {'attr': {'class': 'p-2 text-truncate'}, 'label': 'Numéro' }) }}
                 </div>
-                <div class="col-3 contact-page__input-box">
-                    {{ form_row(form.rue, { 'label': 'Nom de la rue' }) }}
+                <div class="col-3 contact-page__input-box text-truncate  p-1">
+                    {{ form_row(form.rue, {'attr': {'class': 'p-2 text-truncate'}, 'label': ' Rue' }) }}
                 </div>
-                <div class="col-3 contact-page__input-box">
-                    {{ form_row(form.code_postal, { 'label': 'Code postal' }) }}
+                <div class="col-3 contact-page__input-box text-truncate  p-1">
+                    {{ form_row(form.code_postal, { 'attr': {'class': 'p-2 text-truncate'},'label': 'Code postal' }) }}
                 </div>
-
-                <div class="col-3 contact-page__input-box">
-                    {{ form_row(form.localite, { 'label': 'Localité' }) }}
+                <div class="col-3 contact-page__input-box text-truncate  p-1">
+                    {{ form_row(form.localite, { 'attr': {'class': 'p-2 text-truncate'},'label': 'Localité' }) }}
                 </div>
             </div>
 
-
-            <div class="row border-bottom mt-2 mb-5">
-{#            emailverifie r?    <div class="col-3">#}
-{#                    <div class="contact-page__input-box">#}
-{#                        {{ form_row(form.email, { 'label': 'email' }) }}#}
-{#                    </div>#}
-{#                </div>#}
-                <div class="col-3">
-                    <div class="contact-page__input-box">
-                        {{ form_row(form.tel_portable, { 'label': 'Téléphone portable' }) }}
+            <div class="row border-bottom mt-2 mb-5" style="min-width: 330px">
+                <div class="col-3 p-1" style="min-width: 150px ">
+                    <div class="contact-page__input-box  text-truncate  p-0">
+                        {{ form_row(form.tel_portable, {'attr': {'class': 'p-1 text-truncate'}, 'label': 'Portable' }) }}
                     </div>
                 </div>
-                <div class="col-3 contact-page__input-box">
-                    {{ form_row(form.tel_fix, { 'label': 'Téléphone fixe' }) }}
+                <div class="col-3 contact-page__input-box  text-truncate  p-1" style="min-width: 120px">
+                    {{ form_row(form.tel_fix, {'attr': {'class': 'p-1 text-truncate'}, 'label': 'Fixe' }) }}
                 </div>
             </div>
 
-            <div class="row h-75 m-0 mb-4">
-
-                <div class="col-7 d-flex align-item-center p-0">
+            <div class="row h-75 m-0 mb-4 ">
+                <div class="col-12 col-lg-5 d-flex align-item-center p-0 mb-3">
                     <div class="contact-page__input-box">
                         {{ form_row(form.date_naissance, {'attr': {'class': "m-0"}}, {'label': 'Date de naissance'}) }}
                     </div>
                 </div>
-
-                <div class="col-4 m-auto align-items-lg-end justify-content-between ">
+                <div class=" col-12 col-lg-5 m-auto justify-content-between ">
                     <div class="row mb-4 contact-page__input-box bg-white mb-5">
                         {{ form_row(form.statusMarital, { 'label': 'Statut marital' }) }}
                     </div>
-                    <div class="row m-0 mb-4 contact-page__input-box bg-white">
+                    <div class="row m-0 mb-4 contact-page__input-box bg-white align">
                         {{ form_row(form.prenom_conjoint, { 'label': 'Prénom conjoint(e)' }) }}
                     </div>
                     <div class="row m-0 mb-4 contact-page__input-box bg-white">
@@ -164,7 +154,7 @@
         </div>
         </section>
     {% endif %}
-<!--                                                                Fin formulaire contact                                                          -->
+    <!--                                                                Fin formulaire contact                                                          -->
 
     <!--                                                                        GOOGLE MAP                                                                                  -->
     <section class="bg-light contact-page-google-map mt-5 w-100 p-5 m-auto align-items-center border">

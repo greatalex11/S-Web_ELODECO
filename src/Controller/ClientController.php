@@ -192,7 +192,7 @@ class ClientController extends AbstractController
         return $this->render('contenus/coordonnees.html.twig', [
             'clients' => $client,
             'form' => $form,
-            'mail' => $mail,
+//            'mail' => $mail,
         ]);
 
     }
