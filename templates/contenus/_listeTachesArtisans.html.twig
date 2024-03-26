@@ -2,16 +2,22 @@
 {% set Apps = theme.theme %}
 
 {% if listeTaches is defined and listeTaches is not null %}
-
-    <h2 class="m-4 mb-5">Détail du travail à faire</h2>
-
-    <div class="container" style="height:800px">
+    <!-- titre du projet -->
+    <div class="row m-2 text-center mt-xl-5 bg-light">
+        {% for nompjt2 in listeTaches %}
+            {% if loop.first %}
+                <h3 class="border-bottom p-0 txt-center text-truncate">{{ nompjt2.projet.titre }}</h3>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <!-- liste des taches sous forme de cards -->
+    <div class="container mb-5 w-100" style="height:800px">
         <div class="row align-content-around">
             {% for key, pjt2 in listeTaches %}
-                <div class="col-sm-4 mb-3 " style="height: 750px; object-fit: contain">
-                    <div class="card mt-3">
-                        <div class="card-body m-2">
-                            <div class="col-3 justify-content-left align-content-center">
+                <div class="col-sm-4 mb-3 ">
+                    <div class="card mt-3 h-100">
+                        <div class="card-body m-2 overflow-auto">
+                            <div class="col-3 justify-content-left align-content-center mb-4">
                                 {% set image1 = Apps.logo %}
                                 <img src="{{ vich_uploader_asset(image1) }}"
                                      alt="{{ image1.titre|default('image') }}" width="60">
@@ -19,8 +25,7 @@
                             <small> Identifiant de la
                                 tâche: {{ pjt2.id }} <br>
                             </small>
-                            <h4 class="card-title mt-3">
-                                {{ pjt2.titre|u.truncate(50,'...',false)|raw }}
+                            <h4 class="card-title mt-3">             {{ pjt2.titre|u.truncate(50,'...',false)|raw }}
                             </h4>
                             <p class="card-text mt-3 text-truncate"> Description: <br> {{ pjt2.description |raw }}</p>
                             <p class="card-text mt-3 text-truncate"> Budjet: {{ pjt2.budget|default('-') }} €</p>

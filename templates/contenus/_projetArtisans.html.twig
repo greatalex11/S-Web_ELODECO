@@ -6,7 +6,7 @@
 {% block content %}
 
     <!-- template permettant de sélectionner la liste des projets et de faire des recherches -->
-    <section class="mt-2 row justify-content-center m-auto" style="min-height: 35%">
+    <section class="mt-2 row justify-content-center m-auto">
 
         {# En attente de développement #}
         {#        {% block search %} #}
@@ -16,10 +16,14 @@
 
         <!-- rendu du tableau de bord -->
         {% block list %}
-            {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
-                {% include "contenus/_listePjtArtisans.html.twig" %}
-            {% endif %}
+            <div class="m-4 p-5">
+                {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
+                    {% include "contenus/_listePjtArtisans.html.twig" %}
+                {% endif %}
+            </div>
+
         {% endblock list %}
+
 
     </section>
 

@@ -6,7 +6,7 @@
     <div class="spinner-border ms-auto" aria-hidden="true"></div>
 </div>
 
-<h3 class="mb-4">Liste de vos projets</h3>
+<h3 class="mb-4 border-bottom w-100">Liste de vos projets</h3>
 <!-- Liste des projets-->
 <div class="table-responsive">
     <table class="table-responsive table-hover align-middle w-100">
@@ -27,7 +27,7 @@
             <th scope="row" style="color:brown" class="text-truncate">{{ key }}</th>
             <td colspan="1" style="color:brown" class="text-truncate p-2 m-1">{{ pjt.localite }}</td>
             <td colspan="2" class="text-truncate p-2">
-                <a class="hoverDetailPjt text-truncate border-bottom" style="color: #0a58ca"
+                <a class="hoverDetailPjt text-truncate border-bottom bg-light" style="color: #0a58ca"
                    href="{{ path('app_artisan_accueilPjt', { 'id': artisans.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
             </td>
             <td colspan="2" class="text-truncate p-2">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
@@ -46,40 +46,45 @@
     </table>
 </div>
 
-{% include "contenus/_listeTachesArtisans.html.twig" with {'listePjt': listePjt} %}
-
-
-<!--   fenetre modal : affichage des taches suivant click/ lien projet -->
-<div class="modal fade modalPjt" data-bs-toggle="modal" id="exampleModal" tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Travail à faire</h5>
-                <button type="button" class="btn-close btnModal" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                {% if listeTaches is defined %}
-                    {% for listeTaches in listeTaches %}
-                        <ul>
-                            <li>{{ listeTaches.titre }}</li>
-                            <li>{{ listeTaches.description|raw }}</li>
-                            <li>{{ listeTaches.budget|default('à saisir') }}€</li>
-                            <li>{{ listeTaches.dateDebut|date("m/d/Y")|default('à saisir') }}</li>
-                            <li>{{ listeTaches.dateFin|date("m/d/Y")|default('à saisir') }}</li>
-                            <!-- date accompte + donnees compta si gestion déléguée à l'artisan -->
-                            {#                            <li>{{ listeTaches.dateAcompte }}</li> #}
-                        </ul>
-                    {% endfor %}
-                {% endif %}
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btnModal" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
+<!-- List des taches en format cards -->
+<div class="container mt-4">
+    <div class="row h-100 overflow-auto p-0">
+        {% include "contenus/_listeTachesArtisans.html.twig" with {'listePjt': listePjt} %}
     </div>
 </div>
+
+
+{# <!--   fenetre modal : affichage des taches suivant click/ lien projet --> #}
+{# <div class="modal fade modalPjt" data-bs-toggle="modal" id="exampleModal" tabindex="-1" #}
+{#     aria-labelledby="exampleModalLabel" aria-hidden="true"> #}
+{#    <div class="modal-dialog"> #}
+{#        <div class="modal-content"> #}
+{#            <div class="modal-header"> #}
+{#                <h5 class="modal-title" id="exampleModalLabel">Travail à faire</h5> #}
+{#                <button type="button" class="btn-close btnModal" data-bs-dismiss="modal" aria-label="Close"></button> #}
+{#            </div> #}
+{#            <div class="modal-body"> #}
+{#                {% if listeTaches is defined %} #}
+{#                    {% for listeTaches in listeTaches %} #}
+{#                        <ul> #}
+{#                            <li>{{ listeTaches.titre }}</li> #}
+{#                            <li>{{ listeTaches.description|raw }}</li> #}
+{#                            <li>{{ listeTaches.budget|default('à saisir') }}€</li> #}
+{#                            <li>{{ listeTaches.dateDebut|date("m/d/Y")|default('à saisir') }}</li> #}
+{#                            <li>{{ listeTaches.dateFin|date("m/d/Y")|default('à saisir') }}</li> #}
+{#                            <!-- date accompte + donnees compta si gestion déléguée à l'artisan --> #}
+{#                            #}{#                            <li>{{ listeTaches.dateAcompte }}</li> #}
+{#                        </ul> #}
+{#                    {% endfor %} #}
+{#                {% endif %} #}
+
+{#            </div> #}
+{#            <div class="modal-footer"> #}
+{#                <button type="button" class="btn btn-secondary btnModal" data-bs-dismiss="modal">Close</button> #}
+{#            </div> #}
+{#        </div> #}
+{#    </div> #}
+{# </div> #}
 
 <!--essai ajax : a développer-->
 {# <button id="btnAjax" value="2" onclick="geek()">ajax!</button> #}
