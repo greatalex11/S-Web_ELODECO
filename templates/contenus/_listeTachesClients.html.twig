@@ -1,59 +1,107 @@
 <!-- Detail des taches/ id projet et id user-->
 
 
-<h2 class="m-4">Détail du travail à faire</h2>
+{% set Apps = theme.theme %}
 
-{# {% for tache in listeTaches %} #}
-{#    #}{#    <ul> #}
-{#    #}{#        <li>tache.nom</li> #}
-{#    #}{#    </ul> #}
-    {{ dump(listeTaches) }}
-{% if listePjt is defined %}
-    {{ dump(listePjt) }}
+{% if  listeTaches is empty %}
+    <div class="bg-white mt-5 text-center w-100 p-2">
+        <h4 class="fst-italic text-secondary">Sélectionnez un des liens de la colonne "Projet" pour afficher le détail
+            des travaux
+            à effectuer.</h4>
+    </div>
 {% endif %}
 
+{% if listeTaches is defined and listeTaches is not null %}
+    <!-- titre du projet -->
+    <div class="row m-2 text-center mt-xl-5 bg-white">
+        {% for nompjt2 in listeTaches %}
+            {% if loop.first %}
+                <h3 class="border-bottom p-0 txt-center text-truncate">{{ nompjt2.projet.titre }}</h3>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <!-- liste des taches sous forme de cards -->
+    <div class="container mb-5 w-100 bg-light" style="height:800px">
+        <div class="row align-content-around">
+            {% for key, pjt2 in listeTaches %}
+                <div class="col-sm-4 mb-3 p-1 ">
+                    <div class="card mt-3 h-100">
+                        <div class="card-body m-2 overflow-auto">
+                            <div class="col-3 justify-content-left align-content-center mb-4">
+                                {% set image1 = Apps.logo %}
+                                <img src="{{ vich_uploader_asset(image1) }}"
+                                     alt="{{ image1.titre|default('image') }}" width="60">
+                            </div>
+                            <small> Identifiant de la
+                                tâche: {{ pjt2.id }} <br>
+                            </small>
+                            <h4 class="card-title mt-3">             {{ pjt2.titre|u.truncate(50,'...',false)|raw }}
+                            </h4>
+                            <p class="card-text mt-3.overflow-auto "> Description: <br> {{ pjt2.description |raw }}</p>
+                            <p class="card-text mt-3 text-truncate"> Budjet: {{ pjt2.budget|default('-') }} €</p>
+                            <p class="card-text mt-3 text-truncate"> Date de
+                                début: {{ pjt2.dateDebut|date("d/m/Y") }}</p>
+                            <p class="card-text mt-3 text-truncate"> Date de fin: {{ pjt2.dateFin|date("d/m/Y") }}</p>
+                            <p class="card-text mt-3 text-truncate"> Montant
+                                facture: {{ pjt2.montantFacture|default('-') }}
+                                €</p>
+                            <p class="card-text mt-3 text-truncate"> Date
+                                facture: {{ pjt2.dateFacture|date("d/m/Y") }}</p>
+                            <p class="card-text mt-3 text-truncate"> Montant
+                                accompte: {{ pjt2.montantAcompte |default('-') }} €</p>
+                            <p class="card-text mt-3 text-truncate"> Date
+                                accompte: {{ pjt2.dateAcompte|date("d/m/Y") }}</p>
+                        </div>
+                        <small class="text-center bg-light text-truncate">Date d'aujourd'hui affichée par défaut</small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
 {# {% endfor %} #}
 
-<div id="test-time" class="text-center text-success"></div>
-<div id="test-get" class="text-center text-primary"></div>
 
-<button id="btnAjax" value="2" onclick="geek()">ajax!</button>
+<!--En attende poursite developpement AJAX pour la réponse requete taches liste-->
 
+{# <div id="test-time" class="text-center text-success"></div> #}
+{# <div id="test-get" class="text-center text-primary"></div> #}
 
-<script>
+{# <button id="btnAjax" value="2" onclick="geek()">ajax!</button> #}
 
-    let btnAjax = $('#btnAjax');
-    btnAjax.on('click', function () {
-        let tacheNumber = btnAjax.val();
-        alert('ajax');
-        console.log(tacheNumber);
+{# <script> #}
 
-    });
+{#    let btnAjax = $('#btnAjax'); #}
+{#    btnAjax.on('click', function () { #}
+{#        let tacheNumber = btnAjax.val(); #}
+{#        alert('ajax'); #}
+{#        console.log(tacheNumber); #}
 
+{#    }); #}
 
-    function synchroneData() {
-        let divTestTime = document.querySelector("#test-time");
-        divTestTime.innerHTML = 'fonction synchrone'
-    }
+{#    function synchroneData() { #}
+{#        let divTestTime = document.querySelector("#test-time"); #}
+{#        divTestTime.innerHTML = 'fonction synchrone' #}
+{#    } #}
 
-    async function fetchData() {
-        let divAjaxGet = document.querySelector("#test-get");
+{#    async function fetchData() { #}
+{#        let divAjaxGet = document.querySelector("#test-get"); #}
 
-        try {
-            let response = await fetch('', {
-                method: 'GET',
-                headers: {"X-Requested-with": "XMLHttpRequest"},
-            });
+{#        try { #}
+{#            let response = await fetch('', { #}
+{#                method: 'GET', #}
+{#                headers: {"X-Requested-with": "XMLHttpRequest"}, #}
+{#            }); #}
 
-            divAjaxGet.innerHTML = await response.text();
+{#            divAjaxGet.innerHTML = await response.text(); #}
 
-        } catch (error) {
+{#        } catch (error) { #}
 
-            console.error("Erreur lors de la récupération des données:", error);
-        }
-    }
+{#            console.error("Erreur lors de la récupération des données:", error); #}
+{#        } #}
+{#    } #}
 
-    fetchData();
-    synchroneData();
+{#    fetchData(); #}
+{#    synchroneData(); #}
 
-</script>
+{# </script> #}

@@ -6,10 +6,10 @@
     <div class="spinner-border ms-auto" aria-hidden="true"></div>
 </div>
 
-<div class="alert-primary bg-light table-responsive ">
-    <h2 class="mb-4">Liste de vos projets</h2>
+<h3 class="bg-white mb-2 m-2 border-bottom text-truncate w-100 p-0">Liste de vos projets</h3>
 
-    <!-- Liste des projets-->
+<!-- Liste des projets-->
+<div class="bg-light table-responsive">
     <div class="table-responsive">
         <table class="table-responsive table-hover align-middle w-100">
             <thead>
@@ -17,25 +17,23 @@
                 <th colspan="1" scope="col" class="text-truncate">N°</th>
                 <th colspan="1" scope="col" class="text-truncate p-2">Localité</th>
                 <th colspan="2" scope="col" class="text-truncate p-4">Projet</th>
-                <th colspan="1" scope="col" class="text-truncate p-2">Date début</th>
+                <th colspan="2" scope="col" class="text-truncate p-2">Date début</th>
                 <th colspan="1" scope="col" class="text-truncate text-center p-2">Durée (mois)</th>
-                {#            <th colspan="2" scope="col">Taches</th> #}
             </tr>
             </thead>
-
             <!--  data-bs-target="#exampleModal+ data-bs-toggle="modal" implementé en js et sorti de la balise <a> - erreur generation url avec paramètre  -->
-
             <tbody>
+
             {% for key, pjt in listePjt %}
             <tr>
                 <th scope="row" style="color:brown" class="text-truncate">{{ key }}</th>
                 <td colspan="1" style="color:brown" class="text-truncate p-2 m-1">{{ pjt.localite }}</td>
                 <td colspan="2" class="text-truncate p-2">
-                    <a class="hoverDetailPjt p-4"
+                    <a class="hoverDetailPjt fst-italic text-secondary text-truncate border-bottom bg-light"
                        href="{{ path('app_client_accueilPjt', { 'id': clients.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
                 </td>
                 <td colspan="1" class="text-truncate p-2">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>
-                <td colspan="1" class="text-truncate p-2 text-center">{{ pjt.duree }}</td>
+                <td colspan="2" class="text-truncate p-2 text-center">{{ pjt.duree }}</td>
                 {% set  clientList=pjt.client %}
                 {% for key, client in clientList %}
                 <tr>
@@ -51,19 +49,22 @@
     </div>
 </div>
 
-{# <button id="btnAjax" value="2" onclick="geek()">ajax!</button> #}
+
+{# non ajax #}
+<div class="container ">
+    <div class="row h-100 overflow-auto p-0">
+        {% include "contenus/_listeTachesClients.html.twig" %}
+    </div>
+</div>
 
 
-non ajax
-{% include "contenus/_listeTachesArtisans.html.twig" %}
-
-
-ajax
-{% if listeTaches is defined and app.request.attributes.get('_route') == 'app_ajax_get' %}
-    {% include "contenus/_listeTachesClients.html.twig" with {'listePjt':listePjt} %}
-{% endif %}
 <!--essai ajax-->
 
+{# <button id="btnAjax" value="2" onclick="geek()">ajax!</button> #}
+
+{# {% if listeTaches is defined and app.request.attributes.get('_route') == 'app_ajax_get' %} #}
+{#    {% include "contenus/_listeTachesClients.html.twig" with {'listePjt':listePjt} %} #}
+{# {% endif %} #}
 
 <!--essai toggle-->
 {# <button class="btnhoverDetailPjt">pop</button> #}
