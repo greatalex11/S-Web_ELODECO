@@ -2,16 +2,15 @@
 {# {% set renderedField = form_row(formLoadDoc) %} #}
 {% block content %}
     {% if  formLoadDocClient is defined %}
-        <div class="alert-primary bg-light m-4">
-            <h2 class="text-center">Envoyez vos documents</h2>
-
+        <div class="alert-primary bg-light m-4 p-1">
+            <h2 class="text-center  border-bottom ">Envoyez vos documents</h2>
 
             {# Loader de vich #}
             <div>
                 <div class="row justify-content-center m-auto bg-light mt-xl-5">
                     <div class="col-6 p-5" style="min-width: 320px;object-fit: contain">
                         {{ form_start(formLoadDocClient) }}
-                        <div class="row">
+                        <div class="row p-2">
                             <div class="contact-page__input-box">
                                 {{ form_row(formLoadDocClient.documentsFile) }}
                             </div>
@@ -24,7 +23,7 @@
                             <div class="mt-5">
                                 {{ form_row(formLoadDocClient.projet, {'label':'Concerne le projet suivant' }) }}
                             </div>
-                            <div class="d-flex justify-content-end m-auto text-truncate mt-5">
+                            <div class="d-flex justify-content-end text-truncate mt-5">
                                 {{ form_row(formLoadDocClient.save) }}
                             </div>
                             <div class="mt-4">

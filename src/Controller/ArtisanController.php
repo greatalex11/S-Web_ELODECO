@@ -95,7 +95,6 @@ class ArtisanController extends AbstractController
 //          Liste des documents/ artisan
             $idArtisan = $id;
             $documentIdArtisan = $documentsRepository->findDocumentArtisan($idArtisan); //dql depuis document
-            dump($documentIdArtisan);
             if (!$documentIdArtisan) {
                 $this->addFlash(
                     'notice',

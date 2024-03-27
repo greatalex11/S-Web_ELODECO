@@ -11,12 +11,12 @@
 <!-- Liste des projets-->
 <div class="bg-light table-responsive">
     <div class="table-responsive">
-        <table class="table-responsive table-hover align-middle w-100">
+        <table class="table-responsive table-hover align-middle w-100 p-2">
             <thead>
             <tr>
                 <th colspan="1" scope="col" class="text-truncate">N°</th>
                 <th colspan="1" scope="col" class="text-truncate p-2">Localité</th>
-                <th colspan="2" scope="col" class="text-truncate p-4">Projet</th>
+                <th colspan="2" scope="col" class="text-truncate text-start p-1">Projet</th>
                 <th colspan="2" scope="col" class="text-truncate p-2">Date début</th>
                 <th colspan="1" scope="col" class="text-truncate text-center p-2">Durée (mois)</th>
             </tr>
@@ -29,7 +29,7 @@
                 <th scope="row" style="color:brown" class="text-truncate">{{ key }}</th>
                 <td colspan="1" style="color:brown" class="text-truncate p-2 m-1">{{ pjt.localite }}</td>
                 <td colspan="2" class="text-truncate p-2">
-                    <a class="hoverDetailPjt fst-italic text-secondary text-truncate border-bottom bg-light"
+                    <a class="hoverDetailPjt text-truncate border-bottom bg-light"
                        href="{{ path('app_client_accueilPjt', { 'id': clients.id,'projet': 'projet','value':pjt.id }) }}"> {{ pjt.titre }}</a>
                 </td>
                 <td colspan="1" class="text-truncate p-2">{{ pjt.datedebut|date("m/d/Y")|default('à saisir') }}</td>

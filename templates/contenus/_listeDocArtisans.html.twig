@@ -2,31 +2,31 @@
 
 {% block content %}
     {#  {% if  documentIdArtisan is defined %} #}
-    <div class="alert-primary bg-light mt-0 m-4 mb-5">
-        <h2 class="text-truncate mb-4 text-center">Liste de vos documents partagés</h2>
 
+    <h3 class="text-truncate mb-4 text-center border-bottom p-1">Liste de vos documents partagés</h3>
+
+    <div class=" bg-light mt-0 m-2 mb-5 ">
         <!-- Liste des documents-->
-        <div class="table-responsive">
-            <table class="table m-1 border-bottom mt-xl-5 w-75">
+        <div class="table-responsive p-0 w-100">
+            <table class="table m-1 border-bottom mt-xl-5">
                 <thead>
                 <tr class=text-center">
                     <th scope="col" class="text-truncate"><i> N°</i></th>
                     <th scope="col" class="text-truncate"><i> Type </i></th>
                     <th scope="col" class="text-truncate">Titre</th>
-                    <th scope="col" class="text-truncate">Localité</th>
+                    <th scope="col" class="text-truncate ">Localité</th>
                     <th scope="col" class="text-center text-truncate">Client 1</th>
                     <th scope="col" class="text-center text-truncate">Client 2</th>
                 </tr>
                 </thead>
                 {% if documentIdArtisan is defined %}
                     {% for key, tableDoc in documentIdArtisan %}
-                        {{ dump(documentIdArtisan) }}
                         <tbody>
                         <tr>
                             <th scope="row">{{ key }}</th>
                             <td class="m-lg-5 text-truncate">{{ tableDoc.type }}</td>
                             <td class="m-lg-3 text-truncate p-3"> {{ tableDoc.titre }}</td>
-                            <td class="m-lg-5 text-truncate">{{ tableDoc.projet.localite }}</td>
+                            <td class="m-lg-4 text-truncate">{{ tableDoc.projet.localite }}</td>
                             {% set clientList=tableDoc.projet.client %}
                             {% for client in clientList %}
                                 <td class="m-lg-5 text-truncate text-center">{{ client.prenom }} <br> {{ client.nom }}

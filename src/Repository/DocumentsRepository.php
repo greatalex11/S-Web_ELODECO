@@ -25,22 +25,39 @@ class DocumentsRepository extends ServiceEntityRepository
      * @return Documents[] Returns an array of Documents objects
      */
 
-
+    //Version 1 : plus complete sur les jointures que la version 2
     public function findDocumentArtisan($idArtisan): array
     {
         $qb = $this->createQueryBuilder('d');
 
-        $qb->select('d')
-//            ->from('App:Documents', 'd')
-            ->innerJoin('App:Projet', 'p', 'WITH', 'd.projet=p.id')
-            ->innerJoin('App:Tache', 't', 'WITH', 't.id= p.id')
-            ->innerJoin('App:Artisan', 'a', 'WITH', 'a.id= p.id')
+        $qb->select('d');
+        $qb->innerJoin('App:Projet', 'p', 'WITH', 'd.projet = p.id')
+            ->innerJoin('App:Tache', 't', 'WITH', 't.projet = p.id')
+            ->innerJoin('App:Artisan', 'a', 'WITH', 't.artisan = a.id')
             ->where('a.id = :idArtisan')
             ->setParameter('idArtisan', $idArtisan);
         $result = $qb->getQuery()->getResult();
         return $result;
 
     }
+
+    //Version 2
+    //    public function findDocumentArtisan($idArtisan): array
+    //    {
+    //        $qb = $this->createQueryBuilder('d');
+    //
+    //        $qb->select('d')
+    //            ->join('d.projet', 'p')
+    //            ->join('p.taches', 't')
+    //            ->join('t.artisan', 'a')
+    //            ->where('a.id = :artisanId')
+    //            ->setParameter('artisanId', $idArtisan);
+    //
+    //        $result = $qb->getQuery()->getResult();
+    //        return $result;
+    //
+    //    }
+    
 
     public function findDocumentClient($idClient): array
     {
@@ -55,25 +72,5 @@ class DocumentsRepository extends ServiceEntityRepository
         return $result;
 
     }
-//    public function findById($value): array
-//    {
-//        return $this->createQueryBuilder('d')
-//            ->andWhere('d.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('d.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Documents
-//    {
-//        return $this->createQueryBuilder('d')
-//            ->andWhere('d.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

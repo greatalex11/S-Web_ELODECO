@@ -1,14 +1,15 @@
 {% set Apps = theme.theme %}
 {# {% set renderedField = form_row(formLoadDoc) %} #}
 {% block content %}
+
+    <div>
+        <h2 class="text-truncate mb-4 text-center border-bottom">Envoyez vos documents</h2>
+    </div>
     {% if  documentIdArtisan is defined %}
         <div class="alert-primary bg-light m-4">
-            <h2>Envoyez vos documents</h2>
-
-
             {# Loader de vich #}
             <div>
-                <div class="row justify-content-center m-auto bg-light mt-xl-5">
+                <div class="row justify-content-center m-auto bg-light mt-xl-5 p-1">
                     <div class="col-6 p-5" style="min-width: 320px;object-fit: contain">
                         {{ form_start(formLoadDoc) }}
                         <div class="row">
@@ -24,10 +25,8 @@
                             <div class="mt-5">
                                 {{ form_row(formLoadDoc.projet, {'label':'Concerne le projet suivant' }) }}
                             </div>
-                            <div class=" d-flex justify-content-end text-truncate mt-5">
-
+                            <div class=" d-flex justify-content-end text-truncate mt-5 p-2">
                                 {{ form_row(formLoadDoc.save) }}
-
                             </div>
                             <div class="mt-4">
                                 {{ form_end(formLoadDoc) }}
