@@ -1,6 +1,12 @@
 <!-- Detail des taches/ id projet et id user-->
 {% set Apps = theme.theme %}
 
+{% if  listeTaches is empty %}
+    <div class="bg-info mt-5 text-center">
+        <h4>Sélectionnez un des liens de la colonne "Projet" pour afficher le détail des travaux à effectuer.</h4>
+    </div>
+{% endif %}
+
 {% if listeTaches is defined and listeTaches is not null %}
     <!-- titre du projet -->
     <div class="row m-2 text-center mt-xl-5 bg-light">
@@ -27,7 +33,7 @@
                             </small>
                             <h4 class="card-title mt-3">             {{ pjt2.titre|u.truncate(50,'...',false)|raw }}
                             </h4>
-                            <p class="card-text mt-3 text-truncate"> Description: <br> {{ pjt2.description |raw }}</p>
+                            <p class="card-text mt-3.overflow-auto "> Description: <br> {{ pjt2.description |raw }}</p>
                             <p class="card-text mt-3 text-truncate"> Budjet: {{ pjt2.budget|default('-') }} €</p>
                             <p class="card-text mt-3 text-truncate"> Date de
                                 début: {{ pjt2.dateDebut|date("d/m/Y") }}</p>
@@ -49,6 +55,7 @@
         </div>
     </div>
 {% endif %}
+
 
 <!-- Affichage résultat TACHES  -->
 <!--colonne gauche-->

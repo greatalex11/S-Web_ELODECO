@@ -1,8 +1,3 @@
-<div style="color: white">
-    {% block title %}Elo Deco - espace Artisan - liste des projets{% endblock %}
-</div>
-
-
 {% block content %}
 
     <!-- template permettant de sélectionner la liste des projets et de faire des recherches -->
@@ -16,14 +11,12 @@
 
         <!-- rendu du tableau de bord -->
         {% block list %}
-            <div class="m-4 p-5">
+            <div class="m-3 p-3">
                 {% if app.request.attributes.get('_route') == 'app_artisan_accueilPjt' %}
                     {% include "contenus/_listePjtArtisans.html.twig" %}
                 {% endif %}
             </div>
-
         {% endblock list %}
-
 
     </section>
 
