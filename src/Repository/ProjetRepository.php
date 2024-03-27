@@ -35,17 +35,31 @@ class ProjetRepository extends ServiceEntityRepository
         return $result;
     }
 
+//    public function findProjetByNomClient(?string $idClient): array
+//    {
+//        $qb = $this->createQueryBuilder('p');
+//        $qb->select('p')
+//            ->leftJoin('App:Tache', 't', 'WITH', 't.projet=p.id')
+//            ->innerJoin('p.client', 'c')
+//            ->where('c.id = :clientId')
+//            ->setParameter('clientId', $idClient);
+//        $result = $qb->getQuery()->getResult();
+//        return $result;
+//    }
+
     public function findProjetByNomClient(?string $idClient): array
     {
-        $qb = $this->createQueryBuilder('p');
-        $qb->select('p')
-            ->leftJoin('App:Tache', 't', 'WITH', 't.projet=p.id')
-            ->innerJoin('p.client', 'c')
+        $qb = $this->createQueryBuilder('p')
+            ->join('p.client', 'c') // Join entre Projet et Client
+            ->join('p.taches', 't') // Join entre Projet et Tache
             ->where('c.id = :clientId')
             ->setParameter('clientId', $idClient);
+
         $result = $qb->getQuery()->getResult();
         return $result;
     }
+
+
 
     /**
      * @return Projet[] Returns an array of Projet objects
