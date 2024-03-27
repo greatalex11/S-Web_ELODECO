@@ -57,17 +57,16 @@ class DocumentsRepository extends ServiceEntityRepository
     //        return $result;
     //
     //    }
-    
+
 
     public function findDocumentClient($idClient): array
     {
-        $qb = $this->createQueryBuilder('d');
-        $qb->select('d')
-//            ->from('App:Documents', 'd')
-            ->innerJoin('App:Projet', 'p', 'WITH', 'p.id=d.projet')
-            ->innerJoin('App:Client', 'c', 'WITH', 'c.id = p.id');
-//            ->where('p.d.document = :idClient')
-//            ->setParameter('idClient', $idClient);
+        $qb = $this->createQueryBuilder('d')
+            ->join('d.projet', 'p')
+            ->join('p.client', 'c') // Supposant que 'clients' est le nom de la propriété dans l'entité Projet représentant la relation ManyToMany avec Client
+            ->where('c.id = :clientId')
+            ->setParameter('clientId', $idClient);
+
         $result = $qb->getQuery()->getResult();
         return $result;
 
