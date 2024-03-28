@@ -100,7 +100,7 @@
                                         <div class="col-12 p-1">
 
                                             <div class="row p-0">
-                                                <a class="small fs-6 fst-italic text-truncate text-secondary text-decoration-underline ml-auto text-end "
+                                                <a class="small fs-6 fst-italic text-truncate text-secondary text-decoration-underline ml-auto text-center "
                                                    href="{{ path('app_logout') }}">Déconnexion</a>
 
                                             </div>
@@ -108,14 +108,14 @@
                                             <div class="row p-0">
                                                 {% if user and role is same as "ROLE_ARTISAN" %}
                                                     {% set id=user.artisan.id %}
-                                                    <a class="small fs-6 fst-italic text-truncate text-secondary text-decoration-underline text-end ml-auto"
+                                                    <a class="small fs-6 fst-italic text-truncate text-secondary text-decoration-underline text-center ml-auto"
                                                        href="{{ path('app_artisan_accueil', {'id': id}) }}">Retour
                                                         espace
                                                         Artisan</a>
                                                 {% endif %}
 
                                                 {% if user and role is same as "ROLE_CLIENT" %}
-                                                    <a class="small fs-6 fst-italic text-truncate text-secondary text-decoration-underline ml-auto"
+                                                    <a class="small fs-6 fst-italic text-truncate text-secondary text-decoration-underline ml-auto text-center"
                                                             {% set id=user.client.id %}
                                                        href="{{ path('app_client_accueil', {'id': id}) }}">Retour
                                                         espace
