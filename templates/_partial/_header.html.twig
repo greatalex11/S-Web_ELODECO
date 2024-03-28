@@ -56,7 +56,7 @@
 
                 </div>
             </div>
-            <div class="main-menu-wrapper__bottom" style="background-color: {{ Apps.couleurActuelleBg }}">
+            <div class="main-menu-wrapper__bottom " style="background-color: {{ Apps.couleurActuelleBg }}">
                 <nav class="main-menu">
                     <div class="main-menu__inner">
                         <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
@@ -94,69 +94,71 @@
 
                         <div class="main-menu__right">
                             {% if is_granted('ROLE_USER') %}
-                            <!-- Menu connexion et retour espace perso si connecté et si role adéquate/ espace adéquate -->
-                            <div class="container p-0">
-                                <div class="row">
-                                    <div class="col-1 col-lg-6 p-0">
-                                        <a class="small fs-6 fst-italic text-truncate text-success"
-                                           href="{{ path('app_logout') }}">Déconnexion</a>
+                                <!-- Menu connexion et retour espace perso si connecté et si role adéquate/ espace adéquate -->
+                                <div class="container p-0 ">
+                                    <div class="row ml-auto d-flex justify-content-end">
+                                        <div class="col-12 p-1">
+
+                                            <div class="row p-0">
+                                                <a class="small fs-6 fst-italic text-truncate text-secondary text-decoration-underline ml-auto text-end "
+                                                   href="{{ path('app_logout') }}">Déconnexion</a>
+
+                                            </div>
+
+                                            <div class="row p-0">
+                                                {% if user and role is same as "ROLE_ARTISAN" %}
+                                                    {% set id=user.artisan.id %}
+                                                    <a class="small fs-6 fst-italic text-truncate text-secondary text-decoration-underline text-end ml-auto"
+                                                       href="{{ path('app_artisan_accueil', {'id': id}) }}">Retour
+                                                        espace
+                                                        Artisan</a>
+                                                {% endif %}
+
+                                                {% if user and role is same as "ROLE_CLIENT" %}
+                                                    <a class="small fs-6 fst-italic text-truncate text-secondary text-decoration-underline ml-auto"
+                                                            {% set id=user.client.id %}
+                                                       href="{{ path('app_client_accueil', {'id': id}) }}">Retour
+                                                        espace
+                                                        Client</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
                                     </div>
-
-
-                                    <div class="col-1 col-lg-6 p-0">
-                                        {% if user and role is same as "ROLE_ARTISAN" %}
-                                            {% set id=user.artisan.id %}
-                                            <a class="small fs-6 fst-italic text-truncate text-success"
-                                               href="{{ path('app_artisan_accueil', {'id': id}) }}">Retour
-                                                espace
-                                                Artisan</a>
-                                        {% endif %}
-
-                                        {% if user and role is same as "ROLE_CLIENT" %}
-                                            <a class="small fs-6 fst-italic text-truncate"
-                                                    {% set id=user.client.id %}
-                                               href="{{ path('app_client_accueil', {'id': id}) }}">Retour
-                                                espace
-                                                Client</a>
-                                        {% endif %}
-                                    </div>
-
                                 </div>
 
-                            </div>
+                            {% else %}
+                                <a href="#" class="side-menu__toggler  ">
+                                    <i class="font-italic fs-6 m-lg-2 ">Connexion</i>
+                                </a>
+                            {% endif %}
 
-                            {#                                <div class="row"> #}
-                            {#                                    {% if user and role is same as "ROLE_ARTISAN" %} #}
-                            {#                                        {% set id=user.artisan.id %} #}
-                            {#                                        <a class="small fs-6 fst-italic" #}
-                            {#                                           href="{{ path('app_artisan_accueil', {'id': id}) }}">Retour #}
-                            {#                                            espace #}
-                            {#                                            Artisan</a> #}
-                            {#                                    {% endif %} #}
+                            <!-- Alignement horizontal des 2 liens -->
+                            {#                                    <div class="col-1 col-lg-6 p-0"> #}
+                            {#                                        {% if user and role is same as "ROLE_ARTISAN" %} #}
+                            {#                                            {% set id=user.artisan.id %} #}
+                            {#                                            <a class="small fs-6 fst-italic text-truncate text-secondary text-decoration-underline " #}
+                            {#                                               href="{{ path('app_artisan_accueil', {'id': id}) }}">Retour #}
+                            {#                                                espace #}
+                            {#                                                Artisan</a> #}
+                            {#                                        {% endif %} #}
 
-                            {#                                    {% if user and role is same as "ROLE_CLIENT" %} #}
-                            {#                                        <a class="small fs-6 fst-italic" #}
-                            {#                                                {% set id=user.client.id %} #}
-                            {#                                           href="{{ path('app_client_accueil', {'id': id}) }}">Retour #}
-                            {#                                            espace #}
-                            {#                                            Client</a> #}
-                            {#                                    {% endif %} #}
+                            {#                                        {% if user and role is same as "ROLE_CLIENT" %} #}
+                            {#                                            <a class="small fs-6 fst-italic text-truncate text-secondary text-decoration-underline" #}
+                            {#                                                    {% set id=user.client.id %} #}
+                            {#                                               href="{{ path('app_client_accueil', {'id': id}) }}">Retour #}
+                            {#                                                espace #}
+                            {#                                                Client</a> #}
+                            {#                                        {% endif %} #}
+                            {#                                    </div> #}
                             {#                                </div> #}
+                            {#                            </div> #}
+
 
                         </div>
-
                     </div>
-
-                    {% else %}
-                        <a href="#" class="side-menu__toggler  ">
-                            <i class="font-italic fs-6 m-lg-2 ">Connexion</i>
-                        </a>
-                    {% endif %}
+                </nav>
             </div>
         </div>
-        </nav>
-    </div>
-    </div>
     </div>
 </header>
 
