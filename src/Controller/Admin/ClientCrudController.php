@@ -6,7 +6,6 @@ use App\Entity\Client;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -29,8 +28,8 @@ class ClientCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield IdField::new('id')->hideOnForm();
         yield FormField::addTab("User", 'fas fa fa-user');
+        yield IdField::new('id')->hideOnForm();
         yield AssociationField::new("user")
             ->autocomplete()
             ->renderAsEmbeddedForm()->setLabel(false);

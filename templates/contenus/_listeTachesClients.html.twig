@@ -11,8 +11,9 @@
     </div>
 {% endif %}
 
-{% if listeTaches is defined and listeTaches is not null %}
+{% if listeTaches is defined and listeTaches is not null and listeTaches is not empty %}
     <!-- titre du projet -->
+
     <div class="row m-2 text-center mt-xl-5 bg-white">
         {% for nompjt2 in listeTaches %}
             {% if loop.first %}

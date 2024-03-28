@@ -3,6 +3,7 @@
 
 {% set user=app.user %}
 
+{% set role=user.roles[0] %}
 
 {# style="background-color: {{ Apps.couleurActuelleBg }} #}
 
@@ -19,6 +20,26 @@
             </a>
         </div>
 
+        <!-- Retour espace personnel si on est sur le site vitrine, condition User et condition Role-->
+        <div class="row">
+            {% if user and role is same as "ROLE_ARTISAN" %}
+                {% set id=user.artisan.id %}
+                <a class="small text-primary fs-6 fst-italic"
+                   href="{{ path('app_artisan_accueil', {'id': id}) }}">Retour
+                    espace
+                    Artisan</a>
+            {% endif %}
+
+            {% if user and role is same as "ROLE_CLIENT" %}
+                <a class="small text-primary fs-6 fst-italic"
+                        {% set id=user.client.id %}
+                   href="{{ path('app_client_accueil', {'id': id}) }}">Retour
+                    espace
+                    Client</a>
+            {% endif %}
+        </div>
+
+
         <ul class="mobile-nav__contact list-unstyled">
             {% if user %}
                 <li><a href="{{ path('app_logout') }}" class="font-italic">Déconnexion</a></li>
@@ -26,6 +47,7 @@
                 <li><a href="{{ path('app_login') }}" class="font-italic">Se connecter</a></li>
             {% endif %}
         </ul>
+
 
         <!-- /.logo-box -->
         <div class="mobile-nav__container"></div>
